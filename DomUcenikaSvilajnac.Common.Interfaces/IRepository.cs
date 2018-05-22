@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 using System.Linq.Expressions;
+using System.Threading.Tasks;
 
 namespace DomUcenikaSvilajnac.Common.Interfaces
 {
@@ -9,6 +10,7 @@ namespace DomUcenikaSvilajnac.Common.Interfaces
     {
         T Get(int id);
         IEnumerable<T> GetAll();
+         Task< IEnumerable<T>> GetAllAsync();
         IEnumerable<T> Find(Expression<Func<T, bool>> predicate);
 
         void Add(T entity);

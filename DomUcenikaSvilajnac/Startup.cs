@@ -10,6 +10,9 @@ using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using Microsoft.EntityFrameworkCore;
 using DomUcenikaSvilajnac.DAL.Context;
+using AutoMapper;
+using DomUcenikaSvilajnac.Common.Interfaces;
+using DomUcenikaSvilajnac.DAL.RepoPattern;
 
 namespace DomUcenikaSvilajnac
 {
@@ -27,6 +30,8 @@ namespace DomUcenikaSvilajnac
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddAutoMapper();
+            services.AddScoped<IUnitOfWork, UnitOfWork>();
             services.AddDbContext<UcenikContext>(options=>options.UseSqlServer(@"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=DomUcenikaSvilajnac;Integrated Security=True;Connect Timeout=30"));
             services.AddMvc();
         }

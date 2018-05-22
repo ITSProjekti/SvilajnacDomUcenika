@@ -6,11 +6,12 @@ using DomUcenikaSvilajnac.DAL.Context;
 using DomUcenikaSvilajnac.Common.Models;
 using DomUcenikaSvilajnac.Common.Interfaces;
 
+using System.Linq.Expressions;
 namespace DomUcenikaSvilajnac.DAL.RepoPattern
 {
     public class UnitOfWork : IUnitOfWork
     {
-        private readonly UcenikContext _context;
+       protected readonly UcenikContext _context;
 
         public UnitOfWork(UcenikContext context)
         {
@@ -24,12 +25,12 @@ namespace DomUcenikaSvilajnac.DAL.RepoPattern
 
         public void Dispose()
         {
-            throw new NotImplementedException();
+            _context.Dispose();
         }
 
         public int SaveChanges()
         {
-            throw new NotImplementedException();
+            return _context.SaveChanges();
         }
     }
 }

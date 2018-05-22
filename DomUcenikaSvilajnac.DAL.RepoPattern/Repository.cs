@@ -4,6 +4,7 @@ using System.Text;
 using Microsoft.EntityFrameworkCore;
 using System.Linq;
 using DomUcenikaSvilajnac.Common.Interfaces;
+using System.Threading.Tasks;
 
 namespace DomUcenikaSvilajnac.DAL.RepoPattern
 {
@@ -38,6 +39,11 @@ namespace DomUcenikaSvilajnac.DAL.RepoPattern
         public IEnumerable<T> GetAll()
         {
             return _dbContext.Set<T>().ToList();
+        }
+
+        public async Task<IEnumerable<T>> GetAllAsync()
+        {
+            return await _dbContext.Set<T>().ToListAsync();
         }
 
         public void Remove(T entity)

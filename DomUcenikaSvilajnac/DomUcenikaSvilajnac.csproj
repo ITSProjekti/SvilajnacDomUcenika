@@ -10,11 +10,13 @@
 
   <ItemGroup>
     <PackageReference Include="AutoMapper" Version="6.2.2" />
+    <PackageReference Include="AutoMapper.Extensions.Microsoft.Dependencyinjection" Version="3.2.0" />
     <PackageReference Include="Dependency" Version="2.0.0" />
     <PackageReference Include="Microsoft.AspNetCore.All" Version="2.0.8" />
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="2.0.3" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="2.0.3" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="2.0.3" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.0.3" />
   </ItemGroup>
 
   <ItemGroup>
@@ -22,7 +24,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\DomUcenikaSvilajnac.Common.Interfaces\DomUcenikaSvilajnac.Common.Interfaces.csproj" />
     <ProjectReference Include="..\DomUcenikaSvilajnac.DAL.Context\DomUcenikaSvilajnac.DAL.Context.csproj" />
+    <ProjectReference Include="..\DomUcenikaSvilajnac.DAL.RepoPattern\DomUcenikaSvilajnac.DAL.RepoPattern.csproj" />
   </ItemGroup>
 
 </Project>

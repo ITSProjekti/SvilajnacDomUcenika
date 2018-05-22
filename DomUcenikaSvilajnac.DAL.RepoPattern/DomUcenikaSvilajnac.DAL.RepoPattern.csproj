@@ -13,10 +13,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="AutoMapper\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\DomUcenikaSvilajnac.Common.Interfaces\DomUcenikaSvilajnac.Common.Interfaces.csproj" />
     <ProjectReference Include="..\DomUcenikaSvilajnac.DAL.Context\DomUcenikaSvilajnac.DAL.Context.csproj" />
   </ItemGroup>
