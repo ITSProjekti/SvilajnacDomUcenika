@@ -39,59 +39,50 @@ namespace DomUcenikaSvilajnac.Controllers
             return _mapper.Map<List<Ucenik>, List<UcenikResource>>(listaUcenika.ToList()   );
         }
 
-        //// GET: api/Ucenik/5
-        //[HttpGet("{id}")]
-        //public async Task<IActionResult> GetUcenik([FromRoute] int id)
-        //{
-        //    if (!ModelState.IsValid)
-        //    {
-        //        return BadRequest(ModelState);
-        //    }
+        // GET: api/Ucenik/5
+        [HttpGet("{id}")]
+        public async Task<IActionResult> GetUcenik([FromRoute] int id)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
 
-        //    var ucenik = await _context.Uceniks.SingleOrDefaultAsync(m => m.Id == id);
+            var ucenik = await UnitOfWork.Ucenici.GetAsync(id);
 
-        //    if (ucenik == null)
-        //    {
-        //        return NotFound();
-        //    }
+            if (ucenik == null)
+            {
+                return NotFound();
+            }
 
-        //    return Ok(ucenik);
-        //}
+            return Ok(ucenik);
+        }
 
-        //// PUT: api/Ucenik/5
-        //[HttpPut("{id}")]
-        //public async Task<IActionResult> PutUcenik([FromRoute] int id, [FromBody] Ucenik ucenik)
-        //{
-        //    if (!ModelState.IsValid)
-        //    {
-        //        return BadRequest(ModelState);
-        //    }
+        // PUT: api/Ucenik/5
+        [HttpPut("{id}")]
+        public async Task<IActionResult> PutUcenik([FromRoute] int id, [FromBody] UcenikResource ucenik)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
 
-        //    if (id != ucenik.Id)
-        //    {
-        //        return BadRequest();
-        //    }
+            if (id != ucenik.Id)
+            {
+                return BadRequest();
+            }
 
-        //    _context.Entry(ucenik).State = EntityState.Modified;
+            var stariUcenik = await UnitOfWork.Ucenici.GetAsync(id);
+            if (stariUcenik == null)
+                return NotFound();
+            _mapper.Map<UcenikResource, Ucenik>(ucenik, stariUcenik);
 
-        //    try
-        //    {
-        //        await _context.SaveChangesAsync();
-        //    }
-        //    catch (DbUpdateConcurrencyException)
-        //    {
-        //        if (!UcenikExists(id))
-        //        {
-        //            return NotFound();
-        //        }
-        //        else
-        //        {
-        //            throw;
-        //        }
-        //    }
+            await UnitOfWork.SaveChangesAsync();
 
-        //    return NoContent();
-        //}
+            var noviUcenik = await UnitOfWork.Ucenici.GetAsync(id);
+            _mapper.Map<Ucenik, UcenikResource>(noviUcenik);
+            return Ok(noviUcenik);
+        }
 
         //// POST: api/Ucenik
         //[HttpPost]
@@ -129,9 +120,9 @@ namespace DomUcenikaSvilajnac.Controllers
         //    return Ok(ucenik);
         //}
 
-        //private bool UcenikExists(int id)
-        //{
-        //    return _context.Uceniks.Any(e => e.Id == id);
-        //}
+        private bool UcenikExists(int id)
+        {
+            return (UnitOfWork.Ucenici.Get(id)==null);
+        }
     }
 }

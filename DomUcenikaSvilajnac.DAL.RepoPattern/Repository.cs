@@ -46,6 +46,11 @@ namespace DomUcenikaSvilajnac.DAL.RepoPattern
             return await _dbContext.Set<T>().ToListAsync();
         }
 
+        public async Task<T> GetAsync(int id)
+        {
+            return await _dbContext.Set<T>().FindAsync(id);
+        }
+
         public void Remove(T entity)
         {
             _dbContext.Set<T>().Remove(entity);

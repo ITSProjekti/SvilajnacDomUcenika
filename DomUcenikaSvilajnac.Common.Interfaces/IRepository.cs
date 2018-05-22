@@ -13,6 +13,7 @@ namespace DomUcenikaSvilajnac.Common.Interfaces
          Task< IEnumerable<T>> GetAllAsync();
         IEnumerable<T> Find(Expression<Func<T, bool>> predicate);
 
+        Task<T> GetAsync(int id);
         void Add(T entity);
         void AddRange(IEnumerable<T> entities);
 

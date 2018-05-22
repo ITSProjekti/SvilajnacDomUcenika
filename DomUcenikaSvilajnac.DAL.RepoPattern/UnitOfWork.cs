@@ -7,6 +7,8 @@ using DomUcenikaSvilajnac.Common.Models;
 using DomUcenikaSvilajnac.Common.Interfaces;
 
 using System.Linq.Expressions;
+using System.Threading.Tasks;
+
 namespace DomUcenikaSvilajnac.DAL.RepoPattern
 {
     public class UnitOfWork : IUnitOfWork
@@ -31,6 +33,11 @@ namespace DomUcenikaSvilajnac.DAL.RepoPattern
         public int SaveChanges()
         {
             return _context.SaveChanges();
+        }
+
+        public async Task<int> SaveChangesAsync()
+        {
+            return await _context.SaveChangesAsync();
         }
     }
 }
