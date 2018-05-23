@@ -17,5 +17,10 @@ namespace DomUcenikaSvilajnac.ModelResources
 
         public string Pol { get; set; }
 
+     //    public DateTime DatumRodjenja { get; set; }
+        public int Dan { get; set; }
+        public int Mesec { get; set; }
+
+        public int Godina { get; set; }
     }
 }

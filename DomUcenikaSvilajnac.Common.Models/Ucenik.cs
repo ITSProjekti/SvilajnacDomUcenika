@@ -23,5 +23,9 @@ namespace DomUcenikaSvilajnac.Common.Models
 
         [Required]
         public string Pol { get; set; }
+
+        [Required]
+        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:dd/mm/yyyy}")]
+        public DateTime DatumRodjenja { get; set; }
     }
 }

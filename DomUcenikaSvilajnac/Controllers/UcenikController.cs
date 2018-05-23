@@ -86,17 +86,18 @@ namespace DomUcenikaSvilajnac.Controllers
 
         // POST: api/Ucenik
         [HttpPost]
-        public async Task<IActionResult> PostUcenik([FromBody] Ucenik ucenik)
+        public async Task<IActionResult> PostUcenik([FromBody] UcenikResource ucenik)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
-            UnitOfWork.Ucenici.Add(ucenik);
+           var noviUcenik= _mapper.Map<UcenikResource, Ucenik>(ucenik);
+            UnitOfWork.Ucenici.Add(noviUcenik);
             await UnitOfWork.SaveChangesAsync();
             ;
 
-            return CreatedAtAction("GetUcenik", new { id = ucenik.Id }, ucenik);
+            return Ok(noviUcenik);
         }
 
         // DELETE: api/Ucenik/5
