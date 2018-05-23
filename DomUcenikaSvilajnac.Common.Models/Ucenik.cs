@@ -15,7 +15,8 @@ namespace DomUcenikaSvilajnac.Common.Models
         public string Ime { get; set; }
         [StringLength(50, ErrorMessage = "Prekoracena maksimalna duzina za Prezime.")]
         public string Prezime { get; set; }
-
+        [MaxLength(13),MinLength(13)]
+        public string JMBG { get; set; }
 
     }
 }

@@ -13,6 +13,7 @@ namespace DomUcenikaSvilajnac.ModelResources
         
         public string Prezime { get; set; }
 
+        public string JMBG { get; set; }
 
     }
 }
