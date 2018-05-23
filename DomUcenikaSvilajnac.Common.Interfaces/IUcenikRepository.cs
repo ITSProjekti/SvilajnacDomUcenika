@@ -8,6 +8,6 @@ namespace DomUcenikaSvilajnac.Common.Interfaces
 {
     public interface IUcenikRepository:IRepository<Ucenik>
     {
-
+     
     }
 }

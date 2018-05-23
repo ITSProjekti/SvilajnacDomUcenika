@@ -84,41 +84,41 @@ namespace DomUcenikaSvilajnac.Controllers
             return Ok(noviUcenik);
         }
 
-        //// POST: api/Ucenik
-        //[HttpPost]
-        //public async Task<IActionResult> PostUcenik([FromBody] Ucenik ucenik)
-        //{
-        //    if (!ModelState.IsValid)
-        //    {
-        //        return BadRequest(ModelState);
-        //    }
+        // POST: api/Ucenik
+        [HttpPost]
+        public async Task<IActionResult> PostUcenik([FromBody] Ucenik ucenik)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+            UnitOfWork.Ucenici.Add(ucenik);
+            await UnitOfWork.SaveChangesAsync();
+            ;
 
-        //    _context.Uceniks.Add(ucenik);
-        //    await _context.SaveChangesAsync();
+            return CreatedAtAction("GetUcenik", new { id = ucenik.Id }, ucenik);
+        }
 
-        //    return CreatedAtAction("GetUcenik", new { id = ucenik.Id }, ucenik);
-        //}
+        // DELETE: api/Ucenik/5
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> DeleteUcenik([FromRoute] int id)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+            
+            var ucenik = await UnitOfWork.Ucenici.GetAsync(id);
+            if (ucenik == null)
+            {
+                return NotFound();
+            }
 
-        //// DELETE: api/Ucenik/5
-        //[HttpDelete("{id}")]
-        //public async Task<IActionResult> DeleteUcenik([FromRoute] int id)
-        //{
-        //    if (!ModelState.IsValid)
-        //    {
-        //        return BadRequest(ModelState);
-        //    }
+            UnitOfWork.Ucenici.Remove(ucenik);
+            await UnitOfWork.SaveChangesAsync();
 
-        //    var ucenik = await _context.Uceniks.SingleOrDefaultAsync(m => m.Id == id);
-        //    if (ucenik == null)
-        //    {
-        //        return NotFound();
-        //    }
-
-        //    _context.Uceniks.Remove(ucenik);
-        //    await _context.SaveChangesAsync();
-
-        //    return Ok(ucenik);
-        //}
+            return Ok(ucenik);
+        }
 
         private bool UcenikExists(int id)
         {

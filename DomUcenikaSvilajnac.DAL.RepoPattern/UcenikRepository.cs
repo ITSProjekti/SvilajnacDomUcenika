@@ -19,5 +19,7 @@ namespace DomUcenikaSvilajnac.DAL.RepoPattern
         {
             get { return context as UcenikContext; }
         }
+
+
     }
 }
