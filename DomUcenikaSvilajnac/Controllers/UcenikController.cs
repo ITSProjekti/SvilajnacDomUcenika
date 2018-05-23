@@ -36,6 +36,7 @@ namespace DomUcenikaSvilajnac.Controllers
         {
          
             var listaUcenika = await UnitOfWork.Ucenici.GetAllAsync();
+            
             return _mapper.Map<List<Ucenik>, List<UcenikResource>>(listaUcenika.ToList()   );
         }
 
@@ -49,7 +50,7 @@ namespace DomUcenikaSvilajnac.Controllers
             }
 
             var ucenik = await UnitOfWork.Ucenici.GetAsync(id);
-
+            
             if (ucenik == null)
             {
                 return NotFound();

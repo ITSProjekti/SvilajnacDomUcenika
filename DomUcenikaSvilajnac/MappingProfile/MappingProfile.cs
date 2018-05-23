@@ -13,11 +13,14 @@ namespace DomUcenikaSvilajnac.Mapping
         public MappingProfile()
         {
             CreateMap<UcenikResource, Ucenik>()
-                .ForMember(v => v.DatumRodjenja, opt => opt.MapFrom(src => new DateTime(src.Godina, src.Mesec, src.Dan).ToUniversalTime()));
-  
+                .ForMember(v => v.DatumRodjenja, opt => opt.MapFrom(src => new DateTime(src.Godina, src.Mesec, src.Dan+1).ToUniversalTime()));
+            CreateMap<Ucenik, UcenikResource>()
+                .ForMember(v => v.Godina, opt => opt.MapFrom(src => src.DatumRodjenja.Year))
+                .ForMember(v => v.Dan, opt => opt.MapFrom(src => src.DatumRodjenja.Day))
+                .ForMember(v => v.Mesec, opt => opt.MapFrom(src => src.DatumRodjenja.Month));
 
-           // Mapper.CreateMap<enquiryListEntry, EnquiriesListViewModel>()
-   // .ForMember(dest => dest.flightDate, opt.MapFrom(src => new DateTime(src.flightYear, src.flightMonth, src.flightDay)));
+
+
         }
     }
 }
