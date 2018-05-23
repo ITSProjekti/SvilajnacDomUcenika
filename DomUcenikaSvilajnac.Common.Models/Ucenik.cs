@@ -21,5 +21,7 @@ namespace DomUcenikaSvilajnac.Common.Models
         [MaxLength(13),MinLength(13)]
         public string JMBG { get; set; }
 
+        [Required]
+        public string Pol { get; set; }
     }
 }
