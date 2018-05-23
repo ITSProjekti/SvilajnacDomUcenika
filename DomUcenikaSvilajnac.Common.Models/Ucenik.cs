@@ -11,6 +11,11 @@ namespace DomUcenikaSvilajnac.Common.Models
     {
        
         public int Id { get; set; }
+        [StringLength(50, ErrorMessage = "Prekoracena maksimalna duzina za Ime.")]
         public string Ime { get; set; }
+        [StringLength(50, ErrorMessage = "Prekoracena maksimalna duzina za Prezime.")]
+        public string Prezime { get; set; }
+
+
     }
 }
