@@ -50,13 +50,13 @@ namespace DomUcenikaSvilajnac.Controllers
             }
 
             var ucenik = await UnitOfWork.Ucenici.GetAsync(id);
-            
+            var ucenikNovi=_mapper.Map<Ucenik, UcenikResource>(ucenik);
             if (ucenik == null)
             {
                 return NotFound();
             }
 
-            return Ok(ucenik);
+            return Ok(ucenikNovi);
         }
 
         // PUT: api/Ucenik/5
@@ -68,21 +68,23 @@ namespace DomUcenikaSvilajnac.Controllers
                 return BadRequest(ModelState);
             }
 
-            if (id != ucenik.Id)
+            var stariUcenik = await UnitOfWork.Ucenici.GetAsync(id);
+            if (id != stariUcenik.Id)
             {
                 return BadRequest();
             }
 
-            var stariUcenik = await UnitOfWork.Ucenici.GetAsync(id);
             if (stariUcenik == null)
                 return NotFound();
-            _mapper.Map<UcenikResource, Ucenik>(ucenik, stariUcenik);
+            ucenik.Id = id;
+            _mapper.Map<UcenikResource, Ucenik>(ucenik,stariUcenik);
+
 
             await UnitOfWork.SaveChangesAsync();
 
             var noviUcenik = await UnitOfWork.Ucenici.GetAsync(id);
             _mapper.Map<Ucenik, UcenikResource>(noviUcenik);
-            return Ok(noviUcenik);
+            return Ok(ucenik);
         }
 
         // POST: api/Ucenik
@@ -96,9 +98,9 @@ namespace DomUcenikaSvilajnac.Controllers
            var noviUcenik= _mapper.Map<UcenikResource, Ucenik>(ucenik);
             UnitOfWork.Ucenici.Add(noviUcenik);
             await UnitOfWork.SaveChangesAsync();
-            ;
 
-            return Ok(noviUcenik);
+            ucenik= _mapper.Map<Ucenik,UcenikResource>(noviUcenik);
+            return Ok(ucenik);
         }
 
         // DELETE: api/Ucenik/5
@@ -115,11 +117,11 @@ namespace DomUcenikaSvilajnac.Controllers
             {
                 return NotFound();
             }
-
+            var noviUcenik = _mapper.Map< Ucenik, UcenikResource>(ucenik);
             UnitOfWork.Ucenici.Remove(ucenik);
             await UnitOfWork.SaveChangesAsync();
 
-            return Ok(ucenik);
+            return Ok(noviUcenik);
         }
 
         private bool UcenikExists(int id)
