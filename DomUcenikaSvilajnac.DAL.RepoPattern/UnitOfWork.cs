@@ -22,9 +22,6 @@ namespace DomUcenikaSvilajnac.DAL.RepoPattern
         }
 
         public IUcenikRepository Ucenici { get; private set; }
-
-        // public IUcenikRepository Ucenici { get; private set; }
-
         public void Dispose()
         {
             _context.Dispose();

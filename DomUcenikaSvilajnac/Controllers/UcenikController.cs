@@ -18,7 +18,7 @@ namespace DomUcenikaSvilajnac.Controllers
     [Route("api/Ucenik")]
     public class UcenikController : Controller
     {
-      //  private readonly UcenikContext _context;
+    
 
         public IMapper _mapper { get; }
         public IUnitOfWork UnitOfWork { get; }
@@ -73,13 +73,10 @@ namespace DomUcenikaSvilajnac.Controllers
             {
                 return BadRequest();
             }
-
             if (stariUcenik == null)
                 return NotFound();
             ucenik.Id = id;
             _mapper.Map<UcenikResource, Ucenik>(ucenik,stariUcenik);
-
-
             await UnitOfWork.SaveChangesAsync();
 
             var noviUcenik = await UnitOfWork.Ucenici.GetAsync(id);

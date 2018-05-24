@@ -26,6 +26,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DomUcenikaSvilajnac.DAL.Con
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DomUcenikaSvilajnac.DAL.RepoPattern", "DomUcenikaSvilajnac.DAL.RepoPattern\DomUcenikaSvilajnac.DAL.RepoPattern.csproj", "{8C83C218-8E1C-439D-AAE2-F070AA59CF0C}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DomUcenikaSvilajnac.UnitTests", "DomUcenikaSvilajnac.UnitTests\DomUcenikaSvilajnac.UnitTests.csproj", "{EF26E1BE-92D9-4787-B8C3-F329729C03D9}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -56,6 +58,10 @@ Global
 		{8C83C218-8E1C-439D-AAE2-F070AA59CF0C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8C83C218-8E1C-439D-AAE2-F070AA59CF0C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8C83C218-8E1C-439D-AAE2-F070AA59CF0C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EF26E1BE-92D9-4787-B8C3-F329729C03D9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EF26E1BE-92D9-4787-B8C3-F329729C03D9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EF26E1BE-92D9-4787-B8C3-F329729C03D9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EF26E1BE-92D9-4787-B8C3-F329729C03D9}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -61,10 +61,6 @@ namespace DomUcenikaSvilajnac.DAL.RepoPattern
             _dbContext.Set<T>().RemoveRange(entities);
         }
 
-        public void Update(T entity )
-        {           
-            _dbContext.Set<T>().Attach(entity);    
-            _dbContext.Entry(entity).State = EntityState.Modified;
-        }
+
     }
 }

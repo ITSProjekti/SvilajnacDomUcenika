@@ -16,8 +16,6 @@ namespace DomUcenikaSvilajnac.Common.Interfaces
         Task<T> GetAsync(int id);
         void Add(T entity);
         void AddRange(IEnumerable<T> entities);
-
-        void Update(T entity);
         void Remove(T entity);
         void RemoveRange(T entities);
 
