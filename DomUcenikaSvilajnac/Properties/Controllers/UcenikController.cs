@@ -18,11 +18,11 @@ namespace DomUcenikaSvilajnac.Controllers
     [Route("api/Ucenik")]
     public class UcenikController : Controller
     {
-    
+      
 
         public IMapper _mapper { get; }
         public IUnitOfWork UnitOfWork { get; }
-
+        
         public UcenikController(IMapper mapper,IUnitOfWork unitOfWork)
         {
           

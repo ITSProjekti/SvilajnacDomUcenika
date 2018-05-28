@@ -25,12 +25,14 @@ namespace DomUcenikaSvilajnac.UnitTests
             var result = Mapper.Map<Ucenik, UcenikResource>(ucenik);
 
             Assert.IsInstanceOfType(result, typeof(UcenikResource));
-                
+          //  AutoMapper.Mapper.Reset();
+
         }
         [TestMethod]
         public void CreateMapMetode_ModelResursproveraTipa_ReturnsTrue()
         {
-
+            //Mapper.Initialize(m => m.AddProfile<MappingProfile>());
+            //Mapper.AssertConfigurationIsValid();
             UcenikResource ucenik = new UcenikResource()
             {
                 Id = 1,
@@ -45,12 +47,14 @@ namespace DomUcenikaSvilajnac.UnitTests
             var result = Mapper.Map<UcenikResource, Ucenik>(ucenik);
 
             Assert.IsInstanceOfType(result, typeof(Ucenik));
+         //   AutoMapper.Mapper.Reset();
 
         }
         [TestMethod]
         public void CreateMapMetode_ModelResursproveraTipa_ReturnsFalseModel()
         {
-
+            //Mapper.Initialize(m => m.AddProfile<MappingProfile>());
+            //Mapper.AssertConfigurationIsValid();
             UcenikResource ucenik = new UcenikResource()
             {
                 Id = 1,
@@ -72,7 +76,7 @@ namespace DomUcenikaSvilajnac.UnitTests
             {
                 Assert.IsTrue(ex is AutoMapperMappingException);
             }
-
+            //AutoMapper.Mapper.Reset();
         }
     }
 }
