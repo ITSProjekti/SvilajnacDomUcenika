@@ -94,5 +94,39 @@ namespace ApiControllerTests
                
             }
         }
+
+        [Fact]
+        public void TestiranjeMetodedUGetUcenikByID()
+        {
+            var options = new DbContextOptionsBuilder<UcenikContext>().UseInMemoryDatabase(Guid.NewGuid().ToString()).Options;
+
+            var context = new UcenikContext(options);
+
+            IUnitOfWork unitOfWork = new UnitOfWork(context);
+
+            using (var controller = new UcenikController(Mapper, unitOfWork))
+            {
+                var rezultat = controller.GetUcenik(1);
+                Assert.NotNull(rezultat);
+            }
+        }
+
+        [Fact]
+        public void TestiranjeMetodePut()
+        {
+            var options = new DbContextOptionsBuilder<UcenikContext>().UseInMemoryDatabase(Guid.NewGuid().ToString()).Options;
+
+            var context = new UcenikContext(options);
+
+            IUnitOfWork unitOfWork = new UnitOfWork(context);
+
+            var resource = new UcenikResource() { Ime = "Pavle", Prezime = "Lukic", JMBG = "1245656", Pol = "Muski", Dan = 2, Mesec = 5, Godina = 1997 };
+
+            using (var controller = new UcenikController(Mapper, unitOfWork))
+            {
+                var rezultat = controller.PutUcenik(4, resource);
+                Assert.NotNull(rezultat);
+            }
+        }
     }  
 }
