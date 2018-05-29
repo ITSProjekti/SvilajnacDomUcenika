@@ -23,91 +23,12 @@ namespace ApiControllerTests
     public class UcenikControllerTest
     {
         public IMapper Mapper { get;  }
-
-        //[Fact]
-        //public async Task Test_Post()
-        //{
-
-
-
-
-        //    using (var client = new TestUcenikProvider().Client)
-        //    {
-
-
-        //        var response = await client.PostAsync("/api/Ucenik", new StringContent(
-        //            JsonConvert.SerializeObject(new UcenikResource()
-        //            {
-
-        //                Ime = "Ilhan",
-        //                Prezime = "Kalac",
-        //                Pol = "Muski",
-        //                JMBG = "1405997273013",
-        //                Dan = 5,
-        //                Godina = 5,
-        //                Mesec = 2
-        //            }), Encoding.UTF8, "application/json"));
-
-
-        //        response.EnsureSuccessStatusCode();
-
-        //        response.StatusCode.Should().Be(HttpStatusCode.OK);
-
-
-        //    }
-
-
-        //}
-        //[Fact]
-        //public async Task Test_GetAll_Ucenik()
-        //{
-        //    AutoMapper.Mapper.Reset();
-        //    using (var client = new TestUcenikProvider().Client)
-        //    {
-
-        //        var response = await client.GetAsync("/api/Ucenik");
-
-        //        response.EnsureSuccessStatusCode();
-
-        //        response.StatusCode.Should().Be(HttpStatusCode.OK);
-
-
-        //    }
-        //}
-        //[Fact]
-        //public async Task Test_GetAll_UcenikById()
-        //{
-        //    AutoMapper.Mapper.Reset();
-        //    using (var client = new TestUcenikProvider().Client)
-        //    {
-
-        //        var response = await client.GetAsync("/api/Ucenik/17");
-
-        //        response.EnsureSuccessStatusCode();
-
-        //        response.StatusCode.Should().Be(HttpStatusCode.OK);
-
-        //    }
-        //}
-
-
-
-        public UcenikContext GetData()
+        public IUnitOfWork unitOfWork { get; }
+        public UcenikResource Ucenik()
         {
-
-            var options = new DbContextOptionsBuilder<UcenikContext>().UseInMemoryDatabase(Guid.NewGuid().ToString()).Options;
-
-            var context = new UcenikContext(options);
-            var ucenik1 = new Ucenik { Ime = "Ilhan", Prezime = "Kalac", JMBG = "1405997273013" };
-            var ucenik2 = new Ucenik { Ime = "Pavle", Prezime = "Lukic", JMBG = "1405997273013" };
-            var ucenik3 = new Ucenik { Ime = "Igor", Prezime = "Marjanovic", JMBG = "1405997273013" };
-
-            context.Uceniks.Add(ucenik1);
-            context.Uceniks.Add(ucenik2);
-            context.Uceniks.Add(ucenik3);
-            return context;
+            return new UcenikResource { Ime = "Ilhan", Prezime = "Kalac", JMBG = "1405997273013" };
         }
-
+        
         
         [Fact]
         public void TestiranjeMetodeGetUceniks()
@@ -116,14 +37,61 @@ namespace ApiControllerTests
 
             var context = new UcenikContext(options);
 
-            IUnitOfWork unitOfWork = new UnitOfWork(context);
                      
 
-            using (var context1 = GetData())
+        
             using (var controller = new UcenikController(Mapper, unitOfWork))
             {
                 var rezultat = controller.GetUceniks();
                 Assert.NotNull(rezultat);            
+            }
+        }
+        [Fact]
+        public void TestiranjeMetodeGetUcenikByID()
+        {
+            var options = new DbContextOptionsBuilder<UcenikContext>().UseInMemoryDatabase(Guid.NewGuid().ToString()).Options;
+
+            var context = new UcenikContext(options);
+
+     
+         
+            using (var controller = new UcenikController(Mapper, unitOfWork))
+            {
+                var rezultat = controller.GetUcenik(5);
+                Assert.NotNull(rezultat);
+            }
+        }
+
+        [Fact]
+        public void TestiranjeMetodePost()
+        {
+            var options = new DbContextOptionsBuilder<UcenikContext>().UseInMemoryDatabase(Guid.NewGuid().ToString()).Options;
+
+            var context = new UcenikContext(options);
+        
+            using (var controller = new UcenikController(Mapper, unitOfWork))
+            {
+                var rezultat = controller.PostUcenik(Ucenik());
+                Assert.NotNull(rezultat);
+            }
+        }
+
+        [Fact]
+        public void TestiranjeMetodeRemove()
+        {
+            var options = new DbContextOptionsBuilder<UcenikContext>().UseInMemoryDatabase(Guid.NewGuid().ToString()).Options;
+
+            var context = new UcenikContext(options);
+
+         
+            using (var controller = new UcenikController(Mapper, unitOfWork))
+            {
+                var rezultat = controller.DeleteUcenik(5);
+                var provera = controller.GetUcenik(5);
+
+                if (provera != null)
+                     Assert.NotNull(rezultat);
+               
             }
         }
     }  
