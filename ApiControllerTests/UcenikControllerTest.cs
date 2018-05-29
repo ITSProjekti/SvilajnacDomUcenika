@@ -26,7 +26,7 @@ namespace ApiControllerTests
         public IUnitOfWork unitOfWork { get; }
         public UcenikResource Ucenik()
         {
-            return new UcenikResource { Ime = "Ilhan", Prezime = "Kalac", JMBG = "1405997273013" };
+            return new UcenikResource { Ime = "Ilhan", Prezime = "Kalac", JMBG = "1405997273013", Pol = "Zenski", Dan = 14, Godina = 1997, Mesec = 5};
         }
         
         
@@ -37,6 +37,7 @@ namespace ApiControllerTests
 
             var context = new UcenikContext(options);
 
+            
                      
 
         
@@ -118,13 +119,9 @@ namespace ApiControllerTests
 
             var context = new UcenikContext(options);
 
-            IUnitOfWork unitOfWork = new UnitOfWork(context);
-
-            var resource = new UcenikResource() { Ime = "Pavle", Prezime = "Lukic", JMBG = "1245656", Pol = "Muski", Dan = 2, Mesec = 5, Godina = 1997 };
-
             using (var controller = new UcenikController(Mapper, unitOfWork))
             {
-                var rezultat = controller.PutUcenik(4, resource);
+                var rezultat = controller.PutUcenik(4, Ucenik());
                 Assert.NotNull(rezultat);
             }
         }
