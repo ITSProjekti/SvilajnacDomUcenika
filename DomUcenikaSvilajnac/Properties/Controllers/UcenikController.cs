@@ -22,6 +22,8 @@ namespace DomUcenikaSvilajnac.Controllers
 
         public IMapper _mapper { get; }
         public IUnitOfWork UnitOfWork { get; }
+        public UcenikContext Context { get; }
+
         
         public UcenikController(IMapper mapper,IUnitOfWork unitOfWork)
         {

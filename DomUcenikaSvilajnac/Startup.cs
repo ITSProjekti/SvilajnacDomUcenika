@@ -32,6 +32,12 @@ namespace DomUcenikaSvilajnac
         {
             services.AddAutoMapper();
             services.AddScoped<IUnitOfWork, UnitOfWork>();
+            //ovu liniju si dodao
+            //services.AddDbContext<UcenikContext>(options =>
+            //{
+            //    options.UseSqlServer(Configuration["ConnectionStrings:Default"]);
+            //});
+
             services.AddDbContext<UcenikContext>(options=>options.UseSqlServer(@"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=DomUcenikaSvilajnac;Integrated Security=True;Connect Timeout=30"));
             services.AddMvc();
         }
@@ -46,5 +52,7 @@ namespace DomUcenikaSvilajnac
 
             app.UseMvc();
         }
+
+        
     }
 }

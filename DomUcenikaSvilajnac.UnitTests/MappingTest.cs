@@ -1,9 +1,12 @@
 using AutoMapper;
+using DomUcenikaSvilajnac.Common.Interfaces;
 using DomUcenikaSvilajnac.Common.Models;
 using DomUcenikaSvilajnac.Mapping;
 using DomUcenikaSvilajnac.ModelResources;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Moq;
 using System;
+using System.Collections.Generic;
 
 namespace DomUcenikaSvilajnac.UnitTests
 {
@@ -17,15 +20,18 @@ namespace DomUcenikaSvilajnac.UnitTests
             Mapper.Initialize(m => m.AddProfile<MappingProfile>());
             Mapper.AssertConfigurationIsValid();
             Ucenik ucenik = new Ucenik()
-            { Id = 1, Ime = "Pera",
+            {
+                Id = 1,
+                Ime = "Pera",
                 Prezime = "Peric",
                 Pol = "Muski",
                 JMBG = "1231231231233",
-                DatumRodjenja = new DateTime(1998, 04, 30) };
+                DatumRodjenja = new DateTime(1998, 04, 30)
+            };
             var result = Mapper.Map<Ucenik, UcenikResource>(ucenik);
 
             Assert.IsInstanceOfType(result, typeof(UcenikResource));
-          //  AutoMapper.Mapper.Reset();
+            //  AutoMapper.Mapper.Reset();
 
         }
         [TestMethod]
@@ -42,12 +48,12 @@ namespace DomUcenikaSvilajnac.UnitTests
                 JMBG = "1231231231233",
                 Dan = 5,
                 Mesec = 11,
-                Godina=2001
+                Godina = 2001
             };
             var result = Mapper.Map<UcenikResource, Ucenik>(ucenik);
 
             Assert.IsInstanceOfType(result, typeof(Ucenik));
-         //   AutoMapper.Mapper.Reset();
+            //   AutoMapper.Mapper.Reset();
 
         }
         [TestMethod]
@@ -78,7 +84,15 @@ namespace DomUcenikaSvilajnac.UnitTests
             }
             //AutoMapper.Mapper.Reset();
         }
+
+
+
+
+
+
     }
+
+
 }
     
 
