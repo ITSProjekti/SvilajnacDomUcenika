@@ -22,30 +22,7 @@ namespace ApiControllerTests
             return new UcenikResource {Ime = "Ilhan", Prezime = "Kalac", JMBG = "1405997273013", Pol = "Zenski", Dan = 14, Godina = 1997, Mesec = 5 };
         }
 
-        [Fact]
-        public void AddUcenik_ProveraModela_ReturnTrue()
-        {
-            //inicijalizacija privremene baze
-            var options = new DbContextOptionsBuilder<UcenikContext>().UseInMemoryDatabase(Guid.NewGuid().ToString()).Options;
-            var context = new UcenikContext(options);
-            var primerUcenika = Ucenik();
-
-            
-            Mapper.Initialize(m => m.AddProfile<MappingProfile>());
-            Mapper.AssertConfigurationIsValid();
-
-
-            var ucenikZaBazu = Mapper.Map<UcenikResource, Ucenik>(primerUcenika);
-            IUnitOfWork unitOfWork = new UnitOfWork(context);
-            unitOfWork.Ucenici.Add(ucenikZaBazu);
-            unitOfWork.SaveChanges();
-
-            ucenikZaBazu =  unitOfWork.Ucenici.Get(1);
-
-            //assert
-            Assert.Contains(ucenikZaBazu.Ime, "Ilhan");
-            Mapper.Reset();
-        }
+       
 
         [Fact]
         public void GetAllUcenik_ProveraBrojaElemenataUBazi_ReturnsTrue()
