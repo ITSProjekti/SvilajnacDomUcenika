@@ -7,19 +7,17 @@ using DomUcenikaSvilajnac.Mapping;
 using DomUcenikaSvilajnac.ModelResources;
 using Microsoft.EntityFrameworkCore;
 using System;
-using System.Collections.Generic;
 using System.Linq;
 using Xunit;
 
-namespace ApiControllerTests
+namespace DomUcenikaSvilajnac.IntegratedTests
 {
-
     public class UcenikControllerTest
     {
 
         public UcenikResource Ucenik()
         {
-            return new UcenikResource {Ime = "Ilhan", Prezime = "Kalac", JMBG = "1405997273013", Pol = "Zenski", Dan = 14, Godina = 1997, Mesec = 5 };
+            return new UcenikResource { Ime = "Ilhan", Prezime = "Kalac", JMBG = "1405997273013", Pol = "Zenski", Dan = 14, Godina = 1997, Mesec = 5 };
         }
 
 
@@ -58,13 +56,13 @@ namespace ApiControllerTests
             Mapper.Initialize(m => m.AddProfile<MappingProfile>());
             Mapper.AssertConfigurationIsValid();
 
-           
+
             var ucenikZaBazu = Mapper.Map<UcenikResource, Ucenik>(primerUcenika);
 
 
             IUnitOfWork unitOfWork = new UnitOfWork(context);
             unitOfWork.Ucenici.Add(ucenikZaBazu);
-            unitOfWork.Ucenici.Add(new Ucenik { Ime = "Igor", Prezime = "Marjanovic", Pol= "Muski" });
+            unitOfWork.Ucenici.Add(new Ucenik { Ime = "Igor", Prezime = "Marjanovic", Pol = "Muski" });
             unitOfWork.SaveChanges();
 
             var listaUcenika = unitOfWork.Ucenici.GetAll().ToList();
@@ -100,11 +98,11 @@ namespace ApiControllerTests
 
 
 
-    
+
         [Fact]
         public void UpdateUcenik_ProveraApdejtovanjaImenaUceniku_ReturnsTrue()
         {
-            UcenikResource apdejtUcenik = new UcenikResource() { Ime = "Mateja", Prezime = "Jovanovic", Dan=5,Godina= 5, Mesec =6 };
+            UcenikResource apdejtUcenik = new UcenikResource() { Ime = "Mateja", Prezime = "Jovanovic", Dan = 5, Godina = 5, Mesec = 6 };
 
 
             var options = new DbContextOptionsBuilder<UcenikContext>().UseInMemoryDatabase(Guid.NewGuid().ToString()).EnableSensitiveDataLogging().Options;
@@ -118,7 +116,7 @@ namespace ApiControllerTests
             IUnitOfWork unitOfWork = new UnitOfWork(context);
             unitOfWork.Ucenici.Add(ucenikZaBazu);
 
-           var novi = Mapper.Map<UcenikResource, Ucenik>(apdejtUcenik, ucenikZaBazu);
+            var novi = Mapper.Map<UcenikResource, Ucenik>(apdejtUcenik, ucenikZaBazu);
 
 
             unitOfWork.SaveChanges();
@@ -161,5 +159,4 @@ namespace ApiControllerTests
         }
 
     }
-
 }
