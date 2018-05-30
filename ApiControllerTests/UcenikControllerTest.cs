@@ -1,20 +1,14 @@
 using AutoMapper;
 using DomUcenikaSvilajnac.Common.Interfaces;
 using DomUcenikaSvilajnac.Common.Models;
-using DomUcenikaSvilajnac.Controllers;
 using DomUcenikaSvilajnac.DAL.Context;
 using DomUcenikaSvilajnac.DAL.RepoPattern;
+using DomUcenikaSvilajnac.Mapping;
 using DomUcenikaSvilajnac.ModelResources;
-using FluentAssertions;
 using Microsoft.EntityFrameworkCore;
-using Moq;
-using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
-using System.Net;
-using System.Net.Http;
-using System.Text;
-using System.Threading.Tasks;
+using System.Linq;
 using Xunit;
 
 namespace ApiControllerTests
@@ -22,108 +16,145 @@ namespace ApiControllerTests
 
     public class UcenikControllerTest
     {
-        public IMapper Mapper { get;  }
-        public IUnitOfWork unitOfWork { get; }
+
         public UcenikResource Ucenik()
         {
-            return new UcenikResource { Ime = "Ilhan", Prezime = "Kalac", JMBG = "1405997273013", Pol = "Zenski", Dan = 14, Godina = 1997, Mesec = 5};
+            return new UcenikResource {Ime = "Ilhan", Prezime = "Kalac", JMBG = "1405997273013", Pol = "Zenski", Dan = 14, Godina = 1997, Mesec = 5 };
         }
-        
-        
-        [Fact]
-        public void TestiranjeMetodeGetUceniks()
-        {
-            var options = new DbContextOptionsBuilder<UcenikContext>().UseInMemoryDatabase(Guid.NewGuid().ToString()).Options;
 
+        [Fact]
+        public void AddUcenik_ProveraModela_ReturnTrue()
+        {
+            //inicijalizacija privremene baze
+            var options = new DbContextOptionsBuilder<UcenikContext>().UseInMemoryDatabase(Guid.NewGuid().ToString()).Options;
             var context = new UcenikContext(options);
+            var primerUcenika = Ucenik();
 
             
-                     
+            Mapper.Initialize(m => m.AddProfile<MappingProfile>());
+            Mapper.AssertConfigurationIsValid();
 
-        
-            using (var controller = new UcenikController(Mapper, unitOfWork))
-            {
-                var rezultat = controller.GetUceniks();
-                Assert.NotNull(rezultat);            
-            }
-        }
-        [Fact]
-        public void TestiranjeMetodeGetUcenikByID()
-        {
-            var options = new DbContextOptionsBuilder<UcenikContext>().UseInMemoryDatabase(Guid.NewGuid().ToString()).Options;
 
-            var context = new UcenikContext(options);
+            var ucenikZaBazu = Mapper.Map<UcenikResource, Ucenik>(primerUcenika);
+            IUnitOfWork unitOfWork = new UnitOfWork(context);
+            unitOfWork.Ucenici.Add(ucenikZaBazu);
+            unitOfWork.SaveChanges();
 
-     
-         
-            using (var controller = new UcenikController(Mapper, unitOfWork))
-            {
-                var rezultat = controller.GetUcenik(5);
-                Assert.NotNull(rezultat);
-            }
+            ucenikZaBazu =  unitOfWork.Ucenici.Get(1);
+
+            //assert
+            Assert.Contains(ucenikZaBazu.Ime, "Ilhan");
+            Mapper.Reset();
         }
 
         [Fact]
-        public void TestiranjeMetodePost()
+        public void GetAllUcenik_ProveraBrojaElemenataUBazi_ReturnsTrue()
         {
-            var options = new DbContextOptionsBuilder<UcenikContext>().UseInMemoryDatabase(Guid.NewGuid().ToString()).Options;
-
+            var options = new DbContextOptionsBuilder<UcenikContext>().UseInMemoryDatabase(Guid.NewGuid().ToString()).EnableSensitiveDataLogging().Options;
             var context = new UcenikContext(options);
-        
-            using (var controller = new UcenikController(Mapper, unitOfWork))
-            {
-                var rezultat = controller.PostUcenik(Ucenik());
-                Assert.NotNull(rezultat);
-            }
-        }
+            var primerUcenika = Ucenik();
 
-        [Fact]
-        public void TestiranjeMetodeRemove()
-        {
-            var options = new DbContextOptionsBuilder<UcenikContext>().UseInMemoryDatabase(Guid.NewGuid().ToString()).Options;
+            Mapper.Initialize(m => m.AddProfile<MappingProfile>());
+            Mapper.AssertConfigurationIsValid();
 
-            var context = new UcenikContext(options);
+           
+            var ucenikZaBazu = Mapper.Map<UcenikResource, Ucenik>(primerUcenika);
 
-         
-            using (var controller = new UcenikController(Mapper, unitOfWork))
-            {
-                var rezultat = controller.DeleteUcenik(5);
-                var provera = controller.GetUcenik(5);
-
-                if (provera != null)
-                     Assert.NotNull(rezultat);
-               
-            }
-        }
-
-        [Fact]
-        public void TestiranjeMetodedUGetUcenikByID()
-        {
-            var options = new DbContextOptionsBuilder<UcenikContext>().UseInMemoryDatabase(Guid.NewGuid().ToString()).Options;
-
-            var context = new UcenikContext(options);
 
             IUnitOfWork unitOfWork = new UnitOfWork(context);
+            unitOfWork.Ucenici.Add(ucenikZaBazu);
+            unitOfWork.Ucenici.Add(new Ucenik { Ime = "Igor", Prezime = "Marjanovic", Pol= "Muski" });
+            unitOfWork.SaveChanges();
 
-            using (var controller = new UcenikController(Mapper, unitOfWork))
-            {
-                var rezultat = controller.GetUcenik(1);
-                Assert.NotNull(rezultat);
-            }
+            var listaUcenika = unitOfWork.Ucenici.GetAll().ToList();
+
+            Assert.Equal(2, listaUcenika.Count);
+            Mapper.Reset();
         }
 
         [Fact]
-        public void TestiranjeMetodePut()
+        public void RemoveUcenika_ProveraBrojaElemenataUBaziNakonBrisanjaUcenika_ReturnsTrue()
         {
-            var options = new DbContextOptionsBuilder<UcenikContext>().UseInMemoryDatabase(Guid.NewGuid().ToString()).Options;
-
+            var options = new DbContextOptionsBuilder<UcenikContext>().UseInMemoryDatabase(Guid.NewGuid().ToString()).EnableSensitiveDataLogging().Options;
             var context = new UcenikContext(options);
+            var primerUcenika = Ucenik();
 
-            using (var controller = new UcenikController(Mapper, unitOfWork))
-            {
-                var rezultat = controller.PutUcenik(4, Ucenik());
-                Assert.NotNull(rezultat);
-            }
+            Mapper.Initialize(m => m.AddProfile<MappingProfile>());
+            Mapper.AssertConfigurationIsValid();
+             var ucenikZaBazu = Mapper.Map<UcenikResource, Ucenik>(primerUcenika);
+
+
+            IUnitOfWork unitOfWork = new UnitOfWork(context);
+            unitOfWork.Ucenici.Add(ucenikZaBazu);
+            unitOfWork.Ucenici.Add(new Ucenik {Id= 2, Ime = "Igor", Prezime = "Marjanovic", Pol= "Muski" });
+     
+
+            //testiranje metode za brisanje
+
+            unitOfWork.Ucenici.Remove(ucenikZaBazu);
+            unitOfWork.SaveChanges();
+
+            var listaUcenika = unitOfWork.Ucenici.GetAll().ToList();
+
+            //proverava da li je u bazi ostao 1 ucenik
+            Assert.Single(listaUcenika);
+            Mapper.Reset();
         }
-    }  
+        [Fact]
+        public void UpdateUcenik_ProveraApdejtovanjaImenaUceniku_ReturnsTrue()
+        {
+            UcenikResource apdejtUcenik = new UcenikResource() { Ime = "Mateja", Prezime = "Jovanovic", Dan=5,Godina= 5, Mesec =6 };
+
+
+            var options = new DbContextOptionsBuilder<UcenikContext>().UseInMemoryDatabase(Guid.NewGuid().ToString()).EnableSensitiveDataLogging().Options;
+            var context = new UcenikContext(options);
+            var primerUcenika = Ucenik();
+
+            Mapper.Initialize(m => m.AddProfile<MappingProfile>());
+            Mapper.AssertConfigurationIsValid();
+            var ucenikZaBazu = Mapper.Map<UcenikResource, Ucenik>(primerUcenika);
+
+            IUnitOfWork unitOfWork = new UnitOfWork(context);
+            unitOfWork.Ucenici.Add(ucenikZaBazu);
+
+           var novi = Mapper.Map<UcenikResource, Ucenik>(apdejtUcenik, ucenikZaBazu);
+
+
+            unitOfWork.SaveChanges();
+
+
+            var listaUcenika = unitOfWork.Ucenici.GetAll().ToList();
+
+            Assert.Contains(novi.Ime, "Mateja");
+
+            Mapper.Reset();
+        }
+
+        [Fact]
+        public void CreateUcenik_ProveraDaLiSeUcenikUspesnoDodajeUBazi_ReturnsTrue()
+        {
+            var options = new DbContextOptionsBuilder<UcenikContext>().UseInMemoryDatabase(Guid.NewGuid().ToString()).EnableSensitiveDataLogging().Options;
+            var context = new UcenikContext(options);
+            var primerUcenika = Ucenik();
+
+            Mapper.Initialize(m => m.AddProfile<MappingProfile>());
+            Mapper.AssertConfigurationIsValid();
+            var ucenikZaBazu = Mapper.Map<UcenikResource, Ucenik>(primerUcenika);
+
+
+            IUnitOfWork unitOfWork = new UnitOfWork(context);
+            unitOfWork.Ucenici.Add(ucenikZaBazu);
+            unitOfWork.Ucenici.Add(new Ucenik { Id = 2, Ime = "Igor", Prezime = "Marjanovic", Pol = "Muski" });
+            unitOfWork.SaveChanges();
+
+            var listaUcenika = unitOfWork.Ucenici.GetAll().ToList();
+
+
+
+            Assert.NotEmpty(listaUcenika);
+            Mapper.Reset();
+        }
+
+    }
+
 }

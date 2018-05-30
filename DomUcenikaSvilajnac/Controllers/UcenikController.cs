@@ -22,7 +22,7 @@ namespace DomUcenikaSvilajnac.Controllers
 
         public IMapper _mapper { get; }
         public IUnitOfWork UnitOfWork { get; }
-        public UcenikContext Context { get; }
+      
 
         
         public UcenikController(IMapper mapper,IUnitOfWork unitOfWork)
@@ -39,7 +39,7 @@ namespace DomUcenikaSvilajnac.Controllers
          
             var listaUcenika = await UnitOfWork.Ucenici.GetAllAsync();
             
-            return _mapper.Map<List<Ucenik>, List<UcenikResource>>(listaUcenika.ToList()   );
+            return _mapper.Map<List<Ucenik>, List<UcenikResource>>(listaUcenika.ToList());
         }
 
         // GET: api/Ucenik/5
@@ -77,6 +77,8 @@ namespace DomUcenikaSvilajnac.Controllers
             }
             if (stariUcenik == null)
                 return NotFound();
+
+
             ucenik.Id = id;
             _mapper.Map<UcenikResource, Ucenik>(ucenik,stariUcenik);
             await UnitOfWork.SaveChangesAsync();
