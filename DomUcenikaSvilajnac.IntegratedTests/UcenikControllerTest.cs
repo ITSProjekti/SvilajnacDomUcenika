@@ -9,7 +9,6 @@ using Microsoft.EntityFrameworkCore;
 using System;
 using System.Linq;
 using Xunit;
-
 namespace DomUcenikaSvilajnac.IntegratedTests
 {
     public class UcenikControllerTest
@@ -35,11 +34,9 @@ namespace DomUcenikaSvilajnac.IntegratedTests
 
             IUnitOfWork unitOfWork = new UnitOfWork(context);
             unitOfWork.Ucenici.Add(ucenikZaBazu);
-            unitOfWork.Ucenici.Add(new Ucenik { Id = 2, Ime = "Igor", Prezime = "Marjanovic", Pol = "Muski" });
             unitOfWork.SaveChanges();
 
             var listaUcenika = unitOfWork.Ucenici.GetAll().ToList();
-
 
 
             Assert.NotEmpty(listaUcenika);
@@ -157,6 +154,37 @@ namespace DomUcenikaSvilajnac.IntegratedTests
             Assert.Single(listaUcenika);
             Mapper.Reset();
         }
+
+        [Fact]
+        public void FindUcenik_NalazenjeUcenikaPoAtributuIme()
+        {
+            var options = new DbContextOptionsBuilder<UcenikContext>().UseInMemoryDatabase(Guid.NewGuid().ToString()).EnableSensitiveDataLogging().Options;
+            var context = new UcenikContext(options);
+            var primerUcenika = Ucenik();
+
+            Mapper.Initialize(m => m.AddProfile<MappingProfile>());
+            Mapper.AssertConfigurationIsValid();
+            var ucenikZaBazu = Mapper.Map<UcenikResource, Ucenik>(primerUcenika);
+
+            IUnitOfWork unitOfWork = new UnitOfWork(context);
+            unitOfWork.Ucenici.Add(ucenikZaBazu);
+            unitOfWork.SaveChanges();
+
+            var rezultat = unitOfWork.Ucenici.Find(m => m.Ime == "Ilhan").ToList();
+
+
+            Assert.Contains(rezultat.First().Ime, "Ilhan");
+
+
+
+            Mapper.Reset();
+
+
+        }
+
+
+
+
 
     }
 }

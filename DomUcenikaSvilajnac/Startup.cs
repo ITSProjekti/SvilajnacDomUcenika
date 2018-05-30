@@ -30,10 +30,10 @@ namespace DomUcenikaSvilajnac
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddCors();
+
             services.AddAutoMapper();
             services.AddScoped<IUnitOfWork, UnitOfWork>();
-           
-
             services.AddDbContext<UcenikContext>(options=>options.UseSqlServer(@"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=DomUcenikaSvilajnac;Integrated Security=True;Connect Timeout=30"));
             services.AddMvc();
         }
@@ -45,7 +45,7 @@ namespace DomUcenikaSvilajnac
             {
                 app.UseDeveloperExceptionPage();
             }
-
+            app.UseCors(builder => builder.WithOrigins("http://localhost"));
             app.UseMvc();
         }
 
