@@ -10,10 +10,16 @@ using System.Collections.Generic;
 
 namespace DomUcenikaSvilajnac.UnitTests
 {
+    /// <summary>
+    /// Klasa za testriranje mapiranja.
+    /// </summary>
     [TestClass]
     public class MappingTest
     {
 
+        /// <summary>
+        /// Provera da li mapiranje radi kako treba kada se posalju potrebni podaci, a podaci o datumu u okviru promenljive DatumRodjenja.
+        /// </summary>
         [TestMethod]
         public void CreateMapMetode_ResursModelproveraTipa_ReturnsTrue()
         {
@@ -31,9 +37,12 @@ namespace DomUcenikaSvilajnac.UnitTests
             var result = Mapper.Map<Ucenik, UcenikResource>(ucenik);
 
             Assert.IsInstanceOfType(result, typeof(UcenikResource));
-              AutoMapper.Mapper.Reset();
-
+            AutoMapper.Mapper.Reset();
         }
+
+        /// <summary>
+        /// Provera da li mapiranje radi kako treba kada se posalju potrebni podaci, a podaci o datumu u vidu tri pormenljive dan, mesec, godina.
+        /// </summary>
         [TestMethod]
         public void CreateMapMetode_ModelResursproveraTipa_ReturnsTrue()
         {
@@ -53,9 +62,12 @@ namespace DomUcenikaSvilajnac.UnitTests
             var result = Mapper.Map<UcenikResource, Ucenik>(ucenik);
 
             Assert.IsInstanceOfType(result, typeof(Ucenik));
-               AutoMapper.Mapper.Reset();
-
+            AutoMapper.Mapper.Reset();
         }
+
+        /// <summary>
+        /// Provera da li mapiranje nece raditi kako treba kada se ne posalju svi podaci.
+        /// </summary>
         [TestMethod]
         public void CreateMapMetode_ModelResursproveraTipa_ReturnsFalseModel()
         {
@@ -84,15 +96,7 @@ namespace DomUcenikaSvilajnac.UnitTests
             }
             AutoMapper.Mapper.Reset();
         }
-
-
-
-
-
-
     }
-
-
 }
-    
+
 

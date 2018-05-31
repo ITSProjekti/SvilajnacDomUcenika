@@ -8,12 +8,17 @@ using System.Threading.Tasks;
 
 namespace DomUcenikaSvilajnac.Mapping
 {
-    public class MappingProfile :Profile
+    /// <summary>
+    /// Klasa za mapiranje.
+    /// </summary>
+    public class MappingProfile : Profile
     {
         public MappingProfile()
         {
+            //mapira UcenikResource u Ucenik, odnosno omogucava da se datum unese putem jedne promenljive DatumRodjenja.
             CreateMap<UcenikResource, Ucenik>()
                 .ForMember(v => v.DatumRodjenja, opt => opt.MapFrom(src => new DateTime(src.Godina, src.Mesec, src.Dan+1).ToUniversalTime()));
+            //mapira Ucenik u UcenikResource, odnosno omogucava da se datum unese putem tri promenljive, Dan, Mesec, Godina.
             CreateMap<Ucenik, UcenikResource>()
                 .ForMember(v => v.Godina, opt => opt.MapFrom(src => src.DatumRodjenja.Year))
                 .ForMember(v => v.Dan, opt => opt.MapFrom(src => src.DatumRodjenja.Day))

@@ -13,7 +13,7 @@ namespace DomUcenikaSvilajnac.DAL.Context.Migrations
                 table: "Ucenici",
                 nullable: true);
         }
-
+        
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropColumn(

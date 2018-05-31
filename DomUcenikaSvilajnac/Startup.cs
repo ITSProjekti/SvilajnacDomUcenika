@@ -20,9 +20,7 @@ namespace DomUcenikaSvilajnac
     {
         public Startup(IConfiguration configuration)
         {
-            Configuration = configuration;
-
-            
+            Configuration = configuration;          
         }
         
         public IConfiguration Configuration { get; }
@@ -48,7 +46,5 @@ namespace DomUcenikaSvilajnac
             app.UseCors(builder => builder.WithOrigins("http://localhost"));
             app.UseMvc();
         }
-
-        
     }
 }

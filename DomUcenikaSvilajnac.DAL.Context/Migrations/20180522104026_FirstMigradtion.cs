@@ -22,7 +22,7 @@ namespace DomUcenikaSvilajnac.DAL.Context.Migrations
                     table.PrimaryKey("PK_Ucenici", x => x.Id);
                 });
         }
-
+        
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(

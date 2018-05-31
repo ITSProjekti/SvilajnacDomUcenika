@@ -6,6 +6,10 @@ using System.Threading.Tasks;
 
 namespace DomUcenikaSvilajnac.Common.Interfaces
 {
+    /// <summary>
+    /// Genericki interfejs IRepository{T} sa metodama za klasu <"Repository">.
+    /// Za uvid u implementaciju prikazanih metoda, pogledati /DAL/RepoPattern/Repository
+    /// </summary>
     public interface IRepository<T> where T : class
     {
         T Get(int id);
@@ -18,6 +22,5 @@ namespace DomUcenikaSvilajnac.Common.Interfaces
         void AddRange(IEnumerable<T> entities);
         void Remove(T entity);
         void RemoveRange(T entities);
-
     }
 }

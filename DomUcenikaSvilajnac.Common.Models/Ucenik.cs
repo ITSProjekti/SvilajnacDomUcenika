@@ -6,17 +6,23 @@ using System.Text;
 
 namespace DomUcenikaSvilajnac.Common.Models
 {
+    /// <summary>
+    /// Klasa Ucenik, pravi tabelu "Ucenici" u bazi podataka sa poljima koja su navedena kao property u datoj klasi
+    /// </summary>
     [Table("Ucenici")]
     public class Ucenik
     {
        
         public int Id { get; set; }
+
         [Required]
         [StringLength(50)]
         public string Ime { get; set; }
+
         [Required]
         [StringLength(50)]
         public string Prezime { get; set; }
+
         [Required]
         [MaxLength(13),MinLength(13)]
         public string JMBG { get; set; }
