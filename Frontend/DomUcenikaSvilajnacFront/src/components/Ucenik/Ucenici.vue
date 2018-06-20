@@ -1,5 +1,5 @@
 <template>
     <div>
-        <p>Ucenici strana</p>
+        <p>Lista ucenika</p>
     </div>
 </template>
