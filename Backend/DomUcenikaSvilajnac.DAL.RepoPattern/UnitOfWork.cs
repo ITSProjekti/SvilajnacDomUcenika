@@ -29,12 +29,16 @@ namespace DomUcenikaSvilajnac.DAL.RepoPattern
         {
             _context = context;
             Ucenici = new UcenikRepository(_context);
+            Mesto = new MestoRepository(_context);
+
         }
 
         /// <summary>
         /// Za deklarisanje konteksta u konstruktoru iznad.
         /// </summary>
         public IUcenikRepository Ucenici { get; private set; }
+
+        public IMestoRepository Mesto { get; private set; }
 
         /// <summary>
         /// Izvršava zadatke definisane za aplikaciju povezane sa oslobađanjem, puštanjem ili poništavanjem nepovezanih resursa.

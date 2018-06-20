@@ -14,6 +14,7 @@ namespace DomUcenikaSvilajnac.Common.Interfaces
     public interface IUnitOfWork : IDisposable
     {
         IUcenikRepository Ucenici { get; }
+        IMestoRepository Mesto{ get; }
         int SaveChanges();
         Task<int> SaveChangesAsync();
     }
