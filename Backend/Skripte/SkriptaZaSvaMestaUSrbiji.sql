@@ -1,6 +1,6 @@
-﻿use GradoviSrbije;
+﻿use DomUcenikaSvilajnac;
 go
-insert into Mesto (Naziv) values 
+insert into Mesta (Naziv) values 
 ('Beograd'),
 ('Čačak'),
 ('Jagodina'),
