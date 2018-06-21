@@ -5,6 +5,7 @@ using Microsoft.EntityFrameworkCore;
 using System.Linq;
 using DomUcenikaSvilajnac.Common.Interfaces;
 using System.Threading.Tasks;
+using DomUcenikaSvilajnac.ModelResources;
 
 namespace DomUcenikaSvilajnac.DAL.RepoPattern
 {
@@ -98,5 +99,8 @@ namespace DomUcenikaSvilajnac.DAL.RepoPattern
         {
             _dbContext.Set<T>().RemoveRange(entities);
         }
+
+
+        
     }
 }

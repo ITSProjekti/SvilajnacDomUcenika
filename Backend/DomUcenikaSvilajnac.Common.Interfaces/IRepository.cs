@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using System.Linq.Expressions;
 using System.Threading.Tasks;
+using DomUcenikaSvilajnac.ModelResources;
 
 namespace DomUcenikaSvilajnac.Common.Interfaces
 {
@@ -22,5 +23,6 @@ namespace DomUcenikaSvilajnac.Common.Interfaces
         void AddRange(IEnumerable<T> entities);
         void Remove(T entity);
         void RemoveRange(T entities);
+      
     }
 }

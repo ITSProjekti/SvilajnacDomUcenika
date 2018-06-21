@@ -4,6 +4,7 @@ using System.Text;
 using System.Linq.Expressions;
 using System.Linq;
 using System.Threading.Tasks;
+using DomUcenikaSvilajnac.ModelResources;
 
 namespace DomUcenikaSvilajnac.Common.Interfaces
 {
@@ -17,5 +18,7 @@ namespace DomUcenikaSvilajnac.Common.Interfaces
         IMestoRepository Mesto{ get; }
         int SaveChanges();
         Task<int> SaveChangesAsync();
+        Task<IEnumerable<UcenikResource>> mestaUcenika();
+
     }
 }

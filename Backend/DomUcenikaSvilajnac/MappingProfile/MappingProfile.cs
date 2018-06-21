@@ -24,9 +24,12 @@ namespace DomUcenikaSvilajnac.Mapping
                 .ForMember(v => v.Dan, opt => opt.MapFrom(src => src.DatumRodjenja.Day))
                 .ForMember(v => v.Mesec, opt => opt.MapFrom(src => src.DatumRodjenja.Month));
 
-            CreateMap<Mesto, MestoResource>();
 
-            CreateMap<MestoResource, Mesto>();
+            //CreateMap<Ucenik, MestoResource>();
+
+            //CreateMap<MestoResource, Ucenik>();
+          
+
 
         }
     }

@@ -8,6 +8,8 @@ using DomUcenikaSvilajnac.Common.Interfaces;
 
 using System.Linq.Expressions;
 using System.Threading.Tasks;
+using AutoMapper;
+using DomUcenikaSvilajnac.ModelResources;
 
 namespace DomUcenikaSvilajnac.DAL.RepoPattern
 {
@@ -25,9 +27,10 @@ namespace DomUcenikaSvilajnac.DAL.RepoPattern
         /// <summary>
         /// Inicijalizacija instance "UnitOfWork" klase.
         /// </summary>
-        public UnitOfWork(UcenikContext context)
+        public UnitOfWork(UcenikContext context,IMapper mapper)
         {
             _context = context;
+            Mapper = mapper;
             Ucenici = new UcenikRepository(_context);
             Mesto = new MestoRepository(_context);
 
@@ -39,6 +42,7 @@ namespace DomUcenikaSvilajnac.DAL.RepoPattern
         public IUcenikRepository Ucenici { get; private set; }
 
         public IMestoRepository Mesto { get; private set; }
+        public IMapper Mapper { get; }
 
         /// <summary>
         /// Izvršava zadatke definisane za aplikaciju povezane sa oslobađanjem, puštanjem ili poništavanjem nepovezanih resursa.
@@ -62,6 +66,13 @@ namespace DomUcenikaSvilajnac.DAL.RepoPattern
         public async Task<int> SaveChangesAsync()
         {
             return await _context.SaveChangesAsync();
+        }
+
+        public async Task<IEnumerable<UcenikResource>> mestaUcenika()
+        {
+            var neki = await _context.Uceniks.Include(c => c.Mesto).ToListAsync();
+            return Mapper.Map<List<Ucenik>, List<UcenikResource>>(neki);
+
         }
     }
 }

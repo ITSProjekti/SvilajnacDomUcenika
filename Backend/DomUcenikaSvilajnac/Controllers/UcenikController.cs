@@ -38,22 +38,33 @@ namespace DomUcenikaSvilajnac.Controllers
         /// <summary>
         /// Vraca listu sviih ucenika, koji se trenutno nalaze u bazi.
         /// </summary>
-        // GET: api/Ucenik
+        //// GET: api/Ucenik
+        //[HttpGet]
+        //public async Task<IEnumerable<UcenikResource>> GetUceniks()
+        //{
+        //    var listaUcenika = await UnitOfWork.Ucenici.GetAllAsync();
+
+        //    //return _mapper.Map<List<Ucenik>, List<UcenikResource>>(listaUcenika.ToList());
+
+        //    List<Ucenik> listaucenik = context.Uceniks.Include(m => m.Mesto).ToList();
+
+        //    foreach (var item in listaucenik)
+        //    {
+        //        string mesto = item.Mesto.ToString();
+        //    }
+        //    return _mapper.Map<List<Ucenik>, List<UcenikResource>>(listaucenik.ToList());
+
+        //}
+
         [HttpGet]
         public async Task<IEnumerable<UcenikResource>> GetUceniks()
         {
-            var listaUcenika = await UnitOfWork.Ucenici.GetAllAsync();
+           // var listaUcenika = await UnitOfWork.Ucenici.GetAllAsync(); -- promenljiva koja prima listu svih ucenika
+            var listaUcenikaMesta = await UnitOfWork.mestaUcenika();
 
-            //return _mapper.Map<List<Ucenik>, List<UcenikResource>>(listaUcenika.ToList());
+            var mapiranjeUcenikaMesta = _mapper.Map<List<UcenikResource>, List<Ucenik>>(listaUcenikaMesta.ToList());
 
-            List<Ucenik> listaucenik = context.Uceniks.Include(m => m.Mesto).ToList();
-
-            foreach (var item in listaucenik)
-            {
-                string mesto = item.Mesto.ToString();
-            }
-            return _mapper.Map<List<Ucenik>, List<UcenikResource>>(listaucenik.ToList());
-
+            return _mapper.Map<List<Ucenik>, List<UcenikResource>>(mapiranjeUcenikaMesta.ToList());
         }
 
 
@@ -70,7 +81,7 @@ namespace DomUcenikaSvilajnac.Controllers
             }
 
             var ucenik = await UnitOfWork.Ucenici.GetAsync(id);
-            var ucenikNovi=_mapper.Map<Ucenik, UcenikResource>(ucenik);
+            var ucenikNovi = _mapper.Map<Ucenik, UcenikResource>(ucenik);
             if (ucenik == null)
             {
                 return NotFound();
@@ -81,7 +92,7 @@ namespace DomUcenikaSvilajnac.Controllers
 
 
         /// <summary>
-        /// Metoda za update, menja podate u nekom redu u tabeli, tj. o nekom uceniku na osnovu prosledjenog Id-a 
+        /// Metoda za update, menja podate u nekom redu u tabeli, tj.o nekom uceniku na osnovu prosledjenog Id-a 
         /// i vraca podatke o uceniku koji su namenjeni za front.
         /// </summary>
         // PUT: api/Ucenik/5
@@ -103,7 +114,7 @@ namespace DomUcenikaSvilajnac.Controllers
 
 
             ucenik.Id = id;
-            _mapper.Map<UcenikResource, Ucenik>(ucenik,stariUcenik);
+            _mapper.Map<UcenikResource, Ucenik>(ucenik, stariUcenik);
             await UnitOfWork.SaveChangesAsync();
 
             var noviUcenik = await UnitOfWork.Ucenici.GetAsync(id);
@@ -122,11 +133,11 @@ namespace DomUcenikaSvilajnac.Controllers
             {
                 return BadRequest(ModelState);
             }
-           var noviUcenik= _mapper.Map<UcenikResource, Ucenik>(ucenik);
+            var noviUcenik = _mapper.Map<UcenikResource, Ucenik>(ucenik);
             UnitOfWork.Ucenici.Add(noviUcenik);
             await UnitOfWork.SaveChangesAsync();
 
-            ucenik= _mapper.Map<Ucenik,UcenikResource>(noviUcenik);
+            ucenik = _mapper.Map<Ucenik, UcenikResource>(noviUcenik);
             return Ok(ucenik);
         }
 
@@ -141,13 +152,13 @@ namespace DomUcenikaSvilajnac.Controllers
             {
                 return BadRequest(ModelState);
             }
-            
+
             var ucenik = await UnitOfWork.Ucenici.GetAsync(id);
             if (ucenik == null)
             {
                 return NotFound();
             }
-            var noviUcenik = _mapper.Map< Ucenik, UcenikResource>(ucenik);
+            var noviUcenik = _mapper.Map<Ucenik, UcenikResource>(ucenik);
             UnitOfWork.Ucenici.Remove(ucenik);
             await UnitOfWork.SaveChangesAsync();
 
@@ -159,7 +170,7 @@ namespace DomUcenikaSvilajnac.Controllers
         /// </summary>
         private bool UcenikExists(int id)
         {
-            return (UnitOfWork.Ucenici.Get(id)==null);
+            return (UnitOfWork.Ucenici.Get(id) == null);
         }
     }
 }
