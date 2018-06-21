@@ -26,10 +26,8 @@ namespace DomUcenikaSvilajnac.Controllers
         [HttpGet]
         public async Task<IEnumerable<MestoResource>> GetMesta()
         {
-
             var listaMesta = await UnitOfWork.Mesto.GetAllAsync();
             return Mapper.Map<List<Mesto>, List<MestoResource>>(listaMesta.ToList());
-
         }
     }
 }

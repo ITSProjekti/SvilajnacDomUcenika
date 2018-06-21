@@ -24,6 +24,7 @@ namespace DomUcenikaSvilajnac.Controllers
         public IMapper _mapper { get; }
         public IUnitOfWork UnitOfWork { get; }
 
+        public UcenikContext context;
 
         /// <summary>
         /// Inicijalizacija instance klase UcenikController i deklarisanje mappera i unitofwork-a.
@@ -42,8 +43,17 @@ namespace DomUcenikaSvilajnac.Controllers
         public async Task<IEnumerable<UcenikResource>> GetUceniks()
         {
             var listaUcenika = await UnitOfWork.Ucenici.GetAllAsync();
-            
-            return _mapper.Map<List<Ucenik>, List<UcenikResource>>(listaUcenika.ToList());
+
+            //return _mapper.Map<List<Ucenik>, List<UcenikResource>>(listaUcenika.ToList());
+
+            List<Ucenik> listaucenik = context.Uceniks.Include(m => m.Mesto).ToList();
+
+            foreach (var item in listaucenik)
+            {
+                string mesto = item.Mesto.ToString();
+            }
+            return _mapper.Map<List<Ucenik>, List<UcenikResource>>(listaucenik.ToList());
+
         }
 
 

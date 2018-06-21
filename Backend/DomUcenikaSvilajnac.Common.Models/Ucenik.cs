@@ -36,6 +36,5 @@ namespace DomUcenikaSvilajnac.Common.Models
 
         public Mesto Mesto { get; set; }
         public int MestoId { get; set; }
-
     }
 }

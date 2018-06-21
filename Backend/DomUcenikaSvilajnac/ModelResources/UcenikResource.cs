@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DomUcenikaSvilajnac.Common.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -25,5 +26,7 @@ namespace DomUcenikaSvilajnac.ModelResources
         public int Mesec { get; set; }
 
         public int Godina { get; set; }
+
+        public Mesto Mesto { get; set; }
     }
 }
