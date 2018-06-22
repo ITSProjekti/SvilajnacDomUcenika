@@ -121,20 +121,15 @@ namespace DomUcenikaSvilajnac.Controllers
             }
             var noviUcenik = _mapper.Map<UcenikResource, Ucenik>(ucenik);
             noviUcenik.Mesto = null;
-          
+            
             UnitOfWork.Ucenici.Add(noviUcenik);
             await UnitOfWork.SaveChangesAsync();
 
-        
-
             ucenik = _mapper.Map<Ucenik, UcenikResource>(noviUcenik);
 
-            //var djesi = UnitOfWork.postUcenikSaMestom(ucenik);
+            var djesi = UnitOfWork.postUcenikSaMestom(ucenik);
 
-            //_mapper.Map<UcenikResource, Ucenik>(djesi);
-
-
-            return Ok(ucenik);
+            return Ok(noviUcenik);
         }
 
         /// <summary>
