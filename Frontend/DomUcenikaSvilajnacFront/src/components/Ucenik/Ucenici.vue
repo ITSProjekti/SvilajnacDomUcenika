@@ -10,18 +10,32 @@
         <v-card-text>
           <v-container grid-list-md>
             <v-layout wrap>
-              <v-flex xs12 sm6 md4>
-                <v-text-field v-model="editedItem.ime" label="IME"></v-text-field>
+              <v-flex xs12 >
+                <v-text-field v-model="editedItem.ime" label="Ime"></v-text-field>
               </v-flex>
-              <v-flex xs12 sm6 md4>
+              <v-flex xs12 >
+                <v-text-field v-model="editedItem.prezime" label="Prezime"></v-text-field>
+              </v-flex>
+              <v-flex xs12 >
                 <v-text-field v-model="editedItem.jmbg" label="jmbg"></v-text-field>
               </v-flex>
-              <v-flex xs12 sm6 md4>
-                <v-text-field v-model="editedItem.fat" label="Pol"></v-text-field>
+              <v-flex xs12 >
+                <v-text-field v-model="editedItem.pol" label="Pol"></v-text-field>
               </v-flex>
-              <v-flex xs12 sm6 md4>
-                <v-text-field v-model="editedItem.carbs" label="Datum Rodjenja"></v-text-field>
+              <v-flex xs12 >
+                <v-text-field v-model="editedItem.mesto.id" label="MestoID"></v-text-field>
               </v-flex>
+               <v-flex xs12 >
+                <v-text-field v-model="editedItem.mesto.naziv" label="MestoNaziv"></v-text-field>
+              </v-flex>
+              <v-flex xs12 >
+                <h3 dark class="mb-2">Datum Rodjenja</h3>
+               
+                <v-date-picker v-model="datum"></v-date-picker>
+                 <p>Prethodni: {{ editedItem.dan }}.{{ editedItem.mesec }}.{{editedItem.godina }}</p>
+                 <p>Novi: {{datum}}</p>
+              </v-flex>
+              
             </v-layout>
           </v-container>
         </v-card-text>
@@ -39,7 +53,7 @@
       class="elevation-1"
     >
       <template slot="items" slot-scope="props">
-        <td>{{ props.item.id }}</td>
+        <td>{{ props.item.mesto.naziv }}</td>
         <td class="text-xs-right">{{ props.item.ime }}</td>
         <td class="text-xs-right">{{ props.item.prezime }}</td>
         <td class="text-xs-right">{{ props.item.jmbg }}</td>
@@ -78,20 +92,33 @@
         { text: 'Datum Rodjenja', value: 'dan',align: 'right' },
         { text: 'Opcije', value: 'opcije',align: 'right' }
       ],
+      datum: null,
       editedIndex: -1,
       editedItem: {
         ime: '',
         prezime: '',
         jmbg: '',
         pol: '',
-        datumRodjenja: ''
+        dan: '',
+        mesec: '',
+        godina: '',
+        mesto: {
+          id: '',
+          naziv: ''
+          }
       },
       defaultItem: {
          ime: '',
         prezime: '',
         jmbg: '',
         pol: '',
-        datumRodjenja: ''
+        dan: '',
+        mesec: '',
+        godina: '',
+        mesto: {
+          id: '',
+          naziv: ''
+          }
       }
     }),
     computed: {ucenici () {
@@ -109,7 +136,14 @@
       }
     },
     methods: {
-
+       formatiranjeDatuma()
+      {
+          console.log(this.datum)
+          const xz= new Date(this.datum)
+          this.editedItem.dan=xz.getDay()
+          this.editedItem.mesec=xz.getMonth()
+          this.editedItem.godina=xz.getYear()
+      },
       editItem (item) {
         this.editedIndex = this.ucenici.indexOf(item)
         this.editedItem = Object.assign({}, item)
@@ -128,8 +162,12 @@
       },
       save () {
         if (this.editedIndex > -1) {
+          this.formatiranjeDatuma()
           Object.assign(this.ucenici[this.editedIndex], this.editedItem)
+
         } else {
+          this.formatiranjeDatuma()
+          this.$store.dispatch('createUcenik',this.editedItem)
           this.ucenici.push(this.editedItem)
         }
         this.close()

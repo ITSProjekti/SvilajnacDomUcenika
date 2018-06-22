@@ -52,10 +52,10 @@ export default {
       sideNav: null,
       menuItems: [
         {icon: 'supervisor_account', title: 'Lista ucenika',link: '/ucenici'},
-         {icon: 'pets', title: 'Prijavi ucenika',link: '/prijava'},
-          {icon: 'person', title: 'Profil',link: '/profil'},
-          {icon: 'face', title: 'Registruj se',link: '/registracija'},
-           {icon: 'lock_open', title: 'Uloguj se',link: '/logovanje'}
+        {icon: 'pets', title: 'Prijavi ucenika',link: '/prijava'},
+        {icon: 'person', title: 'Profil',link: '/profil'},
+        {icon: 'face', title: 'Registruj se',link: '/registracija'},
+        {icon: 'lock_open', title: 'Uloguj se',link: '/logovanje'}
       ]
     }
   },

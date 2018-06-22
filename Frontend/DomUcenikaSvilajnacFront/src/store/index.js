@@ -42,7 +42,7 @@ export const store = new Vuex.Store({
     actions: {
         loadedUcenici( {commit } ) {
             commit('setLoading', true)
-            axios.get('http://localhost:12613/api/Ucenik/').then((response) => {
+            axios.get('http://localhost:2549/api/ucenik').then((response) => {
               console.log(response.data, this)
               commit('setLoadedUcenike', response.data)
               commit('setLoading', false)
@@ -56,10 +56,14 @@ export const store = new Vuex.Store({
                 pol: payload.pol,
                 dan: payload.dan,
                 mesec: payload.mesec,
-                godina: payload.godina
+                godina: payload.godina,
+                mesto: {
+                     id: payload.mesto.id,
+                     mesto: payload.mesto.naziv
+                }
                 
             }
-            axios.post('http://localhost:12613/api/Ucenik/').then(function(response){
+            axios.post('http://localhost:2549/api/ucenik',ucenik).then(function(response){
                 commit('createUcenik', response.body)
                 this.$router.push('/ucenici')
                  })
