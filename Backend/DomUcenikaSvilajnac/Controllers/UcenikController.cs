@@ -99,8 +99,12 @@ namespace DomUcenikaSvilajnac.Controllers
                 return NotFound();
 
 
+
             ucenik.Id = id;
-            _mapper.Map<UcenikResource, Ucenik>(ucenik, stariUcenik);
+
+            var novi = _mapper.Map<UcenikResource, Ucenik>(ucenik, stariUcenik);
+            novi.MestoId = ucenik.Mesto.Id;
+            novi.Mesto = null;
             await UnitOfWork.SaveChangesAsync();
 
             var noviUcenik = await UnitOfWork.Ucenici.GetAsync(id);
