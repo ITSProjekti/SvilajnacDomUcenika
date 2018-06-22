@@ -17,6 +17,7 @@ export const store = new Vuex.Store({
     },
     mutations: {
         setLoadedUcenike (state,payload){
+
             state.ucenici=payload
         },
         createUcenik (state,payload) {
@@ -58,7 +59,7 @@ export const store = new Vuex.Store({
                 godina: payload.godina
                 
             }
-            axios.get('http://localhost:12613/api/Ucenik/').then(function(response){
+            axios.post('http://localhost:12613/api/Ucenik/').then(function(response){
                 commit('createUcenik', response.body)
                 this.$router.push('/ucenici')
                  })
