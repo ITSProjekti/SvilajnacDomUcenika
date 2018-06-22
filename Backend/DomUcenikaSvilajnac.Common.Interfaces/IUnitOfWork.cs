@@ -5,6 +5,7 @@ using System.Linq.Expressions;
 using System.Linq;
 using System.Threading.Tasks;
 using DomUcenikaSvilajnac.ModelResources;
+using Microsoft.AspNetCore.Mvc;
 
 namespace DomUcenikaSvilajnac.Common.Interfaces
 {
@@ -19,6 +20,9 @@ namespace DomUcenikaSvilajnac.Common.Interfaces
         int SaveChanges();
         Task<int> SaveChangesAsync();
         Task<IEnumerable<UcenikResource>> mestaUcenika();
+
+        Task<UcenikResource> mestaUcenikaById(int id);
+        Task<UcenikResource> postUcenikSaMestom(UcenikResource ucenik);
 
     }
 }

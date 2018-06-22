@@ -10,6 +10,7 @@ using System.Linq.Expressions;
 using System.Threading.Tasks;
 using AutoMapper;
 using DomUcenikaSvilajnac.ModelResources;
+using Microsoft.AspNetCore.Mvc;
 
 namespace DomUcenikaSvilajnac.DAL.RepoPattern
 {
@@ -27,7 +28,7 @@ namespace DomUcenikaSvilajnac.DAL.RepoPattern
         /// <summary>
         /// Inicijalizacija instance "UnitOfWork" klase.
         /// </summary>
-        public UnitOfWork(UcenikContext context,IMapper mapper)
+        public UnitOfWork(UcenikContext context, IMapper mapper)
         {
             _context = context;
             Mapper = mapper;
@@ -72,7 +73,18 @@ namespace DomUcenikaSvilajnac.DAL.RepoPattern
         {
             var neki = await _context.Uceniks.Include(c => c.Mesto).ToListAsync();
             return Mapper.Map<List<Ucenik>, List<UcenikResource>>(neki);
+        }
+        public async Task<UcenikResource> mestaUcenikaById(int id)
+        {
+            var neki = await _context.Uceniks.Include(c => c.Mesto).SingleOrDefaultAsync(x => x.Id == id);
+            return Mapper.Map<Ucenik, UcenikResource>(neki);
+        }
 
+        public async Task<UcenikResource> postUcenikSaMestom(UcenikResource ucenik)
+        {
+            var neki = await _context.Uceniks.Include(c => c.Mesto).SingleOrDefaultAsync(x => x.Id == ucenik.Id);
+
+            return Mapper.Map<Ucenik, UcenikResource>(neki);
         }
     }
 }

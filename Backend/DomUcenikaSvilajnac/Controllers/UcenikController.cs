@@ -38,24 +38,7 @@ namespace DomUcenikaSvilajnac.Controllers
         /// <summary>
         /// Vraca listu sviih ucenika, koji se trenutno nalaze u bazi.
         /// </summary>
-        //// GET: api/Ucenik
-        //[HttpGet]
-        //public async Task<IEnumerable<UcenikResource>> GetUceniks()
-        //{
-        //    var listaUcenika = await UnitOfWork.Ucenici.GetAllAsync();
-
-        //    //return _mapper.Map<List<Ucenik>, List<UcenikResource>>(listaUcenika.ToList());
-
-        //    List<Ucenik> listaucenik = context.Uceniks.Include(m => m.Mesto).ToList();
-
-        //    foreach (var item in listaucenik)
-        //    {
-        //        string mesto = item.Mesto.ToString();
-        //    }
-        //    return _mapper.Map<List<Ucenik>, List<UcenikResource>>(listaucenik.ToList());
-
-        //}
-
+        /// GET: api/Ucenik        
         [HttpGet]
         public async Task<IEnumerable<UcenikResource>> GetUceniks()
         {
@@ -79,6 +62,9 @@ namespace DomUcenikaSvilajnac.Controllers
             {
                 return BadRequest(ModelState);
             }
+
+            var mapiranUcenik = UnitOfWork.mestaUcenikaById(id);
+
 
             var ucenik = await UnitOfWork.Ucenici.GetAsync(id);
             var ucenikNovi = _mapper.Map<Ucenik, UcenikResource>(ucenik);
@@ -134,10 +120,20 @@ namespace DomUcenikaSvilajnac.Controllers
                 return BadRequest(ModelState);
             }
             var noviUcenik = _mapper.Map<UcenikResource, Ucenik>(ucenik);
+            noviUcenik.Mesto = null;
+          
             UnitOfWork.Ucenici.Add(noviUcenik);
             await UnitOfWork.SaveChangesAsync();
 
+        
+
             ucenik = _mapper.Map<Ucenik, UcenikResource>(noviUcenik);
+
+            //var djesi = UnitOfWork.postUcenikSaMestom(ucenik);
+
+            //_mapper.Map<UcenikResource, Ucenik>(djesi);
+
+
             return Ok(ucenik);
         }
 
