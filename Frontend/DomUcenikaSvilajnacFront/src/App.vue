@@ -45,19 +45,21 @@
 </template>
 
 <script>
+/* eslint-disable */
 export default {
   data () {
     return {
       sideNav: null,
       menuItems: [
-        {icon: 'supervisor_account', title: 'Lista ucenika' ,link: '/ucenici'},
-         {icon: 'pets', title: 'Prijavi ucenika' ,link: '/prijava'},
-          {icon: 'person', title: 'Profil' ,link: '/profil'},
-          {icon: 'face', title: 'Registruj se' ,link: '/registracija'},
-           {icon: 'lock_open', title: 'Uloguj se' ,link: '/logovanje'}
+        {icon: 'supervisor_account', title: 'Lista ucenika',link: '/ucenici'},
+         {icon: 'pets', title: 'Prijavi ucenika',link: '/prijava'},
+          {icon: 'person', title: 'Profil',link: '/profil'},
+          {icon: 'face', title: 'Registruj se',link: '/registracija'},
+           {icon: 'lock_open', title: 'Uloguj se',link: '/logovanje'}
       ]
     }
   },
   name: 'App'
 }
 </script>
+
