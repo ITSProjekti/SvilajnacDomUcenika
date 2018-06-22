@@ -28,9 +28,6 @@ namespace DomUcenikaSvilajnac.Mapping
             //CreateMap<Ucenik, MestoResource>();
 
             //CreateMap<MestoResource, Ucenik>();
-          
-
-
         }
     }
 }
