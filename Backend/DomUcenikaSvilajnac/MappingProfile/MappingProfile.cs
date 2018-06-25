@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using DomUcenikaSvilajnac.Common.Models;
+using DomUcenikaSvilajnac.Common.Models.ModelResources;
 using DomUcenikaSvilajnac.ModelResources;
 using System;
 using System.Collections.Generic;
@@ -23,7 +24,7 @@ namespace DomUcenikaSvilajnac.Mapping
                 .ForMember(v => v.Godina, opt => opt.MapFrom(src => src.DatumRodjenja.Year))
                 .ForMember(v => v.Dan, opt => opt.MapFrom(src => src.DatumRodjenja.Day))
                 .ForMember(v => v.Mesec, opt => opt.MapFrom(src => src.DatumRodjenja.Month));
-
+            
 
             //CreateMap<Ucenik, MestoResource>();
 

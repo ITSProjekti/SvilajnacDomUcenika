@@ -75,7 +75,8 @@ namespace DomUcenikaSvilajnac.DAL.RepoPattern
 
         public async Task<IEnumerable<UcenikResource>> mestaUcenika()
         {
-            var neki = await _context.Uceniks.Include(c => c.Mesto).ToListAsync();
+            var neki = await _context.Uceniks.Include(m=> m.Mesto)
+                .Include(o=> o.Opstina).ToListAsync();
             return Mapper.Map<List<Ucenik>, List<UcenikResource>>(neki);
         }
         public async Task<UcenikResource> mestaUcenikaById(int id)
