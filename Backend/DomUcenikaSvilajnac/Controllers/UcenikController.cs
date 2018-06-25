@@ -103,12 +103,15 @@ namespace DomUcenikaSvilajnac.Controllers
             ucenik.Id = id;
 
             var novi = _mapper.Map<UcenikResource, Ucenik>(ucenik, stariUcenik);
-           
+            novi.Opstina = null;
             await UnitOfWork.SaveChangesAsync();
 
-            var noviUcenik = await UnitOfWork.Ucenici.GetAsync(id);
-            _mapper.Map<Ucenik, UcenikResource>(noviUcenik);
-            return Ok(ucenik);
+            var noviUcenik = await UnitOfWork.mestaUcenikaById(id);
+
+
+
+          //  _mapper.Map<Ucenik, UcenikResource>(noviUcenik);
+            return Ok(noviUcenik);
         }
 
         /// <summary>
