@@ -32,7 +32,7 @@ namespace DomUcenikaSvilajnac.Controllers
 
 
         [HttpGet("{id}")]
-        public async Task<IActionResult> GetMesto([FromRoute] int id)
+        public async Task<IActionResult> GetMestoById([FromRoute] int id)
         {
             if (!ModelState.IsValid)
             {

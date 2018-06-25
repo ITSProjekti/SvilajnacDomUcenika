@@ -11,6 +11,7 @@ using System.Threading.Tasks;
 using AutoMapper;
 using DomUcenikaSvilajnac.ModelResources;
 using Microsoft.AspNetCore.Mvc;
+using DomUcenikaSvilajnac.Common.Models.ModelResources;
 
 namespace DomUcenikaSvilajnac.DAL.RepoPattern
 {
@@ -34,6 +35,8 @@ namespace DomUcenikaSvilajnac.DAL.RepoPattern
             Mapper = mapper;
             Ucenici = new UcenikRepository(_context);
             Opstine = new OpstinaRepository(_context);
+            Drzave = new DrzavaRepository(_context);
+
 
         }
 
@@ -41,10 +44,9 @@ namespace DomUcenikaSvilajnac.DAL.RepoPattern
         /// Za deklarisanje konteksta u konstruktoru iznad.
         /// </summary>
         public IUcenikRepository Ucenici { get; private set; }
-
-       
-
         public IOpstinaRepository Opstine { get; private set; }
+        public IDrzavaRepository Drzave { get; private set; }
+
 
         public IMapper Mapper { get; }
 
