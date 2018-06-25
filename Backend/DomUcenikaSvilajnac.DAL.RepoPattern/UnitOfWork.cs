@@ -81,15 +81,22 @@ namespace DomUcenikaSvilajnac.DAL.RepoPattern
         }
         public async Task<UcenikResource> mestaUcenikaById(int id)
         {
-            var neki = await _context.Uceniks.Include(c => c.Mesto).SingleOrDefaultAsync(x => x.Id == id);
+            var neki = await _context.Uceniks.Include(c => c.Mesto)
+                 .Include(o => o.Opstina)
+                .SingleOrDefaultAsync(x => x.Id == id);
             return Mapper.Map<Ucenik, UcenikResource>(neki);
         }
 
-        public async Task<UcenikResource> postUcenikSaMestom(UcenikResource ucenik)
+        public async Task<UcenikResource> mapiranje(UcenikResource ucenik)
         {
-            var neki = await _context.Uceniks.Include(c => c.Mesto).SingleOrDefaultAsync(x => x.Id == ucenik.Id);
+            var neki = await _context.Uceniks.Include(c => c.Mesto)
+                .Include(o=> o.Opstina)
+                .SingleOrDefaultAsync(x => x.Id == ucenik.Id);
 
             return Mapper.Map<Ucenik, UcenikResource>(neki);
         }
+
+
+       
     }
 }

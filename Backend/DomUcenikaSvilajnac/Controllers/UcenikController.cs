@@ -125,15 +125,16 @@ namespace DomUcenikaSvilajnac.Controllers
             }
             var noviUcenik = _mapper.Map<UcenikResource, Ucenik>(ucenik);
             noviUcenik.Mesto = null;
+            noviUcenik.Opstina = null;
             
+            //cuvanje u bazi
             UnitOfWork.Ucenici.Add(noviUcenik);
             await UnitOfWork.SaveChangesAsync();
 
             ucenik = _mapper.Map<Ucenik, UcenikResource>(noviUcenik);
+            var mapiranUcenik = await UnitOfWork.mapiranje(ucenik);
 
-            var djesi = UnitOfWork.postUcenikSaMestom(ucenik);
-
-            return Ok(noviUcenik);
+            return Ok(mapiranUcenik);
         }
 
         /// <summary>
@@ -149,15 +150,25 @@ namespace DomUcenikaSvilajnac.Controllers
             }
 
             var ucenik = await UnitOfWork.Ucenici.GetAsync(id);
+
+            
+            var noviUcenik = _mapper.Map<Ucenik, UcenikResource>(ucenik);
+            var mapiranUcenik = await UnitOfWork.mapiranje(noviUcenik);
+
             if (ucenik == null)
             {
                 return NotFound();
             }
-            var noviUcenik = _mapper.Map<Ucenik, UcenikResource>(ucenik);
+           
+            //brisanje u bazi
             UnitOfWork.Ucenici.Remove(ucenik);
             await UnitOfWork.SaveChangesAsync();
 
-            return Ok(noviUcenik);
+            
+
+          
+
+            return Ok(mapiranUcenik);
         }
 
         /// <summary>

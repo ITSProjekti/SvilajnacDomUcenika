@@ -23,7 +23,8 @@ namespace DomUcenikaSvilajnac.Common.Interfaces
         Task<IEnumerable<UcenikResource>> mestaUcenika();
 
         Task<UcenikResource> mestaUcenikaById(int id);
-        Task<UcenikResource> postUcenikSaMestom(UcenikResource ucenik);
+        Task<UcenikResource> mapiranje(UcenikResource ucenik);
+  
 
     }
 }
