@@ -38,5 +38,7 @@ namespace DomUcenikaSvilajnac.Common.Models
 
         public int OpstinaId { get; set; }
         public Opstina Opstina { get; set; }
+
+        public string MestoRodjenja { get; set; }
     }
 }
