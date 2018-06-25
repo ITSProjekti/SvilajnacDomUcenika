@@ -33,7 +33,6 @@ namespace DomUcenikaSvilajnac.DAL.RepoPattern
             _context = context;
             Mapper = mapper;
             Ucenici = new UcenikRepository(_context);
-            Mesto = new MestoRepository(_context);
             Opstine = new OpstinaRepository(_context);
 
         }
@@ -43,7 +42,7 @@ namespace DomUcenikaSvilajnac.DAL.RepoPattern
         /// </summary>
         public IUcenikRepository Ucenici { get; private set; }
 
-        public IMestoRepository Mesto { get; private set; }
+       
 
         public IOpstinaRepository Opstine { get; private set; }
 
@@ -75,13 +74,13 @@ namespace DomUcenikaSvilajnac.DAL.RepoPattern
 
         public async Task<IEnumerable<UcenikResource>> mestaUcenika()
         {
-            var neki = await _context.Uceniks.Include(m=> m.Mesto)
+            var neki = await _context.Uceniks
                 .Include(o=> o.Opstina).ToListAsync();
             return Mapper.Map<List<Ucenik>, List<UcenikResource>>(neki);
         }
         public async Task<UcenikResource> mestaUcenikaById(int id)
         {
-            var neki = await _context.Uceniks.Include(c => c.Mesto)
+            var neki = await _context.Uceniks
                  .Include(o => o.Opstina)
                 .SingleOrDefaultAsync(x => x.Id == id);
             return Mapper.Map<Ucenik, UcenikResource>(neki);
@@ -89,7 +88,7 @@ namespace DomUcenikaSvilajnac.DAL.RepoPattern
 
         public async Task<UcenikResource> mapiranje(UcenikResource ucenik)
         {
-            var neki = await _context.Uceniks.Include(c => c.Mesto)
+            var neki = await _context.Uceniks
                 .Include(o=> o.Opstina)
                 .SingleOrDefaultAsync(x => x.Id == ucenik.Id);
 

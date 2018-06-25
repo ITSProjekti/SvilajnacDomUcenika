@@ -103,8 +103,7 @@ namespace DomUcenikaSvilajnac.Controllers
             ucenik.Id = id;
 
             var novi = _mapper.Map<UcenikResource, Ucenik>(ucenik, stariUcenik);
-            novi.MestoId = ucenik.Mesto.Id;
-            novi.Mesto = null;
+           
             await UnitOfWork.SaveChangesAsync();
 
             var noviUcenik = await UnitOfWork.Ucenici.GetAsync(id);
@@ -124,7 +123,6 @@ namespace DomUcenikaSvilajnac.Controllers
                 return BadRequest(ModelState);
             }
             var noviUcenik = _mapper.Map<UcenikResource, Ucenik>(ucenik);
-            noviUcenik.Mesto = null;
             noviUcenik.Opstina = null;
             
             //cuvanje u bazi
@@ -164,19 +162,12 @@ namespace DomUcenikaSvilajnac.Controllers
             UnitOfWork.Ucenici.Remove(ucenik);
             await UnitOfWork.SaveChangesAsync();
 
-            
-
-          
-
             return Ok(mapiranUcenik);
         }
 
         /// <summary>
         /// Proveravanje da li odredjeni ucenik postoji, koristi se za CRUD operacije.
         /// </summary>
-        private bool UcenikExists(int id)
-        {
-            return (UnitOfWork.Ucenici.Get(id) == null);
-        }
+       
     }
 }

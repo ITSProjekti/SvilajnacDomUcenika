@@ -11,8 +11,8 @@ using System;
 namespace DomUcenikaSvilajnac.DAL.Context.Migrations
 {
     [DbContext(typeof(UcenikContext))]
-    [Migration("20180620102841_SpajanjeTabelaMestoiUcenik")]
-    partial class SpajanjeTabelaMestoiUcenik
+    [Migration("20180625110637_SeedovanjeTabeleOpstina")]
+    partial class SeedovanjeTabeleOpstina
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -21,18 +21,16 @@ namespace DomUcenikaSvilajnac.DAL.Context.Migrations
                 .HasAnnotation("ProductVersion", "2.0.3-rtm-10026")
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-            modelBuilder.Entity("DomUcenikaSvilajnac.Common.Models.Mesto", b =>
+            modelBuilder.Entity("DomUcenikaSvilajnac.Common.Models.Opstina", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<string>("Naziv")
-                        .IsRequired()
-                        .HasMaxLength(255);
+                    b.Property<string>("NazivOpstine");
 
                     b.HasKey("Id");
 
-                    b.ToTable("Mesta");
+                    b.ToTable("Opstine");
                 });
 
             modelBuilder.Entity("DomUcenikaSvilajnac.Common.Models.Ucenik", b =>
@@ -50,7 +48,7 @@ namespace DomUcenikaSvilajnac.DAL.Context.Migrations
                         .IsRequired()
                         .HasMaxLength(13);
 
-                    b.Property<int>("MestoId");
+                    b.Property<int>("OpstinaId");
 
                     b.Property<string>("Pol")
                         .IsRequired();
@@ -61,16 +59,16 @@ namespace DomUcenikaSvilajnac.DAL.Context.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("MestoId");
+                    b.HasIndex("OpstinaId");
 
                     b.ToTable("Ucenici");
                 });
 
             modelBuilder.Entity("DomUcenikaSvilajnac.Common.Models.Ucenik", b =>
                 {
-                    b.HasOne("DomUcenikaSvilajnac.Common.Models.Mesto", "Mesto")
+                    b.HasOne("DomUcenikaSvilajnac.Common.Models.Opstina", "Opstina")
                         .WithMany()
-                        .HasForeignKey("MestoId")
+                        .HasForeignKey("OpstinaId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 #pragma warning restore 612, 618

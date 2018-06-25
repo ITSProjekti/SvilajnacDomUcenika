@@ -17,7 +17,6 @@ namespace DomUcenikaSvilajnac.DAL.Context
         /// Sluzi kao komunkacija sa bazom podataka.
         /// </summary>
         public DbSet<Ucenik> Uceniks { get; set; }
-        public DbSet<Mesto> Mesta { get; set; }
         public DbSet<Opstina> Opstine { get; set; }
 
         /// <summary>

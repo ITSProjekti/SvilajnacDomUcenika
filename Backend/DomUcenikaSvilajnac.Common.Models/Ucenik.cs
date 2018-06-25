@@ -34,8 +34,7 @@ namespace DomUcenikaSvilajnac.Common.Models
         [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:dd/mm/yyyy}")]
         public DateTime DatumRodjenja { get; set; }
 
-        public Mesto Mesto { get; set; }
-        public int MestoId { get; set; }
+        
 
         public int OpstinaId { get; set; }
         public Opstina Opstina { get; set; }

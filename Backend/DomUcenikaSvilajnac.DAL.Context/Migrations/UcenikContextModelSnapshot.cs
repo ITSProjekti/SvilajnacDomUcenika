@@ -20,18 +20,6 @@ namespace DomUcenikaSvilajnac.DAL.Context.Migrations
                 .HasAnnotation("ProductVersion", "2.0.3-rtm-10026")
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-            modelBuilder.Entity("DomUcenikaSvilajnac.Common.Models.Mesto", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd();
-
-                    b.Property<string>("Naziv");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Mesta");
-                });
-
             modelBuilder.Entity("DomUcenikaSvilajnac.Common.Models.Opstina", b =>
                 {
                     b.Property<int>("Id")
@@ -59,8 +47,6 @@ namespace DomUcenikaSvilajnac.DAL.Context.Migrations
                         .IsRequired()
                         .HasMaxLength(13);
 
-                    b.Property<int>("MestoId");
-
                     b.Property<int>("OpstinaId");
 
                     b.Property<string>("Pol")
@@ -72,8 +58,6 @@ namespace DomUcenikaSvilajnac.DAL.Context.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("MestoId");
-
                     b.HasIndex("OpstinaId");
 
                     b.ToTable("Ucenici");
@@ -81,13 +65,8 @@ namespace DomUcenikaSvilajnac.DAL.Context.Migrations
 
             modelBuilder.Entity("DomUcenikaSvilajnac.Common.Models.Ucenik", b =>
                 {
-                    b.HasOne("DomUcenikaSvilajnac.Common.Models.Mesto", "Mesto")
-                        .WithMany()
-                        .HasForeignKey("MestoId")
-                        .OnDelete(DeleteBehavior.Cascade);
-
                     b.HasOne("DomUcenikaSvilajnac.Common.Models.Opstina", "Opstina")
-                        .WithMany("Ucenici")
+                        .WithMany()
                         .HasForeignKey("OpstinaId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
