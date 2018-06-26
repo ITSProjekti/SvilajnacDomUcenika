@@ -19,14 +19,47 @@
               <v-flex xs12 >
                 <v-text-field v-model="editedItem.jmbg" label="jmbg"></v-text-field>
               </v-flex>
+                      <template>
+                 <v-container fluid>
+                    <v-layout row wrap>
+                    <v-flex xs12 sm6>
+                     <v-subheader v-text="'Pol'"></v-subheader>
+                    </v-flex>
+                           <v-flex xs12 sm6>
+                               <v-select
+                                :loading="loading"
+                                :items="pol"
+                                v-model="editedItem.pol"
+                                label="Pol"
+                                autocomplete
+                              ></v-select>
+                            </v-flex>
+                          </v-layout>
+                        </v-container>
+                      </template>
+            
+              <template>
+                 <v-container fluid>
+                    <v-layout row wrap>
+                    <v-flex xs12 sm6>
+                     <v-subheader v-text="'Opstina rodjenja'"></v-subheader>
+                    </v-flex>
+                           <v-flex xs12 sm6>
+                               <v-select
+                                :loading="loading"
+                                :items="opstine"
+                                v-model="editedItem.opstina.id"
+                                label="Izaberite opstinu rodjenja"
+                                item-text="nazivOpstine"
+                                item-value="id"
+                                autocomplete
+                              ></v-select>
+                            </v-flex>
+                          </v-layout>
+                        </v-container>
+                      </template>
               <v-flex xs12 >
-                <v-text-field v-model="editedItem.pol" label="Pol"></v-text-field>
-              </v-flex>
-              <v-flex xs12 >
-                <v-text-field v-model="editedItem.mesto.id" label="MestoID"></v-text-field>
-              </v-flex>
-               <v-flex xs12 >
-                <v-text-field v-model="editedItem.mesto.naziv" label="MestoNaziv"></v-text-field>
+                <v-text-field v-model="editedItem.mestoRodjenja" label="Mesto rodjenja"></v-text-field>
               </v-flex>
               <v-flex xs12 >
                 <h3 dark class="mb-2">Datum Rodjenja</h3>              
@@ -65,12 +98,14 @@
       class="elevation-1"
     >
       <template slot="items" slot-scope="props" >
-        <td>{{ props.item.mesto.naziv }}</td>
+        <td>{{ props.item.ime }}</td>
         <td class="text-xs-right">{{ props.item.ime }}</td>
         <td class="text-xs-right">{{ props.item.prezime }}</td>
         <td class="text-xs-right">{{ props.item.jmbg }}</td>
         <td class="text-xs-right">{{ props.item.pol }}</td>
         <td class="text-xs-right">{{ props.item.dan }}.{{ props.item.mesec }}.{{ props.item.godina }}.</td>
+        <td class="text-xs-right">{{ props.item.mestoRodjenja }}</td>
+        <td class="text-xs-right">{{ props.item.opstina.nazivOpstine }}</td>
         <td class="justify-center layout px-0">
           <v-btn right icon class="mx-0" @click="editItem(props.item)">
             <v-icon right color="teal">edit</v-icon>
@@ -105,11 +140,14 @@ import moment from 'moment'
         { text: 'Prezime', value: 'prezime', align: 'right',},
         { text: 'JMBG', value: 'jmbg',align: 'right' },
         { text: 'Pol', value: 'pol',align: 'right' },
-        { text: 'Datum Rodjenja', value: 'dan',align: 'right' },
+        { text: 'Datum rodjenja', value: 'dan',align: 'right' },
+        { text: 'Mesto rodjenja', value: 'mestoR',align: 'right' },
+        { text: 'Opstina', value: 'opstina',align: 'right' },
         { text: 'Opcije', value: 'opcije',align: 'right' }
       ],
       datum: null,
-
+      a1: null,
+      pol:['Musko','Zensko'],
       editedIndex: -1,
       editedItem: {
         ime: '',
@@ -119,9 +157,10 @@ import moment from 'moment'
         dan: '',
         mesec: '',
         godina: '',
-        mesto: {
+        mestoRodjenja: '',
+        opstina: {
           id: '',
-          naziv: ''
+          nazivOpstine: ''
           }
       },
       defaultItem: {
@@ -132,15 +171,19 @@ import moment from 'moment'
         dan: '',
         mesec: '',
         godina: '',
-        mesto: {
+        mestoRodjenja: '',
+        opstina: {
           id: '',
-          naziv: ''
+          nazivOpstine: ''
           }
       }
     }),
     computed: {ucenici () {
-       return this.$store.getters.loadedUcenici 
-       
+       return this.$store.getters.loadedUcenici       
+    },
+    opstine () {
+       return this.$store.getters.loadedOpstine  
+           
     },
       loading () {
         return this.$store.getters.loading
@@ -157,10 +200,10 @@ import moment from 'moment'
     methods: {
        formatiranjeDatuma()
       {
-       
-         
-          this.editedItem.dan=this.datum.substring(9,10)
-          this.editedItem.mesec=this.datum.substring(6,7)
+          const dan=this.datum.slice(-2);
+          this.editedItem.dan=dan
+          const mesec=this.datum.substr(5,2)
+          this.editedItem.mesec=mesec
           this.editedItem.godina=this.datum.substring(0,4)
       },
       editItem (item) {
@@ -181,26 +224,18 @@ import moment from 'moment'
         }, 300)
       },
       save () {
-        if (this.editedIndex > -1) {
-     
+        if (this.editedIndex > -1) {    
           this.formatiranjeDatuma()
- 
           Object.assign(this.ucenici[this.editedIndex], this.editedItem)
 
         } else {
-          this.formatiranjeDatuma()
-        
+          this.formatiranjeDatuma() 
+          console.log(this.editedItem)      
           this.$store.dispatch('createUcenik',this.editedItem)
-        
-          this.ucenici.push(this.editedItem)
-         
-       
-       
-        
         }
         this.close()
       }  
-      },
+      }
 
   }
 </script>
