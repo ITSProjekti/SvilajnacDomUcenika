@@ -29,13 +29,14 @@
                 <v-text-field v-model="editedItem.mesto.naziv" label="MestoNaziv"></v-text-field>
               </v-flex>
               <v-flex xs12 >
-                <h3 dark class="mb-2">Datum Rodjenja</h3>
-               
-                <v-date-picker v-model="datum"></v-date-picker>
+                <h3 dark class="mb-2">Datum Rodjenja</h3>              
+                <v-date-picker
+                 v-model="datum"
+                 locale="sr-Latn"
+                 ></v-date-picker>
                  <p>Prethodni: {{ editedItem.dan }}.{{ editedItem.mesec }}.{{editedItem.godina }}</p>
                  <p>Novi: {{datum}}</p>
-              </v-flex>
-              
+              </v-flex>              
             </v-layout>
           </v-container>
         </v-card-text>
@@ -46,13 +47,24 @@
         </v-card-actions>
       </v-card>
     </v-dialog>
+    <v-layout> 
+        <v-flex xs12 class="text-xs-center">
+        <v-progress-circular
+          indeterminate
+          class="primary--text"
+          :width="7"
+          :size="70"
+          v-if="loading"></v-progress-circular>
+      </v-flex>
+    </v-layout>
+    <v-layout  row wrap class="mt-2" v-if="!loading">
     <v-data-table
       :headers="headers"
       :items="ucenici"
       hide-actions
       class="elevation-1"
     >
-      <template slot="items" slot-scope="props">
+      <template slot="items" slot-scope="props" >
         <td>{{ props.item.mesto.naziv }}</td>
         <td class="text-xs-right">{{ props.item.ime }}</td>
         <td class="text-xs-right">{{ props.item.prezime }}</td>
@@ -70,11 +82,15 @@
       </template>
 
     </v-data-table>
+    </v-layout>
   </div>
 </template>
 
+
 <script>
 /* eslint-disable */
+import moment from 'moment'
+
   export default {
     data: () => ({
       dialog: false,
@@ -93,6 +109,7 @@
         { text: 'Opcije', value: 'opcije',align: 'right' }
       ],
       datum: null,
+
       editedIndex: -1,
       editedItem: {
         ime: '',
@@ -122,10 +139,12 @@
       }
     }),
     computed: {ucenici () {
-        return this.$store.getters.loadedUcenici
-        
+       return this.$store.getters.loadedUcenici 
        
     },
+      loading () {
+        return this.$store.getters.loading
+      },
       formTitle () {
         return this.editedIndex === -1 ? 'Prijavi novog ucenika' : 'Izmeni'
       }
@@ -138,11 +157,11 @@
     methods: {
        formatiranjeDatuma()
       {
-          console.log(this.datum)
-          const xz= new Date(this.datum)
-          this.editedItem.dan=xz.getDay()
-          this.editedItem.mesec=xz.getMonth()
-          this.editedItem.godina=xz.getYear()
+       
+         
+          this.editedItem.dan=this.datum.substring(9,10)
+          this.editedItem.mesec=this.datum.substring(6,7)
+          this.editedItem.godina=this.datum.substring(0,4)
       },
       editItem (item) {
         this.editedIndex = this.ucenici.indexOf(item)
@@ -151,7 +170,8 @@
       },
       deleteItem (item) {
         const index = this.ucenici.indexOf(item)
-        confirm('Are you sure you want to delete this item?') && this.ucenici.remove(index, 1)
+   
+        confirm('Da li ste sigurni da zelite da izbrisete ovog ucenika?') && this.$store.dispatch('deleteUcenik',item.id) && this.ucenici.splice(index,1)
       },
       close () {
         this.dialog = false
@@ -162,19 +182,36 @@
       },
       save () {
         if (this.editedIndex > -1) {
+     
           this.formatiranjeDatuma()
+ 
           Object.assign(this.ucenici[this.editedIndex], this.editedItem)
 
         } else {
           this.formatiranjeDatuma()
+        
           this.$store.dispatch('createUcenik',this.editedItem)
+        
           this.ucenici.push(this.editedItem)
+         
+       
+       
+        
         }
         this.close()
-      }
-    
-            
-               
-            }
+      }  
+      },
+
   }
 </script>
+
+<style scoped>
+  .title {
+    position: absolute;
+    bottom: 50px;
+    background-color: rgba(0,0,0,0.5);
+    color: white;
+    font-size: 2em;
+    padding: 20px;
+  }
+</style>
