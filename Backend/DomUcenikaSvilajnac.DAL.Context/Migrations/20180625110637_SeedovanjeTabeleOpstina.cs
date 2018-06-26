@@ -23,8 +23,8 @@ namespace DomUcenikaSvilajnac.DAL.Context.Migrations
    " ('Knjaževac'), ('Kovačica'), ('Kovin'), ('Kosjerić'), ('Kosovo Polje'), ('Kosovska Kamenica'), ('Kosovska Mitrovica')," +
    " ('Koceljeva'), ('Kragujevac'), ('Kraljevo'), ('Krupanj'), ('Kruševac'), ('Kula'), ('Kuršumlija')," +
    " ('Kučevo'), ('Lazarevac'), ('Lajkovac'), ('Lapovo'), ('Lebane'), ('Leposavić'), ('Leskovac'), " +
-   " ('Lipljan'), ('Loznica'), ('Lučani'), ('Lučani'), ('Ljig'), ('Ljubovija'), ('Majdanpek')," +
-   " ('Majdanpek'), ('Mali Zvornik'), ('Mali Iđoš'), ('Malo Crniće'), ('Medveđa'), ('Mediana'), ('Merošina')," +
+   " ('Lipljan'), ('Loznica'), ('Lučani'), ('Ljig'), ('Ljubovija'), ('Majdanpek')," +
+   " ('Mali Zvornik'), ('Mali Iđoš'), ('Malo Crniće'), ('Medveđa'), ('Mediana'), ('Merošina')," +
    " ('Mionica'), ('Mladenovac'), ('Negotin'), ('Niška Banja'), ('Nova Varoš'), ('Nova Crnja'), ('Novi Beograd')," +
    " ('Novi Bečej'), ('Novi Kneževac'), ('Novi Pazar'), ('Novi Sad'), ('Novo Brdo'), ('Obilić'), ('Obrenovac')," +
    " ('Opovo'), ('Orahovac'), ('Osečina'), ('Odžaci'), ('Palilula'), ('Palilula (Niš) '), ('Pantelej')," +
@@ -39,8 +39,8 @@ namespace DomUcenikaSvilajnac.DAL.Context.Migrations
    " ('Crna Trava'), ('Čajetina'),('Čačak'), ('Čoka'), ('Čukarica'), ('Šabac'), ('Šid')," +
    " ('Štimlje'), ('Štrpce'); ");
 
-        
-    }
+
+        }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {

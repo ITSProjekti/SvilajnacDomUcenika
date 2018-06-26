@@ -21,5 +21,7 @@ namespace DomUcenikaSvilajnac.Common.Models
         {
             Ucenici = new Collection<Ucenik>();
         }
+
+        public string PostanskiBroj { get; set; }
     }
 }
