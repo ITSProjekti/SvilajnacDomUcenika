@@ -86,26 +86,45 @@
           indeterminate
           class="primary--text"
           :width="7"
-          :size="70"
+          :size="150"
           v-if="loading"></v-progress-circular>
       </v-flex>
     </v-layout>
-    <v-layout  row wrap class="mt-2" v-if="!loading">
+    <v-card>
+      <v-layout xs12>
+        <v-card-title>
+      Lista ucenika
+      <v-spacer></v-spacer>
+    
+      <v-text-field
+        v-model="search"
+        append-icon="search"
+        label="Pretraga"
+        single-line
+        hide-details
+        
+      ></v-text-field>
+    </v-card-title>
+      </v-layout>
+    <v-layout xs12 row wrap class="mt-2" absolute v-if="!loading">
+      
     <v-data-table
       :headers="headers"
       :items="ucenici"
       hide-actions
-      class="elevation-1"
+      :search="search"
+     
+      class="text-xs-center"
     >
       <template slot="items" slot-scope="props" >
-        <td>{{ props.item.ime }}</td>
-        <td class="text-xs-right">{{ props.item.ime }}</td>
-        <td class="text-xs-right">{{ props.item.prezime }}</td>
-        <td class="text-xs-right">{{ props.item.jmbg }}</td>
-        <td class="text-xs-right">{{ props.item.pol }}</td>
-        <td class="text-xs-right">{{ props.item.dan }}.{{ props.item.mesec }}.{{ props.item.godina }}.</td>
-        <td class="text-xs-right">{{ props.item.mestoRodjenja }}</td>
-        <td class="text-xs-right">{{ props.item.opstina.nazivOpstine }}</td>
+        <td class="text-xs-center">{{ props.item.ime }}</td>
+        <td class="text-xs-center">{{ props.item.ime }}</td>
+        <td class="text-xs-center">{{ props.item.prezime }}</td>
+        <td class="text-xs-center">{{ props.item.jmbg }}</td>
+        <td class="text-xs-center">{{ props.item.pol }}</td>
+        <td class="text-xs-center">{{ props.item.dan }}.{{ props.item.mesec }}.{{ props.item.godina }}.</td>
+        <td class="text-xs-center">{{ props.item.mestoRodjenja }}</td>
+        <td class="text-xs-center">{{ props.item.opstina.nazivOpstine }}</td>
         <td class="justify-center layout px-0">
           <v-btn right icon class="mx-0" @click="editItem(props.item)">
             <v-icon right color="teal">edit</v-icon>
@@ -115,9 +134,18 @@
           </v-btn>
         </td>
       </template>
-
+       <template slot="no-data">
+      <v-alert :value="true" color="error" icon="warning">
+        Nema ni jednog ucenika. :(
+      </v-alert>
+       
+    </template>
+    <v-alert slot="no-results" :value="true" color="error" icon="warning">
+        Vasa pretraga za "{{ search }}" nije pronasla rezultata.
+      </v-alert>
     </v-data-table>
     </v-layout>
+    </v-card>
   </div>
 </template>
 
@@ -132,21 +160,23 @@ import moment from 'moment'
       headers: [
         {
           text: 'Ucenici',
-          align: 'left',
+          align: 'center',
           sortable: false,
-           value: 'ime'
+           value: 'ime',
+           width:'5%'
         },
-        { text: 'Ime',value: 'ime' ,align: 'right'},
-        { text: 'Prezime', value: 'prezime', align: 'right',},
-        { text: 'JMBG', value: 'jmbg',align: 'right' },
-        { text: 'Pol', value: 'pol',align: 'right' },
-        { text: 'Datum rodjenja', value: 'dan',align: 'right' },
-        { text: 'Mesto rodjenja', value: 'mestoR',align: 'right' },
-        { text: 'Opstina', value: 'opstina',align: 'right' },
-        { text: 'Opcije', value: 'opcije',align: 'right' }
+        { text: 'Ime',value: false ,align: 'center',sortable:false, width:'10%'},
+        { text: 'Prezime', value:false, align: 'center',width:'10%'},
+        { text: 'JMBG', value:false,align: 'center' ,width:'10%'},
+        { text: 'Pol', value: false,align: 'center',width:'10%' },
+        { text: 'Datum rodjenja', value: false,align: 'center',width:'10%' },
+        { text: 'Mesto rodjenja', value: false,align: 'center',width:'10%' },
+        { text: 'Opstina', value: false,align: 'rcenteright' ,width:'10%'},
+        { text: 'Opcije', value: false,align: 'center',width:'10%' }
       ],
       datum: null,
-      a1: null,
+      
+      search: '',
       pol:['Musko','Zensko'],
       editedIndex: -1,
       editedItem: {
@@ -200,7 +230,7 @@ import moment from 'moment'
     methods: {
        formatiranjeDatuma()
       {
-          const dan=this.datum.slice(-2);
+          const dan=this.datum.slice(-2); 
           this.editedItem.dan=dan
           const mesec=this.datum.substr(5,2)
           this.editedItem.mesec=mesec
