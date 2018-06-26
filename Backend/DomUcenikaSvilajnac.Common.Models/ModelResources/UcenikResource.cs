@@ -27,6 +27,7 @@ namespace DomUcenikaSvilajnac.ModelResources
 
         public int Godina { get; set; }
         public string MestoRodjenja { get; set; }
+        public string MestoPrebivalista { get; set; }
 
         public Opstina Opstina { get; set; }
 

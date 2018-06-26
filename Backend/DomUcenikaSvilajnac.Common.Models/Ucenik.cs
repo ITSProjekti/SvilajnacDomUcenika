@@ -12,7 +12,7 @@ namespace DomUcenikaSvilajnac.Common.Models
     [Table("Ucenici")]
     public class Ucenik
     {
-       
+
         public int Id { get; set; }
 
         [Required]
@@ -24,7 +24,7 @@ namespace DomUcenikaSvilajnac.Common.Models
         public string Prezime { get; set; }
 
         [Required]
-        [MaxLength(13),MinLength(13)]
+        [MaxLength(13), MinLength(13)]
         public string JMBG { get; set; }
 
         [Required]
@@ -33,11 +33,12 @@ namespace DomUcenikaSvilajnac.Common.Models
         [Required]
         [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:dd/mm/yyyy}")]
         public DateTime DatumRodjenja { get; set; }
-        
+
         public int OpstinaId { get; set; }
         public Opstina Opstina { get; set; }
 
         public string MestoRodjenja { get; set; }
+        public string MestoPrebivalista { get; set; }
 
         public int DrzavaRodjenjaId { get; set; }
         public Drzava DrzavaRodjenja { get; set; }
