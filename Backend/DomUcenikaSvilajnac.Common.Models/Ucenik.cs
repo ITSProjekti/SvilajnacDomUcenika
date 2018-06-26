@@ -7,7 +7,7 @@ using System.Text;
 namespace DomUcenikaSvilajnac.Common.Models
 {
     /// <summary>
-    /// Klasa Ucenik, pravi tabelu "Ucenici" u bazi podataka sa poljima koja su navedena kao property u datoj klasi
+    /// Klasa Ucenik, pravi tabelu "Ucenici" u bazi podataka sa poljima koja su navedena kao property u datoj klasi.
     /// </summary>
     [Table("Ucenici")]
     public class Ucenik
@@ -33,12 +33,14 @@ namespace DomUcenikaSvilajnac.Common.Models
         [Required]
         [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:dd/mm/yyyy}")]
         public DateTime DatumRodjenja { get; set; }
-
         
-
         public int OpstinaId { get; set; }
         public Opstina Opstina { get; set; }
 
         public string MestoRodjenja { get; set; }
+
+        public int DrzavaRodjenjaId { get; set; }
+        public Drzava DrzavaRodjenja { get; set; }
+
     }
 }

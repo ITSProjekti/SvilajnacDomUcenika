@@ -78,7 +78,7 @@ namespace DomUcenikaSvilajnac.Controllers
 
 
         /// <summary>
-        /// Metoda za update, menja podate u nekom redu u tabeli, tj.o nekom uceniku na osnovu prosledjenog Id-a 
+        /// Metoda za update, menja podatke u nekom redu u tabeli, tj.o nekom uceniku na osnovu prosledjenog Id-a 
         /// i vraca podatke o uceniku koji su namenjeni za front.
         /// </summary>
         // PUT: api/Ucenik/5

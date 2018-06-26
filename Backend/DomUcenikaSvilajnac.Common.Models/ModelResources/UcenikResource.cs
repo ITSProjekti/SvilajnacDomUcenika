@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace DomUcenikaSvilajnac.ModelResources
 {
     /// <summary>
-    /// Sluzi za podakte koji ce se slati na fron, u slucaju da neki podatak nije potrebno poslati na front, smanjuje se broj property-a u odnosu na 
+    /// Sluzi za podakte koji ce se slati na front, u slucaju da neki podatak nije potrebno poslati na front, smanjuje se broj property-a u odnosu na 
     /// klasu Ucenik.
     /// </summary>
     public class UcenikResource
@@ -29,10 +29,7 @@ namespace DomUcenikaSvilajnac.ModelResources
         public string MestoRodjenja { get; set; }
 
         public Opstina Opstina { get; set; }
-      
 
-
-
-
+        public Drzava DrzavaRodjenja { get; set; }
     }
 }

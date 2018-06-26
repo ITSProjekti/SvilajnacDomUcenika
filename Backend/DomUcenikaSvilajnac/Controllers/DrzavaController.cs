@@ -36,10 +36,8 @@ namespace DomUcenikaSvilajnac.Controllers
         }
 
         /// <summary>
-        /// Gets the drzava by identifier.
+        /// Vraca jedan red iz tabele, tj jednu drzavu na osnovu prosledjenog Id-a.
         /// </summary>
-        /// <param name="id">The identifier.</param>
-        /// <returns></returns>
         [HttpGet("{id}")]
         public async Task<IActionResult> GetDrzavaById([FromRoute] int id)
         {
@@ -58,11 +56,9 @@ namespace DomUcenikaSvilajnac.Controllers
             return Ok(drzavaNova);
         }
         /// <summary>
-        /// Puts the drzava.
+        /// Metoda za update, menja podatke u nekom redu u tabeli, tj.o nekoj drzavi na osnovu prosledjenog Id-a 
+        /// i vraca podatke o drzavi koji su namenjeni za front.
         /// </summary>
-        /// <param name="id">The identifier.</param>
-        /// <param name="drzava">The drzava.</param>
-        /// <returns></returns>
         [HttpPut("{id}")]
         public async Task<IActionResult> PutDrzava([FromRoute] int id, [FromBody] DrzavaResource drzava)
         {
@@ -91,10 +87,8 @@ namespace DomUcenikaSvilajnac.Controllers
 
 
         /// <summary>
-        /// Posts the drzava.
+        /// Dodavanje novog reda u tabeli, tj. nove drzave.
         /// </summary>
-        /// <param name="drzava">The drzava.</param>
-        /// <returns></returns>
         [HttpPost]
         public async Task<IActionResult> PostDrzava([FromBody] DrzavaResource drzava)
         {
@@ -112,7 +106,7 @@ namespace DomUcenikaSvilajnac.Controllers
             return Ok(novaDrzava);
         }
         /// <summary>
-        /// Deletes the drzava.
+        /// Brisanje jednog reda iz tabele na osnvou prosledjenog Id-a, tj. brisanje odredjene drzave iz tabele.
         /// </summary>
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteDrzava([FromRoute] int id)
