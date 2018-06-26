@@ -102,6 +102,7 @@ namespace DomUcenikaSvilajnac.Controllers
 
             var novi = _mapper.Map<UcenikResource, Ucenik>(ucenik, stariUcenik);
             novi.Opstina = null;
+            novi.DrzavaRodjenja = null;
             await UnitOfWork.SaveChangesAsync();
 
 
@@ -123,6 +124,7 @@ namespace DomUcenikaSvilajnac.Controllers
             }
             var noviUcenik = _mapper.Map<UcenikResource, Ucenik>(ucenik);
             noviUcenik.Opstina = null;
+            noviUcenik.DrzavaRodjenja = null;
             
             //cuvanje u bazi
             UnitOfWork.Ucenici.Add(noviUcenik);
