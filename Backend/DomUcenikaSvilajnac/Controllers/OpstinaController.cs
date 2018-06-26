@@ -16,12 +16,18 @@ namespace DomUcenikaSvilajnac.Controllers
     {
         public IMapper Mapper { get; }
         public IUnitOfWork UnitOfWork { get; }
+
+        /// <summary>
+        /// Inicijalizacija instance klase OpstinaController i deklarisanje mappera i unitofwork-a.
+        /// </summary>
         public OpstinaController(IMapper mapper, IUnitOfWork unitOfWork)
         {
             Mapper = mapper;
             UnitOfWork = unitOfWork;
         }
 
+        /// <summary>
+        /// Vraca listu sviih opstina, koje se trenutno nalaze u bazi.
         /// </summary>
         [HttpGet]
         public async Task<IEnumerable<OpstinaResource>> GetOpstine()
@@ -31,6 +37,9 @@ namespace DomUcenikaSvilajnac.Controllers
         }
 
 
+        /// <summary>
+        /// Vraca jedan red iz tabele, tj jednu opstinu na osnovu prosledjenog Id-a.
+        /// </summary>
         [HttpGet("{id}")]
         public async Task<IActionResult> GetMestoById([FromRoute] int id)
         {
@@ -48,6 +57,11 @@ namespace DomUcenikaSvilajnac.Controllers
 
             return Ok(opstinaNova);
         }
+
+        /// <summary>
+        /// Metoda za update, menja podatke u nekom redu u tabeli, tj.o nekoj opstini na osnovu prosledjenog Id-a 
+        /// i vraca podatke o opstini koji su namenjeni za front.
+        /// </summary>
         [HttpPut("{id}")]
         public async Task<IActionResult> PutOpstina([FromRoute] int id, [FromBody] OpstinaResource opstina)
         {
@@ -74,6 +88,9 @@ namespace DomUcenikaSvilajnac.Controllers
             return Ok(opstina);
         }
 
+        /// <summary>
+        /// Dodavanje novog reda u tabeli, tj. novoe opstine.
+        /// </summary>
         [HttpPost]
         public async Task<IActionResult> PostOpstina([FromBody] OpstinaResource opstina)
         {
@@ -90,6 +107,9 @@ namespace DomUcenikaSvilajnac.Controllers
 
             return Ok(novaOpstina);
         }
+        /// <summary>
+        /// Brisanje jednog reda iz tabele na osnvou prosledjenog Id-a, tj. brisanje odredjene opstine iz tabele.
+        /// </summary>
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteOpstina([FromRoute] int id)
         {
@@ -109,9 +129,5 @@ namespace DomUcenikaSvilajnac.Controllers
 
             return Ok(novaOpstina);
         }
-
-
-
-
     }
 }

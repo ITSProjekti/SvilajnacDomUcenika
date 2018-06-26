@@ -162,11 +162,6 @@ namespace DomUcenikaSvilajnac.Controllers
             await UnitOfWork.SaveChangesAsync();
 
             return Ok(mapiranUcenik);
-        }
-
-        /// <summary>
-        /// Proveravanje da li odredjeni ucenik postoji, koristi se za CRUD operacije.
-        /// </summary>
-       
+        }       
     }
 }

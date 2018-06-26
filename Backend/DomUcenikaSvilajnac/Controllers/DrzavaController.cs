@@ -16,12 +16,18 @@ namespace DomUcenikaSvilajnac.Controllers
     {
         public IMapper Mapper { get; }
         public IUnitOfWork UnitOfWork { get; }
+        /// <summary>
+        /// Inicijalizacija instance klase DrzavaController i deklarisanje mappera i unitofwork-a.
+        /// </summary>
         public DrzavaController(IMapper mapper, IUnitOfWork unitOfWork)
         {
             Mapper = mapper;
             UnitOfWork = unitOfWork;
         }
 
+        /// <summary>
+        /// Vraca listu svih drzava koje se trenutno nalaze u bazi.
+        /// </summary>
         [HttpGet]
         public async Task<IEnumerable<DrzavaResource>> GetDrzave()
         {
@@ -29,6 +35,11 @@ namespace DomUcenikaSvilajnac.Controllers
             return Mapper.Map<List<Drzava>, List<DrzavaResource>>(listaDrzava.ToList());
         }
 
+        /// <summary>
+        /// Gets the drzava by identifier.
+        /// </summary>
+        /// <param name="id">The identifier.</param>
+        /// <returns></returns>
         [HttpGet("{id}")]
         public async Task<IActionResult> GetDrzavaById([FromRoute] int id)
         {
@@ -46,6 +57,12 @@ namespace DomUcenikaSvilajnac.Controllers
 
             return Ok(drzavaNova);
         }
+        /// <summary>
+        /// Puts the drzava.
+        /// </summary>
+        /// <param name="id">The identifier.</param>
+        /// <param name="drzava">The drzava.</param>
+        /// <returns></returns>
         [HttpPut("{id}")]
         public async Task<IActionResult> PutDrzava([FromRoute] int id, [FromBody] DrzavaResource drzava)
         {
@@ -73,6 +90,11 @@ namespace DomUcenikaSvilajnac.Controllers
         }
 
 
+        /// <summary>
+        /// Posts the drzava.
+        /// </summary>
+        /// <param name="drzava">The drzava.</param>
+        /// <returns></returns>
         [HttpPost]
         public async Task<IActionResult> PostDrzava([FromBody] DrzavaResource drzava)
         {
@@ -89,6 +111,9 @@ namespace DomUcenikaSvilajnac.Controllers
 
             return Ok(novaDrzava);
         }
+        /// <summary>
+        /// Deletes the drzava.
+        /// </summary>
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteDrzava([FromRoute] int id)
         {
@@ -109,7 +134,5 @@ namespace DomUcenikaSvilajnac.Controllers
 
             return Ok(novaDrzava);
         }
-
-
     }
 }
