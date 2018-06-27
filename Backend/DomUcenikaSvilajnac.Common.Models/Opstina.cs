@@ -16,10 +16,22 @@ namespace DomUcenikaSvilajnac.Common.Models
 
         public string NazivOpstine { get; set; }
 
-        ICollection<Ucenik> Ucenici { get; set; }
+
+        //Za spajanje dva puta na ucenika
+        [InverseProperty("Opstina")]
+         ICollection<Ucenik> Ucenici {get; set; }
+
+        [InverseProperty("OpstinaPrebivalista")]
+        ICollection<Ucenik> UceniciOpstine { get; set; }
+
+
+
+
+
         public Opstina()
         {
             Ucenici = new Collection<Ucenik>();
+            UceniciOpstine = new Collection<Ucenik>();
         }
 
         public string PostanskiBroj { get; set; }

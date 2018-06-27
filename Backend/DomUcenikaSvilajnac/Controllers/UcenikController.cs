@@ -123,9 +123,12 @@ namespace DomUcenikaSvilajnac.Controllers
                 return BadRequest(ModelState);
             }
             var noviUcenik = _mapper.Map<UcenikResource, Ucenik>(ucenik);
-            noviUcenik.Opstina = null;
-            noviUcenik.DrzavaRodjenja = null;
-            
+
+            noviUcenik.Opstina.NazivOpstine = null;
+            noviUcenik.DrzavaRodjenja.NazivDrzave = null;
+            noviUcenik.OpstinaPrebivalista.NazivOpstine = null;
+            noviUcenik.OpstinaPrebivalista.PostanskiBroj = null;
+
             //cuvanje u bazi
             UnitOfWork.Ucenici.Add(noviUcenik);
             await UnitOfWork.SaveChangesAsync();

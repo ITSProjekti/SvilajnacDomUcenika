@@ -26,5 +26,10 @@ namespace DomUcenikaSvilajnac.DAL.Context
         {
 
         }
+
+        //protected override void OnModelCreating(ModelBuilder modelBuilder)
+        //{
+          
+        //}
     }
 }

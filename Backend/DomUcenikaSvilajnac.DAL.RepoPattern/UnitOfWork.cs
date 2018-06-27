@@ -79,6 +79,7 @@ namespace DomUcenikaSvilajnac.DAL.RepoPattern
             var neki = await _context.Uceniks
                 .Include(o=> o.Opstina)
                 .Include(d=> d.DrzavaRodjenja)
+                .Include(op=> op.OpstinaPrebivalista)
                 .ToListAsync();
             return Mapper.Map<List<Ucenik>, List<UcenikResource>>(neki);
         }
@@ -87,6 +88,7 @@ namespace DomUcenikaSvilajnac.DAL.RepoPattern
             var neki = await _context.Uceniks
                  .Include(o => o.Opstina)
                  .Include(d=> d.DrzavaRodjenja)
+                 .Include(op => op.OpstinaPrebivalista)
                 .SingleOrDefaultAsync(x => x.Id == id);
             return Mapper.Map<Ucenik, UcenikResource>(neki);
         }
@@ -96,6 +98,7 @@ namespace DomUcenikaSvilajnac.DAL.RepoPattern
             var neki = await _context.Uceniks
                 .Include(o=> o.Opstina)
                 .Include(d => d.DrzavaRodjenja)
+                .Include(op => op.OpstinaPrebivalista)
                 .SingleOrDefaultAsync(x => x.Id == ucenik.Id);
 
             return Mapper.Map<Ucenik, UcenikResource>(neki);

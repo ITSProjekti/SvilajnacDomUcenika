@@ -30,6 +30,8 @@ namespace DomUcenikaSvilajnac.ModelResources
         public string MestoPrebivalista { get; set; }
 
         public Opstina Opstina { get; set; }
+        public Opstina OpstinaPrebivalista { get; set; }
+
 
         public Drzava DrzavaRodjenja { get; set; }
     }
