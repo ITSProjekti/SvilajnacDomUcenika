@@ -6,17 +6,18 @@ using System.Text;
 
 namespace DomUcenikaSvilajnac.Common.Models
 {
-    [Table("Polovi")]
-    public class Pol
+    [Table("BrojeviTelefona")]
+    public class Telefon
     {
         public int Id { get; set; }
-        public string NazivPola { get; set; }
+        public string Mobilni { get; set; }
+        public string Kucni { get; set; }
+
         ICollection<Ucenik> Ucenici { get; set; }
 
-        public Pol()
+        public Telefon()
         {
             Ucenici = new Collection<Ucenik>();
         }
-
     }
 }

@@ -20,6 +20,7 @@ namespace DomUcenikaSvilajnac.DAL.Context
         public DbSet<Opstina> Opstine { get; set; }
         public DbSet<Drzava> Drzave { get; set; }
         public DbSet<Pol> Polovi { get; set; }
+        public DbSet<Telefon> Telefoni { get; set; }
         /// <summary>
         /// Inicijalizuje se instaca UcenikContext klase.
         /// </summary>

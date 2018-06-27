@@ -11,9 +11,10 @@ using System;
 namespace DomUcenikaSvilajnac.DAL.Context.Migrations
 {
     [DbContext(typeof(UcenikContext))]
-    partial class UcenikContextModelSnapshot : ModelSnapshot
+    [Migration("20180627113643_PolSaUcenikom")]
+    partial class PolSaUcenikom
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -58,20 +59,6 @@ namespace DomUcenikaSvilajnac.DAL.Context.Migrations
                     b.ToTable("Polovi");
                 });
 
-            modelBuilder.Entity("DomUcenikaSvilajnac.Common.Models.Telefon", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd();
-
-                    b.Property<string>("Kucni");
-
-                    b.Property<string>("Mobilni");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("BrojeviTelefona");
-                });
-
             modelBuilder.Entity("DomUcenikaSvilajnac.Common.Models.Ucenik", b =>
                 {
                     b.Property<int>("Id")
@@ -103,8 +90,6 @@ namespace DomUcenikaSvilajnac.DAL.Context.Migrations
                         .IsRequired()
                         .HasMaxLength(50);
 
-                    b.Property<int>("TelefonId");
-
                     b.HasKey("Id");
 
                     b.HasIndex("DrzavaRodjenjaId");
@@ -114,8 +99,6 @@ namespace DomUcenikaSvilajnac.DAL.Context.Migrations
                     b.HasIndex("OpstinaPrebivalistaId");
 
                     b.HasIndex("PolId");
-
-                    b.HasIndex("TelefonId");
 
                     b.ToTable("Ucenici");
                 });
@@ -138,11 +121,6 @@ namespace DomUcenikaSvilajnac.DAL.Context.Migrations
                     b.HasOne("DomUcenikaSvilajnac.Common.Models.Pol", "Pol")
                         .WithMany()
                         .HasForeignKey("PolId")
-                        .OnDelete(DeleteBehavior.Cascade);
-
-                    b.HasOne("DomUcenikaSvilajnac.Common.Models.Telefon", "Telefon")
-                        .WithMany()
-                        .HasForeignKey("TelefonId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 #pragma warning restore 612, 618

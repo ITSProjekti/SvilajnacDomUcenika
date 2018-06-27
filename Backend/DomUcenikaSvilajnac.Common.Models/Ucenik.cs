@@ -52,5 +52,12 @@ namespace DomUcenikaSvilajnac.Common.Models
         public int DrzavaRodjenjaId { get; set; }
         public Drzava DrzavaRodjenja { get; set; }
 
+        public int PolId { get; set; }
+
+        public Pol Pol { get; set; }
+
+        public int TelefonId { get; set; }
+        public Telefon Telefon { get; set; }
+
     }
 }

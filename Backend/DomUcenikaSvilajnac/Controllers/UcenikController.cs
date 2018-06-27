@@ -104,6 +104,7 @@ namespace DomUcenikaSvilajnac.Controllers
             novi.Opstina = null;
             novi.DrzavaRodjenja = null;
             novi.OpstinaPrebivalista = null;
+            novi.Pol = null;
             await UnitOfWork.SaveChangesAsync();
 
 
@@ -127,6 +128,8 @@ namespace DomUcenikaSvilajnac.Controllers
             noviUcenik.Opstina = null;
             noviUcenik.DrzavaRodjenja = null;
             noviUcenik.OpstinaPrebivalista = null;
+            noviUcenik.Pol = null;
+            noviUcenik.Telefon = null;
 
             //cuvanje u bazi
             UnitOfWork.Ucenici.Add(noviUcenik);

@@ -18,10 +18,10 @@ namespace DomUcenikaSvilajnac.ModelResources
         public string Prezime { get; set; }
 
         public string JMBG { get; set; }
+        public Pol Pol { get; set; }
+        public Telefon Telefon { get; set; }
 
-
-
-     //    public DateTime DatumRodjenja { get; set; }
+        //    public DateTime DatumRodjenja { get; set; }
         public int Dan { get; set; }
         public int Mesec { get; set; }
 
@@ -34,5 +34,6 @@ namespace DomUcenikaSvilajnac.ModelResources
 
 
         public Drzava DrzavaRodjenja { get; set; }
+       
     }
 }

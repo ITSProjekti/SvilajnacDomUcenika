@@ -37,6 +37,8 @@ namespace DomUcenikaSvilajnac.DAL.RepoPattern
             Opstine = new OpstinaRepository(_context);
             Drzave = new DrzavaRepository(_context);
             Polovi = new PolRepository(_context);
+            Telefoni = new TelefonRepository(_context);
+
         }
 
         /// <summary>
@@ -46,6 +48,7 @@ namespace DomUcenikaSvilajnac.DAL.RepoPattern
         public IOpstinaRepository Opstine { get; private set; }
         public IDrzavaRepository Drzave { get; private set; }
         public IPolRepository Polovi { get; set; }
+        public ITelefonRepository Telefoni { get; set; }
 
         public IMapper Mapper { get; }
 
@@ -79,6 +82,8 @@ namespace DomUcenikaSvilajnac.DAL.RepoPattern
                 .Include(o=> o.Opstina)
                 .Include(d=> d.DrzavaRodjenja)
                 .Include(op=> op.OpstinaPrebivalista)
+                .Include(p=> p.Pol)
+                .Include(t=> t.Telefon)
                 .ToListAsync();
             return Mapper.Map<List<Ucenik>, List<UcenikResource>>(neki);
         }
@@ -88,6 +93,8 @@ namespace DomUcenikaSvilajnac.DAL.RepoPattern
                  .Include(o => o.Opstina)
                  .Include(d=> d.DrzavaRodjenja)
                  .Include(op => op.OpstinaPrebivalista)
+                 .Include(p => p.Pol)
+                 .Include(t => t.Telefon)
                 .SingleOrDefaultAsync(x => x.Id == id);
             return Mapper.Map<Ucenik, UcenikResource>(neki);
         }
@@ -98,6 +105,8 @@ namespace DomUcenikaSvilajnac.DAL.RepoPattern
                 .Include(o=> o.Opstina)
                 .Include(d => d.DrzavaRodjenja)
                 .Include(op => op.OpstinaPrebivalista)
+                .Include(p => p.Pol)
+                .Include(t => t.Telefon)
                 .SingleOrDefaultAsync(x => x.Id == ucenik.Id);
 
             return Mapper.Map<Ucenik, UcenikResource>(neki);
