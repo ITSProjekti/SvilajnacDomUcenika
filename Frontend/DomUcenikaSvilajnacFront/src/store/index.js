@@ -13,17 +13,22 @@ export const store = new Vuex.Store({
     state:{
         ucenici: [],
         opstine: [],
+        drzave: [],
         loading: false,
         error: null
     },
     mutations: {
         setLoadedUcenike (state,payload){
             state.ucenici=payload
-            console.log(state.ucenici)
+          
         },
         setLoadedOpstine (state,payload){
             state.opstine=payload
-            console.log(state.opstine)
+           
+        },
+        setLoadedDrzave (state,payload){
+            state.drzave=payload
+           
         },
         createUcenik (state,payload) {
             state.ucenici.push(payload)
@@ -48,6 +53,7 @@ export const store = new Vuex.Store({
         },
         editUcenik(state,payload)
         {
+            console.log(payload)
             const ucenikEdit = state.ucenici.find(ucenikEdit => {
                 return ucenikEdit.id === payload.id
               })
@@ -59,8 +65,15 @@ export const store = new Vuex.Store({
               ucenikEdit.mesec= payload.mesec,
               ucenikEdit.godina= payload.godina,
               ucenikEdit.mestoRodjenja= payload.mestoRodjenja,
+              ucenikEdit.mestoPrebivalista= payload.mestoPrebivalista,
               ucenikEdit.opstina= {
                    id: payload.opstina.id,
+                   nazivOpstine: payload.opstina.nazivOpstine,
+                   postanskiBroj: payload.opstina.postanskiBroj
+              },
+              ucenikEdit.drzavaRodjenja={
+                    id: payload.drzavaRodjenja.id,
+                    nazivDrzave: payload.drzavaRodjenja.nazivDrzave
               }
              
               
@@ -71,7 +84,7 @@ export const store = new Vuex.Store({
     actions: {
         loadedUcenici( {commit } ) {
             commit('setLoading', true)
-            axios.get('http://localhost:41280/api/ucenik').then((response) => {
+            axios.get('http://localhost:57665/api/ucenik').then((response) => {
               
               commit('setLoadedUcenike', response.data)
               commit('setLoading', false)
@@ -80,7 +93,7 @@ export const store = new Vuex.Store({
           },
           loadedOpstine( {commit } ) {
             commit('setLoading', true)
-            axios.get('http://localhost:41280/api/opstine').then((response) => {
+            axios.get('http://localhost:57665/api/opstine').then((response) => {
              
               commit('setLoadedOpstine', response.data)
             
@@ -88,6 +101,17 @@ export const store = new Vuex.Store({
               
             })
           },
+          loadedDrzave( {commit } ) {
+            commit('setLoading', true)
+            axios.get('http://localhost:57665/api/drzave').then((response) => {
+             
+              commit('setLoadedDrzave', response.data)
+            
+              commit('setLoading', false)
+              
+            })
+          },
+
         createUcenik ({commit}, payload) {
             const ucenik = {
                 ime: payload.ime,
@@ -98,13 +122,18 @@ export const store = new Vuex.Store({
                 mesec: payload.mesec,
                 godina: payload.godina,
                 mestoRodjenja: payload.mestoRodjenja,
+                mestoPrebivalista: payload.mestoPrebivalista,
                 opstina: {
                      id: payload.opstina.id,
+                },
+                drzavaRodjenja: {
+                     id: payload.drzavaRodjenja.id
                 }
                 
             }
             commit('setLoading', true)
-            axios.post('http://localhost:41280/api/ucenik',ucenik).then(function(response){
+            console.log(ucenik, this)
+            axios.post('http://localhost:57665/api/ucenik',ucenik).then(function(response){
                 console.log(response.data, this)
                 
                 commit('createUcenik',response.data)
@@ -115,33 +144,38 @@ export const store = new Vuex.Store({
         deleteUcenik( {commit },payload ) {
             commit('setLoading', true)
            
-            axios.delete('http://localhost:41280/api/ucenik/'+payload).then((response) => {
+            axios.delete('http://localhost:57665/api/ucenik/'+payload).then((response) => {
               
               commit('deleteUcenik', response.data)
               commit('setLoading', false)
             })
-          }
-    }, editUcenik ({commit}, payload) {
-        const ucenik = {
-            ime: payload.ime,
-            prezime: payload.prezime,
-            jmbg: payload.jmbg,
-            pol: payload.pol,
-            dan: payload.dan,
-            mesec: payload.mesec,
-            godina: payload.godina,
-            mestoRodjenja: payload.mestoRodjenja,
-            opstina: {
-                 id: payload.opstina.id,
+          },editUcenik ({commit}, payload) {
+            const ucenik = {
+                ime: payload.ime,
+                prezime: payload.prezime,
+                jmbg: payload.jmbg,
+                pol: payload.pol,
+                dan: payload.dan,
+                mesec: payload.mesec,
+                godina: payload.godina,
+                mestoRodjenja: payload.mestoRodjenja,
+                mestoPrebivalista: payload.mestoPrebivalista,
+                opstina: {
+                     id: payload.opstina.id,
+                },
+                drzavaRodjenja: {
+                     id: payload.drzavaRodjenja.id
+                }
+                
             }
-            
+            console.log(ucenik)
+            commit('setLoading', true)
+            axios.put('http://localhost:57665/api/ucenik/'+payload.id, ucenik).then(function(response){
+                commit('editUcenik', response.data)
+                commit('setLoading', false)
+                 })
+    
         }
-        commit('setLoading', true)
-        axios.put('http://localhost:41280/api/ucenik/',+payload.id).then(function(response){
-            commit('editUcenik', response.data)
-            commit('setLoading', false)
-             })
-
     },
 
     getters: {
@@ -154,6 +188,11 @@ export const store = new Vuex.Store({
     {
        
         return state.opstine 
+       
+    }, loadedDrzave (state)
+    {
+       
+        return state.drzave 
        
     },
     loadedUceniciID (state) {

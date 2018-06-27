@@ -22,7 +22,8 @@ new Vue({
   components: { App },
   template: '<App/>',
   created () {
-     this.$store.dispatch('loadedUcenici')
+    this.$store.dispatch('loadedUcenici')
+    this.$store.dispatch('loadedDrzave')
     return this.$store.dispatch('loadedOpstine')
   }
 })
