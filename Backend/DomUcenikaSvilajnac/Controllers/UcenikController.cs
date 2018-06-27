@@ -103,6 +103,7 @@ namespace DomUcenikaSvilajnac.Controllers
             var novi = _mapper.Map<UcenikResource, Ucenik>(ucenik, stariUcenik);
             novi.Opstina = null;
             novi.DrzavaRodjenja = null;
+            novi.OpstinaPrebivalista = null;
             await UnitOfWork.SaveChangesAsync();
 
 
@@ -123,11 +124,9 @@ namespace DomUcenikaSvilajnac.Controllers
                 return BadRequest(ModelState);
             }
             var noviUcenik = _mapper.Map<UcenikResource, Ucenik>(ucenik);
-
-            noviUcenik.Opstina.NazivOpstine = null;
-            noviUcenik.DrzavaRodjenja.NazivDrzave = null;
-            noviUcenik.OpstinaPrebivalista.NazivOpstine = null;
-            noviUcenik.OpstinaPrebivalista.PostanskiBroj = null;
+            noviUcenik.Opstina = null;
+            noviUcenik.DrzavaRodjenja = null;
+            noviUcenik.OpstinaPrebivalista = null;
 
             //cuvanje u bazi
             UnitOfWork.Ucenici.Add(noviUcenik);
