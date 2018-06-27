@@ -36,8 +36,7 @@ namespace DomUcenikaSvilajnac.DAL.RepoPattern
             Ucenici = new UcenikRepository(_context);
             Opstine = new OpstinaRepository(_context);
             Drzave = new DrzavaRepository(_context);
-
-
+            Polovi = new PolRepository(_context);
         }
 
         /// <summary>
@@ -46,7 +45,7 @@ namespace DomUcenikaSvilajnac.DAL.RepoPattern
         public IUcenikRepository Ucenici { get; private set; }
         public IOpstinaRepository Opstine { get; private set; }
         public IDrzavaRepository Drzave { get; private set; }
-
+        public IPolRepository Polovi { get; set; }
 
         public IMapper Mapper { get; }
 

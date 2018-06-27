@@ -27,8 +27,6 @@ namespace DomUcenikaSvilajnac.Common.Models
         [MaxLength(13), MinLength(13)]
         public string JMBG { get; set; }
 
-        [Required]
-        public string Pol { get; set; }
 
         [Required]
         [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:dd/mm/yyyy}")]
@@ -37,12 +35,17 @@ namespace DomUcenikaSvilajnac.Common.Models
         public DateTime DatumRodjenja { get; set; }
 
 
-        //
+        //================
+        //propertiji za komentarisanje prije svake migracije
         public int OpstinaPrebivalistaId { get; set; }
         public int OpstinaId { get; set; }
+        //================
         public Opstina Opstina { get; set; }
         public Opstina OpstinaPrebivalista { get; set; }
         //
+
+
+
         public string MestoRodjenja { get; set; }
         public string MestoPrebivalista { get; set; }
 

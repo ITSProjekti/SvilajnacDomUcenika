@@ -19,7 +19,7 @@ namespace DomUcenikaSvilajnac.ModelResources
 
         public string JMBG { get; set; }
 
-        public string Pol { get; set; }
+
 
      //    public DateTime DatumRodjenja { get; set; }
         public int Dan { get; set; }

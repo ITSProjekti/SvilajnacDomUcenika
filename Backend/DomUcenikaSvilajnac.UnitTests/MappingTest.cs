@@ -30,7 +30,6 @@ namespace DomUcenikaSvilajnac.UnitTests
                 Id = 1,
                 Ime = "Pera",
                 Prezime = "Peric",
-                Pol = "Muski",
                 JMBG = "1231231231233",
                 DatumRodjenja = new DateTime(1998, 04, 30)
             };
@@ -53,7 +52,6 @@ namespace DomUcenikaSvilajnac.UnitTests
                 Id = 1,
                 Ime = "Pera",
                 Prezime = "Peric",
-                Pol = "Muski",
                 JMBG = "1231231231233",
                 Dan = 5,
                 Mesec = 11,
@@ -78,7 +76,6 @@ namespace DomUcenikaSvilajnac.UnitTests
                 Id = 1,
                 Ime = "Pera",
                 Prezime = "Peric",
-                Pol = "Muski",
                 JMBG = "1231231231233",
                 Dan = 5,
                 Mesec = 11

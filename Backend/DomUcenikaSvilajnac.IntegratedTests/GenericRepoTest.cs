@@ -22,7 +22,7 @@ namespace DomUcenikaSvilajnac.IntegratedTests
         /// </summary>
         public UcenikResource Ucenik()
         {
-            return new UcenikResource { Ime = "Ilhan", Prezime = "Kalac", JMBG = "1405997273013", Pol = "Zenski", Dan = 14, Godina = 1997, Mesec = 5 };
+            return new UcenikResource { Ime = "Ilhan", Prezime = "Kalac", JMBG = "1405997273013", Dan = 14, Godina = 1997, Mesec = 5 };
         }
 
         /// <summary>
@@ -75,7 +75,7 @@ namespace DomUcenikaSvilajnac.IntegratedTests
 
             IUnitOfWork unitOfWork = new UnitOfWork(context, mapper);
             unitOfWork.Ucenici.Add(ucenikZaBazu);
-            unitOfWork.Ucenici.Add(new Ucenik { Ime = "Igor", Prezime = "Marjanovic", Pol = "Muski" });
+            unitOfWork.Ucenici.Add(new Ucenik { Ime = "Igor", Prezime = "Marjanovic" });
             unitOfWork.SaveChanges();
 
             var listaUcenika = unitOfWork.Ucenici.GetAll().ToList();
@@ -164,7 +164,7 @@ namespace DomUcenikaSvilajnac.IntegratedTests
 
             IUnitOfWork unitOfWork = new UnitOfWork(context,mapper);
             unitOfWork.Ucenici.Add(ucenikZaBazu);
-            unitOfWork.Ucenici.Add(new Ucenik { Ime = "Igor", Prezime = "Marjanovic", Pol = "Muski" });
+            unitOfWork.Ucenici.Add(new Ucenik { Ime = "Igor", Prezime = "Marjanovic"});
 
             //testiranje metode za brisanje
             unitOfWork.Ucenici.Remove(ucenikZaBazu);

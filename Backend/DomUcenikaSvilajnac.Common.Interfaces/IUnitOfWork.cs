@@ -20,6 +20,7 @@ namespace DomUcenikaSvilajnac.Common.Interfaces
         IOpstinaRepository Opstine { get; }
 
         IDrzavaRepository Drzave { get; }
+        IPolRepository Polovi { get; }
         int SaveChanges();
         Task<int> SaveChangesAsync();
         Task<IEnumerable<UcenikResource>> mestaUcenika();
