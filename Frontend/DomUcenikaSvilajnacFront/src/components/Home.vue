@@ -1,7 +1,7 @@
 <template>
  <v-container>
      <v-layout row wrap>
-         <v-flex xs12 sm6 class="text-sm-right" absolute> 
+         <v-flex xs12 sm6 class="text-sm-left" absolute> 
              <v-btn large router to="/ucenici" class="orange darken-4">Prikazi sve ucenike</v-btn>
          </v-flex>
          <v-flex xs12 sm6 class="text-sm-left" absolute>

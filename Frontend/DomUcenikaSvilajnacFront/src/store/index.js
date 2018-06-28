@@ -89,7 +89,12 @@ export const store = new Vuex.Store({
               commit('setLoadedUcenike', response.data)
               commit('setLoading', false)
               
-            })
+            }).catch(
+                (error) => {
+                  console.log(error)
+                  commit('setLoading', false)
+                }
+      )
           },
           loadedOpstine( {commit } ) {
             commit('setLoading', true)
@@ -99,7 +104,12 @@ export const store = new Vuex.Store({
             
               commit('setLoading', false)
               
-            })
+            }).catch(
+                (error) => {
+                  console.log(error)
+                  commit('setLoading', false)
+                }
+      )
           },
           loadedDrzave( {commit } ) {
             commit('setLoading', true)
@@ -109,7 +119,12 @@ export const store = new Vuex.Store({
             
               commit('setLoading', false)
               
-            })
+            }).catch(
+                (error) => {
+                  console.log(error)
+                  commit('setLoading', false)
+                }
+      )
           },
 
         createUcenik ({commit}, payload) {
@@ -138,7 +153,12 @@ export const store = new Vuex.Store({
                 
                 commit('createUcenik',response.data)
                 commit('setLoading', false)
-                 })
+                 }).catch(
+                    (error) => {
+                      console.log(error)
+                      commit('setLoading', false)
+                    }
+          )
   
         },
         deleteUcenik( {commit },payload ) {
@@ -173,7 +193,12 @@ export const store = new Vuex.Store({
             axios.put('http://localhost:57665/api/ucenik/'+payload.id, ucenik).then(function(response){
                 commit('editUcenik', response.data)
                 commit('setLoading', false)
-                 })
+                 }).catch(
+                    (error) => {
+                      console.log(error)
+                      commit('setLoading', false)
+                    }
+          )
     
         }
     },

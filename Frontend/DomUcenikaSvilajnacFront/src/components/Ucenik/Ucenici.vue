@@ -1,7 +1,7 @@
 
 <template>
   <div>
-    <v-dialog v-model="dialog" max-width="500px">
+    <v-dialog v-model="dialog" max-width="700">
       <v-btn slot="activator" color="primary" dark class="mb-2">Prijavi ucenika</v-btn>
       <v-card>
         <v-card-title>
@@ -11,13 +11,30 @@
           <v-container grid-list-md>
             <v-layout wrap>
               <v-flex xs12 >
-                <v-text-field v-model="editedItem.ime" label="Ime"></v-text-field>
+                <v-text-field
+                 v-model="editedItem.ime"
+                  label="Ime" 
+                  required
+                   :rules="[rules.required]"
+                  ></v-text-field>
               </v-flex>
               <v-flex xs12 >
-                <v-text-field v-model="editedItem.prezime" label="Prezime"></v-text-field>
+                <v-text-field
+                 v-model="editedItem.prezime"
+                  label="Prezime"
+                   required
+                   :rules="[rules.required]"
+                   ></v-text-field>
               </v-flex>
               <v-flex xs12 >
-                <v-text-field v-model="editedItem.jmbg" label="jmbg"></v-text-field>
+                <v-text-field
+                  v-model="editedItem.jmbg"
+                  label="jmbg"
+                  required
+                  input type="number"
+                  :rules="[rules.required, rules.jmbg]"
+                  :counter="13"
+                    ></v-text-field>
               </v-flex>
 
               <template>
@@ -35,14 +52,14 @@
                                 item-text="nazivDrzave"
                                 item-value="id"
                                 autocomplete
+                                required
+                                 :rules="[rules.required]"
                               ></v-select>
                             </v-flex>
                           </v-layout>
                         </v-container>
                       </template>
-
                 <template>
-
                  <v-container fluid>
                     <v-layout row wrap>
                     <v-flex xs12 sm6>
@@ -56,6 +73,8 @@
                                  item-text="editedItem.pol"
                                 label="Pol"
                                 autocomplete
+                                required
+                                 :rules="[rules.required]"
                               ></v-select>
                             </v-flex>
                           </v-layout>
@@ -76,16 +95,28 @@
                                 item-text="nazivOpstine"
                                 item-value="id"
                                 autocomplete
+                                required
+                                 :rules="[rules.required]"
                               ></v-select>
                             </v-flex>
                           </v-layout>
                         </v-container>
                       </template>
               <v-flex xs12 >
-                <v-text-field v-model="editedItem.mestoRodjenja" label="Mesto rodjenja"></v-text-field>
+                <v-text-field
+                 v-model="editedItem.mestoRodjenja"
+                  required
+                   label="Mesto rodjenja"
+                    :rules="[rules.required]"
+                   ></v-text-field>
               </v-flex>
                <v-flex xs12 >
-                <v-text-field v-model="editedItem.mestoPrebivalista" label="Mesto prebivalista"></v-text-field>
+                <v-text-field
+                 v-model="editedItem.mestoPrebivalista"
+                  required
+                   label="Mesto prebivalista"
+                    :rules="[rules.required]"
+                   ></v-text-field>
               </v-flex>
               <v-flex xs12 >
                 <h3 dark class="mb-2">Datum Rodjenja</h3>              
@@ -103,8 +134,12 @@
         </v-card-text>
         <v-card-actions>
           <v-spacer></v-spacer>
-          <v-btn color="blue darken-1" flat @click.native="close">Otkazi</v-btn>
-          <v-btn color="blue darken-1" flat @click.native="save">Sacuvaj</v-btn>
+          <v-btn color="blue darken-1" flat @click.native="close">
+            Otkazi
+            </v-btn>
+          <v-btn color="blue darken-1" flat @click.native="save"  :disabled="!formIsValid"
+          >Sacuvaj
+          </v-btn>
         </v-card-actions>
       </v-card>
     </v-dialog>
@@ -121,29 +156,34 @@
     <v-card>
       <v-layout xs12>
         <v-card-title>
-      Lista ucenika
+          <h2>Lista ucenika</h2> 
       <v-spacer></v-spacer>
+        <v-flex xs12 sm6 class="text-sm-left" absolute> 
       <v-text-field
         v-model="search"
         append-icon="search"
         label="Pretraga"
         single-line
         hide-details
-      ></v-text-field>
+      ></v-text-field> 
+        </v-flex>    
     </v-card-title>
       </v-layout>
-    <v-layout xs12 row wrap class="mt-2" absolute v-if="!loading">
+    <v-layout xs12 sm6  row wrap class="mt-2" absolute v-if="!loading">
+   
     <v-data-table
       :headers="headers"
       :items="ucenici"
-      hide-actions
+      rows-per-page-text="Redova po stranici"
+      :rows-per-page-items="[5,10,15,20,25,30,35]"
       :search="search"
       :custom-filter="customFilter"
       class="text-xs-center"
+    
      >
       <template slot="items" slot-scope="props" >
         <tr @click="props.expanded = !props.expanded">
-        <td class="text-xs-center">{{ props.item.ime }}</td>
+        <td class="text-xs-center">{{ props.item.id}}</td>
         <td class="text-xs-center">{{ props.item.ime }}</td>
         <td class="text-xs-center">{{ props.item.prezime }}</td>
         <td class="text-xs-center">{{ props.item.jmbg }}</td>
@@ -167,6 +207,9 @@
         Nema ni jednog ucenika. :(
       </v-alert> 
     </template>
+    <template slot="pageText" slot-scope="{ pageStart, pageStop }">
+        Od {{ pageStart }} do {{ pageStop }}
+</template>
               <template slot="expand" slot-scope="props">
                 <v-card flat>
                   <v-card-text>Ostali podaci</v-card-text>
@@ -181,7 +224,7 @@
                 </v-card>
               </template>
     <v-alert slot="no-results" :value="true" color="error" icon="warning">
-        Vasa pretraga za "{{ search }}" nije pronasla rezultata.
+        Vasa pretraga za "{{ search }}" nije pronasla rezultate.
       </v-alert>
     </v-data-table>
     </v-layout>
@@ -199,7 +242,7 @@ import moment from 'moment'
       dialog: false,
       headers: [
         {
-          text: 'Ucenici',
+          text: 'Redni broj',
           align: 'center',
           sortable: false,
            value: 'ime',
@@ -214,6 +257,13 @@ import moment from 'moment'
         { text: 'Opstina rodjenja', value: false,align: 'center',sortable:false ,width:'10%'},
         { text: 'Opcije', value: false,align: 'center',sortable:false,width:'10%' }
       ],
+           rules: {
+          required: (value) => !!value || 'Ovo polje je obavezno.',
+          jmbg: (value) => {
+            const pattern = /^(\w{13,13})$/ 
+            return pattern.test(value) || 'Jmbg mora biti dugacak 13 cifara.'
+          }
+        },
       datum: null,
       search: '',
       pol:['Musko','Zensko'],
@@ -260,7 +310,23 @@ import moment from 'moment'
           }
       }
     }),
-    computed: {ucenici () {
+    computed: { formIsValid () {
+        return this.editedItem.ime !== '' &&
+          this.editedItem.prezimeime !== '' &&
+          this.editedItem.jmbg !== '' &&
+          this.editedItem.jmbg.length == 13 &&
+          this.editedItem.pol !== '' &&
+    //      this.editedItem.dan !== '' &&
+    //      this.editedItem.mesec !== '' &&
+   //       this.editedItem.godina !== '' &&
+          this.editedItem.mestoRodjenja !== '' &&
+          this.editedItem.mestoPrebivalista !== '' &&
+          this.editedItem.opstina.id !== '' &&
+          this.editedItem.drzavaRodjenja.id !== '' &&
+          this.datum !== null
+         
+      },
+      ucenici () {
        return this.$store.getters.loadedUcenici       
     },
     opstine () {
@@ -284,7 +350,7 @@ import moment from 'moment'
       }
     },
     methods: {customFilter(items, search, filter) {
-
+          
             search = search.toString().toLowerCase()
             return items.filter(o => 
         Object.keys(o).some(k => 
@@ -327,11 +393,12 @@ import moment from 'moment'
           this.formatiranjeDatuma()
          // Object.assign(this.ucenici[this.editedIndex], this.editedItem)
            this.$store.dispatch('editUcenik',this.editedItem)
-
+          this.editedItem = Object.assign({}, this.defaultItem)
         } else {
           this.formatiranjeDatuma() 
           console.log(this.editedItem)      
           this.$store.dispatch('createUcenik',this.editedItem)
+          this.editedItem = Object.assign({}, this.defaultItem)
         }
         this.close()
       }  
