@@ -18,6 +18,7 @@ namespace DomUcenikaSvilajnac.ModelResources
         public string Prezime { get; set; }
 
         public string JMBG { get; set; }
+        public string  Adresa { get; set; }
         public Pol Pol { get; set; }
         public Telefon Telefon { get; set; }
 

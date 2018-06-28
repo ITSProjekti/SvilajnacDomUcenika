@@ -27,6 +27,7 @@ namespace DomUcenikaSvilajnac.Common.Models
         [MaxLength(13), MinLength(13)]
         public string JMBG { get; set; }
 
+        public string Adresa { get; set; }
 
         [Required]
         [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:dd/mm/yyyy}")]

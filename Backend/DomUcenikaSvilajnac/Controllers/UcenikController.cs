@@ -132,8 +132,7 @@ namespace DomUcenikaSvilajnac.Controllers
         {
             //instanciranje objekta za telefon radi cuvanja u tabelu telefon
             Telefon mobilni = new Telefon { Mobilni = ucenik.Telefon.Mobilni, Kucni = ucenik.Telefon.Kucni };
-            UnitOfWork.Telefoni.Add(mobilni);
-            await UnitOfWork.SaveChangesAsync();
+    
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
