@@ -11,6 +11,7 @@ using DomUcenikaSvilajnac.DAL.Context;
 using AutoMapper;
 using DomUcenikaSvilajnac.ModelResources;
 using DomUcenikaSvilajnac.Common.Interfaces;
+using DomUcenikaSvilajnac.Common.Models.ModelResources;
 
 namespace DomUcenikaSvilajnac.Controllers
 {
@@ -90,6 +91,14 @@ namespace DomUcenikaSvilajnac.Controllers
                 return BadRequest(ModelState);
             }
 
+            TelefonResource telefon = new TelefonResource { Id = ucenik.Telefon.Id, Mobilni = ucenik.Telefon.Mobilni, Kucni = ucenik.Telefon.Kucni };
+            var stariTelefon = await UnitOfWork.Telefoni.GetAsync(telefon.Id);
+            var noviTelefon = _mapper.Map<TelefonResource, Telefon>(telefon, stariTelefon);
+            await UnitOfWork.SaveChangesAsync();
+
+
+
+
             var stariUcenik = await UnitOfWork.Ucenici.GetAsync(id);
             if (id != stariUcenik.Id)
             {
@@ -105,6 +114,7 @@ namespace DomUcenikaSvilajnac.Controllers
             novi.DrzavaRodjenja = null;
             novi.OpstinaPrebivalista = null;
             novi.Pol = null;
+            novi.Telefon = null;
             await UnitOfWork.SaveChangesAsync();
 
 
@@ -120,16 +130,24 @@ namespace DomUcenikaSvilajnac.Controllers
         [HttpPost]
         public async Task<IActionResult> PostUcenik([FromBody] UcenikResource ucenik)
         {
+            //instanciranje objekta za telefon radi cuvanja u tabelu telefon
+            Telefon mobilni = new Telefon { Mobilni = ucenik.Telefon.Mobilni, Kucni = ucenik.Telefon.Kucni };
+            UnitOfWork.Telefoni.Add(mobilni);
+            await UnitOfWork.SaveChangesAsync();
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
             var noviUcenik = _mapper.Map<UcenikResource, Ucenik>(ucenik);
+
+
             noviUcenik.Opstina = null;
             noviUcenik.DrzavaRodjenja = null;
             noviUcenik.OpstinaPrebivalista = null;
             noviUcenik.Pol = null;
-            noviUcenik.Telefon = null;
+
+            //kada se cuvaju prvo kolone ne ide null
+            // noviUcenik.Telefon = null;
 
             //cuvanje u bazi
             UnitOfWork.Ucenici.Add(noviUcenik);
@@ -155,7 +173,9 @@ namespace DomUcenikaSvilajnac.Controllers
 
             var ucenik = await UnitOfWork.Ucenici.GetAsync(id);
 
-            
+
+
+
             var noviUcenik = _mapper.Map<Ucenik, UcenikResource>(ucenik);
             var mapiranUcenik = await UnitOfWork.mapiranje(noviUcenik);
 
@@ -163,9 +183,12 @@ namespace DomUcenikaSvilajnac.Controllers
             {
                 return NotFound();
             }
-           
+
+            var telefonUcenika = await UnitOfWork.Telefoni.GetAsync(ucenik.Telefon.Id);
+
             //brisanje u bazi
             UnitOfWork.Ucenici.Remove(ucenik);
+            UnitOfWork.Telefoni.Remove(telefonUcenika);
             await UnitOfWork.SaveChangesAsync();
 
             return Ok(mapiranUcenik);
