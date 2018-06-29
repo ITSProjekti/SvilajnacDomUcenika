@@ -112,6 +112,12 @@ namespace DomUcenikaSvilajnac.DAL.RepoPattern
                 .SingleOrDefaultAsync(x => x.Id == ucenik.Id);
 
             return Mapper.Map<Ucenik, UcenikResource>(neki);
+
+           
+        }
+        public void deleteTelefon(Telefon telefon)
+        {
+            _context.Telefoni.Remove(telefon);
         }
     }
 }

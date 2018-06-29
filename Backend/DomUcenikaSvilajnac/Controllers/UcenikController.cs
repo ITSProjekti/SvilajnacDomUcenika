@@ -90,33 +90,38 @@ namespace DomUcenikaSvilajnac.Controllers
             {
                 return BadRequest(ModelState);
             }
-
-            TelefonResource telefon = new TelefonResource { Id = ucenik.Telefon.Id, Mobilni = ucenik.Telefon.Mobilni, Kucni = ucenik.Telefon.Kucni };
-            var stariTelefon = await UnitOfWork.Telefoni.GetAsync(telefon.Id);
-            var noviTelefon = _mapper.Map<TelefonResource, Telefon>(telefon, stariTelefon);
-            await UnitOfWork.SaveChangesAsync();
-
-
-
-
             var stariUcenik = await UnitOfWork.Ucenici.GetAsync(id);
+            int pom = stariUcenik.TelefonId;
+
+            TelefonResource telefon = new TelefonResource { Id = pom, Mobilni = ucenik.Telefon.Mobilni, Kucni = ucenik.Telefon.Kucni };
+            var stariTelefon = await UnitOfWork.Telefoni.GetAsync(telefon.Id);
+
+
+            var noviTelefon = _mapper.Map<TelefonResource, Telefon>(telefon, stariTelefon);
+
+            UnitOfWork.deleteTelefon(noviTelefon);
+
+            //   await UnitOfWork.SaveChangesAsync();
+
+
             if (id != stariUcenik.Id)
             {
                 return BadRequest();
             }
             if (stariUcenik == null)
                 return NotFound();
+
             ucenik.Id = id;
 
-
             var novi = _mapper.Map<UcenikResource, Ucenik>(ucenik, stariUcenik);
+            novi.TelefonId = pom;
             novi.Opstina = null;
             novi.DrzavaRodjenja = null;
             novi.OpstinaPrebivalista = null;
             novi.Pol = null;
-            novi.Telefon = null;
-            await UnitOfWork.SaveChangesAsync();
+            //  novi.Telefon = null;
 
+            UnitOfWork.SaveChanges();
 
 
             var noviUcenik = await UnitOfWork.mestaUcenikaById(id);
