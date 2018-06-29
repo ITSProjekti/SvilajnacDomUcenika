@@ -143,7 +143,7 @@ namespace DomUcenikaSvilajnac.Controllers
                 return BadRequest(ModelState);
             }
             var noviUcenik = _mapper.Map<UcenikResource, Ucenik>(ucenik);
-
+            noviUcenik.VremeUpisa = DateTime.Now;
 
             noviUcenik.Opstina = null;
             noviUcenik.DrzavaRodjenja = null;
