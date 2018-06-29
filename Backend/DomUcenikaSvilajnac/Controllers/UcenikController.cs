@@ -119,6 +119,7 @@ namespace DomUcenikaSvilajnac.Controllers
             novi.DrzavaRodjenja = null;
             novi.OpstinaPrebivalista = null;
             novi.Pol = null;
+            novi.PostanskiBroj = null;
             //  novi.Telefon = null;
 
             UnitOfWork.SaveChanges();
@@ -149,6 +150,7 @@ namespace DomUcenikaSvilajnac.Controllers
             noviUcenik.DrzavaRodjenja = null;
             noviUcenik.OpstinaPrebivalista = null;
             noviUcenik.Pol = null;
+            noviUcenik.PostanskiBroj = null;
 
             //kada se cuvaju prvo kolone ne ide null
             // noviUcenik.Telefon = null;

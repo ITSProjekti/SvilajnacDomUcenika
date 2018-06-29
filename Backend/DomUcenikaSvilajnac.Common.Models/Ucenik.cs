@@ -57,6 +57,8 @@ namespace DomUcenikaSvilajnac.Common.Models
         public int TelefonId { get; set; }
         public Telefon Telefon { get; set; }
 
+        public int PostanskiBrojId { get; set; }
+        public PostanskiBroj PostanskiBroj { get; set; }
         public DateTime VremeUpisa { get; set; }
     }
 }

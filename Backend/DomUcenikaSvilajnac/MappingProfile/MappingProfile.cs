@@ -27,6 +27,8 @@ namespace DomUcenikaSvilajnac.Mapping
 
             CreateMap<Opstina, OpstinaResource>();
 
+            CreateMap<PostanskiBroj, PostanskiBrojResource>();
+
             //CreateMap<Ucenik, MestoResource>();
 
             //CreateMap<MestoResource, Ucenik>();
