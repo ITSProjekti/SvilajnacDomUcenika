@@ -13,7 +13,5 @@ namespace DomUcenikaSvilajnac.Common.Models.ModelResources
         public int Id { get; set; }
 
         public string NazivOpstine { get; set; }
-
-        public string PostanskiBroj { get; set; }
     }
 }

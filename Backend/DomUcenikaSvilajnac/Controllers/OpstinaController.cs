@@ -36,9 +36,8 @@ namespace DomUcenikaSvilajnac.Controllers
             return Mapper.Map<List<Opstina>, List<OpstinaResource>>(listaOpstina.ToList());
         }
 
-
         /// <summary>
-        /// Vraca jedan red iz tabele, tj jednu opstinu na osnovu prosledjenog Id-a.
+        /// Vraca jedan red iz tabele, tj. jednu opstinu na osnovu prosledjenog Id-a.
         /// </summary>
         [HttpGet("{id}")]
         public async Task<IActionResult> GetMestoById([FromRoute] int id)
@@ -59,7 +58,7 @@ namespace DomUcenikaSvilajnac.Controllers
         }
 
         /// <summary>
-        /// Metoda za update, menja podatke u nekom redu u tabeli, tj.o nekoj opstini na osnovu prosledjenog Id-a 
+        /// Metoda za update, menja podatke u nekom redu u tabeli, tj. o nekoj opstini na osnovu prosledjenog Id-a 
         /// i vraca podatke o opstini koji su namenjeni za front.
         /// </summary>
         [HttpPut("{id}")]
@@ -89,7 +88,7 @@ namespace DomUcenikaSvilajnac.Controllers
         }
 
         /// <summary>
-        /// Dodavanje novog reda u tabeli, tj. novoe opstine.
+        /// Dodavanje novog reda u tabeli, tj. nove opstine.
         /// </summary>
         [HttpPost]
         public async Task<IActionResult> PostOpstina([FromBody] OpstinaResource opstina)
@@ -107,6 +106,7 @@ namespace DomUcenikaSvilajnac.Controllers
 
             return Ok(novaOpstina);
         }
+
         /// <summary>
         /// Brisanje jednog reda iz tabele na osnvou prosledjenog Id-a, tj. brisanje odredjene opstine iz tabele.
         /// </summary>

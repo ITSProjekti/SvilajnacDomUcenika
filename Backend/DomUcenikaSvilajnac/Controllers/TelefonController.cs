@@ -17,7 +17,7 @@ namespace DomUcenikaSvilajnac.Controllers
         public IMapper Mapper { get; }
         public IUnitOfWork UnitOfWork { get; }
         /// <summary>
-        /// Inicijalizacija instance klase DrzavaController i deklarisanje mappera i unitofwork-a.
+        /// Inicijalizacija instance klase TelefonController i deklarisanje mappera i unitofwork-a.
         /// </summary>
         public TelefonController(IMapper mapper, IUnitOfWork unitOfWork)
         {
@@ -26,7 +26,7 @@ namespace DomUcenikaSvilajnac.Controllers
         }
 
         /// <summary>
-        /// Vraca listu svih drzava koje se trenutno nalaze u bazi.
+        /// Vraca listu svih telefona koji se trenutno nalaze u bazi.
         /// </summary>
         [HttpGet]
         public async Task<IEnumerable<TelefonResource>> GetTelefone()
@@ -35,6 +35,9 @@ namespace DomUcenikaSvilajnac.Controllers
             return Mapper.Map<List<Telefon>, List<TelefonResource>>(listaTelefona.ToList());
         }
 
+        /// <summary>
+        /// Vraca jedan red iz tabele, tj. jedan telefon na osnovu prosledjenog Id-a.
+        /// </summary>
         [HttpGet("{id}")]
         public async Task<IActionResult> GetTelefonById([FromRoute] int id)
         {
@@ -53,6 +56,10 @@ namespace DomUcenikaSvilajnac.Controllers
             return Ok(noviTelefon);
         }
 
+        /// <summary>
+        /// Metoda za update, menja podatke u nekom redu u tabeli, tj. o nekom telefonu na osnovu prosledjenog Id-a 
+        /// i vraca podatke o telefonu koji su namenjeni za front.
+        /// </summary>
         [HttpPut("{id}")]
         public async Task<IActionResult> PutTelefon([FromRoute] int id, [FromBody] TelefonResource telefon)
         {
@@ -78,6 +85,9 @@ namespace DomUcenikaSvilajnac.Controllers
             Mapper.Map<Telefon, TelefonResource>(noviTelefon);
             return Ok(telefon);
         }
+
+        /// <summary>
+        /// Dodavanje novog reda u tabeli, tj. novog telefona.
         /// </summary>
         [HttpPost]
         public async Task<IActionResult> PostTelefon([FromBody]  TelefonResource telefon)
@@ -96,6 +106,9 @@ namespace DomUcenikaSvilajnac.Controllers
             return Ok(noviTelefon);
         }
 
+        /// <summary>
+        /// Brisanje jednog reda iz tabele na osnvou prosledjenog Id-a, tj. brisanje odredjenog telefona iz tabele.
+        /// </summary>
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteTelefon([FromRoute] int id)
         {

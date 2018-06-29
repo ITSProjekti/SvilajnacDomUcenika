@@ -12,7 +12,6 @@ namespace DomUcenikaSvilajnac.Common.Models
     [Table("Ucenici")]
     public class Ucenik
     {
-
         public int Id { get; set; }
 
         [Required]
@@ -45,8 +44,6 @@ namespace DomUcenikaSvilajnac.Common.Models
         public Opstina OpstinaPrebivalista { get; set; }
         //
 
-
-
         public string MestoRodjenja { get; set; }
         public string MestoPrebivalista { get; set; }
 
@@ -59,6 +56,5 @@ namespace DomUcenikaSvilajnac.Common.Models
 
         public int TelefonId { get; set; }
         public Telefon Telefon { get; set; }
-
     }
 }

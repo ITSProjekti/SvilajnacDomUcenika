@@ -19,21 +19,19 @@ namespace DomUcenikaSvilajnac.Common.Models
 
         //Za spajanje dva puta na ucenika
         [InverseProperty("Opstina")]
-         ICollection<Ucenik> Ucenici {get; set; }
+        ICollection<Ucenik> Ucenici {get; set; }
 
         [InverseProperty("OpstinaPrebivalista")]
         ICollection<Ucenik> UceniciOpstine { get; set; }
 
-
-
-
+        ICollection<PostanskiBroj> PostanskiBrojevi { get; set; }
+        
 
         public Opstina()
         {
             Ucenici = new Collection<Ucenik>();
             UceniciOpstine = new Collection<Ucenik>();
+            PostanskiBrojevi = new Collection<PostanskiBroj>();
         }
-
-        public string PostanskiBroj { get; set; }
     }
 }

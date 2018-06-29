@@ -38,6 +38,7 @@ namespace DomUcenikaSvilajnac.DAL.RepoPattern
             Drzave = new DrzavaRepository(_context);
             Polovi = new PolRepository(_context);
             Telefoni = new TelefonRepository(_context);
+            Brojevi = new PostanskiBrojRepository(_context);
 
         }
 
@@ -49,6 +50,7 @@ namespace DomUcenikaSvilajnac.DAL.RepoPattern
         public IDrzavaRepository Drzave { get; private set; }
         public IPolRepository Polovi { get; set; }
         public ITelefonRepository Telefoni { get; set; }
+        public IPostanskiBrojRepository Brojevi { get; set; }
 
         public IMapper Mapper { get; }
 
@@ -111,8 +113,5 @@ namespace DomUcenikaSvilajnac.DAL.RepoPattern
 
             return Mapper.Map<Ucenik, UcenikResource>(neki);
         }
-
-
-       
     }
 }

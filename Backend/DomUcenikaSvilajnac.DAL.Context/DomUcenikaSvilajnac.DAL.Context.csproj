@@ -9,6 +9,7 @@
     <Compile Remove="Migrations\20180627093622_OpstinaPrebivalista.cs" />
     <Compile Remove="Migrations\20180627093929_OpstinaPrebivalista.cs" />
     <Compile Remove="Migrations\20180627105534_UklanjanjePolaIzModelaUcenika.cs" />
+    <Compile Remove="Migrations\20180629090748_PostanskiBrojeviOpstina.cs" />
   </ItemGroup>
 
   <ItemGroup>

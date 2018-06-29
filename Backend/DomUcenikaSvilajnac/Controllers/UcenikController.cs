@@ -53,7 +53,7 @@ namespace DomUcenikaSvilajnac.Controllers
 
 
         /// <summary>
-        /// Vraca jedan red iz tabele, tj jednog ucenika na osnovu prosledjenog Id-a.
+        /// Vraca jedan red iz tabele, tj. jednog ucenika na osnovu prosledjenog Id-a.
         /// </summary>
         // GET: api/Ucenik/5
         [HttpGet("{id}")]
@@ -79,7 +79,7 @@ namespace DomUcenikaSvilajnac.Controllers
 
 
         /// <summary>
-        /// Metoda za update, menja podatke u nekom redu u tabeli, tj.o nekom uceniku na osnovu prosledjenog Id-a 
+        /// Metoda za update, menja podatke u nekom redu u tabeli, tj. o nekom uceniku na osnovu prosledjenog Id-a 
         /// i vraca podatke o uceniku koji su namenjeni za front.
         /// </summary>
         // PUT: api/Ucenik/5

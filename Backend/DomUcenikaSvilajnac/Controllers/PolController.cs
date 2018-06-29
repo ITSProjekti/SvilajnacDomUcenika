@@ -17,7 +17,7 @@ namespace DomUcenikaSvilajnac.Controllers
         public IMapper Mapper { get; }
         public IUnitOfWork UnitOfWork { get; }
         /// <summary>
-        /// Inicijalizacija instance klase DrzavaController i deklarisanje mappera i unitofwork-a.
+        /// Inicijalizacija instance klase PolController i deklarisanje mappera i unitofwork-a.
         /// </summary>
         public PolController(IMapper mapper, IUnitOfWork unitOfWork)
         {
@@ -26,7 +26,7 @@ namespace DomUcenikaSvilajnac.Controllers
         }
 
         /// <summary>
-        /// Vraca listu svih drzava koje se trenutno nalaze u bazi.
+        /// Vraca listu svih polova koje se trenutno nalaze u bazi.
         /// </summary>
         [HttpGet]
         public async Task<IEnumerable<PolResource>> GetPolovi()
@@ -35,6 +35,9 @@ namespace DomUcenikaSvilajnac.Controllers
             return Mapper.Map<List<Pol>, List<PolResource>>(listaPolova.ToList());
         }
 
+        /// <summary>
+        /// Vraca jedan red iz tabele, tj. jedan pol na osnovu prosledjenog Id-a.
+        /// </summary>
         [HttpGet("{id}")]
         public async Task<IActionResult> GetPolById([FromRoute] int id)
         {
@@ -52,6 +55,11 @@ namespace DomUcenikaSvilajnac.Controllers
 
             return Ok(noviPol);
         }
+
+        /// <summary>
+        /// Metoda za update, menja podatke u nekom redu u tabeli, tj. o nekom polu na osnovu prosledjenog Id-a 
+        /// i vraca podatke o polu koji su namenjeni za front.
+        /// </summary>
         [HttpPut("{id}")]
         public async Task<IActionResult> PutPol([FromRoute] int id, [FromBody] PolResource pol)
         {
@@ -78,6 +86,9 @@ namespace DomUcenikaSvilajnac.Controllers
             return Ok(pol);
         }
 
+        /// <summary>
+        /// Dodavanje novog reda u tabeli, tj. novog pola.
+        /// </summary>
         [HttpPost]
         public async Task<IActionResult> PostPol([FromBody] PolResource pol)
         {
@@ -94,6 +105,10 @@ namespace DomUcenikaSvilajnac.Controllers
 
             return Ok(noviPol);
         }
+
+        /// <summary>
+        /// Brisanje jednog reda iz tabele na osnvou prosledjenog Id-a, tj. brisanje odredjenog pola iz tabele.
+        /// </summary>
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeletePol ([FromRoute] int id)
         {
@@ -114,9 +129,5 @@ namespace DomUcenikaSvilajnac.Controllers
 
             return Ok(noviPol);
         }
-
-
-
-
     }
 }

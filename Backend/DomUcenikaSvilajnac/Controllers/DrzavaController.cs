@@ -36,7 +36,7 @@ namespace DomUcenikaSvilajnac.Controllers
         }
 
         /// <summary>
-        /// Vraca jedan red iz tabele, tj jednu drzavu na osnovu prosledjenog Id-a.
+        /// Vraca jedan red iz tabele, tj. jednu drzavu na osnovu prosledjenog Id-a.
         /// </summary>
         [HttpGet("{id}")]
         public async Task<IActionResult> GetDrzavaById([FromRoute] int id)
@@ -56,7 +56,7 @@ namespace DomUcenikaSvilajnac.Controllers
             return Ok(drzavaNova);
         }
         /// <summary>
-        /// Metoda za update, menja podatke u nekom redu u tabeli, tj.o nekoj drzavi na osnovu prosledjenog Id-a 
+        /// Metoda za update, menja podatke u nekom redu u tabeli, tj. o nekoj drzavi na osnovu prosledjenog Id-a 
         /// i vraca podatke o drzavi koji su namenjeni za front.
         /// </summary>
         [HttpPut("{id}")]

@@ -22,6 +22,8 @@ namespace DomUcenikaSvilajnac.Common.Interfaces
         IDrzavaRepository Drzave { get; }
         IPolRepository Polovi { get; }
         ITelefonRepository Telefoni { get; }
+        IPostanskiBrojRepository Brojevi { get; }
+
         int SaveChanges();
         Task<int> SaveChangesAsync();
         Task<IEnumerable<UcenikResource>> mestaUcenika();
