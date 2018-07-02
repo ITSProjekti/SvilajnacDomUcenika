@@ -12,7 +12,7 @@ namespace DomUcenikaSvilajnac.Common.Models
         public int Id { get; set; }
         public string Broj { get; set; }
         public int OpstinaId { get; set; }
-        public Opstina Opstina { get; set; }
+
 
         ICollection<Ucenik> Ucenici { get; set; }
 

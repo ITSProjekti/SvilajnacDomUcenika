@@ -30,6 +30,9 @@ namespace DomUcenikaSvilajnac
         {
             services.AddCors();
 
+            //liniju koju smo dodali kako bismo ispisali listu postanskih brojeva u opstini kontroleru
+            services.AddMvc().AddJsonOptions(options => { options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore; });
+
             services.AddAutoMapper();
             services.AddScoped<IUnitOfWork, UnitOfWork>();
             services.AddDbContext<UcenikContext>(options=>options.UseSqlServer(@"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=DomUcenikaSvilajnac;Integrated Security=True;Connect Timeout=30"));

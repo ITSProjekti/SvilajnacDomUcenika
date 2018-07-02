@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using DomUcenikaSvilajnac.ModelResources;
 using Microsoft.AspNetCore.Mvc;
 using DomUcenikaSvilajnac.Common.Models;
+using DomUcenikaSvilajnac.Common.Models.ModelResources;
 
 namespace DomUcenikaSvilajnac.Common.Interfaces
 {
@@ -32,5 +33,8 @@ namespace DomUcenikaSvilajnac.Common.Interfaces
         Task<UcenikResource> mestaUcenikaById(int id);
         Task<UcenikResource> mapiranje(UcenikResource ucenik);
         void deleteTelefon(Telefon telefon);
+
+        Task<IEnumerable<OpstinaResource>> brojeviOpstine();
+
     }
 }

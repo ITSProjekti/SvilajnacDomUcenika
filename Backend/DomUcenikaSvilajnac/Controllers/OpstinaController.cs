@@ -32,29 +32,11 @@ namespace DomUcenikaSvilajnac.Controllers
         [HttpGet]
         public async Task<IEnumerable<OpstinaResource>> GetOpstine()
         {
-            var listaOpstina = await UnitOfWork.Opstine.GetAllAsync();
-            return Mapper.Map<List<Opstina>, List<OpstinaResource>>(listaOpstina.ToList());
-        }
 
-        /// <summary>
-        /// Vraca jedan red iz tabele, tj. jednu opstinu na osnovu prosledjenog Id-a.
-        /// </summary>
-        [HttpGet("{id}")]
-        public async Task<IActionResult> GetMestoById([FromRoute] int id)
-        {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
-
-            var opstina = await UnitOfWork.Opstine.GetAsync(id);
-            var opstinaNova = Mapper.Map<Opstina, OpstinaResource>(opstina);
-            if (opstina == null)
-            {
-                return NotFound();
-            }
-
-            return Ok(opstinaNova);
+            var listaOpstina = await UnitOfWork.brojeviOpstine();
+           
+            var mapiranjeUcenikaMesta = Mapper.Map<List<OpstinaResource>, List<Opstina>>(listaOpstina.ToList());
+            return Mapper.Map<List<Opstina>, List<OpstinaResource>>(mapiranjeUcenikaMesta.ToList());
         }
 
         /// <summary>

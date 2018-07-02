@@ -78,10 +78,24 @@ namespace DomUcenikaSvilajnac.DAL.RepoPattern
             return await _context.SaveChangesAsync();
         }
 
+        public async Task<IEnumerable<OpstinaResource>> brojeviOpstine()
+        {
+            
+         
+
+
+            var nesto = await _context.Opstine
+                .Include(k => k.PostanskiBrojevi)
+                .ToListAsync();
+
+
+            return Mapper.Map<List<Opstina>, List<OpstinaResource>>(nesto);
+
+        }
+
+
         public async Task<IEnumerable<UcenikResource>> mestaUcenika()
         {
-
-            
 
 
             var neki = await _context.Uceniks
@@ -90,7 +104,7 @@ namespace DomUcenikaSvilajnac.DAL.RepoPattern
                 .Include(op=> op.OpstinaPrebivalista)
                 .Include(p=> p.Pol)
                 .Include(t=> t.Telefon)
-                .Include(pb=> pb.PostanskiBroj.Opstina)
+                .Include(pb=> pb.PostanskiBroj)
                 .ToListAsync();
             return Mapper.Map<List<Ucenik>, List<UcenikResource>>(neki);
         }
@@ -102,7 +116,7 @@ namespace DomUcenikaSvilajnac.DAL.RepoPattern
                  .Include(op => op.OpstinaPrebivalista)
                  .Include(p => p.Pol)
                  .Include(t => t.Telefon)
-                  .Include(pb => pb.PostanskiBroj.Opstina)
+                  .Include(pb => pb.PostanskiBroj)
                 .SingleOrDefaultAsync(x => x.Id == id);
             return Mapper.Map<Ucenik, UcenikResource>(neki);
         }
@@ -115,7 +129,7 @@ namespace DomUcenikaSvilajnac.DAL.RepoPattern
                 .Include(op => op.OpstinaPrebivalista)
                 .Include(p => p.Pol)
                 .Include(t => t.Telefon)
-                 .Include(pb => pb.PostanskiBroj.Opstina)
+                 .Include(pb => pb.PostanskiBroj)
                 .SingleOrDefaultAsync(x => x.Id == ucenik.Id);
 
             return Mapper.Map<Ucenik, UcenikResource>(neki);

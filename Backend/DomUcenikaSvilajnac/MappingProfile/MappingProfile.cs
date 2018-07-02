@@ -16,6 +16,9 @@ namespace DomUcenikaSvilajnac.Mapping
     {
         public MappingProfile()
         {
+
+     
+
             //mapira UcenikResource u Ucenik, odnosno omogucava da se datum unese putem jedne promenljive DatumRodjenja.
             CreateMap<UcenikResource, Ucenik>()
                 .ForMember(v => v.DatumRodjenja, opt => opt.MapFrom(src => new DateTime(src.Godina, src.Mesec, src.Dan+1).ToUniversalTime()));
@@ -25,13 +28,14 @@ namespace DomUcenikaSvilajnac.Mapping
                 .ForMember(v => v.Dan, opt => opt.MapFrom(src => src.DatumRodjenja.Day))
                 .ForMember(v => v.Mesec, opt => opt.MapFrom(src => src.DatumRodjenja.Month));
 
-            CreateMap<Opstina, OpstinaResource>();
 
-            CreateMap<PostanskiBroj, PostanskiBrojResource>();
+            // CreateMap<OpstinaResource, Opstina>();
 
-            //CreateMap<Ucenik, MestoResource>();
 
-            //CreateMap<MestoResource, Ucenik>();
+            CreateMap<PostanskiBrojResource, PostanskiBroj>();
+
+
+
         }
     }
 }
