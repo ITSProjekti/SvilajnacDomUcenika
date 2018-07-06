@@ -50,6 +50,8 @@ namespace DomUcenikaSvilajnac.Common.Models
         public int DrzavaRodjenjaId { get; set; }
         public Drzava DrzavaRodjenja { get; set; }
 
+        public string PrethodnaSkola { get; set; }
+
         public int PolId { get; set; }
 
         public Pol Pol { get; set; }
