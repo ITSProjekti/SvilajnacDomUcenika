@@ -10,6 +10,15 @@
     <Compile Remove="Migrations\20180627093929_OpstinaPrebivalista.cs" />
     <Compile Remove="Migrations\20180627105534_UklanjanjePolaIzModelaUcenika.cs" />
     <Compile Remove="Migrations\20180629090748_PostanskiBrojeviOpstina.cs" />
+    <Compile Remove="Migrations\20180706093108_SpajanjeTabeleUcenikiUpisaneSkoleSaOpstinom.cs" />
+    <Compile Remove="Migrations\20180706093248_SpajanjeTabeleUcenikiUpisaneSkoleSaOpstinom.cs" />
+    <Compile Remove="Migrations\20180706093453_SpajanjeTabeleUcenikiUpisaneSkoleSaOpstinom.cs" />
+    <Compile Remove="Migrations\20180706093643_SpajanjeTabeleUcenikiUpisaneSkoleSaOpstinom.cs" />
+    <Compile Remove="Migrations\20180706094046_SpajanjeTabeleUcenikiUpisaneSkoleSaOpstinom.cs" />
+    <Compile Remove="Migrations\20180706094151_SpajanjeTabeleUcenikiUpisaneSkoleSaOpstinom.cs" />
+    <Compile Remove="Migrations\20180706094244_SpajanjeTabeleUcenikiUpisaneSkoleSaOpstinom.cs" />
+    <Compile Remove="Migrations\20180706094514_SpajanjeTabeleUcenikiUpisaneSkoleSaOpstinom.cs" />
+    <Compile Remove="Migrations\20180706094552_SpajanjeTabeleUcenikiUpisaneSkoleSaOpstinom.cs" />
   </ItemGroup>
 
   <ItemGroup>

@@ -24,14 +24,18 @@ namespace DomUcenikaSvilajnac.Common.Models
         [InverseProperty("OpstinaPrebivalista")]
         ICollection<Ucenik> UceniciOpstine { get; set; }
 
-       public ICollection<PostanskiBroj> PostanskiBrojevi { get; set; }
-        
+        public ICollection<PostanskiBroj> PostanskiBrojevi { get; set; }
+
+         ICollection<UpisanaSkola> UpisaneSkole { get; set; }
+
 
         public Opstina()
         {
             Ucenici = new Collection<Ucenik>();
             UceniciOpstine = new Collection<Ucenik>();
             PostanskiBrojevi = new Collection<PostanskiBroj>();
+            UpisaneSkole = new Collection<UpisanaSkola>();
+
         }
     }
 }

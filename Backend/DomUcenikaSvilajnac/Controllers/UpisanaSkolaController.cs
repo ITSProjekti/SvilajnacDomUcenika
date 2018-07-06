@@ -91,6 +91,8 @@ namespace DomUcenikaSvilajnac.Controllers
             srednjaSkola = Mapper.Map<UpisanaSkola, UpisanaSkolaResource>(novaSrednjaSkola);
 
             return Ok(novaSrednjaSkola);
+
+
         }
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteSrednjaSkola([FromRoute] int id)
