@@ -25,6 +25,7 @@ namespace DomUcenikaSvilajnac.Common.Interfaces
         IPolRepository Polovi { get; }
         ITelefonRepository Telefoni { get; }
         IPostanskiBrojRepository Brojevi { get; }
+        IPrethodnaSkolaRepository PrethodneSkole { get; }
 
         int SaveChanges();
         Task<int> SaveChangesAsync();
