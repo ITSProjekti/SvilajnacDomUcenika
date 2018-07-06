@@ -40,6 +40,7 @@ namespace DomUcenikaSvilajnac.DAL.RepoPattern
             Telefoni = new TelefonRepository(_context);
             Brojevi = new PostanskiBrojRepository(_context);
             PrethodneSkole = new PrethodnaSkolaRepository(_context);
+            UpisaneSkole = new UpisanaSkolaRepository(_context);
 
 
         }
@@ -54,6 +55,7 @@ namespace DomUcenikaSvilajnac.DAL.RepoPattern
         public ITelefonRepository Telefoni { get; set; }
         public IPostanskiBrojRepository Brojevi { get; set; }
         public IPrethodnaSkolaRepository PrethodneSkole { get; set; }
+        public IUpisanaSkola UpisaneSkole { get; set; }
 
         public IMapper Mapper { get; }
 

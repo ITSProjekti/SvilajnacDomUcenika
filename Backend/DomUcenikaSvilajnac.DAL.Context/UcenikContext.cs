@@ -23,6 +23,7 @@ namespace DomUcenikaSvilajnac.DAL.Context
         public DbSet<Telefon> Telefoni { get; set; }
         public DbSet<PostanskiBroj> Brojevi{ get; set; }
         public DbSet<PrethodnaSkola> PrethodneSkole { get; set; }
+        public DbSet<UpisanaSkola> UpisaneSkole { get; set; }
 
 
         /// <summary>
