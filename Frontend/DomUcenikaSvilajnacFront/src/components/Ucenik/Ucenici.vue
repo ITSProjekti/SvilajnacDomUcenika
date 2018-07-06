@@ -2,7 +2,7 @@
 <template>
   <div>
     <v-dialog v-model="dialog" max-width="700">
-      <v-btn slot="activator" color="primary" dark class="mb-2">Prijavi ucenika</v-btn>
+      <v-btn  slot="activator" color="primary" dark class="mb-2">Prijavi ucenika</v-btn>
       <v-card>
         <v-card-title>
           <span class="headline">{{ formTitle }}</span>
@@ -68,9 +68,10 @@
                            <v-flex xs12 sm6>
                                <v-select
                                 :loading="loading"
-                                :items="pol"
-                                v-model="editedItem.pol"
-                                 item-text="editedItem.pol"
+                                :items="polovi"
+                                v-model="editedItem.pol.id"
+                                 item-text="nazivPola"
+                                 item-value="id"
                                 label="Pol"
                                 autocomplete
                                 required
@@ -102,6 +103,52 @@
                           </v-layout>
                         </v-container>
                       </template>
+                      <template>
+                 <v-container fluid>
+                    <v-layout row wrap>
+                    <v-flex xs12 sm6>
+                     <v-subheader v-text="'Opstina Prebivalista'"></v-subheader>
+                    </v-flex>
+                           <v-flex xs12 sm6>
+                               <v-select
+                                :loading="loading"
+                                :items="opstine"
+                                v-model="editedItem.opstinaPrebivalista.id"
+                                label="Izaberite opstinu prebivalista"
+                                item-text="nazivOpstine"
+                                item-value="id"
+                                @change="changedValue"
+                                autocomplete
+                                required
+                                 :rules="[rules.required]"
+                              ></v-select>
+                            </v-flex>
+                          </v-layout>
+                        </v-container>
+                      </template>
+                      <template>
+                 <v-container fluid>
+                    <v-layout row wrap>
+                    <v-flex xs12 sm6>
+                    <v-subheader v-text="'Postanski broj'"></v-subheader> 
+                    </v-flex>
+                           <v-flex xs12 sm6>
+                               <v-select
+                                :loading="loading"
+                                :items="brojevi.postanskiBrojevi"
+                                v-model="editedItem.postanskiBroj.id"
+                                 v-if="editedItem.opstinaPrebivalista.id !== ''"
+                                label="Izaberite postanski broj opstine prebivalista"
+                                item-text="broj"
+                                item-value="id"
+                                autocomplete
+                                required
+                                 :rules="[rules.required]"
+                              ></v-select>
+                            </v-flex>
+                          </v-layout>
+                        </v-container>
+                      </template>
               <v-flex xs12 >
                 <v-text-field
                  v-model="editedItem.mestoRodjenja"
@@ -118,6 +165,26 @@
                     :rules="[rules.required]"
                    ></v-text-field>
               </v-flex>
+
+               <v-flex xs12 >
+                <v-text-field
+                 v-model="editedItem.telefon.mobilni"
+                 
+                   label="Mobilni telefon"
+                   
+                   ></v-text-field>
+              </v-flex>
+
+               <v-flex xs12 >
+                <v-text-field
+                 v-model="editedItem.telefon.kucni"
+                
+                   label="Kucni telefon"
+                    
+                   ></v-text-field>
+              </v-flex>
+
+              
               <v-flex xs12 >
                 <h3 dark class="mb-2">Datum Rodjenja</h3>              
                 <v-date-picker
@@ -154,20 +221,24 @@
       </v-flex>
     </v-layout>
     <v-card>
-      <v-layout xs12>
-        <v-card-title>
+      <v-layout >
+        <v-card-title class="text-xs-right">
           <h2>Lista ucenika</h2> 
-      <v-spacer></v-spacer>
-        <v-flex xs12 sm6 class="text-sm-left" absolute> 
-      <v-text-field
+    
+        </v-card-title>
+          <v-spacer  > </v-spacer>
+        <v-flex xs12 sm3 class="text-sm-right" absolute >
+  <v-text-field
+      
         v-model="search"
         append-icon="search"
         label="Pretraga"
         single-line
         hide-details
       ></v-text-field> 
-        </v-flex>    
-    </v-card-title>
+        </v-flex>
+        
+    
       </v-layout>
     <v-layout xs12 sm6  row wrap class="mt-2" absolute v-if="!loading">
    
@@ -187,7 +258,7 @@
         <td class="text-xs-center">{{ props.item.ime }}</td>
         <td class="text-xs-center">{{ props.item.prezime }}</td>
         <td class="text-xs-center">{{ props.item.jmbg }}</td>
-        <td class="text-xs-center">{{ props.item.pol }}</td>
+        <td class="text-xs-center">{{ props.item.pol.nazivPola }}</td>
         <td class="text-xs-center">{{ props.item.dan }}.{{ props.item.mesec }}.{{ props.item.godina }}.</td>
         <td class="text-xs-center">{{ props.item.mestoRodjenja }}</td>
         <td class="text-xs-center">{{ props.item.opstina.nazivOpstine }}</td>
@@ -212,15 +283,70 @@
 </template>
               <template slot="expand" slot-scope="props">
                 <v-card flat>
-                  <v-card-text>Ostali podaci</v-card-text>
-                    <v-flex xs12>
-                      <v-subheader v-text="'Postanski broj'"></v-subheader>
-                      <td class="text-xs-center">{{ props.item.opstina.postanskiBroj }}</td>
-                      <v-subheader v-text="'Drzava rodjenja'"></v-subheader>
-                      <td class="text-xs-center">{{ props.item.drzavaRodjenja.nazivDrzave }}</td>
-                       <v-subheader v-text="'Mesto prebivalista'"></v-subheader>
-                      <td class="text-xs-center">{{ props.item.mestoPrebivalista }}</td>
-                    </v-flex>                  
+                  <v-card-text> <h2>Ostali podaci</h2> </v-card-text>
+                  <v-layout row wrap>  
+
+                      <v-flex xs2>
+                   <v-subheader>Postanski broj:</v-subheader> 
+                      
+                       </v-flex>
+
+                         <v-flex xs2>
+                            <v-card-text class="text-lg-left">
+                                {{ props.item.postanskiBroj.broj }}
+                              </v-card-text>
+                          </v-flex>
+                    
+                       <v-flex xs2>
+                      <v-subheader v-text="'Drzava rodjenja: '"></v-subheader>
+                       </v-flex>
+
+                     <v-flex xs2>
+                            <v-card-text class="text-lg-left">
+                                {{ props.item.drzavaRodjenja.nazivDrzave }}
+                              </v-card-text>
+                          </v-flex>
+
+                      <v-flex xs2>
+                       <v-subheader class="text-lg-right" v-text="'Mesto prebivalista: '"></v-subheader>
+                       </v-flex>
+
+                       <v-flex xs2>
+                        <v-card-text class="text-lg-left">
+                                {{ props.item.mestoPrebivalista }}
+                              </v-card-text>
+                       </v-flex>
+
+                         <v-flex xs2>
+                       <v-subheader class="text-lg-right" v-text="'Opstina prebivalista: '"></v-subheader>
+                       </v-flex>
+
+                       <v-flex xs2>
+                        <v-card-text class="text-lg-left">
+                                {{ props.item.opstinaPrebivalista.nazivOpstine }}
+                              </v-card-text>
+                       </v-flex>
+                   
+                     <v-flex xs2>
+                       <v-subheader class="text-lg-right" v-text="'Kucni telefon: '"></v-subheader>
+                       </v-flex>
+
+                       <v-flex xs2>
+                        <v-card-text class="text-lg-left">
+                                {{ props.item.telefon.kucni }}
+                              </v-card-text>
+                       </v-flex>
+
+                         <v-flex xs2>
+                       <v-subheader class="text-lg-right" v-text="'Mobilni telefon: '"></v-subheader>
+                       </v-flex>
+
+                       <v-flex xs2>
+                        <v-card-text class="text-lg-left">
+                                {{ props.item.telefon.mobilni }}
+                              </v-card-text>
+                       </v-flex>
+                    </v-layout>                  
                 </v-card>
               </template>
     <v-alert slot="no-results" :value="true" color="error" icon="warning">
@@ -247,6 +373,7 @@ import moment from 'moment'
           sortable: false,
            value: 'ime',
            width:'5%'
+           
         },
         { text: 'Ime',value: false ,align: 'center',sortable:false, width:'10%'},
         { text: 'Prezime', value:false, align: 'center',sortable:false,width:'10%'},
@@ -266,47 +393,79 @@ import moment from 'moment'
         },
       datum: null,
       search: '',
-      pol:['Musko','Zensko'],
       editedIndex: -1,
+      brojevi: '',
       editedItem: {
         ime: '',
         prezime: '',
         jmbg: '',
-        pol: '',
+       pol: {
+          id: '',
+          nazivPola: ''
+       },
         dan: '',
         mesec: '',
         godina: '',
         mestoRodjenja: '',
         mestoPrebivalista: '',
+        postanskiBroj: {
+          id: '',
+          broj: '',
+          opstinaId: ''
+          },
         opstina: {
           id: '',
-          nazivOpstine: '',
-          postanskiBroj: ''
-
+          nazivOpstine: ''         
+          },
+        opstinaPrebivalista: {
+          id: '',
+          nazivOpstine: ''         
           },
         drzavaRodjenja: {
           id: '',
           nazivDrzave: ''
+          },
+        telefon: {
+          id: '',
+          mobilni: '',
+          kucni: ''
           }
       },
+
       defaultItem: {
-         ime: '',
+        ime: '',
         prezime: '',
         jmbg: '',
-        pol: '',
         dan: '',
         mesec: '',
         godina: '',
         mestoRodjenja: '',
         mestoPrebivalista: '',
+        pol: {
+          id: '',
+          nazivPola: ''
+          },
+        postanskiBroj: {
+          id: '',
+          broj: '',
+          opstinaId: ''
+          },
         opstina: {
           id: '',
-          nazivOpstine: '',
-          postanskiBroj: ''
+          nazivOpstine: ''         
+          },
+        opstinaPrebivalista: {
+          id: '',
+          nazivOpstine: ''         
           },
         drzavaRodjenja: {
           id: '',
           nazivDrzave: ''
+          },
+        telefon: {
+          id: '',
+          mobilni: '',
+          kucni: ''
           }
       }
     }),
@@ -319,6 +478,7 @@ import moment from 'moment'
     //      this.editedItem.dan !== '' &&
     //      this.editedItem.mesec !== '' &&
    //       this.editedItem.godina !== '' &&
+        
           this.editedItem.mestoRodjenja !== '' &&
           this.editedItem.mestoPrebivalista !== '' &&
           this.editedItem.opstina.id !== '' &&
@@ -326,14 +486,20 @@ import moment from 'moment'
           this.datum !== null
          
       },
+      polovi () {
+       return this.$store.getters.loadedPolovi       
+      },
+      postanskiBrojevi () {
+       return this.$store.getters.loadedPostanskiBrojevi       
+      },
       ucenici () {
        return this.$store.getters.loadedUcenici       
-    },
-    opstine () {
+      },
+       opstine () {
        return this.$store.getters.loadedOpstine  
            
-    },
-     drzave () {
+       },
+       drzave () {
        return this.$store.getters.loadedDrzave
            
     },
@@ -349,7 +515,16 @@ import moment from 'moment'
         val || this.close()
       }
     },
-    methods: {customFilter(items, search, filter) {
+    methods: {
+      changedValue: function(value) {
+        function broj (opstina){
+          return opstina.id===value
+        }
+      this.brojevi=this.opstine.find(broj)
+      },
+      
+      
+      customFilter(items, search, filter) {
           
             search = search.toString().toLowerCase()
             return items.filter(o => 
@@ -372,8 +547,14 @@ import moment from 'moment'
        
       },
       editItem (item) {
+
+     
+
         this.editedIndex = this.ucenici.indexOf(item)
         this.editedItem = Object.assign({}, item)
+
+         
+
         this.dialog = true
       },
       deleteItem (item) {

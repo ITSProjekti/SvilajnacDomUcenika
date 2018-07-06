@@ -24,6 +24,8 @@ new Vue({
   created () {
     this.$store.dispatch('loadedUcenici')
     this.$store.dispatch('loadedDrzave')
+    this.$store.dispatch('loadedPostanskiBrojevi')
+    this.$store.dispatch('loadedPolovi')
     return this.$store.dispatch('loadedOpstine')
   }
 })
