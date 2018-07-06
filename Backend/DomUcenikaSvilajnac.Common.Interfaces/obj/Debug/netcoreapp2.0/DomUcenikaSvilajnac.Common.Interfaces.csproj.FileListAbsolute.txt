@@ -1,0 +1,16 @@
+C:\Users\Student\Desktop\DomUcenikaSvilajnac\SvilajnacDomUcenika\Backend\DomUcenikaSvilajnac.Common.Interfaces\bin\Debug\netcoreapp2.0\DomUcenikaSvilajnac.Common.Interfaces.deps.json
+C:\Users\Student\Desktop\DomUcenikaSvilajnac\SvilajnacDomUcenika\Backend\DomUcenikaSvilajnac.Common.Interfaces\bin\Debug\netcoreapp2.0\DomUcenikaSvilajnac.Common.Interfaces.runtimeconfig.json
+C:\Users\Student\Desktop\DomUcenikaSvilajnac\SvilajnacDomUcenika\Backend\DomUcenikaSvilajnac.Common.Interfaces\bin\Debug\netcoreapp2.0\DomUcenikaSvilajnac.Common.Interfaces.runtimeconfig.dev.json
+C:\Users\Student\Desktop\DomUcenikaSvilajnac\SvilajnacDomUcenika\Backend\DomUcenikaSvilajnac.Common.Interfaces\bin\Debug\netcoreapp2.0\DomUcenikaSvilajnac.Common.Interfaces.dll
+C:\Users\Student\Desktop\DomUcenikaSvilajnac\SvilajnacDomUcenika\Backend\DomUcenikaSvilajnac.Common.Interfaces\bin\Debug\netcoreapp2.0\DomUcenikaSvilajnac.Common.Interfaces.pdb
+C:\Users\Student\Desktop\DomUcenikaSvilajnac\SvilajnacDomUcenika\Backend\DomUcenikaSvilajnac.Common.Interfaces\bin\Debug\netcoreapp2.0\DomUcenikaSvilajnac.Common.Models.dll
+C:\Users\Student\Desktop\DomUcenikaSvilajnac\SvilajnacDomUcenika\Backend\DomUcenikaSvilajnac.Common.Interfaces\bin\Debug\netcoreapp2.0\Microsoft.AspNetCore.Mvc.Abstractions.dll
+C:\Users\Student\Desktop\DomUcenikaSvilajnac\SvilajnacDomUcenika\Backend\DomUcenikaSvilajnac.Common.Interfaces\bin\Debug\netcoreapp2.0\DomUcenikaSvilajnac.Common.Models.pdb
+C:\Users\Student\Desktop\DomUcenikaSvilajnac\SvilajnacDomUcenika\Backend\DomUcenikaSvilajnac.Common.Interfaces\bin\Debug\netcoreapp2.0\Microsoft.AspNetCore.Mvc.Abstractions.xml
+C:\Users\Student\Desktop\DomUcenikaSvilajnac\SvilajnacDomUcenika\Backend\DomUcenikaSvilajnac.Common.Interfaces\obj\Debug\netcoreapp2.0\DomUcenikaSvilajnac.Common.Interfaces.csprojAssemblyReference.cache
+C:\Users\Student\Desktop\DomUcenikaSvilajnac\SvilajnacDomUcenika\Backend\DomUcenikaSvilajnac.Common.Interfaces\obj\Debug\netcoreapp2.0\DomUcenikaSvilajnac.Common.Interfaces.csproj.CoreCompileInputs.cache
+C:\Users\Student\Desktop\DomUcenikaSvilajnac\SvilajnacDomUcenika\Backend\DomUcenikaSvilajnac.Common.Interfaces\obj\Debug\netcoreapp2.0\DomUcenikaSvilajnac.Common.Interfaces.AssemblyInfoInputs.cache
+C:\Users\Student\Desktop\DomUcenikaSvilajnac\SvilajnacDomUcenika\Backend\DomUcenikaSvilajnac.Common.Interfaces\obj\Debug\netcoreapp2.0\DomUcenikaSvilajnac.Common.Interfaces.AssemblyInfo.cs
+C:\Users\Student\Desktop\DomUcenikaSvilajnac\SvilajnacDomUcenika\Backend\DomUcenikaSvilajnac.Common.Interfaces\obj\Debug\netcoreapp2.0\DomUcenikaSvilajnac.Common.Interfaces.csproj.CopyComplete
+C:\Users\Student\Desktop\DomUcenikaSvilajnac\SvilajnacDomUcenika\Backend\DomUcenikaSvilajnac.Common.Interfaces\obj\Debug\netcoreapp2.0\DomUcenikaSvilajnac.Common.Interfaces.dll
+C:\Users\Student\Desktop\DomUcenikaSvilajnac\SvilajnacDomUcenika\Backend\DomUcenikaSvilajnac.Common.Interfaces\obj\Debug\netcoreapp2.0\DomUcenikaSvilajnac.Common.Interfaces.pdb

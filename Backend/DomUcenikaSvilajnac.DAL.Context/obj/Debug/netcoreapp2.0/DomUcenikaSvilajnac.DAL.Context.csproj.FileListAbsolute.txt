@@ -1,0 +1,14 @@
+C:\Users\Student\Desktop\DomUcenikaSvilajnac\SvilajnacDomUcenika\Backend\DomUcenikaSvilajnac.DAL.Context\bin\Debug\netcoreapp2.0\DomUcenikaSvilajnac.DAL.Context.deps.json
+C:\Users\Student\Desktop\DomUcenikaSvilajnac\SvilajnacDomUcenika\Backend\DomUcenikaSvilajnac.DAL.Context\bin\Debug\netcoreapp2.0\DomUcenikaSvilajnac.DAL.Context.runtimeconfig.json
+C:\Users\Student\Desktop\DomUcenikaSvilajnac\SvilajnacDomUcenika\Backend\DomUcenikaSvilajnac.DAL.Context\bin\Debug\netcoreapp2.0\DomUcenikaSvilajnac.DAL.Context.runtimeconfig.dev.json
+C:\Users\Student\Desktop\DomUcenikaSvilajnac\SvilajnacDomUcenika\Backend\DomUcenikaSvilajnac.DAL.Context\bin\Debug\netcoreapp2.0\DomUcenikaSvilajnac.DAL.Context.dll
+C:\Users\Student\Desktop\DomUcenikaSvilajnac\SvilajnacDomUcenika\Backend\DomUcenikaSvilajnac.DAL.Context\bin\Debug\netcoreapp2.0\DomUcenikaSvilajnac.DAL.Context.pdb
+C:\Users\Student\Desktop\DomUcenikaSvilajnac\SvilajnacDomUcenika\Backend\DomUcenikaSvilajnac.DAL.Context\bin\Debug\netcoreapp2.0\DomUcenikaSvilajnac.Common.Models.dll
+C:\Users\Student\Desktop\DomUcenikaSvilajnac\SvilajnacDomUcenika\Backend\DomUcenikaSvilajnac.DAL.Context\bin\Debug\netcoreapp2.0\DomUcenikaSvilajnac.Common.Models.pdb
+C:\Users\Student\Desktop\DomUcenikaSvilajnac\SvilajnacDomUcenika\Backend\DomUcenikaSvilajnac.DAL.Context\obj\Debug\netcoreapp2.0\DomUcenikaSvilajnac.DAL.Context.csprojAssemblyReference.cache
+C:\Users\Student\Desktop\DomUcenikaSvilajnac\SvilajnacDomUcenika\Backend\DomUcenikaSvilajnac.DAL.Context\obj\Debug\netcoreapp2.0\DomUcenikaSvilajnac.DAL.Context.csproj.CoreCompileInputs.cache
+C:\Users\Student\Desktop\DomUcenikaSvilajnac\SvilajnacDomUcenika\Backend\DomUcenikaSvilajnac.DAL.Context\obj\Debug\netcoreapp2.0\DomUcenikaSvilajnac.DAL.Context.AssemblyInfoInputs.cache
+C:\Users\Student\Desktop\DomUcenikaSvilajnac\SvilajnacDomUcenika\Backend\DomUcenikaSvilajnac.DAL.Context\obj\Debug\netcoreapp2.0\DomUcenikaSvilajnac.DAL.Context.AssemblyInfo.cs
+C:\Users\Student\Desktop\DomUcenikaSvilajnac\SvilajnacDomUcenika\Backend\DomUcenikaSvilajnac.DAL.Context\obj\Debug\netcoreapp2.0\DomUcenikaSvilajnac.DAL.Context.csproj.CopyComplete
+C:\Users\Student\Desktop\DomUcenikaSvilajnac\SvilajnacDomUcenika\Backend\DomUcenikaSvilajnac.DAL.Context\obj\Debug\netcoreapp2.0\DomUcenikaSvilajnac.DAL.Context.dll
+C:\Users\Student\Desktop\DomUcenikaSvilajnac\SvilajnacDomUcenika\Backend\DomUcenikaSvilajnac.DAL.Context\obj\Debug\netcoreapp2.0\DomUcenikaSvilajnac.DAL.Context.pdb

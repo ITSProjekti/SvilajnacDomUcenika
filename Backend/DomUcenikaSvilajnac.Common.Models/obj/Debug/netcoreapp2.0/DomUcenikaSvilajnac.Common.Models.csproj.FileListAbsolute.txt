@@ -1,0 +1,11 @@
+C:\Users\Student\Desktop\DomUcenikaSvilajnac\SvilajnacDomUcenika\Backend\DomUcenikaSvilajnac.Common.Models\bin\Debug\netcoreapp2.0\DomUcenikaSvilajnac.Common.Models.deps.json
+C:\Users\Student\Desktop\DomUcenikaSvilajnac\SvilajnacDomUcenika\Backend\DomUcenikaSvilajnac.Common.Models\bin\Debug\netcoreapp2.0\DomUcenikaSvilajnac.Common.Models.runtimeconfig.json
+C:\Users\Student\Desktop\DomUcenikaSvilajnac\SvilajnacDomUcenika\Backend\DomUcenikaSvilajnac.Common.Models\bin\Debug\netcoreapp2.0\DomUcenikaSvilajnac.Common.Models.runtimeconfig.dev.json
+C:\Users\Student\Desktop\DomUcenikaSvilajnac\SvilajnacDomUcenika\Backend\DomUcenikaSvilajnac.Common.Models\bin\Debug\netcoreapp2.0\DomUcenikaSvilajnac.Common.Models.dll
+C:\Users\Student\Desktop\DomUcenikaSvilajnac\SvilajnacDomUcenika\Backend\DomUcenikaSvilajnac.Common.Models\bin\Debug\netcoreapp2.0\DomUcenikaSvilajnac.Common.Models.pdb
+C:\Users\Student\Desktop\DomUcenikaSvilajnac\SvilajnacDomUcenika\Backend\DomUcenikaSvilajnac.Common.Models\obj\Debug\netcoreapp2.0\DomUcenikaSvilajnac.Common.Models.csprojAssemblyReference.cache
+C:\Users\Student\Desktop\DomUcenikaSvilajnac\SvilajnacDomUcenika\Backend\DomUcenikaSvilajnac.Common.Models\obj\Debug\netcoreapp2.0\DomUcenikaSvilajnac.Common.Models.csproj.CoreCompileInputs.cache
+C:\Users\Student\Desktop\DomUcenikaSvilajnac\SvilajnacDomUcenika\Backend\DomUcenikaSvilajnac.Common.Models\obj\Debug\netcoreapp2.0\DomUcenikaSvilajnac.Common.Models.AssemblyInfoInputs.cache
+C:\Users\Student\Desktop\DomUcenikaSvilajnac\SvilajnacDomUcenika\Backend\DomUcenikaSvilajnac.Common.Models\obj\Debug\netcoreapp2.0\DomUcenikaSvilajnac.Common.Models.AssemblyInfo.cs
+C:\Users\Student\Desktop\DomUcenikaSvilajnac\SvilajnacDomUcenika\Backend\DomUcenikaSvilajnac.Common.Models\obj\Debug\netcoreapp2.0\DomUcenikaSvilajnac.Common.Models.dll
+C:\Users\Student\Desktop\DomUcenikaSvilajnac\SvilajnacDomUcenika\Backend\DomUcenikaSvilajnac.Common.Models\obj\Debug\netcoreapp2.0\DomUcenikaSvilajnac.Common.Models.pdb
