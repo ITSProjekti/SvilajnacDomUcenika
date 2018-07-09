@@ -12,9 +12,14 @@ namespace DomUcenikaSvilajnac.Common.Models
         public int Id { get; set; }
         public string NazivSrednjeSkole { get; set; }
         public int OpstinaId { get; set; }
-       // public Opstina Opstina { get; set; }
+        public Opstina Opstina { get; set; }
 
+        ICollection<Ucenik> Ucenici { get; set; }
 
+        public UpisanaSkola()
+        {
+            Ucenici = new Collection<Ucenik>();
+        }
         // ICollection<Ucenik> Ucenici { get; set; }
 
 

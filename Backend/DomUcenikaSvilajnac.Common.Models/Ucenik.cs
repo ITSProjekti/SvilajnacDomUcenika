@@ -50,7 +50,6 @@ namespace DomUcenikaSvilajnac.Common.Models
         public int DrzavaRodjenjaId { get; set; }
         public Drzava DrzavaRodjenja { get; set; }
 
-        public string PrethodnaSkola { get; set; }
         public string MestoZavrseneSkole { get; set; }
 
 
@@ -61,11 +60,18 @@ namespace DomUcenikaSvilajnac.Common.Models
         public int TelefonId { get; set; }
         public Telefon Telefon { get; set; }
 
+  
+
+        public int PrethodnaSkolaId { get; set; }
+
+        public PrethodnaSkola OsnovnaSkola { get; set; }
+
+
         public int PostanskiBrojId { get; set; }
         public PostanskiBroj PostanskiBroj { get; set; }
 
-        //public int UpisanaSkolaId { get; set; }
-        //public UpisanaSkola UpisanaSkola { get; set; }
+        public int UpisanaSkolaId { get; set; }
+        public UpisanaSkola SrednjaSkola { get; set; }
 
 
         public DateTime VremeUpisa { get; set; }

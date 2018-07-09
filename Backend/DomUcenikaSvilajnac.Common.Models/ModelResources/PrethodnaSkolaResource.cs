@@ -8,5 +8,6 @@ namespace DomUcenikaSvilajnac.Common.Models.ModelResources
     {
         public int PrethodnaSkolaId { get; set; }
         public string NazivPrethodneSkole { get; set; }
+        public int OpstinaId { get; set; }
     }
 }

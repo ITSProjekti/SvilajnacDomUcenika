@@ -27,7 +27,7 @@ namespace DomUcenikaSvilajnac.Common.Models
         public ICollection<PostanskiBroj> PostanskiBrojevi { get; set; }
 
          ICollection<UpisanaSkola> UpisaneSkole { get; set; }
-
+        ICollection<PrethodnaSkola> OsnovneSkole { get; set; }
 
         public Opstina()
         {
@@ -35,6 +35,8 @@ namespace DomUcenikaSvilajnac.Common.Models
             UceniciOpstine = new Collection<Ucenik>();
             PostanskiBrojevi = new Collection<PostanskiBroj>();
             UpisaneSkole = new Collection<UpisanaSkola>();
+            OsnovneSkole = new Collection<PrethodnaSkola>();
+
 
         }
     }

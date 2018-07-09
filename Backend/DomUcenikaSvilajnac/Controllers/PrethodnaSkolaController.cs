@@ -11,7 +11,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace DomUcenikaSvilajnac.Controllers
 {
     [Produces("application/json")]
-    [Route("api/PrethodneSkole")]
+    [Route("api/OsnovneSkole")]
     public class PrethodnaSkolaController : Controller
     {
         public IMapper Mapper { get; }

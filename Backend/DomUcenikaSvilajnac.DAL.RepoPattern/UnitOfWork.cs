@@ -110,6 +110,8 @@ namespace DomUcenikaSvilajnac.DAL.RepoPattern
                 .Include(p=> p.Pol)
                 .Include(t=> t.Telefon)
                 .Include(pb=> pb.PostanskiBroj)
+                .Include(os=> os.OsnovnaSkola)
+                .Include(ss=> ss.SrednjaSkola)
                 .ToListAsync();
             return Mapper.Map<List<Ucenik>, List<UcenikResource>>(neki);
         }

@@ -19,6 +19,12 @@
     <Compile Remove="Migrations\20180706094244_SpajanjeTabeleUcenikiUpisaneSkoleSaOpstinom.cs" />
     <Compile Remove="Migrations\20180706094514_SpajanjeTabeleUcenikiUpisaneSkoleSaOpstinom.cs" />
     <Compile Remove="Migrations\20180706094552_SpajanjeTabeleUcenikiUpisaneSkoleSaOpstinom.cs" />
+    <Compile Remove="Migrations\20180709083936_SpajanjeOpstineIOsnovneSkole.cs" />
+    <Compile Remove="Migrations\20180709084039_SpajanjeOpstineIOsnovneSkole.cs" />
+    <Compile Remove="Migrations\20180709085445_OsnovnaiSrednjaSkolauUcenikuId.cs" />
+    <Compile Remove="Migrations\20180709085757_OsnovnaiSrednjaSkolauUcenikuId.cs" />
+    <Compile Remove="Migrations\20180709085954_OsnovnaiSrednjaSkolauUcenikuId.cs" />
+    <Compile Remove="Migrations\20180709090245_OsnovnaiSrednjaSkolauUcenikuId.cs" />
   </ItemGroup>
 
   <ItemGroup>
