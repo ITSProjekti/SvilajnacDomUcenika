@@ -50,9 +50,9 @@ namespace DomUcenikaSvilajnac.Common.Models
 
         //================
         //propertiji za komentarisanje prije svake migracije
-        public int MestoRodjenjaId { get; set; }
-        public int MestoPrebivalistaId { get; set; }
-        public int MestoZavrseneSkoleId { get; set; }
+        //public int MestoRodjenjaId { get; set; }
+        //public int MestoPrebivalistaId { get; set; }
+        //public int MestoZavrseneSkoleId { get; set; }
         //================
 
 
