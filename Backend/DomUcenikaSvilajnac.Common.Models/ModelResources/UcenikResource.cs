@@ -35,9 +35,9 @@ namespace DomUcenikaSvilajnac.ModelResources
         public Mesto MestoRodjenja { get; set; }
         public Mesto MestoPrebivalista { get; set; }
 
-        public Drzava DrzavaRodjenja { get; set; }
+        public Mesto MestoZavrseneSkole { get; set; }
 
-        public string MestoZavrseneSkole { get; set; }
+        public Drzava DrzavaRodjenja { get; set; }
 
         public PrethodnaSkola OsnovnaSkola { get; set; }
         public UpisanaSkola SrednjaSkola { get; set; }

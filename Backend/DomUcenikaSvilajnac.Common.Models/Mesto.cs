@@ -18,5 +18,8 @@ namespace DomUcenikaSvilajnac.Common.Models
 
         [InverseProperty("MestoPrebivalista")]
         ICollection<Ucenik> MestaPrebivalistaUcenika { get; set; }
+
+        [InverseProperty("MestoZavrseneSkole")]
+        ICollection<Ucenik> MestaZavrseneSkole { get; set; }
     }
 }

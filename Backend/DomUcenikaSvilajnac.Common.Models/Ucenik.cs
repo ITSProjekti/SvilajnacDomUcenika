@@ -47,13 +47,21 @@ namespace DomUcenikaSvilajnac.Common.Models
         public int DrzavaRodjenjaId { get; set; }
         public Drzava DrzavaRodjenja { get; set; }
 
+
+        //================
+        //propertiji za komentarisanje prije svake migracije
         public int MestoRodjenjaId { get; set; }
         public int MestoPrebivalistaId { get; set; }
+        public int MestoZavrseneSkoleId { get; set; }
+        //================
+
 
 
         public Mesto MestoRodjenja { get; set; }
 
         public Mesto MestoPrebivalista { get; set; }
+
+        public Mesto MestoZavrseneSkole { get; set; }
         public int PolId { get; set; }
 
         public Pol Pol { get; set; }
