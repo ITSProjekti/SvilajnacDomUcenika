@@ -32,11 +32,10 @@
                   label="jmbg"
                   required
                   input type="number"
-                  :rules="[rules.required, rules.jmbg]"
+                  :rules="[rules.required,rules.jmbg]"
                   :counter="13"
                     ></v-text-field>
               </v-flex>
-
               <template>
                  <v-container fluid>
                     <v-layout row wrap>
@@ -165,26 +164,18 @@
                     :rules="[rules.required]"
                    ></v-text-field>
               </v-flex>
-
                <v-flex xs12 >
                 <v-text-field
-                 v-model="editedItem.telefon.mobilni"
-                 
+                 v-model="editedItem.telefon.mobilni"                 
                    label="Mobilni telefon"
-                   
                    ></v-text-field>
               </v-flex>
-
                <v-flex xs12 >
                 <v-text-field
-                 v-model="editedItem.telefon.kucni"
-                
-                   label="Kucni telefon"
-                    
+                 v-model="editedItem.telefon.kucni"                
+                   label="Kucni telefon"    
                    ></v-text-field>
               </v-flex>
-
-              
               <v-flex xs12 >
                 <h3 dark class="mb-2">Datum Rodjenja</h3>              
                 <v-date-picker
@@ -223,13 +214,11 @@
     <v-card>
       <v-layout >
         <v-card-title class="text-xs-right">
-          <h2>Lista ucenika</h2> 
-    
+          <h2>Lista ucenika</h2>    
         </v-card-title>
           <v-spacer  > </v-spacer>
         <v-flex xs12 sm3 class="text-sm-right" absolute >
-  <v-text-field
-      
+        <v-text-field
         v-model="search"
         append-icon="search"
         label="Pretraga"
@@ -237,10 +226,8 @@
         hide-details
       ></v-text-field> 
         </v-flex>
-        
-    
       </v-layout>
-    <v-layout xs12 sm6  row wrap class="mt-2" absolute v-if="!loading">
+    <v-layout xs12 sm6  row wrap class="mt-2"  v-if="!loading">
    
     <v-data-table
       :headers="headers"
@@ -249,8 +236,7 @@
       :rows-per-page-items="[5,10,15,20,25,30,35]"
       :search="search"
       :custom-filter="customFilter"
-      class="text-xs-center"
-    
+      class="text-xs-center"    
      >
       <template slot="items" slot-scope="props" >
         <tr @click="props.expanded = !props.expanded">
@@ -262,8 +248,7 @@
         <td class="text-xs-center">{{ props.item.dan }}.{{ props.item.mesec }}.{{ props.item.godina }}.</td>
         <td class="text-xs-center">{{ props.item.mestoRodjenja }}</td>
         <td class="text-xs-center">{{ props.item.opstina.nazivOpstine }}</td>
-        <td class="justify-center layout px-0">
-         
+        <td class="justify-center layout px-0">         
           <v-btn center  icon class="mx-0" @click="editItem(props.item)">
             <v-icon color="teal">edit</v-icon>
           </v-btn>
@@ -285,58 +270,46 @@
                 <v-card flat>
                   <v-card-text> <h2>Ostali podaci</h2> </v-card-text>
                   <v-layout row wrap>  
-
                       <v-flex xs2>
                    <v-subheader>Postanski broj:</v-subheader> 
-                      
                        </v-flex>
-
                          <v-flex xs2>
                             <v-card-text class="text-lg-left">
                                 {{ props.item.postanskiBroj.broj }}
                               </v-card-text>
-                          </v-flex>
-                    
+                          </v-flex>                   
                        <v-flex xs2>
                       <v-subheader v-text="'Drzava rodjenja: '"></v-subheader>
                        </v-flex>
-
                      <v-flex xs2>
                             <v-card-text class="text-lg-left">
                                 {{ props.item.drzavaRodjenja.nazivDrzave }}
                               </v-card-text>
                           </v-flex>
-
                       <v-flex xs2>
                        <v-subheader class="text-lg-right" v-text="'Mesto prebivalista: '"></v-subheader>
                        </v-flex>
-
                        <v-flex xs2>
                         <v-card-text class="text-lg-left">
                                 {{ props.item.mestoPrebivalista }}
                               </v-card-text>
                        </v-flex>
-
                          <v-flex xs2>
                        <v-subheader class="text-lg-right" v-text="'Opstina prebivalista: '"></v-subheader>
                        </v-flex>
-
                        <v-flex xs2>
                         <v-card-text class="text-lg-left">
                                 {{ props.item.opstinaPrebivalista.nazivOpstine }}
                               </v-card-text>
-                       </v-flex>
-                   
+                       </v-flex>                  
                      <v-flex xs2>
                        <v-subheader class="text-lg-right" v-text="'Kucni telefon: '"></v-subheader>
                        </v-flex>
-
                        <v-flex xs2>
                         <v-card-text class="text-lg-left">
                                 {{ props.item.telefon.kucni }}
                               </v-card-text>
                        </v-flex>
-
                          <v-flex xs2>
                        <v-subheader class="text-lg-right" v-text="'Mobilni telefon: '"></v-subheader>
                        </v-flex>
@@ -371,18 +344,18 @@ import moment from 'moment'
           text: 'Redni broj',
           align: 'center',
           sortable: false,
-           value: 'ime',
+           value: 'redni broj',
            width:'5%'
            
         },
-        { text: 'Ime',value: false ,align: 'center',sortable:false, width:'10%'},
-        { text: 'Prezime', value:false, align: 'center',sortable:false,width:'10%'},
-        { text: 'JMBG', value:false,align: 'center',sortable:false ,width:'10%'},
-        { text: 'Pol', value: false,align: 'center',sortable:false,width:'10%' },
-        { text: 'Datum rodjenja', value: false,align: 'center',sortable:false,width:'10%' },
-        { text: 'Mesto rodjenja', value: false,align: 'center',sortable:false,width:'10%' },
-        { text: 'Opstina rodjenja', value: false,align: 'center',sortable:false ,width:'10%'},
-        { text: 'Opcije', value: false,align: 'center',sortable:false,width:'10%' }
+        { text: 'Ime',value: 'ime' ,align: 'center',sortable:false, width:'10%'},
+        { text: 'Prezime', value:'prezime', align: 'center',sortable:false,width:'10%'},
+        { text: 'JMBG', value:'jmbg',align: 'center',sortable:false ,width:'10%'},
+        { text: 'Pol', value: 'pol',align: 'center',sortable:false,width:'10%' },
+        { text: 'Datum rodjenja', value: 'datum',align: 'center',sortable:false,width:'10%' },
+        { text: 'Mesto rodjenja', value: 'mesto rodjenja',align: 'center',sortable:false,width:'10%' },
+        { text: 'Opstina rodjenja', value: 'opstina rodjenja',align: 'center',sortable:false ,width:'10%'},
+        { text: 'Opcije', value: 'opcije',align: 'center',sortable:false,width:'10%' }
       ],
            rules: {
           required: (value) => !!value || 'Ovo polje je obavezno.',
@@ -470,20 +443,25 @@ import moment from 'moment'
       }
     }),
     computed: { formIsValid () {
-        return this.editedItem.ime !== '' &&
-          this.editedItem.prezimeime !== '' &&
+       
+        if( this.editedItem.ime !== '' &&
+          this.editedItem.prezime!== '' &&         
           this.editedItem.jmbg !== '' &&
-          this.editedItem.jmbg.length == 13 &&
-          this.editedItem.pol !== '' &&
-    //      this.editedItem.dan !== '' &&
-    //      this.editedItem.mesec !== '' &&
-   //       this.editedItem.godina !== '' &&
-        
+          this.editedItem.jmbg.length === 13 &&
+          this.editedItem.pol.id !== '' &&
+          this.editedItem.drzavaRodjenja.id !== '' &&
+          this.editedItem.opstinaPrebivalista.id !== '' &&
+          this.editedItem.opstina.id !== '' &&
+          this.editedItem.postanskiBroj.id !== '' &&
           this.editedItem.mestoRodjenja !== '' &&
           this.editedItem.mestoPrebivalista !== '' &&
-          this.editedItem.opstina.id !== '' &&
-          this.editedItem.drzavaRodjenja.id !== '' &&
-          this.datum !== null
+          this.datum !== null)
+          {
+            return true
+            }
+          else{
+            return false
+          }
          
       },
       polovi () {
@@ -525,12 +503,29 @@ import moment from 'moment'
       
       
       customFilter(items, search, filter) {
-          
-            search = search.toString().toLowerCase()
-            return items.filter(o => 
-        Object.keys(o).some(k => 
-            o[k].toString().toLowerCase().indexOf(search) !== -1));
-
+      search = search.toString().toLowerCase()
+        
+      var  filtered= items.filter(i => (
+      Object.keys(i).some(j => filter(i[j], search)) 
+    ))
+    
+    if (filtered.length !== 0)
+    return filtered
+    else
+    {
+         return items.filter((item) => {
+           item.datum=item.dan+"."+item.mesec+"."+item.godina
+           
+        return item.drzavaRodjenja.nazivDrzave.toLowerCase().match(this.search.toLowerCase()) ||
+        item.opstina.nazivOpstine.toLowerCase().match(this.search.toLowerCase()) ||
+        item.pol.nazivPola.toLowerCase().match(this.search.toLowerCase()) ||
+        item.opstinaPrebivalista.nazivOpstine.toLowerCase().match(this.search.toLowerCase()) ||
+        item.telefon.kucni.toLowerCase().match(this.search.toLowerCase()) ||
+        item.telefon.mobilni.toLowerCase().match(this.search.toLowerCase()) ||
+        item.postanskiBroj.broj.toLowerCase().match(this.search.toLowerCase()) ||
+        item.datum.toLowerCase().match(this.search.toLowerCase())
+        })
+    }
         },
        formatiranjeDatuma()
       {
@@ -547,14 +542,8 @@ import moment from 'moment'
        
       },
       editItem (item) {
-
-     
-
         this.editedIndex = this.ucenici.indexOf(item)
         this.editedItem = Object.assign({}, item)
-
-         
-
         this.dialog = true
       },
       deleteItem (item) {
@@ -573,7 +562,7 @@ import moment from 'moment'
         if (this.editedIndex > -1) {    
           this.formatiranjeDatuma()
          // Object.assign(this.ucenici[this.editedIndex], this.editedItem)
-           this.$store.dispatch('editUcenik',this.editedItem)
+          this.$store.dispatch('editUcenik',this.editedItem)
           this.editedItem = Object.assign({}, this.defaultItem)
         } else {
           this.formatiranjeDatuma() 
