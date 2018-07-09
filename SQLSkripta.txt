@@ -1,0 +1,38 @@
+--prvo se izvrsi linija za kreiranje baze 
+create database Srbija;
+
+-- Nakon toga ide kod ispod
+use Srbija;
+go
+
+-- kod za kreiranje tabele Opstine
+
+create table Opstine(
+ Id int not null identity(1,1) primary key,
+ NazivOpstine varchar(30)
+);
+
+-- kod za kreiranje tabele PostanskiBrojevi
+
+create table PostanskiBrojevi(
+	Id int primary key not null identity(1,1),
+	Broj varchar(10),
+	OpstinaId int,
+	Foreign key(OpstinaId) references Opstine(Id)
+)
+
+--kod za kreiranje tabele OsnovneSkole
+
+create table OsnovneSkole(
+	Id int not null identity(1,1) primary key,
+	NazivSkole varchar(100),
+	OpstinaId int,
+	foreign key (OpstinaId) references Opstine(Id)
+)
+--kod za kreiranje tabele Naselje (mesta)
+
+create table Naselja (
+	Id int not null identity(1,1) primary key,
+	NazivNaselja varchar(100)
+
+)
