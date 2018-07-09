@@ -37,22 +37,23 @@ namespace DomUcenikaSvilajnac.Common.Models
 
         //================
         //propertiji za komentarisanje prije svake migracije
-        public int OpstinaPrebivalistaId { get; set; }
-        public int OpstinaId { get; set; }
+        //public int OpstinaPrebivalistaId { get; set; }
+        //public int OpstinaId { get; set; }
         //================
         public Opstina Opstina { get; set; }
         public Opstina OpstinaPrebivalista { get; set; }
         //
 
-        public string MestoRodjenja { get; set; }
-        public string MestoPrebivalista { get; set; }
-
         public int DrzavaRodjenjaId { get; set; }
         public Drzava DrzavaRodjenja { get; set; }
 
-        public string MestoZavrseneSkole { get; set; }
+        public int MestoRodjenjaId { get; set; }
+        public int MestoPrebivalistaId { get; set; }
 
 
+        public Mesto MestoRodjenja { get; set; }
+
+        public Mesto MestoPrebivalista { get; set; }
         public int PolId { get; set; }
 
         public Pol Pol { get; set; }

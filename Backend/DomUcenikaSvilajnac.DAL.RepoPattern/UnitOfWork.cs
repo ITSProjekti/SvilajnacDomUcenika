@@ -41,6 +41,7 @@ namespace DomUcenikaSvilajnac.DAL.RepoPattern
             Brojevi = new PostanskiBrojRepository(_context);
             PrethodneSkole = new PrethodnaSkolaRepository(_context);
             UpisaneSkole = new UpisanaSkolaRepository(_context);
+            Mesta = new MestoRepository(_context);
 
 
         }
@@ -56,7 +57,7 @@ namespace DomUcenikaSvilajnac.DAL.RepoPattern
         public IPostanskiBrojRepository Brojevi { get; set; }
         public IPrethodnaSkolaRepository PrethodneSkole { get; set; }
         public IUpisanaSkola UpisaneSkole { get; set; }
-
+        public IMestoRepository Mesta { get; set; }
         public IMapper Mapper { get; }
 
         /// <summary>
@@ -112,6 +113,8 @@ namespace DomUcenikaSvilajnac.DAL.RepoPattern
                 .Include(pb=> pb.PostanskiBroj)
                 .Include(os=> os.OsnovnaSkola)
                 .Include(ss=> ss.SrednjaSkola)
+                .Include(mr=> mr.MestoRodjenja)
+                .Include(mr=> mr.MestoPrebivalista)
                 .ToListAsync();
             return Mapper.Map<List<Ucenik>, List<UcenikResource>>(neki);
         }

@@ -28,12 +28,12 @@ namespace DomUcenikaSvilajnac.ModelResources
         public int Mesec { get; set; }
 
         public int Godina { get; set; }
-        public string MestoRodjenja { get; set; }
-        public string MestoPrebivalista { get; set; }
 
         public Opstina Opstina { get; set; }
         public Opstina OpstinaPrebivalista { get; set; }
 
+        public Mesto MestoRodjenja { get; set; }
+        public Mesto MestoPrebivalista { get; set; }
 
         public Drzava DrzavaRodjenja { get; set; }
 

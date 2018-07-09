@@ -11,9 +11,10 @@ using System;
 namespace DomUcenikaSvilajnac.DAL.Context.Migrations
 {
     [DbContext(typeof(UcenikContext))]
-    partial class UcenikContextModelSnapshot : ModelSnapshot
+    [Migration("20180709110038_MestaSrbijeTabela")]
+    partial class MestaSrbijeTabela
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -133,10 +134,6 @@ namespace DomUcenikaSvilajnac.DAL.Context.Migrations
                         .IsRequired()
                         .HasMaxLength(13);
 
-                    b.Property<int?>("MestoPrebivalistaId");
-
-                    b.Property<int?>("MestoRodjenjaId");
-
                     b.Property<int?>("OpstinaId");
 
                     b.Property<int?>("OpstinaPrebivalistaId");
@@ -160,10 +157,6 @@ namespace DomUcenikaSvilajnac.DAL.Context.Migrations
                     b.HasKey("Id");
 
                     b.HasIndex("DrzavaRodjenjaId");
-
-                    b.HasIndex("MestoPrebivalistaId");
-
-                    b.HasIndex("MestoRodjenjaId");
 
                     b.HasIndex("OpstinaId");
 
@@ -220,14 +213,6 @@ namespace DomUcenikaSvilajnac.DAL.Context.Migrations
                         .WithMany()
                         .HasForeignKey("DrzavaRodjenjaId")
                         .OnDelete(DeleteBehavior.Cascade);
-
-                    b.HasOne("DomUcenikaSvilajnac.Common.Models.Mesto", "MestoPrebivalista")
-                        .WithMany()
-                        .HasForeignKey("MestoPrebivalistaId");
-
-                    b.HasOne("DomUcenikaSvilajnac.Common.Models.Mesto", "MestoRodjenja")
-                        .WithMany()
-                        .HasForeignKey("MestoRodjenjaId");
 
                     b.HasOne("DomUcenikaSvilajnac.Common.Models.Opstina", "Opstina")
                         .WithMany()
