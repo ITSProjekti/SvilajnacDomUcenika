@@ -39,8 +39,8 @@ namespace DomUcenikaSvilajnac.ModelResources
 
         public Drzava DrzavaRodjenja { get; set; }
 
-        public PrethodnaSkola OsnovnaSkola { get; set; }
-        public UpisanaSkola SrednjaSkola { get; set; }
+        public PrethodnaSkola PrethodnaSkola { get; set; }
+        public UpisanaSkola UpisanaSkola { get; set; }
 
 
     }

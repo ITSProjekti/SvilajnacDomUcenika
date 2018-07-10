@@ -57,7 +57,7 @@ namespace DomUcenikaSvilajnac.Controllers
             }
 
             var staraPrethodnaSkola = await UnitOfWork.PrethodneSkole.GetAsync(id);
-            if (id != staraPrethodnaSkola.PrethodnaSkolaId)
+            if (id != staraPrethodnaSkola.Id)
             {
                 return BadRequest();
             }
@@ -65,7 +65,7 @@ namespace DomUcenikaSvilajnac.Controllers
                 return NotFound();
 
 
-            prethodnaSkola.PrethodnaSkolaId = id;
+            prethodnaSkola.Id = id;
             Mapper.Map<PrethodnaSkolaResource, PrethodnaSkola>(prethodnaSkola, staraPrethodnaSkola);
 
             await UnitOfWork.SaveChangesAsync();

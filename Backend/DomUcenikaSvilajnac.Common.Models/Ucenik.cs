@@ -34,25 +34,25 @@ namespace DomUcenikaSvilajnac.Common.Models
 
         public DateTime DatumRodjenja { get; set; }
 
-
-        //================
-        //propertiji za komentarisanje prije svake migracije
-        //public int OpstinaPrebivalistaId { get; set; }
-        //public int OpstinaId { get; set; }
-        //================
-        public Opstina Opstina { get; set; }
-        public Opstina OpstinaPrebivalista { get; set; }
-        //
-
         public int DrzavaRodjenjaId { get; set; }
         public Drzava DrzavaRodjenja { get; set; }
 
+        //================
+        //propertiji za komentarisanje prije svake migracije
+        public int OpstinaPrebivalistaId { get; set; }
+        public int OpstinaId { get; set; }
+        //================
+        public Opstina Opstina { get; set; }
+        public Opstina OpstinaPrebivalista { get; set; }
+
+
+
 
         //================
         //propertiji za komentarisanje prije svake migracije
-        //public int MestoRodjenjaId { get; set; }
-        //public int MestoPrebivalistaId { get; set; }
-        //public int MestoZavrseneSkoleId { get; set; }
+        public int MestoRodjenjaId { get; set; }
+        public int MestoPrebivalistaId { get; set; }
+        public int MestoZavrseneSkoleId { get; set; }
         //================
 
 
@@ -73,14 +73,14 @@ namespace DomUcenikaSvilajnac.Common.Models
 
         public int PrethodnaSkolaId { get; set; }
 
-        public PrethodnaSkola OsnovnaSkola { get; set; }
+        public PrethodnaSkola PrethodnaSkola { get; set; }
 
 
         public int PostanskiBrojId { get; set; }
         public PostanskiBroj PostanskiBroj { get; set; }
 
         public int UpisanaSkolaId { get; set; }
-        public UpisanaSkola SrednjaSkola { get; set; }
+        public UpisanaSkola UpisanaSkola { get; set; }
 
 
         public DateTime VremeUpisa { get; set; }

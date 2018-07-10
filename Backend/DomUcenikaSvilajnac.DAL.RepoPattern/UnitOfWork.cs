@@ -111,10 +111,11 @@ namespace DomUcenikaSvilajnac.DAL.RepoPattern
                 .Include(p=> p.Pol)
                 .Include(t=> t.Telefon)
                 .Include(pb=> pb.PostanskiBroj)
-                .Include(os=> os.OsnovnaSkola)
-                .Include(ss=> ss.SrednjaSkola)
+                .Include(os=> os.PrethodnaSkola)
+                .Include(ss=> ss.UpisanaSkola)
                 .Include(mr=> mr.MestoRodjenja)
                 .Include(mr=> mr.MestoPrebivalista)
+                .Include(mzs=> mzs.MestoZavrseneSkole)
                 .ToListAsync();
             return Mapper.Map<List<Ucenik>, List<UcenikResource>>(neki);
         }
@@ -127,6 +128,11 @@ namespace DomUcenikaSvilajnac.DAL.RepoPattern
                  .Include(p => p.Pol)
                  .Include(t => t.Telefon)
                   .Include(pb => pb.PostanskiBroj)
+                   .Include(os => os.PrethodnaSkola)
+                .Include(ss => ss.UpisanaSkola)
+                .Include(mr => mr.MestoRodjenja)
+                .Include(mr => mr.MestoPrebivalista)
+                .Include(mzs=> mzs.MestoZavrseneSkole)
                 .SingleOrDefaultAsync(x => x.Id == id);
             return Mapper.Map<Ucenik, UcenikResource>(neki);
         }
@@ -140,6 +146,8 @@ namespace DomUcenikaSvilajnac.DAL.RepoPattern
                 .Include(p => p.Pol)
                 .Include(t => t.Telefon)
                  .Include(pb => pb.PostanskiBroj)
+                  .Include(os => os.PrethodnaSkola)
+                .Include(ss => ss.UpisanaSkola)
                 .SingleOrDefaultAsync(x => x.Id == ucenik.Id);
 
             return Mapper.Map<Ucenik, UcenikResource>(neki);
