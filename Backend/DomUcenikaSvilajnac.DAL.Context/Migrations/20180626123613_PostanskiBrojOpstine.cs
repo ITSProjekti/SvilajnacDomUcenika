@@ -58,7 +58,7 @@ namespace DomUcenikaSvilajnac.DAL.Context.Migrations
               "update Opstine set PostanskiBroj = 18240 where NazivOpstine = 'Gadžin Han'" +
               "update Opstine set PostanskiBroj = 35222 where NazivOpstine = 'Glogovac'" +
               "update Opstine set PostanskiBroj = 18309 where NazivOpstine = 'Gnjilane'" +
-              "update Opstine set PostanskiBroj = 12223 where NazivOpstine = 'Golubac'" +
+              "update Opstine set PostanskiBroj = 12223 where NazivOpstine = 'GoluBač'" +
               "update Opstine set PostanskiBroj = 38420 where NazivOpstine = 'Gora'" +
               "update Opstine set PostanskiBroj = 32300 where NazivOpstine = 'Gornji Milanovac'" +
               "update Opstine set PostanskiBroj = 11306 where NazivOpstine = 'Grocka'" +
@@ -166,7 +166,7 @@ namespace DomUcenikaSvilajnac.DAL.Context.Migrations
               "update Opstine set PostanskiBroj = 36350 where NazivOpstine = 'Raška'" +
               "update Opstine set PostanskiBroj = 35260 where NazivOpstine = 'Rekovac'" +
               "update Opstine set PostanskiBroj = 22400 where NazivOpstine = 'Ruma'" +
-              "update Opstine set PostanskiBroj = 11000 where NazivOpstine = 'Savski venac'" +
+              "update Opstine set PostanskiBroj = 11000 where NazivOpstine = 'Savski Venac'" +
               "update Opstine set PostanskiBroj = 35210 where NazivOpstine = 'Svilajnac'" +
               "update Opstine set PostanskiBroj = 18360 where NazivOpstine = 'Svrljig'" +
               "update Opstine set PostanskiBroj = 24400 where NazivOpstine = 'Senta'" +
@@ -205,7 +205,7 @@ namespace DomUcenikaSvilajnac.DAL.Context.Migrations
               "update Opstine set PostanskiBroj = 32000 where NazivOpstine = 'Čačak'" +
               "update Opstine set PostanskiBroj = 23320 where NazivOpstine = 'Čoka'" +
               "update Opstine set PostanskiBroj = 11030 where NazivOpstine = 'Čukarica'" +
-              "update Opstine set PostanskiBroj = 15000 where NazivOpstine = 'Šabac'" +
+              "update Opstine set PostanskiBroj = 15000 where NazivOpstine = 'ŠaBač'" +
               "update Opstine set PostanskiBroj = 22240 where NazivOpstine = 'Šid'" +
               "update Opstine set PostanskiBroj = 72000 where NazivOpstine = 'Štimlje'" +
               "update Opstine set PostanskiBroj = 38236 where NazivOpstine = 'Štrpce'");

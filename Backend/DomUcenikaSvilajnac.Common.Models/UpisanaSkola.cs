@@ -10,6 +10,8 @@ namespace DomUcenikaSvilajnac.Common.Models
     public class UpisanaSkola
     {
         public int Id { get; set; }
+
+        [Column(TypeName = "NVARCHAR(MAX)")]
         public string NazivSrednjeSkole { get; set; }
         public int OpstinaId { get; set; }
         public Opstina Opstina { get; set; }

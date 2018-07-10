@@ -200,7 +200,7 @@ namespace DomUcenikaSvilajnac.DAL.Context.Migrations
                 "('Barane Peć')," +
                 "('Barbarušince Vranje')," +
                 "('Barbatovac Blace')," +
-                "('Barbace Trgovište')," +
+                "('BarBače Trgovište')," +
                 "('Bardonić Đakovica')," +
                 "('Bardosan Đakovica')," +
                 "('Bare Despotovac')," +
@@ -218,7 +218,7 @@ namespace DomUcenikaSvilajnac.DAL.Context.Migrations
                 "('Bariljevo Priština')," +
                 "('Barice Plandište')," +
                 "('Barič Beograd –brenovac')," +
-                "('Baričolubac')," +
+                "('BaričoluBač')," +
                 "('Barje Bosilegrad')," +
                 "('Barje Dimitrovgrad')," +
                 "('Barje Leskovac')," +
@@ -246,8 +246,8 @@ namespace DomUcenikaSvilajnac.DAL.Context.Migrations
                 "('Baćevac Beograd – Barajevo')," +
                 "('Baćica Tutin')," +
                 "('Baćoglava Kuršumlija')," +
-                "('Bace Prokuplje')," +
-                "('Bacijevce Surdulica')," +
+                "('Bače Prokuplje')," +
+                "('Bačijevce Surdulica')," +
                 "('Bač Bač')," +
                 "('Bačvište Vladičin Han')," +
                 "('Bačevina Lebane')," +
@@ -291,7 +291,7 @@ namespace DomUcenikaSvilajnac.DAL.Context.Migrations
                 "('Bela Voda Kruševac')," +
                 "('Bela Voda Prokuplje')," +
                 "('Bela Palanka Bela Palanka')," +
-                "('Bela Reka Šabac')," +
+                "('Bela Reka ŠaBač')," +
                 "('Bela Stena Raška')," +
                 "('Bela Crkva Krupanj')," +
                 "('Bela Crkva Bela Crkva')," +
@@ -364,7 +364,7 @@ namespace DomUcenikaSvilajnac.DAL.Context.Migrations
                 "('Beograd (Čukarica) Beograd')," +
                 "('Beomužević Valjevo')," +
                 "('Beoci Raška')," +
-                "('Beočin Beočin')," +
+                "('Beočin')," +
                 "('Beočić Rekovac')," +
                 "('Beranje Požarevac')," +
                 "('Berbatovo Niš – Palilula')," +
@@ -403,7 +403,7 @@ namespace DomUcenikaSvilajnac.DAL.Context.Migrations
                 "('Bivoljak Vučitrn')," +
                 "('Bivolje Kruševac')," +
                 "('Bigrenica Ćuprija')," +
-                "('Bikinjeolubac')," +
+                "('BikinjeoluBač')," +
                 "('Bikić Do Šid')," +
                 "('Bikovo Subotica')," +
                 "('Bilincenjilane')," +
@@ -483,7 +483,7 @@ namespace DomUcenikaSvilajnac.DAL.Context.Migrations
                 "('Bogojevići Arilje')," +
                 "('Bogojevodžaci')," +
                 "('Bogojevce Leskovac')," +
-                "('Bogosavac Šabac')," +
+                "('Bogosavac ŠaBač')," +
                 "('Bogoševo Vladičin Han')," +
                 "('Bogoštica Krupanj')," +
                 "('Bogujevac Kuršumlija')," +
@@ -506,7 +506,7 @@ namespace DomUcenikaSvilajnac.DAL.Context.Migrations
                 "('Bojanići Kraljevo')," +
                 "('Bojin Del Vranje')," +
                 "('Bojince Kruševac')," +
-                "('Bojić Šabac')," +
+                "('Bojić ŠaBač')," +
                 "('Bojišina Leskovac')," +
                 "('Bojnik Bojnik')," +
                 "('Bojnoviće Zubin Potok')," +
@@ -545,7 +545,7 @@ namespace DomUcenikaSvilajnac.DAL.Context.Migrations
                 "('Braljina Ćićevac')," +
                 "('Brangović Valjevo')," +
                 "('Branešci Čajetina')," +
-                "('Braničevoolubac')," +
+                "('BraničevooluBač')," +
                 "('Brankovina Valjevo')," +
                 "('Brankovci Bosilegrad')," +
                 "('Brančić Ljig')," +
@@ -647,7 +647,7 @@ namespace DomUcenikaSvilajnac.DAL.Context.Migrations
                 "('Brnjare Bujanovac')," +
                 "('Brnjac Loznica')," +
                 "('Brnjačarahovac')," +
-                "('Brnjicaolubac')," +
+                "('BrnjicaoluBač')," +
                 "('Brnjica Knić')," +
                 "('Brnjica Sjenica')," +
                 "('Brovina Đakovica')," +
@@ -708,7 +708,7 @@ namespace DomUcenikaSvilajnac.DAL.Context.Migrations
                 "('Bukovska Kučevo')," +
                 "('Bukovče Negotin')," +
                 "('Bukovče Jagodina')," +
-                "('Bukor Šabac')," +
+                "('Bukor ŠaBač')," +
                 "('Bukorovac Kragujevac')," +
                 "('Bukoš Vučitrn')," +
                 "('Bukoš Suva Reka')," +
@@ -769,7 +769,7 @@ namespace DomUcenikaSvilajnac.DAL.Context.Migrations
                 "('Varevo Novi Pazar')," +
                 "('Varevo Raška')," +
                 "('Varigovce Lipljan')," +
-                "('Varna Šabac')," +
+                "('Varna ŠaBač')," +
                 "('Varniceornji Milanovac')," +
                 "('Varoš Ražanj')," +
                 "('Varoš Svrljig')," +
@@ -908,7 +908,7 @@ namespace DomUcenikaSvilajnac.DAL.Context.Migrations
                 "('Vinarce Leskovac')," +
                 "('Vinicka Prijepolje')," +
                 "('Vinorača Jagodina')," +
-                "('Vinciolubac')," +
+                "('VincioluBač')," +
                 "('Vinča Beograd –rocka')," +
                 "('Vinča Topola')," +
                 "('Vinjište Kragujevac')," +
@@ -996,7 +996,7 @@ namespace DomUcenikaSvilajnac.DAL.Context.Migrations
                 "('Vojvoda Zimonić Kanjiža')," +
                 "('Vojvoda Stepa Nova Crnja')," +
                 "('Vojvodinci Vršac')," +
-                "('Vojilovoolubac')," +
+                "('VojilovooluBač')," +
                 "('Vojinovac Rača')," +
                 "('Vojinovce Štimlje')," +
                 "('Vojka Stara Pazova')," +
@@ -1013,7 +1013,7 @@ namespace DomUcenikaSvilajnac.DAL.Context.Migrations
                 "('Voluja Kučevo')," +
                 "('Volujak Klina')," +
                 "('Volujac Užice')," +
-                "('Volujac Šabac')," +
+                "('Volujac ŠaBač')," +
                 "('Voljavče Jagodina')," +
                 "('Voljevci Mali Zvornik')," +
                 "('Voljčince Žitorađa')," +
@@ -1273,8 +1273,8 @@ namespace DomUcenikaSvilajnac.DAL.Context.Migrations
                 "('Goločelo Koceljeva')," +
                 "('Goločelo Kragujevac')," +
                 "('Goluban Sjenica')," +
-                "('Golubacolubac')," +
-                "('Golubac Mionica')," +
+                "('GoluBačoluBač')," +
+                "('GoluBač Mionica')," +
                 "('Golubinci Stara Pazova')," +
                 "('Golubinje Majdanpek')," +
                 "('Golubovac Paraćin')," +
@@ -1301,7 +1301,7 @@ namespace DomUcenikaSvilajnac.DAL.Context.Migrations
                 "('Gornja Budrika Vitina')," +
                 "('Gornja Bukovica Valjevo')," +
                 "('Gornja Bunuša Leskovac')," +
-                "('Gornja Vranjska Šabac')," +
+                "('Gornja Vranjska ŠaBač')," +
                 "('Gornja Vrbavaornji Milanovac')," +
                 "('Gornja Vrežina Niš – Pantelej')," +
                 "('Gornjalama Bela Palanka')," +
@@ -1450,7 +1450,7 @@ namespace DomUcenikaSvilajnac.DAL.Context.Migrations
                 "('Gornji Dejan Vlasotince')," +
                 "('Gornji Dobrić Loznica')," +
                 "('Gornji Drenovac Žitorađa')," +
-                "('Gornji Dubac Lučani')," +
+                "('Gornji DuBač Lučani')," +
                 "('Gornji Dubič Trstenik')," +
                 "('Gornji Dušnikadžin Han')," +
                 "('Gornji Zabeljlogovac')," +
@@ -1511,7 +1511,7 @@ namespace DomUcenikaSvilajnac.DAL.Context.Migrations
                 "('Goševo Sjenica')," +
                 "('Grab Lučani')," +
                 "('Grabanica Klina')," +
-                "('Grabac Klina')," +
+                "('GraBač Klina')," +
                 "('Grabovac Beograd –brenovac')," +
                 "('Grabovac Knić')," +
                 "('Grabovac Prokuplje')," +
@@ -1613,7 +1613,7 @@ namespace DomUcenikaSvilajnac.DAL.Context.Migrations
                 "('Grudaš Žitorađa')," +
                 "('Gruža Knić')," +
                 "('Grujinci Bosilegrad')," +
-                "('Grušić Šabac')," +
+                "('Grušić ŠaBač')," +
                 "('Grčak Aleksandrovac')," +
                 "('Grčac Smederevska Palanka')," +
                 "('Grčina Đakovica')," +
@@ -1680,9 +1680,9 @@ namespace DomUcenikaSvilajnac.DAL.Context.Migrations
                 "('Dvorane Kruševac')," +
                 "('Dvorane Suva Reka')," +
                 "('Dvorica Ćuprija')," +
-                "('Dvorišteolubac')," +
+                "('DvorišteoluBač')," +
                 "('Dvorište Despotovac')," +
-                "('Dvorište Šabac')," +
+                "('Dvorište ŠaBač')," +
                 "('Dvorište Podujevo')," +
                 "('Dvorska Krupanj')," +
                 "('Debelde Vitina')," +
@@ -1725,7 +1725,7 @@ namespace DomUcenikaSvilajnac.DAL.Context.Migrations
                 "('Desivojce Kosovska Kamenica')," +
                 "('Desimirovac Kragujevac')," +
                 "('Desine Velikoradište')," +
-                "('Desić Šabac')," +
+                "('Desić ŠaBač')," +
                 "('Despotovac Despotovac')," +
                 "('Despotovo Bačka Palanka')," +
                 "('Detane Tutin')," +
@@ -1748,7 +1748,7 @@ namespace DomUcenikaSvilajnac.DAL.Context.Migrations
                 "('Dljin Lučani')," +
                 "('Dobanovci Beograd – Surčin')," +
                 "('Doblibare Đakovica')," +
-                "('Dobraolubac')," +
+                "('DobraoluBač')," +
                 "('Dobra Voda Bojnik')," +
                 "('Dobra Voda Jagodina')," +
                 "('Dobra Voda Klina')," +
@@ -1770,7 +1770,7 @@ namespace DomUcenikaSvilajnac.DAL.Context.Migrations
                 "('Dobrilovići Priboj')," +
                 "('Dobrinci Ruma')," +
                 "('Dobrinje Tutin')," +
-                "('Dobrić Šabac')," +
+                "('Dobrić ŠaBač')," +
                 "('Dobrić Đakovica')," +
                 "('Dobrica Alibunar')," +
                 "('Dobričevo Bela Crkva')," +
@@ -1858,7 +1858,7 @@ namespace DomUcenikaSvilajnac.DAL.Context.Migrations
                 "('Donja Koreticalogovac')," +
                 "('Donja Koritnica Bela Palanka')," +
                 "('Donja Kravarica Lučani')," +
-                "('Donja Kruševicaolubac')," +
+                "('Donja KruševicaoluBač')," +
                 "('Donja Krušica Suva Reka')," +
                 "('Donja Kupinovica Leskovac')," +
                 "('Donja Lapaštica Medveđa')," +
@@ -1983,7 +1983,7 @@ namespace DomUcenikaSvilajnac.DAL.Context.Migrations
                 "('Donji Dejan Vlasotince')," +
                 "('Donji Dobrić Loznica')," +
                 "('Donji Drenovac Žitorađa')," +
-                "('Donji Dubac Lučani')," +
+                "('Donji DuBač Lučani')," +
                 "('Donji Dubič Trstenik')," +
                 "('Donji Dušnikadžin Han')," +
                 "('Donji Zabeljlogovac')," +
@@ -2103,7 +2103,7 @@ namespace DomUcenikaSvilajnac.DAL.Context.Migrations
                 "('Drenovac Kragujevac')," +
                 "('Drenovac Paraćin')," +
                 "('Drenovac Prokuplje')," +
-                "('Drenovac Šabac')," +
+                "('Drenovac ŠaBač')," +
                 "('Drenovac Dečani')," +
                 "('Drenovac Klina')," +
                 "('Drenovacrahovac')," +
@@ -2165,7 +2165,7 @@ namespace DomUcenikaSvilajnac.DAL.Context.Migrations
                 "('Dubrava Kačanik')," +
                 "('Dubrava Suva Reka')," +
                 "('Dubravica Požarevac')," +
-                "('Duvanište Šabac')," +
+                "('Duvanište ŠaBač')," +
                 "('Duga Štimlje')," +
                 "('Duga Luka Vranjska Banja')," +
                 "('Duga Poljanaadžin Han')," +
@@ -2210,7 +2210,7 @@ namespace DomUcenikaSvilajnac.DAL.Context.Migrations
                 "('Dušanovo Prizren')," +
                 "('Dušević Klina')," +
                 "('Duškovci Požega')," +
-                "('Dušmanićolubac')," +
+                "('DušmanićoluBač')," +
                 "('Dušmanići Prijepolje')," +
                 "('Đake Kuršumlija')," +
                 "('Đakovica Đakovica')," +
@@ -2257,7 +2257,7 @@ namespace DomUcenikaSvilajnac.DAL.Context.Migrations
                 "('Erčege Ivanjica')," +
                 "('Ečka Zrenjanin')," +
                 "('Žabalj Žabalj')," +
-                "('Žabar Šabac')," +
+                "('Žabar ŠaBač')," +
                 "('Žabare Kruševac')," +
                 "('Žabare Topola')," +
                 "('Žabari Valjevo')," +
@@ -2307,7 +2307,7 @@ namespace DomUcenikaSvilajnac.DAL.Context.Migrations
                 "('Žitište Žitište')," +
                 "('Žitkovac Aleksinac')," +
                 "('Žitkovac Zvečan')," +
-                "('Žitkovicaolubac')," +
+                "('ŽitkovicaoluBač')," +
                 "('Žitni Potok Prokuplje')," +
                 "('Žitniće Sjenica')," +
                 "('Žitorađa Žitorađa')," +
@@ -2331,7 +2331,7 @@ namespace DomUcenikaSvilajnac.DAL.Context.Migrations
                 "('Žuče Tutin')," +
                 "('Žučkovac Sokobanja')," +
                 "('Zablaće Čačak')," +
-                "('Zablaće Šabac')," +
+                "('Zablaće ŠaBač')," +
                 "('Zablaće Istok')," +
                 "('Zabojnica Knić')," +
                 "('Zabrdica Valjevo')," +
@@ -2448,7 +2448,7 @@ namespace DomUcenikaSvilajnac.DAL.Context.Migrations
                 "('Zlot Bor')," +
                 "('Zloćudovo Leskovac')," +
                 "('Zmajevo Vrbas')," +
-                "('Zminjak Šabac')," +
+                "('Zminjak ŠaBač')," +
                 "('Zobnatica Bačka Topola')," +
                 "('Zojić Prizren')," +
                 "('Zoljevo Leskovac')," +
@@ -2596,14 +2596,14 @@ namespace DomUcenikaSvilajnac.DAL.Context.Migrations
                 "('Jasikovica Trstenik')," +
                 "('Jasikovo Majdanpek')," +
                 "('Jasić Dečani')," +
-                "('Jastrebac Bujanovac')," +
-                "('Jastrebac Vladičin Han')," +
-                "('Jastrebac Vlasotince')," +
+                "('JastreBač Bujanovac')," +
+                "('JastreBač Vladičin Han')," +
+                "('JastreBač Vlasotince')," +
                 "('Jahoc Đakovica')," +
                 "('Jaša Tomić Sečanj')," +
                 "('Jašunja Leskovac')," +
                 "('Jevik Sjenica')," +
-                "('Jevremovac Šabac')," +
+                "('Jevremovac ŠaBač')," +
                 "('Ježevica Čačak')," +
                 "('Jezgroviće Tutin')," +
                 "('Jezdina Čačak')," +
@@ -2623,7 +2623,7 @@ namespace DomUcenikaSvilajnac.DAL.Context.Migrations
                 "('Jelašnica Niš – Niška Banja')," +
                 "('Jelen Do Požega')," +
                 "('Jelenac Topola')," +
-                "('Jelenča Šabac')," +
+                "('Jelenča ŠaBač')," +
                 "('Jeliće Tutin')," +
                 "('Jelovac Despotovac')," +
                 "('Jelovac Klina')," +
@@ -2812,7 +2812,7 @@ namespace DomUcenikaSvilajnac.DAL.Context.Migrations
                 "('Klenovnik Kostolac')," +
                 "('Klenje Bela Palanka')," +
                 "('Klenje Bogatić')," +
-                "('Klenjeolubac')," +
+                "('KlenjeoluBač')," +
                 "('Klečka Lipljan')," +
                 "('Klečke Zubin Potok')," +
                 "('Klina Klina')," +
@@ -2964,7 +2964,7 @@ namespace DomUcenikaSvilajnac.DAL.Context.Migrations
                 "('Korlaće Raška')," +
                 "('Korman Aleksinac')," +
                 "('Korman Kragujevac')," +
-                "('Korman Šabac')," +
+                "('Korman ŠaBač')," +
                 "('Kosančić Bojnik')," +
                 "('Kosančić Vrbas')," +
                 "('Kosatica Prijepolje')," +
@@ -3064,9 +3064,9 @@ namespace DomUcenikaSvilajnac.DAL.Context.Migrations
                 "('Kriva Feja Vranjska Banja')," +
                 "('Krivaja Blace')," +
                 "('Krivaja Sjenica')," +
-                "('Krivaja Šabac')," +
+                "('Krivaja ŠaBač')," +
                 "('Krivaja Bačka Topola')," +
-                "('Krivačaolubac')," +
+                "('KrivačaoluBač')," +
                 "('Krivača Lebane')," +
                 "('Krivača Lučani')," +
                 "('Krivelj Bor')," +
@@ -3127,7 +3127,7 @@ namespace DomUcenikaSvilajnac.DAL.Context.Migrations
                 "('Kršanje Užice')," +
                 "('Krševica Bujanovac')," +
                 "('Kršnalava Ub')," +
-                "('Kudrešolubac')," +
+                "('KudrešoluBač')," +
                 "('Kuzmin Sremska Mitrovica')," +
                 "('Kuzmin Kosovo Polje')," +
                 "('Kuzmičevo Novi Pazar')," +
@@ -3342,7 +3342,7 @@ namespace DomUcenikaSvilajnac.DAL.Context.Migrations
                 "('Lipovicanjilane')," +
                 "('Lipovica Lipljan')," +
                 "('Lipovica Zvečan')," +
-                "('Lipolist Šabac')," +
+                "('Lipolist ŠaBač')," +
                 "('Lis Lučani')," +
                 "('Lisa Ivanjica')," +
                 "('Lisina Raška')," +
@@ -3528,7 +3528,7 @@ namespace DomUcenikaSvilajnac.DAL.Context.Migrations
                 "('Majinović Valjevo')," +
                 "('Majkovac Bojnik')," +
                 "('Majur Jagodina')," +
-                "('Majur Šabac')," +
+                "('Majur ŠaBač')," +
                 "('Makvište Despotovac')," +
                 "('Makovac Priština')," +
                 "('Makovište Kosjerić')," +
@@ -3539,7 +3539,7 @@ namespace DomUcenikaSvilajnac.DAL.Context.Migrations
                 "('Mala Bosna Subotica')," +
                 "('Mala Braina Medveđa')," +
                 "('Mala Bresnica Kučevo')," +
-                "('Mala Vranjska Šabac')," +
+                "('Mala Vranjska ŠaBač')," +
                 "('Mala Vrbica Beograd – Mladenovac')," +
                 "('Mala Vrbica Kladovo')," +
                 "('Mala Vrbica Kragujevac')," +
@@ -3574,7 +3574,7 @@ namespace DomUcenikaSvilajnac.DAL.Context.Migrations
                 "('Malajnica Negotin')," +
                 "('Male Pijace Kanjiža')," +
                 "('Maletina Ražanj')," +
-                "('Maleševoolubac')," +
+                "('MaleševooluBač')," +
                 "('Maleševo Rekovac')," +
                 "('Mali Alaš Lipljan')," +
                 "('Mali Belaćevac Kosovo Polje')," +
@@ -3649,7 +3649,7 @@ namespace DomUcenikaSvilajnac.DAL.Context.Migrations
                 "('Manojlovci Topola')," +
                 "('Manjak Vladičin Han')," +
                 "('Manjinac Knjaževac')," +
-                "('Maovi Šabac')," +
+                "('Maovi ŠaBač')," +
                 "('Maradik Inđija')," +
                 "('Margance Vranje')," +
                 "('Margance Trgovište')," +
@@ -3691,7 +3691,7 @@ namespace DomUcenikaSvilajnac.DAL.Context.Migrations
                 "('Maćedonce (Retkocersko) Medveđa')," +
                 "('Maćija Ražanj')," +
                 "('Mačvanska Mitrovica Sremska Mitrovica')," +
-                "('Mačvanski Pričinović Šabac')," +
+                "('Mačvanski Pričinović ŠaBač')," +
                 "('Mačevac Svilajnac')," +
                 "('Mačina Prokuplje')," +
                 "('Mačitevo Suva Reka')," +
@@ -3749,7 +3749,7 @@ namespace DomUcenikaSvilajnac.DAL.Context.Migrations
                 "('Mesić Vršac')," +
                 "('Metikoš Kraljevo')," +
                 "('Metković Bogatić')," +
-                "('Metlić Šabac')," +
+                "('Metlić ŠaBač')," +
                 "('Metovnica Bor')," +
                 "('Metohija Podujevo')," +
                 "('Metriš Zaječar')," +
@@ -3805,7 +3805,7 @@ namespace DomUcenikaSvilajnac.DAL.Context.Migrations
                 "('Miločaj Kraljevo')," +
                 "('Milošev Do Prijepolje')," +
                 "('Miloševac Velika Plana')," +
-                "('Miloševac Šabac')," +
+                "('Miloševac ŠaBač')," +
                 "('Miloševo Negotin')," +
                 "('Miloševo Jagodina')," +
                 "('Miloševobilić')," +
@@ -3813,7 +3813,7 @@ namespace DomUcenikaSvilajnac.DAL.Context.Migrations
                 "('Milutovac Trstenik')," +
                 "('Milušinac Sokobanja')," +
                 "('Miljaj Prizren')," +
-                "('Miljevićolubac')," +
+                "('MiljevićoluBač')," +
                 "('Miljevići Prijepolje')," +
                 "('Miljkovacadžin Han')," +
                 "('Miljkovac Knjaževac')," +
@@ -3822,7 +3822,7 @@ namespace DomUcenikaSvilajnac.DAL.Context.Migrations
                 "('Minićevo Knjaževac')," +
                 "('Miokoviće Leposavić')," +
                 "('Miokovci Čačak')," +
-                "('Miokus Šabac')," +
+                "('Miokus ŠaBač')," +
                 "('Mioliće Leposavić')," +
                 "('Mionica Kosjerić')," +
                 "('Mionica (varošica) Mionica')," +
@@ -3853,7 +3853,7 @@ namespace DomUcenikaSvilajnac.DAL.Context.Migrations
                 "('Mihajlovac Negotin')," +
                 "('Mihajlovac Smederevo')," +
                 "('Mihajlovo Zrenjanin')," +
-                "('Mišar Šabac')," +
+                "('Mišar ŠaBač')," +
                 "('Mišević Jagodina')," +
                 "('Miševići Nova Varoš')," +
                 "('Mišićevo Subotica')," +
@@ -3910,7 +3910,7 @@ namespace DomUcenikaSvilajnac.DAL.Context.Migrations
                 "('Mrasorrahovac')," +
                 "('Mratišić Mionica')," +
                 "('Mrveš Bojnik')," +
-                "('Mrđenovac Šabac')," +
+                "('Mrđenovac ŠaBač')," +
                 "('Mrzenica Ćićevac')," +
                 "('Mrkovica Leskovac')," +
                 "('Mrkonje Medveđa')," +
@@ -3923,7 +3923,7 @@ namespace DomUcenikaSvilajnac.DAL.Context.Migrations
                 "('Mrčajevci Čačak')," +
                 "('Mrčić Valjevo')," +
                 "('Mrčići Kosjerić')," +
-                "('Mrčkovacolubac')," +
+                "('MrčkovacoluBač')," +
                 "('Mrčkovina Prijepolje')," +
                 "('Mršelj Prokuplje')," +
                 "('Mršelji Požega')," +
@@ -3972,7 +3972,7 @@ namespace DomUcenikaSvilajnac.DAL.Context.Migrations
                 "('Nakovo Kikinda')," +
                 "('Nakrivanj Leskovac')," +
                 "('Nakučaniornji Milanovac')," +
-                "('Nakučani Šabac')," +
+                "('Nakučani ŠaBač')," +
                 "('Namga Tutin')," +
                 "('Nanomir Mionica')," +
                 "('Nastavce Vranje')," +
@@ -4165,7 +4165,7 @@ namespace DomUcenikaSvilajnac.DAL.Context.Migrations
                 "('Orašac Beograd –brenovac')," +
                 "('Orašac Leskovac')," +
                 "('Orašac Prijepolje')," +
-                "('Orašac Šabac')," +
+                "('Orašac ŠaBač')," +
                 "('Oraše Tutin')," +
                 "('Orašje Varvarin')," +
                 "('Orašje Vlasotince')," +
@@ -4176,7 +4176,7 @@ namespace DomUcenikaSvilajnac.DAL.Context.Migrations
                 "('Orešac Knjaževac')," +
                 "('Orešac Vršac')," +
                 "('Oreškovica Petrova na Mlavi')," +
-                "('Orid Šabac')," +
+                "('Orid ŠaBač')," +
                 "('Orlane Podujevo')," +
                 "('Orlatelogovac')," +
                 "('Orlovat Zrenjanin')," +
@@ -4355,8 +4355,8 @@ namespace DomUcenikaSvilajnac.DAL.Context.Migrations
                 "('Petka Beograd – Lazarevac')," +
                 "('Petka Kostolac')," +
                 "('Petkovićrahovac')," +
-                "('Petkovica Šabac')," +
-                "('Petlovača Šabac')," +
+                "('Petkovica ŠaBač')," +
+                "('Petlovača ŠaBač')," +
                 "('Petnica Valjevo')," +
                 "('Petnica Čačak')," +
                 "('Petraštica Štimlje')," +
@@ -4502,7 +4502,7 @@ namespace DomUcenikaSvilajnac.DAL.Context.Migrations
                 "('Pomazatin Kosovo Polje')," +
                 "('Pomijača Loznica')," +
                 "('Ponešnjilane')," +
-                "('Ponikveolubac')," +
+                "('PonikveoluBač')," +
                 "('Ponikovica Užice')," +
                 "('Ponor Knjaževac')," +
                 "('Ponor Pirot')," +
@@ -4555,8 +4555,8 @@ namespace DomUcenikaSvilajnac.DAL.Context.Migrations
                 "('Potrkanje Knjaževac')," +
                 "('Poturovce Lipljan')," +
                 "('Pousko Prizren')," +
-                "('Pocerski Metković Šabac')," +
-                "('Pocerski Pričinović Šabac')," +
+                "('Pocerski Metković ŠaBač')," +
+                "('Pocerski Pričinović ŠaBač')," +
                 "('Pocesje Raška')," +
                 "('Počekovina Trstenik')," +
                 "('Počešće Peć')," +
@@ -4575,7 +4575,7 @@ namespace DomUcenikaSvilajnac.DAL.Context.Migrations
                 "('Prevetica Kuršumlija')," +
                 "('Prevešt Rekovac')," +
                 "('Prevlak Zubin Potok')," +
-                "('Predvorica Šabac')," +
+                "('Predvorica ŠaBač')," +
                 "('Predejane (varoš) Leskovac')," +
                 "('Predejane (selo) Leskovac')," +
                 "('Predole Kraljevo')," +
@@ -4648,7 +4648,7 @@ namespace DomUcenikaSvilajnac.DAL.Context.Migrations
                 "('Prnjavor Batočina')," +
                 "('Prnjavorornji Milanovac')," +
                 "('Prnjavor Trstenik')," +
-                "('Prnjavor Šabac')," +
+                "('Prnjavor ŠaBač')," +
                 "('Provaljenik Babušnica')," +
                 "('Provo Vladimirci')," +
                 "('Progar Beograd – Surčin')," +
@@ -4743,7 +4743,7 @@ namespace DomUcenikaSvilajnac.DAL.Context.Migrations
                 "('Radobić Mionica')," +
                 "('Radobuđa Arilje')," +
                 "('Radovanje Velika Plana')," +
-                "('Radovašnica Šabac')," +
+                "('Radovašnica ŠaBač')," +
                 "('Radovnica Trgovište')," +
                 "('Radovci Požega')," +
                 "('Radoinja Nova Varoš')," +
@@ -4753,7 +4753,7 @@ namespace DomUcenikaSvilajnac.DAL.Context.Migrations
                 "('Radosin Babušnica')," +
                 "('Radosterahovac')," +
                 "('Radoševac Babušnica')," +
-                "('Radoševacolubac')," +
+                "('RadoševacoluBač')," +
                 "('Radoševac Priština')," +
                 "('Radoševo Arilje')," +
                 "('Radošin Svilajnac')," +
@@ -4924,7 +4924,7 @@ namespace DomUcenikaSvilajnac.DAL.Context.Migrations
                 "('Ribare Jagodina')," +
                 "('Ribare Svrljig')," +
                 "('Ribari Brus')," +
-                "('Ribari Šabac')," +
+                "('Ribari ŠaBač')," +
                 "('Ribariće Tutin')," +
                 "('Ribarice Loznica')," +
                 "('Ribarska Banja Kruševac')," +
@@ -5020,7 +5020,7 @@ namespace DomUcenikaSvilajnac.DAL.Context.Migrations
                 "('Ruklada Ub')," +
                 "('Ruma Ruma')," +
                 "('Rumenka Novi Sad')," +
-                "('Rumska Šabac')," +
+                "('Rumska ŠaBač')," +
                 "('Runjani Loznica')," +
                 "('Runjevo Kačanik')," +
                 "('Rupeljevo Požega')," +
@@ -5187,7 +5187,7 @@ namespace DomUcenikaSvilajnac.DAL.Context.Migrations
                 "('Simino Brdo Loznica')," +
                 "('Simićevo Žabari')," +
                 "('Sinaje Istok')," +
-                "('Sinošević Šabac')," +
+                "('Sinošević ŠaBač')," +
                 "('Sinoševićiornji Milanovac')," +
                 "('Sinjalava Pirot')," +
                 "('Sinjac Bela Palanka')," +
@@ -5220,7 +5220,7 @@ namespace DomUcenikaSvilajnac.DAL.Context.Migrations
                 "('Skorošnik Klina')," +
                 "('Skočna Vučitrn')," +
                 "('Skradnik Sjenica')," +
-                "('Skrađani Šabac')," +
+                "('Skrađani ŠaBač')," +
                 "('Skrapež Vlasotince')," +
                 "('Skrvenica Dimitrovgrad')," +
                 "('Skržuti Užice')," +
@@ -5235,7 +5235,7 @@ namespace DomUcenikaSvilajnac.DAL.Context.Migrations
                 "('Slavujevac Preševo')," +
                 "('Slavujevce Leskovac')," +
                 "('Sladaja Despotovac')," +
-                "('Sladinacolubac')," +
+                "('SladinacoluBač')," +
                 "('Slakovce Vučitrn')," +
                 "('Slankamenački Vinogradi Inđija')," +
                 "('Slanci Beograd – Palilula')," +
@@ -5252,12 +5252,12 @@ namespace DomUcenikaSvilajnac.DAL.Context.Migrations
                 "('Slatina Jagodina')," +
                 "('Slatina Ub')," +
                 "('Slatina Čačak')," +
-                "('Slatina Šabac')," +
+                "('Slatina ŠaBač')," +
                 "('Slatina Vučitrn')," +
                 "('Slatina Kačanik')," +
                 "('Slatina Leposavić')," +
                 "('Slatina Podujevo')," +
-                "('Slepčević Šabac')," +
+                "('Slepčević ŠaBač')," +
                 "('Slivje Svrljig')," +
                 "('Slivnica Dimitrovgrad')," +
                 "('Slivnica Vranjska Banja')," +
@@ -5286,7 +5286,7 @@ namespace DomUcenikaSvilajnac.DAL.Context.Migrations
                 "('Smrdan Leskovac')," +
                 "('Smrdan Prokuplje')," +
                 "('Smrekovnica Vučitrn')," +
-                "('Snegotinolubac')," +
+                "('SnegotinoluBač')," +
                 "('Sovač Valjevo')," +
                 "('Sovljak Bogatić')," +
                 "('Sovljak Ub')," +
@@ -5543,7 +5543,7 @@ namespace DomUcenikaSvilajnac.DAL.Context.Migrations
                 "('Tabakovac Zaječar')," +
                 "('Tabanovac Petrova na Mlavi')," +
                 "('Tabanović Mionica')," +
-                "('Tabanović Šabac')," +
+                "('Tabanović ŠaBač')," +
                 "('Tabanovići Požega')," +
                 "('Tavnik Kraljevo')," +
                 "('Tadenje Kraljevo')," +
@@ -5808,7 +5808,7 @@ namespace DomUcenikaSvilajnac.DAL.Context.Migrations
                 "('Uroševac Uroševac')," +
                 "('Ursule Rekovac')," +
                 "('Ursule Sjenica')," +
-                "('Usijeolubac')," +
+                "('UsijeoluBač')," +
                 "('Utrine Ada')," +
                 "('Ušak Sjenica')," +
                 "('Uševce Vranje')," +
@@ -5871,7 +5871,7 @@ namespace DomUcenikaSvilajnac.DAL.Context.Migrations
                 "('Cerova Pirot')," +
                 "('Cerovac Kragujevac')," +
                 "('Cerovac Smederevska Palanka')," +
-                "('Cerovac Šabac')," +
+                "('Cerovac ŠaBač')," +
                 "('Cerovik Klina')," +
                 "('Cerovica Kučevo')," +
                 "('Cerovica Sokobanja')," +
@@ -5946,7 +5946,7 @@ namespace DomUcenikaSvilajnac.DAL.Context.Migrations
                 "('Crcavac Leskovac')," +
                 "('Crčevo Sjenica')," +
                 "('Culine Mali Zvornik')," +
-                "('Culjković Šabac')," +
+                "('Culjković ŠaBač')," +
                 "('Čabić Klina')," +
                 "('Čabra Zubin Potok')," +
                 "('Čaglavica Priština')," +
@@ -6040,7 +6040,7 @@ namespace DomUcenikaSvilajnac.DAL.Context.Migrations
                 "('Džepnica Blace')," +
                 "('Džigolj Prokuplje')," +
                 "('Džurovo Prijepolje')," +
-                "('Šabac Šabac')," +
+                "('ŠaBač ŠaBač')," +
                 "('Šavac Paraćin')," +
                 "('Šavrane Kruševac')," +
                 "('Šavci Novi Pazar')," +
@@ -6083,7 +6083,7 @@ namespace DomUcenikaSvilajnac.DAL.Context.Migrations
                 "('Šašinci Sremska Mitrovica')," +
                 "('Šaškovac Priština')," +
                 "('Šebetadžin Han')," +
-                "('Ševarice Šabac')," +
+                "('Ševarice ŠaBač')," +
                 "('Ševica Kučevo')," +
                 "('Ševiš Prokuplje')," +
                 "('Ševrljuge Kosjerić')," +
@@ -6137,13 +6137,13 @@ namespace DomUcenikaSvilajnac.DAL.Context.Migrations
                 "('Štedim Podujevo')," +
                 "('Štimlje Štimlje')," +
                 "('Šina Knjaževac')," +
-                "('Štitar Šabac')," +
+                "('Štitar ŠaBač')," +
                 "('Štitarac Knjaževac')," +
                 "('Štitare Kruševac')," +
                 "('Štitare Novi Pazar')," +
                 "('Štitarica Vučitrn')," +
                 "('Štitkovo Nova Varoš')," +
-                "('Štrbac Knjaževac')," +
+                "('ŠtrBač Knjaževac')," +
                 "('Štrbovac Babušnica')," +
                 "('Štrbulovologovac')," +
                 "('Štrpce Štrpce')," +
@@ -6153,7 +6153,7 @@ namespace DomUcenikaSvilajnac.DAL.Context.Migrations
                 "('Štuoce Zubin Potok')," +
                 "('Štupelj Klina')," +
                 "('Štuticalogovac')," +
-                "('Šuvajićolubac')," +
+                "('ŠuvajićoluBač')," +
                 "('Šugrin Pirot')," +
                 "('Šuljam Sremska Mitrovica')," +
                 "('Šuljkovac Jagodina')," +

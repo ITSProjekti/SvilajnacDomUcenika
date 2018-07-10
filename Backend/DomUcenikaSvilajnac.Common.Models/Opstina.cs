@@ -14,6 +14,7 @@ namespace DomUcenikaSvilajnac.Common.Models
     {
         public int Id { get; set; }
 
+        [Column(TypeName = "NVARCHAR(MAX)")]
         public string NazivOpstine { get; set; }
 
 

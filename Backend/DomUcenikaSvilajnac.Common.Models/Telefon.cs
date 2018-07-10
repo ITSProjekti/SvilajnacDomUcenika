@@ -10,7 +10,9 @@ namespace DomUcenikaSvilajnac.Common.Models
     public class Telefon
     {
         public int Id { get; set; }
+        [Column(TypeName = "NVARCHAR(MAX)")]
         public string Mobilni { get; set; }
+        [Column(TypeName = "NVARCHAR(MAX)")]
         public string Kucni { get; set; }
 
         ICollection<Ucenik> Ucenici { get; set; }

@@ -29,7 +29,7 @@ namespace DomUcenikaSvilajnac.DAL.Context.Migrations
                 "('Burundi'), ('Butan'), ('Vanuatu'), ('Venecuela'), ('Vijetnam'), ('Gabon'), ('Gambija'), ('Gana'), ('Gvajana'), " +
                 "('Gvatemala'), ('Gvineja'), ('Gvineja Bisao'),  ('Grenada'), ('Gruzija'), ('Grčka'), ('Danska'), ('Dominika'), " +
                 "('Dominikanska Republika'), ('Egipat'), ('Ekvador'), ('Ekvatorijalna Gvineja'), ('Eritreja'), ('Estonija'), " +
-                "('Etiopija'), ('Zambija'), ('Zelenortska Ostrva'),('Zimbabve'), ('Izrael'), ('Indija'), ('Indonezija'), ('Irak'), " +
+                "('Etiopija'), ('Zambija'), ('Zelenortska Ostrva'),('Zimbabve'), ('Izrael'), ('Inđija'), ('Indonezija'), ('Irak'), " +
                 "('Iran'), ('Irska'), ('Island'), ('Istočni Timor'), ('Italija'), ('Jamajka'), ('Japan'), ('Jemen'), ('Jermenija')," +
                 "('Jordan'), ('Južna Krojea'), ('Južni Sudan'), ('Južnoafrička Republika'), ('Kazahstan'), ('Kambodža'), ('Kamerun')," +
                 "('Kanada'), ('Katar'), ('Kenija'), ('Kina'), ('Kipar'), ('Kirgistan'), ('Kiribati'), ('Kolumbija'), ('DR Konogo'), ('Kongo')," +

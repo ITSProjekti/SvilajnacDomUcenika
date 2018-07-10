@@ -15,8 +15,8 @@ namespace DomUcenikaSvilajnac.DAL.Context.Migrations
     "('Bojnik'), ('Boljevac'), ('Bor'), ('Bosilegrad'),('Brus'), ('Bujanovac'), ('Valjevo')," +
     " ('Varvarin'), ('Velika Plana'), ('Veliko Gradište'), ('Vitina'), ('Vladimirci'), ('Vladičin Han')," +
     " ('Vlasotince'), ('Voždovac'), ('Vranje'), ('Vračar'), ('Vrbas'), ('Vrnjačka Banja'), ('Vršac')," +
-    " ('Vučitrn'), ('Gadžin Han'), ('Glogovac'), ('Gnjilane'), ('Golubac'), ('Gora'), ('Gorazdevac'), ('Gornji Milanovac')," +
-    " ('Grocka'), ('Gracanica'), ('Gornje Kusce'), ('Despotovac'), ('Dečani'), ('Dragas'), ('Dimitrovgrad'), ('Doljevac'), ('Đakovica'), ('Žabalj')," +
+    " ('Vučitrn'), ('Gadžin Han'), ('Glogovac'), ('Gnjilane'), ('Golubac'), ('Gora'), ('Goraždevac'), ('Gornji Milanovac')," +
+    " ('Grocka'), ('Gračanica'), ('Gornje Kušće'), ('Despotovac'), ('Dečani'), ('Dragaš'), ('Dimitrovgrad'), ('Doljevac'), ('Đakovica'), ('Žabalj')," +
     " ('Žabari'), ('Žagubica'), ('Žitište'), ('Žitorađa'), ('Zaječar'), ('Zvezdara'), ('Zvečan')," +
     " ('Zemun'), ('Zrenjanin'), ('Zubin Potok '), ('Ivanjica'), ('Inđija'), ('Irig'), ('Istok')," +
     " ('Jagodina'), ('Kanjiža'), ('Kačanik'), ('Kikinda'), ('Kladovo'), ('Klina'), ('Knić')," +
@@ -28,14 +28,14 @@ namespace DomUcenikaSvilajnac.DAL.Context.Migrations
     " ('Mionica'), ('Mladenovac'), ('Negotin'), ('Niška Banja'), ('Nova Varoš'), ('Nova Crnja'), ('Novi Beograd')," +
     " ('Novi Bečej'), ('Novi Kneževac'), ('Novi Pazar'), ('Novi Sad'), ('Novo Brdo'), ('Obilić'), ('Obrenovac')," +
     " ('Opovo'), ('Orahovac'), ('Osečina'), ('Odžaci'), ('Palilula'), ('Palilula (Niš)'), ('Pantelej')," +
-    " ('Pančevo '), ('Paraćin'), ('Petrovaradin'), ('Petrovac na Mlavi'), ('Peć'), ('Pećinci'), ('Pirot'), ('Plandište')," +
+    " ('Pančevo'), ('Paraćin'), ('Petrovaradin'), ('Petrovac na Mlavi'), ('Peć'), ('Pećinci'), ('Pirot'), ('Plandište')," +
     " ('Podujevo'), ('Požarevac'), ('Požega'), ('Preševo'), ('Priboj na Limu'), ('Prizren'), ('Prijepolje')," +
     " ('Priština'), ('Prokuplje'), ('Ražanj'), ('Rakovica'), ('Rača'), ('Raška'), ('Rekovac')," +
-    " ('Ruma'), ('Savski venac'), ('Svilajnac'), ('Svrljig'), ('Senta'), ('Sečanj'), ('Sjenica')," +
+    " ('Ruma'), ('Savski Venac'), ('Svilajnac'), ('Svrljig'), ('Senta'), ('Sečanj'), ('Sjenica')," +
     " ('Smederevo'), ('Smederevska Palanka'), ('Sokobanja'), ('Sombor'), ('Sopot'), ('Srbica'), ('Srbobran')," +
     " ('Sremska Mitrovica'), ('Sremski Karlovci'), ('Stara Pazova'), ('Stari grad'), ('Stragari'), ('Subotica'), ('Suva Reka')," +
     " ('Surdulica'), ('Surčin'), ('Temerin'), ('Titel'), ('Topola'), ('Trgovište'), ('Trstenik')," +
-    " ('Tutin'), ('Ćićevac'), ('Ćuprija'), ('Ub'), ('Užice'), ('Uroševac'), ('Crveni krst')," +
+    " ('Tutin'), ('Ćićevac'), ('Ćuprija'), ('Ub'), ('Užice'), ('Uroševac'), ('Crveni Krst')," +
     " ('Crna Trava'), ('Crvenka'), ('Čajetina'),('Čačak'), ('Čoka'), ('Čukarica'), ('Šabac'), ('Šid')," +
     " ('Štimlje'), ('Štrpce'); ");
 

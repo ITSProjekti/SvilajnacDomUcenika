@@ -15,10 +15,12 @@ namespace DomUcenikaSvilajnac.Common.Models
         public int Id { get; set; }
 
         [Required]
+        [Column(TypeName = "NVARCHAR(MAX)")]
         [StringLength(50)]
         public string Ime { get; set; }
 
         [Required]
+        [Column(TypeName = "NVARCHAR(MAX)")]
         [StringLength(50)]
         public string Prezime { get; set; }
 
@@ -26,6 +28,7 @@ namespace DomUcenikaSvilajnac.Common.Models
         [MaxLength(13), MinLength(13)]
         public string JMBG { get; set; }
 
+        [Column(TypeName = "NVARCHAR(MAX)")]
         public string Adresa { get; set; }
 
         [Required]
@@ -39,8 +42,8 @@ namespace DomUcenikaSvilajnac.Common.Models
 
         //================
         //propertiji za komentarisanje prije svake migracije
-        public int OpstinaPrebivalistaId { get; set; }
-        public int OpstinaId { get; set; }
+        //public int OpstinaPrebivalistaId { get; set; }
+        //public int OpstinaId { get; set; }
         //================
         public Opstina Opstina { get; set; }
         public Opstina OpstinaPrebivalista { get; set; }
@@ -50,9 +53,9 @@ namespace DomUcenikaSvilajnac.Common.Models
 
         //================
         //propertiji za komentarisanje prije svake migracije
-        public int MestoRodjenjaId { get; set; }
-        public int MestoPrebivalistaId { get; set; }
-        public int MestoZavrseneSkoleId { get; set; }
+        //public int MestoRodjenjaId { get; set; }
+        //public int MestoPrebivalistaId { get; set; }
+        //public int MestoZavrseneSkoleId { get; set; }
         //================
 
 
