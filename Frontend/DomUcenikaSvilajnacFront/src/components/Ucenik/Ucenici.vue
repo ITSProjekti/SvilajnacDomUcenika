@@ -1,8 +1,17 @@
 
 <template>
   <div>
-    <v-dialog v-model="dialog" max-width="700">
-      <v-btn  slot="activator" color="primary" dark class="mb-2">Prijavi ucenika</v-btn>
+    <v-toolbar  color="white">
+       <v-toolbar-title >Spisak prijavljenih ucenika</v-toolbar-title>
+        <v-divider
+        class="mx-2"
+        inset
+        vertical
+      ></v-divider>
+      <v-spacer></v-spacer>
+      
+    <v-dialog v-model="dialog" max-width="600">
+      <v-btn  slot="activator" color="blue-grey darken-2" dark class="mb-2">Prijavi ucenika</v-btn>
       <v-card>
         <v-card-title>
           <span class="headline">{{ formTitle }}</span>
@@ -201,8 +210,9 @@
         </v-card-actions>
       </v-card>
     </v-dialog>
-    <v-layout> 
-        <v-flex xs12 class="text-xs-center">
+     </v-toolbar>
+    <v-layout wrap justify-center=""> 
+        <v-flex xs12 sm8 md6 class="text-xs-center">
         <v-progress-circular
           indeterminate
           class="primary--text"
@@ -211,13 +221,11 @@
           v-if="loading"></v-progress-circular>
       </v-flex>
     </v-layout>
-    <v-card>
-      <v-layout >
-        <v-card-title class="text-xs-right">
-          <h2>Lista ucenika</h2>    
-        </v-card-title>
-          <v-spacer  > </v-spacer>
-        <v-flex xs12 sm3 class="text-sm-right" absolute >
+
+    <v-card >
+      <v-layout wrap justify-end >
+  
+        <v-flex xs3 >
         <v-text-field
         v-model="search"
         append-icon="search"
@@ -227,16 +235,19 @@
       ></v-text-field> 
         </v-flex>
       </v-layout>
-    <v-layout xs12 sm6  row wrap class="mt-2"  v-if="!loading">
+    <v-layout xs12 sm8 md6  >
    
     <v-data-table
       :headers="headers"
       :items="ucenici"
+       v-if="!loading"
       rows-per-page-text="Redova po stranici"
       :rows-per-page-items="[5,10,15,20,25,30,35]"
       :search="search"
+      hide-actions
+      single-line
       :custom-filter="customFilter"
-      class="text-xs-center"    
+      class="elevation-1"    
      >
       <template slot="items" slot-scope="props" >
         <tr @click="props.expanded = !props.expanded">
@@ -249,11 +260,17 @@
         <td class="text-xs-center">{{ props.item.mestoRodjenja }}</td>
         <td class="text-xs-center">{{ props.item.opstina.nazivOpstine }}</td>
         <td class="justify-center layout px-0">         
-          <v-btn center  icon class="mx-0" @click="editItem(props.item)">
-            <v-icon color="teal">edit</v-icon>
+          <v-btn center  icon class="mx-0"
+           @click="editItem(props.item)">
+            <v-icon
+             color="teal">edit
+             </v-icon>
           </v-btn>
-          <v-btn center icon class="mx-0" @click="deleteItem(props.item)">
-            <v-icon  color="pink">delete</v-icon>
+          <v-btn center icon class="mx-0"
+           @click="deleteItem(props.item)">
+            <v-icon
+              color="pink">delete
+              </v-icon>
           </v-btn>
         </td>
          </tr>
@@ -269,7 +286,7 @@
               <template slot="expand" slot-scope="props">
                 <v-card flat>
                   <v-card-text> <h2>Ostali podaci</h2> </v-card-text>
-                  <v-layout row wrap>  
+                  <v-layout  xs12 sm8 md6  row wrap>  
                       <v-flex xs2>
                    <v-subheader>Postanski broj:</v-subheader> 
                        </v-flex>
@@ -328,6 +345,7 @@
     </v-data-table>
     </v-layout>
     </v-card>
+
   </div>
 </template>
 

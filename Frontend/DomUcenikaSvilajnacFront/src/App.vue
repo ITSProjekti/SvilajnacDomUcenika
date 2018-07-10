@@ -1,7 +1,7 @@
 <template>
   <v-app>
  
-    <v-toolbar dark class="orange darken-4">
+    <v-toolbar dark class="blue-grey darken-2">
       <v-toolbar-side-icon
        @click.stop="sideNav = !sideNav"
        class="hidden-sm-and-up"
