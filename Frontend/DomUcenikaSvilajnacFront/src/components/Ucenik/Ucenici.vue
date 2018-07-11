@@ -1,11 +1,17 @@
 
 <template>
   <div>
-    <v-dialog v-model="dialog" max-width="700">
+    <v-toolbar  color="white">
+       <v-toolbar-title >Spisak prijavljenih ucenika</v-toolbar-title>
+        <v-divider
+        class="mx-2"
+        inset
+        vertical
+      ></v-divider>
       <v-spacer></v-spacer>
-      <v-btn  slot="activator" color="blue-grey darken-2" dark class="mb-2">
-        Prijavi učenika
-      </v-btn>
+      
+    <v-dialog v-model="dialog" max-width="600">
+      <v-btn  slot="activator" color="blue-grey darken-2" dark class="mb-2">Prijavi ucenika</v-btn>
       <v-card>
         <v-card-title>
           <span class="headline">{{ formTitle }}</span>
@@ -43,14 +49,14 @@
                  <v-container fluid>
                     <v-layout row wrap>
                     <v-flex xs12 sm6>
-                     <v-subheader v-text="'Drzava rođenja'"></v-subheader>
+                     <v-subheader v-text="'Drzava rodjenja'"></v-subheader>
                     </v-flex>
                            <v-flex xs12 sm6>
                                <v-select
                                 :loading="loading"
                                 :items="drzave"
                                 v-model="editedItem.drzavaRodjenja.id"
-                                label="Država"
+                                label="Drzava"
                                 item-text="nazivDrzave"
                                 item-value="id"
                                 autocomplete
@@ -87,14 +93,14 @@
                  <v-container fluid>
                     <v-layout row wrap>
                     <v-flex xs12 sm6>
-                     <v-subheader v-text="'Opština rođenja'"></v-subheader>
+                     <v-subheader v-text="'Opstina rodjenja'"></v-subheader>
                     </v-flex>
                            <v-flex xs12 sm6>
                                <v-select
                                 :loading="loading"
                                 :items="opstine"
                                 v-model="editedItem.opstina.id"
-                                label="Izaberite opštinu rođenja"
+                                label="Izaberite opstinu rodjenja"
                                 item-text="nazivOpstine"
                                 item-value="id"
                                 autocomplete
@@ -109,14 +115,14 @@
                  <v-container fluid>
                     <v-layout row wrap>
                     <v-flex xs12 sm6>
-                     <v-subheader v-text="'Opština Prebivališta'"></v-subheader>
+                     <v-subheader v-text="'Opstina Prebivalista'"></v-subheader>
                     </v-flex>
                            <v-flex xs12 sm6>
                                <v-select
                                 :loading="loading"
                                 :items="opstine"
                                 v-model="editedItem.opstinaPrebivalista.id"
-                                label="Izaberite opštinu prebivališta"
+                                label="Izaberite opstinu prebivalista"
                                 item-text="nazivOpstine"
                                 item-value="id"
                                 @change="changedValue"
@@ -132,7 +138,7 @@
                  <v-container fluid>
                     <v-layout row wrap>
                     <v-flex xs12 sm6>
-                    <v-subheader v-text="'Poštanski broj'"></v-subheader> 
+                    <v-subheader v-text="'Postanski broj'"></v-subheader> 
                     </v-flex>
                            <v-flex xs12 sm6>
                                <v-select
@@ -140,7 +146,7 @@
                                 :items="brojevi.postanskiBrojevi"
                                 v-model="editedItem.postanskiBroj.id"
                                  v-if="editedItem.opstinaPrebivalista.id !== ''"
-                                label="Izaberite poštanski broj opštine prebivališta"
+                                label="Izaberite postanski broj opstine prebivalista"
                                 item-text="broj"
                                 item-value="id"
                                 autocomplete
@@ -155,7 +161,7 @@
                 <v-text-field
                  v-model="editedItem.mestoRodjenja"
                   required
-                   label="Mesto rođenja"
+                   label="Mesto rodjenja"
                     :rules="[rules.required]"
                    ></v-text-field>
               </v-flex>
@@ -163,7 +169,7 @@
                 <v-text-field
                  v-model="editedItem.mestoPrebivalista"
                   required
-                   label="Mesto prebivališta"
+                   label="Mesto prebivalista"
                     :rules="[rules.required]"
                    ></v-text-field>
               </v-flex>
@@ -176,11 +182,11 @@
                <v-flex xs12 >
                 <v-text-field
                  v-model="editedItem.telefon.kucni"                
-                   label="Kućni telefon"    
+                   label="Kucni telefon"    
                    ></v-text-field>
               </v-flex>
               <v-flex xs12 >
-                <h3 dark class="mb-2">Datum Rođenja</h3>              
+                <h3 dark class="mb-2">Datum Rodjenja</h3>              
                 <v-date-picker
                  v-model="datum"
                  locale="sr-Latn"
@@ -196,16 +202,17 @@
         <v-card-actions>
           <v-spacer></v-spacer>
           <v-btn color="blue darken-1" flat @click.native="close">
-            Otkaži
+            Otkazi
             </v-btn>
           <v-btn color="blue darken-1" flat @click.native="save"  :disabled="!formIsValid"
-          >Sačuvaj
+          >Sacuvaj
           </v-btn>
         </v-card-actions>
       </v-card>
     </v-dialog>
-    <v-layout> 
-        <v-flex xs12 class="text-xs-center">
+     </v-toolbar>
+    <v-layout wrap justify-center=""> 
+        <v-flex xs12 sm8 md6 class="text-xs-center">
         <v-progress-circular
           indeterminate
           class="primary--text"
@@ -214,13 +221,11 @@
           v-if="loading"></v-progress-circular>
       </v-flex>
     </v-layout>
-    <v-card>
-      <v-layout >
-        <v-card-title class="text-xs-right">
-          <h2>Spisak prijavljenih učenika</h2>    
-        </v-card-title>
-          <v-spacer  > </v-spacer>
-        <v-flex xs12 sm3 class="text-sm-right" absolute >
+
+    <v-card >
+      <v-layout wrap justify-end >
+  
+        <v-flex xs3 >
         <v-text-field
         v-model="search"
         append-icon="search"
@@ -230,17 +235,19 @@
       ></v-text-field> 
         </v-flex>
       </v-layout>
-   
+
    
     <v-data-table
       :headers="headers"
       :items="ucenici"
-      v-if="!loading"
+       v-if="!loading"
       rows-per-page-text="Redova po stranici"
       :rows-per-page-items="[5,10,15,20,25,30,35]"
       :search="search"
+      hide-actions
+      single-line
       :custom-filter="customFilter"
-      class="text-xs-center"    
+      class="elevation-1"    
      >
       <template slot="items" slot-scope="props" >
         <tr @click="props.expanded = !props.expanded">
@@ -253,18 +260,24 @@
         <td class="text-xs-center">{{ props.item.mestoRodjenja }}</td>
         <td class="text-xs-center">{{ props.item.opstina.nazivOpstine }}</td>
         <td class="justify-center layout px-0">         
-          <v-btn center  icon class="mx-0" @click="editItem(props.item)">
-            <v-icon color="teal">edit</v-icon>
+          <v-btn center  icon class="mx-0"
+           @click="editItem(props.item)">
+            <v-icon
+             color="teal">edit
+             </v-icon>
           </v-btn>
-          <v-btn center icon class="mx-0" @click="deleteItem(props.item)">
-            <v-icon  color="pink">delete</v-icon>
+          <v-btn center icon class="mx-0"
+           @click="deleteItem(props.item)">
+            <v-icon
+              color="pink">delete
+              </v-icon>
           </v-btn>
         </td>
          </tr>
       </template>
        <template slot="no-data">
       <v-alert :value="true" color="error" icon="warning">
-        Nema ni jednog učenika. :(
+        Nema ni jednog ucenika. :(
       </v-alert> 
     </template>
     <template slot="pageText" slot-scope="{ pageStart, pageStop }">
@@ -273,9 +286,9 @@
               <template slot="expand" slot-scope="props">
                 <v-card flat>
                   <v-card-text> <h2>Ostali podaci</h2> </v-card-text>
-                  <v-layout row wrap>  
+                  <v-layout  xs12 sm8 md6  row wrap>  
                       <v-flex xs2>
-                   <v-subheader>Poštanski broj:</v-subheader> 
+                   <v-subheader>Postanski broj:</v-subheader> 
                        </v-flex>
                          <v-flex xs2>
                             <v-card-text class="text-lg-left">
@@ -283,7 +296,7 @@
                               </v-card-text>
                           </v-flex>                   
                        <v-flex xs2>
-                      <v-subheader v-text="'Država rođenja: '"></v-subheader>
+                      <v-subheader v-text="'Drzava rodjenja: '"></v-subheader>
                        </v-flex>
                      <v-flex xs2>
                             <v-card-text class="text-lg-left">
@@ -291,7 +304,7 @@
                               </v-card-text>
                           </v-flex>
                       <v-flex xs2>
-                       <v-subheader class="text-lg-right" v-text="'Mesto prebivališta: '"></v-subheader>
+                       <v-subheader class="text-lg-right" v-text="'Mesto prebivalista: '"></v-subheader>
                        </v-flex>
                        <v-flex xs2>
                         <v-card-text class="text-lg-left">
@@ -299,7 +312,7 @@
                               </v-card-text>
                        </v-flex>
                          <v-flex xs2>
-                       <v-subheader class="text-lg-right" v-text="'Opština prebivališta: '"></v-subheader>
+                       <v-subheader class="text-lg-right" v-text="'Opstina prebivalista: '"></v-subheader>
                        </v-flex>
                        <v-flex xs2>
                         <v-card-text class="text-lg-left">
@@ -307,7 +320,7 @@
                               </v-card-text>
                        </v-flex>                  
                      <v-flex xs2>
-                       <v-subheader class="text-lg-right" v-text="'Kućni telefon: '"></v-subheader>
+                       <v-subheader class="text-lg-right" v-text="'Kucni telefon: '"></v-subheader>
                        </v-flex>
                        <v-flex xs2>
                         <v-card-text class="text-lg-left">
@@ -327,11 +340,12 @@
                 </v-card>
               </template>
     <v-alert slot="no-results" :value="true" color="error" icon="warning">
-        Vaša pretraga za "{{ search }}" nije pronašla rezultate.
+        Vasa pretraga za "{{ search }}" nije pronasla rezultate.
       </v-alert>
     </v-data-table>
 
     </v-card>
+
   </div>
 </template>
 
@@ -347,33 +361,31 @@ import moment from 'moment'
         {
           text: 'Redni broj',
           align: 'center',
-          sortable: false,
-           value: 'redni broj',
+          sortable: true,
+           value: 'id',
            width:'5%'
            
         },
-        { text: 'Ime',value: 'ime' ,align: 'center',sortable:false, width:'10%'},
-        { text: 'Prezime', value:'prezime', align: 'center',sortable:false,width:'10%'},
-        { text: 'JMBG', value:'jmbg',align: 'center',sortable:false ,width:'10%'},
-        { text: 'Pol', value: 'pol',align: 'center',sortable:false,width:'10%' },
-        { text: 'Datum rođenja', value: 'datum',align: 'center',sortable:false,width:'10%' },
-        { text: 'Mesto rođenja', value: 'mesto rodjenja',align: 'center',sortable:false,width:'10%' },
-        { text: 'Opština rođenja', value: 'opstina rodjenja',align: 'center',sortable:false ,width:'10%'},
+        { text: 'Ime',value: 'ime' ,align: 'center',sortable:true, width:'10%'},
+        { text: 'Prezime', value:'prezime', align: 'center',sortable:true,width:'10%'},
+        { text: 'JMBG', value:'jmbg',align: 'center',sortable:true ,width:'10%'},
+        { text: 'Pol', value: 'pol.nazivPola',align: 'center',sortable:true,width:'10%' },
+        { text: 'Datum rodjenja', value: 'godina',align: 'center',sortable:true,width:'10%' },
+        { text: 'Mesto rodjenja', value: 'mestoRodjenja',align: 'center',sortable:true,width:'10%' },
+        { text: 'Opstina rodjenja', value: 'opstina.nazivOpstine',align: 'center',sortable:true ,width:'10%'},
         { text: 'Opcije', value: 'opcije',align: 'center',sortable:false,width:'10%' }
       ],
            rules: {
           required: (value) => !!value || 'Ovo polje je obavezno.',
           jmbg: (value) => {
             const pattern = /^(\w{13,13})$/ 
-            return pattern.test(value) || 'Jmbg mora biti dugačak 13 cifara.'
+            return pattern.test(value) || 'Jmbg mora biti dugacak 13 cifara.'
           }
         },
       datum: null,
       search: '',
       editedIndex: -1,
-      brojevi: {
-        postanskiBrojevi: ''
-      },
+      brojevi: '',
       editedItem: {
         ime: '',
         prezime: '',
