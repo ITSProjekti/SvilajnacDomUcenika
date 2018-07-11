@@ -22,31 +22,31 @@ namespace DomUcenikaSvilajnac.DAL.Context.Migrations
                     table.PrimaryKey("PK_Drzave", x => x.Id);
                 });
 
-            migrationBuilder.Sql("insert into Drzave (NazivDrzave) values ('Avganistan'), ('Azerbejdžan'), ('Albanija'), " +
-                "('Alžir'), ('Angola'), ('Andora'), ('Antigva i Barbuda'), ('Argentina'), ('Australija'), ('Austrija')," +
-                "('Bangladeš'), ('Barbados'), ('Bahami'), ('Bahrein'), ('Belgija'), ('Belize'), ('Belorusija'), ('Benin'), " +
-                "('Bolivija'), ('Bosna i Hercegovina'), ('Bocvana'), ('Brazil'), ('Brunej'), ('Bugarska'), ('Burkina Faso'), " +
-                "('Burundi'), ('Butan'), ('Vanuatu'), ('Venecuela'), ('Vijetnam'), ('Gabon'), ('Gambija'), ('Gana'), ('Gvajana'), " +
-                "('Gvatemala'), ('Gvineja'), ('Gvineja Bisao'),  ('Grenada'), ('Gruzija'), ('Grčka'), ('Danska'), ('Dominika'), " +
-                "('Dominikanska Republika'), ('Egipat'), ('Ekvador'), ('Ekvatorijalna Gvineja'), ('Eritreja'), ('Estonija'), " +
-                "('Etiopija'), ('Zambija'), ('Zelenortska Ostrva'),('Zimbabve'), ('Izrael'), ('Inđija'), ('Indonezija'), ('Irak'), " +
-                "('Iran'), ('Irska'), ('Island'), ('Istočni Timor'), ('Italija'), ('Jamajka'), ('Japan'), ('Jemen'), ('Jermenija')," +
-                "('Jordan'), ('Južna Krojea'), ('Južni Sudan'), ('Južnoafrička Republika'), ('Kazahstan'), ('Kambodža'), ('Kamerun')," +
-                "('Kanada'), ('Katar'), ('Kenija'), ('Kina'), ('Kipar'), ('Kirgistan'), ('Kiribati'), ('Kolumbija'), ('DR Konogo'), ('Kongo')," +
-                "('Komori'), ('Kostarika'), ('Kuba'), ('Kuvajt'), ('Laos'), ('Lesoto'), ('Letonija'), ('Liban'), ('Liberija'), ('Libija'), " +
-                "('Litvanija'), ('Lihtenštajn'), ('Luksemburg'), ('Madagaskar'), ('Mađarska'), ('Makedonija'), ('Malavi'), ('Maldivi'), ('Malezija'), " +
-                "('Mali'), ('Malta'), ('Maroko'), ('Maršalska Ostrva'), ('Mauritanija'), ('Mauricijus'), ('Meksiko'), ('Mikronezija'), ('Mjanmar'), " +
-                "('Mozambik'), ('Moldavija'), ('Monako'), ('Mongolija'), ('Namibija'), ('Nauru'), ('Nemačka'), ('Nepal'), ('Niger'), ('Nigerija'), " +
-                "('Nikaragva'), ('Novi Zeland'), ('Norveška'), ('Obala Slonovače'), ('Oman'), ('Pakistan'), ('Palau'), ('Panama'), " +
-                "('Papua Nova Gvineja'), ('Paragvaj'), ('Peru'), ('Poljska'), ('Portugalija'), ('Ruanda'), ('Rumunija'), ('Rusija'), " +
-                "('Salvador'), ('Samoa'), ('San Marino'), ('Sao Tome i Prinsipe'), ('Saudijska Arabija'), ('Svaziland'), ('Sveta Lucija'), " +
-                "('Sveti Vinsent i Grenadini'), ('Sent Kits i Nevis'), ('Severna Koreja'), ('Sejšeli'), ('Senegal'), ('Sijera Leone'), " +
-                "('Singapur'), ('Sirija'), ('Sjedinjene Američke Države'), ('Slovačka'), ('Slovenija'), ('Solomonska Ostrva'), ('Somalija'), " +
-                "('Srbija'), ('Sudan'), ('Surinam'), ('Tajland'), ('Tanzanija'), ('Tadžikistan'), ('Togo'), ('Tonga'), ('Trinidad i Tobago'), " +
-                "('Tuvalu'), ('Tunis'), ('Turkmenistan'), ('Turska'), ('Uganda'), ('Uzbekistan'), ('Ujedinjeni Arapski Emirati'), ('Ujedinjeno Kraljevstvo')," +
-                "('Ukrajina'), ('Urugvaj'), ('Filipini'), ('Finska'), ('Fidži'), ('Francuska'), ('Haiti'), ('Holandija'), ('Honduras'), ('Hrvatska'), " +
-                "('Centralnoafrička Republika'), ('Crna Gora'), ('Čad'), ('Češka'), ('Čile'), ('Džibuti'), ('Švajcarska'), ('Švedska'), ('Španija'), " +
-                "('Šri Lanka'), ('Vatikan'), ('Palestina')");
+            migrationBuilder.Sql("insert into Drzave (NazivDrzave) values (N'Avganistan'), (N'Azerbejdžan'), (N'Albanija'), " +
+                "(N'Alžir'), (N'Angola'), (N'Andora'), (N'Antigva i Barbuda'), (N'Argentina'), (N'Australija'), (N'Austrija')," +
+                "(N'Bangladeš'), (N'Barbados'), (N'Bahami'), (N'Bahrein'), (N'Belgija'), (N'Belize'), (N'Belorusija'), (N'Benin'), " +
+                "(N'Bolivija'), (N'Bosna i Hercegovina'), (N'Bocvana'), (N'Brazil'), (N'Brunej'), (N'Bugarska'), (N'Burkina Faso'), " +
+                "(N'Burundi'), (N'Butan'), (N'Vanuatu'), (N'Venecuela'), (N'Vijetnam'), (N'Gabon'), (N'Gambija'), (N'Gana'), (N'Gvajana'), " +
+                "(N'Gvatemala'), (N'Gvineja'), (N'Gvineja Bisao'),  (N'Grenada'), (N'Gruzija'), (N'Grčka'), (N'Danska'), (N'Dominika'), " +
+                "(N'Dominikanska Republika'), (N'Egipat'), (N'Ekvador'), (N'Ekvatorijalna Gvineja'), (N'Eritreja'), (N'Estonija'), " +
+                "(N'Etiopija'), (N'Zambija'), (N'Zelenortska Ostrva'),(N'Zimbabve'), (N'Izrael'), (N'Inđija'), (N'Indonezija'), (N'Irak'), " +
+                "(N'Iran'), (N'Irska'), (N'Island'), (N'Istočni Timor'), (N'Italija'), (N'Jamajka'), (N'Japan'), (N'Jemen'), (N'Jermenija')," +
+                "(N'Jordan'), (N'Južna Krojea'), (N'Južni Sudan'), (N'Južnoafrička Republika'), (N'Kazahstan'), (N'Kambodža'), (N'Kamerun')," +
+                "(N'Kanada'), (N'Katar'), (N'Kenija'), (N'Kina'), (N'Kipar'), (N'Kirgistan'), (N'Kiribati'), (N'Kolumbija'), (N'DR Konogo'), (N'Kongo')," +
+                "(N'Komori'), (N'Kostarika'), (N'Kuba'), (N'Kuvajt'), (N'Laos'), (N'Lesoto'), (N'Letonija'), (N'Liban'), (N'Liberija'), (N'Libija'), " +
+                "(N'Litvanija'), (N'Lihtenštajn'), (N'Luksemburg'), (N'Madagaskar'), (N'Mađarska'), (N'Makedonija'), (N'Malavi'), (N'Maldivi'), (N'Malezija'), " +
+                "(N'Mali'), (N'Malta'), (N'Maroko'), (N'Maršalska Ostrva'), (N'Mauritanija'), (N'Mauricijus'), (N'Meksiko'), (N'Mikronezija'), (N'Mjanmar'), " +
+                "(N'Mozambik'), (N'Moldavija'), (N'Monako'), (N'Mongolija'), (N'Namibija'), (N'Nauru'), (N'Nemačka'), (N'Nepal'), (N'Niger'), (N'Nigerija'), " +
+                "(N'Nikaragva'), (N'Novi Zeland'), (N'Norveška'), (N'Obala Slonovače'), (N'Oman'), (N'Pakistan'), (N'Palau'), (N'Panama'), " +
+                "(N'Papua Nova Gvineja'), (N'Paragvaj'), (N'Peru'), (N'Poljska'), (N'Portugalija'), (N'Ruanda'), (N'Rumunija'), (N'Rusija'), " +
+                "(N'Salvador'), (N'Samoa'), (N'San Marino'), (N'Sao Tome i Prinsipe'), (N'Saudijska Arabija'), (N'Svaziland'), (N'Sveta Lucija'), " +
+                "(N'Sveti Vinsent i Grenadini'), (N'Sent Kits i Nevis'), (N'Severna Koreja'), (N'Sejšeli'), (N'Senegal'), (N'Sijera Leone'), " +
+                "(N'Singapur'), (N'Sirija'), (N'Sjedinjene Američke Države'), (N'Slovačka'), (N'Slovenija'), (N'Solomonska Ostrva'), (N'Somalija'), " +
+                "(N'Srbija'), (N'Sudan'), (N'Surinam'), (N'Tajland'), (N'Tanzanija'), (N'Tadžikistan'), (N'Togo'), (N'Tonga'), (N'Trinidad i Tobago'), " +
+                "(N'Tuvalu'), (N'Tunis'), (N'Turkmenistan'), (N'Turska'), (N'Uganda'), (N'Uzbekistan'), (N'Ujedinjeni Arapski Emirati'), (N'Ujedinjeno Kraljevstvo')," +
+                "(N'Ukrajina'), (N'Urugvaj'), (N'Filipini'), (N'Finska'), (N'Fidži'), (N'Francuska'), (N'Haiti'), (N'Holandija'), (N'Honduras'), (N'Hrvatska'), " +
+                "(N'Centralnoafrička Republika'), (N'Crna Gora'), (N'Čad'), (N'Češka'), (N'Čile'), (N'Džibuti'), (N'Švajcarska'), (N'Švedska'), (N'Španija'), " +
+                "(N'Šri Lanka'), (N'Vatikan'), (N'Palestina')");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
