@@ -21,7 +21,13 @@ namespace DomUcenikaSvilajnac.DAL.Context.Migrations
                 {
                     table.PrimaryKey("PK_Smerovi", x => x.Id);
                 });
-
+            migrationBuilder.Sql("insert into Smerovi (NazivSmera) values " +
+               "('Veterinarski tehničar')," +
+               "('Poljoprivredni tehničar')," +
+               "('Mesar')," +
+               "('Prehrambeni tehničar')," +
+               "('Tehničar hortikulture')," +
+               "('Rukovalac - mehaničar poljoprivredne tehnike')");
 
         }
 
