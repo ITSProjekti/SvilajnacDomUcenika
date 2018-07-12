@@ -85,6 +85,9 @@ namespace DomUcenikaSvilajnac.Common.Models
         public int UpisanaSkolaId { get; set; }
         public UpisanaSkola UpisanaSkola { get; set; }
 
+        public int SmerId { get; set; }
+        public Smer Smer { get; set; }
+
 
         public DateTime VremeUpisa { get; set; }
     }

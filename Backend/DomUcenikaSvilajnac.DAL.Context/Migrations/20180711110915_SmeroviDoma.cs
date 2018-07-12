@@ -21,6 +21,8 @@ namespace DomUcenikaSvilajnac.DAL.Context.Migrations
                 {
                     table.PrimaryKey("PK_Smerovi", x => x.Id);
                 });
+
+
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
