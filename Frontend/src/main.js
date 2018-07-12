@@ -26,6 +26,10 @@ new Vue({
     this.$store.dispatch('loadedDrzave')
     this.$store.dispatch('loadedPostanskiBrojevi')
     this.$store.dispatch('loadedPolovi')
+    this.$store.dispatch('loadedSmerovi')
+    this.$store.dispatch('loadedSS')
+    this.$store.dispatch('loadedOS')
+    this.$store.dispatch('loadedMesta')
     return this.$store.dispatch('loadedOpstine')
   }
 })
