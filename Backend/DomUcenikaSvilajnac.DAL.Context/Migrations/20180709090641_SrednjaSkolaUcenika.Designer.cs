@@ -14,7 +14,7 @@ namespace DomUcenikaSvilajnac.DAL.Context.Migrations
     [Migration("20180709090641_SrednjaSkolaUcenika")]
     partial class SrednjaSkolaUcenika
     {
-        protected override void BuildTargetModel(ModelBuilder modelBuilder)
+        protected void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
