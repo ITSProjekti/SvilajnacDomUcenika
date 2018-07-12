@@ -37,6 +37,19 @@ namespace DomUcenikaSvilajnac.Mapping
 
 
 
+            //CreateMap<RoditeljResource, Roditelj>()
+            //   .ForMember(v => v.Ime, opt => opt.MapFrom(src => src.ImeOca))
+            //   .ForMember(v => v.Prezime, opt => opt.MapFrom(src => src.PrezimeOca));
+
+
+            //CreateMap<Roditelj, RoditeljResource>()
+            //  .ForMember(v => v.ImeOca, opt => opt.MapFrom(src => src.Ime))
+            //  .ForMember(v => v.PrezimeOca, opt => opt.MapFrom(src => src.Prezime))
+            //  .ForMember(v => v.ImeMajke, opt => opt.MapFrom(src => src.Ime))
+            //  .ForMember(v => v.PrezimeMajke, opt => opt.MapFrom(src => src.Prezime));
+
+            //CreateMap<List<Roditelj>, RoditeljResource>()
+            //    .ForMember(v => v.ImeOca, opt => opt.MapFrom(src => src.Select(n=>n.Ime)));
         }
     }
 }
