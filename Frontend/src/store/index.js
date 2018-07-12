@@ -92,6 +92,10 @@ export const store = new Vuex.Store({
               ucenikEdit.prezime= payload.prezime,
               ucenikEdit.jmbg= payload.jmbg,
               ucenikEdit.adresa = payload.adresa,
+              ucenikEdit.smer = {
+                    id: payload.smer.id,
+                    nazivSmera: payload.smer.nazivSmera
+              },
               ucenikEdit.postanskiBroj= {
                     id:payload.postanskiBroj.id,
                     broj:payload.postanskiBroj.broj,
@@ -100,10 +104,6 @@ export const store = new Vuex.Store({
               ucenikEdit.pol= {
                     id:payload.pol.id,
                     nazivPola:payload.pol.nazivPola
-              },
-              smer= {
-                    id: payload.smer.id,
-                    nazivSmera: payload.smer.nazivSmera
               },            
               ucenikEdit.telefon= {
                     id:payload.telefon.id,
@@ -322,8 +322,8 @@ export const store = new Vuex.Store({
                 upisanaSkola:{
                     id: payload.upisanaSkola.id
                 },
-                mestoZavrsenseSkole:{
-                    id: payload.mestoZavrsenseSkole.id
+                mestoZavrseneSkole:{
+                    id: payload.mestoZavrseneSkole.id
                 },
                 opstina: {
                     id: payload.opstina.id,
@@ -393,8 +393,8 @@ export const store = new Vuex.Store({
                 upisanaSkola:{
                     id: payload.upisanaSkola.id
                 },
-                mestoZavrsenseSkole:{
-                    id: payload.mestoZavrsenseSkole.id
+                mestoZavrseneSkole:{
+                    id: payload.mestoZavrseneSkole.id
                 },
                 opstina: {
                     id: payload.opstina.id,
@@ -430,9 +430,12 @@ export const store = new Vuex.Store({
     },
 
     getters: {
+        loadedMesta (state) {
+            return state.mesta
+        },
         loadedSmer (state)
         {
-            return state.osnovneSkole  
+            return state.smer 
         },
       
         loadedSrednjeSkole (state)

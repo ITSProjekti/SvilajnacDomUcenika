@@ -10,7 +10,7 @@
       ></v-divider>
       <v-spacer></v-spacer>
       
-    <v-dialog v-model="dialog" max-width="600">
+    <v-dialog v-model="dialog" max-width="800">
       <v-btn  slot="activator" color="blue-grey darken-2" dark class="mb-2">Prijavi ucenika</v-btn>
       <v-card>
         <v-card-title>
@@ -44,6 +44,14 @@
                   :rules="[rules.required,rules.jmbg]"
                   :counter="13"
                     ></v-text-field>
+              </v-flex>
+                   <v-flex xs12 >
+                <v-text-field
+                 v-model="editedItem.adresa"
+                  label="Adresa prebivalista" 
+                  required
+                   :rules="[rules.required]"
+                  ></v-text-field>
               </v-flex>
               <template>
                  <v-container fluid>
@@ -157,22 +165,126 @@
                           </v-layout>
                         </v-container>
                       </template>
-              <v-flex xs12 >
-                <v-text-field
-                 v-model="editedItem.mestoRodjenja"
-                  required
-                   label="Mesto rodjenja"
-                    :rules="[rules.required]"
-                   ></v-text-field>
-              </v-flex>
-               <v-flex xs12 >
-                <v-text-field
-                 v-model="editedItem.mestoPrebivalista"
-                  required
-                   label="Mesto prebivalista"
-                    :rules="[rules.required]"
-                   ></v-text-field>
-              </v-flex>
+                     <v-container fluid>
+                    <v-layout row wrap>
+                    <v-flex xs12 sm6>
+                     <v-subheader v-text="'Mesto Rodjenja'"></v-subheader>
+                    </v-flex>
+                           <v-flex xs12 sm6>
+                               <v-select
+                                :loading="loading"
+                                :items="mesta"
+                                v-model="editedItem.mestoRodjenja.id"
+                                label="Izaberite mesto rodjenja"
+                                item-text="nazivMesta"
+                                item-value="id"
+                                autocomplete
+                                required
+                                 :rules="[rules.required]"
+                              ></v-select>
+                            </v-flex>
+                          </v-layout>
+                        </v-container>
+                      <v-container fluid>
+                    <v-layout row wrap>
+                    <v-flex xs12 sm6>
+                     <v-subheader v-text="'Mesto prebivalista'"></v-subheader>
+                    </v-flex>
+                           <v-flex xs12 sm6>
+                               <v-select
+                                :loading="loading"
+                                :items="mesta"
+                                v-model="editedItem.mestoPrebivalista.id"
+                                label="Izaberite mesto rodjenja"
+                                item-text="nazivMesta"
+                                item-value="id"
+                                autocomplete
+                                required
+                                 :rules="[rules.required]"
+                              ></v-select>
+                            </v-flex>
+                          </v-layout>
+                        </v-container>
+                               <v-container fluid>
+                    <v-layout row wrap>
+                    <v-flex xs12 sm6>
+                     <v-subheader v-text="'Zavrsena skola (osnovna)'"></v-subheader>
+                    </v-flex>
+                           <v-flex xs12 sm6>
+                               <v-select
+                                :loading="loading"
+                                :items="osnovneSkole"
+                                v-model="editedItem.prethodnaSkola.id"
+                                label="Izaberite zavrsenu skolu"
+                                item-text="nazivPrethodneSkole"
+                                item-value="id"
+                                autocomplete
+                                required
+                                 :rules="[rules.required]"
+                              ></v-select>
+                            </v-flex>
+                          </v-layout>
+                        </v-container>
+                               <v-container fluid>
+                    <v-layout row wrap>
+                    <v-flex xs12 sm6>
+                     <v-subheader v-text="'Mesto prethdno zavrsene skole'"></v-subheader>
+                    </v-flex>
+                           <v-flex xs12 >
+                               <v-select
+                                :loading="loading"
+                                :items="mesta"
+                                v-model="editedItem.mestoZavrseneSkole.id"
+                                label="Izaberite mesto prethodno zavrsene skole"
+                                item-text="nazivMesta"
+                                item-value="id"
+                                autocomplete
+                                required
+                                 :rules="[rules.required]"
+                              ></v-select>
+                            </v-flex>
+                          </v-layout>
+                        </v-container>
+                               <v-container fluid>
+                    <v-layout row wrap>
+                    <v-flex xs12 sm6>
+                     <v-subheader v-text="'Srednja skola koju ucenik upisuje'"></v-subheader>
+                    </v-flex>
+                           <v-flex xs12 sm6>
+                               <v-select
+                                :loading="loading"
+                                :items="srednjeSkole"
+                                v-model="editedItem.upisanaSkola.id"
+                                label="Izaberite srednju skolu koju ucenik upisuje"
+                                item-text="nazivSrednjeSkole"
+                                item-value="id"
+                                autocomplete
+                                required
+                                 :rules="[rules.required]"
+                              ></v-select>
+                            </v-flex>
+                          </v-layout>
+                        </v-container>
+                               <v-container fluid>
+                    <v-layout row wrap>
+                    <v-flex xs12 sm6>
+                     <v-subheader v-text="'Smer koji ucenik upisuje'"></v-subheader>
+                    </v-flex>
+                           <v-flex xs12 sm6>
+                               <v-select
+                                :loading="loading"
+                                :items="smerovi"
+                                v-model="editedItem.smer.id"
+                                label="Izaberite smer koji ucenik upisuje"
+                                item-text="nazivSmera"
+                                item-value="id"
+                                autocomplete
+                                required
+                                 :rules="[rules.required]"
+                              ></v-select>
+                            </v-flex>
+                          </v-layout>
+                        </v-container>
                <v-flex xs12 >
                 <v-text-field
                  v-model="editedItem.telefon.mobilni"                 
@@ -195,7 +307,8 @@
                   <p>Prethodni: {{ editedItem.dan }}.{{ editedItem.mesec }}.{{editedItem.godina }}</p>
                   </template>  
                  <p>Novi: {{datum}}</p>
-              </v-flex>              
+              </v-flex> 
+
             </v-layout>
           </v-container>
         </v-card-text>
@@ -257,7 +370,7 @@
         <td class="text-xs-center">{{ props.item.jmbg }}</td>
         <td class="text-xs-center">{{ props.item.pol.nazivPola }}</td>
         <td class="text-xs-center">{{ props.item.dan }}.{{ props.item.mesec }}.{{ props.item.godina }}.</td>
-        <td class="text-xs-center">{{ props.item.mestoRodjenja }}</td>
+        <td class="text-xs-center">{{ props.item.mestoRodjenja.nazivMesta }}</td>
         <td class="text-xs-center">{{ props.item.opstina.nazivOpstine }}</td>
         <td class="justify-center layout px-0">         
           <v-btn center  icon class="mx-0"
@@ -308,7 +421,43 @@
                        </v-flex>
                        <v-flex xs2>
                         <v-card-text class="text-lg-left">
-                                {{ props.item.mestoPrebivalista }}
+                                {{ props.item.mestoPrebivalista.nazivMesta }}
+                              </v-card-text>
+                       </v-flex>
+                         <v-flex xs2>
+                       <v-subheader class="text-lg-right" v-text="'Mesto zavrsene skole: '"></v-subheader>
+                       </v-flex>
+
+                       <v-flex xs2>
+                        <v-card-text class="text-lg-left">
+                                {{ props.item.mestoZavrseneSkole.nazivMesta }}
+                              </v-card-text>
+                       </v-flex>
+                         <v-flex xs2>
+                       <v-subheader class="text-lg-left" v-text="'Prethodna(osnovna) zavrsena skola: '"></v-subheader>
+                       </v-flex>
+
+                       <v-flex xs2>
+                        <v-card-text class="text-lg-left">
+                                {{ props.item.prethodnaSkola.nazivPrethodneSkole }}
+                              </v-card-text>
+                       </v-flex>
+                         <v-flex xs2>
+                       <v-subheader class="text-lg-right" v-text="'Naziv skole koju upisuje: '"></v-subheader>
+                       </v-flex>
+
+                       <v-flex xs2>
+                        <v-card-text class="text-lg-left">
+                                {{ props.item.upisanaSkola.nazivSrednjeSkole }}
+                              </v-card-text>
+                       </v-flex>
+                         <v-flex xs2>
+                       <v-subheader class="text-lg-right" v-text="'Smer na koji se upisuje: '"></v-subheader>
+                       </v-flex>
+
+                       <v-flex xs2>
+                        <v-card-text class="text-lg-left">
+                                {{ props.item.smer.nazivSmera }}
                               </v-card-text>
                        </v-flex>
                          <v-flex xs2>
@@ -336,6 +485,7 @@
                                 {{ props.item.telefon.mobilni }}
                               </v-card-text>
                        </v-flex>
+                       
                     </v-layout>                  
                 </v-card>
               </template>
@@ -371,7 +521,7 @@ import moment from 'moment'
         { text: 'JMBG', value:'jmbg',align: 'center',sortable:true ,width:'10%'},
         { text: 'Pol', value: 'pol.nazivPola',align: 'center',sortable:true,width:'10%' },
         { text: 'Datum rodjenja', value: 'godina',align: 'center',sortable:true,width:'10%' },
-        { text: 'Mesto rodjenja', value: 'mestoRodjenja',align: 'center',sortable:true,width:'10%' },
+        { text: 'Mesto rodjenja', value: 'mestoRodjenja.nazivMesta',align: 'center',sortable:true,width:'10%' },
         { text: 'Opstina rodjenja', value: 'opstina.nazivOpstine',align: 'center',sortable:true ,width:'10%'},
         { text: 'Opcije', value: 'opcije',align: 'center',sortable:false,width:'10%' }
       ],
@@ -386,10 +536,12 @@ import moment from 'moment'
       search: '',
       editedIndex: -1,
       brojevi: '',
+
       editedItem: {
         ime: '',
         prezime: '',
         jmbg: '',
+        adresa: '',
        pol: {
           id: '',
           nazivPola: ''
@@ -397,8 +549,29 @@ import moment from 'moment'
         dan: '',
         mesec: '',
         godina: '',
-        mestoRodjenja: '',
-        mestoPrebivalista: '',
+        mestoZavrseneSkole: {
+          id: '',
+          nazivMesta: ''
+        },
+        mestoRodjenja: {
+          id: '',
+          nazivMesta: ''
+        },
+        mestoPrebivalista: {
+          id: '',
+          nazivMesta: ''
+        },
+        prethodnaSkola: {
+          id: '',
+          nazivPrethodneSkole: '',
+          opstinaId: '',
+        },
+          upisanaSkola: {
+            id: '',
+            nazivSrednjeSkole: '',
+            opstinaId: '',
+            opstina: ''
+        },
         postanskiBroj: {
           id: '',
           broj: '',
@@ -420,6 +593,10 @@ import moment from 'moment'
           id: '',
           mobilni: '',
           kucni: ''
+          },
+          smer: {
+            id:'',
+            nazivSmera: ''
           }
       },
 
@@ -427,15 +604,37 @@ import moment from 'moment'
         ime: '',
         prezime: '',
         jmbg: '',
+        adresa: '',
+       pol: {
+          id: '',
+          nazivPola: ''
+       },
         dan: '',
         mesec: '',
         godina: '',
-        mestoRodjenja: '',
-        mestoPrebivalista: '',
-        pol: {
+        mestoZavrseneSkole: {
           id: '',
-          nazivPola: ''
-          },
+          nazivMesta: ''
+        },
+        mestoRodjenja: {
+          id: '',
+          nazivMesta: ''
+        },
+        mestoPrebivalista: {
+          id: '',
+          nazivMesta: ''
+        },
+        prethodnaSkola: {
+          id: '',
+          nazivPrethodneSkole: '',
+          opstinaId: '',
+        },
+          upisanaSkola: {
+            id: '',
+            nazivSrednjeSkole: '',
+            opstinaId: '',
+            opstina: ''
+        },
         postanskiBroj: {
           id: '',
           broj: '',
@@ -457,6 +656,10 @@ import moment from 'moment'
           id: '',
           mobilni: '',
           kucni: ''
+          },
+          smer: {
+            id:'',
+            nazivSmera: ''
           }
       }
     }),
@@ -471,8 +674,12 @@ import moment from 'moment'
           this.editedItem.opstinaPrebivalista.id !== '' &&
           this.editedItem.opstina.id !== '' &&
           this.editedItem.postanskiBroj.id !== '' &&
-          this.editedItem.mestoRodjenja !== '' &&
-          this.editedItem.mestoPrebivalista !== '' &&
+          this.editedItem.mestoRodjenja.id !== '' &&
+          this.editedItem.mestoPrebivalista.id !== '' &&
+          this.editedItem.mestoZavrseneSkole.id !== '' &&
+          this.editedItem.smer.id !== '' &&
+          this.editedItem.prethodnaSkola.id !== '' &&
+          this.editedItem.upisanaSkola.id !== '' &&
           this.datum !== null)
           {
             return true
@@ -481,6 +688,18 @@ import moment from 'moment'
             return false
           }
          
+      },
+      srednjeSkole () {
+       return this.$store.getters.loadedSrednjeSkole       
+      },
+      osnovneSkole () {
+       return this.$store.getters.loadedOsnovneSkole       
+      },
+      mesta () {
+       return this.$store.getters.loadedMesta       
+      },
+      smerovi () {
+       return this.$store.getters.loadedSmer       
       },
       polovi () {
        return this.$store.getters.loadedPolovi       
@@ -540,6 +759,12 @@ import moment from 'moment'
         item.opstinaPrebivalista.nazivOpstine.toLowerCase().match(this.search.toLowerCase()) ||
         item.telefon.kucni.toLowerCase().match(this.search.toLowerCase()) ||
         item.telefon.mobilni.toLowerCase().match(this.search.toLowerCase()) ||
+        item.mestoZavrseneSkole.nazivMesta.toLowerCase().match(this.search.toLowerCase()) ||
+        item.mestoPrebivalista.nazivMesta.toLowerCase().match(this.search.toLowerCase()) ||
+        item.mestoRodjenja.nazivMesta.toLowerCase().match(this.search.toLowerCase()) ||
+        item.smer.nazivSmera.toLowerCase().match(this.search.toLowerCase()) ||
+        item.prethodnaSkola.nazivPrethodneSkole.toLowerCase().match(this.search.toLowerCase()) ||
+        item.upisanaSkola.nazivSrednjeSkole.toLowerCase().match(this.search.toLowerCase()) ||
         item.postanskiBroj.broj.toLowerCase().match(this.search.toLowerCase()) ||
         item.datum.toLowerCase().match(this.search.toLowerCase())
         })
