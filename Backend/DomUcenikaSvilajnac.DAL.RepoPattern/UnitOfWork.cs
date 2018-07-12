@@ -44,6 +44,7 @@ namespace DomUcenikaSvilajnac.DAL.RepoPattern
             Mesta = new MestoRepository(_context);
 
             Smerovi = new SmerRepository(_context);
+            Razredi = new RazredRepository(_context);
 
         }
 
@@ -61,6 +62,8 @@ namespace DomUcenikaSvilajnac.DAL.RepoPattern
         public IMestoRepository Mesta { get; set; }
         public IMapper Mapper { get; }
         public ISmerRepository Smerovi { get; set; }
+        public IRazredRpository Razredi { get; set; }
+
         /// <summary>
         /// Izvršava zadatke definisane za aplikaciju povezane sa oslobađanjem, puštanjem ili poništavanjem nepovezanih resursa.
         /// </summary>

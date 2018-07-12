@@ -33,6 +33,7 @@ namespace DomUcenikaSvilajnac.Mapping
 
 
             CreateMap<PostanskiBrojResource, PostanskiBroj>();
+            CreateMap<Razred, RazredResource>();
 
 
 

@@ -31,6 +31,8 @@ namespace DomUcenikaSvilajnac.Common.Interfaces
         IMestoRepository    Mesta { get; }
 
         ISmerRepository Smerovi { get; }
+        IRazredRpository Razredi { get; }
+
         int SaveChanges();
         Task<int> SaveChangesAsync();
         Task<IEnumerable<UcenikResource>> mestaUcenika();

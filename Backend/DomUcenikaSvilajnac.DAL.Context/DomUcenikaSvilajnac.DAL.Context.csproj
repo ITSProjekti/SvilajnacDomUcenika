@@ -27,6 +27,7 @@
     <Compile Remove="Migrations\20180709090245_OsnovnaiSrednjaSkolauUcenikuId.cs" />
     <Compile Remove="Migrations\20180709114930_SeedovanjeMesta.cs" />
     <Compile Remove="Migrations\20180709121118_SeedovanjeOsnovnihSkola.cs" />
+    <Compile Remove="Migrations\20180712111047_RazredUcenika.cs" />
   </ItemGroup>
 
   <ItemGroup>
