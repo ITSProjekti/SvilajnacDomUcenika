@@ -117,23 +117,25 @@ namespace DomUcenikaSvilajnac.DAL.RepoPattern
                 .Include(mr=> mr.MestoRodjenja)
                 .Include(mr=> mr.MestoPrebivalista)
                 .Include(mzs=> mzs.MestoZavrseneSkole)
+                .Include(s=> s.Smer)
                 .ToListAsync();
             return Mapper.Map<List<Ucenik>, List<UcenikResource>>(neki);
         }
         public async Task<UcenikResource> mestaUcenikaById(int id)
         {
             var neki = await _context.Uceniks
-                 .Include(o => o.Opstina)
-                 .Include(d=> d.DrzavaRodjenja)
-                 .Include(op => op.OpstinaPrebivalista)
-                 .Include(p => p.Pol)
-                 .Include(t => t.Telefon)
-                  .Include(pb => pb.PostanskiBroj)
-                   .Include(os => os.PrethodnaSkola)
+                  .Include(o => o.Opstina)
+                .Include(d => d.DrzavaRodjenja)
+                .Include(op => op.OpstinaPrebivalista)
+                .Include(p => p.Pol)
+                .Include(t => t.Telefon)
+                .Include(pb => pb.PostanskiBroj)
+                .Include(os => os.PrethodnaSkola)
                 .Include(ss => ss.UpisanaSkola)
                 .Include(mr => mr.MestoRodjenja)
                 .Include(mr => mr.MestoPrebivalista)
-                .Include(mzs=> mzs.MestoZavrseneSkole)
+                .Include(mzs => mzs.MestoZavrseneSkole)
+                .Include(s => s.Smer)
                 .SingleOrDefaultAsync(x => x.Id == id);
             return Mapper.Map<Ucenik, UcenikResource>(neki);
         }
@@ -141,14 +143,18 @@ namespace DomUcenikaSvilajnac.DAL.RepoPattern
         public async Task<UcenikResource> mapiranje(UcenikResource ucenik)
         {
             var neki = await _context.Uceniks
-                .Include(o=> o.Opstina)
+                 .Include(o => o.Opstina)
                 .Include(d => d.DrzavaRodjenja)
                 .Include(op => op.OpstinaPrebivalista)
                 .Include(p => p.Pol)
                 .Include(t => t.Telefon)
-                 .Include(pb => pb.PostanskiBroj)
-                  .Include(os => os.PrethodnaSkola)
+                .Include(pb => pb.PostanskiBroj)
+                .Include(os => os.PrethodnaSkola)
                 .Include(ss => ss.UpisanaSkola)
+                .Include(mr => mr.MestoRodjenja)
+                .Include(mr => mr.MestoPrebivalista)
+                .Include(mzs => mzs.MestoZavrseneSkole)
+                .Include(s => s.Smer)
                 .SingleOrDefaultAsync(x => x.Id == ucenik.Id);
 
             return Mapper.Map<Ucenik, UcenikResource>(neki);

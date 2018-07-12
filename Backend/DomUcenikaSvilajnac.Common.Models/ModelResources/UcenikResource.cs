@@ -42,6 +42,8 @@ namespace DomUcenikaSvilajnac.ModelResources
         public PrethodnaSkola PrethodnaSkola { get; set; }
         public UpisanaSkola UpisanaSkola { get; set; }
 
+        public Smer Smer { get; set; }
+
 
     }
 }
