@@ -12,14 +12,14 @@ namespace DomUcenikaSvilajnac.Controllers
 {
     [Produces("application/json")]
     [Route("api/Razredi")]
-    public class RzredController : Controller
+    public class RazredController : Controller
     {
         public IMapper Mapper { get; }
         public IUnitOfWork UnitOfWork { get; }
         /// <summary>
         /// Inicijalizacija instance klase PolController i deklarisanje mappera i unitofwork-a.
         /// </summary>
-        public RzredController(IMapper mapper, IUnitOfWork unitOfWork)
+        public RazredController(IMapper mapper, IUnitOfWork unitOfWork)
         {
             Mapper = mapper;
             UnitOfWork = unitOfWork;

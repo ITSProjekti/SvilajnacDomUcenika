@@ -15,8 +15,8 @@ namespace DomUcenikaSvilajnac.DAL.Context.Migrations
     "(N'Bojnik'), (N'Boljevac'), (N'Bor'), (N'Bosilegrad'),(N'Brus'), (N'Bujanovac'), (N'Valjevo')," +
     " (N'Varvarin'), (N'Velika Plana'), (N'Veliko Gradište'), (N'Vitina'), (N'Vladimirci'), (N'Vladičin Han')," +
     " (N'Vlasotince'), (N'Voždovac'), (N'Vranje'), (N'Vračar'), (N'Vrbas'), (N'Vrnjačka Banja'), (N'Vršac')," +
-    " (N'Vučitrn'), (N'Gadžin Han'), (N'Glogovac'), (N'Gnjilane'), (N'Golubac'), (N'Gora'), (N'Goraždevac'), (N'Gornji Milanovac')," +
-    " (N'Grocka'), (N'Gračanica'), (N'Gornje Kušće'), (N'Despotovac'), (N'Dečani'), (N'Dragaš'), (N'Dimitrovgrad'), (N'Doljevac'), (N'Đakovica'), (N'Žabalj')," +
+    " (N'Vučitrn'), (N'Gadžin Han'), (N'Glogovac'), (N'Gnjilane'), (N'Golubac'), (N'Dragaš'), (N'Gornji Milanovac')," +
+    " (N'Grocka'), (N'Gračanica'), (N'Despotovac'), (N'Dečani'), (N'Dimitrovgrad'), (N'Doljevac'), (N'Đakovica'), (N'Žabalj')," +
     " (N'Žabari'), (N'Žagubica'), (N'Žitište'), (N'Žitorađa'), (N'Zaječar'), (N'Zvezdara'), (N'Zvečan')," +
     " (N'Zemun'), (N'Zrenjanin'), (N'Zubin Potok'), (N'Ivanjica'), (N'Inđija'), (N'Irig'), (N'Istok')," +
     " (N'Jagodina'), (N'Kanjiža'), (N'Kačanik'), (N'Kikinda'), (N'Kladovo'), (N'Klina'), (N'Knić')," +
@@ -36,7 +36,7 @@ namespace DomUcenikaSvilajnac.DAL.Context.Migrations
     " (N'Sremska Mitrovica'), (N'Sremski Karlovci'), (N'Stara Pazova'), (N'Stari grad'), (N'Stragari'), (N'Subotica'), (N'Suva Reka')," +
     " (N'Surdulica'), (N'Surčin'), (N'Temerin'), (N'Titel'), (N'Topola'), (N'Trgovište'), (N'Trstenik')," +
     " (N'Tutin'), (N'Ćićevac'), (N'Ćuprija'), (N'Ub'), (N'Užice'), (N'Uroševac'), (N'Crveni Krst')," +
-    " (N'Crna Trava'), (N'Crvenka'), (N'Čajetina'),(N'Čačak'), (N'Čoka'), (N'Čukarica'), (N'Šabac'), (N'Šid')," +
+    " (N'Crna Trava'), (N'Čajetina'),(N'Čačak'), (N'Čoka'), (N'Čukarica'), (N'Šabac'), (N'Šid')," +
     " (N'Štimlje'), (N'Štrpce'); ");
 
 

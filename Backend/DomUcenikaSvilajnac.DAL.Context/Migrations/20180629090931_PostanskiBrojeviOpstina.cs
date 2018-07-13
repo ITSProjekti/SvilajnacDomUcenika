@@ -319,7 +319,7 @@ namespace DomUcenikaSvilajnac.DAL.Context.Migrations
             "(12222, (select Id from Opstine where NazivOpstine = N'Golubac'))," +
             "(12224, (select Id from Opstine where NazivOpstine = N'Golubac'))," +
             "(12258, (select Id from Opstine where NazivOpstine = N'Golubac'))," +
-            "(38420, (select Id from Opstine where NazivOpstine = N'Gora'))," +
+            "(38420, (select Id from Opstine where NazivOpstine = N'Dragaš'))," +
             "(32300, (select Id from Opstine where NazivOpstine = N'Gornji Milanovac'))," +
             "(32312, (select Id from Opstine where NazivOpstine = N'Gornji Milanovac'))," +
             "(32303, (select Id from Opstine where NazivOpstine = N'Gornji Milanovac'))," +
@@ -330,7 +330,9 @@ namespace DomUcenikaSvilajnac.DAL.Context.Migrations
             "(32313, (select Id from Opstine where NazivOpstine = N'Gornji Milanovac'))," +
             "(32304, (select Id from Opstine where NazivOpstine = N'Gornji Milanovac'))," +
             "(32314, (select Id from Opstine where NazivOpstine = N'Gornji Milanovac'))," +
+            "(38250, (select Id from Opstine where NazivOpstine = N'Gračanica'))," +
             "(11306, (select Id from Opstine where NazivOpstine = N'Grocka'))," +
+            "(38320, (select Id from Opstine where NazivOpstine = N'Đakovica'))," +
             "(35213, (select Id from Opstine where NazivOpstine = N'Despotovac'))," +
             "(35223, (select Id from Opstine where NazivOpstine = N'Despotovac'))," +
             "(35241, (select Id from Opstine where NazivOpstine = N'Despotovac'))," +
@@ -349,7 +351,6 @@ namespace DomUcenikaSvilajnac.DAL.Context.Migrations
             "(18415, (select Id from Opstine where NazivOpstine = N'Doljevac'))," +
             "(18255, (select Id from Opstine where NazivOpstine = N'Doljevac'))," +
             "(18417, (select Id from Opstine where NazivOpstine = N'Doljevac'))," +
-            //"(50000, (select Id from Opstine where NazivOpstine = N'Đakovica'))," +
             "(21230, (select Id from Opstine where NazivOpstine = N'Žabalj'))," +
             "(21237, (select Id from Opstine where NazivOpstine = N'Žabalj'))," +
             "(21239, (select Id from Opstine where NazivOpstine = N'Žabalj'))," +
@@ -458,7 +459,7 @@ namespace DomUcenikaSvilajnac.DAL.Context.Migrations
             "(22408, (select Id from Opstine where NazivOpstine = N'Irig'))," +
             "(22409, (select Id from Opstine where NazivOpstine = N'Irig'))," +
             "(22328, (select Id from Opstine where NazivOpstine = N'Irig'))," +
-            "(31010, (select Id from Opstine where NazivOpstine = N'Istok'))," + //-as
+            "(31010, (select Id from Opstine where NazivOpstine = N'Istok'))," +
             "(35000, (select Id from Opstine where NazivOpstine = N'Jagodina'))," +
             "(35204, (select Id from Opstine where NazivOpstine = N'Jagodina'))," +
             "(35273, (select Id from Opstine where NazivOpstine = N'Jagodina'))," +
@@ -521,6 +522,7 @@ namespace DomUcenikaSvilajnac.DAL.Context.Migrations
             "(19353, (select Id from Opstine where NazivOpstine = N'Knjaževac'))," +
             "(19340, (select Id from Opstine where NazivOpstine = N'Knjaževac'))," +
             "(19362, (select Id from Opstine where NazivOpstine = N'Knjaževac'))," +
+            "(12208, (select Id from Opstine where NazivOpstine = N'Kostolac'))," +
             "(26210, (select Id from Opstine where NazivOpstine = N'Kovačica'))," +
             "(26214, (select Id from Opstine where NazivOpstine = N'Kovačica'))," +
             "(26207, (select Id from Opstine where NazivOpstine = N'Kovačica'))," +
