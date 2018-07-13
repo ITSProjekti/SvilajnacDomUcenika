@@ -45,6 +45,7 @@ namespace DomUcenikaSvilajnac.DAL.RepoPattern
             Smerovi = new SmerRepository(_context);
             Razredi = new RazredRepository(_context);
             Roditelji = new RoditeljRepository(_context);
+            Stepeni = new StepenStrucneSpremeRepository(_context);
 
     }
 
@@ -64,6 +65,7 @@ namespace DomUcenikaSvilajnac.DAL.RepoPattern
         public ISmerRepository Smerovi { get; set; }
         public IRazredRpository Razredi { get; set; }
         public IRoditeljRepository Roditelji { get; set; }
+        public IStepenStrucneSpremeRepository Stepeni { get; set; }
 
         /// <summary>
         /// Izvršava zadatke definisane za aplikaciju povezane sa oslobađanjem, puštanjem ili poništavanjem nepovezanih resursa.

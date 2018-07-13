@@ -33,6 +33,7 @@ namespace DomUcenikaSvilajnac.Common.Interfaces
         ISmerRepository Smerovi { get; }
         IRazredRpository Razredi { get; }
         IRoditeljRepository Roditelji { get; }
+        IStepenStrucneSpremeRepository Stepeni { get; }
 
         int SaveChanges();
         Task<int> SaveChangesAsync();

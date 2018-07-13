@@ -59,14 +59,13 @@ namespace DomUcenikaSvilajnac.DAL.Context.Migrations
               "update Opstine set PostanskiBroj = 35222 where NazivOpstine = N'Glogovac'" +
               "update Opstine set PostanskiBroj = 18309 where NazivOpstine = N'Gnjilane'" +
               "update Opstine set PostanskiBroj = 12223 where NazivOpstine = N'GoluBač'" +
-              "update Opstine set PostanskiBroj = 38420 where NazivOpstine = N'Gora'" +
+              "update Opstine set PostanskiBroj = 38420 where NazivOpstine = N'Dragaš'" +
               "update Opstine set PostanskiBroj = 32300 where NazivOpstine = N'Gornji Milanovac'" +
               "update Opstine set PostanskiBroj = 11306 where NazivOpstine = N'Grocka'" +
               "update Opstine set PostanskiBroj = 35213 where NazivOpstine = N'Despotovac'" +
               "update Opstine set PostanskiBroj = 51000 where NazivOpstine = N'Dečani'" +
               "update Opstine set PostanskiBroj = 18320 where NazivOpstine = N'Dimitrovgrad'" +
               "update Opstine set PostanskiBroj = 18410 where NazivOpstine = N'Doljevac'" +
-              "update Opstine set PostanskiBroj = 50000 where NazivOpstine = N'Đakovica'" +
               "update Opstine set PostanskiBroj = 21230 where NazivOpstine = N'Žabalj'" +
               "update Opstine set PostanskiBroj = 12374 where NazivOpstine = N'Žabari'" +
               "update Opstine set PostanskiBroj = 12320 where NazivOpstine = N'Žagubica'" +
@@ -148,6 +147,7 @@ namespace DomUcenikaSvilajnac.DAL.Context.Migrations
               "update Opstine set PostanskiBroj = 21131 where NazivOpstine = N'Petrovaradin'" +
               "update Opstine set PostanskiBroj = 12300 where NazivOpstine = N'Petrovac na Mlavi'" +
               "update Opstine set PostanskiBroj = 30000 where NazivOpstine = N'Peć'" +
+              "update Opstine set PostanskiBroj = 38310 where NazivOpstine = N'Peć'" +
               "update Opstine set PostanskiBroj = 22410 where NazivOpstine = N'Pećinci'" +
               "update Opstine set PostanskiBroj = 18300 where NazivOpstine = N'Pirot'" +
               "update Opstine set PostanskiBroj = 26360 where NazivOpstine = N'Plandište'" +
