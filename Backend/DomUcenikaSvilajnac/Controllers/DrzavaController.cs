@@ -85,7 +85,6 @@ namespace DomUcenikaSvilajnac.Controllers
             return Ok(drzava);
         }
 
-
         /// <summary>
         /// Dodavanje novog reda u tabeli, tj. nove drzave.
         /// </summary>

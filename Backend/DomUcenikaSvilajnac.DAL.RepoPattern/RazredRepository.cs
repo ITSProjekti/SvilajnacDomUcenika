@@ -9,11 +9,18 @@ namespace DomUcenikaSvilajnac.DAL.RepoPattern
 {
     class RazredRepository : Repository<Razred>, IRazredRpository
     {
+        /// <summary>
+        /// Nasledjuje genericku klasu Repository sa tipom Razred i IRazredRepository interfejs
+        /// Videti Repository i Razred klasu i IRazredRepository interfejs radi dodatnog pojasnjena.
+        /// </summary>
         public RazredRepository(UcenikContext context) : base(context)
         {
 
         }
 
+        /// <summary>
+        /// Get the context.
+        /// </summary>
         public UcenikContext context
         {
             get { return context as UcenikContext; }

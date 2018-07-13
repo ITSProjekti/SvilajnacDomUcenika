@@ -17,14 +17,16 @@ namespace DomUcenikaSvilajnac.Controllers
         public IMapper Mapper { get; }
         public IUnitOfWork UnitOfWork { get; }
         /// <summary>
-        /// Inicijalizacija instance klase DrzavaController i deklarisanje mappera i unitofwork-a.
+        /// Inicijalizacija instance klase RoditeljController i deklarisanje mappera i unitofwork-a.
         /// </summary>
         public RoditeljController(IMapper mapper, IUnitOfWork unitOfWork)
         {
             Mapper = mapper;
             UnitOfWork = unitOfWork;
         }
-
+        /// <summary>
+        /// Vraca listu svih roditlja koji se trenutno nalaze u bazi.
+        /// </summary>
         [HttpGet]
         public async Task<IEnumerable<RoditeljResource>> GetRoditelji()
         {
@@ -36,6 +38,9 @@ namespace DomUcenikaSvilajnac.Controllers
 
             return roditelj;   // Mapper.Map<List<Roditelj>, List<RoditeljResource>>(listaRoditelja.ToList());
         }
+        /// <summary>
+        /// Vraca dva reda iz tabele, tj. roditelje na osnovu prosledjenog Id-a.
+        /// </summary>
         [HttpGet("{id}")]
         public async Task<IActionResult> GetRoditeljById([FromRoute] int id)
         {
@@ -58,13 +63,6 @@ namespace DomUcenikaSvilajnac.Controllers
                 roditelji.Add(majka);
                 roditelji.Add(otac);
             }
-           
-            
-            
-
-
-            
-
 
             var roditelj = Mapper.Map<List<Roditelj>, RoditeljResource>(roditelji);
 
@@ -76,6 +74,10 @@ namespace DomUcenikaSvilajnac.Controllers
 
             return Ok(roditelj);
         }
+        /// <summary>
+        /// Metoda za update, menja podatke u nekom redu u tabeli, tj. o nekom roditlju na osnovu prosledjenog Id-a 
+        /// i vraca podatke o roditelju koji su namenjeni za front.
+        /// </summary>
         [HttpPut("{id}")]
         public async Task<IActionResult> PutRoditelj([FromRoute] int id, [FromBody] RoditeljResource roditelj)
         {
@@ -101,6 +103,9 @@ namespace DomUcenikaSvilajnac.Controllers
             Mapper.Map<Roditelj, RoditeljResource>(noviRoditelj);
             return Ok(roditelj);
         }
+        /// <summary>
+        /// Dodavanje novog reda u tabeli, tj. novog roditlja.
+        /// </summary>
         [HttpPost]
         public async Task<IActionResult> PostRoditelj([FromBody] RoditeljResource roditelj)
         {
@@ -116,18 +121,15 @@ namespace DomUcenikaSvilajnac.Controllers
             roditelji.Add(otac);
             UnitOfWork.Roditelji.AddRange(roditelji);
 
-
-
             await UnitOfWork.SaveChangesAsync();
-
             
-
             roditelj  = Mapper.Map<List<Roditelj>, RoditeljResource>(roditelji);
-
             
-
             return Ok(roditelj);
         }
+        /// <summary>
+        /// Brisanje jednog reda iz tabele na osnvou prosledjenog Id-a, tj. brisanje odredjenog roditelja iz tabele.
+        /// </summary>
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteRoditelj([FromRoute] int id)
         {

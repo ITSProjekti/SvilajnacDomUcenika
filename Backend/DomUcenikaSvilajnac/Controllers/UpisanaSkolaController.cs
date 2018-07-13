@@ -17,21 +17,25 @@ namespace DomUcenikaSvilajnac.Controllers
         public IMapper Mapper { get; }
         public IUnitOfWork UnitOfWork { get; }
         /// <summary>
-        /// Inicijalizacija instance klase PolController i deklarisanje mappera i unitofwork-a.
+        /// Inicijalizacija instance klase UpisanaSkolaController i deklarisanje mappera i unitofwork-a.
         /// </summary>
         public UpisanaSkolaController(IMapper mapper, IUnitOfWork unitOfWork)
         {
             Mapper = mapper;
             UnitOfWork = unitOfWork;
         }
-
+        /// <summary>
+        /// Vraca listu svih srednjih skola koje se trenutno nalaze u bazi.
+        /// </summary>
         [HttpGet]
         public async Task<IEnumerable<UpisanaSkolaResource>> GetSrednjeSkole()
         {
             var listaSrednjihSkola = await UnitOfWork.UpisaneSkole.GetAllAsync();
             return Mapper.Map<List<UpisanaSkola>, List<UpisanaSkolaResource>>(listaSrednjihSkola.ToList());
         }
-
+        /// <summary>
+        /// Vraca jedan red iz tabele, tj. srednju skolu na osnovu prosledjenog Id-a.
+        /// </summary>
         [HttpGet("{id}")]
         public async Task<IActionResult> GetSrednjaSkolaById([FromRoute] int id)
         {
@@ -49,7 +53,10 @@ namespace DomUcenikaSvilajnac.Controllers
 
             return Ok(novaSrednjaSkola);
         }
-
+        /// <summary>
+        /// Metoda za update, menja podatke u nekom redu u tabeli, tj. o nekoj srednjoj skoli na osnovu prosledjenog Id-a 
+        /// i vraca podatke o stepenu strucne spreme koji su namenjeni za front.
+        /// </summary>
         [HttpPut("{id}")]
         public async Task<IActionResult> PutSrednjaSkola([FromRoute] int id, [FromBody] UpisanaSkolaResource srednjaSkola)
         {
@@ -76,6 +83,9 @@ namespace DomUcenikaSvilajnac.Controllers
             Mapper.Map<UpisanaSkola, UpisanaSkolaResource>(novaSrednjaSkola);
             return Ok(srednjaSkola);
         }
+        /// <summary>
+        /// Dodavanje novog reda u tabeli, tj. novoe srednje skole.
+        /// </summary>
         [HttpPost]
         public async Task<IActionResult> PostSrednjaSkola([FromBody] UpisanaSkolaResource srednjaSkola)
         {
@@ -91,9 +101,10 @@ namespace DomUcenikaSvilajnac.Controllers
             srednjaSkola = Mapper.Map<UpisanaSkola, UpisanaSkolaResource>(novaSrednjaSkola);
 
             return Ok(novaSrednjaSkola);
-
-
         }
+        /// <summary>
+        /// Brisanje jednog reda iz tabele na osnvou prosledjenog Id-a, tj. brisanje odredjene srednje skole iz tabele.
+        /// </summary>
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteSrednjaSkola([FromRoute] int id)
         {
@@ -114,7 +125,5 @@ namespace DomUcenikaSvilajnac.Controllers
 
             return Ok(novaSrednjaSkola);
         }
-
-
     }
 }

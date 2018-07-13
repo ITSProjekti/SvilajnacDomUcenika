@@ -6,6 +6,9 @@ using System.Text;
 
 namespace DomUcenikaSvilajnac.Common.Models
 {
+    /// <summary>
+    /// Klasa PostanskiBroj, pravi tabelu "PostanskiBrojevi" u bazi podataka sa poljima koja su navedena kao property u datoj klasi.
+    /// </summary>
     [Table("PostanskiBrojevi")]
     public class PostanskiBroj
     {

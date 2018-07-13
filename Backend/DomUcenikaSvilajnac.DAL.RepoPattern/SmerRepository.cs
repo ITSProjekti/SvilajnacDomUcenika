@@ -9,6 +9,10 @@ namespace DomUcenikaSvilajnac.DAL.RepoPattern
 {
     class SmerRepository : Repository<Smer>, ISmerRepository
     {
+        /// <summary>
+        /// Nasledjuje genericku klasu Repository sa tipom Smer i ISmerRepository interfejs
+        /// Videti Repository i Smer klasu i ISmerRepository interfejs radi dodatnog pojasnjena.
+        /// </summary>
         public SmerRepository(UcenikContext context) : base(context)
         {
 

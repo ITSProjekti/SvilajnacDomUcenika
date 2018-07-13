@@ -17,7 +17,7 @@ namespace DomUcenikaSvilajnac.Controllers
         public IMapper Mapper { get; }
         public IUnitOfWork UnitOfWork { get; }
         /// <summary>
-        /// Inicijalizacija instance klase PolController i deklarisanje mappera i unitofwork-a.
+        /// Inicijalizacija instance klase MestoController i deklarisanje mappera i unitofwork-a.
         /// </summary>
         public MestoController(IMapper mapper, IUnitOfWork unitOfWork)
         {
@@ -26,7 +26,7 @@ namespace DomUcenikaSvilajnac.Controllers
         }
 
         /// <summary>
-        /// Vraca listu svih polova koje se trenutno nalaze u bazi.
+        /// Vraca listu svih mesta koje se trenutno nalaze u bazi.
         /// </summary>
         [HttpGet]
         public async Task<IEnumerable<MestoResource>> GetMesta()
@@ -34,6 +34,9 @@ namespace DomUcenikaSvilajnac.Controllers
             var listaMesta = await UnitOfWork.Mesta.GetAllAsync();
             return Mapper.Map<List<Mesto>, List<MestoResource>>(listaMesta.ToList());
         }
+        /// <summary>
+        /// Vraca jedan red iz tabele, tj. jedno mesto na osnovu prosledjenog Id-a.
+        /// </summary>
         [HttpGet("{id}")]
         public async Task<IActionResult> GetMestoById([FromRoute] int id)
         {
@@ -52,6 +55,10 @@ namespace DomUcenikaSvilajnac.Controllers
             return Ok(novoMesto);
         }
 
+        /// <summary>
+        /// Metoda za update, menja podatke u nekom redu u tabeli, tj. o nekom mestu na osnovu prosledjenog Id-a 
+        /// i vraca podatke o msetu koji su namenjeni za front.
+        /// </summary>
         [HttpPut("{id}")]
         public async Task<IActionResult> PutMesto([FromRoute] int id, [FromBody] MestoResource mesto)
         {
@@ -77,6 +84,9 @@ namespace DomUcenikaSvilajnac.Controllers
             Mapper.Map<Mesto, MestoResource>(novoMesto);
             return Ok(mesto);
         }
+        /// <summary>
+        /// Dodavanje novog reda u tabeli, tj. novog mesta.
+        /// </summary>
 
         [HttpPost]
         public async Task<IActionResult> PostMesto([FromBody] MestoResource mesto)
@@ -94,6 +104,9 @@ namespace DomUcenikaSvilajnac.Controllers
 
             return Ok(novoMesto);
         }
+        /// <summary>
+        /// Brisanje jednog reda iz tabele na osnvou prosledjenog Id-a, tj. brisanje odredjenog mesta iz tabele.
+        /// </summary>
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteMesto([FromRoute] int id)
         {

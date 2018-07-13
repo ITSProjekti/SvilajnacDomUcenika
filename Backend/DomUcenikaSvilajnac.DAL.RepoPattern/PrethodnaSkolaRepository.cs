@@ -9,10 +9,17 @@ namespace DomUcenikaSvilajnac.DAL.RepoPattern
 {
     public class PrethodnaSkolaRepository : Repository<PrethodnaSkola>, IPrethodnaSkolaRepository
     {
+        /// <summary>
+        /// Nasledjuje genericku klasu Repository sa tipom PrethodnaSkola i IPrethodnaSkolaRepository interfejs
+        /// Videti Repository i PrethodnaSkola klasu i IPrethodnaSkolaRepository interfejs radi dodatnog pojasnjena.
+        /// </summary>
         public PrethodnaSkolaRepository(UcenikContext context): base(context)
         {
 
         }
+        /// <summary>
+        /// Get the context.
+        /// </summary>
         public UcenikContext context
         {
             get { return context as UcenikContext; }

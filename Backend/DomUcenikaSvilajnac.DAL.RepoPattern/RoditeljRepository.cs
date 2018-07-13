@@ -9,6 +9,10 @@ namespace DomUcenikaSvilajnac.DAL.RepoPattern
 {
     public class RoditeljRepository : Repository<Roditelj>, IRoditeljRepository
     {
+        /// <summary>
+        /// Nasledjuje genericku klasu Repository sa tipom Roditelj i IRoditeljRepository interfejs
+        /// Videti Repository i Roditelj klasu i IRoditeljRepository interfejs radi dodatnog pojasnjena.
+        /// </summary>
         public RoditeljRepository(UcenikContext context) : base(context)
         {
 

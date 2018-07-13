@@ -17,7 +17,7 @@ namespace DomUcenikaSvilajnac.Controllers
         public IMapper Mapper { get; }
         public IUnitOfWork UnitOfWork { get; }
         /// <summary>
-        /// Inicijalizacija instance klase PolController i deklarisanje mappera i unitofwork-a.
+        /// Inicijalizacija instance klase SmerController i deklarisanje mappera i unitofwork-a.
         /// </summary>
         public SmerController(IMapper mapper, IUnitOfWork unitOfWork)
         {
@@ -26,7 +26,7 @@ namespace DomUcenikaSvilajnac.Controllers
         }
 
         /// <summary>
-        /// Vraca listu svih polova koje se trenutno nalaze u bazi.
+        /// Vraca listu svih smerova koje se trenutno nalaze u bazi.
         /// </summary>
         [HttpGet]
         public async Task<IEnumerable<SmerResource>> GetSmerovi()
@@ -34,7 +34,9 @@ namespace DomUcenikaSvilajnac.Controllers
             var listaSmerova = await UnitOfWork.Smerovi.GetAllAsync();
             return Mapper.Map<List<Smer>, List<SmerResource>>(listaSmerova.ToList());
         }
-
+        /// <summary>
+        /// Vraca jedan red iz tabele, tj. smer na osnovu prosledjenog Id-a.
+        /// </summary>
         [HttpGet("{id}")]
         public async Task<IActionResult> GetSmerById([FromRoute] int id)
         {
@@ -52,6 +54,10 @@ namespace DomUcenikaSvilajnac.Controllers
 
             return Ok(noviSmer);
         }
+        /// <summary>
+        /// Metoda za update, menja podatke u nekom redu u tabeli, tj. o nekom smeru na osnovu prosledjenog Id-a 
+        /// i vraca podatke o smeru koji su namenjeni za front.
+        /// </summary>
         [HttpPut("{id}")]
         public async Task<IActionResult> PutSmer([FromRoute] int id, [FromBody] SmerResource smer)
         {
@@ -77,6 +83,9 @@ namespace DomUcenikaSvilajnac.Controllers
             Mapper.Map<Smer, SmerResource>(noviSmer);
             return Ok(smer);
         }
+        /// <summary>
+        /// Dodavanje novog reda u tabeli, tj. novog smera.
+        /// </summary>
         [HttpPost]
         public async Task<IActionResult> PostSmer([FromBody] SmerResource smer)
         {
@@ -93,7 +102,9 @@ namespace DomUcenikaSvilajnac.Controllers
 
             return Ok(noviSmer);
         }
-
+        /// <summary>
+        /// Brisanje jednog reda iz tabele na osnvou prosledjenog Id-a, tj. brisanje odredjenog smera iz tabele.
+        /// </summary>
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteSmer([FromRoute] int id)
         {

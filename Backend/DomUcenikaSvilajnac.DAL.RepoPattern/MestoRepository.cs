@@ -9,6 +9,10 @@ namespace DomUcenikaSvilajnac.DAL.RepoPattern
 {
     public class MestoRepository : Repository<Mesto>, IMestoRepository
     {
+        /// <summary>
+        /// Nasledjuje genericku klasu Repository sa tipom Mesto i IMestoRepository interfejs
+        /// Videti Repository i Mesto klasu i IMestoRepository interfejs radi dodatnog pojasnjena.
+        /// </summary>
         public MestoRepository(UcenikContext context) : base(context)
         {
 

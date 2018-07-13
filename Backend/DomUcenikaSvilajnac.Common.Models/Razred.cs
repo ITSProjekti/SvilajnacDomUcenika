@@ -6,6 +6,9 @@ using System.Text;
 
 namespace DomUcenikaSvilajnac.Common.Models
 {
+    /// <summary>
+    /// Klasa Razred, pravi tabelu "Razredi" u bazi podataka sa poljima koja su navedena kao property u datoj klasi.
+    /// </summary>
     [Table("Razredi")]
     public class Razred
     {

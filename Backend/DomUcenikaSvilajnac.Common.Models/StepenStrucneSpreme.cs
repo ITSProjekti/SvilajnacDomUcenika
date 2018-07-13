@@ -5,6 +5,9 @@ using System.Text;
 
 namespace DomUcenikaSvilajnac.Common.Models
 {
+    /// <summary>
+    /// Klasa StepenStrucneSpreme, pravi tabelu "StepeniStrucneSpreme" u bazi podataka sa poljima koja su navedena kao property u datoj klasi.
+    /// </summary>
     [Table("StepeniStrucneSpreme")]
     public class StepenStrucneSpreme
     {

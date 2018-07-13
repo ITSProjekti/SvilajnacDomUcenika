@@ -17,21 +17,25 @@ namespace DomUcenikaSvilajnac.Controllers
         public IMapper Mapper { get; }
         public IUnitOfWork UnitOfWork { get; }
         /// <summary>
-        /// Inicijalizacija instance klase PolController i deklarisanje mappera i unitofwork-a.
+        /// Inicijalizacija instance klase StepenStrucneSpremeController i deklarisanje mappera i unitofwork-a.
         /// </summary>
         public StepenStrucneSpremeController(IMapper mapper, IUnitOfWork unitOfWork)
         {
             Mapper = mapper;
             UnitOfWork = unitOfWork;
         }
-
+        /// <summary>
+        /// Vraca listu svih stepena strucne spreme koje se trenutno nalaze u bazi.
+        /// </summary>
         [HttpGet]
         public async Task<IEnumerable<StepenStrucneSpremeResource>> GetStepenStrucneSpreme()
         {
             var lisataStepena = await UnitOfWork.Stepeni.GetAllAsync();
             return Mapper.Map<List<StepenStrucneSpreme>, List<StepenStrucneSpremeResource>>(lisataStepena.ToList());
         }
-
+        /// <summary>
+        /// Vraca jedan red iz tabele, tj. stepen strucne spreme na osnovu prosledjenog Id-a.
+        /// </summary>
         [HttpGet("{id}")]
         public async Task<IActionResult> GetStepenStrucneSpremeById([FromRoute] int id)
         {
@@ -49,7 +53,10 @@ namespace DomUcenikaSvilajnac.Controllers
 
             return Ok(noviStepen);
         }
-
+        /// <summary>
+        /// Metoda za update, menja podatke u nekom redu u tabeli, tj. o nekom stepenu strucne spreme na osnovu prosledjenog Id-a 
+        /// i vraca podatke o stepenu strucne spreme koji su namenjeni za front.
+        /// </summary>
         [HttpPut("{id}")]
         public async Task<IActionResult> PutStepenStrucneSpreme([FromRoute] int id, [FromBody] StepenStrucneSpremeResource stepen)
         {
@@ -75,7 +82,9 @@ namespace DomUcenikaSvilajnac.Controllers
             Mapper.Map<StepenStrucneSpreme, StepenStrucneSpremeResource>(noviStepen);
             return Ok(stepen);
         }
-
+        /// <summary>
+        /// Dodavanje novog reda u tabeli, tj. novog stepena strucne spreme.
+        /// </summary>
         [HttpPost]
         public async Task<IActionResult> PostRazred([FromBody] StepenStrucneSpremeResource stepen)
         {
@@ -92,7 +101,9 @@ namespace DomUcenikaSvilajnac.Controllers
 
             return Ok(noviStepen);
         }
-
+        /// <summary>
+        /// Brisanje jednog reda iz tabele na osnvou prosledjenog Id-a, tj. brisanje odredjenog stepena strucne spreme iz tabele.
+        /// </summary>
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteStepenStrucneSpreme([FromRoute] int id)
         {
