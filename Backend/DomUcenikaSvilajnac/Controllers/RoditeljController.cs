@@ -28,8 +28,13 @@ namespace DomUcenikaSvilajnac.Controllers
         [HttpGet]
         public async Task<IEnumerable<RoditeljResource>> GetRoditelji()
         {
+
             var listaRoditelja = await UnitOfWork.Roditelji.GetAllAsync();
-            return Mapper.Map<List<Roditelj>, List<RoditeljResource>>(listaRoditelja.ToList());
+
+            List<RoditeljResource> listaResurs = new List<RoditeljResource>();
+            var roditelj = Mapper.Map<List<Roditelj>, List<RoditeljResource>>(listaRoditelja.ToList(), listaResurs);
+
+            return roditelj;   // Mapper.Map<List<Roditelj>, List<RoditeljResource>>(listaRoditelja.ToList());
         }
         [HttpGet("{id}")]
         public async Task<IActionResult> GetRoditeljById([FromRoute] int id)
@@ -38,15 +43,38 @@ namespace DomUcenikaSvilajnac.Controllers
             {
                 return BadRequest(ModelState);
             }
+            List<Roditelj> roditelji = new List<Roditelj>();
+            if (id % 2 != 0)
+            {
+                var majka = await UnitOfWork.Roditelji.GetAsync(id-1);
+                var otac = await UnitOfWork.Roditelji.GetAsync(id);
+                roditelji.Add(majka);
+                roditelji.Add(otac);
+            }
+            else
+            {
+                var majka = await UnitOfWork.Roditelji.GetAsync(id);
+                var otac = await UnitOfWork.Roditelji.GetAsync(id + 1);
+                roditelji.Add(majka);
+                roditelji.Add(otac);
+            }
+           
+            
+            
 
-            var roditelj = await UnitOfWork.Roditelji.GetAsync(id);
-            var roditeljNovi = Mapper.Map<Roditelj, RoditeljResource>(roditelj);
-            if (roditelj == null)
+
+            
+
+
+            var roditelj = Mapper.Map<List<Roditelj>, RoditeljResource>(roditelji);
+
+            //var roditeljNovi = Mapper.Map<Roditelj, RoditeljResource>(roditelj);
+            if (roditelji == null)
             {
                 return NotFound();
             }
 
-            return Ok(roditeljNovi);
+            return Ok(roditelj);
         }
         [HttpPut("{id}")]
         public async Task<IActionResult> PutRoditelj([FromRoute] int id, [FromBody] RoditeljResource roditelj)
@@ -86,9 +114,10 @@ namespace DomUcenikaSvilajnac.Controllers
             List<Roditelj> roditelji = new List<Roditelj>();
             roditelji.Add(majka);
             roditelji.Add(otac);
-
-
             UnitOfWork.Roditelji.AddRange(roditelji);
+
+
+
             await UnitOfWork.SaveChangesAsync();
 
             

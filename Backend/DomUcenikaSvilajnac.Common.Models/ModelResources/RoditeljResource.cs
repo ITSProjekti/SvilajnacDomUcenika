@@ -6,7 +6,9 @@ namespace DomUcenikaSvilajnac.Common.Models.ModelResources
 {
     public class RoditeljResource
     {
+        public int IdMajke { get; set; }
         public int Id { get; set; }
+      
         public string ImeOca { get; set; }
         public string PrezimeOca { get; set; }
         public string ImeMajke { get; set; }
