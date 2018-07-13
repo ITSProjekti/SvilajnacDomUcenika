@@ -2,16 +2,12 @@
 <template>
   <div>
     <v-toolbar  color="white">
-       <v-toolbar-title >Spisak prijavljenih ucenika</v-toolbar-title>
-        <v-divider
-        class="mx-2"
-        inset
-        vertical
-      ></v-divider>
+       <v-toolbar-title wrap >Spisak prijavljenih učenika</v-toolbar-title>
+    
       <v-spacer></v-spacer>
       
     <v-dialog v-model="dialog" max-width="800">
-      <v-btn  slot="activator" color="blue-grey darken-2" dark class="mb-2">Prijavi ucenika</v-btn>
+      <v-btn  slot="activator" color="blue-grey darken-2" dark class="mb-2">Prijavi učenika</v-btn>
       <v-card>
         <v-card-title>
           <span class="headline">{{ formTitle }}</span>
@@ -19,7 +15,7 @@
         <v-card-text>
           <v-container grid-list-md>
             <v-layout wrap>
-              <v-flex xs12 >
+              <v-flex xs12 class="ml-3" >
                 <v-text-field
                  v-model="editedItem.ime"
                   label="Ime" 
@@ -27,7 +23,7 @@
                    :rules="[rules.required]"
                   ></v-text-field>
               </v-flex>
-              <v-flex xs12 >
+              <v-flex xs12 class="ml-3" >
                 <v-text-field
                  v-model="editedItem.prezime"
                   label="Prezime"
@@ -35,7 +31,7 @@
                    :rules="[rules.required]"
                    ></v-text-field>
               </v-flex>
-              <v-flex xs12 >
+              <v-flex xs12 class="ml-3" >
                 <v-text-field
                   v-model="editedItem.jmbg"
                   label="jmbg"
@@ -45,10 +41,10 @@
                   :counter="13"
                     ></v-text-field>
               </v-flex>
-                   <v-flex xs12 >
+                   <v-flex xs12 class="ml-3" >
                 <v-text-field
                  v-model="editedItem.adresa"
-                  label="Adresa prebivalista" 
+                  label="Adresa prebivališta" 
                   required
                    :rules="[rules.required]"
                   ></v-text-field>
@@ -56,15 +52,15 @@
               <template>
                  <v-container fluid>
                     <v-layout row wrap>
-                    <v-flex xs12 sm6>
-                     <v-subheader v-text="'Drzava rodjenja'"></v-subheader>
+                    <v-flex xs6 class="mt-4 ">
+                     <p>Država rođenja</p>
                     </v-flex>
                            <v-flex xs12 sm6>
                                <v-select
                                 :loading="loading"
                                 :items="drzave"
                                 v-model="editedItem.drzavaRodjenja.id"
-                                label="Drzava"
+                                label="Država"
                                 item-text="nazivDrzave"
                                 item-value="id"
                                 autocomplete
@@ -78,8 +74,8 @@
                 <template>
                  <v-container fluid>
                     <v-layout row wrap>
-                    <v-flex xs12 sm6>
-                     <v-subheader v-text="'Pol'"></v-subheader>
+                    <v-flex xs12 sm6 class="mt-4">
+                     <p>Pol</p>
                     </v-flex>
                            <v-flex xs12 sm6>
                                <v-select
@@ -100,15 +96,15 @@
               <template>
                  <v-container fluid>
                     <v-layout row wrap>
-                    <v-flex xs12 sm6>
-                     <v-subheader v-text="'Opstina rodjenja'"></v-subheader>
+                    <v-flex xs12 sm6 class="mt-4">
+                     <p>Opstina rođenja</p>
                     </v-flex>
                            <v-flex xs12 sm6>
                                <v-select
                                 :loading="loading"
                                 :items="opstine"
                                 v-model="editedItem.opstina.id"
-                                label="Izaberite opstinu rodjenja"
+                                label="Izaberite opštinu rođenja"
                                 item-text="nazivOpstine"
                                 item-value="id"
                                 autocomplete
@@ -122,15 +118,15 @@
                       <template>
                  <v-container fluid>
                     <v-layout row wrap>
-                    <v-flex xs12 sm6>
-                     <v-subheader v-text="'Opstina Prebivalista'"></v-subheader>
+                    <v-flex xs12 sm6 class="mt-4">
+                     <p>Opština prebivališta</p>
                     </v-flex>
                            <v-flex xs12 sm6>
                                <v-select
                                 :loading="loading"
                                 :items="opstine"
                                 v-model="editedItem.opstinaPrebivalista.id"
-                                label="Izaberite opstinu prebivalista"
+                                label="Izaberite opštinu prebivališta"
                                 item-text="nazivOpstine"
                                 item-value="id"
                                 @change="changedValue"
@@ -145,16 +141,16 @@
                       <template>
                  <v-container fluid>
                     <v-layout row wrap>
-                    <v-flex xs12 sm6>
-                    <v-subheader v-text="'Postanski broj'"></v-subheader> 
+                    <v-flex xs12 sm6 class="mt-4">
+                   <p>Poštanski broj</p>
                     </v-flex>
                            <v-flex xs12 sm6>
                                <v-select
                                 :loading="loading"
                                 :items="brojevi.postanskiBrojevi"
                                 v-model="editedItem.postanskiBroj.id"
-                                 v-if="editedItem.opstinaPrebivalista.id !== ''"
-                                label="Izaberite postanski broj opstine prebivalista"
+                                 v-if="editedItem.opstinaPrebivalista.id !== '' "
+                                label="Izaberite poštanski broj opštine prebivališta"
                                 item-text="broj"
                                 item-value="id"
                                 autocomplete
@@ -167,15 +163,15 @@
                       </template>
                      <v-container fluid>
                     <v-layout row wrap>
-                    <v-flex xs12 sm6>
-                     <v-subheader v-text="'Mesto Rodjenja'"></v-subheader>
+                    <v-flex xs12sm6 class="mt-4">
+                     <p>Mesto rođenja</p>
                     </v-flex>
                            <v-flex xs12 sm6>
                                <v-select
                                 :loading="loading"
                                 :items="mesta"
                                 v-model="editedItem.mestoRodjenja.id"
-                                label="Izaberite mesto rodjenja"
+                                label="Izaberite mesto rođenja"
                                 item-text="nazivMesta"
                                 item-value="id"
                                 autocomplete
@@ -187,15 +183,15 @@
                         </v-container>
                       <v-container fluid>
                     <v-layout row wrap>
-                    <v-flex xs12 sm6>
-                     <v-subheader v-text="'Mesto prebivalista'"></v-subheader>
+                    <v-flex xs12 sm6 class="mt-4">
+                     <p>Mesto prebivališta</p>
                     </v-flex>
                            <v-flex xs12 sm6>
                                <v-select
                                 :loading="loading"
                                 :items="mesta"
                                 v-model="editedItem.mestoPrebivalista.id"
-                                label="Izaberite mesto rodjenja"
+                                label="Izaberite mesto rođenja"
                                 item-text="nazivMesta"
                                 item-value="id"
                                 autocomplete
@@ -207,15 +203,15 @@
                         </v-container>
                                <v-container fluid>
                     <v-layout row wrap>
-                    <v-flex xs12 sm6>
-                     <v-subheader v-text="'Zavrsena skola (osnovna)'"></v-subheader>
+                    <v-flex xs12 sm6 class="mt-4">
+                     <p>Završena škola (osnovna)</p>
                     </v-flex>
                            <v-flex xs12 sm6>
                                <v-select
                                 :loading="loading"
                                 :items="osnovneSkole"
                                 v-model="editedItem.prethodnaSkola.id"
-                                label="Izaberite zavrsenu skolu"
+                                label="Izaberite završenu školu"
                                 item-text="nazivPrethodneSkole"
                                 item-value="id"
                                 autocomplete
@@ -227,15 +223,15 @@
                         </v-container>
                                <v-container fluid>
                     <v-layout row wrap>
-                    <v-flex xs12 sm6>
-                     <v-subheader v-text="'Mesto prethdno zavrsene skole'"></v-subheader>
+                    <v-flex xs12 sm6 class="mt-4">
+                     <p>Mesto prethodno zavrsene škole</p>
                     </v-flex>
                            <v-flex xs12 >
                                <v-select
                                 :loading="loading"
                                 :items="mesta"
                                 v-model="editedItem.mestoZavrseneSkole.id"
-                                label="Izaberite mesto prethodno zavrsene skole"
+                                label="Izaberite mesto prethodno završene škole"
                                 item-text="nazivMesta"
                                 item-value="id"
                                 autocomplete
@@ -247,15 +243,15 @@
                         </v-container>
                                <v-container fluid>
                     <v-layout row wrap>
-                    <v-flex xs12 sm6>
-                     <v-subheader v-text="'Srednja skola koju ucenik upisuje'"></v-subheader>
+                    <v-flex xs12 sm6 class="mt-4">
+                     <p>Srednja škola koju učenik upisuje</p>
                     </v-flex>
                            <v-flex xs12 sm6>
                                <v-select
                                 :loading="loading"
                                 :items="srednjeSkole"
                                 v-model="editedItem.upisanaSkola.id"
-                                label="Izaberite srednju skolu koju ucenik upisuje"
+                                label="Izaberite srednju školu koju učenik upisuje"
                                 item-text="nazivSrednjeSkole"
                                 item-value="id"
                                 autocomplete
@@ -267,15 +263,15 @@
                         </v-container>
                                <v-container fluid>
                     <v-layout row wrap>
-                    <v-flex xs12 sm6>
-                     <v-subheader v-text="'Smer koji ucenik upisuje'"></v-subheader>
+                    <v-flex xs12 sm6 class="mt-4">
+                     <p>Smer koji učenik upisuje</p>
                     </v-flex>
                            <v-flex xs12 sm6>
                                <v-select
                                 :loading="loading"
                                 :items="smerovi"
                                 v-model="editedItem.smer.id"
-                                label="Izaberite smer koji ucenik upisuje"
+                                label="Izaberite smer koji učenik upisuje"
                                 item-text="nazivSmera"
                                 item-value="id"
                                 autocomplete
@@ -285,20 +281,20 @@
                             </v-flex>
                           </v-layout>
                         </v-container>
-               <v-flex xs12 >
+               <v-flex xs6 class="ml-3">
                 <v-text-field
                  v-model="editedItem.telefon.mobilni"                 
                    label="Mobilni telefon"
                    ></v-text-field>
               </v-flex>
-               <v-flex xs12 >
+               <v-flex xs6 class="ml-3">
                 <v-text-field
                  v-model="editedItem.telefon.kucni"                
-                   label="Kucni telefon"    
+                   label="Kućni telefon"    
                    ></v-text-field>
               </v-flex>
-              <v-flex xs12 >
-                <h3 dark class="mb-2">Datum Rodjenja</h3>              
+              <v-flex xs12 class="ml-3">
+                <p class="mb-2">Datum Rođenja</p>              
                 <v-date-picker
                  v-model="datum"
                  locale="sr-Latn"
@@ -315,10 +311,10 @@
         <v-card-actions>
           <v-spacer></v-spacer>
           <v-btn color="blue darken-1" flat @click.native="close">
-            Otkazi
+            Otkaži
             </v-btn>
           <v-btn color="blue darken-1" flat @click.native="save"  :disabled="!formIsValid"
-          >Sacuvaj
+          >Sačuvaj
           </v-btn>
         </v-card-actions>
       </v-card>
@@ -338,7 +334,7 @@
     <v-card >
       <v-layout wrap justify-end >
   
-        <v-flex xs3 >
+        <v-flex xs3 class="mb-2">
         <v-text-field
         v-model="search"
         append-icon="search"
@@ -351,19 +347,19 @@
 
    
     <v-data-table
+   
       :headers="headers"
       :items="ucenici"
        v-if="!loading"
       rows-per-page-text="Redova po stranici"
       :rows-per-page-items="[5,10,15,20,25,30,35]"
       :search="search"
-      hide-actions
-      single-line
+
       :custom-filter="customFilter"
       class="elevation-1"    
      >
       <template slot="items" slot-scope="props" >
-        <tr @click="props.expanded = !props.expanded">
+        <tr class="pageRow" @click="props.expanded = !props.expanded">
         <td class="text-xs-center">{{ props.item.id}}</td>
         <td class="text-xs-center">{{ props.item.ime }}</td>
         <td class="text-xs-center">{{ props.item.prezime }}</td>
@@ -516,14 +512,14 @@ import moment from 'moment'
            width:'5%'
            
         },
-        { text: 'Ime',value: 'ime' ,align: 'center',sortable:true, width:'10%'},
-        { text: 'Prezime', value:'prezime', align: 'center',sortable:true,width:'10%'},
-        { text: 'JMBG', value:'jmbg',align: 'center',sortable:true ,width:'10%'},
-        { text: 'Pol', value: 'pol.nazivPola',align: 'center',sortable:true,width:'10%' },
-        { text: 'Datum rodjenja', value: 'godina',align: 'center',sortable:true,width:'10%' },
-        { text: 'Mesto rodjenja', value: 'mestoRodjenja.nazivMesta',align: 'center',sortable:true,width:'10%' },
-        { text: 'Opstina rodjenja', value: 'opstina.nazivOpstine',align: 'center',sortable:true ,width:'10%'},
-        { text: 'Opcije', value: 'opcije',align: 'center',sortable:false,width:'10%' }
+        { text: 'Ime',value: 'ime' ,align: 'center',sortable:true, width:'7.5%'},
+        { text: 'Prezime', value:'prezime', align: 'center',sortable:true,width:'7.5%'},
+        { text: 'JMBG', value:'jmbg',align: 'center',sortable:true ,width:'7.5%'},
+        { text: 'Pol', value: 'pol.nazivPola',align: 'center',sortable:true,width:'7.5%' },
+        { text: 'Datum rođenja', value: 'godina',align: 'center',sortable:true,width:'7.5%' },
+        { text: 'Mesto rođenja', value: 'mestoRodjenja.nazivMesta',align: 'center',sortable:true,width:'7.5%' },
+        { text: 'Opstina rođenja', value: 'opstina.nazivOpstine',align: 'center',sortable:true ,width:'7.5%'},
+        { text: 'Opcije', value: 'opcije',align: 'center',sortable:false,width:'7.5%' }
       ],
            rules: {
           required: (value) => !!value || 'Ovo polje je obavezno.',
@@ -680,7 +676,9 @@ import moment from 'moment'
           this.editedItem.smer.id !== '' &&
           this.editedItem.prethodnaSkola.id !== '' &&
           this.editedItem.upisanaSkola.id !== '' &&
-          this.datum !== null)
+          (this.datum !== null || this.editItem.dan !== '')
+          
+          )
           {
             return true
             }
@@ -772,7 +770,7 @@ import moment from 'moment'
         },
        formatiranjeDatuma()
       {
-        console.log(this.datum)
+       
           if(this.datum !== null)
           {
           const dan=this.datum.slice(-2); 
@@ -809,7 +807,7 @@ import moment from 'moment'
           this.editedItem = Object.assign({}, this.defaultItem)
         } else {
           this.formatiranjeDatuma() 
-          console.log(this.editedItem)      
+            
           this.$store.dispatch('createUcenik',this.editedItem)
           this.editedItem = Object.assign({}, this.defaultItem)
         }
@@ -820,13 +818,14 @@ import moment from 'moment'
   }
 </script>
 
-<style scoped>
-  .title {
-    position: absolute;
-    bottom: 50px;
-    background-color: rgba(0,0,0,0.5);
-    color: white;
-    font-size: 2em;
-    padding: 20px;
-  }
+<style >
+table {
+  border-top: 4px solid grey   !important;
+  border-bottom: 4px solid grey   !important;
+  
+}
+.pageRow td:nth-child(odd) {
+  background-color: lightgrey;
+  border-top: 1px solid black !important
+}
 </style>

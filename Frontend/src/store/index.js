@@ -127,21 +127,16 @@ export const store = new Vuex.Store({
                   opstinaId: payload.prethodnaSkola.opstinaId,
                   opstina: payload.prethodnaSkola.opstina
               },
-              ucenikEdit.prethodnaSkola={
-                id: payload.prethodnaSkola.id,
-                nazivPrethodneSkole: payload.prethodnaSkola.nazivPrethodneSkole,
-                opstinaId: payload.prethodnaSkola.opstinaId,
-                opstina: payload.prethodnaSkola.opstina
-              },
+            
               ucenikEdit.upisanaSkola={
-                id: payload.prethodnaSkola.id,
-                nazivSrednjeSkole: payload.prethodnaSkola.nazivPrethodneSkole,
-                opstinaId: payload.prethodnaSkola.opstinaId,
-                opstina: payload.prethodnaSkola.opstina
+                id: payload.upisanaSkola.id,
+                nazivSrednjeSkole: payload.upisanaSkola.nazivPrethodneSkole,
+                opstinaId: payload.upisanaSkola.opstinaId,
+                opstina: payload.upisanaSkola.opstina
               },
-              ucenikEdit.mestoZavrsenseSkole={
-                    id: payload.mestoZavrsenseSkole.id,
-                    nazivMesta: payload.mestoZavrsenseSkole.id
+              ucenikEdit.mestoZavrseneSkole={
+                    id: payload.mestoZavrseneSkole.id,
+                    nazivMesta: payload.mestoZavrseneSkole.nazivMesta
               },
               ucenikEdit.opstina= {
                    id: payload.opstina.id,
@@ -167,7 +162,7 @@ export const store = new Vuex.Store({
         loadedMesta( {commit } ) {
             commit('setLoading', true)
             axios.get('http://localhost:7688/api/mesta').then((response) => {
-              console.log(response.data)
+           
               commit('setLoadedMesta', response.data)
               commit('setLoading', false)
               
@@ -181,7 +176,7 @@ export const store = new Vuex.Store({
         loadedOS( {commit } ) {
             commit('setLoading', true)
             axios.get('http://localhost:7688/api/osnovneskole').then((response) => {
-              console.log(response.data)
+              
               commit('setLoadedOS', response.data)
               commit('setLoading', false)
               
@@ -195,7 +190,7 @@ export const store = new Vuex.Store({
           loadedSS( {commit } ) {
             commit('setLoading', true)
             axios.get('http://localhost:7688/api/srednjeskole').then((response) => {
-              console.log(response.data)
+            
               commit('setLoadedSS', response.data)
               commit('setLoading', false)
               
@@ -210,7 +205,7 @@ export const store = new Vuex.Store({
         loadedSmerovi( {commit } ) {
             commit('setLoading', true)
             axios.get('http://localhost:7688/api/smerovi').then((response) => {
-              console.log(response.data)
+          
               commit('setLoadedSmerovi', response.data)
               commit('setLoading', false)
               
@@ -224,7 +219,7 @@ export const store = new Vuex.Store({
         loadedPostanskiBrojevi( {commit } ) {
         commit('setLoading', true)
         axios.get('http://localhost:7688/api/postanskiBrojevi').then((response) => {
-          console.log(response.data)
+         
           commit('setLoadedPostanskeBrojeve', response.data)
           commit('setLoading', false)
           
@@ -238,7 +233,7 @@ export const store = new Vuex.Store({
         loadedPolovi( {commit } ) {
             commit('setLoading', true)
             axios.get('http://localhost:7688/api/polovi').then((response) => {
-              console.log(response.data)
+           
               commit('setLoadedPolove', response.data)
               commit('setLoading', false)
               
@@ -252,7 +247,7 @@ export const store = new Vuex.Store({
         loadedUcenici( {commit } ) {
             commit('setLoading', true)
             axios.get('http://localhost:7688/api/ucenik').then((response) => {
-              console.log(response.data)
+            
               commit('setLoadedUcenike', response.data)
               commit('setLoading', false)
               
@@ -266,7 +261,7 @@ export const store = new Vuex.Store({
           loadedOpstine( {commit } ) {
             commit('setLoading', true)
             axios.get('http://localhost:7688/api/opstine').then((response) => {
-                console.log(response.data)
+               
               commit('setLoadedOpstine', response.data)
             
               commit('setLoading', false)
@@ -281,7 +276,7 @@ export const store = new Vuex.Store({
           loadedDrzave( {commit } ) {
             commit('setLoading', true)
             axios.get('http://localhost:7688/api/drzave').then((response) => {
-                console.log(response.data)
+               
               commit('setLoadedDrzave', response.data)
             
               commit('setLoading', false)
@@ -346,7 +341,7 @@ export const store = new Vuex.Store({
             commit('setLoading', true)
             console.log(ucenik, this)
             axios.post('http://localhost:7688/api/ucenik',ucenik).then(function(response){
-                console.log(response.data, this)
+               
                 
                 commit('createUcenik',response.data)
                 commit('setLoading', false)
@@ -366,7 +361,8 @@ export const store = new Vuex.Store({
               commit('deleteUcenik', response.data)
               commit('setLoading', false)
             })
-          },editUcenik ({commit}, payload) {
+          }
+          ,editUcenik ({commit}, payload) {
             const ucenik = {
                 ime: payload.ime,
                 prezime: payload.prezime,
@@ -414,9 +410,10 @@ export const store = new Vuex.Store({
                }
                 
             }
-            console.log(ucenik)
+          
             commit('setLoading', true)
             axios.put('http://localhost:7688/api/ucenik/'+payload.id, ucenik).then(function(response){
+                console.log(response.data)
                 commit('editUcenik', response.data)
                 commit('setLoading', false)
                  }).catch(
