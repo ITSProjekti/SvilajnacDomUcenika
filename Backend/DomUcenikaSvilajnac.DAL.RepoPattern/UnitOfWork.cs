@@ -119,7 +119,7 @@ namespace DomUcenikaSvilajnac.DAL.RepoPattern
                 .Include(t => t.Telefon)
                 .Include(pb => pb.PostanskiBroj)
                 .Include(os => os.PrethodnaSkola)
-                .Include(ss => ss.UpisanaSkola)
+                .Include(ss => ss.UpisanaSkola.Opstina)
                 .Include(mr => mr.MestoRodjenja)
                 .Include(mr => mr.MestoPrebivalista)
                 .Include(mzs => mzs.MestoZavrseneSkole)

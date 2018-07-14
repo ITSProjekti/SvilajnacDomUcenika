@@ -1,4 +1,5 @@
 ﻿using DomUcenikaSvilajnac.Common.Models;
+using DomUcenikaSvilajnac.Common.Models.ModelResources;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -19,32 +20,31 @@ namespace DomUcenikaSvilajnac.ModelResources
 
         public string JMBG { get; set; }
         public string  Adresa { get; set; }
-        public PostanskiBroj PostanskiBroj { get; set; }
-        public Pol Pol { get; set; }
+        public PostanskiBrojResource PostanskiBroj { get; set; }
+        public PolResource Pol { get; set; }
         public Telefon Telefon { get; set; }
-
-        //    public DateTime DatumRodjenja { get; set; }
+        
         public int Dan { get; set; }
         public int Mesec { get; set; }
 
         public int Godina { get; set; }
 
-        public Opstina Opstina { get; set; }
-        public Opstina OpstinaPrebivalista { get; set; }
+        public OpstinaResource Opstina { get; set; }
+        public OpstinaResource OpstinaPrebivalista { get; set; }
 
-        public Mesto MestoRodjenja { get; set; }
-        public Mesto MestoPrebivalista { get; set; }
+        public MestoResource MestoRodjenja { get; set; }
+        public MestoResource MestoPrebivalista { get; set; }
 
-        public Mesto MestoZavrseneSkole { get; set; }
+        public MestoResource MestoZavrseneSkole { get; set; }
 
-        public Drzava DrzavaRodjenja { get; set; }
+        public DrzavaResource DrzavaRodjenja { get; set; }
 
-        public PrethodnaSkola PrethodnaSkola { get; set; }
-        public UpisanaSkola UpisanaSkola { get; set; }
+        public PrethodnaSkolaResource PrethodnaSkola { get; set; }
+        public UpisanaSkolaResource UpisanaSkola { get; set; }
 
-        public Smer Smer { get; set; }
+        public SmerResource Smer { get; set; }
 
-        public Razred Razred { get; set; }
+        public RazredResource Razred { get; set; }
 
     }
 }
