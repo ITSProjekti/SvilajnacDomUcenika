@@ -17,5 +17,7 @@ namespace DomUcenikaSvilajnac.Common.Models.ModelResources
         public string PrezimeOca { get; set; }
         public string ImeMajke { get; set; }
         public string PrezimeMajke { get; set; }
+
+        public int UcenikId { get; set; }
     }
 }

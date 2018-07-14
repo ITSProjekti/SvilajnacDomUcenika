@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Text;
@@ -42,8 +43,8 @@ namespace DomUcenikaSvilajnac.Common.Models
 
         //================
         //propertiji za komentarisanje prije svake migracije
-        public int OpstinaPrebivalistaId { get; set; }
-        public int OpstinaId { get; set; }
+        //public int OpstinaPrebivalistaId { get; set; }
+        //public int OpstinaId { get; set; }
         //================
         public Opstina Opstina { get; set; }
         public Opstina OpstinaPrebivalista { get; set; }
@@ -53,9 +54,9 @@ namespace DomUcenikaSvilajnac.Common.Models
 
         //================
         //propertiji za komentarisanje prije svake migracije
-        public int MestoRodjenjaId { get; set; }
-        public int MestoPrebivalistaId { get; set; }
-        public int MestoZavrseneSkoleId { get; set; }
+        //public int MestoRodjenjaId { get; set; }
+        //public int MestoPrebivalistaId { get; set; }
+        //public int MestoZavrseneSkoleId { get; set; }
         //================
 
 
@@ -93,5 +94,13 @@ namespace DomUcenikaSvilajnac.Common.Models
 
 
         public DateTime VremeUpisa { get; set; }
+
+        ICollection<Roditelj> Roditelji { get; set; }
+
+        public Ucenik()
+        {
+
+            Roditelji = new Collection<Roditelj>();
+        }
     }
 }

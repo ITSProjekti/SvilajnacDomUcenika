@@ -36,24 +36,28 @@ namespace DomUcenikaSvilajnac.Mapping
             CreateMap<Razred, RazredResource>();
 
 
-
             CreateMap<RoditeljResource, Roditelj>()
-               .ForMember(v => v.Ime, opt => opt.MapFrom(src => src.ImeOca))
-               .ForMember(v => v.Prezime, opt => opt.MapFrom(src => src.PrezimeOca));
+             .ForMember(v => v.Ime, opt => opt.MapFrom(src => src.ImeOca))
+             .ForMember(v => v.Prezime, opt => opt.MapFrom(src => src.PrezimeOca));
+
 
             CreateMap<Roditelj, RoditeljResource>()
               .ForMember(v => v.ImeOca, opt => opt.MapFrom(src => src.Ime))
               .ForMember(v => v.PrezimeOca, opt => opt.MapFrom(src => src.Prezime))
               .ForMember(v => v.ImeMajke, opt => opt.MapFrom(src => src.Ime))
-              .ForMember(v => v.PrezimeMajke, opt => opt.MapFrom(src => src.Prezime));
+              .ForMember(v => v.PrezimeMajke, opt => opt.MapFrom(src => src.Prezime))
+              .ForMember(v => v.UcenikId, opt => opt.MapFrom(src => src.UcenikId));
 
             CreateMap<List<Roditelj>, RoditeljResource>()
                 .ForMember(v => v.ImeOca, opt => opt.MapFrom(src => src[1].Ime))
              .ForMember(v => v.PrezimeOca, opt => opt.MapFrom(src => src[1].Prezime))
               .ForMember(v => v.ImeMajke, opt => opt.MapFrom(src => src[0].Ime))
+               .ForMember(v => v.UcenikId, opt => opt.MapFrom(src => src[0].UcenikId))
              .ForMember(v => v.PrezimeMajke, opt => opt.MapFrom(src => src[0].Prezime))
             .ForMember(v => v.Id, opt => opt.MapFrom(src => src[1].Id))
-            .ForMember(v => v.IdMajke, opt => opt.MapFrom(src => src[0].Id));
+            .ForMember(v => v.IdMajke, opt => opt.MapFrom(src => src[0].Id))
+             .ForMember(v => v.UcenikId, opt => opt.MapFrom(src => src[1].UcenikId));
+
 
 
             CreateMap<List<Roditelj>, List<RoditeljResource>>()
@@ -74,9 +78,10 @@ namespace DomUcenikaSvilajnac.Mapping
                             ImeMajke = roditelj[i].Ime,
                             PrezimeMajke = roditelj[i].Prezime,
 
-                            Id = roditelj[j+1].Id,
-                            ImeOca = roditelj[j+1].Ime,
-                            PrezimeOca = roditelj[j+1].Prezime
+                            Id = roditelj[j + 1].Id,
+                            ImeOca = roditelj[j + 1].Ime,
+                            PrezimeOca = roditelj[j + 1].Prezime,
+                            UcenikId = roditelj[i].UcenikId
                         };
                         resurs.Add(nesto);
                     }
