@@ -14,7 +14,7 @@ namespace DomUcenikaSvilajnac.Common.Models.ModelResources
         public int Id { get; set; }
         public string Broj { get; set; }
 
-
+        
         public int OpstinaId { get; set; }
 
     }

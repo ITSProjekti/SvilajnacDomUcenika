@@ -16,7 +16,6 @@ namespace DomUcenikaSvilajnac.Common.Models
         public string Broj { get; set; }
         public int OpstinaId { get; set; }
 
-
         ICollection<Ucenik> Ucenici { get; set; }
 
         public PostanskiBroj()

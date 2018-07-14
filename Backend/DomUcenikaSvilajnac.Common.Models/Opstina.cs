@@ -27,8 +27,8 @@ namespace DomUcenikaSvilajnac.Common.Models
 
         public ICollection<PostanskiBroj> PostanskiBrojevi { get; set; }
 
-         ICollection<UpisanaSkola> UpisaneSkole { get; set; }
-        ICollection<PrethodnaSkola> OsnovneSkole { get; set; }
+         public ICollection<UpisanaSkola> UpisaneSkole { get; set; }
+        public ICollection<PrethodnaSkola> OsnovneSkole { get; set; }
 
         public Opstina()
         {
