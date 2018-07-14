@@ -124,6 +124,7 @@ namespace DomUcenikaSvilajnac.DAL.RepoPattern
                 .Include(mr => mr.MestoPrebivalista)
                 .Include(mzs => mzs.MestoZavrseneSkole)
                 .Include(s => s.Smer)
+                .Include(r=>r.Razred)
                 .ToListAsync();
             //var neki = await _context.Uceniks
             //    .FromSql(
@@ -149,6 +150,7 @@ namespace DomUcenikaSvilajnac.DAL.RepoPattern
                 .Include(mr => mr.MestoPrebivalista)
                 .Include(mzs => mzs.MestoZavrseneSkole)
                 .Include(s => s.Smer)
+                .Include(r=>r.Razred)
                 .SingleOrDefaultAsync(x => x.Id == id);
             return Mapper.Map<Ucenik, UcenikResource>(neki);
         }
@@ -168,6 +170,7 @@ namespace DomUcenikaSvilajnac.DAL.RepoPattern
                 .Include(mr => mr.MestoPrebivalista)
                 .Include(mzs => mzs.MestoZavrseneSkole)
                 .Include(s => s.Smer)
+                .Include(r=> r.Razred)
                 .SingleOrDefaultAsync(x => x.Id == ucenik.Id);
 
             return Mapper.Map<Ucenik, UcenikResource>(neki);

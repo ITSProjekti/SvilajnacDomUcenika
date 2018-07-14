@@ -44,6 +44,7 @@ namespace DomUcenikaSvilajnac.ModelResources
 
         public Smer Smer { get; set; }
 
+        public Razred Razred { get; set; }
 
     }
 }
