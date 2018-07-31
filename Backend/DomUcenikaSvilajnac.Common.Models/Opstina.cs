@@ -27,15 +27,15 @@ namespace DomUcenikaSvilajnac.Common.Models
 
         public ICollection<PostanskiBroj> PostanskiBrojevi { get; set; }
 
-         ICollection<UpisanaSkola> UpisaneSkole { get; set; }
-        ICollection<PrethodnaSkola> OsnovneSkole { get; set; }
+        public ICollection<UpisanaSkola> SrednjeSkole { get; set; }
+        public ICollection<PrethodnaSkola> OsnovneSkole { get; set; }
 
         public Opstina()
         {
             Ucenici = new Collection<Ucenik>();
             UceniciOpstine = new Collection<Ucenik>();
             PostanskiBrojevi = new Collection<PostanskiBroj>();
-            UpisaneSkole = new Collection<UpisanaSkola>();
+            SrednjeSkole = new Collection<UpisanaSkola>();
             OsnovneSkole = new Collection<PrethodnaSkola>();
 
 

@@ -44,6 +44,8 @@ namespace DomUcenikaSvilajnac.Common.Interfaces
         void deleteTelefon(Telefon telefon);
 
         Task<IEnumerable<OpstinaResource>> brojeviOpstine();
+        Task<IEnumerable<RoditeljResource>> roditeljiUcenika(int UcenikId);
+        Task<IEnumerable<RoditeljResource>> brisanjeRoditelja(int UcenikId);
 
     }
 }

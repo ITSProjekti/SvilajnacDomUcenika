@@ -42,37 +42,10 @@ namespace DomUcenikaSvilajnac.Controllers
         /// Vraca dva reda iz tabele, tj. roditelje na osnovu prosledjenog Id-a.
         /// </summary>
         [HttpGet("{id}")]
-        public async Task<IActionResult> GetRoditeljById([FromRoute] int id)
+        public async Task<IEnumerable<RoditeljResource>> GetRoditeljById([FromRoute] int id)
         {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
-            List<Roditelj> roditelji = new List<Roditelj>();
-            if (id % 2 != 0)
-            {
-                var majka = await UnitOfWork.Roditelji.GetAsync(id-1);
-                var otac = await UnitOfWork.Roditelji.GetAsync(id);
-                roditelji.Add(majka);
-                roditelji.Add(otac);
-            }
-            else
-            {
-                var majka = await UnitOfWork.Roditelji.GetAsync(id);
-                var otac = await UnitOfWork.Roditelji.GetAsync(id + 1);
-                roditelji.Add(majka);
-                roditelji.Add(otac);
-            }
 
-            var roditelj = Mapper.Map<List<Roditelj>, RoditeljResource>(roditelji);
-
-            //var roditeljNovi = Mapper.Map<Roditelj, RoditeljResource>(roditelj);
-            if (roditelji == null)
-            {
-                return NotFound();
-            }
-
-            return Ok(roditelj);
+            return  await UnitOfWork.roditeljiUcenika(id);
         }
         /// <summary>
         /// Metoda za update, menja podatke u nekom redu u tabeli, tj. o nekom roditlju na osnovu prosledjenog Id-a 
@@ -114,7 +87,7 @@ namespace DomUcenikaSvilajnac.Controllers
                 return BadRequest(ModelState);
             }
 
-            var majka = new Roditelj() { Ime = roditelj.ImeMajke, Prezime = roditelj.PrezimeMajke };
+            var majka = new Roditelj() { Ime = roditelj.ImeMajke, Prezime = roditelj.PrezimeMajke, UcenikId = roditelj.UcenikId};
             var otac = Mapper.Map<RoditeljResource, Roditelj>(roditelj);
             List<Roditelj> roditelji = new List<Roditelj>();
             roditelji.Add(majka);
@@ -130,25 +103,17 @@ namespace DomUcenikaSvilajnac.Controllers
         /// <summary>
         /// Brisanje jednog reda iz tabele na osnvou prosledjenog Id-a, tj. brisanje odredjenog roditelja iz tabele.
         /// </summary>
-        [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteRoditelj([FromRoute] int id)
+        [HttpDelete("{UcenikId}")]
+        public async Task<IActionResult> DeleteRoditelj([FromRoute] int UcenikId)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
-            }
+            } 
+           var noviRoditelj= await UnitOfWork.brisanjeRoditelja(UcenikId);
 
-            var roditelj = await UnitOfWork.Roditelji.GetAsync(id);
-            if (roditelj == null)
-            {
-                return NotFound();
-            }
 
-            var noviRoditelj = Mapper.Map<Roditelj, RoditeljResource>(roditelj);
-            UnitOfWork.Roditelji.Remove(roditelj);
-            await UnitOfWork.SaveChangesAsync();
-
-            return Ok(noviRoditelj);
+           return Ok(noviRoditelj);
         }
     }
 }

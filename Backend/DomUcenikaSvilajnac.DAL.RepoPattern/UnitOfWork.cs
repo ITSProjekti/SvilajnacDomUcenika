@@ -99,6 +99,8 @@ namespace DomUcenikaSvilajnac.DAL.RepoPattern
 
             var nesto = await _context.Opstine
                 .Include(k => k.PostanskiBrojevi)
+                .Include(ss => ss.SrednjeSkole)
+                .Include(os=> os.OsnovneSkole)
                 .ToListAsync();
 
 
@@ -112,19 +114,27 @@ namespace DomUcenikaSvilajnac.DAL.RepoPattern
 
 
             var neki = await _context.Uceniks
-                .Include(o=> o.Opstina)
-                .Include(d=> d.DrzavaRodjenja)
-                .Include(op=> op.OpstinaPrebivalista)
-                .Include(p=> p.Pol)
-                .Include(t=> t.Telefon)
-                .Include(pb=> pb.PostanskiBroj)
-                .Include(os=> os.PrethodnaSkola)
-                .Include(ss=> ss.UpisanaSkola)
-                .Include(mr=> mr.MestoRodjenja)
-                .Include(mr=> mr.MestoPrebivalista)
-                .Include(mzs=> mzs.MestoZavrseneSkole)
-                .Include(s=> s.Smer)
+                .Include(o => o.Opstina)
+                .Include(d => d.DrzavaRodjenja)
+                .Include(op => op.OpstinaPrebivalista)
+                .Include(p => p.Pol)
+                .Include(t => t.Telefon)
+                .Include(pb => pb.PostanskiBroj)
+                .Include(os => os.PrethodnaSkola)
+                .Include(ss => ss.UpisanaSkola.Opstina)
+                .Include(mr => mr.MestoRodjenja)
+                .Include(mr => mr.MestoPrebivalista)
+                .Include(mzs => mzs.MestoZavrseneSkole)
+                .Include(s => s.Smer)
+                .Include(r=>r.Razred)
                 .ToListAsync();
+            //var neki = await _context.Uceniks
+            //    .FromSql(
+            //    "select * from ucenici u  join opstine o  on o.id = u.opstinaId"
+
+            //    )
+                
+                //.ToListAsync();
             return Mapper.Map<List<Ucenik>, List<UcenikResource>>(neki);
         }
         public async Task<UcenikResource> mestaUcenikaById(int id)
@@ -142,6 +152,7 @@ namespace DomUcenikaSvilajnac.DAL.RepoPattern
                 .Include(mr => mr.MestoPrebivalista)
                 .Include(mzs => mzs.MestoZavrseneSkole)
                 .Include(s => s.Smer)
+                .Include(r=>r.Razred)
                 .SingleOrDefaultAsync(x => x.Id == id);
             return Mapper.Map<Ucenik, UcenikResource>(neki);
         }
@@ -161,6 +172,7 @@ namespace DomUcenikaSvilajnac.DAL.RepoPattern
                 .Include(mr => mr.MestoPrebivalista)
                 .Include(mzs => mzs.MestoZavrseneSkole)
                 .Include(s => s.Smer)
+                .Include(r=> r.Razred)
                 .SingleOrDefaultAsync(x => x.Id == ucenik.Id);
 
             return Mapper.Map<Ucenik, UcenikResource>(neki);
@@ -171,5 +183,31 @@ namespace DomUcenikaSvilajnac.DAL.RepoPattern
         {
             _context.Telefoni.Remove(telefon);
         }
+
+        public async Task<IEnumerable<RoditeljResource>> roditeljiUcenika(int UcenikId)
+        {
+            var nesto = await _context.Roditelji.
+                FromSql(
+                $"select *  from dbo.Roditelji  where UcenikId = {UcenikId}"
+                )
+                .ToListAsync();
+
+            return  Mapper.Map<List<Roditelj>, List<RoditeljResource>>(nesto);
+        }
+
+        public async Task<IEnumerable<RoditeljResource>> brisanjeRoditelja(int UcenikId)
+        {
+            var nesto = await _context.Roditelji.
+                FromSql(
+                $"select *  from dbo.Roditelji  where UcenikId = {UcenikId}"
+                )
+                .ToListAsync();
+
+            _context.RemoveRange(nesto);
+            await SaveChangesAsync();
+
+            return Mapper.Map<List<Roditelj>, List<RoditeljResource>>(nesto);
+        }
     }
 }
+

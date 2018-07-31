@@ -95,7 +95,7 @@ namespace DomUcenikaSvilajnac.DAL.RepoPattern
         /// <summary>
         /// Uklanjanje vise odredjenih entiteta, univerzalno(za sve entitete).
         /// </summary>
-        public void RemoveRange(T entities)
+        public void RemoveRange(IEnumerable<T> entities)
         {
             _dbContext.Set<T>().RemoveRange(entities);
         }
