@@ -596,75 +596,8 @@ import moment from 'moment'
           upisanaSkola: {
             id: '',
             nazivSrednjeSkole: '',
-            opstinaId: '',
-            opstina: ''
-        },
-        postanskiBroj: {
-          id: '',
-          broj: '',
-          opstinaId: ''
-          },
-        opstina: {
-          id: '',
-          nazivOpstine: ''         
-          },
-        opstinaPrebivalista: {
-          id: '',
-          nazivOpstine: ''         
-          },
-        drzavaRodjenja: {
-          id: '',
-          nazivDrzave: ''
-          },
-        telefon: {
-          id: '',
-          mobilni: '',
-          kucni: ''
-          },
-          smer: {
-            id:'',
-            nazivSmera: ''
-          },
-          razred:{
-            id: '',
-            brojRazreda: ''
-               }
-      },
-
-       previousItem: {
-        ime: '',
-        prezime: '',
-        jmbg: '',
-        adresa: '',
-       pol: {
-          id: '',
-          nazivPola: ''
-       },
-        dan: '',
-        mesec: '',
-        godina: '',
-        mestoZavrseneSkole: {
-          id: '',
-          nazivMesta: ''
-        },
-        mestoRodjenja: {
-          id: '',
-          nazivMesta: ''
-        },
-        mestoPrebivalista: {
-          id: '',
-          nazivMesta: ''
-        },
-        prethodnaSkola: {
-          id: '',
-          nazivPrethodneSkole: '',
-          opstinaId: '',
-        },
-          upisanaSkola: {
-            id: '',
-            nazivSrednjeSkole: '',
-            opstinaId: '',
-            opstina: ''
+            opstinaId: ''
+           
         },
         postanskiBroj: {
           id: '',
@@ -730,8 +663,8 @@ import moment from 'moment'
           upisanaSkola: {
             id: '',
             nazivSrednjeSkole: '',
-            opstinaId: '',
-            opstina: ''
+            opstinaId: ''
+          
         },
         postanskiBroj: {
           id: '',

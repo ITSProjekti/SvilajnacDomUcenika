@@ -129,15 +129,15 @@ export const store = new Vuex.Store({
               ucenikEdit.prethodnaSkola={
                   id: payload.prethodnaSkola.id,
                   nazivPrethodneSkole: payload.prethodnaSkola.nazivPrethodneSkole,
-                  opstinaId: payload.prethodnaSkola.opstinaId,
-                  opstina: payload.prethodnaSkola.opstina
+                  opstinaId: payload.prethodnaSkola.opstinaId
+
               },
             
               ucenikEdit.upisanaSkola={
                 id: payload.upisanaSkola.id,
                 nazivSrednjeSkole: payload.upisanaSkola.nazivPrethodneSkole,
-                opstinaId: payload.upisanaSkola.opstinaId,
-                opstina: payload.upisanaSkola.opstina
+                opstinaId: payload.upisanaSkola.opstinaId
+
               },
               ucenikEdit.mestoZavrseneSkole={
                     id: payload.mestoZavrseneSkole.id,
