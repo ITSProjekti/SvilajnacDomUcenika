@@ -29,8 +29,8 @@ namespace DomUcenikaSvilajnac.ModelResources
 
         public int Godina { get; set; }
 
-        public OpstinaResource Opstina { get; set; }
-        public OpstinaResource OpstinaPrebivalista { get; set; }
+        public OpstinaUcenikaResource Opstina { get; set; }
+        public OpstinaUcenikaResource OpstinaPrebivalista { get; set; }
 
         public MestoResource MestoRodjenja { get; set; }
         public MestoResource MestoPrebivalista { get; set; }
