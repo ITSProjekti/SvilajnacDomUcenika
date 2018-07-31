@@ -41,21 +41,16 @@ namespace DomUcenikaSvilajnac.Mapping
                 .ForMember(v => v.Godina, opt => opt.MapFrom(src => src.DatumRodjenja.Year))
                 .ForMember(v => v.Dan, opt => opt.MapFrom(src => src.DatumRodjenja.Day))
                 .ForMember(v => v.Mesec, opt => opt.MapFrom(src => src.DatumRodjenja.Month));
+         
+                                                                              
 
-
-            CreateMap<Opstina, OpstinaResource>()
-                .ForMember(v => v.PostanskiBrojevi, opt => opt.MapFrom(src => src.PostanskiBrojevi.Select(o => o.Id)))      
-                .ForMember(v => v.OsnovneSkole, opt => opt.MapFrom(src=> src.OsnovneSkole.Select(os=> os.Id)))
-                .ForMember(v => v.SrednjeSkole, opt => opt.MapFrom(sr=> sr.UpisaneSkole.Select(s=> s.Id)));
+         
                 
 
             // CreateMap<OpstinaResource, Opstina>();
-            CreateMap<PostanskiBroj, PostanskiBrojResource>();
 
 
             CreateMap<PostanskiBrojResource, PostanskiBroj>();
-
-
             CreateMap<Razred, RazredResource>();
 
 

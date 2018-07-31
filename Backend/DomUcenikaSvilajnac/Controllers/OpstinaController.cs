@@ -33,10 +33,10 @@ namespace DomUcenikaSvilajnac.Controllers
         public async Task<IEnumerable<OpstinaResource>> GetOpstine()
         {
 
-           return await UnitOfWork.brojeviOpstine();
+            var listaOpstina = await UnitOfWork.brojeviOpstine();
            
-            //var mapiranjeUcenikaMesta = Mapper.Map<List<OpstinaResource>, List<Opstina>>(listaOpstina.ToList());
-            //return Mapper.Map<List<Opstina>, List<OpstinaResource>>(mapiranjeUcenikaMesta.ToList());
+            var mapiranjeUcenikaMesta = Mapper.Map<List<OpstinaResource>, List<Opstina>>(listaOpstina.ToList());
+            return Mapper.Map<List<Opstina>, List<OpstinaResource>>(mapiranjeUcenikaMesta.ToList());
         }
 
         /// <summary>

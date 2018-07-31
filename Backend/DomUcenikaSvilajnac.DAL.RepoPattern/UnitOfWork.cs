@@ -99,8 +99,8 @@ namespace DomUcenikaSvilajnac.DAL.RepoPattern
 
             var nesto = await _context.Opstine
                 .Include(k => k.PostanskiBrojevi)
-                .Include(k=> k.OsnovneSkole)
-                .Include(k=> k.UpisaneSkole)
+                .Include(ss => ss.SrednjeSkole)
+                .Include(os=> os.OsnovneSkole)
                 .ToListAsync();
 
 

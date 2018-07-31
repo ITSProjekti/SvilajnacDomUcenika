@@ -15,9 +15,9 @@ namespace DomUcenikaSvilajnac.Common.Models.ModelResources
 
         public string NazivOpstine { get; set; }
 
-       public  ICollection<int> PostanskiBrojevi { get; set; }
-       public ICollection<int> SrednjeSkole { get; set; }
-      public  ICollection<int> OsnovneSkole { get; set; }
+        public ICollection<PostanskiBrojResource> PostanskiBrojevi { get; set; }
+        public ICollection<UpisanaSkolaResource> SrednjeSkole { get; set; }
+        public ICollection<PrethodnaSkolaResource> OsnovneSkole { get; set; }
 
     }
 }
