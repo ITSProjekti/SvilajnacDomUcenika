@@ -280,6 +280,28 @@
                               ></v-select>
                             </v-flex>
                           </v-layout>
+                          <template>
+                 <v-container fluid>
+                    <v-layout row wrap>
+                    <v-flex xs12 sm6 class="mt-4">
+                     <p>Razred koji upisuje</p>
+                    </v-flex>
+                           <v-flex xs12 sm6>
+                               <v-select
+                                :loading="loading"
+                                :items="razredi"
+                                v-model="editedItem.razred.id"
+                                 item-text="brojRazreda"
+                                 item-value="id"
+                                label="Razred"
+                                autocomplete
+                                required
+                                 :rules="[rules.required]"
+                              ></v-select>
+                            </v-flex>
+                          </v-layout>
+                        </v-container>
+                      </template>
                         </v-container>
                <v-flex xs6 class="ml-3">
                 <v-text-field
@@ -481,6 +503,15 @@
                                 {{ props.item.telefon.mobilni }}
                               </v-card-text>
                        </v-flex>
+
+                           <v-flex xs2>
+                       <v-subheader class="text-lg-right" v-text="'Razred: '"></v-subheader>
+                       </v-flex>
+                        <v-flex xs2>
+                        <v-card-text class="text-lg-left">
+                                {{ props.item.razred.brojRazreda }}
+                              </v-card-text>
+                       </v-flex>
                        
                     </v-layout>                  
                 </v-card>
@@ -593,7 +624,78 @@ import moment from 'moment'
           smer: {
             id:'',
             nazivSmera: ''
-          }
+          },
+          razred:{
+            id: '',
+            brojRazreda: ''
+               }
+      },
+
+       previousItem: {
+        ime: '',
+        prezime: '',
+        jmbg: '',
+        adresa: '',
+       pol: {
+          id: '',
+          nazivPola: ''
+       },
+        dan: '',
+        mesec: '',
+        godina: '',
+        mestoZavrseneSkole: {
+          id: '',
+          nazivMesta: ''
+        },
+        mestoRodjenja: {
+          id: '',
+          nazivMesta: ''
+        },
+        mestoPrebivalista: {
+          id: '',
+          nazivMesta: ''
+        },
+        prethodnaSkola: {
+          id: '',
+          nazivPrethodneSkole: '',
+          opstinaId: '',
+        },
+          upisanaSkola: {
+            id: '',
+            nazivSrednjeSkole: '',
+            opstinaId: '',
+            opstina: ''
+        },
+        postanskiBroj: {
+          id: '',
+          broj: '',
+          opstinaId: ''
+          },
+        opstina: {
+          id: '',
+          nazivOpstine: ''         
+          },
+        opstinaPrebivalista: {
+          id: '',
+          nazivOpstine: ''         
+          },
+        drzavaRodjenja: {
+          id: '',
+          nazivDrzave: ''
+          },
+        telefon: {
+          id: '',
+          mobilni: '',
+          kucni: ''
+          },
+          smer: {
+            id:'',
+            nazivSmera: ''
+          },
+          razred:{
+            id: '',
+            brojRazreda: ''
+               }
       },
 
       defaultItem: {
@@ -656,7 +758,11 @@ import moment from 'moment'
           smer: {
             id:'',
             nazivSmera: ''
-          }
+          },
+          razred:{
+            id: '',
+            brojRazreda: ''
+               }
       }
     }),
     computed: { formIsValid () {
@@ -686,6 +792,9 @@ import moment from 'moment'
             return false
           }
          
+      },
+      razredi () {
+        return this.$store.getters.loadedRazredi
       },
       srednjeSkole () {
        return this.$store.getters.loadedSrednjeSkole       
@@ -785,6 +894,7 @@ import moment from 'moment'
       editItem (item) {
         this.editedIndex = this.ucenici.indexOf(item)
         this.editedItem = Object.assign({}, item)
+        this.previousItem = Object.assign({}, item)
         this.dialog = true
       },
       deleteItem (item) {
@@ -793,9 +903,10 @@ import moment from 'moment'
         confirm('Da li ste sigurni da zelite da izbrisete ovog ucenika?') && this.$store.dispatch('deleteUcenik',item.id) && this.ucenici.splice(index,1)
       },
       close () {
+        
         this.dialog = false
         setTimeout(() => {
-          this.editedItem = Object.assign({}, this.defaultItem)
+           this.editedItem = Object.assign({}, this.defaultItem)
           this.editedIndex = -1
         }, 300)
       },

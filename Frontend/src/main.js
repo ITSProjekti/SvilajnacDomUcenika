@@ -30,6 +30,7 @@ new Vue({
     this.$store.dispatch('loadedSS')
     this.$store.dispatch('loadedOS')
     this.$store.dispatch('loadedMesta')
+    this.$store.dispatch('loadedRazred')
     return this.$store.dispatch('loadedOpstine')
   }
 })
