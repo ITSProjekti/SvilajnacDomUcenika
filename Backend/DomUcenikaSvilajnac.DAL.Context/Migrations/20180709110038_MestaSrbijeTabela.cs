@@ -5180,10 +5180,6 @@ namespace DomUcenikaSvilajnac.DAL.Context.Migrations
             "(N'Šušeoka')," +
             "(N'Šušnjar')," +
             "(N'Šušure')");
-
-
-
-
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
