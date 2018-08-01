@@ -28,6 +28,7 @@ namespace DomUcenikaSvilajnac
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            //Linija za zaobilazenje Cross origin http request zastite koju imaju browseri
             services.AddCors();
 
             //liniju koju smo dodali kako bismo ispisali listu postanskih brojeva u opstini kontroleru
@@ -46,7 +47,12 @@ namespace DomUcenikaSvilajnac
             {
                 app.UseDeveloperExceptionPage();
             }
-            app.UseCors(builder => builder.WithOrigins("http://localhost"));
+            //Ovde se postavljaju kofiguracije za dozvole u proboju zastite CORS, dozvoljeno svima da pristupe web api
+            app.UseCors(builder => builder
+                 .AllowAnyOrigin()
+                 .AllowAnyMethod()
+                 .AllowAnyHeader()
+                 .AllowCredentials());
             app.UseMvc();
         }
     }
