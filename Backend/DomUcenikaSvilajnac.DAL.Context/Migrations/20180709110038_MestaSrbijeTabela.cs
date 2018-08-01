@@ -2704,7 +2704,7 @@ namespace DomUcenikaSvilajnac.DAL.Context.Migrations
                 "(N'Lazac')," +
                 "(N'Lazine')," +
                 "(N'Laznica')," +
-                "(N'Lajkovac)," +
+                "(N'Lajkovac')," +
                 "(N'Laletić')," +
                 "(N'Lalinac')," +
                 "(N'Lalinovac')," +
@@ -2823,40 +2823,30 @@ namespace DomUcenikaSvilajnac.DAL.Context.Migrations
                 "(N'Lozna')," +
                 "(N'Loznac')," +
                 "(N'Loznica')," +
-                "(N'Loznica')," +
-                "(N'Loznica')," +
                 "(N'Lozničko Polje')," +
                 "(N'Lozno')," +
-                "(N'Lozno')," +
-                "(N'Lozovik')," +
                 "(N'Lozovik')," +
                 "(N'Lojanice')," +
-                "(N'Lok Titel')," +
+                "(N'Lok')," +
                 "(N'Lokva')," +
-                "(N'Lokva')," +
-                "(N'Lokve')," +
                 "(N'Lokvica')," +
-                "(N'Lomnica')," +
                 "(N'Lomnica')," +
                 "(N'Lončanik')," +
                 "(N'Lonjin')," +
                 "(N'Lopardince')," +
-                "(N'Lopatanjsečina')," +
+                "(N'Lopatanj')," +
                 "(N'Lopatnica')," +
-                "(N'Lopaš')," +
                 "(N'Lopaš')," +
                 "(N'Lopužnje')," +
                 "(N'Lopušnik')," +
                 "(N'Loret')," +
                 "(N'Loćane')," +
                 "(N'Loćika')," +
-                "(N'Loćika')," +
                 "(N'Ločevci')," +
                 "(N'Lubnica')," +
                 "(N'Lug')," +
-                "(N'Lug')," +
+                "(N'Lug Dubnica')," +
                 "(N'Lugavčina')," +
-                "(N'Lugađija')," +
                 "(N'Lugađija')," +
                 "(N'Lugare')," +
                 "(N'Lugadžija')," +
@@ -2867,35 +2857,25 @@ namespace DomUcenikaSvilajnac.DAL.Context.Migrations
                 "(N'Lužnice')," +
                 "(N'Luka')," +
                 "(N'Lukavac')," +
-                "(N'Lukavac')," +
-                "(N'Lukavica')," +
-                "(N'Lukavica')," +
                 "(N'Lukavica')," +
                 "(N'Lukar')," +
                 "(N'Lukare')," +
-                "(N'Lukare')," +
-                "(N'Lukarskooševo')," +
                 "(N'Lukarce')," +
                 "(N'Luke')," +
                 "(N'Lukino Selo')," +
                 "(N'Lukićevo')," +
                 "(N'Lukovica')," +
                 "(N'Lukovo')," +
-                "(N'Lukovo')," +
-                "(N'Lukovo')," +
-                "(N'Lukovo')," +
-                "(N'Lukovo')," +
                 "(N'Lukomir')," +
                 "(N'Lukocrevo')," +
                 "(N'Lunjevac')," +
                 "(N'Lunjevica')," +
                 "(N'Lučane')," +
-                "(N'Lučani (varošica)')," +
-                "(N'Lučani (selo)')," +
+                "(N'Lučani')," +
                 "(N'Lučina')," +
                 "(N'Lučica')," +
                 "(N'Lučice')," +
-                "(N'Lučka')," +
+                "(N'Lučka Reka')," +
                 "(N'Ljajčić')," +
                 "(N'Ljanik')," +
                 "(N'Ljevaja')," +
@@ -2914,21 +2894,16 @@ namespace DomUcenikaSvilajnac.DAL.Context.Migrations
                 "(N'Ljubenić')," +
                 "(N'Ljuberađa')," +
                 "(N'Ljubižda')," +
-                "(N'Ljubižda')," +
-                "(N'Ljubižda Has')," +
                 "(N'Ljubinić')," +
                 "(N'Ljubinci')," +
                 "(N'Ljubinje')," +
                 "(N'Ljubić')," +
-                "(N'Ljubić')," +
-                "(N'Ljubičevac')," +
                 "(N'Ljubičevac')," +
                 "(N'Ljubičevo')," +
                 "(N'Ljubiš')," +
                 "(N'Ljubište')," +
                 "(N'Ljubovac')," +
                 "(N'Ljubovija')," +
-                "(N'Ljubovišteora')," +
                 "(N'Ljubovo')," +
                 "(N'Ljubožda')," +
                 "(N'Ljubuša')," +
@@ -2940,7 +2915,6 @@ namespace DomUcenikaSvilajnac.DAL.Context.Migrations
                 "(N'Ljupten')," +
                 "(N'Ljutaje')," +
                 "(N'Ljutež')," +
-                "(N'Ljutice Koceljeva')," +
                 "(N'Ljutice')," +
                 "(N'Ljutova')," +
                 "(N'Ljutovnica')," +
@@ -2948,7 +2922,7 @@ namespace DomUcenikaSvilajnac.DAL.Context.Migrations
                 "(N'Ljutoglav')," +
                 "(N'Ljutoglava')," +
                 "(N'Ljuša')," +
-                "(N'Ljušta')," +
+                "(N'Ljušta ')," +
                 "(N'Mavrić')," +
                 "(N'Magaš')," +
                 "(N'Maglić')," +
@@ -2956,29 +2930,23 @@ namespace DomUcenikaSvilajnac.DAL.Context.Migrations
                 "(N'Magovo')," +
                 "(N'Magura')," +
                 "(N'Mađare')," +
-                "(N'Mađare')," +
-                "(N'Mađare')," +
                 "(N'Mađer')," +
                 "(N'Mađere')," +
-                "(N'Mađere')," +
-                "(N'Mažić')," +
+                "(N'Mažić ')," +
                 "(N'Mažići')," +
                 "(N'Mazap')," +
                 "(N'Mazarać')," +
-                "(N'Mazgitbilić')," +
+                "(N'Mazgit')," +
                 "(N'Mazgoš')," +
                 "(N'Maznik')," +
                 "(N'Mazrek')," +
                 "(N'Majance')," +
                 "(N'Majdan')," +
-                "(N'Majdan')," +
                 "(N'Majdanpek')," +
-                "(N'Majdevo')," +
                 "(N'Majdevo')," +
                 "(N'Majilovac')," +
                 "(N'Majinović')," +
                 "(N'Majkovac')," +
-                "(N'Majur')," +
                 "(N'Majur')," +
                 "(N'Makvište')," +
                 "(N'Makovac')," +
@@ -2990,14 +2958,10 @@ namespace DomUcenikaSvilajnac.DAL.Context.Migrations
                 "(N'Mala Bosna')," +
                 "(N'Mala Braina')," +
                 "(N'Mala Bresnica')," +
-                "(N'Mala Vranjska')," +
-                "(N'Mala Vrbica')," +
-                "(N'Mala Vrbica')," +
+                "(N'Mala Vranjska ')," +
                 "(N'Mala Vrbica')," +
                 "(N'Mala Vrbnica')," +
-                "(N'Mala Vrbnica')," +
-                "(N'Malarabovnica')," +
-                "(N'Malarabovnica')," +
+                "(N'Mala Grabovnica')," +
                 "(N'Mala Dobranja')," +
                 "(N'Mala Draguša')," +
                 "(N'Mala Drenova')," +
@@ -3014,10 +2978,7 @@ namespace DomUcenikaSvilajnac.DAL.Context.Migrations
                 "(N'Mala Kruševica')," +
                 "(N'Mala Moštanica')," +
                 "(N'Mala Plana')," +
-                "(N'Mala Plana')," +
-                "(N'Mala')," +
-                "(N'Mala')," +
-                "(N'Mala')," +
+                "(N'Mala Reka')," +
                 "(N'Mala Remeta')," +
                 "(N'Mala Slatina')," +
                 "(N'Mala Sugubina')," +
@@ -3031,17 +2992,14 @@ namespace DomUcenikaSvilajnac.DAL.Context.Migrations
                 "(N'Mali Belaćevac')," +
                 "(N'Mali Beograd')," +
                 "(N'Maliak')," +
-                "(N'Mali Bošnjak Koceljeva')," +
+                "(N'Mali Bošnjak')," +
                 "(N'Mali Vranovac')," +
                 "(N'Mali Vrtop')," +
-                "(N'Malioden')," +
                 "(N'Mali Drenovac')," +
                 "(N'Mali Đurđevik')," +
                 "(N'Mali Žam')," +
-                "(N'Mali')," +
                 "(N'Mali Zvornik')," +
-                "(N'Mali Iđoš Mali Iđoš')," +
-                "(N'Mali Izvor')," +
+                "(N'Mali Iđoš')," +
                 "(N'Mali Izvor')," +
                 "(N'Mali Jasenovac')," +
                 "(N'Mali Jovanovac')," +
@@ -3059,27 +3017,26 @@ namespace DomUcenikaSvilajnac.DAL.Context.Migrations
                 "(N'Mali Šiljegovac')," +
                 "(N'Mali Štupelj')," +
                 "(N'Mališevo')," +
-                "(N'Mališevo')," +
-                "(N'Malo Bavanište Kovin')," +
+                "(N'Malo Bavanište')," +
                 "(N'Malo Bonjince')," +
                 "(N'Malo Vojlovce')," +
-                "(N'Maloolovode')," +
+                "(N'Malo Golovode')," +
                 "(N'Maloradište')," +
                 "(N'Maloracko')," +
                 "(N'Malo Dubovo')," +
-                "(N'Malo Kičiće')," +
+                "(N'Malo Kičiće ')," +
                 "(N'Malo Kruševo')," +
                 "(N'Malo Krušince')," +
                 "(N'Malo Krčmare')," +
                 "(N'Malo Laole')," +
-                "(N'Malorašje')," +
+                "(N'Malo Orašje')," +
                 "(N'Malo Ribare')," +
                 "(N'Malo Ropotovo')," +
                 "(N'Malo Rudare')," +
                 "(N'Malo Središte')," +
                 "(N'Malo Crniće')," +
                 "(N'Malopoljce')," +
-                "(N'Malošište Doljevac')," +
+                "(N'Malošište')," +
                 "(N'Malča')," +
                 "(N'Maljević')," +
                 "(N'Maljeviće')," +
@@ -3089,12 +3046,10 @@ namespace DomUcenikaSvilajnac.DAL.Context.Migrations
                 "(N'Manajle')," +
                 "(N'Manastir')," +
                 "(N'Manastirica')," +
-                "(N'Manastirica')," +
-                "(N'Manastirica')," +
                 "(N'Manastirce')," +
                 "(N'Manđelos')," +
-                "(N'Manićjevo')," +
-                "(N'Manišince Novo Brdo')," +
+                "(N'Manić')," +
+                "(N'Manišince')," +
                 "(N'Manojlica')," +
                 "(N'Manojlovce')," +
                 "(N'Manojlovci')," +
@@ -3102,7 +3057,6 @@ namespace DomUcenikaSvilajnac.DAL.Context.Migrations
                 "(N'Manjinac')," +
                 "(N'Maovi')," +
                 "(N'Maradik')," +
-                "(N'Margance')," +
                 "(N'Margance')," +
                 "(N'Margita')," +
                 "(N'Marevce')," +
@@ -3113,8 +3067,6 @@ namespace DomUcenikaSvilajnac.DAL.Context.Migrations
                 "(N'Marinovac')," +
                 "(N'Maričiće')," +
                 "(N'Markova Crkva')," +
-                "(N'Markovac')," +
-                "(N'Markovac')," +
                 "(N'Markovac')," +
                 "(N'Markoviće')," +
                 "(N'Markovićevo')," +
@@ -3133,13 +3085,11 @@ namespace DomUcenikaSvilajnac.DAL.Context.Migrations
                 "(N'Masurica')," +
                 "(N'Matarova')," +
                 "(N'Mataruge')," +
-                "(N'Mataruge')," +
                 "(N'Mataruška Banja')," +
                 "(N'Matijevac')," +
                 "(N'Matica')," +
                 "(N'Matičane')," +
                 "(N'Maćedonce')," +
-                "(N'Maćedonce (Retkocersko)')," +
                 "(N'Maćija')," +
                 "(N'Mačvanska Mitrovica')," +
                 "(N'Mačvanski Pričinović')," +
@@ -3150,19 +3100,14 @@ namespace DomUcenikaSvilajnac.DAL.Context.Migrations
                 "(N'Mačkat')," +
                 "(N'Mačkatica')," +
                 "(N'Mačkovac')," +
-                "(N'Mačkovac')," +
                 "(N'Mašoviće')," +
                 "(N'Medare')," +
                 "(N'Medveđa')," +
-                "(N'Medveđa')," +
-                "(N'Medveđa')," +
                 "(N'Medveđica')," +
-                "(N'Medvece')," +
                 "(N'Medvece')," +
                 "(N'Medevce')," +
                 "(N'Medovine')," +
                 "(N'Medojevac')," +
-                "(N'Medoševac')," +
                 "(N'Medoševac')," +
                 "(N'Medregovac')," +
                 "(N'Međa')," +
@@ -3174,23 +3119,19 @@ namespace DomUcenikaSvilajnac.DAL.Context.Migrations
                 "(N'Međulužje')," +
                 "(N'Međureč')," +
                 "(N'Međurečje')," +
-                "(N'Međurečje')," +
                 "(N'Međuhana')," +
-                "(N'Mezgraja')," +
                 "(N'Mezgraja')," +
                 "(N'Mezdraja')," +
                 "(N'Mejarize')," +
                 "(N'Meki Do')," +
                 "(N'Mekiniće')," +
-                "(N'Mekiš Doljevac')," +
+                "(N'Mekiš')," +
                 "(N'Melaje')," +
                 "(N'Melenci')," +
                 "(N'Melnica')," +
                 "(N'Melovo')," +
-                "(N'Meljakjevo')," +
+                "(N'Meljak')," +
                 "(N'Meljanica')," +
-                "(N'Meljenica')," +
-                "(N'Merdare')," +
                 "(N'Merdare')," +
                 "(N'Merovac')," +
                 "(N'Merošina')," +
@@ -3229,19 +3170,15 @@ namespace DomUcenikaSvilajnac.DAL.Context.Migrations
                 "(N'Milakovac')," +
                 "(N'Milakovići')," +
                 "(N'Milanovac')," +
-                "(N'Milanovac')," +
                 "(N'Milanović')," +
                 "(N'Milanovo')," +
-                "(N'Milanovo')," +
                 "(N'Milatkoviće')," +
-                "(N'Milatovac')," +
                 "(N'Milatovac')," +
                 "(N'Milatovići')," +
                 "(N'Milevci')," +
                 "(N'Milentija')," +
                 "(N'Miletićevo')," +
                 "(N'Mileševo')," +
-                "(N'Mileševo Bečej')," +
                 "(N'Miliva')," +
                 "(N'Milivojce')," +
                 "(N'Miliješ')," +
@@ -3256,18 +3193,12 @@ namespace DomUcenikaSvilajnac.DAL.Context.Migrations
                 "(N'Miločaj')," +
                 "(N'Milošev Do')," +
                 "(N'Miloševac')," +
-                "(N'Miloševac')," +
-                "(N'Miloševo')," +
-                "(N'Miloševo')," +
-                "(N'Miloševobilić')," +
                 "(N'Milutinovac')," +
                 "(N'Milutovac')," +
                 "(N'Milušinac')," +
                 "(N'Miljaj')," +
                 "(N'Miljević')," +
                 "(N'Miljevići')," +
-                "(N'Miljkovac')," +
-                "(N'Miljkovac')," +
                 "(N'Miljkovac')," +
                 "(N'Miljkovica')," +
                 "(N'Minićevo')," +
@@ -3276,10 +3207,8 @@ namespace DomUcenikaSvilajnac.DAL.Context.Migrations
                 "(N'Miokus')," +
                 "(N'Mioliće')," +
                 "(N'Mionica')," +
-                "(N'Mionica (varošica)')," +
-                "(N'Mionica (selo)')," +
                 "(N'Miranovac')," +
-                "(N'Miranovačka Kula')," +
+                "(N'Miranovačka')," +
                 "(N'Miratovac')," +
                 "(N'Miraševac')," +
                 "(N'Mirena')," +
@@ -3292,7 +3221,6 @@ namespace DomUcenikaSvilajnac.DAL.Context.Migrations
                 "(N'Mironić')," +
                 "(N'Mirosavlje')," +
                 "(N'Mirosaljci')," +
-                "(N'Mirosaljci')," +
                 "(N'Miroč')," +
                 "(N'Miroče')," +
                 "(N'Miroševce')," +
@@ -3302,7 +3230,6 @@ namespace DomUcenikaSvilajnac.DAL.Context.Migrations
                 "(N'Mitrova')," +
                 "(N'Mićunovo')," +
                 "(N'Mihajlovac')," +
-                "(N'Mihajlovac')," +
                 "(N'Mihajlovo')," +
                 "(N'Mišar')," +
                 "(N'Mišević')," +
@@ -3310,8 +3237,7 @@ namespace DomUcenikaSvilajnac.DAL.Context.Migrations
                 "(N'Mišićevo')," +
                 "(N'Mišljenovac')," +
                 "(N'Miščiće')," +
-                "(N'Mla (varoš)')," +
-                "(N'Mla (selo)')," +
+                "(N'Mladenovac')," +
                 "(N'Mladenovo')," +
                 "(N'Mlanča')," +
                 "(N'Mlačište')," +
@@ -3324,15 +3250,13 @@ namespace DomUcenikaSvilajnac.DAL.Context.Migrations
                 "(N'Modra Stena')," +
                 "(N'Modrica')," +
                 "(N'Mozgovo')," +
-                "(N'Mozgovo')," +
                 "(N'Mojinci')," +
                 "(N'Mojković')," +
-                "(N'Mojsinje')," +
                 "(N'Mojsinje')," +
                 "(N'Mojstir')," +
                 "(N'Moklište')," +
                 "(N'Mokra')," +
-                "(N'Mokraora')," +
+                "(N'Mokra Gora')," +
                 "(N'Mokranje')," +
                 "(N'Mokrin')," +
                 "(N'Mol Ada')," +
@@ -3350,11 +3274,10 @@ namespace DomUcenikaSvilajnac.DAL.Context.Migrations
                 "(N'Močare')," +
                 "(N'Močioci')," +
                 "(N'Mošnica')," +
-                "(N'Mošorin Titel')," +
+                "(N'Mošorin')," +
                 "(N'Moštanica')," +
                 "(N'Mramor')," +
-                "(N'Mramor')," +
-                "(N'Mramorak Kovin')," +
+                "(N'Mramorak')," +
                 "(N'Mramorac')," +
                 "(N'Mramorski Potok')," +
                 "(N'Mramorsko Brdo')," +
@@ -3391,17 +3314,16 @@ namespace DomUcenikaSvilajnac.DAL.Context.Migrations
                 "(N'Murgaš')," +
                 "(N'Murgula')," +
                 "(N'Mure')," +
-                "(N'Musina')," +
+                "(N'Musina Reka')," +
                 "(N'Mustapić')," +
                 "(N'Musulj')," +
                 "(N'Mutanj')," +
-                "(N'Muhadžer Babuš')," +
+                "(N'Muhadžer')," +
                 "(N'Muhadžer Prelez')," +
-                "(N'Muhadžer Talinovac')," +
+                "(N'Muhadžer')," +
                 "(N'Muhovac')," +
                 "(N'Muhovo')," +
                 "(N'Muhovce')," +
-                "(N'Mučibaba')," +
                 "(N'Mučibaba')," +
                 "(N'Mučivrce')," +
                 "(N'Mušvete')," +
@@ -3410,7 +3332,6 @@ namespace DomUcenikaSvilajnac.DAL.Context.Migrations
                 "(N'Mušnikovo')," +
                 "(N'Mušutište')," +
                 "(N'Naboje')," +
-                "(N'Nabrđe')," +
                 "(N'Nabrđe')," +
                 "(N'Navalin')," +
                 "(N'Naglavci')," +
@@ -3422,7 +3343,6 @@ namespace DomUcenikaSvilajnac.DAL.Context.Migrations
                 "(N'Naklo')," +
                 "(N'Nakovo')," +
                 "(N'Nakrivanj')," +
-                "(N'Nakučani')," +
                 "(N'Nakučani')," +
                 "(N'Namga')," +
                 "(N'Nanomir')," +
@@ -3454,7 +3374,7 @@ namespace DomUcenikaSvilajnac.DAL.Context.Migrations
                 "(N'Neresnica')," +
                 "(N'Nesalce')," +
                 "(N'Nesvrta')," +
-                "(N'Nesvrta')," +
+                "(N'Nesvrtaja')," +
                 "(N'Nećavce')," +
                 "(N'Neuzina')," +
                 "(N'Nec')," +
@@ -3469,2159 +3389,1797 @@ namespace DomUcenikaSvilajnac.DAL.Context.Migrations
                 "(N'Nikolinci')," +
                 "(N'Nikoličevo')," +
                 "(N'Nikšić')," +
-                "(N'Niš (Medijana)')," +
-                "(N'Niš (Palilula)')," +
-                "(N'Niš (Pantelej)')," +
-                "(N'Niš (Crveni krst)')," +
+                "(N'Niš')," +
                 "(N'Niševac')," +
                 "(N'Niševce')," +
                 "(N'Niška Banja')");
-                  migrationBuilder.Sql(
-                "insert into Mesta(NazivMesta) values " +
-                "(N'Nišor')," +
-                "(N'Nišor')," +
-                "(N'Njegoševo')," +
-                "(N'Nova Božurna')," +
-                "(N'Nova Brezovica')," +
-                "(N'Nova Varoš')," +
-                "(N'Novaajdobra')," +
-                "(N'Nova Pazova')," +
-                "(N'Nova')," +
-                "(N'Nova Crvenka Kula')," +
-                "(N'Nova Crnja')," +
-                "(N'Nova Šumadija')," +
-                "(N'Novake')," +
-                "(N'Novaci')," +
-                "(N'Novaci')," +
-                "(N'Novi Banovci')," +
-                "(N'Novi Bečej')," +
-                "(N'Novi Bračin')," +
-                "(N'Novi Verić')," +
-                "(N'Novilog')," +
-                "(N'Novi Đurovac')," +
-                "(N'Novi Žednik')," +
-                "(N'Novi Zavoj')," +
-                "(N'Novi Itebej')," +
-                "(N'Novi Karlovci')," +
-                "(N'Novi Kneževac')," +
-                "(N'Novi Kozarci')," +
-                "(N'Novi Kozjak')," +
-                "(N'Novi Milanovac')," +
-                "(N'Novi Miraš')," +
-                "(N'Novi Pazar')," +
-                "(N'Novi Raušić')," +
-                "(N'Novi Sad')," +
-                "(N'Novi Sip')," +
-                "(N'Novi Slankamen')," +
-                "(N'Novo Brdo Novo Brdo')," +
-                "(N'Novo Korito')," +
-                "(N'Novo Lanište')," +
-                "(N'Novo Miloševo')," +
-                "(N'Novo Momčilovo')," +
-                "(N'Novorahovo')," +
-                "(N'Novo Rujce')," +
-                "(N'Novo Selo')," +
-                "(N'Novo Selo')," +
-                "(N'Novo Selo')," +
-                "(N'Novo Selo')," +
-                "(N'Novo Selo')," +
-                "(N'Novo Selo')," +
-                "(N'Novo Selo')," +
-                "(N'Novo Selo')," +
-                "(N'Novo Selo')," +
-                "(N'Novo Selo')," +
-                "(N'Novo Selo')," +
-                "(N'Novo Selo')," +
-                "(N'Novo Selo')," +
-                "(N'Novo Selo')," +
-                "(N'Novo Selo')," +
-                "(N'Novo Selo')," +
-                "(N'Novo Selo')," +
-                "(N'Novo Selo')," +
-                "(N'Novo Selo')," +
-                "(N'Novo Selo')," +
-                "(N'Novo Selo')," +
-                "(N'Novo Selo Begovo')," +
-                "(N'Novo Selo Mađunsko')," +
-                "(N'Novo Čikatovo')," +
-                "(N'Nogavac')," +
-                "(N'Nozrina')," +
-                "(N'Nomanica')," +
-                "(N'Norča')," +
-                "(N'Nosalje')," +
-                "(N'Nosoljin')," +
-                "(N'Noćaj')," +
-                "(N'Noćaje')," +
-                "(N'Obajgora')," +
-                "(N'Obilić')," +
-                "(N'Obilićbilić')," +
-                "(N'Oblačina')," +
-                "(N'Oblička Sena')," +
-                "(N'Obornjača Ada')," +
-                "(N'Obornjača')," +
-                "(N'Obradovce')," +
-                "(N'Obražda')," +
-                "(N'Obrandža')," +
-                "(N'Obrva')," +
-                "(N'Obrež')," +
-                "(N'Obrežinci')," +
-                "(N'Obrenovac')," +
-                "(N'Obrenovac')," +
-                "(N'Obrovac')," +
-                "(N'Obrtince')," +
-                "(N'Ovsinjinac')," +
-                "(N'Ovsište')," +
-                "(N'Ovčaula')," +
-                "(N'Ovčar Banja')," +
-                "(N'Ovčare')," +
-                "(N'Ovčarevo')," +
-                "(N'Ovčinja')," +
-                "(N'Ogarinci')," +
-                "(N'Oglađenovac')," +
-                "(N'Ogošte')," +
-                "(N'Odanovce')," +
-                "(N'Odevce')," +
-                "(N'Odojeviće')," +
-                "(N'Ozrem')," +
-                "(N'Ozrim')," +
-                "(N'Ojkovica')," +
-                "(N'Oklap')," +
-                "(N'Oklace')," +
-                "(N'Okletac')," +
-                "(N'Okolište')," +
-                "(N'Okose')," +
-                "(N'Okosnica')," +
-                "(N'Okraštica')," +
-                "(N'Okruglica')," +
-                "(N'Okruglica')," +
-                "(N'Omoljica Pančevo')," +
-                "(N'Opaljenik')," +
-                "(N'Oparić')," +
-                "(N'Oplanić')," +
-                "(N'Oplanići')," +
-                "(N'Opovopovo')," +
-                "(N'Opornica')," +
-                "(N'Opteruša')," +
-                "(N'Orane')," +
-                "(N'Oraovac')," +
-                "(N'Oraovica')," +
-                "(N'Oraovica')," +
-                "(N'Oraovica')," +
-                "(N'Oraovica (kodrdelice)')," +
-                "(N'Oraovica (kod Crkovnice)')," +
-                "(N'O')," +
-                "(N'Orahovo')," +
-                "(N'Orahovo')," +
-                "(N'Orašac')," +
-                "(N'Orašac')," +
-                "(N'Orašac')," +
-                "(N'Orašac')," +
-                "(N'Orašac')," +
-                "(N'Oraše')," +
-                "(N'Orašje')," +
-                "(N'Orašje')," +
-                "(N'Oreovac')," +
-                "(N'Oreovac')," +
-                "(N'Oreovica')," +
-                "(N'Oreovica')," +
-                "(N'Orešac')," +
-                "(N'Orešac')," +
-                "(N'Oreškovica')," +
-                "(N'Orid')," +
-                "(N'Orlane')," +
-                "(N'Orlate')," +
-                "(N'Orlovat')," +
-                "(N'Orlovac')," +
-                "(N'Orlović')," +
-                "(N'Orlja')," +
-                "(N'Orljalava')," +
-                "(N'Orljane Doljevac')," +
-                "(N'Orlje')," +
-                "(N'Orljevo')," +
-                "(N'Orno Brdo')," +
-                "(N'Orovička Planina')," +
-                "(N'Orom')," +
-                "(N'Oruglica')," +
-                "(N'Orčušaora')," +
-                "(N'Osanica')," +
-                "(N'Osaonica')," +
-                "(N'Osaonica')," +
-                "(N'Osek Paša')," +
-                "(N'Osek Hilja')," +
-                "(N'Osečenica')," +
-                "(N'Osečina (varošica)sečina')," +
-                "(N'Osečina (selo)sečina')," +
-                "(N'Osipaonica')," +
-                "(N'Osladić')," +
-                "(N'Oslare')," +
-                "(N'Osmakova')," +
-                "(N'Osnić')," +
-                "(N'Osojane')," +
-                "(N'Osoje')," +
-                "(N'Osoje')," +
-                "(N'Osoje')," +
-                "(N'Osonica')," +
-                "(N'Osreci')," +
-                "(N'Ostatovica')," +
-                "(N'Ostojićevo')," +
-                "(N'Ostra')," +
-                "(N'Ostralava')," +
-                "(N'Ostraće')," +
-                "(N'Ostrikovac')," +
-                "(N'Ostrovica')," +
-                "(N'Ostrovica')," +
-                "(N'Ostrovica')," +
-                "(N'Ostrovo')," +
-                "(N'Ostrovo')," +
-                "(N'Ostrozub')," +
-                "(N'Ostrozub')," +
-                "(N'Ostružanjsečina')," +
-                "(N'Ostružnica')," +
-                "(N'Ostrc')," +
-                "(N'Otanj')," +
-                "(N'Otroci')," +
-                "(N'Oholje')," +
-                "(N'Očage')," +
-                "(N'Odžaci')," +
-                "(N'Odžacidžaci')," +
-                "(N'Ošljane')," +
-                "(N'Ošljane')," +
-                "(N'Oštra Stijena')," +
-                "(N'Oštrelj')," +
-                "(N'Pavaštica')," +
-                "(N'Pavlica')," +
-                "(N'Pavličina')," +
-                "(N'Pavliš')," +
-                "(N'Pavlovac')," +
-                "(N'Pavlovac')," +
-                "(N'Pavlovci')," +
-                "(N'Pavlje')," +
-                "(N'Pagaruša')," +
-                "(N'Padalište')," +
-                "(N'Padež')," +
-                "(N'Padež')," +
-                "(N'Padej')," +
-                "(N'Padina')," +
-                "(N'Padina Kovačica')," +
-                "(N'Padine')," +
-                "(N'Padinska Skelaula')," +
-                "(N'Pajazitovo')," +
-                "(N'Pajež')," +
-                "(N'Pajkovac')," +
-                "(N'Pajsak')," +
-                "(N'Pajsijević')," +
-                "(N'Pakašnica')," +
-                "(N'Pakleštica')," +
-                "(N'Paklje')," +
-                "(N'Pakovraće')," +
-                "(N'Palatna')," +
-                "(N'Paležnica')," +
-                "(N'Palivodenica')," +
-                "(N'Paligrace')," +
-                "(N'Palikuća')," +
-                "(N'Palilula')," +
-                "(N'Palić')," +
-                "(N'Palojce')," +
-                "(N'Palja')," +
-                "(N'Paljabarda')," +
-                "(N'Paljane')," +
-                "(N'Paljevo')," +
-                "(N'Paljevštica')," +
-                "(N'Paljina')," +
-                "(N'Paljuvi')," +
-                "(N'Pambukovica')," +
-                "(N'Panevlje')," +
-                "(N'Pankovo')," +
-                "(N'Panojeviće')," +
-                "(N'Panonija')," +
-                "(N'Pantina')," +
-                "(N'Pančevo Pančevo')," +
-                "(N'Pančelo')," +
-                "(N'Panjak')," +
-                "(N'Panjevac')," +
-                "(N'Panjevac')," +
-                "(N'Papaz')," +
-                "(N'Papaz')," +
-                "(N'Papić')," +
-                "(N'Papiće')," +
-                "(N'Papratište')," +
-                "(N'Papratna')," +
-                "(N'Papraćane')," +
-                "(N'Parage')," +
-                "(N'Parada')," +
-                "(N'Paralovo')," +
-                "(N'Paralovo')," +
-                "(N'Paralovo')," +
-                "(N'Paramun')," +
-                "(N'Paraćin')," +
-                "(N'Pardik')," +
-                "(N'Parmenac')," +
-                "(N'Parta')," +
-                "(N'Parteš')," +
-                "(N'Parunovac')," +
-                "(N'Paruce')," +
-                "(N'Parcane')," +
-                "(N'Parcani')," +
-                "(N'Parčin')," +
-                "(N'Pasi Poljana')," +
-                "(N'Pasjak')," +
-                "(N'Pasjak')," +
-                "(N'Pasjane')," +
-                "(N'Pasjač')," +
-                "(N'Pasjača')," +
-                "(N'Pasjača')," +
-                "(N'Pasji Potok')," +
-                "(N'Paskašija')," +
-                "(N'Paskovac')," +
-                "(N'Pasoma')," +
-                "(N'Paune')," +
-                "(N'Pacaj')," +
-                "(N'Pačarađa')," +
-                "(N'Pačir')," +
-                "(N'Pašinac')," +
-                "(N'Pašino Selo')," +
-                "(N'Paštrić')," +
-                "(N'Pear')," +
-                "(N'Pejinović')," +
-                "(N'Pejkovac')," +
-                "(N'Pekčanica')," +
-                "(N'Penduha')," +
-                "(N'Pepelj')," +
-                "(N'Pepeljevac')," +
-                "(N'Pepiće')," +
-                "(N'Perane')," +
-                "(N'Periš')," +
-                "(N'Perlez')," +
-                "(N'Pertate')," +
-                "(N'Perunika')," +
-                "(N'Perutina Doljevac')," +
-                "(N'Perućac')," +
-                "(N'Pestiš')," +
-                "(N'Pestovo')," +
-                "(N'Petačinci')," +
-                "(N'Peterlaš')," +
-                "(N'Petina')," +
-                "(N'Petka')," +
-                "(N'Petka')," +
-                "(N'Petković')," +
-                "(N'Petkovica')," +
-                "(N'Petlovača')," +
-                "(N'Petnica')," +
-                "(N'Petnica')," +
-                "(N'Petraštica')," +
-                "(N'Petrijevo')," +
-                "(N'Petrilje')," +
-                "(N'Petrovaradin')," +
-                "(N'Petrovac')," +
-                "(N'Petrovac')," +
-                "(N'Petrovac')," +
-                "(N'Petrovac')," +
-                "(N'Petrovac')," +
-                "(N'Petrovac na Mlavi')," +
-                "(N'Petrović')," +
-                "(N'Petrovo')," +
-                "(N'Petrovo Polje')," +
-                "(N'Petrovo Selo')," +
-                "(N'Petrovo Selo')," +
-                "(N'Petrovce')," +
-                "(N'Petrovčić')," +
-                "(N'Petropolje')," +
-                "(N'Petruša')," +
-                "(N'Petrušan')," +
-                "(N'Peć')," +
-                "(N'Pećane')," +
-                "(N'Pećani')," +
-                "(N'Pećinciinci')," +
-                "(N'Peckasečina')," +
-                "(N'Pečanica')," +
-                "(N'Pečeno')," +
-                "(N'Pečenog')," +
-                "(N'Pečenjevce')," +
-                "(N'Pivnice')," +
-                "(N'Pidić')," +
-                "(N'Pilareta')," +
-                "(N'Pilatovići')," +
-                "(N'Pilica')," +
-                "(N'Pinosava Voždovac')," +
-                "(N'Pirane')," +
-                "(N'Pirkovac')," +
-                "(N'Piroman')," +
-                "(N'Pirot')," +
-                "(N'Pirče')," +
-                "(N'Piskalje')," +
-                "(N'Piskanja')," +
-                "(N'Piskopovce')," +
-                "(N'Piskupovo')," +
-                "(N'Pištane')," +
-                "(N'Plava')," +
-                "(N'Plavkovo')," +
-                "(N'Plavljane')," +
-                "(N'Plavna')," +
-                "(N'Plavna')," +
-                "(N'Plavce')," +
-                "(N'Plažane')," +
-                "(N'Plajnik')," +
-                "(N'Plakaonica')," +
-                "(N'Plana')," +
-                "(N'Plana')," +
-                "(N'Plana')," +
-                "(N'Plandište')," +
-                "(N'Planeja')," +
-                "(N'Planina')," +
-                "(N'Planinica')," +
-                "(N'Planinica')," +
-                "(N'Planinica')," +
-                "(N'Planinica')," +
-                "(N'Planinica')," +
-                "(N'Planinica')," +
-                "(N'Planjane')," +
-                "(N'Plaskovac')," +
-                "(N'Platičevo')," +
-                "(N'Plašće')," +
-                "(N'Plemetinabilić')," +
-                "(N'Plenibabe')," +
-                "(N'Pleš')," +
-                "(N'Plešin')," +
-                "(N'Plešina')," +
-                "(N'Plitković')," +
-                "(N'Ploča')," +
-                "(N'Ploča')," +
-                "(N'Ploča')," +
-                "(N'Pločica Kovin')," +
-                "(N'Pločice')," +
-                "(N'Pločnik')," +
-                "(N'Pločnik')," +
-                "(N'Plužacsečina')," +
-                "(N'Plužina')," +
-                "(N'Plužina')," +
-                "(N'Pljakovo')," +
-                "(N'Pljančor')," +
-                "(N'Pljačkovica')," +
-                "(N'Pobeda')," +
-                "(N'Pobrđe')," +
-                "(N'Pobrđe')," +
-                "(N'Pobrđe')," +
-                "(N'Poganovo')," +
-                "(N'Pogled')," +
-                "(N'Pograđe')," +
-                "(N'Poda')," +
-                "(N'Podvis')," +
-                "(N'Podvrška')," +
-                "(N'Podgorac')," +
-                "(N'Podgorac')," +
-                "(N'Podgorce')," +
-                "(N'Podgrađe')," +
-                "(N'Podina')," +
-                "(N'Podlokanj')," +
-                "(N'Podnemić')," +
-                "(N'Podrimce')," +
-                "(N'Podujevo')," +
-                "(N'Podunavci')," +
-                "(N'Požar')," +
-                "(N'Požaranje')," +
-                "(N'Požarevac')," +
-                "(N'Požega')," +
-                "(N'Požega')," +
-                "(N'Požegrmac')," +
-                "(N'Požeženo')," +
-                "(N'Požežina')," +
-                "(N'Pozlata')," +
-                "(N'Pojate')," +
-                "(N'Pojatište')," +
-                "(N'Poklek')," +
-                "(N'Pokrvenik')," +
-                "(N'Pokrvenik')," +
-                "(N'Pokrevenik')," +
-                "(N'Polatna')," +
-                "(N'Polička')," +
-                "(N'Polokce')," +
-                "(N'Polom')," +
-                "(N'Polom')," +
-                "(N'Poluža')," +
-                "(N'Poluža')," +
-                "(N'Polumir')," +
-                "(N'Poljana')," +
-                "(N'Poljane')," +
-                "(N'Poljane')," +
-                "(N'Poljanice')," +
-                "(N'Poljance')," +
-                "(N'Poljaci')," +
-                "(N'Poljna')," +
-                "(N'Poljska Ržana')," +
-                "(N'Pomazatin')," +
-                "(N'Pomijača')," +
-                "(N'Poneš')," +
-                "(N'Ponikve')," +
-                "(N'Ponikovica')," +
-                "(N'Ponor')," +
-                "(N'Ponor')," +
-                "(N'Ponorac')," +
-                "(N'Ponorac')," +
-                "(N'Ponoševac')," +
-                "(N'Popadić')," +
-                "(N'Pope')," +
-                "(N'Pope')," +
-                "(N'Popina')," +
-                "(N'Popinciinci')," +
-                "(N'Popiće')," +
-                "(N'Popova')," +
-                "(N'Popovac')," +
-                "(N'Popovac')," +
-                "(N'Popovac')," +
-                "(N'Popovac')," +
-                "(N'Popović')," +
-                "(N'Popović')," +
-                "(N'Popovići')," +
-                "(N'Popovica')," +
-                "(N'Popovljane')," +
-                "(N'Popovnjak')," +
-                "(N'Popovo')," +
-                "(N'Popovce')," +
-                "(N'Popovce')," +
-                "(N'Popovci')," +
-                "(N'Popučke')," +
-                "(N'Popšica')," +
-                "(N'Porodin')," +
-                "(N'Porodin')," +
-                "(N'Poroštica')," +
-                "(N'Poroštica')," +
-                "(N'Poružnica')," +
-                "(N'Poskurice')," +
-                "(N'Poslište')," +
-                "(N'Poslon')," +
-                "(N'Postenje')," +
-                "(N'Postenje')," +
-                "(N'Potkomlje')," +
-                "(N'Potkrš')," +
-                "(N'Potok')," +
-                "(N'Potok')," +
-                "(N'Potočanje')," +
-                "(N'Potočac')," +
-                "(N'Potočić')," +
-                "(N'Potpeće')," +
-                "(N'Potporanj')," +
-                "(N'Potreb')," +
-                "(N'Potrkanje')," +
-                "(N'Poturovce')," +
-                "(N'Pousko')," +
-                "(N'Pocerski Metković')," +
-                "(N'Pocerski Pričinović')," +
-                "(N'Pocesje')," +
-                "(N'Počekovina')," +
-                "(N'Počešće')," +
-                "(N'Pravoševo')," +
-                "(N'Pralja')," +
-                "(N'Pranjani')," +
-                "(N'Pranjci')," +
-                "(N'Praskovče')," +
-                "(N'Prahovo')," +
-                "(N'Prača')," +
-                "(N'Prva Kutina')," +
-                "(N'Prvi Tunel')," +
-                "(N'Prvonek')," +
-                "(N'Prebreza')," +
-                "(N'Prevalac')," +
-                "(N'Prevetica')," +
-                "(N'Prevešt')," +
-                "(N'Prevlak')," +
-                "(N'Predvorica')," +
-                "(N'Predejane (varoš)')," +
-                "(N'Predejane (selo)')," +
-                "(N'Predole')," +
-                "(N'Prekadin')," +
-                "(N'Prekale')," +
-                "(N'Prekašnica')," +
-                "(N'Prekovce Novo Brdo')," +
-                "(N'Prekodolce')," +
-                "(N'Prekoluka')," +
-                "(N'Prekonoga')," +
-                "(N'Prekonozi')," +
-                "(N'Prekopeča')," +
-                "(N'Prekopuce')," +
-                "(N'Prekopčelica')," +
-                "(N'Prekorađa')," +
-                "(N'Prelez')," +
-                "(N'Prelovac')," +
-                "(N'Preljina')," +
-                "(N'Premeća')," +
-                "(N'Preobraženje')," +
-                "(N'Preoce')," +
-                "(N'Prepolac')," +
-                "(N'Preseka')," +
-                "(N'Preseka')," +
-                "(N'Preseka')," +
-                "(N'Presečina')," +
-                "(N'Preslap')," +
-                "(N'Pretežana')," +
-                "(N'Pretina')," +
-                "(N'Pretoke')," +
-                "(N'Pretrešnja')," +
-                "(N'Pretrkovac')," +
-                "(N'Preševo')," +
-                "(N'Pržojne')," +
-                "(N'Pribovce')," +
-                "(N'Priboj')," +
-                "(N'Priboj')," +
-                "(N'Priboj')," +
-                "(N'Pribojskaoleša')," +
-                "(N'Pribojske Čelice')," +
-                "(N'Privinalava')," +
-                "(N'Prigoda')," +
-                "(N'Prigrevica Apatin')," +
-                "(N'Pridvorica')," +
-                "(N'Pridvorica')," +
-                "(N'Pridvorica')," +
-                "(N'Pridvorica')," +
-                "(N'Pridvorica')," +
-                "(N'Pridvorica')," +
-                "(N'Pridvorice')," +
-                "(N'Pridoli')," +
-                "(N'Prizren')," +
-                "(N'Prijanovići')," +
-                "(N'Prijevor')," +
-                "(N'Prijezdić')," +
-                "(N'Prijepolje')," +
-                "(N'Prilep')," +
-                "(N'Prilepac')," +
-                "(N'Prilepnica')," +
-                "(N'Prilike')," +
-                "(N'Prilipac')," +
-                "(N'Prilužje')," +
-                "(N'Prisjan')," +
-                "(N'Prislonica')," +
-                "(N'Pričevac')," +
-                "(N'Pričević')," +
-                "(N'Priština')," +
-                "(N'Prkosava')," +
-                "(N'Prlita')," +
-                "(N'Prnjavor')," +
-                "(N'Prnjavor')," +
-                "(N'Prnjavor')," +
-                "(N'Prnjavor')," +
-                "(N'Provaljenik')," +
-                "(N'Provo')," +
-                "(N'Progar')," +
-                "(N'Progorelica')," +
-                "(N'Progoreoci')," +
-                "(N'Prokuplje')," +
-                "(N'Prolesje')," +
-                "(N'Prolom')," +
-                "(N'Propaštica')," +
-                "(N'Prosek')," +
-                "(N'Protopopinci')," +
-                "(N'Proštinac')," +
-                "(N'Prćenova')," +
-                "(N'Prćilovica')," +
-                "(N'Prugovac')," +
-                "(N'Prugovac')," +
-                "(N'Prugovo')," +
-                "(N'Pružanj')," +
-                "(N'Pružatovac')," +
-                "(N'Prhovoinci')," +
-                "(N'Prčevo')," +
-                "(N'Pudarci')," +
-                "(N'Pukovac Doljevac')," +
-                "(N'Pusta Tušimlja')," +
-                "(N'Pustenik')," +
-                "(N'Pusto Selo')," +
-                "(N'Pusto Šilovo')," +
-                "(N'Pustovlah')," +
-                "(N'Putinci')," +
-                "(N'Putnikovo Kovačica')," +
-                "(N'Puhovac')," +
-                "(N'Puhovo')," +
-                "(N'Pšanik')," +
-                "(N'Rabas')," +
-                "(N'Rabe')," +
-                "(N'Rabenovac')," +
-                "(N'Rabovce')," +
-                "(N'Rabrovac')," +
-                "(N'Rabrovo')," +
-                "(N'Ravanica')," +
-                "(N'Ravna')," +
-                "(N'Ravna Banja')," +
-                "(N'Ravnaora')," +
-                "(N'Ravnaora')," +
-                "(N'Ravna Dubrava')," +
-                "(N'Ravna')," +
-                "(N'Ravna')," +
-                "(N'Ravnaja')," +
-                "(N'Ravni')," +
-                "(N'Ravni')," +
-                "(N'Ravni Del')," +
-                "(N'Ravni Del')," +
-                "(N'Ravni Do')," +
-                "(N'Ravni Topolovac')," +
-                "(N'Ravni Šort')," +
-                "(N'Ravnište')," +
-                "(N'Ravnište')," +
-                "(N'Ravnište')," +
-                "(N'Ravno Bučje')," +
-                "(N'Ravno Bučje')," +
-                "(N'Ravno Selo Vrbas')," +
-                "(N'Ravnje')," +
-                "(N'Ravnje')," +
-                "(N'Ragodeš')," +
-                "(N'Radavac')," +
-                "(N'Radalj')," +
-                "(N'Radaljevo')," +
-                "(N'Radaljica')," +
-                "(N'Radanovci')," +
-                "(N'Radevo')," +
-                "(N'Radevce')," +
-                "(N'Radevce')," +
-                "(N'Radejna')," +
-                "(N'Radenka')," +
-                "(N'Radenkovac')," +
-                "(N'Radenković')," +
-                "(N'Radešaora')," +
-                "(N'Radivojce')," +
-                "(N'Radijevići')," +
-                "(N'Radikina')," +
-                "(N'Radinac')," +
-                "(N'Radinovac')," +
-                "(N'Radinjince')," +
-                "(N'Radičevac')," +
-                "(N'Radičević Bečej')," +
-                "(N'Radičevci')," +
-                "(N'Radiševo')," +
-                "(N'Radljevo')," +
-                "(N'Radmanovo')," +
-                "(N'Radmilović')," +
-                "(N'Radmirovac')," +
-                "(N'Radobić')," +
-                "(N'Radobuđa')," +
-                "(N'Radovanje')," +
-                "(N'Radovašnica')," +
-                "(N'Radovnica')," +
-                "(N'Radovci')," +
-                "(N'Radoinja')," +
-                "(N'Radojevo')," +
-                "(N'Radonjić')," +
-                "(N'Radonjica')," +
-                "(N'Radosin')," +
-                "(N'Radoste')," +
-                "(N'Radoševac')," +
-                "(N'Radoševac')," +
-                "(N'Radoševac')," +
-                "(N'Radoševo')," +
-                "(N'Radošin')," +
-                "(N'Radošiće')," +
-                "(N'Radujevac')," +
-                "(N'Radujevac')," +
-                "(N'Radulovac')," +
-                "(N'Radunje')," +
-                "(N'Raduhovce')," +
-                "(N'Raduša')," +
-                "(N'Raduša')," +
-                "(N'Raduša')," +
-                "(N'Rađevo Selo')," +
-                "(N'Ražanj')," +
-                "(N'Raždaginja')," +
-                "(N'Razbojna')," +
-                "(N'Razgojna')," +
-                "(N'Rajanovce')," +
-                "(N'Rajac')," +
-                "(N'Rajac')," +
-                "(N'Rajetiće')," +
-                "(N'Rajinac')," +
-                "(N'Rajince')," +
-                "(N'Rajkinac')," +
-                "(N'Rajkovac')," +
-                "(N'Rajkovac')," +
-                "(N'Rajković')," +
-                "(N'Rajkoviće')," +
-                "(N'Rajno Polje')," +
-                "(N'Rajčevce')," +
-                "(N'Rajčetine')," +
-                "(N'Rajčilovci')," +
-                "(N'Rajčinoviće')," +
-                "(N'Rajčinovićka Trnava')," +
-                "(N'Raka')," +
-                "(N'Rakari')," +
-                "(N'Rakinac')," +
-                "(N'Rakinica')," +
-                "(N'Rakita')," +
-                "(N'Rakitnica')," +
-                "(N'Rakitovo')," +
-                "(N'Raklja')," +
-                "(N'Rakov Dol')," +
-                "(N'Rakova')," +
-                "(N'Rakova')," +
-                "(N'Rakovac')," +
-                "(N'Rakovac')," +
-                "(N'Rakovac')," +
-                "(N'Rakovac')," +
-                "(N'Rakovina')," +
-                "(N'Rakovica')," +
-                "(N'Rakoc')," +
-                "(N'Rakoš')," +
-                "(N'Ralja')," +
-                "(N'Ralja')," +
-                "(N'Raljin')," +
-                "(N'Ram')," +
-                "(N'Ramaća')," +
-                "(N'Ramoc')," +
-                "(N'Ramoševo')," +
-                "(N'Ranatovce')," +
-                "(N'Randubrava')," +
-                "(N'Ranilović')," +
-                "(N'Ranilug')," +
-                "(N'Rankova')," +
-                "(N'Ranovac')," +
-                "(N'Ranutovac')," +
-                "(N'Rance')," +
-                "(N'Rančiće')," +
-                "(N'Raskovobilić')," +
-                "(N'Rasna')," +
-                "(N'Rasnica')," +
-                "(N'Rasno')," +
-                "(N'Rasno')," +
-                "(N'Raspoganče')," +
-                "(N'Rast')," +
-                "(N'Rastavica')," +
-                "(N'Rastelica')," +
-                "(N'Rastenoviće')," +
-                "(N'Rastina')," +
-                "(N'Rastište')," +
-                "(N'Rastovnica')," +
-                "(N'Rataje')," +
-                "(N'Ratajska')," +
-                "(N'Ratare')," +
-                "(N'Ratari')," +
-                "(N'Ratari')," +
-                "(N'Ratina')," +
-                "(N'Ratkovac')," +
-                "(N'Ratkovac')," +
-                "(N'Ratković')," +
-                "(N'Ratkovodžaci')," +
-                "(N'Rautovo')," +
-                "(N'Raušić')," +
-                "(N'Rafuna')," +
-                "(N'Rahovica')," +
-                "(N'Racaj')," +
-                "(N'Rača')," +
-                "(N'Rača')," +
-                "(N'Rača')," +
-                "(N'Rača')," +
-                "(N'Rača')," +
-                "(N'Račak')," +
-                "(N'Rašanac')," +
-                "(N'Raševica')," +
-                "(N'Rašince')," +
-                "(N'Rašić')," +
-                "(N'Rašica')," +
-                "(N'Raška')," +
-                "(N'Rašković')," +
-                "(N'Raškoviće')," +
-                "(N'Raškoc')," +
-                "(N'Raštane')," +
-                "(N'Rvati')," +
-                "(N'Rvati')," +
-                "(N'Rvatska')," +
-                "(N'Rgaje')," +
-                "(N'Rgotina')," +
-                "(N'Rgošte')," +
-                "(N'Rdovo')," +
-                "(N'Rđavica')," +
-                "(N'Rebelj')," +
-                "(N'Revuće')," +
-                "(N'Režance')," +
-                "(N'Reževiće')," +
-                "(N'Rezala')," +
-                "(N'Rezala')," +
-                "(N'Reka')," +
-                "(N'Reka')," +
-                "(N'Reka')," +
-                "(N'Reka')," +
-                "(N'Rekovac')," +
-                "(N'Reljan')," +
-                "(N'Reljinac')," +
-                "(N'Reljinci')," +
-                "(N'Renovac')," +
-                "(N'Rence')," +
-                "(N'Repa')," +
-                "(N'Repince')," +
-                "(N'Repište')," +
-                "(N'Repušnica')," +
-                "(N'Resavica')," +
-                "(N'Resavica (selo)')," +
-                "(N'Resen')," +
-                "(N'Resinac')," +
-                "(N'Resnik')," +
-                "(N'Resnik')," +
-                "(N'Resnik')," +
-                "(N'Resnik')," +
-                "(N'Resnik')," +
-                "(N'Restelicaora')," +
-                "(N'Retimlje')," +
-                "(N'Retkocer')," +
-                "(N'Rečane')," +
-                "(N'Rečane')," +
-                "(N'Rečica')," +
-                "(N'Rečica')," +
-                "(N'Rečica')," +
-                "(N'Rečica')," +
-                "(N'Rečica')," +
-                "(N'Rečice')," +
-                "(N'Rečka')," +
-                "(N'Ržana')," +
-                "(N'Ržanica')," +
-                "(N'Rznić')," +
-                "(N'Ribare')," +
-                "(N'Ribare')," +
-                "(N'Ribare')," +
-                "(N'Ribare')," +
-                "(N'Ribari')," +
-                "(N'Ribari')," +
-                "(N'Ribariće')," +
-                "(N'Ribarice')," +
-                "(N'Ribarska Banja')," +
-                "(N'Ribarci')," +
-                "(N'Ribaševina')," +
-                "(N'Ribince')," +
-                "(N'Ribnik')," +
-                "(N'Ribnik')," +
-                "(N'Ribnica')," +
-                "(N'Rivica')," +
-                "(N'Riđage')," +
-                "(N'Riđake')," +
-                "(N'Riđevštica')," +
-                "(N'Riđica')," +
-                "(N'Rikačevo')," +
-                "(N'Riljac')," +
-                "(N'Rimanište')," +
-                "(N'Ripaj Madanaj')," +
-                "(N'Ripanj Voždovac')," +
-                "(N'Ristovac')," +
-                "(N'Ritiševo')," +
-                "(N'Ritopek')," +
-                "(N'Ritošići')," +
-                "(N'Rlica')," +
-                "(N'Roanda')," +
-                "(N'Robaje')," +
-                "(N'Robovac')," +
-                "(N'Rovine')," +
-                "(N'Rovni')," +
-                "(N'Rogavčina')," +
-                "(N'Rogača')," +
-                "(N'Rogača')," +
-                "(N'Rogačica')," +
-                "(N'Rogačica')," +
-                "(N'Roge')," +
-                "(N'Rogljevo')," +
-                "(N'Rogovo')," +
-                "(N'Rogojevac')," +
-                "(N'Rodelj')," +
-                "(N'Rožanstvo')," +
-                "(N'Rožancijevo')," +
-                "(N'Roždace')," +
-                "(N'Rožina')," +
-                "(N'Rokci')," +
-                "(N'Rokci')," +
-                "(N'Romaja')," +
-                "(N'Romune')," +
-                "(N'Ropica')," +
-                "(N'Ropočevo')," +
-                "(N'Rosići')," +
-                "(N'Rosica')," +
-                "(N'Rosomač')," +
-                "(N'Rosulje')," +
-                "(N'Roćevac')," +
-                "(N'Roćevići')," +
-                "(N'Rošci')," +
-                "(N'Rsavci')," +
-                "(N'Rsovac')," +
-                "(N'Rsovci')," +
-                "(N'Rtanj')," +
-                "(N'Rtari')," +
-                "(N'Rti')," +
-                "(N'Rtkovo')," +
-                "(N'Rubribreza')," +
-                "(N'Ruda Bukva')," +
-                "(N'Rudare')," +
-                "(N'Rudare')," +
-                "(N'Rudenice')," +
-                "(N'Rudine')," +
-                "(N'Rudine')," +
-                "(N'Rudinje')," +
-                "(N'Rudice')," +
-                "(N'Rudnalava')," +
-                "(N'Rudnik')," +
-                "(N'Rudnik')," +
-                "(N'Rudnik Kosovobilić')," +
-                "(N'Rudnica')," +
-                "(N'Rudnica')," +
-                "(N'Rudno')," +
-                "(N'Rudnjak')," +
-                "(N'Rudovci')," +
-                "(N'Ruđa')," +
-                "(N'Ruđinci')," +
-                "(N'Ružić')," +
-                "(N'Rujevac')," +
-                "(N'Rujevica')," +
-                "(N'Rujišnik')," +
-                "(N'Rujište')," +
-                "(N'Rujište')," +
-                "(N'Rujište')," +
-                "(N'Rujkovac')," +
-                "(N'Rujnik')," +
-                "(N'Ruklada')," +
-                "(N'Ruma')," +
-                "(N'Rumenka')," +
-                "(N'Rumska')," +
-                "(N'Runjani')," +
-                "(N'Runjevo')," +
-                "(N'Rupeljevo')," +
-                "(N'Ruplje')," +
-                "(N'Rusinovce')");
-                  migrationBuilder.Sql(
-                "insert into Mesta(NazivMesta) values " +
-                "(N'Ruski Krstur Kula')," +
-                "(N'Rusko Selo')," +
-                "(N'Rusna Doljevac')," +
-                "(N'Rusce')," +
-                "(N'Rusce')," +
-                "(N'Rutevac')," +
-                "(N'Rutoši')," +
-                "(N'Ruhot')," +
-                "(N'Rucka')," +
-                "(N'Rucmance')," +
-                "(N'Ručići')," +
-                "(N'Rušanj')," +
-                "(N'Savinac')," +
-                "(N'Savinac')," +
-                "(N'Savino Selo Vrbas')," +
-                "(N'Savković')," +
-                "(N'Savovo')," +
-                "(N'Savrovo')," +
-                "(N'Sagonjevo')," +
-                "(N'Sazlija')," +
-                "(N'Sainovina')," +
-                "(N'Sajan')," +
-                "(N'Sakar')," +
-                "(N'Sakulepovo')," +
-                "(N'Sakulja')," +
-                "(N'Salakovac')," +
-                "(N'Salaš')," +
-                "(N'Salaš Noćajski')," +
-                "(N'Salaš Crnobarski')," +
-                "(N'Samaila')," +
-                "(N'Samarinovac')," +
-                "(N'Samarinovac')," +
-                "(N'Samarnica')," +
-                "(N'Samodraža')," +
-                "(N'Samodreža')," +
-                "(N'Samokovo')," +
-                "(N'Samoljica')," +
-                "(N'Samoš Kovačica')," +
-                "(N'Sanad')," +
-                "(N'Sandalj')," +
-                "(N'Sanković')," +
-                "(N'Sanovac')," +
-                "(N'Sapar')," +
-                "(N'Saranovo')," +
-                "(N'Saraorci')," +
-                "(N'Saroš')," +
-                "(N'Sastav')," +
-                "(N'Saš')," +
-                "(N'Sveta Petka')," +
-                "(N'Svetićevo')," +
-                "(N'Svetlić')," +
-                "(N'Svetlje')," +
-                "(N'Svetozar Miletić')," +
-                "(N'Sveštica')," +
-                "(N'Svilajnac')," +
-                "(N'Svileuva Koceljeva')," +
-                "(N'Svilojevo Apatin')," +
-                "(N'Sviloš')," +
-                "(N'Svinjare')," +
-                "(N'Svinjarevo')," +
-                "(N'Svinjarica')," +
-                "(N'Svinjište')," +
-                "(N'Svinjište')," +
-                "(N'Svirce')," +
-                "(N'Svirce')," +
-                "(N'Svirce')," +
-                "(N'Svođe')," +
-                "(N'Svojnovo')," +
-                "(N'Svračkovo')," +
-                "(N'Svračkovci')," +
-                "(N'Svrke')," +
-                "(N'Svrljig')," +
-                "(N'Svrljiška')," +
-                "(N'Svrhe')," +
-                "(N'Svrčina')," +
-                "(N'Sebevranje')," +
-                "(N'Sebečevac')," +
-                "(N'Sebečevo')," +
-                "(N'Sebimilje')," +
-                "(N'Sebrat')," +
-                "(N'Severni')," +
-                "(N'Severovo')," +
-                "(N'Sevojno')," +
-                "(N'Sevce')," +
-                "(N'Sedlare')," +
-                "(N'Sedlare')," +
-                "(N'Sedlare')," +
-                "(N'Sedlari')," +
-                "(N'Sedobro')," +
-                "(N'Sezemče')," +
-                "(N'Sejace')," +
-                "(N'Sekirača')," +
-                "(N'Sekicol')," +
-                "(N'Sekurič')," +
-                "(N'Selanac')," +
-                "(N'Selačka')," +
-                "(N'Selevac')," +
-                "(N'Selenča')," +
-                "(N'Seleuš')," +
-                "(N'Selište')," +
-                "(N'Selište')," +
-                "(N'Selište')," +
-                "(N'Selište')," +
-                "(N'Selo')," +
-                "(N'Selova')," +
-                "(N'Selogražde')," +
-                "(N'Seljane')," +
-                "(N'Seljance')," +
-                "(N'Seljašnica')," +
-                "(N'Semanje')," +
-                "(N'Semegnjevo')," +
-                "(N'Semedraž')," +
-                "(N'Semeteš')," +
-                "(N'Semetište')," +
-                "(N'Semče')," +
-                "(N'Sena')," +
-                "(N'Senaja')," +
-                "(N'Sendo')," +
-                "(N'Senik')," +
-                "(N'Seništa')," +
-                "(N'Senokos')," +
-                "(N'Senta Senta')," +
-                "(N'Senje')," +
-                "(N'Senjski Rudnik')," +
-                "(N'Seone')," +
-                "(N'Seoce')," +
-                "(N'Seoce')," +
-                "(N'Sepci')," +
-                "(N'Sesalac')," +
-                "(N'Sefer')," +
-                "(N'Sefkerinpovo')," +
-                "(N'Seča')," +
-                "(N'Sečanica')," +
-                "(N'Sečanj')," +
-                "(N'Sečište')," +
-                "(N'Sibačinci')," +
-                "(N'Sibnica')," +
-                "(N'Sibnica')," +
-                "(N'Sibnica')," +
-                "(N'Sibnica')," +
-                "(N'Sibnica')," +
-                "(N'Sibovacbilić')," +
-                "(N'Sivac Kula')," +
-                "(N'Sivčina')," +
-                "(N'Siga')," +
-                "(N'Sige')," +
-                "(N'Siget')," +
-                "(N'Sijarina')," +
-                "(N'Sijarinska Banja')," +
-                "(N'Sijerač')," +
-                "(N'Sikirica')," +
-                "(N'Sikirje')," +
-                "(N'Sikole')," +
-                "(N'Silbaš')," +
-                "(N'Siljevica')," +
-                "(N'Siljevica')," +
-                "(N'Simino Brdo')," +
-                "(N'Simićevo')," +
-                "(N'Sinaje')," +
-                "(N'Sinošević')," +
-                "(N'Sinoševići')," +
-                "(N'Sinjalava')," +
-                "(N'Sinjac')," +
-                "(N'Sinji Vir')," +
-                "(N'Siokovac')," +
-                "(N'Sipić')," +
-                "(N'Sirakovo')," +
-                "(N'Sirdijasečina')," +
-                "(N'Sirig Temerin')," +
-                "(N'Sirogojno')," +
-                "(N'Sirča')," +
-                "(N'Sisevac')," +
-                "(N'Sitarice')," +
-                "(N'Sitniče')," +
-                "(N'Sićevo')," +
-                "(N'Sićevo')," +
-                "(N'Sićevo')," +
-                "(N'Sjeverin')," +
-                "(N'Sjenica')," +
-                "(N'Skadarsečina')," +
-                "(N'Skakavci')," +
-                "(N'Skela')," +
-                "(N'Skivjane')," +
-                "(N'Skobalj')," +
-                "(N'Skobalj')," +
-                "(N'Skokuće')," +
-                "(N'Skorenovac Kovin')," +
-                "(N'Skorica')," +
-                "(N'Skorobište')," +
-                "(N'Skorošnik')," +
-                "(N'Skočna')," +
-                "(N'Skradnik')," +
-                "(N'Skrađani')," +
-                "(N'Skrapež')," +
-                "(N'Skrvenica')," +
-                "(N'Skržuti')," +
-                "(N'Skrobnica')," +
-                "(N'Skrovna')," +
-                "(N'Skukovo')," +
-                "(N'Skulanevo')," +
-                "(N'Skupljen')," +
-                "(N'Slavinja')," +
-                "(N'Slavkovica')," +
-                "(N'Slavnik')," +
-                "(N'Slavujevac')," +
-                "(N'Slavujevce')," +
-                "(N'Sladaja')," +
-                "(N'Sladinac')," +
-                "(N'Slakovce')," +
-                "(N'Slankamenački Vinogradi')," +
-                "(N'Slanciula')," +
-                "(N'Slapužane')," +
-                "(N'Slatina')," +
-                "(N'Slatina')," +
-                "(N'Slatina')," +
-                "(N'Slatina')," +
-                "(N'Slatina')," +
-                "(N'Slatina')," +
-                "(N'Slatina')," +
-                "(N'Slatina')," +
-                "(N'Slatina')," +
-                "(N'Slatina')," +
-                "(N'Slatina')," +
-                "(N'Slatina')," +
-                "(N'Slatina')," +
-                "(N'Slatina')," +
-                "(N'Slatina')," +
-                "(N'Slatina')," +
-                "(N'Slatina')," +
-                "(N'Slepčević')," +
-                "(N'Slivje')," +
-                "(N'Slivnica')," +
-                "(N'Slivnica')," +
-                "(N'Slivovo')," +
-                "(N'Slivovo')," +
-                "(N'Slišane')," +
-                "(N'Slovac')," +
-                "(N'Slovinje')," +
-                "(N'Slubica')," +
-                "(N'Slup')," +
-                "(N'Smać')," +
-                "(N'Smać')," +
-                "(N'Smederevo')," +
-                "(N'Smederevska Palanka')," +
-                "(N'Smedovac')," +
-                "(N'Smilov Laz')," +
-                "(N'Smilovac')," +
-                "(N'Smilovci')," +
-                "(N'Smiljevac')," +
-                "(N'Smiljević')," +
-                "(N'Smira')," +
-                "(N'Smoluća')," +
-                "(N'Smoluša')," +
-                "(N'Smoljinac')," +
-                "(N'Smonica')," +
-                "(N'Smrdan')," +
-                "(N'Smrdan')," +
-                "(N'Smrekovnica')," +
-                "(N'Snegotin')," +
-                "(N'Sovač')," +
-                "(N'Sovljak')," +
-                "(N'Sovljak')," +
-                "(N'Soderce')," +
-                "(N'Sojevo')," +
-                "(N'Sokobanja')," +
-                "(N'Sokolac')," +
-                "(N'Sokolići')," +
-                "(N'Sokolovo')," +
-                "(N'Solačka Sena')," +
-                "(N'Solotuša')," +
-                "(N'Sombor')," +
-                "(N'Sonta Apatin')," +
-                "(N'Sopina')," +
-                "(N'Sopnić')," +
-                "(N'Sopot')," +
-                "(N'Sopot')," +
-                "(N'Sopot')," +
-                "(N'Sopotnica')," +
-                "(N'Sopotnica')," +
-                "(N'Sopotnica')," +
-                "(N'Sot')," +
-                "(N'Sofalija')," +
-                "(N'Softović')," +
-                "(N'Sočanica')," +
-                "(N'Sočica')," +
-                "(N'Sočice')," +
-                "(N'Spance')," +
-                "(N'Spančevac')," +
-                "(N'Sponce')," +
-                "(N'Srbica')," +
-                "(N'Srbobran Srbobran')," +
-                "(N'Srbobran')," +
-                "(N'Srbovac')," +
-                "(N'Srbovo')," +
-                "(N'Srednja Dobrinja')," +
-                "(N'Srednja')," +
-                "(N'Srednja Tušimlja')," +
-                "(N'Srednjevo')," +
-                "(N'Srednji Bučumet')," +
-                "(N'Srednji Del')," +
-                "(N'Srednji Salaš')," +
-                "(N'Srednji Statovac')," +
-                "(N'Sredor')," +
-                "(N'Sredska')," +
-                "(N'Srezovac')," +
-                "(N'Srezojevci')," +
-                "(N'Sremska Kamenica')," +
-                "(N'Sremska Mitrovica')," +
-                "(N'Sremska')," +
-                "(N'Sremski Karlovci Sremski Karlovci')," +
-                "(N'Sremski Mihaljevciinci')," +
-                "(N'Sremčica')," +
-                "(N'Srećkovac')," +
-                "(N'Srndalje')," +
-                "(N'Srneći Dol')," +
-                "(N'Srnje')," +
-                "(N'Srpska Kuća')," +
-                "(N'Srpska Crnja')," +
-                "(N'Srpski Babuš')," +
-                "(N'Srpski Itebej')," +
-                "(N'Srpski Krstur')," +
-                "(N'Srpski Miletićdžaci')," +
-                "(N'Srpce')," +
-                "(N'Stave')," +
-                "(N'Stagovo')," +
-                "(N'Stajićevo')," +
-                "(N'Stajkovce')," +
-                "(N'Stajkovce')," +
-                "(N'Stalać')," +
-                "(N'Stamnica')," +
-                "(N'Stanevce')," +
-                "(N'Stanina')," +
-                "(N'Staničenje')," +
-                "(N'Stanišinci')," +
-                "(N'Stanišić')," +
-                "(N'Stanišor')," +
-                "(N'Stankovce')," +
-                "(N'Stanuloviće')," +
-                "(N'Stance')," +
-                "(N'Stanci')," +
-                "(N'Stanci')," +
-                "(N'Stanča')," +
-                "(N'Stančić')," +
-                "(N'Stančići')," +
-                "(N'Stanjevo')," +
-                "(N'Stanjinac')," +
-                "(N'Stapar')," +
-                "(N'Stapar')," +
-                "(N'Stapari')," +
-                "(N'Stara Banja')," +
-                "(N'Stara Bingula')," +
-                "(N'Stara Božurna')," +
-                "(N'Stara Brezovica')," +
-                "(N'Stara Vučina')," +
-                "(N'Stara Moravica')," +
-                "(N'Stara Pazova')," +
-                "(N'Starac')," +
-                "(N'Stari Banovci')," +
-                "(N'Stari Bračin')," +
-                "(N'Starilog')," +
-                "(N'Stari Đurovac')," +
-                "(N'Stari Žednik')," +
-                "(N'Stari')," +
-                "(N'Stari Ledinci')," +
-                "(N'Stari Lec')," +
-                "(N'Stari Miraš')," +
-                "(N'Stari Slankamen')," +
-                "(N'Stari Trg (rud.naselje)')," +
-                "(N'Stari Trg (selo)')," +
-                "(N'Stari')," +
-                "(N'Staroracko')," +
-                "(N'Staro Korito')," +
-                "(N'Staro Lanište')," +
-                "(N'Staro Momčilovo')," +
-                "(N'Staro Rujce')," +
-                "(N'Staro Selo')," +
-                "(N'Staro Selo')," +
-                "(N'Staro Selo')," +
-                "(N'Staro Selo')," +
-                "(N'Staro Čikatovo')," +
-                "(N'Starodvorane')," +
-                "(N'Starci')," +
-                "(N'Starčeviće')," +
-                "(N'Starčevo')," +
-                "(N'Starčevo Pančevo')," +
-                "(N'Stejanovci')," +
-                "(N'Stenjevac')," +
-                "(N'Stepanovićevo')," +
-                "(N'Stepanje')," +
-                "(N'Stepojevac')," +
-                "(N'Sterijino Ada')," +
-                "(N'Stogazovac')," +
-                "(N'Stojačak')," +
-                "(N'Stojići')," +
-                "(N'Stojković')," +
-                "(N'Stojnik')," +
-                "(N'Stojnik')," +
-                "(N'Stol')," +
-                "(N'Stopanja')," +
-                "(N'Stragari')," +
-                "(N'Stragari')," +
-                "(N'Stradovo')," +
-                "(N'Straža')," +
-                "(N'Straža')," +
-                "(N'Straža')," +
-                "(N'Straža')," +
-                "(N'Strajiniće')," +
-                "(N'Strana')," +
-                "(N'Stranjevo')," +
-                "(N'Strezimirovci')," +
-                "(N'Strezovce')," +
-                "(N'Strezovce')," +
-                "(N'Strelac')," +
-                "(N'Strelica')," +
-                "(N'Strešak')," +
-                "(N'Striža')," +
-                "(N'Strižilo')," +
-                "(N'Strmac')," +
-                "(N'Strmac')," +
-                "(N'Strmenica')," +
-                "(N'Strmnaora')," +
-                "(N'Strmovo')," +
-                "(N'Strmovo')," +
-                "(N'Strmovo')," +
-                "(N'Strmosten')," +
-                "(N'Strovce')," +
-                "(N'Strojinci')," +
-                "(N'Strojkovce')," +
-                "(N'Stropsko')," +
-                "(N'Struganik')," +
-                "(N'Struganica')," +
-                "(N'Stružje')," +
-                "(N'Strumce')," +
-                "(N'Stubal')," +
-                "(N'Stubal')," +
-                "(N'Stubal')," +
-                "(N'Stubal')," +
-                "(N'Stubica')," +
-                "(N'Stubica')," +
-                "(N'Stubla')," +
-                "(N'Stubla')," +
-                "(N'Stubla')," +
-                "(N'Stublenica')," +
-                "(N'Stublina')," +
-                "(N'Stublina')," +
-                "(N'Stubline')," +
-                "(N'Stublica')," +
-                "(N'Stublo')," +
-                "(N'Stubo')," +
-                "(N'Studena')," +
-                "(N'Studena')," +
-                "(N'Studenac')," +
-                "(N'Studenica')," +
-                "(N'Studenčane')," +
-                "(N'Stup')," +
-                "(N'Stup')," +
-                "(N'Stupnica')," +
-                "(N'Stupnica')," +
-                "(N'Stupčevići')," +
-                "(N'Subjel')," +
-                "(N'Subotinac')," +
-                "(N'Subotica')," +
-                "(N'Subotica Koceljeva')," +
-                "(N'Subotica')," +
-                "(N'Subotica')," +
-                "(N'Subotišteinci')," +
-                "(N'Suva Morava')," +
-                "(N'Suva')," +
-                "(N'Suvaja')," +
-                "(N'Suvaja')," +
-                "(N'Suvaja')," +
-                "(N'Suvi Do')," +
-                "(N'Suvi Do')," +
-                "(N'Suvi Do')," +
-                "(N'Suvi Do')," +
-                "(N'Suvi Do')," +
-                "(N'Suvi Dol')," +
-                "(N'Suvi Lukavac')," +
-                "(N'Suvorlo')," +
-                "(N'Suvorlo')," +
-                "(N'Suvo Selo')," +
-                "(N'Suvodanje')," +
-                "(N'Suvodol')," +
-                "(N'Suvojnica')," +
-                "(N'Sugubine')," +
-                "(N'Sudimlja')," +
-                "(N'Sudsko Selo')," +
-                "(N'Sukovo')," +
-                "(N'Sumorovac')," +
-                "(N'Sumrakovac')," +
-                "(N'Supnje')," +
-                "(N'Supovac')," +
-                "(N'Supska')," +
-                "(N'Suračevo')," +
-                "(N'Surduk')," +
-                "(N'Surdul')," +
-                "(N'Surdula')," +
-                "(N'Surdulica')," +
-                "(N'Surkiš')," +
-                "(N'Surlica')," +
-                "(N'Surčin')," +
-                "(N'Susek')," +
-                "(N'Sutjeska')," +
-                "(N'Suharno')," +
-                "(N'Suhi Dol')," +
-                "(N'Suševlje')," +
-                "(N'Sušiće')," +
-                "(N'Sušica')," +
-                "(N'Sušica')," +
-                "(N'Sušica')," +
-                "(N'Sušica')," +
-                "(N'Sušica')," +
-                "(N'Tabakovac')," +
-                "(N'Tabanovac')," +
-                "(N'Tabanović')," +
-                "(N'Tabanović')," +
-                "(N'Tabanovići')," +
-                "(N'Tavnik')," +
-                "(N'Tadenje')," +
-                "(N'Takovo')," +
-                "(N'Takovo')," +
-                "(N'Tamnič')," +
-                "(N'Tamnjanica')," +
-                "(N'Tanda')," +
-                "(N'Tankosić')," +
-                "(N'Taor')," +
-                "(N'Taradža')," +
-                "(N'Taraš')," +
-                "(N'Taskovići')," +
-                "(N'Tatrasnica')," +
-                "(N'Tačevac')," +
-                "(N'Taševo')," +
-                "(N'Tvrdići')," +
-                "(N'Tvrdojevac')," +
-                "(N'Tvrđan')," +
-                "(N'Tegovište')," +
-                "(N'Tegošnica')," +
-                "(N'Tekeriš')," +
-                "(N'Tekija')," +
-                "(N'Tekija')," +
-                "(N'Tekija')," +
-                "(N'Telečka')," +
-                "(N'Telovac')," +
-                "(N'Temerin Temerin')," +
-                "(N'Temska')," +
-                "(N'Teneš Do')," +
-                "(N'Tenkovo')," +
-                "(N'Teočin')," +
-                "(N'Tepeče')," +
-                "(N'Tesovište')," +
-                "(N'Teća')," +
-                "(N'Tečić')," +
-                "(N'Tešica')," +
-                "(N'Tibužde')," +
-                "(N'Tijanje')," +
-                "(N'Tijovac')," +
-                "(N'Tijovac')," +
-                "(N'Tikva')," +
-                "(N'Tiodže')," +
-                "(N'Tirince')," +
-                "(N'Tisovica')," +
-                "(N'Titel Titel')," +
-                "(N'Tićevac')," +
-                "(N'Tica')," +
-                "(N'Tmava')," +
-                "(N'Toba')," +
-                "(N'Tobolac')," +
-                "(N'Tovariševo')," +
-                "(N'Tovrljane')," +
-                "(N'Togočevce')," +
-                "(N'Todorin Do')," +
-                "(N'Todorovce')," +
-                "(N'Tolisavac')," +
-                "(N'Tolić')," +
-                "(N'Tolišnica')," +
-                "(N'Toljevac')," +
-                "(N'Tomance')," +
-                "(N'Tomance')," +
-                "(N'Tomanj')," +
-                "(N'Tomaševac')," +
-                "(N'Tometino Polje')," +
-                "(N'Tomislavci')," +
-                "(N'Topilo')," +
-                "(N'Topla')," +
-                "(N'Toplac')," +
-                "(N'Topli Do')," +
-                "(N'Topli Do')," +
-                "(N'Topli Dol')," +
-                "(N'Topličane')," +
-                "(N'Topličane')," +
-                "(N'Topola')," +
-                "(N'Topolnica')," +
-                "(N'Topolovnik')," +
-                "(N'Toponica')," +
-                "(N'Toponica')," +
-                "(N'Toponica')," +
-                "(N'Toponica')," +
-                "(N'Toponica')," +
-                "(N'Toponica')," +
-                "(N'Torak')," +
-                "(N'Torda')," +
-                "(N'Torina')," +
-                "(N'Tornik')," +
-                "(N'Tornjoš Senta')," +
-                "(N'Totovo Selo')," +
-                "(N'Točilovo')," +
-                "(N'Trakanić')," +
-                "(N'Trbovce')," +
-                "(N'Trbosilje')," +
-                "(N'Trbunje')," +
-                "(N'Trbuhovac')," +
-                "(N'Trbušani')," +
-                "(N'Trbušac')," +
-                "(N'Trbušnica')," +
-                "(N'Trbušnica')," +
-                "(N'Trgovište')," +
-                "(N'Trgovište')," +
-                "(N'Trgovište')," +
-                "(N'Trgovište')," +
-                "(N'Trdevac')," +
-                "(N'Trebinje')," +
-                "(N'Trebiće')," +
-                "(N'Trebović')," +
-                "(N'Trebotin')," +
-                "(N'Trejak')," +
-                "(N'Trepetinca')," +
-                "(N'Trećak')," +
-                "(N'Trešnjevak')," +
-                "(N'Trešnjevac')," +
-                "(N'Trešnjevica')," +
-                "(N'Trešnjevica')," +
-                "(N'Trešnjevica')," +
-                "(N'Tržac')," +
-                "(N'Tribrode')," +
-                "(N'Trijebine')," +
-                "(N'Trikose')," +
-                "(N'Tripkova')," +
-                "(N'Trlabuć')," +
-                "(N'Trlić')," +
-                "(N'Trmbas')," +
-                "(N'Trmka')," +
-                "(N'Trmčare')," +
-                "(N'Trn')," +
-                "(N'Trn')," +
-                "(N'Trnava')," +
-                "(N'Trnava')," +
-                "(N'Trnava')," +
-                "(N'Trnava')," +
-                "(N'Trnava')," +
-                "(N'Trnava')," +
-                "(N'Trnava')," +
-                "(N'Trnava')," +
-                "(N'Trnavac')," +
-                "(N'Trnavica')," +
-                "(N'Trnavce')," +
-                "(N'Trnavci')," +
-                "(N'Trnićevce Novo Brdo')," +
-                "(N'Trnovac')," +
-                "(N'Trnovi Laz')," +
-                "(N'Trnovče')," +
-                "(N'Trnovče')," +
-                "(N'Trnskidorovci')," +
-                "(N'Trnjana')," +
-                "(N'Trnjane')," +
-                "(N'Trnjane')," +
-                "(N'Trnjane')," +
-                "(N'Trnjaci')," +
-                "(N'Trnje')," +
-                "(N'Troponje')," +
-                "(N'Troskač')," +
-                "(N'Trpeza')," +
-                "(N'Trpeza')," +
-                "(N'Trpeze')," +
-                "(N'Trska')," +
-                "(N'Trstena')," +
-                "(N'Trstena')," +
-                "(N'Trstena')," +
-                "(N'Trstenik')," +
-                "(N'Trstenik')," +
-                "(N'Trstenik')," +
-                "(N'Trstenik')," +
-                "(N'Trstenica')," +
-                "(N'Trubarevac')," +
-                "(N'Trubarevo')," +
-                "(N'Trudelj')," +
-                "(N'Trudna')," +
-                "(N'Trudovo')," +
-                "(N'Trupale')," +
-                "(N'Trućevac')," +
-                "(N'Tršanovci')," +
-                "(N'Tršić')," +
-                "(N'Tubići')," +
-                "(N'Tubravić')," +
-                "(N'Tuđevce')," +
-                "(N'Tuđinsečina')," +
-                "(N'Tuzinje')," +
-                "(N'Tulare')," +
-                "(N'Tulare')," +
-                "(N'Tulari')," +
-                "(N'Tulež')," +
-                "(N'Tuleš')," +
-                "(N'Tulovo')," +
-                "(N'Tumba')," +
-                "(N'Tumičina')," +
-                "(N'Tunovo')," +
-                "(N'Tupale')," +
-                "(N'Tupalovce')," +
-                "(N'Tupanci')," +
-                "(N'Tupec')," +
-                "(N'Turekovac')," +
-                "(N'Turija')," +
-                "(N'Turija')," +
-                "(N'Turija Srbobran')," +
-                "(N'Turićevac')," +
-                "(N'Turica')," +
-                "(N'Turjak')," +
-                "(N'Turjak')," +
-                "(N'Turjane')," +
-                "(N'Turučica')," +
-                "(N'Tutin')," +
-                "(N'Tutiće')," +
-                "(N'Tučep')," +
-                "(N'Tučkovo')," +
-                "(N'Tušilje')," +
-                "(N'Tušiće')," +
-                "(N'Ćelije')," +
-                "(N'Ćelije')," +
-                "(N'Ćelije')," +
-                "(N'Ćenovac')," +
-                "(N'Ćerim')," +
-                "(N'Ćešanoviće')," +
-                "(N'Ćirez')," +
-                "(N'Ćirikovac')," +
-                "(N'Ćirkoviće')," +
-                "(N'Ćićevac')," +
-                "(N'Ćićina')," +
-                "(N'Ćovdin')," +
-                "(N'Ćukovac')," +
-                "(N'Ćukovac')," +
-                "(N'Ćukovac')," +
-                "(N'Ćukovine Koceljeva')," +
-                "(N'Ćulije')," +
-                "(N'Ćuprija')," +
-                "(N'Ćurkovica')," +
-                "(N'Ćurkovica')," +
-                "(N'Ćurlina Doljevac')," +
-                "(N'Ćuška')," +
-                "(N'Ćuštica')," +
-                "(N'Ub')," +
-                "(N'Uvac')," +
-                "(N'Ugao')," +
-                "(N'Ugljare')," +
-                "(N'Ugljare')," +
-                "(N'Ugljare')," +
-                "(N'Ugljarevac')," +
-                "(N'Ugljarevo')," +
-                "(N'Ugrinovci Zemun')," +
-                "(N'Ugrinovci')," +
-                "(N'Udovice')," +
-                "(N'Užice')," +
-                "(N'Uzveće')," +
-                "(N'Uzdin Kovačica')," +
-                "(N'Uzići')," +
-                "(N'Uzovnica')," +
-                "(N'Uzovo')," +
-                "(N'Ujz')," +
-                "(N'Ukča')," +
-                "(N'Ulije')," +
-                "(N'Uljma')," +
-                "(N'Umka')," +
-                "(N'Umčari')," +
-                "(N'Urvič')," +
-                "(N'Urmanica')," +
-                "(N'Urovica')," +
-                "(N'Urovci')," +
-                "(N'Uroševac')," +
-                "(N'Ursule')," +
-                "(N'Ursule')," +
-                "(N'Usije')," +
-                "(N'Utrine Ada')," +
-                "(N'Ušak')," +
-                "(N'Uševce')," +
-                "(N'Ušće')," +
-                "(N'Ušće')," +
-                "(N'Farkaždin')," +
-                "(N'Feketić Mali Iđoš')," +
-                "(N'Fijulj')," +
-                "(N'Filipovići')," +
-                "(N'Filić')," +
-                "(N'Firaja')," +
-                "(N'Firaja')," +
-                "(N'Firza')," +
-                "(N'Firićeja')," +
-                "(N'Futog')," +
-                "(N'Hajdukovo')," +
-                "(N'Hajdučica')," +
-                "(N'Halovo')," +
-                "(N'Hamidijabilić')," +
-                "(N'Hadžovići')," +
-                "(N'Hercegovačkaoleša')," +
-                "(N'Hercegovo')," +
-                "(N'Hetin')," +
-                "(N'Hisardžik')," +
-                "(N'Horgoš')," +
-                "(N'Hotkovo')," +
-                "(N'Hoča Zagradska')," +
-                "(N'Hrta')," +
-                "(N'Hrtica')," +
-                "(N'Hrtkovci')," +
-                "(N'Huljaj')," +
-                "(N'Hum')," +
-                "(N'Cakanovac')," +
-                "(N'Caparić')," +
-                "(N'Caparce')," +
-                "(N'Carevac')," +
-                "(N'Carevce')," +
-                "(N'Carinasečina')," +
-                "(N'Caričina')," +
-                "(N'Cvetanovac')," +
-                "(N'Cvetke')," +
-                "(N'Cvetovac')," +
-                "(N'Cvetojevac')," +
-                "(N'Cvetulja')," +
-                "(N'Cekavica')," +
-                "(N'Celina')," +
-                "(N'Ceranja')," +
-                "(N'Cerev Del')," +
-                "(N'Cerevajka')," +
-                "(N'Ceremošnja')," +
-                "(N'Cerje')," +
-                "(N'Cerje')," +
-                "(N'Cerje')," +
-                "(N'Cernica')," +
-                "(N'Cernica')," +
-                "(N'Cerova')," +
-                "(N'Cerova')," +
-                "(N'Cerova')," +
-                "(N'Cerova')," +
-                "(N'Cerova')," +
-                "(N'Cerovac')," +
-                "(N'Cerovac')," +
-                "(N'Cerovac')," +
-                "(N'Cerovik')," +
-                "(N'Cerovica')," +
-                "(N'Cerovica')," +
-                "(N'Cerovo')," +
-                "(N'Cetanoviće')," +
-                "(N'Cecelija')," +
-                "(N'Cikot')," +
-                "(N'Cikote')," +
-                "(N'Cikote')," +
-                "(N'Cokoviće')," +
-                "(N'Crvena Jabuka')," +
-                "(N'Crvena Jabuka')," +
-                "(N'Crvena')," +
-                "(N'Crvena Crkva')," +
-                "(N'Crveni')," +
-                "(N'Crveni Breg')," +
-                "(N'Crveni Breg')," +
-                "(N'Crvenirad')," +
-                "(N'Crvenka Kula')," +
-                "(N'Crvenčevo')," +
-                "(N'Crvenje')," +
-                "(N'Crvica')," +
-                "(N'Crvsko')," +
-                "(N'Crepaja Kovačica')," +
-                "(N'Crepulja')," +
-                "(N'Crkvena Vodicabilić')," +
-                "(N'Crkvenac')," +
-                "(N'Crkveni Toci')," +
-                "(N'Crkvina')," +
-                "(N'Crkvine')," +
-                "(N'Crkvine')," +
-                "(N'Crkvica')," +
-                "(N'Crkovnica')," +
-                "(N'Crkolez')," +
-                "(N'Crljenac')," +
-                "(N'Crmljane')," +
-                "(N'Crna')," +
-                "(N'Crna')," +
-                "(N'Crna')," +
-                "(N'Crna')," +
-                "(N'Crnalava')," +
-                "(N'Crna')," +
-                "(N'Crna Trava')," +
-                "(N'Crnajka')," +
-                "(N'Crnatovo')," +
-                "(N'Crnatovo')," +
-                "(N'Crni Breg')," +
-                "(N'Crni Vrh')," +
-                "(N'Crni Vrh')," +
-                "(N'Crni Vrh')," +
-                "(N'Crni Vrh')," +
-                "(N'Crni Kao')," +
-                "(N'Crni Kao')," +
-                "(N'Crni Lug')," +
-                "(N'Crni Lug')," +
-                "(N'Crni Lug')," +
-                "(N'Crnilo')," +
-                "(N'Crnovrana')," +
-                "(N'Crnovce')," +
-                "(N'Crnoklište')," +
-                "(N'Crnoljevica')," +
-                "(N'Crnoljevo')," +
-                "(N'Crnomasnica')," +
-                "(N'Crnotince')," +
-                "(N'Crnoštica')," +
-                "(N'Crnugovići')," +
-                "(N'Crnuzi')," +
-                "(N'Crnce')," +
-                "(N'Crnča')," +
-                "(N'Crnče')," +
-                "(N'Crnče')," +
-                "(N'Crcavac')," +
-                "(N'Crčevo')," +
-                "(N'Culine')," +
-                "(N'Culjković')," +
-                "(N'Čabić')," +
-                "(N'Čabra')," +
-                "(N'Čaglavica')," +
-                "(N'Čagrovac')," +
-                "(N'Čadinje')," +
-                "(N'Čairi')," +
-                "(N'Čajdrak')," +
-                "(N'Čajetina')," +
-                "(N'Čalma')," +
-                "(N'Čamurlija')," +
-                "(N'Čantavir')," +
-                "(N'Čapljinac Doljevac')," +
-                "(N'Čar')," +
-                "(N'Čarakovce')," +
-                "(N'Čarovina')," +
-                "(N'Čauševići')," +
-                "(N'Čačak')," +
-                "(N'Čašić Dolac')," +
-                "(N'Čedovo')," +
-                "(N'Čekmin')," +
-                "(N'Čelarevo')," +
-                "(N'Čelik')," +
-                "(N'Čelice')," +
-                "(N'Čelopek')," +
-                "(N'Čelopek')," +
-                "(N'Čenej')," +
-                "(N'Čenta')," +
-                "(N'Čepure')," +
-                "(N'Čerević')," +
-                "(N'Čerkez Sadovina')," +
-                "(N'Českovo')," +
-                "(N'Česta')," +
-                "(N'Čestelin')," +
-                "(N'Čestereg')," +
-                "(N'Čestin')," +
-                "(N'Čestobrodica')," +
-                "(N'Četereže')," +
-                "(N'Čečevo')," +
-                "(N'Čečina Doljevac')," +
-                "(N'Čečina')," +
-                "(N'Češko Selo')," +
-                "(N'Češljeva')," +
-                "(N'Čibukovac')," +
-                "(N'Čibutkovica')," +
-                "(N'Činiglavci')," +
-                "(N'Čipalje')," +
-                "(N'Čitak')," +
-                "(N'Čitluk')," +
-                "(N'Čitluk')," +
-                "(N'Čitluk')," +
-                "(N'Čitluk')," +
-                "(N'Čitluk')," +
-                "(N'Čitluk')," +
-                "(N'Čitluk')," +
-                "(N'Čiflak')," +
-                "(N'Čiflak')," +
-                "(N'Čiflik')," +
-                "(N'Čifluk Razgojnski')," +
-                "(N'Čmanjke')," +
-                "(N'Čoka')," +
-                "(N'Čokešina')," +
-                "(N'Čokonjar')," +
-                "(N'Čokot')," +
-                "(N'Čokotar')," +
-                "(N'Čokotin')," +
-                "(N'Čonoplja')," +
-                "(N'Čortanovci')," +
-                "(N'Čubra')," +
-                "(N'Čubrelj')," +
-                "(N'Čubura')," +
-                "(N'Čubura')," +
-                "(N'Čuka')," +
-                "(N'Čukarka')," +
-                "(N'Čukljenik')," +
-                "(N'Čukljenik')," +
-                "(N'Čukojevac')," +
-                "(N'Čukote')," +
-                "(N'Čukurovac')," +
-                "(N'Čumić')," +
-                "(N'Čungula')");
-                migrationBuilder.Sql(
-                "insert into Mesta(NazivMesta) values " +
-                "(N'Čungur')," +
-                "(N'Čupevo')," +
-                "(N'Čupevo')," +
-                "(N'Čurug Žabalj')," +
-                "(N'Čučale')," +
-                "(N'Čučuge')," +
-                "(N'Čučuljaga')," +
-                "(N'Džep')," +
-                "(N'Džepnica')," +
-                "(N'Džigolj')," +
-                "(N'Džurovo')," +
-                "(N'ŠaBač')," +
-                "(N'Šavac')," +
-                "(N'Šavrane')," +
-                "(N'Šavci')," +
-                "(N'Šainovac Doljevac')," +
-                "(N'Šainovac')," +
-                "(N'Šaić')," +
-                "(N'Šajinovac')," +
-                "(N'Šajince')," +
-                "(N'Šajkaš Titel')," +
-                "(N'Šajkovac')," +
-                "(N'Šakovica')," +
-                "(N'Šalinac')," +
-                "(N'Šaludovac')," +
-                "(N'Šalce')," +
-                "(N'Šaljinovica')," +
-                "(N'Šaljska Bistrica')," +
-                "(N'Šanac')," +
-                "(N'Šantarovac')," +
-                "(N'Šapine')," +
-                "(N'Šaprance')," +
-                "(N'Šaptelj')," +
-                "(N'Šarani')," +
-                "(N'Šarban')," +
-                "(N'Šarbane')," +
-                "(N'Šarbanovac')," +
-                "(N'Šarbanovac')," +
-                "(N'Šarbanovac')," +
-                "(N'Šare')," +
-                "(N'Šarenik')," +
-                "(N'Šarkamen')," +
-                "(N'Šarlinac Doljevac')," +
-                "(N'Šarlince')," +
-                "(N'Šaronje')," +
-                "(N'Šaronje')," +
-                "(N'Šarce')," +
-                "(N'Šatra')," +
-                "(N'Šatrinci')," +
-                "(N'Šašare')," +
-                "(N'Šašilovac')," +
-                "(N'Šašinci')," +
-                "(N'Šaškovac')," +
-                "(N'Šebet')," +
-                "(N'Ševarice')," +
-                "(N'Ševica')," +
-                "(N'Ševiš')," +
-                "(N'Ševrljuge')," +
-                "(N'Šepšin')," +
-                "(N'Šeremet')," +
-                "(N'Šestiabar')," +
-                "(N'Šetka')," +
-                "(N'Šetonje')," +
-                "(N'Šid')," +
-                "(N'Šilovo')," +
-                "(N'Šilovo')," +
-                "(N'Šilopaj')," +
-                "(N'Šiljakovacjevo')," +
-                "(N'Šiljomana')," +
-                "(N'Šimanovciinci')," +
-                "(N'Šipačina')," +
-                "(N'Šipikovo')," +
-                "(N'Šipitulabilić')," +
-                "(N'Šipova')," +
-                "(N'Šipolje')," +
-                "(N'Šipče')," +
-                "(N'Široka Planina')," +
-                "(N'Široke Njive')," +
-                "(N'Šišave')," +
-                "(N'Šišarka')," +
-                "(N'Šišatovac')," +
-                "(N'Šišince')," +
-                "(N'Šišman')," +
-                "(N'Šišmanovac')," +
-                "(N'Škoza')," +
-                "(N'Škrelje')," +
-                "(N'Šljivar')," +
-                "(N'Šljivica')," +
-                "(N'Šljivova')," +
-                "(N'Šljivovac')," +
-                "(N'Šljivovac')," +
-                "(N'Šljivovik')," +
-                "(N'Šljivovik')," +
-                "(N'Šljivovica')," +
-                "(N'Šljivovica')," +
-                "(N'Šljivovo')," +
-                "(N'Šogolj')," +
-                "(N'Šopić')," +
-                "(N'Šošiće')," +
-                "(N'Špaj')," +
-                "(N'Špiljani')," +
-                "(N'Špinadija')," +
-                "(N'Štava')," +
-                "(N'Štavalj')," +
-                "(N'Štavica')," +
-                "(N'Štedim')," +
-                "(N'Štimlje')," +
-                "(N'Šina')," +
-                "(N'Štitar')," +
-                "(N'Štitarac')," +
-                "(N'Štitare')," +
-                "(N'Štitare')," +
-                "(N'Štitarica')," +
-                "(N'Štitkovo')," +
-                "(N'Štrbac')," +
-                "(N'Štrbovac')," +
-                "(N'Štrbulovo')," +
-                "(N'Štrpce')," +
-                "(N'Štubik')," +
-                "(N'Štulac')," +
-                "(N'Štulac')," +
-                "(N'Štuoce')," +
-                "(N'Štupelj')," +
-                "(N'Štutica')," +
-                "(N'Šuvajić')," +
-                "(N'Šugrin')," +
-                "(N'Šuljam')," +
-                "(N'Šuljkovac')," +
-                "(N'Šuman')," +
-                "(N'Šumane')," +
-                "(N'Šumarak Kovin')," +
-                "(N'Šumarice')," +
-                "(N'Šumata Trnica')," +
-                "(N'Šume')," +
-                "(N'Šume')," +
-                "(N'Šupkovac')," +
-                "(N'Šupljak')," +
-                "(N'Šurić')," +
-                "(N'Šurice')," +
-                "(N'Šurjan')," +
-                "(N'Šurlane')," +
-                "(N'Šutci')," +
-                "(N'Šušara')," +
-                "(N'Šušeoka')," +
-                "(N'Šušnjar')," +
-                "(N'Šušure')");
+            migrationBuilder.Sql(
+          "insert into Mesta(NazivMesta) values " +
+          "(N'Nišor')," +
+          "(N'Njegoševo')," +
+          "(N'Nova Božurna')," +
+          "(N'Nova Brezovica')," +
+          "(N'Nova Varoš')," +
+          "(N'Nova Gajdobra')," +
+          "(N'Nova Pazova')," +
+          "(N'Nova')," +
+          "(N'Nova Crvenka')," +
+          "(N'Nova Crnja')," +
+          "(N'Nova Šumadija')," +
+          "(N'Novake')," +
+          "(N'Novaci')," +
+          "(N'Novi Banovci')," +
+          "(N'Novi Bečej')," +
+          "(N'Novi Bračin')," +
+          "(N'Novi Verić')," +
+          "(N'Novilog')," +
+          "(N'Novi Đurovac')," +
+          "(N'Novi Žednik')," +
+          "(N'Novi Zavoj')," +
+          "(N'Novi Itebej')," +
+          "(N'Novi Karlovci')," +
+          "(N'Novi Kneževac')," +
+          "(N'Novi Kozarci')," +
+          "(N'Novi Kozjak')," +
+          "(N'Novi Milanovac')," +
+          "(N'Novi Miraš')," +
+          "(N'Novi Pazar')," +
+          "(N'Novi Raušić')," +
+          "(N'Novi Sad')," +
+          "(N'Novi Sip')," +
+          "(N'Novi Slankamen')," +
+          "(N'Novo Brdo')," +
+          "(N'Novo Korito')," +
+          "(N'Novo Lanište')," +
+          "(N'Novo Miloševo')," +
+          "(N'Novo Momčilovo')," +
+          "(N'Novorahovo')," +
+          "(N'Novo Rujce')," +
+          "(N'Novo Selo')," +
+          "(N'Novo Selo Begovo')," +
+          "(N'Novo Selo Mađunsko')," +
+          "(N'Novo Čikatovo')," +
+          "(N'Nogavac')," +
+          "(N'Nozrina')," +
+          "(N'Nomanica')," +
+          "(N'Norča')," +
+          "(N'Nosalje')," +
+          "(N'Nosoljin')," +
+          "(N'Noćaj')," +
+          "(N'Noćaje')," +
+          "(N'Obajgora')," +
+          "(N'Oblačina')," +
+          "(N'Oblička Sena')," +
+          "(N'Obornjača Ada')," +
+          "(N'Obornjača')," +
+          "(N'Obradovce')," +
+          "(N'Obražda')," +
+          "(N'Obrandža')," +
+          "(N'Obrva')," +
+          "(N'Obrež')," +
+          "(N'Obrežinci')," +
+          "(N'Obrenovac')," +
+          "(N'Obrovac')," +
+          "(N'Obrtince')," +
+          "(N'Ovsinjinac')," +
+          "(N'Ovsište')," +
+          "(N'Ovča')," +
+          "(N'Ovčar Banja')," +
+          "(N'Ovčare')," +
+          "(N'Ovčarevo')," +
+          "(N'Ovčinja')," +
+          "(N'Ogarinci')," +
+          "(N'Oglađenovac')," +
+          "(N'Ogošte')," +
+          "(N'Odanovce')," +
+          "(N'Odevce')," +
+          "(N'Odojeviće')," +
+          "(N'Ozrem')," +
+          "(N'Ozrim')," +
+          "(N'Ojkovica')," +
+          "(N'Oklap')," +
+          "(N'Oklace')," +
+          "(N'Okletac')," +
+          "(N'Okolište')," +
+          "(N'Okose')," +
+          "(N'Okosnica')," +
+          "(N'Okraštica')," +
+          "(N'Okruglica')," +
+          "(N'Omoljica')," +
+          "(N'Opaljenik')," +
+          "(N'Oparić')," +
+          "(N'Oplanić')," +
+          "(N'Oplanići')," +
+          "(N'Opovopovo')," +
+          "(N'Opornica')," +
+          "(N'Opteruša')," +
+          "(N'Orane')," +
+          "(N'Oraovac')," +
+          "(N'Oraovica')," +
+          "(N'Orahovo')," +
+          "(N'Orašac')," +
+          "(N'Oraše')," +
+          "(N'Orašje')," +
+          "(N'Oreovac')," +
+          "(N'Oreovica')," +
+          "(N'Orešac')," +
+          "(N'Oreškovica')," +
+          "(N'Orid ')," +
+          "(N'Orlane')," +
+          "(N'Orlate')," +
+          "(N'Orlovat')," +
+          "(N'Orlovac')," +
+          "(N'Orlović')," +
+          "(N'Orlja')," +
+          "(N'Orljalava')," +
+          "(N'Orljane')," +
+          "(N'Orlje')," +
+          "(N'Orljevo')," +
+          "(N'Orno Brdo')," +
+          "(N'Orovička Planina')," +
+          "(N'Orom')," +
+          "(N'Oruglica')," +
+          "(N'Orčušaora')," +
+          "(N'Osanica')," +
+          "(N'Osaonica')," +
+          "(N'Osek Paša')," +
+          "(N'Osek Hilja')," +
+          "(N'Osečenica')," +
+          "(N'Osipaonica')," +
+          "(N'Osladić')," +
+          "(N'Oslare')," +
+          "(N'Osmakova')," +
+          "(N'Osnić')," +
+          "(N'Osojane')," +
+          "(N'Osoje')," +
+          "(N'Osonica')," +
+          "(N'Osreci')," +
+          "(N'Ostatovica')," +
+          "(N'Ostojićevo')," +
+          "(N'Ostra')," +
+          "(N'Ostralava')," +
+          "(N'Ostraće')," +
+          "(N'Ostrikovac')," +
+          "(N'Ostrovica')," +
+          "(N'Ostrovo')," +
+          "(N'Ostrozub')," +
+          "(N'Ostružanj')," +
+          "(N'Ostružnica')," +
+          "(N'Ostrc')," +
+          "(N'Otanj')," +
+          "(N'Otroci')," +
+          "(N'Oholje')," +
+          "(N'Očage')," +
+          "(N'Ošljane')," +
+          "(N'Oštra Stijena')," +
+          "(N'Oštrelj')," +
+          "(N'Pavaštica')," +
+          "(N'Pavlica')," +
+          "(N'Pavličina')," +
+          "(N'Pavliš')," +
+          "(N'Pavlovac')," +
+          "(N'Pavlovci')," +
+          "(N'Pavlje')," +
+          "(N'Pagaruša')," +
+          "(N'Padalište')," +
+          "(N'Padež')," +
+          "(N'Padej')," +
+          "(N'Padina')," +
+          "(N'Padine')," +
+          "(N'Padinska Skela')," +
+          "(N'Pajazitovo')," +
+          "(N'Pajež')," +
+          "(N'Pajkovac')," +
+          "(N'Pajsak')," +
+          "(N'Pajsijević')," +
+          "(N'Pakašnica')," +
+          "(N'Pakleštica')," +
+          "(N'Paklje')," +
+          "(N'Pakovraće')," +
+          "(N'Palatna')," +
+          "(N'Paležnica')," +
+          "(N'Palivodenica')," +
+          "(N'Paligrace')," +
+          "(N'Palikuća')," +
+          "(N'Palilula')," +
+          "(N'Palić')," +
+          "(N'Palojce')," +
+          "(N'Palja')," +
+          "(N'Paljabarda')," +
+          "(N'Paljane')," +
+          "(N'Paljevo')," +
+          "(N'Paljevštica')," +
+          "(N'Paljina')," +
+          "(N'Paljuvi')," +
+          "(N'Pambukovica')," +
+          "(N'Panevljeja')," +
+          "(N'Pankovo')," +
+          "(N'Panojeviće')," +
+          "(N'Panonija')," +
+          "(N'Pantina')," +
+          "(N'Pančevo')," +
+          "(N'Pančelo')," +
+          "(N'Panjak')," +
+          "(N'Panjevac')," +
+          "(N'Papaz')," +
+          "(N'Papić')," +
+          "(N'Papiće')," +
+          "(N'Papratište')," +
+          "(N'Papratna')," +
+          "(N'Papraćane')," +
+          "(N'Parage')," +
+          "(N'Parada')," +
+          "(N'Paralovo')," +
+          "(N'Paramun')," +
+          "(N'Paraćin')," +
+          "(N'Pardik')," +
+          "(N'Parmenac')," +
+          "(N'Parta')," +
+          "(N'Parteš')," +
+          "(N'Parunovac')," +
+          "(N'Paruce')," +
+          "(N'Parcane')," +
+          "(N'Parcani')," +
+          "(N'Parčin')," +
+          "(N'Pasi Poljana')," +
+          "(N'Pasjak')," +
+          "(N'Pasjane')," +
+          "(N'Pasjač')," +
+          "(N'Pasjača')," +
+          "(N'Pasji Potok')," +
+          "(N'Paskašija')," +
+          "(N'Paskovac')," +
+          "(N'Pasoma')," +
+          "(N'Paune')," +
+          "(N'Pacaj')," +
+          "(N'Pačarađa')," +
+          "(N'Pačir')," +
+          "(N'Pašinac')," +
+          "(N'Pašino Selo')," +
+          "(N'Paštrić')," +
+          "(N'Pear')," +
+          "(N'Pejinović')," +
+          "(N'Pejkovac')," +
+          "(N'Pekčanica')," +
+          "(N'Penduha')," +
+          "(N'Pepelj')," +
+          "(N'Pepeljevac')," +
+          "(N'Pepiće')," +
+          "(N'Perane')," +
+          "(N'Periš')," +
+          "(N'Perlez')," +
+          "(N'Pertate')," +
+          "(N'Perunika')," +
+          "(N'Perutina')," +
+          "(N'Perućac')," +
+          "(N'Pestiš')," +
+          "(N'Pestovo')," +
+          "(N'Petačinci')," +
+          "(N'Peterlaš')," +
+          "(N'Petina')," +
+          "(N'Petka')," +
+          "(N'Petković')," +
+          "(N'Petkovica')," +
+          "(N'Petlovača')," +
+          "(N'Petnica')," +
+          "(N'Petraštica')," +
+          "(N'Petrijevo')," +
+          "(N'Petrilje')," +
+          "(N'Petrovaradin')," +
+          "(N'Petrovac')," +
+          "(N'Petrovac na Mlavi')," +
+          "(N'Petrović')," +
+          "(N'Petrovo')," +
+          "(N'Petrovo Polje')," +
+          "(N'Petrovo Selo')," +
+          "(N'Petrovce')," +
+          "(N'Petrovčić')," +
+          "(N'Petropolje')," +
+          "(N'Petruša')," +
+          "(N'Petrušan')," +
+          "(N'Peć')," +
+          "(N'Pećane')," +
+          "(N'Pećani')," +
+          "(N'Pećinci')," +
+          "(N'Pecka')," +
+          "(N'Pečanica')," +
+          "(N'Pečeno')," +
+          "(N'Pečenog')," +
+          "(N'Pečenjevce')," +
+          "(N'Pivnice')," +
+          "(N'Pidić')," +
+          "(N'Pilareta')," +
+          "(N'Pilatovići')," +
+          "(N'Pilica')," +
+          "(N'Pinosavaac')," +
+          "(N'Pirane')," +
+          "(N'Pirkovac')," +
+          "(N'Piroman')," +
+          "(N'Pirot')," +
+          "(N'Pirče ')," +
+          "(N'Piskalje')," +
+          "(N'Piskanja')," +
+          "(N'Piskopovce')," +
+          "(N'Piskupovo')," +
+          "(N'Pištane')," +
+          "(N'Plava')," +
+          "(N'Plavkovo')," +
+          "(N'Plavljane')," +
+          "(N'Plavna')," +
+          "(N'Plavce')," +
+          "(N'Plažane')," +
+          "(N'Plajnik')," +
+          "(N'Plakaonica')," +
+          "(N'Plana')," +
+          "(N'Plandište')," +
+          "(N'Planeja')," +
+          "(N'Planina')," +
+          "(N'Planinica')," +
+          "(N'Planjane')," +
+          "(N'Plaskovac')," +
+          "(N'Platičevo')," +
+          "(N'Plašće')," +
+          "(N'Plemetina')," +
+          "(N'Plenibabe')," +
+          "(N'Pleš')," +
+          "(N'Plešin')," +
+          "(N'Plešina')," +
+          "(N'Plitković')," +
+          "(N'Ploča')," +
+          "(N'Pločica')," +
+          "(N'Pločice')," +
+          "(N'Pločnik')," +
+          "(N'Plužac')," +
+          "(N'Plužina')," +
+          "(N'Pljakovo')," +
+          "(N'Pljančor')," +
+          "(N'Pljačkovica')," +
+          "(N'Pobeda')," +
+          "(N'Pobrđe')," +
+          "(N'Poganovo')," +
+          "(N'Pogled')," +
+          "(N'Pograđe')," +
+          "(N'Poda')," +
+          "(N'Podvis')," +
+          "(N'Podvrška')," +
+          "(N'Podgorac')," +
+          "(N'Podgorce')," +
+          "(N'Podgrađe')," +
+          "(N'Podina')," +
+          "(N'Podlokanj')," +
+          "(N'Podnemić')," +
+          "(N'Podrimce')," +
+          "(N'Podujevo')," +
+          "(N'Podunavci')," +
+          "(N'Požar')," +
+          "(N'Požaranje')," +
+          "(N'Požarevac')," +
+          "(N'Požega')," +
+          "(N'Požegrmac')," +
+          "(N'Požeženo')," +
+          "(N'Požežina')," +
+          "(N'Pozlata')," +
+          "(N'Pojate')," +
+          "(N'Pojatište')," +
+          "(N'Poklek')," +
+          "(N'Pokrvenik')," +
+          "(N'Pokrevenik')," +
+          "(N'Polatna')," +
+          "(N'Polička')," +
+          "(N'Polokce')," +
+          "(N'Polom')," +
+          "(N'Poluža')," +
+          "(N'Polumir')," +
+          "(N'Poljana')," +
+          "(N'Poljane')," +
+          "(N'Poljanice')," +
+          "(N'Poljance')," +
+          "(N'Poljaci')," +
+          "(N'Poljna')," +
+          "(N'Poljska Ržana')," +
+          "(N'Pomazatin')," +
+          "(N'Pomijača')," +
+          "(N'Poneš')," +
+          "(N'Ponikve')," +
+          "(N'Ponikovica')," +
+          "(N'Ponor')," +
+          "(N'Ponorac')," +
+          "(N'Ponoševac')," +
+          "(N'Popadić')," +
+          "(N'Pope')," +
+          "(N'Popina')," +
+          "(N'Popinci')," +
+          "(N'Popiće')," +
+          "(N'Popova')," +
+          "(N'Popovac')," +
+          "(N'Popović')," +
+          "(N'Popovići')," +
+          "(N'Popovica')," +
+          "(N'Popovljane')," +
+          "(N'Popovnjak')," +
+          "(N'Popovo')," +
+          "(N'Popovce')," +
+          "(N'Popovci')," +
+          "(N'Popučke')," +
+          "(N'Popšica')," +
+          "(N'Porodin')," +
+          "(N'Poroštica')," +
+          "(N'Poružnica')," +
+          "(N'Poskurice')," +
+          "(N'Poslište')," +
+          "(N'Poslon')," +
+          "(N'Postenje')," +
+          "(N'Potkomlje')," +
+          "(N'Potkrš')," +
+          "(N'Potok')," +
+          "(N'Potočanje')," +
+          "(N'Potočac')," +
+          "(N'Potočić')," +
+          "(N'Potpeće')," +
+          "(N'Potporanj')," +
+          "(N'Potreb')," +
+          "(N'Potrkanje')," +
+          "(N'Poturovce')," +
+          "(N'Pousko')," +
+          "(N'Pocerski Metković')," +
+          "(N'Pocerski Pričinović')," +
+          "(N'Pocesje')," +
+          "(N'Počekovina')," +
+          "(N'Počešće')," +
+          "(N'Pravoševo')," +
+          "(N'Pralja')," +
+          "(N'Pranjani')," +
+          "(N'Pranjci')," +
+          "(N'Praskovče')," +
+          "(N'Prahovo')," +
+          "(N'Prača')," +
+          "(N'Prva Kutina')," +
+          "(N'Prvi Tunel ')," +
+          "(N'Prvonekja')," +
+          "(N'Prebreza')," +
+          "(N'Prevalacja')," +
+          "(N'Prevetica')," +
+          "(N'Prevešt')," +
+          "(N'Prevlak')," +
+          "(N'Predvorica')," +
+          "(N'Predejane')," +
+          "(N'Predole')," +
+          "(N'Prekadin')," +
+          "(N'Prekale')," +
+          "(N'Prekašnica')," +
+          "(N'Prekovce')," +
+          "(N'Prekodolce')," +
+          "(N'Prekoluka')," +
+          "(N'Prekonoga')," +
+          "(N'Prekonozi')," +
+          "(N'Prekopeča')," +
+          "(N'Prekopuce')," +
+          "(N'Prekopčelica')," +
+          "(N'Prekorađa')," +
+          "(N'Prelez')," +
+          "(N'Prelovac')," +
+          "(N'Preljina')," +
+          "(N'Premeća')," +
+          "(N'Preobraženje')," +
+          "(N'Preoce')," +
+          "(N'Prepolac')," +
+          "(N'Preseka')," +
+          "(N'Pre')," +
+          "(N'Preslap')," +
+          "(N'Pretežana')," +
+          "(N'Pretina')," +
+          "(N'Pretoke')," +
+          "(N'Pretrešnja')," +
+          "(N'Pretrkovac')," +
+          "(N'Preševo')," +
+          "(N'Pržojne')," +
+          "(N'Pribovce')," +
+          "(N'Priboj')," +
+          "(N'Pribojska')," +
+          "(N'Pribojske Čelice')," +
+          "(N'Privinalava')," +
+          "(N'Prigoda')," +
+          "(N'Prigrevica')," +
+          "(N'Pridvorice')," +
+          "(N'Pridoli')," +
+          "(N'Prizren')," +
+          "(N'Prijanovići')," +
+          "(N'Prijevor')," +
+          "(N'Prijezdić')," +
+          "(N'Prijepolje')," +
+          "(N'Prilep')," +
+          "(N'Prilepac')," +
+          "(N'Prilepnica')," +
+          "(N'Prilike')," +
+          "(N'Prilipac')," +
+          "(N'Prilužje')," +
+          "(N'Prisjan')," +
+          "(N'Prislonica')," +
+          "(N'Pričevac')," +
+          "(N'Pričević')," +
+          "(N'Priština')," +
+          "(N'Prkosava')," +
+          "(N'Prlita')," +
+          "(N'Prnjavor')," +
+          "(N'Provaljenik')," +
+          "(N'Provo')," +
+          "(N'Progar')," +
+          "(N'Progorelica')," +
+          "(N'Progoreoci')," +
+          "(N'Prokuplje')," +
+          "(N'Prolesje')," +
+          "(N'Prolom')," +
+          "(N'Propaštica')," +
+          "(N'Prosek')," +
+          "(N'Protopopinci')," +
+          "(N'Proštinac')," +
+          "(N'Prćenova')," +
+          "(N'Prćilovica')," +
+          "(N'Prugovac')," +
+          "(N'Prugovo')," +
+          "(N'Pružanj')," +
+          "(N'Pružatovac')," +
+          "(N'Prhovoinci')," +
+          "(N'Prčevo')," +
+          "(N'Pudarci')," +
+          "(N'Pukovac')," +
+          "(N'Pusta Tušimlja')," +
+          "(N'Pustenik')," +
+          "(N'Pusto Selo')," +
+          "(N'Pusto Šilovo')," +
+          "(N'Pustovlah')," +
+          "(N'Putinci')," +
+          "(N'Putnikovo')," +
+          "(N'Puhovac')," +
+          "(N'Puhovo')," +
+          "(N'Pšanik')," +
+          "(N'Rabas')," +
+          "(N'Rabe')," +
+          "(N'Rabenovac')," +
+          "(N'Rabovce')," +
+          "(N'Rabrovac')," +
+          "(N'Rabrovo')," +
+          "(N'Ravanica')," +
+          "(N'Ravna')," +
+          "(N'Ravna Banja')," +
+          "(N'Ravnaora')," +
+          "(N'Ravna Dubrava')," +
+          "(N'Ravna Reka')," +
+          "(N'Ravnaja')," +
+          "(N'Ravni')," +
+          "(N'Ravni Del')," +
+          "(N'Ravni Do')," +
+          "(N'Ravni Topolovac')," +
+          "(N'Ravni Šort')," +
+          "(N'Ravnište')," +
+          "(N'Ravno Bučje')," +
+          "(N'Ravno Selo')," +
+          "(N'Ravnje')," +
+          "(N'Ragodeš')," +
+          "(N'Radavac')," +
+          "(N'Radalj')," +
+          "(N'Radaljevo')," +
+          "(N'Radaljica')," +
+          "(N'Radanovci')," +
+          "(N'Radevo')," +
+          "(N'Radevce')," +
+          "(N'Radejna')," +
+          "(N'Radenka')," +
+          "(N'Radenkovac')," +
+          "(N'Radenković')," +
+          "(N'Radešaora')," +
+          "(N'Radivojce')," +
+          "(N'Radijevići')," +
+          "(N'Radikina Bara')," +
+          "(N'Radinac')," +
+          "(N'Radinovac')," +
+          "(N'Radinjince')," +
+          "(N'Radičevac')," +
+          "(N'Radičević')," +
+          "(N'Radičevci')," +
+          "(N'Radiševo')," +
+          "(N'Radljevo')," +
+          "(N'Radmanovo')," +
+          "(N'Radmilović')," +
+          "(N'Radmirovac')," +
+          "(N'Radobić')," +
+          "(N'Radobuđa')," +
+          "(N'Radovanje')," +
+          "(N'Radovašnica ')," +
+          "(N'Radovnica')," +
+          "(N'Radovci')," +
+          "(N'Radoinja')," +
+          "(N'Radojevo')," +
+          "(N'Radonjić')," +
+          "(N'Radonjica')," +
+          "(N'Radosin')," +
+          "(N'Radoste')," +
+          "(N'Radoševac')," +
+          "(N'Radoševac')," +
+          "(N'Radoševac')," +
+          "(N'Radoševo')," +
+          "(N'Radošin')," +
+          "(N'Radošiće')," +
+          "(N'Radujevac')," +
+          "(N'Radulovac')," +
+          "(N'Radunje')," +
+          "(N'Raduhovce')," +
+          "(N'Raduša')," +
+          "(N'Rađevo Selo')," +
+          "(N'Ražanj')," +
+          "(N'Raždaginja')," +
+          "(N'Razbojna')," +
+          "(N'Razgojna')," +
+          "(N'Rajanovce')," +
+          "(N'Rajac')," +
+          "(N'Rajetiće')," +
+          "(N'Rajinac')," +
+          "(N'Rajince')," +
+          "(N'Rajkinac')," +
+          "(N'Rajkovac')," +
+          "(N'Rajković')," +
+          "(N'Rajkoviće')," +
+          "(N'Rajno Polje')," +
+          "(N'Rajčevce')," +
+          "(N'Rajčetine')," +
+          "(N'Rajčilovci')," +
+          "(N'Rajčinoviće')," +
+          "(N'Rajčinovićka Trnava')," +
+          "(N'Raka')," +
+          "(N'Rakari')," +
+          "(N'Rakinac')," +
+          "(N'Rakinica')," +
+          "(N'Rakita')," +
+          "(N'Rakitnica')," +
+          "(N'Rakitovo')," +
+          "(N'Raklja')," +
+          "(N'Rakov Dol')," +
+          "(N'Rakova')," +
+          "(N'Rakova Bara')," +
+          "(N'Rakovac')," +
+          "(N'Rakovina')," +
+          "(N'Rakovica')," +
+          "(N'Rakoc')," +
+          "(N'Rakoš')," +
+          "(N'Ralja')," +
+          "(N'Raljin')," +
+          "(N'Ram')," +
+          "(N'Ramaća')," +
+          "(N'Ramoc')," +
+          "(N'Ramoševo')," +
+          "(N'Ranatovce')," +
+          "(N'Randubrava')," +
+          "(N'Ranilović')," +
+          "(N'Ranilug')," +
+          "(N'Rankova Reka')," +
+          "(N'Ranovac')," +
+          "(N'Ranutovac')," +
+          "(N'Rance')," +
+          "(N'Rančiće')," +
+          "(N'Raskovo')," +
+          "(N'Rasna')," +
+          "(N'Rasnica')," +
+          "(N'Rasno')," +
+          "(N'Raspoganče')," +
+          "(N'Rast')," +
+          "(N'Rastavica')," +
+          "(N'Rastelica')," +
+          "(N'Rastenoviće')," +
+          "(N'Rastina')," +
+          "(N'Rastište')," +
+          "(N'Rastovnica')," +
+          "(N'Rataje')," +
+          "(N'Ratajska')," +
+          "(N'Ratare')," +
+          "(N'Ratari')," +
+          "(N'Ratina')," +
+          "(N'Ratkovac')," +
+          "(N'Ratković')," +
+          "(N'Ratkovo')," +
+          "(N'Rautovo')," +
+          "(N'Raušić')," +
+          "(N'Rafuna')," +
+          "(N'Rahovica')," +
+          "(N'Racaj')," +
+          "(N'Rača')," +
+          "(N'Račak')," +
+          "(N'Rašanac')," +
+          "(N'Raševica')," +
+          "(N'Rašince')," +
+          "(N'Rašić')," +
+          "(N'Rašica')," +
+          "(N'Raška')," +
+          "(N'Rašković')," +
+          "(N'Raškoviće')," +
+          "(N'Raškoc')," +
+          "(N'Raštane')," +
+          "(N'Rvati')," +
+          "(N'Rvatska')," +
+          "(N'Rgaje')," +
+          "(N'Rgotina')," +
+          "(N'Rgošte')," +
+          "(N'Rdovo')," +
+          "(N'Rđavica')," +
+          "(N'Rebelj')," +
+          "(N'Revuće')," +
+          "(N'Režance')," +
+          "(N'Reževiće')," +
+          "(N'Rezala')," +
+          "(N'Reka')," +
+          "(N'Rekovac')," +
+          "(N'Reljan')," +
+          "(N'Reljinac')," +
+          "(N'Reljinci')," +
+          "(N'Renovac')," +
+          "(N'Rence')," +
+          "(N'Repa')," +
+          "(N'Repince')," +
+          "(N'Repište')," +
+          "(N'Repušnica')," +
+          "(N'Resavica')," +
+          "(N'Resavica (selo)')," +
+          "(N'Resen')," +
+          "(N'Resinac')," +
+          "(N'Resnik')," +
+          "(N'Restelica Gora')," +
+          "(N'Retimlje')," +
+          "(N'Retkocer')," +
+          "(N'Rečane')," +
+          "(N'Rečica')," +
+          "(N'Rečice')," +
+          "(N'Rečka')," +
+          "(N'Ržana ')," +
+          "(N'Ržanica')," +
+          "(N'Rznić')," +
+          "(N'Ribare')," +
+          "(N'Ribari')," +
+          "(N'Ribariće')," +
+          "(N'Ribarice')," +
+          "(N'Ribarska Banja')," +
+          "(N'Ribarci')," +
+          "(N'Ribaševina')," +
+          "(N'Ribince')," +
+          "(N'Ribnik')," +
+          "(N'Ribnica')," +
+          "(N'Rivica')," +
+          "(N'Riđage')," +
+          "(N'Riđake')," +
+          "(N'Riđevštica')," +
+          "(N'Riđica')," +
+          "(N'Rikačevo')," +
+          "(N'Riljac')," +
+          "(N'Rimanište')," +
+          "(N'Ripaj')," +
+          "(N'Ripanjac')," +
+          "(N'Ristovac')," +
+          "(N'Ritiševo')," +
+          "(N'Ritopek')," +
+          "(N'Ritošići')," +
+          "(N'Rlica')," +
+          "(N'Roanda')," +
+          "(N'Robaje')," +
+          "(N'Robovac')," +
+          "(N'Rovine')," +
+          "(N'Rovni')," +
+          "(N'Rogavčina')," +
+          "(N'Rogača')," +
+          "(N'Rogačica')," +
+          "(N'Roge')," +
+          "(N'Rogljevo')," +
+          "(N'Rogovo')," +
+          "(N'Rogojevac')," +
+          "(N'Rodelj')," +
+          "(N'Rožanstvo')," +
+          "(N'Rožanci')," +
+          "(N'Roždace')," +
+          "(N'Rožina')," +
+          "(N'Rokci')," +
+          "(N'Romaja')," +
+          "(N'Romune')," +
+          "(N'Ropica')," +
+          "(N'Ropočevo')," +
+          "(N'Rosići')," +
+          "(N'Rosica')," +
+          "(N'Rosomač')," +
+          "(N'Rosulje')," +
+          "(N'Roćevac')," +
+          "(N'Roćevići')," +
+          "(N'Rošci')," +
+          "(N'Rsavci')," +
+          "(N'Rsovac')," +
+          "(N'Rsovci')," +
+          "(N'Rtanj')," +
+          "(N'Rtari')," +
+          "(N'Rti')," +
+          "(N'Rtkovo')," +
+          "(N'Rubribreza')," +
+          "(N'Ruda Bukva')," +
+          "(N'Rudare')," +
+          "(N'Rudenice')," +
+          "(N'Rudine')," +
+          "(N'Rudinje')," +
+          "(N'Rudice')," +
+          "(N'Rudnalava')," +
+          "(N'Rudnik')," +
+          "(N'Rudnica')," +
+          "(N'Rudno')," +
+          "(N'Rudnjak')," +
+          "(N'Rudovci')," +
+          "(N'Ruđa')," +
+          "(N'Ruđinci')," +
+          "(N'Ružić')," +
+          "(N'Rujevac')," +
+          "(N'Rujevica')," +
+          "(N'Rujišnik')," +
+          "(N'Rujište')," +
+          "(N'Rujkovac')," +
+          "(N'Rujnik')," +
+          "(N'Ruklada')," +
+          "(N'Ruma')," +
+          "(N'Rumenka')," +
+          "(N'Rumska ')," +
+          "(N'Runjani')," +
+          "(N'Runjevo')," +
+          "(N'Rupeljevo')," +
+          "(N'Ruplje')," +
+          "(N'Rusinovce')");
+            migrationBuilder.Sql(
+          "insert into Mesta(NazivMesta) values " +
+          "(N'Ruski Krstur')," +
+          "(N'Rusko Selo')," +
+          "(N'Rusna')," +
+          "(N'Rusce')," +
+          "(N'Rutevac')," +
+          "(N'Rutoši')," +
+          "(N'Ruhot')," +
+          "(N'Rucka')," +
+          "(N'Rucmance')," +
+          "(N'Ručići')," +
+          "(N'Rušanj')," +
+          "(N'Savinac')," +
+          "(N'Savino Selo Vrbas')," +
+          "(N'Savković')," +
+          "(N'Savovo')," +
+          "(N'Savrovo')," +
+          "(N'Sagonjevo')," +
+          "(N'Sazlija')," +
+          "(N'Sainovina')," +
+          "(N'Sajan')," +
+          "(N'Sakar')," +
+          "(N'Sakulepovo')," +
+          "(N'Sakulja')," +
+          "(N'Salakovac')," +
+          "(N'Salaš')," +
+          "(N'Salaš Noćajski')," +
+          "(N'Salaš Crnobarski')," +
+          "(N'Samaila')," +
+          "(N'Samarinovac')," +
+          "(N'Samarnica')," +
+          "(N'Samodraža')," +
+          "(N'Samodreža')," +
+          "(N'Samokovo')," +
+          "(N'Samoljica')," +
+          "(N'Samoš')," +
+          "(N'Sanad')," +
+          "(N'Sandalj')," +
+          "(N'Sanković')," +
+          "(N'Sanovac')," +
+          "(N'Sapar')," +
+          "(N'Saranovo')," +
+          "(N'Saraorci')," +
+          "(N'Saroš')," +
+          "(N'Sastav Reka')," +
+          "(N'Saš')," +
+          "(N'Sveta Petka')," +
+          "(N'Svetićevo')," +
+          "(N'Svetlić')," +
+          "(N'Svetlje')," +
+          "(N'Svetozar Miletić')," +
+          "(N'Sveštica')," +
+          "(N'Svilajnac')," +
+          "(N'Svileuva')," +
+          "(N'Svilojevo')," +
+          "(N'Sviloš')," +
+          "(N'Svinjare')," +
+          "(N'Svinjarevo')," +
+          "(N'Svinjarica')," +
+          "(N'Svinjište')," +
+          "(N'Svirce')," +
+          "(N'Svođe')," +
+          "(N'Svojnovo')," +
+          "(N'Svračkovo')," +
+          "(N'Svračkovci')," +
+          "(N'Svrke')," +
+          "(N'Svrljig')," +
+          "(N'Svrljiška Topla')," +
+          "(N'Svrhe')," +
+          "(N'Svrčina')," +
+          "(N'Sebečevac')," +
+          "(N'Sebečevo')," +
+          "(N'Sebimilje')," +
+          "(N'Sebrat')," +
+          "(N'Severni Kočarnik')," +
+          "(N'Severovo')," +
+          "(N'Sevojno')," +
+          "(N'Sevce')," +
+          "(N'Sedlare')," +
+          "(N'Sedlari')," +
+          "(N'Sedobro')," +
+          "(N'Sezemče')," +
+          "(N'Sejace')," +
+          "(N'Sekirača')," +
+          "(N'Sekicol')," +
+          "(N'Sekurič')," +
+          "(N'Selanac')," +
+          "(N'Selačka')," +
+          "(N'Selevac')," +
+          "(N'Selenča')," +
+          "(N'Seleuš')," +
+          "(N'Selište')," +
+          "(N'Selo')," +
+          "(N'Selova')," +
+          "(N'Selogražde')," +
+          "(N'Seljane')," +
+          "(N'Seljance ')," +
+          "(N'Seljašnica')," +
+          "(N'Semanje')," +
+          "(N'Semegnjevo')," +
+          "(N'Semedraž')," +
+          "(N'Semeteš')," +
+          "(N'Semetište')," +
+          "(N'Semče')," +
+          "(N'Sena')," +
+          "(N'Senaja')," +
+          "(N'Sendo')," +
+          "(N'Senik')," +
+          "(N'Seništa')," +
+          "(N'Senokos')," +
+          "(N'Senta')," +
+          "(N'Senje')," +
+          "(N'Senjski Rudnik')," +
+          "(N'Seone')," +
+          "(N'Seoce')," +
+          "(N'Sepci')," +
+          "(N'Sesalac')," +
+          "(N'Sefer')," +
+          "(N'Sefkerinpovo')," +
+          "(N'Seča Reka')," +
+          "(N'Sečanica')," +
+          "(N'Sečanj')," +
+          "(N'Sečište')," +
+          "(N'Sibačinci')," +
+          "(N'Sibnica')," +
+          "(N'Sibovac')," +
+          "(N'Sivac')," +
+          "(N'Sivčina')," +
+          "(N'Siga')," +
+          "(N'Sige')," +
+          "(N'Siget')," +
+          "(N'Sijarina')," +
+          "(N'Sijarinska Banja')," +
+          "(N'Sijerač')," +
+          "(N'Sikirica')," +
+          "(N'Sikirje')," +
+          "(N'Sikole')," +
+          "(N'Silbaš')," +
+          "(N'Siljevica')," +
+          "(N'Simino Brdo')," +
+          "(N'Simićevo')," +
+          "(N'Sinaje')," +
+          "(N'Sinošević ')," +
+          "(N'Sinoševići')," +
+          "(N'Sinjalava')," +
+          "(N'Sinjac')," +
+          "(N'Sinji Vir')," +
+          "(N'Siokovac')," +
+          "(N'Sipić')," +
+          "(N'Sirakovo')," +
+          "(N'Sirdija')," +
+          "(N'Sirig')," +
+          "(N'Sirogojno')," +
+          "(N'Sirča')," +
+          "(N'Sisevac')," +
+          "(N'Sitarice')," +
+          "(N'Sitniče')," +
+          "(N'Sićevo')," +
+          "(N'Sjeverin')," +
+          "(N'Sjenica')," +
+          "(N'Skadar')," +
+          "(N'Skakavci')," +
+          "(N'Skela')," +
+          "(N'Skivjane')," +
+          "(N'Skobalj')," +
+          "(N'Skokuće')," +
+          "(N'Skorenovac')," +
+          "(N'Skorica')," +
+          "(N'Skorobište')," +
+          "(N'Skorošnik')," +
+          "(N'Skočna')," +
+          "(N'Skradnik')," +
+          "(N'Skrađani ')," +
+          "(N'Skrapež')," +
+          "(N'Skrvenica')," +
+          "(N'Skržuti')," +
+          "(N'Skrobnica')," +
+          "(N'Skrovna')," +
+          "(N'Skukovo')," +
+          "(N'Skulanevo')," +
+          "(N'Skupljen')," +
+          "(N'Slavinja')," +
+          "(N'Slavkovica')," +
+          "(N'Slavnik')," +
+          "(N'Slavujevac')," +
+          "(N'Slavujevce')," +
+          "(N'Sladaja')," +
+          "(N'Sladinac')," +
+          "(N'Slakovce')," +
+          "(N'Slankamenački Vinogradi')," +
+          "(N'Slanci')," +
+          "(N'Slapužane')," +
+          "(N'Slatina')," +
+          "(N'Slepčević')," +
+          "(N'Slivje')," +
+          "(N'Slivnica')," +
+          "(N'Slivovo')," +
+          "(N'Slišane')," +
+          "(N'Slovac')," +
+          "(N'Slovinje')," +
+          "(N'Slubica')," +
+          "(N'Slup')," +
+          "(N'Smać')," +
+          "(N'Smederevo')," +
+          "(N'Smederevska Palanka')," +
+          "(N'Smedovac')," +
+          "(N'Smilov Laz')," +
+          "(N'Smilovac')," +
+          "(N'Smilovci')," +
+          "(N'Smiljevac')," +
+          "(N'Smiljević')," +
+          "(N'Smira')," +
+          "(N'Smoluća')," +
+          "(N'Smoluša')," +
+          "(N'Smoljinac')," +
+          "(N'Smonica')," +
+          "(N'Smrdan')," +
+          "(N'Smrekovnica')," +
+          "(N'Snegotin')," +
+          "(N'Sovač')," +
+          "(N'Sovljak')," +
+          "(N'Soderce')," +
+          "(N'Sojevo')," +
+          "(N'Sokobanja')," +
+          "(N'Sokolac')," +
+          "(N'Sokolići')," +
+          "(N'Sokolovo')," +
+          "(N'Solačka Sena')," +
+          "(N'Solotuša')," +
+          "(N'Sombor')," +
+          "(N'Sonta')," +
+          "(N'Sopina')," +
+          "(N'Sopnić')," +
+          "(N'Sopot')," +
+          "(N'Sopotnica')," +
+          "(N'Sot')," +
+          "(N'Sofalija')," +
+          "(N'Softović')," +
+          "(N'Sočanica')," +
+          "(N'Sočica')," +
+          "(N'Sočice')," +
+          "(N'Spance')," +
+          "(N'Spančevac')," +
+          "(N'Sponce')," +
+          "(N'Srbica')," +
+          "(N'Srbobran')," +
+          "(N'Srbovac')," +
+          "(N'Srbovo')," +
+          "(N'Srednja Dobrinja')," +
+          "(N'Srednja')," +
+          "(N'Srednja Tušimlja')," +
+          "(N'Srednjevo')," +
+          "(N'Srednji Bučumet')," +
+          "(N'Srednji Del')," +
+          "(N'Srednji Salaš')," +
+          "(N'Srednji Statovac')," +
+          "(N'Sredor')," +
+          "(N'Sredska')," +
+          "(N'Srezovac')," +
+          "(N'Srezojevci')," +
+          "(N'Sremska Kamenica')," +
+          "(N'Sremska Mitrovica')," +
+          "(N'Sremska')," +
+          "(N'Sremski Karlovci')," +
+          "(N'Sremski Mihaljevci')," +
+          "(N'Sremčica')," +
+          "(N'Srećkovac')," +
+          "(N'Srndalje')," +
+          "(N'Srneći Dol')," +
+          "(N'Srnje')," +
+          "(N'Srpska Kuća')," +
+          "(N'Srpska Crnja')," +
+          "(N'Srpski')," +
+          "(N'Srpski Itebej')," +
+          "(N'Srpski Krstur')," +
+          "(N'Srpski Miletić')," +
+          "(N'Srpce')," +
+          "(N'Stave')," +
+          "(N'Stagovo')," +
+          "(N'Stajićevo')," +
+          "(N'Stajkovce')," +
+          "(N'Stalać')," +
+          "(N'Stamnica')," +
+          "(N'Stanevce')," +
+          "(N'Stanina Reka')," +
+          "(N'Staničenje')," +
+          "(N'Stanišinci')," +
+          "(N'Stanišić')," +
+          "(N'Stanišor')," +
+          "(N'Stankovce')," +
+          "(N'Stanuloviće')," +
+          "(N'Stance')," +
+          "(N'Stanci')," +
+          "(N'Stanča')," +
+          "(N'Stančić')," +
+          "(N'Stančići')," +
+          "(N'Stanjevo')," +
+          "(N'Stanjinac')," +
+          "(N'Stapar')," +
+          "(N'Stapari')," +
+          "(N'Stara Banja')," +
+          "(N'Stara Bingula')," +
+          "(N'Stara Božurna')," +
+          "(N'Stara Brezovica')," +
+          "(N'Stara Vučina')," +
+          "(N'Stara Moravica')," +
+          "(N'Stara Pazova')," +
+          "(N'Starac')," +
+          "(N'Stari Banovci')," +
+          "(N'Stari Bračin')," +
+          "(N'Starilog')," +
+          "(N'Stari Đurovac')," +
+          "(N'Stari Žednik')," +
+          "(N'Stari')," +
+          "(N'Stari Ledinci')," +
+          "(N'Stari Lec ')," +
+          "(N'Stari Miraš')," +
+          "(N'Stari Slankamen')," +
+          "(N'Stari Trg (rud.naselje)')," +
+          "(N'Stari')," +
+          "(N'Staroracko')," +
+          "(N'Staro Korito')," +
+          "(N'Staro Lanište')," +
+          "(N'Staro Momčilovo')," +
+          "(N'Staro Rujce')," +
+          "(N'Staro Selo')," +
+          "(N'Staro')," +
+          "(N'Starodvorane')," +
+          "(N'Starci')," +
+          "(N'Starčeviće')," +
+          "(N'Starčevo')," +
+          "(N'Stejanovci')," +
+          "(N'Stenjevac')," +
+          "(N'Stepanovićevo')," +
+          "(N'Stepanje')," +
+          "(N'Stepojevac')," +
+          "(N'Sterijino')," +
+          "(N'Stogazovac')," +
+          "(N'Stojačak')," +
+          "(N'Stojići')," +
+          "(N'Stojković')," +
+          "(N'Stojnik')," +
+          "(N'Stol')," +
+          "(N'Stopanja')," +
+          "(N'Stragari')," +
+          "(N'Stradovo')," +
+          "(N'Straža')," +
+          "(N'Strajiniće')," +
+          "(N'Strana')," +
+          "(N'Stranjevo')," +
+          "(N'Strezimirovci')," +
+          "(N'Strezovce')," +
+          "(N'Strelac')," +
+          "(N'Strelica')," +
+          "(N'Strešak')," +
+          "(N'Striža')," +
+          "(N'Strižilo')," +
+          "(N'Strmac')," +
+          "(N'Strmenica')," +
+          "(N'Strmnaora')," +
+          "(N'Strmovo')," +
+          "(N'Strmosten')," +
+          "(N'Strovce')," +
+          "(N'Strojinci')," +
+          "(N'Strojkovce')," +
+          "(N'Stropsko')," +
+          "(N'Struganik')," +
+          "(N'Struganica')," +
+          "(N'Stružje')," +
+          "(N'Strumce')," +
+          "(N'Stubal')," +
+          "(N'Stubica')," +
+          "(N'Stubla')," +
+          "(N'Stublenica')," +
+          "(N'Stublina')," +
+          "(N'Stubline')," +
+          "(N'Stublica')," +
+          "(N'Stublo')," +
+          "(N'Stubo')," +
+          "(N'Studena')," +
+          "(N'Studenac')," +
+          "(N'Studenica')," +
+          "(N'Studenčane')," +
+          "(N'Stup')," +
+          "(N'Stupnica')," +
+          "(N'Stupčevići')," +
+          "(N'Subjel')," +
+          "(N'Subotinac')," +
+          "(N'Subotica')," +
+          "(N'Subotište')," +
+          "(N'Suva Morava')," +
+          "(N'Suva Reka')," +
+          "(N'Suvaja')," +
+          "(N'Suvi Do')," +
+          "(N'Suvi Dol')," +
+          "(N'Suvi Lukavac')," +
+          "(N'Suvorlo')," +
+          "(N'Suvo Selo')," +
+          "(N'Suvodanje')," +
+          "(N'Suvodol')," +
+          "(N'Suvojnica')," +
+          "(N'Sugubine')," +
+          "(N'Sudimlja')," +
+          "(N'Sudsko Selo')," +
+          "(N'Sukovo')," +
+          "(N'Sumorovac')," +
+          "(N'Sumrakovac')," +
+          "(N'Supnje')," +
+          "(N'Supovac')," +
+          "(N'Supska')," +
+          "(N'Suračevo')," +
+          "(N'Surduk')," +
+          "(N'Surdul')," +
+          "(N'Surdula')," +
+          "(N'Surdulica')," +
+          "(N'Surkiš')," +
+          "(N'Surlica')," +
+          "(N'Surčin')," +
+          "(N'Susek')," +
+          "(N'Sutjeska')," +
+          "(N'Suharno')," +
+          "(N'Suhi Dol')," +
+          "(N'Suševlje')," +
+          "(N'Sušiće')," +
+          "(N'Sušica')," +
+          "(N'Tabakovac')," +
+          "(N'Tabanović')," +
+          "(N'Tabanovići')," +
+          "(N'Tavnik')," +
+          "(N'Tadenje')," +
+          "(N'Takovo')," +
+          "(N'Tamnič')," +
+          "(N'Tamnjanica')," +
+          "(N'Tanda')," +
+          "(N'Tankosić')," +
+          "(N'Taor')," +
+          "(N'Taradža')," +
+          "(N'Taraš')," +
+          "(N'Taskovići')," +
+          "(N'Tatrasnica')," +
+          "(N'Tačevac')," +
+          "(N'Taševo')," +
+          "(N'Tvrdići')," +
+          "(N'Tvrdojevac')," +
+          "(N'Tvrđan')," +
+          "(N'Tegovište')," +
+          "(N'Tegošnica')," +
+          "(N'Tekeriš')," +
+          "(N'Tekija')," +
+          "(N'Telečka')," +
+          "(N'Telovac')," +
+          "(N'Temerin')," +
+          "(N'Temska')," +
+          "(N'Teneš Do')," +
+          "(N'Tenkovo')," +
+          "(N'Teočinornji')," +
+          "(N'Tepeče')," +
+          "(N'Tesovište')," +
+          "(N'Teća')," +
+          "(N'Tečić')," +
+          "(N'Tešica')," +
+          "(N'Tibužde')," +
+          "(N'Tijanje')," +
+          "(N'Tijovac')," +
+          "(N'Tikva')," +
+          "(N'Tiodže')," +
+          "(N'Tirince')," +
+          "(N'Tisovica')," +
+          "(N'Titel')," +
+          "(N'Tićevac')," +
+          "(N'Tica')," +
+          "(N'Tmava')," +
+          "(N'Toba')," +
+          "(N'Tobolac')," +
+          "(N'Tovariševo')," +
+          "(N'Tovrljane')," +
+          "(N'Togočevce')," +
+          "(N'Todorin Do')," +
+          "(N'Todorovce')," +
+          "(N'Tolisavac')," +
+          "(N'Tolić')," +
+          "(N'Tolišnica')," +
+          "(N'Toljevac')," +
+          "(N'Tomance')," +
+          "(N'Tomanj')," +
+          "(N'Tomaševac')," +
+          "(N'Tometino Polje')," +
+          "(N'Tomislavci')," +
+          "(N'Topilo')," +
+          "(N'Topla')," +
+          "(N'Toplac')," +
+          "(N'Topli Do')," +
+          "(N'Topli Dol')," +
+          "(N'Topličane')," +
+          "(N'Topola')," +
+          "(N'Topolnica')," +
+          "(N'Topolovnik')," +
+          "(N'Toponica')," +
+          "(N'Torak')," +
+          "(N'Torina')," +
+          "(N'Tornik')," +
+          "(N'Tornjoš')," +
+          "(N'Totovo Selo')," +
+          "(N'Točilovo')," +
+          "(N'Trakanić')," +
+          "(N'Trbovce')," +
+          "(N'Trbosilje')," +
+          "(N'Trbunje')," +
+          "(N'Trbuhovac')," +
+          "(N'Trbušani')," +
+          "(N'Trbušac')," +
+          "(N'Trbušnica')," +
+          "(N'Trgovište')," +
+          "(N'Trdevac')," +
+          "(N'Trebinje')," +
+          "(N'Trebiće')," +
+          "(N'Trebović')," +
+          "(N'Trebotin')," +
+          "(N'Trejak')," +
+          "(N'Trepetinca')," +
+          "(N'Trećak')," +
+          "(N'Trešnjevak')," +
+          "(N'Trešnjevac')," +
+          "(N'Trešnjevica')," +
+          "(N'Tržac')," +
+          "(N'Tribrode')," +
+          "(N'Trijebine')," +
+          "(N'Trikose')," +
+          "(N'Tripkova')," +
+          "(N'Trlabuć')," +
+          "(N'Trlić')," +
+          "(N'Trmbas')," +
+          "(N'Trmka')," +
+          "(N'Trmčare')," +
+          "(N'Trn')," +
+          "(N'Trnava')," +
+          "(N'Trnavac')," +
+          "(N'Trnavica')," +
+          "(N'Trnavce')," +
+          "(N'Trnavci')," +
+          "(N'Trnićevce')," +
+          "(N'Trnovac')," +
+          "(N'Trnovi Laz')," +
+          "(N'Trnovče')," +
+          "(N'Trnski dorovci')," +
+          "(N'Trnjana')," +
+          "(N'Trnjaci')," +
+          "(N'Trnje')," +
+          "(N'Troponje')," +
+          "(N'Troskač')," +
+          "(N'Trpeza')," +
+          "(N'Trpeze')," +
+          "(N'Trska')," +
+          "(N'Trstena')," +
+          "(N'Trstenik')," +
+          "(N'Trstenica')," +
+          "(N'Trubarevac')," +
+          "(N'Trubarevo')," +
+          "(N'Trudelj')," +
+          "(N'Trudna')," +
+          "(N'Trudovo')," +
+          "(N'Trupale')," +
+          "(N'Trućevac')," +
+          "(N'Tršanovci')," +
+          "(N'Tršić')," +
+          "(N'Tubići')," +
+          "(N'Tubravić')," +
+          "(N'Tuđevce')," +
+          "(N'Tuđin')," +
+          "(N'Tuzinje')," +
+          "(N'Tulare')," +
+          "(N'Tulari')," +
+          "(N'Tulež')," +
+          "(N'Tuleš')," +
+          "(N'Tulovo')," +
+          "(N'Tumba')," +
+          "(N'Tumičina')," +
+          "(N'Tunovo')," +
+          "(N'Tupale')," +
+          "(N'Tupalovce')," +
+          "(N'Tupanci')," +
+          "(N'Tupec')," +
+          "(N'Turekovac')," +
+          "(N'Turija')," +
+          "(N'Turićevac')," +
+          "(N'Turica')," +
+          "(N'Turjak')," +
+          "(N'Turjane')," +
+          "(N'Turučica')," +
+          "(N'Tutin')," +
+          "(N'Tutiće')," +
+          "(N'Tučep')," +
+          "(N'Tučkovo')," +
+          "(N'Tušilje')," +
+          "(N'Tušiće')," +
+          "(N'Ćelije')," +
+          "(N'Ćenovac')," +
+          "(N'Ćerim')," +
+          "(N'Ćešanoviće')," +
+          "(N'Ćirez')," +
+          "(N'Ćirikovac')," +
+          "(N'Ćirkoviće')," +
+          "(N'Ćićevac')," +
+          "(N'Ćićina')," +
+          "(N'Ćovdin')," +
+          "(N'Ćukovac')," +
+          "(N'Ćukovine')," +
+          "(N'Ćulije')," +
+          "(N'Ćuprija')," +
+          "(N'Ćurkovica')," +
+          "(N'Ćurlina')," +
+          "(N'Ćuška')," +
+          "(N'Ćuštica')," +
+          "(N'Ub')," +
+          "(N'Uvac')," +
+          "(N'Ugao')," +
+          "(N'Ugljare')," +
+          "(N'Ugljarevac')," +
+          "(N'Ugljarevo')," +
+          "(N'Ugrinovci')," +
+          "(N'Udovice')," +
+          "(N'Užice')," +
+          "(N'Uzveće')," +
+          "(N'Uzdin')," +
+          "(N'Uzići')," +
+          "(N'Uzovnica')," +
+          "(N'Uzovo')," +
+          "(N'Ujz')," +
+          "(N'Ukča')," +
+          "(N'Ulije')," +
+          "(N'Uljma')," +
+          "(N'Umka')," +
+          "(N'Umčari')," +
+          "(N'Urvič')," +
+          "(N'Urmanica')," +
+          "(N'Urovica')," +
+          "(N'Urovci')," +
+          "(N'Uroševac')," +
+          "(N'Ursule')," +
+          "(N'Usije')," +
+          "(N'Utrine')," +
+          "(N'Ušak')," +
+          "(N'Uševce')," +
+          "(N'Ušće')," +
+          "(N'Farkaždin')," +
+          "(N'Feketić')," +
+          "(N'Fijulj')," +
+          "(N'Filipovići')," +
+          "(N'Filić')," +
+          "(N'Firaja')," +
+          "(N'Firza')," +
+          "(N'Firićeja')," +
+          "(N'Futog')," +
+          "(N'Hajdukovo')," +
+          "(N'Hajdučica')," +
+          "(N'Halovo')," +
+          "(N'Hamidija')," +
+          "(N'Hadžovići')," +
+          "(N'Hercegovo')," +
+          "(N'Hetin')," +
+          "(N'Hisardžik')," +
+          "(N'Horgoš')," +
+          "(N'Hotkovo')," +
+          "(N'Hoča')," +
+          "(N'Hrta')," +
+          "(N'Hrtica')," +
+          "(N'Hrtkovci')," +
+          "(N'Huljaj')," +
+          "(N'Hum')," +
+          "(N'Cakanovac')," +
+          "(N'Caparić')," +
+          "(N'Caparce')," +
+          "(N'Carevac')," +
+          "(N'Carevce')," +
+          "(N'Carina')," +
+          "(N'Caričina')," +
+          "(N'Cvetanovac')," +
+          "(N'Cvetke')," +
+          "(N'Cvetovac')," +
+          "(N'Cvetojevac')," +
+          "(N'Cvetulja')," +
+          "(N'Cekavica')," +
+          "(N'Celina')," +
+          "(N'Ceranja')," +
+          "(N'Cerev Del')," +
+          "(N'Cerevajka')," +
+          "(N'Ceremošnja')," +
+          "(N'Cerje')," +
+          "(N'Cernica')," +
+          "(N'Cerovaornji')," +
+          "(N'Cerova')," +
+          "(N'Cerovac')," +
+          "(N'Cerovik')," +
+          "(N'Cerovica')," +
+          "(N'Cerovo')," +
+          "(N'Cetanoviće')," +
+          "(N'Cecelija')," +
+          "(N'Cikot')," +
+          "(N'Cikote')," +
+          "(N'Cokoviće')," +
+          "(N'Crvena Jabuka')," +
+          "(N'Crvena Reka')," +
+          "(N'Crvena Crkva')," +
+          "(N'Crveni')," +
+          "(N'Crveni Breg')," +
+          "(N'Crvenirad')," +
+          "(N'Crvenka')," +
+          "(N'Crvenčevo')," +
+          "(N'Crvenje')," +
+          "(N'Crvica')," +
+          "(N'Crvsko')," +
+          "(N'Crepaja')," +
+          "(N'Crepulja')," +
+          "(N'Crkvena')," +
+          "(N'Crkvenac')," +
+          "(N'Crkveni Toci')," +
+          "(N'Crkvina')," +
+          "(N'Crkvine')," +
+          "(N'Crkvica')," +
+          "(N'Crkovnica')," +
+          "(N'Crkolez')," +
+          "(N'Crljenac')," +
+          "(N'Crmljane')," +
+          "(N'Crna Bara')," +
+          "(N'Crnalava')," +
+          "(N'Crna Reka')," +
+          "(N'Crna Trava')," +
+          "(N'Crnajka')," +
+          "(N'Crnatovo')," +
+          "(N'Crni Breg')," +
+          "(N'Crni Vrh')," +
+          "(N'Crni Kao')," +
+          "(N'Crni Lug')," +
+          "(N'Crnilo')," +
+          "(N'Crnovrana')," +
+          "(N'Crnovce')," +
+          "(N'Crnoklište')," +
+          "(N'Crnoljevica')," +
+          "(N'Crnoljevo')," +
+          "(N'Crnomasnica')," +
+          "(N'Crnotince')," +
+          "(N'Crnoštica')," +
+          "(N'Crnugovići')," +
+          "(N'Crnuzi')," +
+          "(N'Crnce')," +
+          "(N'Crnča')," +
+          "(N'Crnče')," +
+          "(N'Crcavac')," +
+          "(N'Crčevo')," +
+          "(N'Culine')," +
+          "(N'Culjković')," +
+          "(N'Čabić')," +
+          "(N'Čabra')," +
+          "(N'Čaglavica')," +
+          "(N'Čagrovac')," +
+          "(N'Čadinje')," +
+          "(N'Čairi')," +
+          "(N'Čajdrak')," +
+          "(N'Čajetina')," +
+          "(N'Čalma')," +
+          "(N'Čamurlija')," +
+          "(N'Čantavir')," +
+          "(N'Čapljinac')," +
+          "(N'Čar')," +
+          "(N'Čarakovce')," +
+          "(N'Čarovina')," +
+          "(N'Čauševići')," +
+          "(N'Čačak')," +
+          "(N'Čašić Dolac')," +
+          "(N'Čedovo')," +
+          "(N'Čekmin')," +
+          "(N'Čelarevo')," +
+          "(N'Čelik')," +
+          "(N'Čelice')," +
+          "(N'Čelopek')," +
+          "(N'Čenej')," +
+          "(N'Čenta')," +
+          "(N'Čepure')," +
+          "(N'Čerević')," +
+          "(N'Čerkez')," +
+          "(N'Českovo')," +
+          "(N'Česta')," +
+          "(N'Čestelin')," +
+          "(N'Čestereg')," +
+          "(N'Čestin')," +
+          "(N'Čestobrodica')," +
+          "(N'Četereže')," +
+          "(N'Čečevo')," +
+          "(N'Čečina')," +
+          "(N'Češko Selo')," +
+          "(N'Češljeva Bara')," +
+          "(N'Čibukovac')," +
+          "(N'Čibutkovica')," +
+          "(N'Činiglavci')," +
+          "(N'Čipalje')," +
+          "(N'Čitak')," +
+          "(N'Čitluk')," +
+          "(N'Čiflak')," +
+          "(N'Čiflik')," +
+          "(N'Čifluk Razgojnski')," +
+          "(N'Čmanjke')," +
+          "(N'Čoka')," +
+          "(N'Čokešina')," +
+          "(N'Čokonjar')," +
+          "(N'Čokot')," +
+          "(N'Čokotar')," +
+          "(N'Čokotin')," +
+          "(N'Čonoplja')," +
+          "(N'Čortanovci')," +
+          "(N'Čubra')," +
+          "(N'Čubrelj')," +
+          "(N'Čubura')," +
+          "(N'Čuka')," +
+          "(N'Čukarka')," +
+          "(N'Čukljenik')," +
+          "(N'Čukojevac')," +
+          "(N'Čukote')," +
+          "(N'Čukurovac')," +
+          "(N'Čumić')," +
+          "(N'Čungula')");
+            migrationBuilder.Sql(
+            "insert into Mesta(NazivMesta) values " +
+            "(N'Čungur')," +
+            "(N'Čupevo')," +
+            "(N'Čupev')," +
+            "(N'Čurug')," +
+            "(N'Čučale')," +
+            "(N'Čučuge')," +
+            "(N'Čučuljaga')," +
+            "(N'Džep')," +
+            "(N'Džepnica')," +
+            "(N'Džigolj')," +
+            "(N'Džurovo')," +
+            "(N'Šabac')," +
+            "(N'Šavac')," +
+            "(N'Šavrane')," +
+            "(N'Šavci')," +
+            "(N'Šainovac')," +
+            "(N'Šaić')," +
+            "(N'Šajinovac')," +
+            "(N'Šajince')," +
+            "(N'Šajkaš')," +
+            "(N'Šajkovac')," +
+            "(N'Šakovica')," +
+            "(N'Šalinac')," +
+            "(N'Šaludovac')," +
+            "(N'Šalce')," +
+            "(N'Šaljinovica')," +
+            "(N'Šaljska Bistrica')," +
+            "(N'Šanac')," +
+            "(N'Šantarovac')," +
+            "(N'Šapine')," +
+            "(N'Šaprance')," +
+            "(N'Šaptelj')," +
+            "(N'Šaraniornji')," +
+            "(N'Šarban')," +
+            "(N'Šarbane')," +
+            "(N'Šarbanovac')," +
+            "(N'Šare')," +
+            "(N'Šarenik')," +
+            "(N'Šarkamen')," +
+            "(N'Šarlinac')," +
+            "(N'Šarlince')," +
+            "(N'Šaronje')," +
+            "(N'Šarce')," +
+            "(N'Šatra')," +
+            "(N'Šatrinci')," +
+            "(N'Šašare')," +
+            "(N'Šašilovac')," +
+            "(N'Šašinci')," +
+            "(N'Šaškovac')," +
+            "(N'Šebet')," +
+            "(N'Ševarice')," +
+            "(N'Ševica')," +
+            "(N'Ševiš')," +
+            "(N'Ševrljuge')," +
+            "(N'Šepšin')," +
+            "(N'Šeremet')," +
+            "(N'Šestiabar')," +
+            "(N'Šetka')," +
+            "(N'Šetonje')," +
+            "(N'Šid')," +
+            "(N'Šilovo')," +
+            "(N'Šilopajornji')," +
+            "(N'Šiljakovac')," +
+            "(N'Šiljomana')," +
+            "(N'Šimanovci')," +
+            "(N'Šipačina')," +
+            "(N'Šipikovo')," +
+            "(N'Šipitula')," +
+            "(N'Šipova')," +
+            "(N'Šipolje')," +
+            "(N'Šipče')," +
+            "(N'Široka Planina')," +
+            "(N'Široke Njive')," +
+            "(N'Šišave')," +
+            "(N'Šišarka')," +
+            "(N'Šišatovac')," +
+            "(N'Šišince')," +
+            "(N'Šišman')," +
+            "(N'Šišmanovac')," +
+            "(N'Škoza')," +
+            "(N'Škrelje')," +
+            "(N'Šljivar')," +
+            "(N'Šljivica')," +
+            "(N'Šljivova')," +
+            "(N'Šljivovac')," +
+            "(N'Šljivovik')," +
+            "(N'Šljivovica')," +
+            "(N'Šljivovo')," +
+            "(N'Šogolj')," +
+            "(N'Šopić')," +
+            "(N'Šošiće')," +
+            "(N'Špaj')," +
+            "(N'Špiljani')," +
+            "(N'Špinadija')," +
+            "(N'Štava')," +
+            "(N'Štavalj')," +
+            "(N'Štavica')," +
+            "(N'Štedim')," +
+            "(N'Štimlje')," +
+            "(N'Šina')," +
+            "(N'Štitar')," +
+            "(N'Štitare')," +
+            "(N'Štitarica')," +
+            "(N'Štitkovo')," +
+            "(N'Štrbac')," +
+            "(N'Štrbovac')," +
+            "(N'Štrbulovo')," +
+            "(N'Štrpce')," +
+            "(N'Štubik')," +
+            "(N'Štulac')," +
+            "(N'Štuoce')," +
+            "(N'Štupelj')," +
+            "(N'Štutica')," +
+            "(N'Šuvajić')," +
+            "(N'Šugrin')," +
+            "(N'Šuljam')," +
+            "(N'Šuljkovac')," +
+            "(N'Šuman Topla')," +
+            "(N'Šumane')," +
+            "(N'Šumarak')," +
+            "(N'Šumarice')," +
+            "(N'Šumata')," +
+            "(N'Šume')," +
+            "(N'Šupkovac')," +
+            "(N'Šupljak')," +
+            "(N'Šurić')," +
+            "(N'Šurice')," +
+            "(N'Šurjan')," +
+            "(N'Šurlane')," +
+            "(N'Šutci')," +
+            "(N'Šušara')," +
+            "(N'Šušeoka')," +
+            "(N'Šušnjar')," +
+            "(N'Šušure')");
 
 
 
