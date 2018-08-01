@@ -92,7 +92,7 @@ namespace DomUcenikaSvilajnac.DAL.Context.Migrations
                "(N'Mašinska škola \"Radoje Dakic\" - Rakovica', (select Id from Opstine where NazivOpstine = N'Rakovica'))," +
                "(N'Srednja zanatska škola - Rakovica', (select Id from Opstine where NazivOpstine = N'Rakovica'))," +
                "(N'Peta ekonomska škola \"Rakovica\" - Rakovica', (select Id from Opstine where NazivOpstine = N'Rakovica'))," +
-               "(N'Škola za dizajn - Savski venac', (select Id from Opstine where NazivOpstine = N'Savski Venac'))," +
+               "(N'Škola za dizajn - Savski Venac', (select Id from Opstine where NazivOpstine = N'Savski Venac'))," +
                "(N'Škola za brodarstvo, brodogradnju i hidrogradnju - Savski Venac', (select Id from Opstine where NazivOpstine = N'Savski Venac'))," +
                "(N'Gimnazija \"Sveti Sava\" - Savski Venac', (select Id from Opstine where NazivOpstine = N'Savski Venac'))," +
                "(N'Medicinska škola \"Beograd\" - Savski Venac', (select Id from Opstine where NazivOpstine = N'Savski Venac'))," +
@@ -111,7 +111,7 @@ namespace DomUcenikaSvilajnac.DAL.Context.Migrations
                "(N'Muzička škola \"Mokranjac\" - Stari Grad', (select Id from Opstine where NazivOpstine = N'Stari Grad'))," +
                "(N'Trgovacka škola - Stari Grad', (select Id from Opstine where NazivOpstine = N'Stari Grad'))," +
                "(N'Muzička škola \"Dr Vojislav Vuckovic\" - Stari Grad', (select Id from Opstine where NazivOpstine = N'Stari Grad'))," +
-               "(N'Matematicka gimnazija', (select Id from Opstine where NazivOpstine = N'Stari Grad'))," +
+               "(N'Matematicka gimnazija - Stari Grad', (select Id from Opstine where NazivOpstine = N'Stari Grad'))," +
                "(N'Pravno-poslovna škola - Stari Grad', (select Id from Opstine where NazivOpstine = N'Stari Grad'))," +
                "(N'Elektrotehnička škola \"Nikola Tesla\" - Stari Grad', (select Id from Opstine where NazivOpstine = N'Stari Grad'))," +
                "(N'Baletska škola \"Lujo Davico\" - Stari Grad', (select Id from Opstine where NazivOpstine = N'Stari Grad'))," +
