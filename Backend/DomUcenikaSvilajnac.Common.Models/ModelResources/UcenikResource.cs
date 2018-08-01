@@ -46,5 +46,7 @@ namespace DomUcenikaSvilajnac.ModelResources
 
         public RazredResource Razred { get; set; }
 
+        public List<RoditeljiUcenikaResource> Roditelji { get; set; }
+
     }
 }

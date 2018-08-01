@@ -127,6 +127,7 @@ namespace DomUcenikaSvilajnac.DAL.RepoPattern
                 .Include(mzs => mzs.MestoZavrseneSkole)
                 .Include(s => s.Smer)
                 .Include(r=>r.Razred)
+                .Include(rod=> rod.Roditelji)
                 .ToListAsync();
             //var neki = await _context.Uceniks
             //    .FromSql(
