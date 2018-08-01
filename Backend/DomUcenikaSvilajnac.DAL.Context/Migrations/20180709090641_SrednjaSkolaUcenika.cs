@@ -170,17 +170,17 @@ namespace DomUcenikaSvilajnac.DAL.Context.Migrations
                "(N'Medicinska škola - Čačak', (select Id from Opstine where NazivOpstine = N'Čačak'))," +
                "(N'Ekonomska škola - Čačak', (select Id from Opstine where NazivOpstine = N'Čačak'))," +
                "(N'Gimnazija - Čačak', (select Id from Opstine where NazivOpstine = N'Čačak'))," +
-               "(N'Ugostiteljsko - turistička škola - Cajetina', (select Id from Opstine where NazivOpstine = N'Čajetina'))," +
-               "(N'Hemijsko - prehrambena srednja škola - Coka', (select Id from Opstine where NazivOpstine = N'Čoka'))," +
-               "(N'Ekonomsko - trgovinska škola Kruševac', (select Id from Opstine where NazivOpstine = N'Ćićevac'))," +
-               "(N'Škola za muzičke talente - Cuprija', (select Id from Opstine where NazivOpstine = N'Ćuprija'))," +
+               "(N'Ugostiteljsko - turistička škola - Čajetina', (select Id from Opstine where NazivOpstine = N'Čajetina'))," +
+               "(N'Hemijsko - prehrambena srednja škola - Čoka', (select Id from Opstine where NazivOpstine = N'Čoka'))," +
+               "(N'Ekonomsko - trgovinska škola Kruševac - Ćićevac', (select Id from Opstine where NazivOpstine = N'Ćićevac'))," +
+               "(N'Škola za muzičke talente - Ćuprija', (select Id from Opstine where NazivOpstine = N'Ćuprija'))," +
                "(N'Medicinska škola \"Danilo Dimitrijevic\" - Ćuprija', (select Id from Opstine where NazivOpstine = N'Ćuprija'))," +
-               "(N'Tehnička škola - Cuprija', (select Id from Opstine where NazivOpstine = N'Ćuprija'))," +
-               "(N'Gimnazija - Cuprija', (select Id from Opstine where NazivOpstine = N'Ćuprija'))," +
+               "(N'Tehnička škola - Ćuprija', (select Id from Opstine where NazivOpstine = N'Ćuprija'))," +
+               "(N'Gimnazija - Ćuprija', (select Id from Opstine where NazivOpstine = N'Ćuprija'))," +
                "(N'Tehnička škola - Despotovac', (select Id from Opstine where NazivOpstine = N'Despotovac'))," +
                "(N'Gimnazija \"Sveti Kirilo i Metodije\" - Dimitrovgrad', (select Id from Opstine where NazivOpstine = N'Dimitrovgrad'))," +
                "(N'Ekonomska škola Niš - Doljevac', (select Id from Opstine where NazivOpstine = N'Doljevac'))," +
-               "(N'Ekonomsko - trgovinska škola - Dragas', (select Id from Opstine where NazivOpstine = N'Dragaš'))," +
+               "(N'Ekonomsko - trgovinska škola - Dragaš', (select Id from Opstine where NazivOpstine = N'Dragaš'))," +
                "(N'Ekonomska škola - Goraždevac', (select Id from Opstine where NazivOpstine = N'Peć'))," +
                "(N'Gimnazija - Goraždevac', (select Id from Opstine where NazivOpstine = N'Peć'))," +
                "(N'Tehnička škola \"Dragi Popovic\" - Gnjilane', (select Id from Opstine where NazivOpstine = N'Gnjilane'))," +
@@ -207,11 +207,11 @@ namespace DomUcenikaSvilajnac.DAL.Context.Migrations
                "(N'Ekonomsko - trgovinska škola - Kikinda', (select Id from Opstine where NazivOpstine = N'Kikinda'))," +
                "(N'Srednja škola \"Sveti Sava\" - Kladovo', (select Id from Opstine where NazivOpstine = N'Kladovo'))," +
                "(N'Tehnička škola - Kladovo', (select Id from Opstine where NazivOpstine = N'Kladovo'))," +
-               "(N'Srednja škola - Knic', (select Id from Opstine where NazivOpstine = N'Knić'))," +
+               "(N'Srednja škola - Knić', (select Id from Opstine where NazivOpstine = N'Knić'))," +
                "(N'Tehnička škola - Knjaževac', (select Id from Opstine where NazivOpstine = N'Knjaževac'))," +
                "(N'Knjaževacka gimnazija - Knjaževac', (select Id from Opstine where NazivOpstine = N'Knjaževac'))," +
                "(N'Srednja škola - Koceljeva', (select Id from Opstine where NazivOpstine = N'Koceljeva'))," +
-               "(N'Tehnička škola - Kosjeric', (select Id from Opstine where NazivOpstine = N'Kosjerić'))," +
+               "(N'Tehnička škola - Kosjerić', (select Id from Opstine where NazivOpstine = N'Kosjerić'))," +
                "(N'Tehnička škola - Kosovska Kamenica', (select Id from Opstine where NazivOpstine = N'Kosovska Kamenica'))," +
                "(N'Gimnazija - Kosovska Kamenica', (select Id from Opstine where NazivOpstine = N'Kosovska Kamenica'))," +
                "(N'Škola za osnovno i srednje obrazovanje \"Kosovski Božur\" - Kosovska Mitrovica', (select Id from Opstine where NazivOpstine = N'Kosovska Mitrovica'))," +
@@ -221,7 +221,7 @@ namespace DomUcenikaSvilajnac.DAL.Context.Migrations
                "(N'Tehnička škola \"Mihailo Petrovic Alas\" - Kosovska Mitrovica', (select Id from Opstine where NazivOpstine = N'Kosovska Mitrovica'))," +
                "(N'Gimnazija - Kosovska Mitrovica', (select Id from Opstine where NazivOpstine = N'Kosovska Mitrovica'))," +
                "(N'Gimnazija i Tehnička škola - Kosovska Mitrovica', (select Id from Opstine where NazivOpstine = N'Kosovska Mitrovica'))," +
-               "(N'Gimnazija \"Mihajlo Pupin\" - Kovacica', (select Id from Opstine where NazivOpstine = N'Kovačica'))," +
+               "(N'Gimnazija \"Mihajlo Pupin\" - Kovačica', (select Id from Opstine where NazivOpstine = N'Kovačica'))," +
                "(N'Srednja stručna škola \"Vasa Pelagic\" - Kovin', (select Id from Opstine where NazivOpstine = N'Kovin'))," +
                "(N'Gimnazija i ekonomska škola \"Branko Radicevic\" - Kovin', (select Id from Opstine where NazivOpstine = N'Kovin'))," +
                "(N'Škola za osnovno i srednje obrazovanje \"Vukašin Markovic\" - Kragujevac', (select Id from Opstine where NazivOpstine = N'Kragujevac'))," +
@@ -253,7 +253,7 @@ namespace DomUcenikaSvilajnac.DAL.Context.Migrations
                "(N'Ekonomsko - trgovinska škola - Kruševac', (select Id from Opstine where NazivOpstine = N'Kruševac'))," +
                "(N'Gimnazija - Kruševac', (select Id from Opstine where NazivOpstine = N'Kruševac'))," +
                "(N'Politehnička škola “Milutin Milankovic\" - Kruševac', (select Id from Opstine where NazivOpstine = N'Kruševac'))," +
-               "(N'Ekonomsko-trgovinska i mašinska škola - Kucevo', (select Id from Opstine where NazivOpstine = N'Kučevo'))," +
+               "(N'Ekonomsko-trgovinska i mašinska škola - Kučevo', (select Id from Opstine where NazivOpstine = N'Kučevo'))," +
                "(N'Srednja tehnička škola \"Mihajlo Pupin\" - Kula', (select Id from Opstine where NazivOpstine = N'Kula'))," +
                "(N'Ekonomsko - trgovinska škola - Kula', (select Id from Opstine where NazivOpstine = N'Kula'))," +
                "(N'Gimnazija - Kuršumlija', (select Id from Opstine where NazivOpstine = N'Kuršumlija'))," +
@@ -265,7 +265,7 @@ namespace DomUcenikaSvilajnac.DAL.Context.Migrations
                "(N'Srednja škola - Lapovo', (select Id from Opstine where NazivOpstine = N'Lapovo'))," +
                "(N'Srednja škola \"Vožd Karadorde\" - Lebane', (select Id from Opstine where NazivOpstine = N'Lebane'))," +
                "(N'Gimnazija - Lebane', (select Id from Opstine where NazivOpstine = N'Lebane'))," +
-               "(N'Srednja škola \"Nikola Tesla\" - Leposavic', (select Id from Opstine where NazivOpstine = N'Leposavić'))," +
+               "(N'Srednja škola \"Nikola Tesla\" - Leposavić', (select Id from Opstine where NazivOpstine = N'Leposavić'))," +
                "(N'Poljoprivredna škola Priština - Lešak', 96)," +
                 "(N'Medicinska škola - Leskovac', (select Id from Opstine where NazivOpstine = N'Leskovac'))," +
                 "(N'Muzička škola \"Stanislav Binicki\" - Leskovac', (select Id from Opstine where NazivOpstine = N'Leskovac'))," +
@@ -286,15 +286,15 @@ namespace DomUcenikaSvilajnac.DAL.Context.Migrations
                "(N'Srednja škola - Mali Zvornik', (select Id from Opstine where NazivOpstine = N'Mali Zvornik'))," +
                "(N'Gimnazija \"Vuk Karadžic\" - Loznica', (select Id from Opstine where NazivOpstine = N'Loznica'))," +
                "(N'Gimnazija \"Vuk Karadžic\" - Loznica', (select Id from Opstine where NazivOpstine = N'Loznica'))," +
-               "(N'Srednja škola – Žitorada', (select id from Opstine where NazivOpstine = N'Žitorađa'))," +
+               "(N'Srednja škola – Žitorađa', (select id from Opstine where NazivOpstine = N'Žitorađa'))," +
                "(N'Tehnička škola - Žagubica', (select id from Opstine where NazivOpstine = N'Žagubica'))," +
                "(N'Srednja škola \"22. oktobar\" - Žabalj', (select id from Opstine where NazivOpstine = N'Žabalj'))," +
-               "(N'Srednja škola – Zvecan', (select id from Opstine where NazivOpstine = N'Zvečan'))," +
+               "(N'Srednja škola – Zvečan', (select id from Opstine where NazivOpstine = N'Zvečan'))," +
                "(N'Srednja škola \"Grigorije Božovic\" - Zubin Potok', (select id from Opstine where NazivOpstine = N'Zubin Potok '))," +
                "(N'Hemijsko-prehrambena i tekstilna škola \"Uroš Predic\" - Zrenjanin', (select id from Opstine where NazivOpstine = N'Zrenjanin'))," +
                "(N'Osnovna i srednja škola \"9. maj\" - Zrenjanin', (select id from Opstine where NazivOpstine = N'Zrenjanin'))," +
                "(N'Tehnička škola - Zrenjanin', (select id from Opstine where NazivOpstine = N'Zrenjanin'))," +
-               "(N'Zrenjaninska gimnazija', (select id from Opstine where NazivOpstine = N'Zrenjanin'))," +
+               "(N'Zrenjaninska gimnazija - Zrenjanin', (select id from Opstine where NazivOpstine = N'Zrenjanin'))," +
                "(N'Poljoprivredna škola - Zrenjanin', (select id from Opstine where NazivOpstine = N'Zrenjanin'))," +
                "(N'Medicinska škola - Zrenjanin', (select id from Opstine where NazivOpstine = N'Zrenjanin'))," +
                "(N'Elektrotehnička i građevinska škola \"Nikola Tesla\" - Zrenjanin', (select id from Opstine where NazivOpstine = N'Zrenjanin'))," +
@@ -313,8 +313,8 @@ namespace DomUcenikaSvilajnac.DAL.Context.Migrations
                "(N'Gimnazija \"Borislav Petrov Braca\" - Vršac', (select id from Opstine where NazivOpstine = N'Vršac'))," +
                "(N'Škola za osnovno i srednje obrazovanje \"Jelena Varjaški\" - Vršac', (select id from Opstine where NazivOpstine = N'Vršac'))," +
                "(N'Muzička škola \"Josif Marinkovic\" - Vršac', (select id from Opstine where NazivOpstine = N'Vršac'))," +
-               "(N'Ugostiteljsko-turistička škola sa domom učenika - Vrnjacka Banja', (select id from Opstine where NazivOpstine = N'Vrnjačka Banja'))," +
-               "(N'Gimnazija - Vrnjacka Banja', (select id from Opstine where NazivOpstine = N'Vrnjačka Banja'))," +
+               "(N'Ugostiteljsko-turistička škola sa domom učenika - Vrnjačka Banja', (select id from Opstine where NazivOpstine = N'Vrnjačka Banja'))," +
+               "(N'Gimnazija - Vrnjačka Banja', (select id from Opstine where NazivOpstine = N'Vrnjačka Banja'))," +
                "(N'Tehnička škola - Vrbovac', 160)," +
                "(N'Gimnazija \"Žarko Zrenjanin\" - Vrbas', (select id from Opstine where NazivOpstine = N'Vrbas'))," +
                "(N'Srednja stručna škola \"4. juli\" - Vrbas', (select id from Opstine where NazivOpstine = N'Vrbas'))," +
@@ -329,14 +329,14 @@ namespace DomUcenikaSvilajnac.DAL.Context.Migrations
                "(N'Tehnička škola - Vlasotince', (select id from Opstine where NazivOpstine = N'Vlasotince'))," +
                "(N'Gimnazija \"Stevan Jakovljevic\" - Vlasotince', (select id from Opstine where NazivOpstine = N'Vlasotince'))," +
                "(N'Posavotamnavska srednja škola - Vladimirci', (select id from Opstine where NazivOpstine = N'Vladimirci'))," +
-               "(N'Tehnička škola - Vladicin Han', 34)," +
-               "(N'Gimnazija \"Jovan Skerlic\"- Vladicin Han', 34)," +
+               "(N'Tehnička škola - Vladičin Han', 34)," +
+               "(N'Gimnazija \"Jovan Skerlic\"- Vladičin Han', 34)," +
                "(N'Srednja škola - Veliko Gradište', (select id from Opstine where NazivOpstine = N'Veliko Gradište'))," +
                "(N'Tehnička škola \"Nikola Tesla\" - Velika Plana', (select id from Opstine where NazivOpstine = N'Velika Plana'))," +
                "(N'Gimnazija - Velika Plana', (select id from Opstine where NazivOpstine = N'Velika Plana'))," +
                "(N'Ekonomsko-ugostiteljska škola \"Vuk Karadžic\" - Velika Plana', (select id from Opstine where NazivOpstine = N'Velika Plana'))," +
                "(N'Srednja škola - Varvarin', (select id from Opstine where NazivOpstine = N'Varvarin'))," +
-               "(N'Valjevska gimnazija', (select id from Opstine where NazivOpstine = N'Valjevo'))," +
+               "(N'Valjevska gimnazija - Valjevo', (select id from Opstine where NazivOpstine = N'Valjevo'))," +
                "(N'Tehnička škola - Valjevo', (select id from Opstine where NazivOpstine = N'Valjevo'))," +
                "(N'Medicinska škola \"Dr Miša Pantic\" - Valjevo', (select id from Opstine where NazivOpstine = N'Valjevo'))," +
                "(N'Muzička škola \"Živorad Grbic - Valjevo\" - Valjevo', (select id from Opstine where NazivOpstine = N'Valjevo'))," +
@@ -425,7 +425,7 @@ namespace DomUcenikaSvilajnac.DAL.Context.Migrations
                "(N'Srednja medicinska škola - Senta', (select id from Opstine where NazivOpstine = N'Senta'))," +
                "(N'Gimnazija sa domom učenika za talentovane ucenike \"Boljai\" - Senta', (select id from Opstine where NazivOpstine = N'Senta'))," +
                "(N'Ekonomsko-trgovinska škola - Senta', (select id from Opstine where NazivOpstine = N'Senta'))," +
-               "(N'Srednja škola \"Vuk Karadžic\" - Secanj', (select id from Opstine where NazivOpstine = N'Sečanj'))," +
+               "(N'Srednja škola \"Vuk Karadžic\" - Sečanj', (select id from Opstine where NazivOpstine = N'Sečanj'))," +
                "(N'Srednja škola sa domom učenika \"Petro Kuzmjak\" - Ruski Krstur', 89)," +
                "(N'Gimnazija \"Stevan Puzic\" - Ruma', (select id from Opstine where NazivOpstine = N'Ruma'))," +
                "(N'Srednja stručna škola \"Branko Radicevic\" - Ruma', (select id from Opstine where NazivOpstine = N'Ruma'))," +
@@ -435,7 +435,7 @@ namespace DomUcenikaSvilajnac.DAL.Context.Migrations
                "(N'Srednja škola “Kraljica Jelena\" - Raška', (select id from Opstine where NazivOpstine = N'Raška'))," +
                "(N'Gimnazija - Raška', (select id from Opstine where NazivOpstine = N'Raška'))," +
                "(N'Ekonomsko-trgovinska škola Gnjilane – Ranilug', 82)," +
-               "(N'Srednja škola \"Ðura Jakšic\" - Raca', (select id from Opstine where NazivOpstine = N'Rača'))," +
+               "(N'Srednja škola \"Ðura Jakšic\" - Rača', (select id from Opstine where NazivOpstine = N'Rača'))," +
                "(N'Poljoprivredna škola \"Radoš Jovanovic Selja\" - Prokuplje', (select id from Opstine where NazivOpstine = N'Prokuplje'))," +
                "(N'Medicinska škola \"Dr Aleksa Savic\" - Prokuplje', (select id from Opstine where NazivOpstine = N'Prokuplje'))," +
                "(N'Tehnička škola \"15. maj\" - Prokuplje', (select id from Opstine where NazivOpstine = N'Prokuplje'))," +
@@ -446,10 +446,10 @@ namespace DomUcenikaSvilajnac.DAL.Context.Migrations
                "(N'Medicinska škola – Gracanica (izmeštena iz Prištine)', (select id from Opstine where NazivOpstine = N'Priština'))," +
                "(N'Mašinska škola – Preoce (izmeštena iz Prištine)', (select id from Opstine where NazivOpstine = N'Priština'))," +
                "(N'Elektrotehnička škola “Mihajlo Pupin\" – Sušica (izmeštena iz Prištine)', (select id from Opstine where NazivOpstine = N'Priština'))," +
-               "(N'Muzička škola “Stevan Mokranjac\" – Gracanica (izmeštena iz Prištine)', (select id from Opstine where NazivOpstine = N'Priština'))," +
+               "(N'Muzička škola “Stevan Mokranjac\" – Gračanica (izmeštena iz Prištine)', (select id from Opstine where NazivOpstine = N'Priština'))," +
                "(N'Tehnička škola \"Nikola Tesla\" - Prilužje', 42)," +
                "(N'Tehnička škola - Prijepolje', (select id from Opstine where NazivOpstine = N'Prijepolje'))," +
-               "(N'Prijepoljska gimnazija', (select id from Opstine where NazivOpstine = N'Prijepolje'))," +
+               "(N'Prijepoljska gimnazija - Prijepolje', (select id from Opstine where NazivOpstine = N'Prijepolje'))," +
                "(N'Ekonomsko-trgovinska škola - Prijepolje', (select id from Opstine where NazivOpstine = N'Prijepolje'))," +
                "(N'Mašinsko-elektrotehnička škola - Priboj', (select id from Opstine where NazivOpstine = N'Priboj na Limu'))," +
                "(N'Gimnazija - Priboj', (select id from Opstine where NazivOpstine = N'Priboj na Limu'))," +
@@ -471,26 +471,26 @@ namespace DomUcenikaSvilajnac.DAL.Context.Migrations
                "(N'Ekonomska škola - Pirot', (select id from Opstine where NazivOpstine = N'Pirot'))," +
                "(N'Gimnazija - Pirot', (select id from Opstine where NazivOpstine = N'Pirot'))," +
                "(N'Srednja škola \"Mladost\" - Petrovac', (select id from Opstine where NazivOpstine = N'Bački Petrovac'))," +
-               "(N'Tehnička škola \"Milenko Verkic Neša\" - Pecinci', (select id from Opstine where NazivOpstine = N'Pećinci'))," +
-               "(N'Tehnološka škola - Paracin', (select id from Opstine where NazivOpstine = N'Paraćin'))," +
-               "(N'Ekonomsko-trgovinska škola - Paracin', (select id from Opstine where NazivOpstine = N'Paraćin'))," +
-               "(N'Mašinsko-elektrotehnička škola - Paracin', (select id from Opstine where NazivOpstine = N'Paraćin'))," +
-               "(N'Gimnazija - Paracin', (select id from Opstine where NazivOpstine = N'Paraćin'))," +
-               "(N'Mašinska škola \"Pancevo\" - Pančevo', (select id from Opstine where NazivOpstine = N'Pančevo'))," +
-               "(N'Poljoprivredna škola \"Josif Pancic\" - Pančevo', (select id from Opstine where NazivOpstine = N'Pančevo'))," +
-               "(N'Medicinska škola \"Stevica Jovanovic\" - Pancevo', (select id from Opstine where NazivOpstine = N'Pančevo'))," +
-               "(N'Tehnička škola \"23. maj\" - Pancevo', (select id from Opstine where NazivOpstine = N'Pančevo'))," +
-               "(N'Gimnazija \"Uroš Predic\" - Pancevo', (select id from Opstine where NazivOpstine = N'Pančevo'))," +
-               "(N'Elektrotehnička škola \"Nikola Tesla\" - Pancevo', (select id from Opstine where NazivOpstine = N'Pančevo'))," +
-               "(N'Ekonomsko-trgovinska škola \"Paja Marganovic\" - Pancevo', (select id from Opstine where NazivOpstine = N'Pančevo'))," +
-               "(N'Muzička škola \"Jovan Bandur\" - Pancevo', (select id from Opstine where NazivOpstine = N'Pančevo'))," +
-               "(N'Baletska škola \"Dimitrije Parlic\" - Pancevo', (select id from Opstine where NazivOpstine = N'Pančevo'))," +
-               "(N'Škola za osnovno i srednje obrazovanje \"Mara Mandic\" - Pancevo', (select id from Opstine where NazivOpstine = N'Pančevo'))," +
-               "(N'Ekonomska škola \"Valjevo\" - Osecina', (select id from Opstine where NazivOpstine = N'Osečina'))," +
+               "(N'Tehnička škola \"Milenko Verkic Neša\" - Pećinci', (select id from Opstine where NazivOpstine = N'Pećinci'))," +
+               "(N'Tehnološka škola - Paraćin', (select id from Opstine where NazivOpstine = N'Paraćin'))," +
+               "(N'Ekonomsko-trgovinska škola - Paraćin', (select id from Opstine where NazivOpstine = N'Paraćin'))," +
+               "(N'Mašinsko-elektrotehnička škola - Paraćin', (select id from Opstine where NazivOpstine = N'Paraćin'))," +
+               "(N'Gimnazija - Paraćin', (select id from Opstine where NazivOpstine = N'Paraćin'))," +
+               "(N'Mašinska škola \"Pančevo\" - Pančevo', (select id from Opstine where NazivOpstine = N'Pančevo'))," +
+               "(N'Poljoprivredna škola \"Josif Pančić\" - Pančevo', (select id from Opstine where NazivOpstine = N'Pančevo'))," +
+               "(N'Medicinska škola \"Stevica Jovanovic\" - Pančevo', (select id from Opstine where NazivOpstine = N'Pančevo'))," +
+               "(N'Tehnička škola \"23. maj\" - Pančevo', (select id from Opstine where NazivOpstine = N'Pančevo'))," +
+               "(N'Gimnazija \"Uroš Predic\" - Pančevo', (select id from Opstine where NazivOpstine = N'Pančevo'))," +
+               "(N'Elektrotehnička škola \"Nikola Tesla\" - Pančevo', (select id from Opstine where NazivOpstine = N'Pančevo'))," +
+               "(N'Ekonomsko-trgovinska škola \"Paja Marganović\" - Pančevo', (select id from Opstine where NazivOpstine = N'Pančevo'))," +
+               "(N'Muzička škola \"Jovan Bandur\" - Pančevo', (select id from Opstine where NazivOpstine = N'Pančevo'))," +
+               "(N'Baletska škola \"Dimitrije Parlic\" - Pančevo', (select id from Opstine where NazivOpstine = N'Pančevo'))," +
+               "(N'Škola za osnovno i srednje obrazovanje \"Mara Mandic\" - Pančevo', (select id from Opstine where NazivOpstine = N'Pančevo'))," +
+               "(N'Ekonomska škola \"Valjevo\" - Osečina', (select id from Opstine where NazivOpstine = N'Osečina'))," +
                "(N'Gimnazija - Orahovac', (select id from Opstine where NazivOpstine = N'Orahovac'))," +
                "(N'Tehnička škola - Odžaci', (select id from Opstine where NazivOpstine = N'Odžaci'))," +
-               "(N'Gimnazija i ekonomska škola \"Jovan Jovanovic Zmaj\" - Odžaci', (select id from Opstine where NazivOpstine = N'Odžaci'))," +
-               "(N'Gimnazija \"Jovan Jovanovic Zmaj\" - Novi Sad', (select id from Opstine where NazivOpstine = N'Novi Sad'))," +
+               "(N'Gimnazija i ekonomska škola \"Jovan Jovanović Zmaj\" - Odžaci', (select id from Opstine where NazivOpstine = N'Odžaci'))," +
+               "(N'Gimnazija \"Jovan Jovanović Zmaj\" - Novi Sad', (select id from Opstine where NazivOpstine = N'Novi Sad'))," +
                "(N'Gimnazija \"Svetozar Markovic\" - Novi Sad', (select id from Opstine where NazivOpstine = N'Novi Sad'))," +
                "(N'Gimnazija \"Isidora Sekulic\" - Novi Sad', (select id from Opstine where NazivOpstine = N'Novi Sad'))," +
                "(N'Gimnazija \"Laza Kostic\" - Novi Sad', (select id from Opstine where NazivOpstine = N'Novi Sad'))," +
