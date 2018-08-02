@@ -78,7 +78,7 @@ namespace DomUcenikaSvilajnac.Mapping
             .ForMember(v => v.Id, opt => opt.MapFrom(src => src[1].Id))
             .ForMember(v => v.IdMajke, opt => opt.MapFrom(src => src[0].Id))
              .ForMember(v => v.UcenikId, opt => opt.MapFrom(src => src[1].UcenikId))
-             .ForMember(v => v.StrucnaSpremaMajke, opt => opt.MapFrom(src =>  src[0].StepenObrazovanja.Opis))
+             .ForMember(v => v.StrucnaSpremaMajke, opt => opt.MapFrom(src => src[0].StepenObrazovanja.Opis))
              .ForMember(v => v.StrucnaSpremaOca, opt => opt.MapFrom(src => src[1].StepenObrazovanja.Opis));
 
 
@@ -178,6 +178,28 @@ namespace DomUcenikaSvilajnac.Mapping
                }
            });
 
+
+
+            CreateMap<PostRoditeljaResource, Roditelj>()
+             .ForMember(v => v.Ime, opt => opt.MapFrom(src => src.ImeOca))
+             .ForMember(v => v.Prezime, opt => opt.MapFrom(src => src.PrezimeOca))
+             .ForMember(v => v.StepenObrazovanjaId, opt => opt.MapFrom(src => src.StrucnaSpremaOcaId))
+              .ForMember(v => v.BrojTelefona, opt => opt.MapFrom(src => src.BrojTelefonaOca));
+
+
+            CreateMap<List<Roditelj>, PostRoditeljaResource>()
+                 .ForMember(v => v.ImeOca, opt => opt.MapFrom(src => src[1].Ime))
+             .ForMember(v => v.PrezimeOca, opt => opt.MapFrom(src => src[1].Prezime))
+              .ForMember(v => v.ImeMajke, opt => opt.MapFrom(src => src[0].Ime))
+               .ForMember(v => v.UcenikId, opt => opt.MapFrom(src => src[0].UcenikId))
+             .ForMember(v => v.PrezimeMajke, opt => opt.MapFrom(src => src[0].Prezime))
+            .ForMember(v => v.Id, opt => opt.MapFrom(src => src[1].Id))
+            .ForMember(v => v.IdMajke, opt => opt.MapFrom(src => src[0].Id))
+             .ForMember(v => v.UcenikId, opt => opt.MapFrom(src => src[1].UcenikId))
+             .ForMember(v => v.StrucnaSpremaMajkeId, opt => opt.MapFrom(src => src[0].StepenObrazovanjaId))
+             .ForMember(v => v.StrucnaSpremaOcaId, opt => opt.MapFrom(src => src[1].StepenObrazovanjaId))
+             .ForMember(v => v.BrojTelefonaMajke, opt => opt.MapFrom(src => src[0].BrojTelefona))
+             .ForMember(v => v.BrojTelefonaOca, opt => opt.MapFrom(src => src[1].BrojTelefona));
         }
     }
 }

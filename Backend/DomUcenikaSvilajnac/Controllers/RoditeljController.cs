@@ -83,15 +83,15 @@ namespace DomUcenikaSvilajnac.Controllers
         /// Dodavanje novog reda u tabeli, tj. novog roditlja.
         /// </summary>
         [HttpPost]
-        public async Task<IActionResult> PostRoditelj([FromBody] RoditeljResource roditelj)
+        public async Task<IActionResult> PostRoditelj([FromBody] PostRoditeljaResource roditelj)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            var majka = new Roditelj() { Ime = roditelj.ImeMajke, Prezime = roditelj.PrezimeMajke, UcenikId = roditelj.UcenikId, BrojTelefona =roditelj.BrojTelefonaMajke};
-            var otac = Mapper.Map<RoditeljResource, Roditelj>(roditelj);
+            var majka = new Roditelj() { Ime = roditelj.ImeMajke, Prezime = roditelj.PrezimeMajke, UcenikId = roditelj.UcenikId, BrojTelefona =roditelj.BrojTelefonaMajke, StepenObrazovanjaId = roditelj.StrucnaSpremaMajkeId};
+            var otac = Mapper.Map<PostRoditeljaResource, Roditelj>(roditelj);
             List<Roditelj> roditelji = new List<Roditelj>();
             roditelji.Add(majka);
             roditelji.Add(otac);
@@ -99,7 +99,7 @@ namespace DomUcenikaSvilajnac.Controllers
 
             await UnitOfWork.SaveChangesAsync();
             
-            roditelj  = Mapper.Map<List<Roditelj>, RoditeljResource>(roditelji);
+            roditelj  = Mapper.Map<List<Roditelj>, PostRoditeljaResource>(roditelji);
             
             return Ok(roditelj);
         }
