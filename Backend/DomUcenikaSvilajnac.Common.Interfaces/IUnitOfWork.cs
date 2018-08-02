@@ -41,6 +41,7 @@ namespace DomUcenikaSvilajnac.Common.Interfaces
 
         Task<UcenikResource> mestaUcenikaById(int id);
         Task<UcenikResource> mapiranje(UcenikResource ucenik);
+     //   Task<PostUcenikResource> mapiranjeZaPostUcenika(PostUcenikResource ucenik);
         void deleteTelefon(Telefon telefon);
 
         Task<IEnumerable<OpstinaResource>> brojeviOpstine();

@@ -144,8 +144,28 @@ namespace DomUcenikaSvilajnac.Controllers
         public async Task<IActionResult> PostUcenik([FromBody] UcenikResource ucenik)
         {
             //instanciranje objekta za telefon radi cuvanja u tabelu telefon
-            Telefon mobilni = new Telefon { Mobilni = ucenik.Telefon.Mobilni, Kucni = ucenik.Telefon.Kucni };
-    
+            // Telefon mobilni = new Telefon { Mobilni = ucenik.Telefon.Mobilni, Kucni = ucenik.Telefon.Kucni };
+            List<Roditelj> roditelji = new List<Roditelj>();
+            Roditelj otac = new Roditelj()
+            {
+                Ime = ucenik.Roditelji.ImeOca,
+                Prezime = ucenik.Roditelji.PrezimeOca,
+                BrojTelefona = ucenik.Roditelji.BrojTelefonaOca,
+                StepenObrazovanjaId = ucenik.Roditelji.StrucnaSpremaOcaId,
+            };
+           
+            Roditelj majka = new Roditelj()
+            {
+                Ime = ucenik.Roditelji.ImeMajke,
+                Prezime = ucenik.Roditelji.PrezimeMajke,
+                BrojTelefona = ucenik.Roditelji.BrojTelefonaMajke,
+                StepenObrazovanjaId = ucenik.Roditelji.StrucnaSpremaMajkeId,
+
+            };
+           
+
+
+
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
@@ -165,8 +185,8 @@ namespace DomUcenikaSvilajnac.Controllers
             noviUcenik.UpisanaSkola = null;
             noviUcenik.Smer = null;
             noviUcenik.Razred = null;
-            
 
+           
             //kada se cuvaju prvo kolone ne ide null
             // noviUcenik.Telefon = null;
 
@@ -174,7 +194,21 @@ namespace DomUcenikaSvilajnac.Controllers
             UnitOfWork.Ucenici.Add(noviUcenik);
             await UnitOfWork.SaveChangesAsync();
 
+
+            otac.UcenikId = noviUcenik.Id;
+            majka.UcenikId = noviUcenik.Id;
+
+            roditelji.Add(otac);
+            roditelji.Add(majka);
+
+            UnitOfWork.Roditelji.AddRange(roditelji);
+            UnitOfWork.SaveChanges();
+
+
+
+
             ucenik = _mapper.Map<Ucenik, UcenikResource>(noviUcenik);
+
             var mapiranUcenik = await UnitOfWork.mapiranje(ucenik);
 
             return Ok(mapiranUcenik);

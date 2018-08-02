@@ -95,12 +95,12 @@ namespace DomUcenikaSvilajnac.Common.Models
 
         public DateTime VremeUpisa { get; set; }
 
-        public ICollection<Roditelj> Roditelji { get; set; }
+        public List<Roditelj> Roditelji { get; set; }
 
         public Ucenik()
         {
 
-            Roditelji = new Collection<Roditelj>();
+            Roditelji = new List<Roditelj>();
         }
     }
 }

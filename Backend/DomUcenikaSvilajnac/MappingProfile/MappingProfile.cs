@@ -30,8 +30,9 @@ namespace DomUcenikaSvilajnac.Mapping
                 .ForMember(v => v.MestoRodjenja, opt => opt.MapFrom(src => new Mesto() { Id = src.MestoRodjenja.Id, NazivMesta = src.MestoRodjenja.NazivMesta }))
                 .ForMember(v => v.MestoPrebivalista, opt => opt.MapFrom(src => new Mesto() { Id = src.MestoPrebivalista.Id, NazivMesta = src.MestoPrebivalista.NazivMesta }))
                 .ForMember(v => v.MestoZavrseneSkole, opt => opt.MapFrom(src => new Mesto() { Id = src.MestoZavrseneSkole.Id, NazivMesta = src.MestoZavrseneSkole.NazivMesta }))
-                .ForMember(v => v.Pol, opt => opt.MapFrom(src => new Pol() { Id = src.Pol.Id, NazivPola = src.Pol.NazivPola }));
-                
+                .ForMember(v => v.Pol, opt => opt.MapFrom(src => new Pol() { Id = src.Pol.Id, NazivPola = src.Pol.NazivPola }))
+                .ForMember(v => v.Roditelji, opt => opt.Ignore());
+
 
 
 
@@ -40,7 +41,22 @@ namespace DomUcenikaSvilajnac.Mapping
             CreateMap<Ucenik, UcenikResource>()
                 .ForMember(v => v.Godina, opt => opt.MapFrom(src => src.DatumRodjenja.Year))
                 .ForMember(v => v.Dan, opt => opt.MapFrom(src => src.DatumRodjenja.Day))
-                .ForMember(v => v.Mesec, opt => opt.MapFrom(src => src.DatumRodjenja.Month));
+                .ForMember(v => v.Mesec, opt => opt.MapFrom(src => src.DatumRodjenja.Month))
+                .ForMember(v => v.Roditelji, opt => opt.MapFrom(src => new PostRoditeljaResource() {
+                                                                    Id = src.Roditelji[1].Id,
+                                                                    IdMajke = src.Roditelji[0].Id,
+                                                                    ImeMajke = src.Roditelji[0].Ime,
+                                                                    PrezimeMajke = src.Roditelji[0].Prezime,
+                                                                    BrojTelefonaMajke = src.Roditelji[0].BrojTelefona,
+                                                                    UcenikId = src.Roditelji[0].UcenikId,
+                                                                    StrucnaSpremaMajkeId = src.Roditelji[0].StepenObrazovanjaId,
+                                                                    ImeOca = src.Roditelji[1].Ime,
+                                                                    PrezimeOca = src.Roditelji[1].Prezime,
+                                                                    BrojTelefonaOca = src.Roditelji[1].BrojTelefona,
+                                                                    StrucnaSpremaOcaId = src.Roditelji[1].StepenObrazovanjaId,
+                                                                       }
+                ));
+
 
             CreateMap<Roditelj, RoditeljiUcenikaResource>();
 

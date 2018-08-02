@@ -180,13 +180,13 @@ namespace DomUcenikaSvilajnac.DAL.RepoPattern
                 .Include(mr => mr.MestoPrebivalista)
                 .Include(mzs => mzs.MestoZavrseneSkole)
                 .Include(s => s.Smer)
-                .Include(r=> r.Razred)
-                
+                .Include(r => r.Razred)
+
                 .SingleOrDefaultAsync(x => x.Id == ucenik.Id);
 
             return Mapper.Map<Ucenik, UcenikResource>(neki);
 
-           
+
         }
         public void deleteTelefon(Telefon telefon)
         {
