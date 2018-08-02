@@ -55,7 +55,7 @@ namespace DomUcenikaSvilajnac.Controllers
         /// i vraca podatke o roditelju koji su namenjeni za front.
         /// </summary>
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutRoditelj([FromRoute] int id, [FromBody] RoditeljResource roditelj)
+        public async Task<IActionResult> PutRoditelj([FromRoute] int id, [FromBody] PutRoditeljaResource roditelj)
         {
             if (!ModelState.IsValid)
             {
@@ -72,11 +72,11 @@ namespace DomUcenikaSvilajnac.Controllers
 
 
             roditelj.Id = id;
-            Mapper.Map<RoditeljResource, Roditelj>(roditelj, stariRoditelj);
+            Mapper.Map<PutRoditeljaResource, Roditelj>(roditelj, stariRoditelj);
             await UnitOfWork.SaveChangesAsync();
 
             var noviRoditelj = await UnitOfWork.Roditelji.GetAsync(id);
-            Mapper.Map<Roditelj, RoditeljResource>(noviRoditelj);
+            Mapper.Map<Roditelj, PutRoditeljaResource>(noviRoditelj);
             return Ok(roditelj);
         }
         /// <summary>

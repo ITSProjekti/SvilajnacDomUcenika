@@ -200,6 +200,10 @@ namespace DomUcenikaSvilajnac.Mapping
              .ForMember(v => v.StrucnaSpremaOcaId, opt => opt.MapFrom(src => src[1].StepenObrazovanjaId))
              .ForMember(v => v.BrojTelefonaMajke, opt => opt.MapFrom(src => src[0].BrojTelefona))
              .ForMember(v => v.BrojTelefonaOca, opt => opt.MapFrom(src => src[1].BrojTelefona));
+
+
+            CreateMap<PutRoditeljaResource, Roditelj>();
+            CreateMap<Roditelj, PutRoditeljaResource>();
         }
     }
 }
