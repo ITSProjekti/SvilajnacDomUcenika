@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Text;
 
@@ -14,5 +15,13 @@ namespace DomUcenikaSvilajnac.Common.Models
         public int Id { get; set; }
         public string Stepen { get; set; }
         public string Opis { get; set; }
+
+
+        ICollection<Roditelj> Roditelji { get; set; }
+        public StepenStrucneSpreme()
+        {
+            Roditelji = new Collection<Roditelj>();
+        }
+
     }
 }

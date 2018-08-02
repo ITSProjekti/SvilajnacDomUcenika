@@ -90,12 +90,18 @@ namespace DomUcenikaSvilajnac.DAL.RepoPattern
         {
             return await _context.SaveChangesAsync();
         }
+        public async Task<IEnumerable<RoditeljResource>> spremaRoditelja()
+        {
+            var neki = await _context.Roditelji
+                .Include(sss => sss.StepenObrazovanja)
+                .ToListAsync();
+            return Mapper.Map<List<Roditelj>, List<RoditeljResource>>(neki);
+
+        }
+
 
         public async Task<IEnumerable<OpstinaResource>> brojeviOpstine()
         {
-            
-         
-
 
             var nesto = await _context.Opstine
                 .Include(k => k.PostanskiBrojevi)
@@ -154,6 +160,7 @@ namespace DomUcenikaSvilajnac.DAL.RepoPattern
                 .Include(mzs => mzs.MestoZavrseneSkole)
                 .Include(s => s.Smer)
                 .Include(r=>r.Razred)
+                .Include(rod => rod.Roditelji)
                 .SingleOrDefaultAsync(x => x.Id == id);
             return Mapper.Map<Ucenik, UcenikResource>(neki);
         }
@@ -174,6 +181,7 @@ namespace DomUcenikaSvilajnac.DAL.RepoPattern
                 .Include(mzs => mzs.MestoZavrseneSkole)
                 .Include(s => s.Smer)
                 .Include(r=> r.Razred)
+                
                 .SingleOrDefaultAsync(x => x.Id == ucenik.Id);
 
             return Mapper.Map<Ucenik, UcenikResource>(neki);
@@ -196,7 +204,7 @@ namespace DomUcenikaSvilajnac.DAL.RepoPattern
             return  Mapper.Map<List<Roditelj>, List<RoditeljResource>>(nesto);
         }
 
-        public async Task<IEnumerable<RoditeljResource>> brisanjeRoditelja(int UcenikId)
+        public async Task<IEnumerable<DeleteRoditeljaResource>> brisanjeRoditelja(int UcenikId)
         {
             var nesto = await _context.Roditelji.
                 FromSql(
@@ -207,7 +215,7 @@ namespace DomUcenikaSvilajnac.DAL.RepoPattern
             _context.RemoveRange(nesto);
             await SaveChangesAsync();
 
-            return Mapper.Map<List<Roditelj>, List<RoditeljResource>>(nesto);
+            return Mapper.Map<List<Roditelj>, List<DeleteRoditeljaResource>>(nesto);
         }
     }
 }

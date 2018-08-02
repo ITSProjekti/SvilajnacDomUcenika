@@ -45,7 +45,10 @@ namespace DomUcenikaSvilajnac.Common.Interfaces
 
         Task<IEnumerable<OpstinaResource>> brojeviOpstine();
         Task<IEnumerable<RoditeljResource>> roditeljiUcenika(int UcenikId);
-        Task<IEnumerable<RoditeljResource>> brisanjeRoditelja(int UcenikId);
+        Task<IEnumerable<DeleteRoditeljaResource>> brisanjeRoditelja(int UcenikId);
+
+        Task<IEnumerable<RoditeljResource>> spremaRoditelja();
+
 
     }
 }

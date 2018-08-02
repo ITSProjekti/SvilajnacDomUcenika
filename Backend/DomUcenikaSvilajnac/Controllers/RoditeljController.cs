@@ -31,12 +31,15 @@ namespace DomUcenikaSvilajnac.Controllers
         public async Task<IEnumerable<RoditeljResource>> GetRoditelji()
         {
 
-            var listaRoditelja = await UnitOfWork.Roditelji.GetAllAsync();
+            return await UnitOfWork.spremaRoditelja();
+         //   var listaResurs = Mapper.Map<List<RoditeljResource>, List<Roditelj>>(listaRoditelja.ToList());
 
-            List<RoditeljResource> listaResurs = new List<RoditeljResource>();
-            var roditelj = Mapper.Map<List<Roditelj>, List<RoditeljResource>>(listaRoditelja.ToList(), listaResurs);
 
-            return roditelj;   // Mapper.Map<List<Roditelj>, List<RoditeljResource>>(listaRoditelja.ToList());
+            //  List<RoditeljResource> listaResurs = new List<RoditeljResource>();
+
+            // Mapper.Map<List<Roditelj>, List<RoditeljResource>>(listaResurs.ToList());
+
+          //  return roditelj;   // Mapper.Map<List<Roditelj>, List<RoditeljResource>>(listaRoditelja.ToList());
         }
         /// <summary>
         /// Vraca dva reda iz tabele, tj. roditelje na osnovu prosledjenog Id-a.
@@ -87,7 +90,7 @@ namespace DomUcenikaSvilajnac.Controllers
                 return BadRequest(ModelState);
             }
 
-            var majka = new Roditelj() { Ime = roditelj.ImeMajke, Prezime = roditelj.PrezimeMajke, UcenikId = roditelj.UcenikId};
+            var majka = new Roditelj() { Ime = roditelj.ImeMajke, Prezime = roditelj.PrezimeMajke, UcenikId = roditelj.UcenikId, BrojTelefona =roditelj.BrojTelefonaMajke};
             var otac = Mapper.Map<RoditeljResource, Roditelj>(roditelj);
             List<Roditelj> roditelji = new List<Roditelj>();
             roditelji.Add(majka);
