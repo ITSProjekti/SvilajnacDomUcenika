@@ -1,16 +1,63 @@
 <template>
-  <v-app>
- 
-    <v-toolbar dark class="blue-grey darken-2">
-      <v-toolbar-side-icon
-       @click.stop="sideNav = !sideNav"
-       class="hidden-sm-and-up"
-       > </v-toolbar-side-icon>
-      <v-toolbar-title>
-        <router-link to="/" tag="span" style="cursor: pointer">Dom ucenika Svilajnac</router-link>
+  <v-app id="inspire">
+    <v-navigation-drawer
+      v-model="drawer"
+      fixed
+      clipped
+      class="grey lighten-4"
+      app
+    >
+      <v-list
+        dense
+        class="grey lighten-4"
+      >
+        <template v-for="(item, i) in items">
+          <v-layout
+            v-if="item.heading"
+            :key="i"
+            row
+            align-center
+          >
+            <v-flex xs6>
+              <v-subheader v-if="item.heading">
+                {{ item.heading }}
+              </v-subheader>
+            </v-flex>
+            <v-flex xs6 class="text-xs-right">
+              <v-btn small flat>edit</v-btn>
+            </v-flex>
+          </v-layout>
+          <v-divider
+            v-else-if="item.divider"
+            :key="i"
+            dark
+            class="my-3"
+          ></v-divider>
+          <v-list-tile
+            v-else
+            :key="i"
+              router
+           :to="item.link"
+          >
+            <v-list-tile-action>
+              <v-icon>{{ item.icon }}</v-icon>
+            </v-list-tile-action>
+            <v-list-tile-content>
+              <v-list-tile-title class="grey--text">
+                {{ item.text }}
+              </v-list-tile-title>
+            </v-list-tile-content>
+          </v-list-tile>
+        </template>
+      </v-list>
+    </v-navigation-drawer>
+     <v-toolbar dark class="blue-grey darken-2" app absolute clipped-left>
+      <v-toolbar-side-icon @click.native="drawer = !drawer"></v-toolbar-side-icon>
+          <v-toolbar-title>
+        <router-link to="/" tag="span" style="cursor: pointer">Dom učenika Svilajnac</router-link>
         </v-toolbar-title>
-      
-      <v-spacer></v-spacer>
+
+       <v-spacer></v-spacer>
       <v-toolbar-items class="hidden-xs-only">
         <v-btn flat
          v-for="item in menuItems"
@@ -22,34 +69,42 @@
           </v-btn>
 
       </v-toolbar-items>
-       </v-toolbar >  
-         <main>
-      <router-view></router-view>
-    </main> 
-         <v-navigation-drawer v-model="sideNav" temporary>
-      <v-list>
-         <v-list-tile @click="true"
-          v-for="item in menuItems"
-           :key="item.title"
-           router
-           :to="item.link">
-               <v-list-tile-action>
-                   <v-icon>{{item.icon}}</v-icon>
-              </v-list-tile-action>
-           <v-list-tile-content>{{item.title}}</v-list-tile-content>
-      </v-list-tile>
-</v-list>
-    </v-navigation-drawer> 
-   
+    </v-toolbar>
+    <v-content>
+      <v-container fluid fill-height class="grey lighten-4">
+        <v-layout justify-center align-center>
+          <v-flex xs12>
+<main>
+  <router-view></router-view>
+</main>
+          </v-flex>
+        </v-layout>
+      </v-container>
+    </v-content>
   </v-app>
 </template>
 
 <script>
 /* eslint-disable */
-export default {
-  data () {
-    return {
-      sideNav: null,
+  export default {
+    data: () => ({
+      drawer: null,
+      items: [
+        { icon: 'lightbulb_outline', text: 'Notes' },
+        { icon: 'touch_app', text: 'Reminders' },
+        { divider: true },
+        { heading: 'Labels' },
+        { icon: 'add', text: 'Prijavi novog ucenika',link: '/prijava' },
+        { divider: true },
+        { icon: 'archive', text: 'Archive' },
+        { icon: 'delete', text: 'Trash' },
+        { divider: true },
+        { icon: 'settings', text: 'Settings' },
+        { icon: 'chat_bubble', text: 'Trash' },
+        { icon: 'help', text: 'Help' },
+        { icon: 'phonelink', text: 'App downloads' },
+        { icon: 'keyboard', text: 'Keyboard shortcuts' }
+      ], 
       menuItems: [
         {icon: 'supervisor_account', title: 'Lista ucenika',link: '/ucenici'},
         {icon: 'pets', title: 'Prijavi ucenika',link: '/prijava'},
@@ -57,9 +112,21 @@ export default {
        // {icon: 'face', title: 'Registruj se',link: '/registracija'},
       //  {icon: 'lock_open', title: 'Uloguj se',link: '/logovanje'}
       ]
+    }),
+    props: {
+      source: String
     }
-  },
-  name: 'App'
-}
+  }
 </script>
 
+<style>
+  #keep main .container {
+    height: 660px;
+  }
+  .v-navigation-drawer__border {
+    display: none;
+  }
+  .text {
+    font-weight: 400;
+  }
+</style>

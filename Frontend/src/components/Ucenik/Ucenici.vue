@@ -13,8 +13,10 @@
           <span class="headline">{{ formTitle }}</span>
         </v-card-title>
         <v-card-text>
+        
           <v-container grid-list-md>
             <v-layout wrap>
+              
               <v-flex xs12 class="ml-3" >
                 <v-text-field
                  v-model="editedItem.ime"
@@ -23,6 +25,7 @@
                    :rules="[rules.required]"
                   ></v-text-field>
               </v-flex>
+              
               <v-flex xs12 class="ml-3" >
                 <v-text-field
                  v-model="editedItem.prezime"
@@ -31,6 +34,7 @@
                    :rules="[rules.required]"
                    ></v-text-field>
               </v-flex>
+            
               <v-flex xs12 class="ml-3" >
                 <v-text-field
                   v-model="editedItem.jmbg"
@@ -715,7 +719,9 @@ import moment from 'moment'
           this.editedItem.smer.id !== '' &&
           this.editedItem.prethodnaSkola.id !== '' &&
           this.editedItem.upisanaSkola.id !== '' &&
-          (this.datum !== null || this.editItem.dan !== '')
+          this.editedItem.razred.id !== '' &&
+         
+         (this.editedItem.dan !== '' ||  this.datum !== null)
           
           )
           {
@@ -767,6 +773,8 @@ import moment from 'moment'
     },
     watch: {
       dialog (val) {
+        console.log(this.datum)
+         console.log(this.editedItem.dan)
         val || this.close()
       }
     },
@@ -840,6 +848,7 @@ import moment from 'moment'
         this.dialog = false
         setTimeout(() => {
            this.editedItem = Object.assign({}, this.defaultItem)
+           this.datum=null
           this.editedIndex = -1
         }, 300)
       },
@@ -849,11 +858,13 @@ import moment from 'moment'
          // Object.assign(this.ucenici[this.editedIndex], this.editedItem)
           this.$store.dispatch('editUcenik',this.editedItem)
           this.editedItem = Object.assign({}, this.defaultItem)
+          this.datum=null
         } else {
           this.formatiranjeDatuma() 
             
           this.$store.dispatch('createUcenik',this.editedItem)
           this.editedItem = Object.assign({}, this.defaultItem)
+          this.datum=null
         }
         this.close()
       }  
