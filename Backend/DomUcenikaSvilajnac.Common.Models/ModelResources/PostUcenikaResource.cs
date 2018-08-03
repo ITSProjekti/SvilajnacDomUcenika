@@ -1,22 +1,29 @@
-﻿using System;
+﻿using DomUcenikaSvilajnac.Common.Models;
+using DomUcenikaSvilajnac.Common.Models.ModelResources;
+using System;
 using System.Collections.Generic;
-using System.Text;
+using System.Linq;
+using System.Threading.Tasks;
 
-namespace DomUcenikaSvilajnac.Common.Models.ModelResources
+namespace DomUcenikaSvilajnac.ModelResources
 {
-    public class PostUcenikResource
+    /// <summary>
+    /// Sluzi za podakte koji ce se slati na front, u slucaju da neki podatak nije potrebno poslati na front, smanjuje se broj property-a u odnosu na 
+    /// klasu Ucenik.
+    /// </summary>
+    public class PostUcenikaResource
     {
         public int Id { get; set; }
         public string Ime { get; set; }
-
+        
         public string Prezime { get; set; }
 
         public string JMBG { get; set; }
-        public string Adresa { get; set; }
+        public string  Adresa { get; set; }
         public PostanskiBrojResource PostanskiBroj { get; set; }
         public PolResource Pol { get; set; }
         public Telefon Telefon { get; set; }
-
+        
         public int Dan { get; set; }
         public int Mesec { get; set; }
 
@@ -39,8 +46,10 @@ namespace DomUcenikaSvilajnac.Common.Models.ModelResources
 
         public RazredResource Razred { get; set; }
 
-   
+        //public List<RoditeljiUcenikaResource> Roditelji { get; set; }
 
         public PostRoditeljaResource Roditelji { get; set; }
+
+
     }
 }

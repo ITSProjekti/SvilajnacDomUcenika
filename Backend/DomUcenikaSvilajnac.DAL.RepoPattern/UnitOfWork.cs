@@ -165,7 +165,7 @@ namespace DomUcenikaSvilajnac.DAL.RepoPattern
             return Mapper.Map<Ucenik, UcenikResource>(neki);
         }
 
-        public async Task<UcenikResource> mapiranje(UcenikResource ucenik)
+        public async Task<PostUcenikaResource> mapiranje(PostUcenikaResource ucenik)
         {
             var neki = await _context.Uceniks
                  .Include(o => o.Opstina)
@@ -184,7 +184,7 @@ namespace DomUcenikaSvilajnac.DAL.RepoPattern
 
                 .SingleOrDefaultAsync(x => x.Id == ucenik.Id);
 
-            return Mapper.Map<Ucenik, UcenikResource>(neki);
+            return Mapper.Map<Ucenik, PostUcenikaResource>(neki);
 
 
         }

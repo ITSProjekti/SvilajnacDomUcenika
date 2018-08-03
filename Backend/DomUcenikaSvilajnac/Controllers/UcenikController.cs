@@ -43,7 +43,7 @@ namespace DomUcenikaSvilajnac.Controllers
         [HttpGet]
         public async Task<IEnumerable<UcenikResource>> GetUceniks()
         {
-           // var listaUcenika = await UnitOfWork.Ucenici.GetAllAsync(); -- promenljiva koja prima listu svih ucenika
+            // var listaUcenika = await UnitOfWork.Ucenici.GetAllAsync(); -- promenljiva koja prima listu svih ucenika
             var listaUcenikaMesta = await UnitOfWork.mestaUcenika();
 
             var mapiranjeUcenikaMesta = _mapper.Map<List<UcenikResource>, List<Ucenik>>(listaUcenikaMesta.ToList());
@@ -84,7 +84,7 @@ namespace DomUcenikaSvilajnac.Controllers
         /// </summary>
         // PUT: api/Ucenik/5
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutUcenik([FromRoute] int id, [FromBody] UcenikResource ucenik)
+        public async Task<IActionResult> PutUcenik([FromRoute] int id, [FromBody] PostUcenikaResource ucenik)
         {
             if (!ModelState.IsValid)
             {
@@ -113,7 +113,7 @@ namespace DomUcenikaSvilajnac.Controllers
 
             ucenik.Id = id;
 
-            var novi = _mapper.Map<UcenikResource, Ucenik>(ucenik, stariUcenik);
+            var novi = _mapper.Map<PostUcenikaResource, Ucenik>(ucenik, stariUcenik);
             novi.TelefonId = pom;
             novi.Opstina = null;
             novi.DrzavaRodjenja = null;
@@ -141,7 +141,7 @@ namespace DomUcenikaSvilajnac.Controllers
         /// </summary>
         // POST: api/Ucenik
         [HttpPost]
-        public async Task<IActionResult> PostUcenik([FromBody] UcenikResource ucenik)
+        public async Task<IActionResult> PostUcenik([FromBody] PostUcenikaResource ucenik)
         {
             //instanciranje objekta za telefon radi cuvanja u tabelu telefon
             // Telefon mobilni = new Telefon { Mobilni = ucenik.Telefon.Mobilni, Kucni = ucenik.Telefon.Kucni };
@@ -170,7 +170,7 @@ namespace DomUcenikaSvilajnac.Controllers
             {
                 return BadRequest(ModelState);
             }
-            var noviUcenik = _mapper.Map<UcenikResource, Ucenik>(ucenik);
+            var noviUcenik = _mapper.Map<PostUcenikaResource, Ucenik>(ucenik);
             noviUcenik.VremeUpisa = DateTime.Now;
 
             noviUcenik.Opstina = null;
@@ -207,7 +207,7 @@ namespace DomUcenikaSvilajnac.Controllers
 
 
 
-            ucenik = _mapper.Map<Ucenik, UcenikResource>(noviUcenik);
+            ucenik = _mapper.Map<Ucenik, PostUcenikaResource>(noviUcenik);
 
             var mapiranUcenik = await UnitOfWork.mapiranje(ucenik);
 
@@ -231,7 +231,7 @@ namespace DomUcenikaSvilajnac.Controllers
 
 
 
-            var noviUcenik = _mapper.Map<Ucenik, UcenikResource>(ucenik);
+            var noviUcenik = _mapper.Map<Ucenik, PostUcenikaResource>(ucenik);
             var mapiranUcenik = await UnitOfWork.mapiranje(noviUcenik);
 
             if (ucenik == null)

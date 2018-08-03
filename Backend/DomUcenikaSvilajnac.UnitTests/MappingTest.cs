@@ -33,9 +33,9 @@ namespace DomUcenikaSvilajnac.UnitTests
                 JMBG = "1231231231233",
                 DatumRodjenja = new DateTime(1998, 04, 30)
             };
-            var result = Mapper.Map<Ucenik, UcenikResource>(ucenik);
+            var result = Mapper.Map<Ucenik, PostUcenikaResource>(ucenik);
 
-            Assert.IsInstanceOfType(result, typeof(UcenikResource));
+            Assert.IsInstanceOfType(result, typeof(PostUcenikaResource));
             AutoMapper.Mapper.Reset();
         }
 
@@ -47,7 +47,7 @@ namespace DomUcenikaSvilajnac.UnitTests
         {
             Mapper.Initialize(m => m.AddProfile<MappingProfile>());
             Mapper.AssertConfigurationIsValid();
-            UcenikResource ucenik = new UcenikResource()
+            PostUcenikaResource ucenik = new PostUcenikaResource()
             {
                 Id = 1,
                 Ime = "Pera",
@@ -57,7 +57,7 @@ namespace DomUcenikaSvilajnac.UnitTests
                 Mesec = 11,
                 Godina = 2001
             };
-            var result = Mapper.Map<UcenikResource, Ucenik>(ucenik);
+            var result = Mapper.Map<PostUcenikaResource, Ucenik>(ucenik);
 
             Assert.IsInstanceOfType(result, typeof(Ucenik));
             AutoMapper.Mapper.Reset();
@@ -71,7 +71,7 @@ namespace DomUcenikaSvilajnac.UnitTests
         {
             Mapper.Initialize(m => m.AddProfile<MappingProfile>());
             Mapper.AssertConfigurationIsValid();
-            UcenikResource ucenik = new UcenikResource()
+            PostUcenikaResource ucenik = new PostUcenikaResource()
             {
                 Id = 1,
                 Ime = "Pera",
@@ -83,7 +83,7 @@ namespace DomUcenikaSvilajnac.UnitTests
 
             try
             {
-                var result = Mapper.Map<UcenikResource, Ucenik>(ucenik);
+                var result = Mapper.Map<PostUcenikaResource, Ucenik>(ucenik);
 
                 Assert.Fail("OK");
             }

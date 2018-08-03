@@ -18,11 +18,11 @@ namespace DomUcenikaSvilajnac.IntegratedTests
     {
 
         /// <summary>
-        /// Metoda koja vraca objekat klase UcenikResource, posto se podaci koriste vise puta, tj za vise testova.
+        /// Metoda koja vraca objekat klase PostUcenikaResource, posto se podaci koriste vise puta, tj za vise testova.
         /// </summary>
-        public UcenikResource Ucenik()
+        public PostUcenikaResource Ucenik()
         {
-            return new UcenikResource { Ime = "Ilhan", Prezime = "Kalac", JMBG = "1405997273013", Dan = 14, Godina = 1997, Mesec = 5 };
+            return new PostUcenikaResource { Ime = "Ilhan", Prezime = "Kalac", JMBG = "1405997273013", Dan = 14, Godina = 1997, Mesec = 5 };
         }
 
         /// <summary>
@@ -40,9 +40,9 @@ namespace DomUcenikaSvilajnac.IntegratedTests
 
             Mapper.Initialize(m => m.AddProfile<MappingProfile>());
             Mapper.AssertConfigurationIsValid();
-            var ucenikZaBazu = Mapper.Map<UcenikResource, Ucenik>(primerUcenika);
+            var ucenikZaBazu = Mapper.Map<PostUcenikaResource, Ucenik>(primerUcenika);
 
-            var config = new MapperConfiguration(cfg => cfg.CreateMap<Ucenik, UcenikResource>());
+            var config = new MapperConfiguration(cfg => cfg.CreateMap<Ucenik, PostUcenikaResource>());
             var mapper = config.CreateMapper();
 
             IUnitOfWork unitOfWork = new UnitOfWork(context, mapper);
@@ -68,9 +68,9 @@ namespace DomUcenikaSvilajnac.IntegratedTests
             Mapper.Initialize(m => m.AddProfile<MappingProfile>());
             Mapper.AssertConfigurationIsValid();
 
-            var ucenikZaBazu = Mapper.Map<UcenikResource, Ucenik>(primerUcenika);
+            var ucenikZaBazu = Mapper.Map<PostUcenikaResource, Ucenik>(primerUcenika);
 
-            var config = new MapperConfiguration(cfg => cfg.CreateMap<Ucenik, UcenikResource>());
+            var config = new MapperConfiguration(cfg => cfg.CreateMap<Ucenik, PostUcenikaResource>());
             var mapper = config.CreateMapper();
 
             IUnitOfWork unitOfWork = new UnitOfWork(context, mapper);
@@ -98,10 +98,10 @@ namespace DomUcenikaSvilajnac.IntegratedTests
             Mapper.Initialize(m => m.AddProfile<MappingProfile>());
             Mapper.AssertConfigurationIsValid();
 
-            var config = new MapperConfiguration(cfg => cfg.CreateMap<Ucenik, UcenikResource>());
+            var config = new MapperConfiguration(cfg => cfg.CreateMap<Ucenik, PostUcenikaResource>());
             var mapper = config.CreateMapper();
 
-            var ucenikZaBazu = Mapper.Map<UcenikResource, Ucenik>(primerUcenika);
+            var ucenikZaBazu = Mapper.Map<PostUcenikaResource, Ucenik>(primerUcenika);
             IUnitOfWork unitOfWork = new UnitOfWork(context, mapper);
             unitOfWork.Ucenici.Add(ucenikZaBazu);
             unitOfWork.SaveChanges();
@@ -118,7 +118,7 @@ namespace DomUcenikaSvilajnac.IntegratedTests
         public void UpdateUcenik_ProveraApdejtovanjaImenaUceniku_ReturnsTrue()
         {
             Mapper.Reset();
-            UcenikResource apdejtUcenik = new UcenikResource() { Ime = "Mateja", Prezime = "Jovanovic", Dan = 5, Godina = 5, Mesec = 6 };
+            PostUcenikaResource apdejtUcenik = new PostUcenikaResource() { Ime = "Mateja", Prezime = "Jovanovic", Dan = 5, Godina = 5, Mesec = 6 };
 
             var options = new DbContextOptionsBuilder<UcenikContext>().UseInMemoryDatabase(Guid.NewGuid().ToString()).EnableSensitiveDataLogging().Options;
             var context = new UcenikContext(options);
@@ -126,15 +126,15 @@ namespace DomUcenikaSvilajnac.IntegratedTests
 
             Mapper.Initialize(m => m.AddProfile<MappingProfile>());
             Mapper.AssertConfigurationIsValid();
-            var ucenikZaBazu = Mapper.Map<UcenikResource, Ucenik>(primerUcenika);
+            var ucenikZaBazu = Mapper.Map<PostUcenikaResource, Ucenik>(primerUcenika);
 
-            var config = new MapperConfiguration(cfg => cfg.CreateMap<Ucenik, UcenikResource>());
+            var config = new MapperConfiguration(cfg => cfg.CreateMap<Ucenik, PostUcenikaResource>());
             var mapper = config.CreateMapper();
 
             IUnitOfWork unitOfWork = new UnitOfWork(context,mapper);
             unitOfWork.Ucenici.Add(ucenikZaBazu);
 
-            var novi = Mapper.Map<UcenikResource, Ucenik>(apdejtUcenik, ucenikZaBazu);
+            var novi = Mapper.Map<PostUcenikaResource, Ucenik>(apdejtUcenik, ucenikZaBazu);
 
             unitOfWork.SaveChanges();
 
@@ -157,9 +157,9 @@ namespace DomUcenikaSvilajnac.IntegratedTests
 
             Mapper.Initialize(m => m.AddProfile<MappingProfile>());
             Mapper.AssertConfigurationIsValid();
-            var ucenikZaBazu = Mapper.Map<UcenikResource, Ucenik>(primerUcenika);
+            var ucenikZaBazu = Mapper.Map<PostUcenikaResource, Ucenik>(primerUcenika);
 
-            var config = new MapperConfiguration(cfg => cfg.CreateMap<Ucenik, UcenikResource>());
+            var config = new MapperConfiguration(cfg => cfg.CreateMap<Ucenik, PostUcenikaResource>());
             var mapper = config.CreateMapper();
 
             IUnitOfWork unitOfWork = new UnitOfWork(context,mapper);
@@ -189,8 +189,8 @@ namespace DomUcenikaSvilajnac.IntegratedTests
 
             Mapper.Initialize(m => m.AddProfile<MappingProfile>());
             Mapper.AssertConfigurationIsValid();
-            var ucenikZaBazu = Mapper.Map<UcenikResource, Ucenik>(primerUcenika);
-            var config = new MapperConfiguration(cfg => cfg.CreateMap<Ucenik, UcenikResource>());
+            var ucenikZaBazu = Mapper.Map<PostUcenikaResource, Ucenik>(primerUcenika);
+            var config = new MapperConfiguration(cfg => cfg.CreateMap<Ucenik, PostUcenikaResource>());
             var mapper = config.CreateMapper();
 
             IUnitOfWork unitOfWork = new UnitOfWork(context, mapper);
@@ -215,9 +215,9 @@ namespace DomUcenikaSvilajnac.IntegratedTests
 
             Mapper.Initialize(m => m.AddProfile<MappingProfile>());
             Mapper.AssertConfigurationIsValid();
-            var ucenikZaBazu = Mapper.Map<UcenikResource, Ucenik>(primerUcenika);
+            var ucenikZaBazu = Mapper.Map<PostUcenikaResource, Ucenik>(primerUcenika);
 
-            var config = new MapperConfiguration(cfg => cfg.CreateMap<Ucenik, UcenikResource>());
+            var config = new MapperConfiguration(cfg => cfg.CreateMap<Ucenik, PostUcenikaResource>());
             var mapper = config.CreateMapper();
 
             IUnitOfWork unitOfWork = new UnitOfWork(context, mapper);
@@ -242,9 +242,9 @@ namespace DomUcenikaSvilajnac.IntegratedTests
 
             Mapper.Initialize(m => m.AddProfile<MappingProfile>());
             Mapper.AssertConfigurationIsValid();
-            var ucenikZaBazu = Mapper.Map<UcenikResource, Ucenik>(primerUcenika);
+            var ucenikZaBazu = Mapper.Map<PostUcenikaResource, Ucenik>(primerUcenika);
 
-            var config = new MapperConfiguration(cfg => cfg.CreateMap<Ucenik, UcenikResource>());
+            var config = new MapperConfiguration(cfg => cfg.CreateMap<Ucenik, PostUcenikaResource>());
             var mapper = config.CreateMapper();
 
             IUnitOfWork unitOfWork = new UnitOfWork(context,mapper);
