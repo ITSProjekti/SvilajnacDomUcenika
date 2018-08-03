@@ -86,6 +86,22 @@ namespace DomUcenikaSvilajnac.Controllers
         [HttpPut("{id}")]
         public async Task<IActionResult> PutUcenik([FromRoute] int id, [FromBody] PutUcenikaResource ucenik)
         {
+            PutRoditeljaResource roditeljResurs = new PutRoditeljaResource()
+            {
+                Id = ucenik.Roditelji.Id,
+                IdMajke = ucenik.Roditelji.IdMajke,
+                ImeMajke = ucenik.Roditelji.ImeMajke,
+                PrezimeMajke = ucenik.Roditelji.PrezimeMajke,
+                ImeOca = ucenik.Roditelji.ImeOca,
+                PrezimeOca = ucenik.Roditelji.PrezimeOca,
+                BrojTelefonaMajke = ucenik.Roditelji.BrojTelefonaMajke,
+                BrojTelefonaOca = ucenik.Roditelji.BrojTelefonaOca,
+                StrucnaSpremaMajkeId = ucenik.Roditelji.StrucnaSpremaMajkeId,
+                StrucnaSpremaOcaId = ucenik.Roditelji.StrucnaSpremaOcaId,
+                UcenikId = ucenik.Roditelji.UcenikId
+
+
+            };
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
@@ -126,7 +142,12 @@ namespace DomUcenikaSvilajnac.Controllers
 
             await UnitOfWork.SaveChangesAsync();
 
-           
+
+            
+
+            RoditeljController roditeljKontroler = new RoditeljController(_mapper, UnitOfWork);
+
+            await roditeljKontroler.PutRoditelj(novi.Id, roditeljResurs);
 
 
             var noviUcenik = await UnitOfWork.putUcenikaMapa(id);
