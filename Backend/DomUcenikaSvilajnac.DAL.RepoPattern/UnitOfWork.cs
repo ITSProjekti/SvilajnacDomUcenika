@@ -188,6 +188,29 @@ namespace DomUcenikaSvilajnac.DAL.RepoPattern
 
 
         }
+        public async Task<UcenikResource> mapiranjeZaDeleteUcenika(UcenikResource ucenik)
+        {
+            var neki = await _context.Uceniks
+                 .Include(o => o.Opstina)
+                .Include(d => d.DrzavaRodjenja)
+                .Include(op => op.OpstinaPrebivalista)
+                .Include(p => p.Pol)
+                .Include(t => t.Telefon)
+                .Include(pb => pb.PostanskiBroj)
+                .Include(os => os.PrethodnaSkola)
+                .Include(ss => ss.UpisanaSkola)
+                .Include(mr => mr.MestoRodjenja)
+                .Include(mr => mr.MestoPrebivalista)
+                .Include(mzs => mzs.MestoZavrseneSkole)
+                .Include(s => s.Smer)
+                .Include(r => r.Razred)
+                .Include(rod=> rod.Roditelji)
+                .SingleOrDefaultAsync(x => x.Id == ucenik.Id);
+
+            return Mapper.Map<Ucenik, UcenikResource>(neki);
+
+
+        }
         public void deleteTelefon(Telefon telefon)
         {
             _context.Telefoni.Remove(telefon);

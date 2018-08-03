@@ -231,8 +231,8 @@ namespace DomUcenikaSvilajnac.Controllers
 
 
 
-            var noviUcenik = _mapper.Map<Ucenik, PostUcenikaResource>(ucenik);
-            var mapiranUcenik = await UnitOfWork.mapiranje(noviUcenik);
+            var noviUcenik = _mapper.Map<Ucenik, UcenikResource>(ucenik);
+            var mapiranUcenik = await UnitOfWork.mapiranjeZaDeleteUcenika(noviUcenik);
 
             if (ucenik == null)
             {
