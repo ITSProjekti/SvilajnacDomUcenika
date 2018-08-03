@@ -92,22 +92,12 @@ namespace DomUcenikaSvilajnac.Controllers
             }
             var stariUcenik = await UnitOfWork.Ucenici.GetAsync(id);
             int pom = stariUcenik.TelefonId;
-
             TelefonResource telefon = new TelefonResource { Id = pom, Mobilni = ucenik.Telefon.Mobilni, Kucni = ucenik.Telefon.Kucni };
             var stariTelefon = await UnitOfWork.Telefoni.GetAsync(telefon.Id);
 
-
-
-
-            //var noviTelefon = _mapper.Map<TelefonResource, Telefon>(telefon, stariTelefon);
-
-            //UnitOfWork.deleteTelefon(noviTelefon);
-
-            ////   await UnitOfWork.SaveChangesAsync();
+            //koriscenje klase telefon kontrolera kako bih pozvao metodu put za taj objekat
             TelefonController telefonKontroler = new TelefonController(_mapper, UnitOfWork);
             await telefonKontroler.PutTelefon(telefon.Id, telefon);
-
-
 
             if (id != stariUcenik.Id)
             {

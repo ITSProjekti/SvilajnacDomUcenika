@@ -4,7 +4,7 @@ using System.Text;
 
 namespace DomUcenikaSvilajnac.Common.Models.ModelResources
 {
-    public class PutRoditeljaResource
+    public class MajkaResource
     {
         public int IdMajke { get; set; }
         public int Id { get; set; }
@@ -20,6 +20,5 @@ namespace DomUcenikaSvilajnac.Common.Models.ModelResources
         public string BrojTelefonaOca { get; set; }
 
         public int UcenikId { get; set; }
-
     }
 }

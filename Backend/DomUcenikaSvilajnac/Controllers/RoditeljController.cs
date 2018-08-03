@@ -32,14 +32,6 @@ namespace DomUcenikaSvilajnac.Controllers
         {
 
             return await UnitOfWork.spremaRoditelja();
-         //   var listaResurs = Mapper.Map<List<RoditeljResource>, List<Roditelj>>(listaRoditelja.ToList());
-
-
-            //  List<RoditeljResource> listaResurs = new List<RoditeljResource>();
-
-            // Mapper.Map<List<Roditelj>, List<RoditeljResource>>(listaResurs.ToList());
-
-          //  return roditelj;   // Mapper.Map<List<Roditelj>, List<RoditeljResource>>(listaRoditelja.ToList());
         }
         /// <summary>
         /// Vraca dva reda iz tabele, tj. roditelje na osnovu prosledjenog Id-a.
@@ -62,18 +54,54 @@ namespace DomUcenikaSvilajnac.Controllers
                 return BadRequest(ModelState);
             }
 
-            var stariRoditelj = await UnitOfWork.Roditelji.GetAsync(id);
-            if (id != stariRoditelj.Id)
+            int[] nizId = new int[2];
+
+              var listaRoditelja = await UnitOfWork.roditeljiUcenikaZaPut(id);
+            foreach (var item in listaRoditelja)
             {
-                return BadRequest();
+                nizId[0] = item.IdMajke;
+                nizId[1] = item.Id;
+                break;
             }
-            if (stariRoditelj == null)
-                return NotFound();
 
 
-            roditelj.Id = id;
-            Mapper.Map<PutRoditeljaResource, Roditelj>(roditelj, stariRoditelj);
+            var stariOtac = await UnitOfWork.Roditelji.GetAsync(nizId[1]);
+            var staraMajka = await UnitOfWork.Roditelji.GetAsync(nizId[0]);
+           
+
+
+
+            //if (id != stariRoditelj.Id)
+            //{
+            //    return BadRequest();
+            //}
+            //if (stariRoditelj == null)
+            // return NotFound();
+
+
+            
+            roditelj.Id = nizId[1];
+            roditelj.IdMajke = nizId[0];
+            
+
+
+
+            var djesi = Mapper.Map<PutRoditeljaResource, MajkaResource>(roditelj);
+            
+
+            djesi.IdMajke = nizId[0];
+            djesi.Id = nizId[1];
+
+
+            Mapper.Map<PutRoditeljaResource, Roditelj>(roditelj, stariOtac);
+            staraMajka.Id = nizId[0];
+            Mapper.Map<MajkaResource, Roditelj>(djesi, staraMajka);
             await UnitOfWork.SaveChangesAsync();
+
+
+
+            //   UnitOfWork.SaveChanges();
+
 
             var noviRoditelj = await UnitOfWork.Roditelji.GetAsync(id);
             Mapper.Map<Roditelj, PutRoditeljaResource>(noviRoditelj);

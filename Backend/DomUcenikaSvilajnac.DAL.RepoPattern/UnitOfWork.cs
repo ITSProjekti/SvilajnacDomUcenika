@@ -249,6 +249,17 @@ namespace DomUcenikaSvilajnac.DAL.RepoPattern
             return  Mapper.Map<List<Roditelj>, List<RoditeljResource>>(nesto);
         }
 
+        public async Task<IEnumerable<PutRoditeljaResource>> roditeljiUcenikaZaPut(int UcenikId)
+        {
+            var nesto = await _context.Roditelji.
+                FromSql(
+                $"select *  from dbo.Roditelji  where UcenikId = {UcenikId}"
+                )
+                .ToListAsync();
+
+            return Mapper.Map<List<Roditelj>, List<PutRoditeljaResource>>(nesto);
+        }
+
         public async Task<IEnumerable<DeleteRoditeljaResource>> brisanjeRoditelja(int UcenikId)
         {
             var nesto = await _context.Roditelji.
