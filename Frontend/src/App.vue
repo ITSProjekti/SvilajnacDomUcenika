@@ -24,7 +24,7 @@
               </v-subheader>
             </v-flex>
             <v-flex xs6 class="text-xs-right">
-              <v-btn small flat>edit</v-btn>
+              <v-btn small flat>Dummy Edit btn</v-btn>
             </v-flex>
           </v-layout>
           <v-divider
@@ -90,20 +90,20 @@
     data: () => ({
       drawer: null,
       items: [
-        { icon: 'lightbulb_outline', text: 'Notes' },
-        { icon: 'touch_app', text: 'Reminders' },
+        { icon: 'lightbulb_outline', text: 'Lista ucenika',link: '/ucenici' },
+        { icon: 'touch_app', text: 'Dummy1' },
         { divider: true },
-        { heading: 'Labels' },
+        { heading: 'Dummy title' },
         { icon: 'add', text: 'Prijavi novog ucenika',link: '/prijava' },
         { divider: true },
-        { icon: 'archive', text: 'Archive' },
-        { icon: 'delete', text: 'Trash' },
+        { icon: 'archive', text: 'Dummy2' },
+        { icon: 'delete', text: 'Dummy3' },
         { divider: true },
-        { icon: 'settings', text: 'Settings' },
-        { icon: 'chat_bubble', text: 'Trash' },
-        { icon: 'help', text: 'Help' },
-        { icon: 'phonelink', text: 'App downloads' },
-        { icon: 'keyboard', text: 'Keyboard shortcuts' }
+        { icon: 'settings', text: 'Dummy4' },
+        { icon: 'chat_bubble', text: 'Dummy5' },
+        { icon: 'help', text: 'Dummy6' },
+        { icon: 'phonelink', text: 'Dummy7' },
+        { icon: 'keyboard', text: 'Dummy8' }
       ], 
       menuItems: [
         {icon: 'supervisor_account', title: 'Lista ucenika',link: '/ucenici'},
