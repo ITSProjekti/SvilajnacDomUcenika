@@ -164,6 +164,26 @@ namespace DomUcenikaSvilajnac.DAL.RepoPattern
                 .SingleOrDefaultAsync(x => x.Id == id);
             return Mapper.Map<Ucenik, UcenikResource>(neki);
         }
+        public async Task<PutUcenikaResource> putUcenikaMapa(int id)
+        {
+            var neki = await _context.Uceniks
+                  .Include(o => o.Opstina)
+                .Include(d => d.DrzavaRodjenja)
+                .Include(op => op.OpstinaPrebivalista)
+                .Include(p => p.Pol)
+                .Include(t => t.Telefon)
+                .Include(pb => pb.PostanskiBroj)
+                .Include(os => os.PrethodnaSkola)
+                .Include(ss => ss.UpisanaSkola)
+                .Include(mr => mr.MestoRodjenja)
+                .Include(mr => mr.MestoPrebivalista)
+                .Include(mzs => mzs.MestoZavrseneSkole)
+                .Include(s => s.Smer)
+                .Include(r => r.Razred)
+                .Include(rod => rod.Roditelji)
+                .SingleOrDefaultAsync(x => x.Id == id);
+            return Mapper.Map<Ucenik, PutUcenikaResource>(neki);
+        }
 
         public async Task<PostUcenikaResource> mapiranje(PostUcenikaResource ucenik)
         {
@@ -181,9 +201,11 @@ namespace DomUcenikaSvilajnac.DAL.RepoPattern
                 .Include(mzs => mzs.MestoZavrseneSkole)
                 .Include(s => s.Smer)
                 .Include(r => r.Razred)
-
+                
                 .SingleOrDefaultAsync(x => x.Id == ucenik.Id);
+            
 
+            
             return Mapper.Map<Ucenik, PostUcenikaResource>(neki);
 
 
@@ -240,6 +262,10 @@ namespace DomUcenikaSvilajnac.DAL.RepoPattern
 
             return Mapper.Map<List<Roditelj>, List<DeleteRoditeljaResource>>(nesto);
         }
+
+
+
+
     }
 }
 

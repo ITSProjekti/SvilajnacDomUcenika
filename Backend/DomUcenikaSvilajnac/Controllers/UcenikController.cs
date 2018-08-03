@@ -84,7 +84,7 @@ namespace DomUcenikaSvilajnac.Controllers
         /// </summary>
         // PUT: api/Ucenik/5
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutUcenik([FromRoute] int id, [FromBody] PostUcenikaResource ucenik)
+        public async Task<IActionResult> PutUcenik([FromRoute] int id, [FromBody] PutUcenikaResource ucenik)
         {
             if (!ModelState.IsValid)
             {
@@ -97,11 +97,16 @@ namespace DomUcenikaSvilajnac.Controllers
             var stariTelefon = await UnitOfWork.Telefoni.GetAsync(telefon.Id);
 
 
-            var noviTelefon = _mapper.Map<TelefonResource, Telefon>(telefon, stariTelefon);
 
-            UnitOfWork.deleteTelefon(noviTelefon);
 
-            //   await UnitOfWork.SaveChangesAsync();
+            //var noviTelefon = _mapper.Map<TelefonResource, Telefon>(telefon, stariTelefon);
+
+            //UnitOfWork.deleteTelefon(noviTelefon);
+
+            ////   await UnitOfWork.SaveChangesAsync();
+            TelefonController telefonKontroler = new TelefonController(_mapper, UnitOfWork);
+            await telefonKontroler.PutTelefon(telefon.Id, telefon);
+
 
 
             if (id != stariUcenik.Id)
@@ -113,7 +118,7 @@ namespace DomUcenikaSvilajnac.Controllers
 
             ucenik.Id = id;
 
-            var novi = _mapper.Map<PostUcenikaResource, Ucenik>(ucenik, stariUcenik);
+            var novi = _mapper.Map<PutUcenikaResource, Ucenik>(ucenik, stariUcenik);
             novi.TelefonId = pom;
             novi.Opstina = null;
             novi.DrzavaRodjenja = null;
@@ -129,10 +134,12 @@ namespace DomUcenikaSvilajnac.Controllers
             novi.Razred = null;
             //  novi.Telefon = null;
 
-            UnitOfWork.SaveChanges();
+            await UnitOfWork.SaveChangesAsync();
+
+           
 
 
-            var noviUcenik = await UnitOfWork.mestaUcenikaById(id);
+            var noviUcenik = await UnitOfWork.putUcenikaMapa(id);
             return Ok(noviUcenik);
         }
 

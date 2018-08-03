@@ -51,7 +51,7 @@ namespace DomUcenikaSvilajnac.Common.Interfaces
         Task<IEnumerable<RoditeljResource>> spremaRoditelja();
 
         Task<UcenikResource> mapiranjeZaDeleteUcenika(UcenikResource ucenik);
-
+        Task<PutUcenikaResource> putUcenikaMapa(int id);
 
     }
 }
