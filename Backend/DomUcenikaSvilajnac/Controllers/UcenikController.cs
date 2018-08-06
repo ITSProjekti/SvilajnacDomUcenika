@@ -191,18 +191,18 @@ namespace DomUcenikaSvilajnac.Controllers
             var noviUcenik = _mapper.Map<PostUcenikaResource, Ucenik>(ucenik);
             noviUcenik.VremeUpisa = DateTime.Now;
 
-            noviUcenik.Opstina = null;
-            noviUcenik.DrzavaRodjenja = null;
-            noviUcenik.OpstinaPrebivalista = null;
-            noviUcenik.Pol = null;
-            noviUcenik.PostanskiBroj = null;
-            noviUcenik.MestoPrebivalista = null;
-            noviUcenik.MestoRodjenja = null;
-            noviUcenik.MestoZavrseneSkole = null;
-            noviUcenik.PrethodnaSkola = null;
-            noviUcenik.UpisanaSkola = null;
-            noviUcenik.Smer = null;
-            noviUcenik.Razred = null;
+          //  noviUcenik.Opstina = null;
+          //  noviUcenik.DrzavaRodjenja = null;
+          //  noviUcenik.OpstinaPrebivalista = null;
+            //noviUcenik.Pol = null;
+            //noviUcenik.PostanskiBroj = null;
+            //noviUcenik.MestoPrebivalista = null;
+            //noviUcenik.MestoRodjenja = null;
+            //noviUcenik.MestoZavrseneSkole = null;
+            //noviUcenik.PrethodnaSkola = null;
+            //noviUcenik.UpisanaSkola = null;
+            //noviUcenik.Smer = null;
+            //noviUcenik.Razred = null;
 
            
             //kada se cuvaju prvo kolone ne ide null
