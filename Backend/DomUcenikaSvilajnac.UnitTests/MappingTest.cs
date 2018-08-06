@@ -1,6 +1,7 @@
 using AutoMapper;
 using DomUcenikaSvilajnac.Common.Interfaces;
 using DomUcenikaSvilajnac.Common.Models;
+using DomUcenikaSvilajnac.Common.Models.ModelResources;
 using DomUcenikaSvilajnac.Mapping;
 using DomUcenikaSvilajnac.ModelResources;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
@@ -24,18 +25,33 @@ namespace DomUcenikaSvilajnac.UnitTests
         public void CreateMapMetode_ResursModelproveraTipa_ReturnsTrue()
         {
             Mapper.Initialize(m => m.AddProfile<MappingProfile>());
-            Mapper.AssertConfigurationIsValid();
+            //Mapper.AssertConfigurationIsValid();
             Ucenik ucenik = new Ucenik()
             {
                 Id = 1,
                 Ime = "Pera",
                 Prezime = "Peric",
                 JMBG = "1231231231233",
-                DatumRodjenja = new DateTime(1998, 04, 30)
-            };
-            var result = Mapper.Map<Ucenik, PostUcenikaResource>(ucenik);
+                DatumRodjenja = new DateTime(1998, 04, 30),
+                DrzavaRodjenjaId = 1,
+                MestoPrebivalistaId = 1,
+                MestoRodjenjaId = 1,
+                MestoZavrseneSkoleId = 1,
+                OpstinaPrebivalistaId = 1,
+                PolId = 1,
+                Adresa = "Milutaina Milankovica 74",
+                TelefonId = 1,
+                PostanskiBrojId = 1,
+                UpisanaSkolaId = 1,
+                SmerId = 1,
+                RazredId = 1,
+                PrethodnaSkolaId = 1,
+                PrethodniUspeh = 4.55f
 
-            Assert.IsInstanceOfType(result, typeof(PostUcenikaResource));
+            };
+            var result = Mapper.Map<Ucenik, UcenikResource>(ucenik);
+
+            Assert.IsInstanceOfType(result, typeof(UcenikResource));
             AutoMapper.Mapper.Reset();
         }
 
@@ -46,8 +62,8 @@ namespace DomUcenikaSvilajnac.UnitTests
         public void CreateMapMetode_ModelResursproveraTipa_ReturnsTrue()
         {
             Mapper.Initialize(m => m.AddProfile<MappingProfile>());
-            Mapper.AssertConfigurationIsValid();
-            PostUcenikaResource ucenik = new PostUcenikaResource()
+
+            UcenikResource ucenik = new UcenikResource()
             {
                 Id = 1,
                 Ime = "Pera",
@@ -56,8 +72,11 @@ namespace DomUcenikaSvilajnac.UnitTests
                 Dan = 5,
                 Mesec = 11,
                 Godina = 2001
+
+
+
             };
-            var result = Mapper.Map<PostUcenikaResource, Ucenik>(ucenik);
+            var result = Mapper.Map<UcenikResource, Ucenik>(ucenik);
 
             Assert.IsInstanceOfType(result, typeof(Ucenik));
             AutoMapper.Mapper.Reset();
@@ -70,8 +89,8 @@ namespace DomUcenikaSvilajnac.UnitTests
         public void CreateMapMetode_ModelResursproveraTipa_ReturnsFalseModel()
         {
             Mapper.Initialize(m => m.AddProfile<MappingProfile>());
-            Mapper.AssertConfigurationIsValid();
-            PostUcenikaResource ucenik = new PostUcenikaResource()
+           // Mapper.AssertConfigurationIsValid();
+            UcenikResource ucenik = new UcenikResource()
             {
                 Id = 1,
                 Ime = "Pera",
@@ -83,7 +102,7 @@ namespace DomUcenikaSvilajnac.UnitTests
 
             try
             {
-                var result = Mapper.Map<PostUcenikaResource, Ucenik>(ucenik);
+                var result = Mapper.Map<UcenikResource, Ucenik>(ucenik);
 
                 Assert.Fail("OK");
             }
