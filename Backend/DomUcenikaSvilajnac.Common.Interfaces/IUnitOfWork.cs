@@ -37,21 +37,21 @@ namespace DomUcenikaSvilajnac.Common.Interfaces
 
         int SaveChanges();
         Task<int> SaveChangesAsync();
-        Task<IEnumerable<UcenikResource>> mestaUcenika();
+        Task<IEnumerable<UcenikResource>> podaciUcenika();
 
-        Task<UcenikResource> mestaUcenikaById(int id);
-        Task<PostUcenikaResource> mapiranje(PostUcenikaResource ucenik);
-     //   Task<PostPostUcenikaResource> mapiranjeZaPostUcenika(PostPostUcenikaResource ucenik);
+        Task<UcenikResource> podaciUcenikaById(int id);
+        Task<PostUcenikaResource> mapiranjeZaPostUcenika(PostUcenikaResource ucenik);
+ 
         void deleteTelefon(Telefon telefon);
 
-        Task<IEnumerable<OpstinaResource>> brojeviOpstine();
+        Task<IEnumerable<OpstinaResource>> podaciSaOpstinama();
         Task<IEnumerable<RoditeljResource>> roditeljiUcenika(int UcenikId);
         Task<IEnumerable<DeleteRoditeljaResource>> brisanjeRoditelja(int UcenikId);
 
         Task<IEnumerable<RoditeljResource>> spremaRoditelja();
 
         Task<UcenikResource> mapiranjeZaDeleteUcenika(UcenikResource ucenik);
-        Task<PutUcenikaResource> putUcenikaMapa(int id);
+        Task<PutUcenikaResource> mapiranjeZaPutUcenika(int id);
         Task<IEnumerable<PutRoditeljaResource>> roditeljiUcenikaZaPut(int UcenikId);
 
     }

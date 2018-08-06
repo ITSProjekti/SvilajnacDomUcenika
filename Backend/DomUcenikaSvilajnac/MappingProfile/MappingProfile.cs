@@ -100,7 +100,19 @@ namespace DomUcenikaSvilajnac.Mapping
                 .ForMember(v => v.MestoZavrseneSkole, opt => opt.MapFrom(src => new Mesto() { Id = src.MestoZavrseneSkole.Id, NazivMesta = src.MestoZavrseneSkole.NazivMesta }))
                 .ForMember(v => v.Pol, opt => opt.MapFrom(src => new Pol() { Id = src.Pol.Id, NazivPola = src.Pol.NazivPola }))
                 .ForMember(v => v.Roditelji, opt => opt.Ignore())
-                .ForMember(v => v.Telefon, opt => opt.Ignore());
+                .ForMember(v => v.Telefon, opt => opt.Ignore())
+                .ForMember(v => v.Opstina, opt => opt.Ignore())
+                .ForMember(v => v.DrzavaRodjenja, opt => opt.Ignore())
+                .ForMember(v => v.OpstinaPrebivalista, opt => opt.Ignore())
+                .ForMember(v => v.Pol, opt => opt.Ignore())
+                .ForMember(v => v.PostanskiBroj, opt => opt.Ignore())
+                .ForMember(v => v.MestoPrebivalista, opt => opt.Ignore())
+                .ForMember(v => v.MestoRodjenja, opt => opt.Ignore())
+                .ForMember(v => v.MestoZavrseneSkole, opt => opt.Ignore())
+                .ForMember(v => v.PrethodnaSkola, opt => opt.Ignore())
+                .ForMember(v => v.UpisanaSkola, opt => opt.Ignore())
+                .ForMember(v => v.Smer, opt => opt.Ignore())
+                .ForMember(v => v.Razred, opt => opt.Ignore());
 
 
 

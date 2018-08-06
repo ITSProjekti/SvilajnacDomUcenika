@@ -8,6 +8,8 @@ using DomUcenikaSvilajnac.Common.Models;
 using DomUcenikaSvilajnac.Common.Models.ModelResources;
 using Microsoft.AspNetCore.Mvc;
 
+
+
 namespace DomUcenikaSvilajnac.Controllers
 {
     [Produces("application/json")]
@@ -33,10 +35,10 @@ namespace DomUcenikaSvilajnac.Controllers
         public async Task<IEnumerable<OpstinaResource>> GetOpstine()
         {
 
-            var listaOpstina = await UnitOfWork.brojeviOpstine();
-           
+            var listaOpstina = await UnitOfWork.podaciSaOpstinama();
             var mapiranjeUcenikaMesta = Mapper.Map<List<OpstinaResource>, List<Opstina>>(listaOpstina.ToList());
             return Mapper.Map<List<Opstina>, List<OpstinaResource>>(mapiranjeUcenikaMesta.ToList());
+
         }
 
         /// <summary>
