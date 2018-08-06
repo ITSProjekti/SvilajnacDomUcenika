@@ -23,6 +23,7 @@ new Vue({
   template: '<App/>',
   created () {
     this.$store.dispatch('loadedUcenici')
+    this.$store.dispatch('loadedSSS')
     this.$store.dispatch('loadedDrzave')
     this.$store.dispatch('loadedPostanskiBrojevi')
     this.$store.dispatch('loadedPolovi')

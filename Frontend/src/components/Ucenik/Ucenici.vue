@@ -288,7 +288,7 @@
                  <v-container fluid>
                     <v-layout row wrap>
                     <v-flex xs12 sm6 class="mt-4">
-                     <p>Razred koji upisuje</p>
+                     <p>Razred koji učenik upisuje</p>
                     </v-flex>
                            <v-flex xs12 sm6>
                                <v-select
@@ -317,6 +317,39 @@
                 <v-text-field
                  v-model="editedItem.telefon.kucni"                
                    label="Kućni telefon"    
+                   ></v-text-field>
+              </v-flex>
+    
+               <v-flex xs6 class="ml-3">
+                <v-text-field
+                 v-model="editedItem.roditelji[1].ime"                
+                   label="Ime majke"   
+                      required
+                                 :rules="[rules.required]" 
+                   ></v-text-field>
+              </v-flex>
+               <v-flex xs6 class="ml-3">
+                <v-text-field
+                 v-model="editedItem.roditelji[1].prezime"  
+                    required
+                                 :rules="[rules.required]"              
+                   label="Prezime majke"    
+                   ></v-text-field>
+              </v-flex>
+               <v-flex xs6 class="ml-3">
+                <v-text-field
+                 v-model="editedItem.roditelji[0].ime" 
+                    required
+                                 :rules="[rules.required]"               
+                   label="Ime oca"    
+                   ></v-text-field>
+              </v-flex>
+               <v-flex xs6 class="ml-3">
+                <v-text-field
+                 v-model="editedItem.roditelji[0].prezime"                
+                   label="Prezime oca"  
+                      required
+                                 :rules="[rules.required]"  
                    ></v-text-field>
               </v-flex>
               <v-flex xs12 class="ml-3">
@@ -517,6 +550,41 @@
                               </v-card-text>
                        </v-flex>
                        
+                               <v-flex xs2>
+                       <v-subheader class="text-lg-right" v-text="'Ime majke: '"></v-subheader>
+                       </v-flex>
+                        <v-flex xs2>
+                        <v-card-text class="text-lg-left">
+                                {{ props.item.roditelji[1].ime }}
+                              </v-card-text>
+                       </v-flex>
+
+                               <v-flex xs2>
+                       <v-subheader class="text-lg-right" v-text="'Prezime majke: '"></v-subheader>
+                       </v-flex>
+                        <v-flex xs2>
+                        <v-card-text class="text-lg-left">
+                                {{ props.item.roditelji[1].prezime }}
+                              </v-card-text>
+                       </v-flex>
+                       
+                               <v-flex xs2>
+                       <v-subheader class="text-lg-right" v-text="'Ime oca: '"></v-subheader>
+                       </v-flex>
+                        <v-flex xs2>
+                        <v-card-text class="text-lg-left">
+                                {{ props.item.roditelji[0].ime }}
+                              </v-card-text>
+                       </v-flex>
+
+                               <v-flex xs2>
+                       <v-subheader class="text-lg-right" v-text="'Prezime oca: '"></v-subheader>
+                       </v-flex>
+                        <v-flex xs2>
+                        <v-card-text class="text-lg-left">
+                                {{ props.item.roditelji[0].prezime }}
+                              </v-card-text>
+                       </v-flex>
                     </v-layout>                  
                 </v-card>
               </template>
@@ -632,7 +700,18 @@ import moment from 'moment'
           razred:{
             id: '',
             brojRazreda: ''
-               }
+          },
+          roditelji:[
+            {
+              ime:'',
+              prezime: ''
+            },
+               {
+              ime:'',
+              prezime: ''
+            }
+          ],
+
       },
 
       defaultItem: {
@@ -699,7 +778,18 @@ import moment from 'moment'
           razred:{
             id: '',
             brojRazreda: ''
-               }
+          },
+         roditelji:[
+            {
+              ime:'',
+              prezime: ''
+            },
+               {
+              ime:'',
+              prezime: ''
+            }
+          ],
+
       }
     }),
     computed: { formIsValid () {
@@ -720,7 +810,10 @@ import moment from 'moment'
           this.editedItem.prethodnaSkola.id !== '' &&
           this.editedItem.upisanaSkola.id !== '' &&
           this.editedItem.razred.id !== '' &&
-         
+          this.editedItem.roditelji[0].ime !== '' &&
+          this.editedItem.roditelji[0].prezime !== '' &&
+          this.editedItem.roditelji[1].ime !== '' &&
+          this.editedItem.roditelji[1].prezime !== '' &&
          (this.editedItem.dan !== '' ||  this.datum !== null)
           
           )
@@ -731,6 +824,9 @@ import moment from 'moment'
             return false
           }
          
+      },
+       StepeniStrucneSpreme () {
+        return this.$store.getters.loadedSSS
       },
       razredi () {
         return this.$store.getters.loadedRazredi
@@ -856,12 +952,14 @@ import moment from 'moment'
         if (this.editedIndex > -1) {    
           this.formatiranjeDatuma()
          // Object.assign(this.ucenici[this.editedIndex], this.editedItem)
+         this.editedItem.roditelji.ucenikID= this.editedItem.id
+          
           this.$store.dispatch('editUcenik',this.editedItem)
           this.editedItem = Object.assign({}, this.defaultItem)
           this.datum=null
         } else {
           this.formatiranjeDatuma() 
-            
+         
           this.$store.dispatch('createUcenik',this.editedItem)
           this.editedItem = Object.assign({}, this.defaultItem)
           this.datum=null
@@ -876,11 +974,11 @@ import moment from 'moment'
 <style >
 table {
   border-top: 4px solid grey   !important;
-  border-bottom: 4px solid grey   !important;
+  border-bottom: 4px solid grey  !important;
   
 }
 .pageRow td:nth-child(odd) {
-  background-color: lightgrey;
+  background-color: white;
   border-top: 1px solid black !important
 }
 </style>
