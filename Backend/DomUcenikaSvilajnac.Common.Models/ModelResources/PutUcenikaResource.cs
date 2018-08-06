@@ -42,5 +42,6 @@ namespace DomUcenikaSvilajnac.Common.Models.ModelResources
         //public List<RoditeljiUcenikaResource> Roditelji { get; set; }
 
         public PostRoditeljaResource Roditelji { get; set; }
+        public float PrethodniUspeh { get; set; }
     }
 }
