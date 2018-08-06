@@ -25,7 +25,9 @@ namespace DomUcenikaSvilajnac.UnitTests
         public void CreateMapMetode_ResursModelproveraTipa_ReturnsTrue()
         {
             Mapper.Initialize(m => m.AddProfile<MappingProfile>());
-            //Mapper.AssertConfigurationIsValid();
+
+
+            Mapper.AssertConfigurationIsValid();
             Ucenik ucenik = new Ucenik()
             {
                 Id = 1,
@@ -62,7 +64,7 @@ namespace DomUcenikaSvilajnac.UnitTests
         public void CreateMapMetode_ModelResursproveraTipa_ReturnsTrue()
         {
             Mapper.Initialize(m => m.AddProfile<MappingProfile>());
-
+            //Mapper.AssertConfigurationIsValid();
             UcenikResource ucenik = new UcenikResource()
             {
                 Id = 1,
@@ -89,7 +91,7 @@ namespace DomUcenikaSvilajnac.UnitTests
         public void CreateMapMetode_ModelResursproveraTipa_ReturnsFalseModel()
         {
             Mapper.Initialize(m => m.AddProfile<MappingProfile>());
-           // Mapper.AssertConfigurationIsValid();
+            Mapper.AssertConfigurationIsValid();
             UcenikResource ucenik = new UcenikResource()
             {
                 Id = 1,
