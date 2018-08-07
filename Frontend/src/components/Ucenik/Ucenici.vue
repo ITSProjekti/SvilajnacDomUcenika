@@ -307,6 +307,15 @@
                         </v-container>
                       </template>
                         </v-container>
+                        <v-flex xs12 class="ml-3">
+                          <p>Prethnodi uspeh ucenika</p>
+                <v-flex xs2 class="ml-3">
+                <v-text-field
+                 v-model="editedItem.prethodniUspeh"                 
+                   label="br"
+                   ></v-text-field>
+              </v-flex>
+              </v-flex>
                <v-flex xs6 class="ml-3">
                 <v-text-field
                  v-model="editedItem.telefon.mobilni"                 
@@ -325,22 +334,50 @@
                  v-model="editedItem.roditelji[1].ime"                
                    label="Ime majke"   
                       required
-                                 :rules="[rules.required]" 
+                      :rules="[rules.required]" 
                    ></v-text-field>
               </v-flex>
                <v-flex xs6 class="ml-3">
                 <v-text-field
                  v-model="editedItem.roditelji[1].prezime"  
                     required
-                                 :rules="[rules.required]"              
+                    :rules="[rules.required]"              
                    label="Prezime majke"    
+                   ></v-text-field>
+              </v-flex>
+                 <v-container fluid>
+                    <v-layout row wrap>
+                    <v-flex xs12 sm6 class="mt-4">
+                     <p>Stepen strucne spreme majke</p>
+                    </v-flex>
+                           <v-flex xs12 sm6>
+                               <v-select
+                                :loading="loading"
+                                :items="StepeniStrucneSpreme"
+                                v-model="editedItem.roditelji[1].stepenObrazovanjaId"
+                                label="Izaberite stepen obrazovanja"
+                                item-text="opis"
+                                item-value="id"
+                                autocomplete
+                                required
+                                 :rules="[rules.required]"
+                              ></v-select>
+                            </v-flex>
+                          </v-layout>
+                        </v-container>
+                <v-flex xs6 class="ml-3">
+                <v-text-field
+                 v-model="editedItem.roditelji[1].brojTelefona" 
+                    required
+                    :rules="[rules.required]"               
+                   label="Broj telefona majke"    
                    ></v-text-field>
               </v-flex>
                <v-flex xs6 class="ml-3">
                 <v-text-field
                  v-model="editedItem.roditelji[0].ime" 
                     required
-                                 :rules="[rules.required]"               
+                    :rules="[rules.required]"               
                    label="Ime oca"    
                    ></v-text-field>
               </v-flex>
@@ -349,7 +386,35 @@
                  v-model="editedItem.roditelji[0].prezime"                
                    label="Prezime oca"  
                       required
-                                 :rules="[rules.required]"  
+                      :rules="[rules.required]"  
+                   ></v-text-field>
+              </v-flex>
+               <v-container fluid>
+                    <v-layout row wrap>
+                    <v-flex xs12 sm6 class="mt-4">
+                     <p>Stepen strucne spreme oca</p>
+                    </v-flex>
+                           <v-flex xs12 sm6>
+                               <v-select
+                                :loading="loading"
+                                :items="StepeniStrucneSpreme"
+                                v-model="editedItem.roditelji[0].stepenObrazovanjaId"
+                                label="Izaberite stepen obrazovanja"
+                                item-text="opis"
+                                item-value="id"
+                                autocomplete
+                                required
+                                 :rules="[rules.required]"
+                              ></v-select>
+                            </v-flex>
+                          </v-layout>
+                        </v-container>
+                        <v-flex xs6 class="ml-3">
+                <v-text-field
+                 v-model="editedItem.roditelji[0].brojTelefona" 
+                    required
+                    :rules="[rules.required]"               
+                   label="Broj telefona oca"    
                    ></v-text-field>
               </v-flex>
               <v-flex xs12 class="ml-3">
@@ -549,6 +614,16 @@
                                 {{ props.item.razred.brojRazreda }}
                               </v-card-text>
                        </v-flex>
+
+                       
+                           <v-flex xs2>
+                       <v-subheader class="text-lg-right" v-text="'Prethodni uspeh: '"></v-subheader>
+                       </v-flex>
+                        <v-flex xs2>
+                        <v-card-text class="text-lg-left">
+                                {{ props.item.prethodniUspeh }}
+                              </v-card-text>
+                       </v-flex>
                        
                                <v-flex xs2>
                        <v-subheader class="text-lg-right" v-text="'Ime majke: '"></v-subheader>
@@ -569,6 +644,24 @@
                        </v-flex>
                        
                                <v-flex xs2>
+                       <v-subheader class="text-lg-right" v-text="'Broj telefona majke: '"></v-subheader>
+                       </v-flex>
+                        <v-flex xs2>
+                        <v-card-text class="text-lg-left">
+                                {{ props.item.roditelji[1].brojTelefona }}
+                              </v-card-text>
+                       </v-flex>
+                       
+                       
+                               <v-flex xs2>
+                       <v-subheader class="text-lg-right" v-text="'Strucna sprema majke: '"></v-subheader>
+                       </v-flex>
+                        <v-flex xs2>
+                        <v-card-text class="text-lg-left">
+                                {{ StepeniStrucneSpreme.find(x=>x.id===props.item.roditelji[1].stepenObrazovanjaId).opis }}
+                              </v-card-text>
+                       </v-flex>
+                               <v-flex xs2>
                        <v-subheader class="text-lg-right" v-text="'Ime oca: '"></v-subheader>
                        </v-flex>
                         <v-flex xs2>
@@ -585,6 +678,25 @@
                                 {{ props.item.roditelji[0].prezime }}
                               </v-card-text>
                        </v-flex>
+                                              
+                               <v-flex xs2>
+                       <v-subheader class="text-lg-right" v-text="'Broj telefona oca: '"></v-subheader>
+                       </v-flex>
+                        <v-flex xs2>
+                        <v-card-text class="text-lg-left">
+                                {{ props.item.roditelji[0].brojTelefona }}
+                              </v-card-text>
+                       </v-flex>
+                       
+                        <v-flex xs2>
+                       <v-subheader class="text-lg-right" v-text="'Strucna sprema oca: '"></v-subheader>
+                       </v-flex>
+                        <v-flex xs2>
+                        <v-card-text class="text-lg-left">
+                                {{ StepeniStrucneSpreme.find(x=>x.id===props.item.roditelji[0].stepenObrazovanjaId).opis }}
+                              </v-card-text>
+                       </v-flex>
+
                     </v-layout>                  
                 </v-card>
               </template>
@@ -635,12 +747,12 @@ import moment from 'moment'
       search: '',
       editedIndex: -1,
       brojevi: '',
-
       editedItem: {
         ime: '',
         prezime: '',
         jmbg: '',
         adresa: '',
+        prethodniUspeh: '',
        pol: {
           id: '',
           nazivPola: ''
@@ -704,11 +816,15 @@ import moment from 'moment'
           roditelji:[
             {
               ime:'',
-              prezime: ''
+              prezime: '',
+              brojTelefona: '',
+              stepenObrazovanjaId: ''
             },
                {
               ime:'',
-              prezime: ''
+              prezime: '',
+              brojTelefona: '',
+              stepenObrazovanjaId: ''
             }
           ],
 
@@ -719,6 +835,7 @@ import moment from 'moment'
         prezime: '',
         jmbg: '',
         adresa: '',
+        prethodniUspeh: '',
        pol: {
           id: '',
           nazivPola: ''
@@ -782,11 +899,16 @@ import moment from 'moment'
          roditelji:[
             {
               ime:'',
-              prezime: ''
+              prezime: '',
+              brojTelefona: '',
+              stepenObrazovanjaId: ''
+
             },
                {
               ime:'',
-              prezime: ''
+              prezime: '',
+              brojTelefona: '',
+              stepenObrazovanjaId: ''
             }
           ],
 
@@ -812,8 +934,12 @@ import moment from 'moment'
           this.editedItem.razred.id !== '' &&
           this.editedItem.roditelji[0].ime !== '' &&
           this.editedItem.roditelji[0].prezime !== '' &&
+          this.editedItem.roditelji[0].stepenObrazovanjaId !== '' &&
+          this.editedItem.roditelji[0].brojTelefona !== '' &&
           this.editedItem.roditelji[1].ime !== '' &&
           this.editedItem.roditelji[1].prezime !== '' &&
+          this.editedItem.roditelji[1].stepenObrazovanjaId !== '' &&
+          this.editedItem.roditelji[1].brojTelefona !== '' &&
          (this.editedItem.dan !== '' ||  this.datum !== null)
           
           )
@@ -825,7 +951,7 @@ import moment from 'moment'
           }
          
       },
-       StepeniStrucneSpreme () {
+      StepeniStrucneSpreme () {
         return this.$store.getters.loadedSSS
       },
       razredi () {
@@ -881,7 +1007,7 @@ import moment from 'moment'
         }
       this.brojevi=this.opstine.find(broj)
       },
-      
+
       
       customFilter(items, search, filter) {
       search = search.toString().toLowerCase()
@@ -910,7 +1036,14 @@ import moment from 'moment'
         item.prethodnaSkola.nazivPrethodneSkole.toLowerCase().match(this.search.toLowerCase()) ||
         item.upisanaSkola.nazivSrednjeSkole.toLowerCase().match(this.search.toLowerCase()) ||
         item.postanskiBroj.broj.toLowerCase().match(this.search.toLowerCase()) ||
-        item.datum.toLowerCase().match(this.search.toLowerCase())
+        item.datum.toLowerCase().match(this.search.toLowerCase()) ||
+        item.roditelji[0].ime.toLowerCase().match(this.search.toLowerCase()) ||
+        item.roditelji[0].prezime.toLowerCase().match(this.search.toLowerCase()) ||
+        item.roditelji[0].brojTelefona.toLowerCase().match(this.search.toLowerCase()) ||
+        item.roditelji[1].ime.toLowerCase().match(this.search.toLowerCase()) ||
+        item.roditelji[1].prezime.toLowerCase().match(this.search.toLowerCase()) ||
+        item.roditelji[1].brojTelefona.toLowerCase().match(this.search.toLowerCase()) 
+       
         })
     }
         },
@@ -952,7 +1085,7 @@ import moment from 'moment'
         if (this.editedIndex > -1) {    
           this.formatiranjeDatuma()
          // Object.assign(this.ucenici[this.editedIndex], this.editedItem)
-         this.editedItem.roditelji.ucenikID= this.editedItem.id
+          this.editedItem.roditelji.ucenikID= this.editedItem.id
           
           this.$store.dispatch('editUcenik',this.editedItem)
           this.editedItem = Object.assign({}, this.defaultItem)
@@ -979,6 +1112,6 @@ table {
 }
 .pageRow td:nth-child(odd) {
   background-color: white;
-  border-top: 1px solid black !important
+  border-top: 4px solid grey !important
 }
 </style>

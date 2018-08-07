@@ -88,20 +88,21 @@ export const store = new Vuex.Store({
         {
             var novi = JSON.parse(JSON.stringify(payload))
            // novi.roditelji=null
-           console.log(novi)
-            console.log(payload)
+  
             novi.roditelji=[
                 {
                     id:payload.roditelji.idMajke,
                     ime: payload.roditelji.imeMajke,
                     prezime: payload.roditelji.prezimeMajke,
-                    brojTelefona: payload.roditelji.brojTelefonaMajke
+                    brojTelefona: payload.roditelji.brojTelefonaMajke,
+                    stepenObrazovanjaId:payload.roditelji.strucnaSpremaMajkeId
                  },
                  {
                     id:payload.roditelji.id,
                     ime: payload.roditelji.imeOca,
                     prezime: payload.roditelji.prezimeOca,
-                    brojTelefona: payload.roditelji.brojTelefonaOca
+                    brojTelefona: payload.roditelji.brojTelefonaOca,
+                    stepenObrazovanjaId:payload.roditelji.strucnaSpremaOcaId
                  }
         
             ]
@@ -124,6 +125,7 @@ export const store = new Vuex.Store({
               ucenikEdit.prezime= payload.prezime,
               ucenikEdit.jmbg= payload.jmbg,
               ucenikEdit.adresa = payload.adresa,
+              ucenikEdit.prethodiUspeh = payload.prethodiUspeh,
               ucenikEdit.smer = {
                     id: payload.smer.id,
                     nazivSmera: payload.smer.nazivSmera
@@ -192,15 +194,17 @@ export const store = new Vuex.Store({
              
                  {
                     id:payload.roditelji.idMajke,
-                    ime: payload.roditelji.ImeMajke,
-                    prezime: payload.roditelji.PrezimeMajke,
-                    brojTelefona: payload.roditelji.BrojTelefonaMajke
+                    ime: payload.roditelji.imeMajke,
+                    prezime: payload.roditelji.prezimeMajke,
+                    brojTelefona: payload.roditelji.brojTelefonaMajke,
+                    stepenObrazovanjaId:payload.roditelji.strucnaSpremaMajkeId
                  },
                  {
                     id:payload.roditelji.id,
-                    ime: payload.roditelji.ImeOca,
-                    prezime: payload.roditelji.PrezimeOca,
-                    brojTelefona: payload.roditelji.BrojTelefonaOca
+                    ime: payload.roditelji.imeOca,
+                    prezime: payload.roditelji.prezimeOca,
+                    brojTelefona: payload.roditelji.brojTelefonaOca,
+                    stepenObrazovanjaId:payload.roditelji.strucnaSpremaOcaId
                  }
 
              ]
@@ -215,7 +219,7 @@ export const store = new Vuex.Store({
     actions: {
         loadedSSS( {commit } ) {
             commit('setLoading', true)
-            axios.get('http://localhost:9017/api/stepenistrucnespreme').then((response) => {
+            axios.get('http://localhost:17044/api/stepenistrucnespreme').then((response) => {
            
               commit('setLoadedSSS', response.data)
               commit('setLoading', false)
@@ -229,7 +233,7 @@ export const store = new Vuex.Store({
           },
         loadedRazred( {commit } ) {
             commit('setLoading', true)
-            axios.get('http://localhost:9017/api/razredi').then((response) => {
+            axios.get('http://localhost:17044/api/razredi').then((response) => {
            
               commit('setLoadedRazred', response.data)
               commit('setLoading', false)
@@ -243,7 +247,7 @@ export const store = new Vuex.Store({
           },
         loadedMesta( {commit } ) {
             commit('setLoading', true)
-            axios.get('http://localhost:9017/api/mesta').then((response) => {
+            axios.get('http://localhost:17044/api/mesta').then((response) => {
            
               commit('setLoadedMesta', response.data)
               commit('setLoading', false)
@@ -257,7 +261,7 @@ export const store = new Vuex.Store({
           },
         loadedOS( {commit } ) {
             commit('setLoading', true)
-            axios.get('http://localhost:9017/api/osnovneskole').then((response) => {
+            axios.get('http://localhost:17044/api/osnovneskole').then((response) => {
               
               commit('setLoadedOS', response.data)
               commit('setLoading', false)
@@ -271,7 +275,7 @@ export const store = new Vuex.Store({
           },
           loadedSS( {commit } ) {
             commit('setLoading', true)
-            axios.get('http://localhost:9017/api/srednjeskole').then((response) => {
+            axios.get('http://localhost:17044/api/srednjeskole').then((response) => {
             
               commit('setLoadedSS', response.data)
               commit('setLoading', false)
@@ -286,7 +290,7 @@ export const store = new Vuex.Store({
         
         loadedSmerovi( {commit } ) {
             commit('setLoading', true)
-            axios.get('http://localhost:9017/api/smerovi').then((response) => {
+            axios.get('http://localhost:17044/api/smerovi').then((response) => {
           
               commit('setLoadedSmerovi', response.data)
               commit('setLoading', false)
@@ -300,7 +304,7 @@ export const store = new Vuex.Store({
           },
         loadedPostanskiBrojevi( {commit } ) {
         commit('setLoading', true)
-        axios.get('http://localhost:9017/api/postanskiBrojevi').then((response) => {
+        axios.get('http://localhost:17044/api/postanskiBrojevi').then((response) => {
          
           commit('setLoadedPostanskeBrojeve', response.data)
           commit('setLoading', false)
@@ -314,7 +318,7 @@ export const store = new Vuex.Store({
       },
         loadedPolovi( {commit } ) {
             commit('setLoading', true)
-            axios.get('http://localhost:9017/api/polovi').then((response) => {
+            axios.get('http://localhost:17044/api/polovi').then((response) => {
            
               commit('setLoadedPolove', response.data)
               commit('setLoading', false)
@@ -328,7 +332,7 @@ export const store = new Vuex.Store({
           },
         loadedUcenici( {commit } ) {
             commit('setLoading', true)
-            axios.get('http://localhost:9017/api/ucenik').then((response) => {
+            axios.get('http://localhost:17044/api/ucenik').then((response) => {
             
               commit('setLoadedUcenike', response.data)
               commit('setLoading', false)
@@ -342,7 +346,7 @@ export const store = new Vuex.Store({
           },
           loadedOpstine( {commit } ) {
             commit('setLoading', true)
-            axios.get('http://localhost:9017/api/opstine').then((response) => {
+            axios.get('http://localhost:17044/api/opstine').then((response) => {
                
               commit('setLoadedOpstine', response.data)
             
@@ -357,7 +361,7 @@ export const store = new Vuex.Store({
           },
           loadedDrzave( {commit } ) {
             commit('setLoading', true)
-            axios.get('http://localhost:9017/api/drzave').then((response) => {
+            axios.get('http://localhost:17044/api/drzave').then((response) => {
                
               commit('setLoadedDrzave', response.data)
             
@@ -378,6 +382,7 @@ export const store = new Vuex.Store({
                 prezime: payload.prezime,
                 jmbg: payload.jmbg,
                 adresa: payload.adresa,
+                prethodiUspeh: payload.prethodiUspeh,
                 pol: {
                     id: payload.pol.id
                 },
@@ -427,16 +432,16 @@ export const store = new Vuex.Store({
                 PrezimeOca: payload.roditelji[0].prezime,
                 ImeMajke: payload.roditelji[1].ime,
                 PrezimeMajke: payload.roditelji[1].prezime,
-                StrucnaSpremaMajkeId: 2,
-                StrucnaSpremaOcaId: 2,
-                BrojTelefonaMajke: '333',
-                BrojTelefonaOca: '222'
+                StrucnaSpremaMajkeId: payload.roditelji[1].stepenObrazovanjaId,
+                StrucnaSpremaOcaId:  payload.roditelji[0].stepenObrazovanjaId,
+                BrojTelefonaMajke: payload.roditelji[0].brojTelefona,
+                BrojTelefonaOca: payload.roditelji[1].brojTelefona
                }
             }
         
             commit('setLoading', true)
-           
-            axios.post('http://localhost:9017/api/ucenik',ucenik).then(function(response){
+            console.log(ucenik)
+            axios.post('http://localhost:17044/api/ucenik',ucenik).then(function(response){
                
 
                    
@@ -453,7 +458,7 @@ export const store = new Vuex.Store({
         deleteUcenik( {commit },payload ) {
             commit('setLoading', true)
            
-            axios.delete('http://localhost:9017/api/ucenik/'+payload).then((response) => {
+            axios.delete('http://localhost:17044/api/ucenik/'+payload).then((response) => {
               
               commit('deleteUcenik', response.data)
               commit('setLoading', false)
@@ -465,6 +470,7 @@ export const store = new Vuex.Store({
                 prezime: payload.prezime,
                 jmbg: payload.jmbg,
                 adresa: payload.adresa,
+                prethodiUspeh: payload.prethodiUspeh,
                 pol: {
                     id: payload.pol.id
                 },
@@ -514,16 +520,16 @@ export const store = new Vuex.Store({
                    PrezimeOca: payload.roditelji[1].prezime,
                    ImeMajke: payload.roditelji[0].ime,
                    PrezimeMajke: payload.roditelji[0].prezime,
-                   StrucnaSpremaMajkeId: 2,
-                   StrucnaSpremaOcaId: 2,
-                   BrojTelefonaMajke: '333',
-                   BrojTelefonaOca: '222'
+                   StrucnaSpremaMajkeId: payload.roditelji[1].stepenObrazovanjaId,
+                   StrucnaSpremaOcaId:  payload.roditelji[0].stepenObrazovanjaId,
+                   BrojTelefonaMajke: payload.roditelji[0].brojTelefona,
+                   BrojTelefonaOca: payload.roditelji[1].brojTelefona
                }
                 
             }
             console.log(ucenik)
             commit('setLoading', true)
-            axios.put('http://localhost:9017/api/ucenik/'+payload.id, ucenik).then(function(response){
+            axios.put('http://localhost:17044/api/ucenik/'+payload.id, ucenik).then(function(response){
                
                 commit('editUcenik', response.data)
                 commit('setLoading', false)

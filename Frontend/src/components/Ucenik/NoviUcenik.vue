@@ -8,8 +8,9 @@
     <v-layout row wrap>
         <v-flex xs12>
             <form @submit.prevent="PrijavaUcenika">
-                 <v-container grid-list-md>
+<v-container grid-list-md>
             <v-layout wrap>
+              
               <v-flex xs12 class="ml-3" >
                 <v-text-field
                  v-model="editedItem.ime"
@@ -18,7 +19,8 @@
                    :rules="[rules.required]"
                   ></v-text-field>
               </v-flex>
-              <v-flex xs12 class="ml-3">
+              
+              <v-flex xs12 class="ml-3" >
                 <v-text-field
                  v-model="editedItem.prezime"
                   label="Prezime"
@@ -26,7 +28,8 @@
                    :rules="[rules.required]"
                    ></v-text-field>
               </v-flex>
-              <v-flex xs12 class="ml-3">
+            
+              <v-flex xs12 class="ml-3" >
                 <v-text-field
                   v-model="editedItem.jmbg"
                   label="jmbg"
@@ -36,7 +39,7 @@
                   :counter="13"
                     ></v-text-field>
               </v-flex>
-                   <v-flex xs12 class="ml-3">
+                   <v-flex xs12 class="ml-3" >
                 <v-text-field
                  v-model="editedItem.adresa"
                   label="Adresa prebivališta" 
@@ -47,8 +50,8 @@
               <template>
                  <v-container fluid>
                     <v-layout row wrap>
-                    <v-flex  xs12 sm6 class="mt-4">
-                     <p>Drzava rođenja</p>
+                    <v-flex xs6 class="mt-4 ">
+                     <p>Država rođenja</p>
                     </v-flex>
                            <v-flex xs12 sm6>
                                <v-select
@@ -92,7 +95,7 @@
                  <v-container fluid>
                     <v-layout row wrap>
                     <v-flex xs12 sm6 class="mt-4">
-                     <p>Opština rođenja</p>
+                     <p>Opstina rođenja</p>
                     </v-flex>
                            <v-flex xs12 sm6>
                                <v-select
@@ -137,15 +140,15 @@
                  <v-container fluid>
                     <v-layout row wrap>
                     <v-flex xs12 sm6 class="mt-4">
-                   <p>Postanški broj</p>
+                   <p>Poštanski broj</p>
                     </v-flex>
                            <v-flex xs12 sm6>
                                <v-select
                                 :loading="loading"
                                 :items="brojevi.postanskiBrojevi"
                                 v-model="editedItem.postanskiBroj.id"
-                                 v-if="editedItem.opstinaPrebivalista.id !== ''"
-                                label="Izaberite postanški broj opštine prebivališta"
+                                 v-if="editedItem.opstinaPrebivalista.id !== '' "
+                                label="Izaberite poštanski broj opštine prebivališta"
                                 item-text="broj"
                                 item-value="id"
                                 autocomplete
@@ -158,7 +161,7 @@
                       </template>
                      <v-container fluid>
                     <v-layout row wrap>
-                    <v-flex xs12 sm6 class="mt-4">
+                    <v-flex xs12sm6 class="mt-4">
                      <p>Mesto rođenja</p>
                     </v-flex>
                            <v-flex xs12 sm6>
@@ -219,9 +222,9 @@
                                <v-container fluid>
                     <v-layout row wrap>
                     <v-flex xs12 sm6 class="mt-4">
-                     <p>Mesto prethodno završene škole</p>
+                     <p>Mesto prethodno zavrsene škole</p>
                     </v-flex>
-                           <v-flex xs6 >
+                           <v-flex xs12 >
                                <v-select
                                 :loading="loading"
                                 :items="mesta"
@@ -275,7 +278,38 @@
                               ></v-select>
                             </v-flex>
                           </v-layout>
+                          <template>
+                 <v-container fluid>
+                    <v-layout row wrap>
+                    <v-flex xs12 sm6 class="mt-4">
+                     <p>Razred koji učenik upisuje</p>
+                    </v-flex>
+                           <v-flex xs12 sm6>
+                               <v-select
+                                :loading="loading"
+                                :items="razredi"
+                                v-model="editedItem.razred.id"
+                                 item-text="brojRazreda"
+                                 item-value="id"
+                                label="Razred"
+                                autocomplete
+                                required
+                                 :rules="[rules.required]"
+                              ></v-select>
+                            </v-flex>
+                          </v-layout>
                         </v-container>
+                      </template>
+                        </v-container>
+              <v-flex xs12 class="ml-3">
+             <p>Prethodni uspeh ucenika</p>
+                <v-flex xs2 class="ml-3">
+                <v-text-field
+                 v-model="editedItem.prethodniUspeh"                 
+                   label="br"
+                   ></v-text-field>
+              </v-flex>
+              </v-flex>
                <v-flex xs6 class="ml-3">
                 <v-text-field
                  v-model="editedItem.telefon.mobilni"                 
@@ -288,16 +322,106 @@
                    label="Kućni telefon"    
                    ></v-text-field>
               </v-flex>
+    
+               <v-flex xs6 class="ml-3">
+                <v-text-field
+                 v-model="editedItem.roditelji[1].ime"                
+                   label="Ime majke"   
+                      required
+                      :rules="[rules.required]" 
+                   ></v-text-field>
+              </v-flex>
+               <v-flex xs6 class="ml-3">
+                <v-text-field
+                 v-model="editedItem.roditelji[1].prezime"  
+                    required
+                    :rules="[rules.required]"              
+                   label="Prezime majke"    
+                   ></v-text-field>
+              </v-flex>
+                 <v-container fluid>
+                    <v-layout row wrap>
+                    <v-flex xs12 sm6 class="mt-4">
+                     <p>Stepen strucne spreme majke</p>
+                    </v-flex>
+                           <v-flex xs12 sm6>
+                               <v-select
+                                :loading="loading"
+                                :items="StepeniStrucneSpreme"
+                                v-model="editedItem.roditelji[1].stepenObrazovanjaId"
+                                label="Izaberite stepen obrazovanja"
+                                item-text="opis"
+                                item-value="id"
+                                autocomplete
+                                required
+                                 :rules="[rules.required]"
+                              ></v-select>
+                            </v-flex>
+                          </v-layout>
+                        </v-container>
+                <v-flex xs6 class="ml-3">
+                <v-text-field
+                 v-model="editedItem.roditelji[1].brojTelefona" 
+                    required
+                    :rules="[rules.required]"               
+                   label="Broj telefona majke"    
+                   ></v-text-field>
+              </v-flex>
+               <v-flex xs6 class="ml-3">
+                <v-text-field
+                 v-model="editedItem.roditelji[0].ime" 
+                    required
+                    :rules="[rules.required]"               
+                   label="Ime oca"    
+                   ></v-text-field>
+              </v-flex>
+               <v-flex xs6 class="ml-3">
+                <v-text-field
+                 v-model="editedItem.roditelji[0].prezime"                
+                   label="Prezime oca"  
+                      required
+                      :rules="[rules.required]"  
+                   ></v-text-field>
+              </v-flex>
+               <v-container fluid>
+                    <v-layout row wrap>
+                    <v-flex xs12 sm6 class="mt-4">
+                     <p>Stepen strucne spreme oca</p>
+                    </v-flex>
+                           <v-flex xs12 sm6>
+                               <v-select
+                                :loading="loading"
+                                :items="StepeniStrucneSpreme"
+                                v-model="editedItem.roditelji[0].stepenObrazovanjaId"
+                                label="Izaberite stepen obrazovanja"
+                                item-text="opis"
+                                item-value="id"
+                                autocomplete
+                                required
+                                 :rules="[rules.required]"
+                              ></v-select>
+                            </v-flex>
+                          </v-layout>
+                        </v-container>
+                        <v-flex xs6 class="ml-3">
+                <v-text-field
+                 v-model="editedItem.roditelji[0].brojTelefona" 
+                    required
+                    :rules="[rules.required]"               
+                   label="Broj telefona oca"    
+                   ></v-text-field>
+              </v-flex>
               <v-flex xs12 class="ml-3">
-                <p>Datum rođenja</p>             
+                <p class="mb-2">Datum Rođenja</p>              
                 <v-date-picker
                  v-model="datum"
                  locale="sr-Latn"
                  ></v-date-picker>
-                 <v-flex class="mt-4">
-                 <p>Trenutni: {{datum}}</p>
-                 </v-flex>
-              </v-flex>  
+                <template v-if="editedItem.dan !== ''"> 
+                  <p>Prethodni: {{ editedItem.dan }}.{{ editedItem.mesec }}.{{editedItem.godina }}</p>
+                  </template>  
+                 <p>Novi: {{datum}}</p>
+              </v-flex> 
                <v-flex xs12 sm6 class="ml-3" offset-sm10>
               <v-btn
                 class="primary"
@@ -328,10 +452,11 @@ import moment from 'moment'
       datum: null,
       brojevi: '',
       editedItem: {
-        ime: '',
+         ime: '',
         prezime: '',
         jmbg: '',
         adresa: '',
+        prethodniUspeh: '',
        pol: {
           id: '',
           nazivPola: ''
@@ -359,8 +484,8 @@ import moment from 'moment'
           upisanaSkola: {
             id: '',
             nazivSrednjeSkole: '',
-            opstinaId: '',
-            opstina: ''
+            opstinaId: ''
+           
         },
         postanskiBroj: {
           id: '',
@@ -387,7 +512,25 @@ import moment from 'moment'
           smer: {
             id:'',
             nazivSmera: ''
-          }
+          },
+          razred:{
+            id: '',
+            brojRazreda: ''
+          },
+          roditelji:[
+            {
+              ime:'',
+              prezime: '',
+              brojTelefona: '',
+              stepenObrazovanjaId: ''
+            },
+               {
+              ime:'',
+              prezime: '',
+              brojTelefona: '',
+              stepenObrazovanjaId: ''
+            }
+          ]
       
       }
     }),
@@ -407,6 +550,15 @@ import moment from 'moment'
           this.editedItem.smer.id !== '' &&
           this.editedItem.prethodnaSkola.id !== '' &&
           this.editedItem.upisanaSkola.id !== '' &&
+          this.editedItem.razred.id !== '' &&
+          this.editedItem.roditelji[0].ime !== '' &&
+          this.editedItem.roditelji[0].prezime !== '' &&
+          this.editedItem.roditelji[0].stepenObrazovanjaId !== '' &&
+          this.editedItem.roditelji[0].brojTelefona !== '' &&
+          this.editedItem.roditelji[1].ime !== '' &&
+          this.editedItem.roditelji[1].prezime !== '' &&
+          this.editedItem.roditelji[1].stepenObrazovanjaId !== '' &&
+          this.editedItem.roditelji[1].brojTelefona !== '' &&
           this.datum !== null
           )
           {
@@ -416,6 +568,12 @@ import moment from 'moment'
             return false
           }
          
+      },
+      StepeniStrucneSpreme () {
+        return this.$store.getters.loadedSSS
+      },
+      razredi () {
+        return this.$store.getters.loadedRazredi
       },
       srednjeSkole () {
        return this.$store.getters.loadedSrednjeSkole       
