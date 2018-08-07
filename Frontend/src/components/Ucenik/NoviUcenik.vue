@@ -1,17 +1,28 @@
 <template>
 <v-container>
     <v-layout row>
-        <v-flex xs12>
+        <v-flex xs12 >
             <h1> Prijava novog učenika</h1>
         </v-flex>
     </v-layout>
     <v-layout row wrap>
         <v-flex xs12>
             <form @submit.prevent="PrijavaUcenika">
-<v-container grid-list-md>
+        <v-container grid-list-md>
             <v-layout wrap>
               
-              <v-flex xs12 class="ml-3" >
+              
+     <v-flex xs10 class="ml-5">
+            <v-card >
+              <v-card-title  primary-title>
+                <v-flex offset-sm5>
+                <div class="headline">Podaci o učeniku</div>
+              </v-flex>
+              </v-card-title>
+
+
+            <v-flex xs12>
+              <v-flex xs4 class="ml-3" >
                 <v-text-field
                  v-model="editedItem.ime"
                   label="Ime" 
@@ -19,8 +30,10 @@
                    :rules="[rules.required]"
                   ></v-text-field>
               </v-flex>
-              
-              <v-flex xs12 class="ml-3" >
+              </v-flex>
+
+            <v-flex xs12>
+              <v-flex xs4 class="ml-3" >
                 <v-text-field
                  v-model="editedItem.prezime"
                   label="Prezime"
@@ -28,8 +41,13 @@
                    :rules="[rules.required]"
                    ></v-text-field>
               </v-flex>
-            
-              <v-flex xs12 class="ml-3" >
+             </v-flex>
+
+       
+
+
+       <v-flex xs12>
+              <v-flex xs4 class="ml-3" >
                 <v-text-field
                   v-model="editedItem.jmbg"
                   label="jmbg"
@@ -39,7 +57,10 @@
                   :counter="13"
                     ></v-text-field>
               </v-flex>
-                   <v-flex xs12 class="ml-3" >
+          </v-flex>
+
+          <v-flex xs12>
+                   <v-flex xs5 class="ml-3" >
                 <v-text-field
                  v-model="editedItem.adresa"
                   label="Adresa prebivališta" 
@@ -47,6 +68,8 @@
                    :rules="[rules.required]"
                   ></v-text-field>
               </v-flex>
+          </v-flex>
+
               <template>
                  <v-container fluid>
                     <v-layout row wrap>
@@ -199,6 +222,17 @@
                             </v-flex>
                           </v-layout>
                         </v-container>
+                                      <v-flex xs12 class="ml-3">
+                <p class="mb-2">Datum Rođenja</p>              
+                <v-date-picker
+                 v-model="datum"
+                 locale="sr-Latn"
+                 ></v-date-picker>
+                <template v-if="editedItem.dan !== ''"> 
+                  <p>Prethodni: {{ editedItem.dan }}.{{ editedItem.mesec }}.{{editedItem.godina }}</p>
+                  </template>  
+                 <p>Novi: {{datum}}</p>
+              </v-flex>
                                <v-container fluid>
                     <v-layout row wrap>
                     <v-flex xs12 sm6 class="mt-4">
@@ -302,8 +336,9 @@
                       </template>
                         </v-container>
               <v-flex xs12 class="ml-3">
-             <p>Prethodni uspeh ucenika</p>
+            <p>Prethodni uspeh ucenika</p>
                 <v-flex xs2 class="ml-3">
+                   
                 <v-text-field
                  v-model="editedItem.prethodniUspeh"                 
                    label="br"
@@ -322,7 +357,31 @@
                    label="Kućni telefon"    
                    ></v-text-field>
               </v-flex>
-    
+   </v-card>
+          </v-flex>
+<v-flex xs12>
+  <p>
+<br>
+<br>
+
+
+
+
+
+
+  </p>
+
+
+</v-flex>
+
+
+       <v-flex xs10 class="ml-5">
+            <v-card >
+              <v-card-title primary-title>
+                <v-flex offset-sm4>
+                <div class="headline">Podaci o roditelju - staratelju </div>
+              </v-flex>
+              </v-card-title>
                <v-flex xs6 class="ml-3">
                 <v-text-field
                  v-model="editedItem.roditelji[1].ime"                
@@ -411,20 +470,13 @@
                    label="Broj telefona oca"    
                    ></v-text-field>
               </v-flex>
-              <v-flex xs12 class="ml-3">
-                <p class="mb-2">Datum Rođenja</p>              
-                <v-date-picker
-                 v-model="datum"
-                 locale="sr-Latn"
-                 ></v-date-picker>
-                <template v-if="editedItem.dan !== ''"> 
-                  <p>Prethodni: {{ editedItem.dan }}.{{ editedItem.mesec }}.{{editedItem.godina }}</p>
-                  </template>  
-                 <p>Novi: {{datum}}</p>
-              </v-flex> 
-               <v-flex xs12 sm6 class="ml-3" offset-sm10>
+   </v-card>
+          </v-flex>
+
+               <v-flex xs12 sm6  offset-sm5  offset-xs4 >
               <v-btn
                 class="primary"
+                
                 :disabled="!formIsValid"
                 type="submit">Prijavi učenika</v-btn>
             </v-flex>            

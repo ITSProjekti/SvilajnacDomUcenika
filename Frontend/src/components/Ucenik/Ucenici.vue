@@ -307,8 +307,8 @@
                         </v-container>
                       </template>
                         </v-container>
-                        <v-flex xs12 class="ml-3">
-                          <p>Prethnodi uspeh ucenika</p>
+              <v-flex xs12 class="ml-3">
+             <p>Prethodni uspeh ucenika</p>
                 <v-flex xs2 class="ml-3">
                 <v-text-field
                  v-model="editedItem.prethodniUspeh"                 
@@ -826,7 +826,7 @@ import moment from 'moment'
               brojTelefona: '',
               stepenObrazovanjaId: ''
             }
-          ],
+          ]
 
       },
 
@@ -1106,12 +1106,12 @@ import moment from 'moment'
 
 <style >
 table {
-  border-top: 4px solid grey   !important;
-  border-bottom: 4px solid grey  !important;
+  border-top: 1px solid grey   !important;
+  border-bottom: 1px solid grey  !important;
   
 }
 .pageRow td:nth-child(odd) {
   background-color: white;
-  border-top: 4px solid grey !important
+  border-top: 1px solid grey !important
 }
 </style>

@@ -382,7 +382,7 @@ export const store = new Vuex.Store({
                 prezime: payload.prezime,
                 jmbg: payload.jmbg,
                 adresa: payload.adresa,
-                prethodiUspeh: payload.prethodiUspeh,
+                prethodniUspeh: payload.prethodiUspeh,
                 pol: {
                     id: payload.pol.id
                 },
@@ -470,7 +470,7 @@ export const store = new Vuex.Store({
                 prezime: payload.prezime,
                 jmbg: payload.jmbg,
                 adresa: payload.adresa,
-                prethodiUspeh: payload.prethodiUspeh,
+                prethodniUspeh: payload.prethodiUspeh,
                 pol: {
                     id: payload.pol.id
                 },
