@@ -78,8 +78,6 @@ namespace DomUcenikaSvilajnac.IntegratedTests
                 Smer = sr,
                 UpisanaSkola = usr,
                 PrethodniUspeh = 4.55f
-                
-                
             };
         }
         public Ucenik Ucenik2()
@@ -105,9 +103,6 @@ namespace DomUcenikaSvilajnac.IntegratedTests
                 SmerId = 1,
                 PrethodniUspeh = 4.22f,
                 Roditelji = roditelji
-                
-
-
             };
             return ucenik;
 
@@ -194,9 +189,7 @@ namespace DomUcenikaSvilajnac.IntegratedTests
             unitOfWork.Ucenici.Add(ucenikZaBazu);
             unitOfWork.SaveChanges();
 
-            ucenikZaBazu = unitOfWork.Ucenici.Get(1);
-            
-            Assert.Contains(ucenikZaBazu.Ime, "Pera");
+            Assert.Equal(unitOfWork.Ucenici.Get(1), ucenikZaBazu);
         }
 
         /// <summary>
@@ -398,7 +391,6 @@ namespace DomUcenikaSvilajnac.IntegratedTests
             Assert.Equal(listaUcenika[1].Ime, Ucenik2().Ime);
             Assert.Equal(listaUcenika[1].Prezime, Ucenik2().Prezime);
             Assert.Equal(listaUcenika[1].JMBG, Ucenik2().JMBG);
-            //  Assert.Equal(listaUcenika[1].DatumRodjenja, Ucenik2().DatumRodjenja);
             Assert.Equal(listaUcenika[1].DrzavaRodjenjaId, Ucenik2().DrzavaRodjenjaId);
             Assert.Equal(listaUcenika[1].MestoRodjenjaId, Ucenik2().MestoRodjenjaId);
             Assert.Equal(listaUcenika[1].PrethodnaSkolaId, Ucenik2().PrethodnaSkolaId);
@@ -413,10 +405,6 @@ namespace DomUcenikaSvilajnac.IntegratedTests
             Assert.Equal(listaUcenika[1].SmerId, Ucenik2().SmerId);
             Assert.Equal(listaUcenika[1].UpisanaSkolaId, Ucenik2().UpisanaSkolaId);
             Assert.Equal(listaUcenika[1].PrethodniUspeh, Ucenik2().PrethodniUspeh);
-
-
-
-
         }
     }
 }
