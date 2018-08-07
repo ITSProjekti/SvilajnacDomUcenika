@@ -180,116 +180,117 @@ namespace DomUcenikaSvilajnac.Mapping
               .ForMember(v => v.BrojTelefonaMajke, v => v.Ignore())
               .ForMember(v => v.BrojTelefonaOca, v => v.Ignore());
 
-            // CreateMap<List<Roditelj>, RoditeljResource>()
-            //     .ForMember(v => v.ImeOca, opt => opt.MapFrom(src => src[1].Ime))
-            //  .ForMember(v => v.PrezimeOca, opt => opt.MapFrom(src => src[1].Prezime))
-            //   .ForMember(v => v.ImeMajke, opt => opt.MapFrom(src => src[0].Ime))
-            //    .ForMember(v => v.UcenikId, opt => opt.MapFrom(src => src[0].UcenikId))
-            //  .ForMember(v => v.PrezimeMajke, opt => opt.MapFrom(src => src[0].Prezime))
-            // .ForMember(v => v.Id, opt => opt.MapFrom(src => src[1].Id))
-            // .ForMember(v => v.IdMajke, opt => opt.MapFrom(src => src[0].Id))
-            //  .ForMember(v => v.UcenikId, opt => opt.MapFrom(src => src[1].UcenikId))
-            //  .ForMember(v => v.StrucnaSpremaMajke, opt => opt.MapFrom(src => src[0].StepenObrazovanja.Opis))
-            //  .ForMember(v => v.StrucnaSpremaOca, opt => opt.MapFrom(src => src[1].StepenObrazovanja.Opis));
+            //sa ovom mapom ispod je greska, zato nece unit testovi da prodju
+            //CreateMap<List<Roditelj>, RoditeljResource>()
+            //    .ForMember(v => v.ImeOca, opt => opt.MapFrom(src => src[1].Ime))
+            // .ForMember(v => v.PrezimeOca, opt => opt.MapFrom(src => src[1].Prezime))
+            //  .ForMember(v => v.ImeMajke, opt => opt.MapFrom(src => src[0].Ime))
+            //   .ForMember(v => v.UcenikId, opt => opt.MapFrom(src => src[0].UcenikId))
+            // .ForMember(v => v.PrezimeMajke, opt => opt.MapFrom(src => src[0].Prezime))
+            //.ForMember(v => v.Id, opt => opt.MapFrom(src => src[1].Id))
+            //.ForMember(v => v.IdMajke, opt => opt.MapFrom(src => src[0].Id))
+            // .ForMember(v => v.UcenikId, opt => opt.MapFrom(src => src[1].UcenikId))
+            // .ForMember(v => v.StrucnaSpremaMajke, opt => opt.MapFrom(src => src[0].StepenObrazovanja.Opis))
+            // .ForMember(v => v.StrucnaSpremaOca, opt => opt.MapFrom(src => src[1].StepenObrazovanja.Opis));
 
 
 
-            // CreateMap<List<Roditelj>, List<RoditeljResource>>()
-            // .AfterMap((roditelj, resurs) =>
-            // {
+            CreateMap<List<Roditelj>, List<RoditeljResource>>()
+            .AfterMap((roditelj, resurs) =>
+            {
 
-            //     for (int i = 0; i <= roditelj.Count - 2; i++)
-            //     {
-            //         for (int j = i; j <= i; j++)
-            //         {
-            //             if (i >= 1)
-            //             {
-            //                 i++;
-            //                 j++;
-            //             }
-            //             RoditeljResource nesto = new RoditeljResource()
-            //             {
-            //                 IdMajke = roditelj[i].Id,
-            //                 ImeMajke = roditelj[i].Ime,
-            //                 PrezimeMajke = roditelj[i].Prezime,
-            //                 StrucnaSpremaMajke = roditelj[i].StepenObrazovanja.Stepen,
-            //                 BrojTelefonaMajke = roditelj[i].BrojTelefona,
+                for (int i = 0; i <= roditelj.Count - 2; i++)
+                {
+                    for (int j = i; j <= i; j++)
+                    {
+                        if (i >= 1)
+                        {
+                            i++;
+                            j++;
+                        }
+                        RoditeljResource nesto = new RoditeljResource()
+                        {
+                            IdMajke = roditelj[i].Id,
+                            ImeMajke = roditelj[i].Ime,
+                            PrezimeMajke = roditelj[i].Prezime,
+                            StrucnaSpremaMajke = roditelj[i].StepenObrazovanja.Stepen,
+                            BrojTelefonaMajke = roditelj[i].BrojTelefona,
 
-            //                 Id = roditelj[j + 1].Id,
-            //                 ImeOca = roditelj[j + 1].Ime,
-            //                 PrezimeOca = roditelj[j + 1].Prezime,
-            //                 StrucnaSpremaOca = roditelj[j + 1].StepenObrazovanja.Stepen,
-            //                 UcenikId = roditelj[i].UcenikId,
-            //                 BrojTelefonaOca = roditelj[j+1].BrojTelefona
-            //             };
-            //             resurs.Add(nesto);
+                            Id = roditelj[j + 1].Id,
+                            ImeOca = roditelj[j + 1].Ime,
+                            PrezimeOca = roditelj[j + 1].Prezime,
+                            StrucnaSpremaOca = roditelj[j + 1].StepenObrazovanja.Stepen,
+                            UcenikId = roditelj[i].UcenikId,
+                            BrojTelefonaOca = roditelj[j + 1].BrojTelefona
+                        };
+                        resurs.Add(nesto);
 
-            //         }
-            //     }
-            // });
-            // CreateMap<List<RoditeljResource>, List<Roditelj>>()
-            // .AfterMap((resurs, roditelj) =>
-            // {
-            //     StepenStrucneSpreme stepenMajke = new StepenStrucneSpreme() { Id = resurs[0].IdMajke, Opis = resurs[0].StrucnaSpremaMajke };
-            //     StepenStrucneSpreme stepenOca = new StepenStrucneSpreme() { Id = resurs[0].Id, Opis = resurs[0].StrucnaSpremaOca };
-
-
-            //     Roditelj nesto = new Roditelj()
-            //     {
-
-            //         Ime = resurs[0].ImeMajke,
-            //         Prezime = resurs[0].PrezimeMajke,
-            //         StepenObrazovanja = stepenMajke,
-            //         StepenObrazovanjaId = stepenMajke.Id,
+                    }
+                }
+            });
+            CreateMap<List<RoditeljResource>, List<Roditelj>>()
+            .AfterMap((resurs, roditelj) =>
+            {
+                StepenStrucneSpreme stepenMajke = new StepenStrucneSpreme() { Id = resurs[0].IdMajke, Opis = resurs[0].StrucnaSpremaMajke };
+                StepenStrucneSpreme stepenOca = new StepenStrucneSpreme() { Id = resurs[0].Id, Opis = resurs[0].StrucnaSpremaOca };
 
 
-            //         UcenikId = resurs[0].UcenikId
-            //     };
-            //     Roditelj majka = new Roditelj()
-            //     {
+                Roditelj nesto = new Roditelj()
+                {
 
-            //         Ime = resurs[0].ImeOca,
-            //         Prezime = resurs[0].PrezimeOca,
-            //         StepenObrazovanja = stepenOca,
-            //         StepenObrazovanjaId = stepenOca.Id,
-            //         UcenikId = resurs[0].UcenikId
-            //     };
-            //     roditelj.Add(majka);
-            //     roditelj.Add(nesto);
-
-            // });
+                    Ime = resurs[0].ImeMajke,
+                    Prezime = resurs[0].PrezimeMajke,
+                    StepenObrazovanja = stepenMajke,
+                    StepenObrazovanjaId = stepenMajke.Id,
 
 
+                    UcenikId = resurs[0].UcenikId
+                };
+                Roditelj majka = new Roditelj()
+                {
 
-            // CreateMap<List<Roditelj>, List<DeleteRoditeljaResource>>()
-            //.AfterMap((roditelj, resurs) =>
-            //{
-            //    for (int i = 0; i <= roditelj.Count - 2; i++)
-            //    {
-            //        for (int j = i; j <= i; j++)
-            //        {
-            //            if (i >= 1)
-            //            {
-            //                i++;
-            //                j++;
-            //            }
-            //            DeleteRoditeljaResource nesto = new DeleteRoditeljaResource()
-            //            {
-            //                IdMajke = roditelj[i].Id,
-            //                ImeMajke = roditelj[i].Ime,
-            //                PrezimeMajke = roditelj[i].Prezime,
-            //                 BrojTelefonaMajke = roditelj[i].BrojTelefona,
+                    Ime = resurs[0].ImeOca,
+                    Prezime = resurs[0].PrezimeOca,
+                    StepenObrazovanja = stepenOca,
+                    StepenObrazovanjaId = stepenOca.Id,
+                    UcenikId = resurs[0].UcenikId
+                };
+                roditelj.Add(majka);
+                roditelj.Add(nesto);
 
-            //                Id = roditelj[j + 1].Id,
-            //                ImeOca = roditelj[j + 1].Ime,
-            //                PrezimeOca = roditelj[j + 1].Prezime,
-            //                 UcenikId = roditelj[i].UcenikId,
-            //                BrojTelefonaOca = roditelj[j + 1].BrojTelefona
-            //            };
-            //            resurs.Add(nesto);
-            //        }
-            //    }
-            //});
+            });
+
+
+
+            CreateMap<List<Roditelj>, List<DeleteRoditeljaResource>>()
+           .AfterMap((roditelj, resurs) =>
+           {
+               for (int i = 0; i <= roditelj.Count - 2; i++)
+               {
+                   for (int j = i; j <= i; j++)
+                   {
+                       if (i >= 1)
+                       {
+                           i++;
+                           j++;
+                       }
+                       DeleteRoditeljaResource nesto = new DeleteRoditeljaResource()
+                       {
+                           IdMajke = roditelj[i].Id,
+                           ImeMajke = roditelj[i].Ime,
+                           PrezimeMajke = roditelj[i].Prezime,
+                           BrojTelefonaMajke = roditelj[i].BrojTelefona,
+
+                           Id = roditelj[j + 1].Id,
+                           ImeOca = roditelj[j + 1].Ime,
+                           PrezimeOca = roditelj[j + 1].Prezime,
+                           UcenikId = roditelj[i].UcenikId,
+                           BrojTelefonaOca = roditelj[j + 1].BrojTelefona
+                       };
+                       resurs.Add(nesto);
+                   }
+               }
+           });
 
 
 
@@ -302,19 +303,19 @@ namespace DomUcenikaSvilajnac.Mapping
              .ForMember(v => v.StepenObrazovanja, opt => opt.Ignore());
 
 
-            //CreateMap<List<Roditelj>, PostRoditeljaResource>()
-            // .ForMember(v => v.ImeOca, opt => opt.MapFrom(src => src[1].Ime))
-            // .ForMember(v => v.PrezimeOca, opt => opt.MapFrom(src => src[1].Prezime))
-            // .ForMember(v => v.ImeMajke, opt => opt.MapFrom(src => src[0].Ime))
-            // .ForMember(v => v.UcenikId, opt => opt.MapFrom(src => src[0].UcenikId))
-            // .ForMember(v => v.PrezimeMajke, opt => opt.MapFrom(src => src[0].Prezime))
-            // .ForMember(v => v.Id, opt => opt.MapFrom(src => src[1].Id))
-            // .ForMember(v => v.IdMajke, opt => opt.MapFrom(src => src[0].Id))
-            // .ForMember(v => v.UcenikId, opt => opt.MapFrom(src => src[1].UcenikId))
-            // .ForMember(v => v.StrucnaSpremaMajkeId, opt => opt.MapFrom(src => src[0].StepenObrazovanjaId))
-            // .ForMember(v => v.StrucnaSpremaOcaId, opt => opt.MapFrom(src => src[1].StepenObrazovanjaId))
-            // .ForMember(v => v.BrojTelefonaMajke, opt => opt.MapFrom(src => src[0].BrojTelefona))
-            // .ForMember(v => v.BrojTelefonaOca, opt => opt.MapFrom(src => src[1].BrojTelefona));
+            CreateMap<List<Roditelj>, PostRoditeljaResource>()
+             .ForMember(v => v.ImeOca, opt => opt.MapFrom(src => src[1].Ime))
+             .ForMember(v => v.PrezimeOca, opt => opt.MapFrom(src => src[1].Prezime))
+             .ForMember(v => v.ImeMajke, opt => opt.MapFrom(src => src[0].Ime))
+             .ForMember(v => v.UcenikId, opt => opt.MapFrom(src => src[0].UcenikId))
+             .ForMember(v => v.PrezimeMajke, opt => opt.MapFrom(src => src[0].Prezime))
+             .ForMember(v => v.Id, opt => opt.MapFrom(src => src[1].Id))
+             .ForMember(v => v.IdMajke, opt => opt.MapFrom(src => src[0].Id))
+             .ForMember(v => v.UcenikId, opt => opt.MapFrom(src => src[1].UcenikId))
+             .ForMember(v => v.StrucnaSpremaMajkeId, opt => opt.MapFrom(src => src[0].StepenObrazovanjaId))
+             .ForMember(v => v.StrucnaSpremaOcaId, opt => opt.MapFrom(src => src[1].StepenObrazovanjaId))
+             .ForMember(v => v.BrojTelefonaMajke, opt => opt.MapFrom(src => src[0].BrojTelefona))
+             .ForMember(v => v.BrojTelefonaOca, opt => opt.MapFrom(src => src[1].BrojTelefona));
 
 
             //CreateMap<PutRoditeljaResource, Roditelj>();
