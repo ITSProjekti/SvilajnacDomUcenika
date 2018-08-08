@@ -355,6 +355,7 @@ namespace DomUcenikaSvilajnac.UnitTests
             Assert.IsInstanceOfType(result, typeof(Roditelj));
             AutoMapper.Mapper.Reset();
         }
+        
 
     }
 }

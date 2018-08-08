@@ -255,6 +255,10 @@ namespace DomUcenikaSvilajnac.IntegratedTests
             Assert.True(listaUcenika.Count == 1);
         }
 
+
+      
+
+
         /// <summary>
         /// Test proverava da li pronadjen odgovarajuci ucenik na osnovu atributa, uovom slucaju Imena.
         /// </summary>
@@ -404,5 +408,37 @@ namespace DomUcenikaSvilajnac.IntegratedTests
             Assert.Equal(listaUcenika[1].UpisanaSkolaId, Ucenik2().UpisanaSkolaId);
             Assert.Equal(listaUcenika[1].PrethodniUspeh, Ucenik2().PrethodniUspeh);
         }
+
+        [Fact]
+        public void RemoveUcenika_ProveraBazeNakonBrisanjaUcenika_ReturnsTrue()
+        {
+            Mapper.Reset();
+            var options = new DbContextOptionsBuilder<UcenikContext>().UseInMemoryDatabase(Guid.NewGuid().ToString()).EnableSensitiveDataLogging().Options;
+            var context = new UcenikContext(options);
+            var primerUcenika = Ucenik();
+
+            Mapper.Initialize(m => m.AddProfile<MappingProfile>());
+            Mapper.AssertConfigurationIsValid();
+            var ucenikZaBazu = Mapper.Map<PostUcenikaResource, Ucenik>(primerUcenika);
+
+            var config = new MapperConfiguration(cfg => cfg.CreateMap<Ucenik, PostUcenikaResource>());
+            var mapper = config.CreateMapper();
+
+            IUnitOfWork unitOfWork = new UnitOfWork(context, mapper);
+            unitOfWork.Ucenici.Add(ucenikZaBazu);
+            unitOfWork.SaveChanges();
+            var listaUcenikaNakonDodavanjaUBazi = unitOfWork.Ucenici.GetAll().ToList();
+
+            //testiranje metode za brisanje
+            unitOfWork.Ucenici.Remove(ucenikZaBazu);
+            unitOfWork.SaveChanges();
+
+            var listaUcenikaNakonBrisanja = unitOfWork.Ucenici.GetAll().ToList();
+
+            //proverava da li je u bazi ostao 1 ucenik
+            if (!listaUcenikaNakonDodavanjaUBazi.Any())
+                Assert.True(listaUcenikaNakonBrisanja.Count == 0);
+        }
+
     }
 }
