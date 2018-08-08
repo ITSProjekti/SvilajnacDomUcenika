@@ -363,11 +363,25 @@
               <v-flex offset-sm1  xs12 sm3 class="mt-4">
                 <p>Prethodni uspeh ucenika</p>
                 </v-flex>
-                <v-flex xs1 >
+                <v-flex xs2 class="mt-2" >
                    
                 <v-text-field
                  v-model="editedItem.prethodniUspeh"                 
                    label="br"
+                    input type="number"  onkeydown="javascript: if(event.keyCode == 69) {return false} else 
+                  {
+                   if(event.keyCode == 107) {return false}
+                    else {
+                   if(event.keyCode == 190) {return false}
+                    else {
+                   if(event.keyCode == 109) {return false}
+                    else  {
+                   if(event.keyCode == 187) {return false}
+                    else  {
+                   if(event.keyCode == 189) {return false}
+                   else
+                     {return true} } } } } }"    
+                   solo
                    ></v-text-field>
               
               </v-flex>
