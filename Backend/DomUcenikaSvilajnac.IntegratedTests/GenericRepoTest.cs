@@ -219,10 +219,8 @@ namespace DomUcenikaSvilajnac.IntegratedTests
 
             unitOfWork.SaveChanges();
 
-            var listaUcenika = unitOfWork.Ucenici.GetAll().ToList();
-
-            //proverava da li je ime promenjeno u Mateija, tj da li je novi podatak Ime = Mateja
-            Assert.Contains(novi.Ime, "Mateja");
+            //proverava da li je ime promenjeno u Mateja, tj. da li je novi podatak Ime = Mateja
+            Assert.Equal(novi.Ime, ucenikZaBazu.Ime);
         }
 
         /// <summary>
@@ -254,7 +252,7 @@ namespace DomUcenikaSvilajnac.IntegratedTests
             var listaUcenika = unitOfWork.Ucenici.GetAll().ToList();
 
             //proverava da li je u bazi ostao 1 ucenik
-            Assert.Single(listaUcenika);
+            Assert.True(listaUcenika.Count == 1);
         }
 
         /// <summary>
@@ -280,7 +278,7 @@ namespace DomUcenikaSvilajnac.IntegratedTests
 
             var rezultat = unitOfWork.Ucenici.Find(m => m.Ime == "Pera").ToList();
 
-            Assert.Contains(rezultat.First().Ime, "Pera");
+            Assert.Equal(rezultat.First().Ime, ucenikZaBazu.Ime);
         }
 
         /// <summary>
@@ -307,11 +305,11 @@ namespace DomUcenikaSvilajnac.IntegratedTests
 
             var listaUcenika =  await unitOfWork.Ucenici.GetAllAsync();
 
-            Assert.Contains(listaUcenika.First().Ime, "Pera");
+            Assert.Equal(listaUcenika.First().Ime, ucenikZaBazu.Ime);
         }
 
         /// <summary>
-        /// Test proverava async modtud Get po Id-u, da li se vraca pravi ucenik na osnovu prosledjenog Id-a.
+        /// Test proverava async metodu Get po Id-u, da li se vraca pravi ucenik na osnovu prosledjenog Id-a.
         /// </summary>
         [Fact]
         public async void GetAsyncById_ProveraAsihroneMetodeKojaVracaUcenikaPoId_ReturnsTrue()
