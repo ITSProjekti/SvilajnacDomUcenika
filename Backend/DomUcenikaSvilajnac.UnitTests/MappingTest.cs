@@ -65,7 +65,7 @@ namespace DomUcenikaSvilajnac.UnitTests
         {
             Mapper.Initialize(m => m.AddProfile<MappingProfile>());
             Mapper.AssertConfigurationIsValid();
-            UcenikResource ucenik = new UcenikResource()
+            UcenikResource ucenikResurs = new UcenikResource()
             {
                 Id = 1,
                 Ime = "Pera",
@@ -78,7 +78,7 @@ namespace DomUcenikaSvilajnac.UnitTests
 
 
             };
-            var result = Mapper.Map<UcenikResource, Ucenik>(ucenik);
+            var result = Mapper.Map<UcenikResource, Ucenik>(ucenikResurs);
 
             Assert.IsInstanceOfType(result, typeof(Ucenik));
             AutoMapper.Mapper.Reset();
@@ -92,7 +92,7 @@ namespace DomUcenikaSvilajnac.UnitTests
         {
             Mapper.Initialize(m => m.AddProfile<MappingProfile>());
             Mapper.AssertConfigurationIsValid();
-            UcenikResource ucenik = new UcenikResource()
+            UcenikResource ucenikResurs = new UcenikResource()
             {
                 Id = 1,
                 Ime = "Pera",
@@ -104,7 +104,7 @@ namespace DomUcenikaSvilajnac.UnitTests
 
             try
             {
-                var result = Mapper.Map<UcenikResource, Ucenik>(ucenik);
+                var result = Mapper.Map<UcenikResource, Ucenik>(ucenikResurs);
 
                 Assert.Fail("OK");
             }
@@ -119,18 +119,18 @@ namespace DomUcenikaSvilajnac.UnitTests
         {
             Mapper.Initialize(m => m.AddProfile<MappingProfile>());
             Mapper.AssertConfigurationIsValid();
-            RoditeljResource roditelji = new RoditeljResource()
+            RoditeljResource roditeljiResurs = new RoditeljResource()
             {
                 Id = 1,
                 ImeMajke = "Majka",
-                PrezimeMajke ="PrezimeMajke",
+                PrezimeMajke = "PrezimeMajke",
                 ImeOca = "Otac",
                 PrezimeOca = "PrezimeOca",
                 UcenikId = 1,
                 BrojTelefonaMajke = "123456",
                 BrojTelefonaOca = "7891012"
             };
-            var result = Mapper.Map<RoditeljResource, Roditelj>(roditelji);
+            var result = Mapper.Map<RoditeljResource, Roditelj>(roditeljiResurs);
 
             Assert.IsInstanceOfType(result, typeof(Roditelj));
             AutoMapper.Mapper.Reset();
@@ -159,31 +159,202 @@ namespace DomUcenikaSvilajnac.UnitTests
         {
             Mapper.Initialize(m => m.AddProfile<MappingProfile>());
             Mapper.AssertConfigurationIsValid();
-            List<Roditelj> roditelji = new List<Roditelj>()
+            List<Roditelj> listaRoditelja = new List<Roditelj>()
             {
                 new Roditelj (){ Ime = "Otac", Prezime = "PrezimeOca", StepenObrazovanjaId = 5, BrojTelefona = "123456789"},
                 new Roditelj (){ Ime = "Majka", Prezime = "PrezimeMajke", StepenObrazovanjaId = 5, BrojTelefona = "101112131415"},
             };
-            var result = Mapper.Map<List<Roditelj>, RoditeljResource>(roditelji);
+            var result = Mapper.Map<List<Roditelj>, RoditeljResource>(listaRoditelja);
             Assert.IsInstanceOfType(result, typeof(RoditeljResource));
             AutoMapper.Mapper.Reset();
         }
         [TestMethod]
         public void CreateMapMetode_ModelListaRoditeljaUListaRoditeljaResursproveraTipa_ReturnsTrue()
         {
-            //ovdje si stao za sjutra
-            //Mapper.Initialize(m => m.AddProfile<MappingProfile>());
-            //Mapper.AssertConfigurationIsValid();
-            //List<Roditelj> roditelji = new List<Roditelj>()
-            //{
-            //    new Roditelj (){ Ime = "Otac", Prezime = "PrezimeOca", StepenObrazovanjaId = 5, BrojTelefona = "123456789"},
-            //    new Roditelj (){ Ime = "Majka", Prezime = "PrezimeMajke", StepenObrazovanjaId = 5, BrojTelefona = "101112131415"},
-            //};
-            //var result = Mapper.Map<List<Roditelj>, RoditeljResource>(roditelji);
-            //Assert.IsInstanceOfType(result, typeof(RoditeljResource));
+            Mapper.Initialize(m => m.AddProfile<MappingProfile>());
+            Mapper.AssertConfigurationIsValid();
+            List<Roditelj> listaRoditelja = new List<Roditelj>()
+            {
+                new Roditelj (){ Ime = "Otac", Prezime = "PrezimeOca", StepenObrazovanjaId = 5, BrojTelefona = "123456789", UcenikId =1, Id = 1, StepenObrazovanja = new StepenStrucneSpreme(){ Opis= "Peti" } },
+                new Roditelj (){ Ime = "Majka", Prezime = "PrezimeMajke", StepenObrazovanjaId = 5, BrojTelefona = "101112131415", UcenikId= 1, Id = 2,StepenObrazovanja = new StepenStrucneSpreme(){ Opis= "Sesti" }},
+            };
+
+            var result = Mapper.Map<List<Roditelj>, List<RoditeljResource>>(listaRoditelja);
+            Assert.IsInstanceOfType(result, typeof(List<RoditeljResource>));
+            AutoMapper.Mapper.Reset();
+        }
+        [TestMethod]
+        public void CreateMapMetode_ModelListaRoditeljaResursUListaRoditeljaproveraTipa_ReturnsTrue()
+        {
+
+            Mapper.Initialize(m => m.AddProfile<MappingProfile>());
+            Mapper.AssertConfigurationIsValid();
+
+            List<RoditeljResource> listaRoditeljiResurs = new List<RoditeljResource>()
+            {
+                new RoditeljResource (){ ImeOca = "Otac", PrezimeMajke = "PrezimeOca", StrucnaSpremaMajke = "5", BrojTelefonaMajke = "123456789"},
+                new RoditeljResource (){ ImeMajke = "Majka", PrezimeMajke = "PrezimeMajke", StrucnaSpremaOca = "6", BrojTelefonaOca = "101112131415"},
+            };
+
+            var result = Mapper.Map<List<RoditeljResource>, List<Roditelj>>(listaRoditeljiResurs);
+            Assert.IsInstanceOfType(result, typeof(List<Roditelj>));
+            AutoMapper.Mapper.Reset();
+        }
+        [TestMethod]
+        public void CreateMapMetode_ModelListaRoditeljaUListaDeleteRoditeljaResursproveraTipa_ReturnsTrue()
+        {
+
+            Mapper.Initialize(m => m.AddProfile<MappingProfile>());
+            Mapper.AssertConfigurationIsValid();
+
+            List<Roditelj> listaRoditelji = new List<Roditelj>()
+            {
+                new Roditelj (){ Ime = "Otac", Prezime = "PrezimeOca", StepenObrazovanjaId = 5, BrojTelefona = "123456789", UcenikId =1, Id = 1, StepenObrazovanja = new StepenStrucneSpreme(){ Opis= "Peti" } },
+                new Roditelj (){ Ime = "Majka", Prezime = "PrezimeMajke", StepenObrazovanjaId = 5, BrojTelefona = "101112131415", UcenikId= 1, Id = 2,StepenObrazovanja = new StepenStrucneSpreme(){ Opis= "Sesti" }},
+            };
+
+            var result = Mapper.Map<List<Roditelj>, List<DeleteRoditeljaResource>>(listaRoditelji);
+            Assert.IsInstanceOfType(result, typeof(List<DeleteRoditeljaResource>));
+            AutoMapper.Mapper.Reset();
+        }
+        [TestMethod]
+        public void CreateMapMetode_ModelPostRoditeljaResursURoditeljproveraTipa_ReturnsTrue()
+        {
+
+            Mapper.Initialize(m => m.AddProfile<MappingProfile>());
+            Mapper.AssertConfigurationIsValid();
+
+            PostRoditeljaResource postRoditeljaResurs = new PostRoditeljaResource()
+            {
+                Id = 1,
+                ImeOca = "ImeOca",
+                PrezimeOca = "PrezimeOca",
+                BrojTelefonaOca = "123456789",
+                IdMajke = 1,
+                ImeMajke = "ImeMajke",
+                PrezimeMajke = "PrezimeMajke",
+                BrojTelefonaMajke = "123456789",
+                StrucnaSpremaMajkeId = 5,
+                StrucnaSpremaOcaId = 6,
+                UcenikId = 1
+
+            };
+            var result = Mapper.Map<PostRoditeljaResource, Roditelj>(postRoditeljaResurs);
+            Assert.IsInstanceOfType(result, typeof(Roditelj));
+            AutoMapper.Mapper.Reset();
+        }
+        [TestMethod]
+        public void CreateMapMetode_ModelListaRoditeljaUPostRoditeljaResursproveraTipa_ReturnsTrue()
+        {
+
+            Mapper.Initialize(m => m.AddProfile<MappingProfile>());
+            Mapper.AssertConfigurationIsValid();
+
+            List<Roditelj> listaRoditelja = new List<Roditelj>()
+            {
+                new Roditelj (){ Ime = "Otac", Prezime = "PrezimeOca", StepenObrazovanjaId = 5, BrojTelefona = "123456789", UcenikId =1, Id = 1, StepenObrazovanja = new StepenStrucneSpreme(){ Opis= "Peti" } },
+                new Roditelj (){ Ime = "Majka", Prezime = "PrezimeMajke", StepenObrazovanjaId = 5, BrojTelefona = "101112131415", UcenikId= 1, Id = 2,StepenObrazovanja = new StepenStrucneSpreme(){ Opis= "Sesti" }},
+            };
+
+            var result = Mapper.Map<List<Roditelj>, PostRoditeljaResource>(listaRoditelja);
+            Assert.IsInstanceOfType(result, typeof(PostRoditeljaResource));
+            AutoMapper.Mapper.Reset();
+        }
+        [TestMethod]
+        public void CreateMapMetode_ModelRoditeljUPutRoditeljaResursproveraTipa_ReturnsTrue()
+        {
+            Mapper.Initialize(m => m.AddProfile<MappingProfile>());
+            Mapper.AssertConfigurationIsValid();
+            Roditelj roditelji = new Roditelj()
+            {
+                Id = 1,
+                Ime = "Ime",
+                Prezime = "Prezime",
+                BrojTelefona = "123456789",
+                StepenObrazovanjaId = 5,
+                UcenikId = 1
+
+            };
+            var result = Mapper.Map<Roditelj, PutRoditeljaResource>(roditelji);
+            Assert.IsInstanceOfType(result, typeof(PutRoditeljaResource));
+            AutoMapper.Mapper.Reset();
+        }
+        [TestMethod]
+        public void CreateMapMetode_ModelListaRoditeljaUListuPutRoditeljaResursproveraTipa_ReturnsTrue()
+        {
+            Mapper.Initialize(m => m.AddProfile<MappingProfile>());
+            Mapper.AssertConfigurationIsValid();
+            List<Roditelj> listaRoditelja = new List<Roditelj>()
+            {
+                new Roditelj (){ Ime = "Otac", Prezime = "PrezimeOca", StepenObrazovanjaId = 5, BrojTelefona = "123456789", UcenikId =1, Id = 1, StepenObrazovanja = new StepenStrucneSpreme(){ Opis= "Peti" } },
+                new Roditelj (){ Ime = "Majka", Prezime = "PrezimeMajke", StepenObrazovanjaId = 5, BrojTelefona = "101112131415", UcenikId= 1, Id = 2,StepenObrazovanja = new StepenStrucneSpreme(){ Opis= "Sesti" }},
+            };
+
+            var result = Mapper.Map<List<Roditelj>, List<PutRoditeljaResource>>(listaRoditelja);
+            Assert.IsInstanceOfType(result, typeof(List<PutRoditeljaResource>));
             AutoMapper.Mapper.Reset();
         }
 
+        [TestMethod]
+        public void CreateMapMetode_ModelListaPutRoditeljaResurstUListuRoditeljaproveraTipa_ReturnsTrue()
+        {
+            Mapper.Initialize(m => m.AddProfile<MappingProfile>());
+            Mapper.AssertConfigurationIsValid();
+            List<PutRoditeljaResource> listaRoditeljaResurs = new List<PutRoditeljaResource>()
+            {
+                new PutRoditeljaResource (){  Id = 1,
+                    ImeOca = "ImeOca",
+                    PrezimeOca = "PrezimeOca",
+                    BrojTelefonaOca = "123456789",
+                    IdMajke = 1,
+                    ImeMajke = "ImeMajke",
+                    PrezimeMajke = "PrezimeMajke",
+                    BrojTelefonaMajke = "123456789",
+                    StrucnaSpremaMajkeId = 5,
+                    StrucnaSpremaOcaId = 6,
+                    UcenikId = 1},
+                new PutRoditeljaResource (){
+                    Id = 1,
+                    ImeOca = "ImeOca",
+                    PrezimeOca = "PrezimeOca",
+                    BrojTelefonaOca = "123456789",
+                    IdMajke = 1,
+                    ImeMajke = "ImeMajke",
+                    PrezimeMajke = "PrezimeMajke",
+                    BrojTelefonaMajke = "123456789",
+                    StrucnaSpremaMajkeId = 5,
+                    StrucnaSpremaOcaId = 6,
+                    UcenikId = 1
+                }
+            };
+
+            var result = Mapper.Map<List<PutRoditeljaResource>, List<Roditelj>>(listaRoditeljaResurs);
+            Assert.IsInstanceOfType(result, typeof(List<Roditelj>));
+            AutoMapper.Mapper.Reset();
+        }
+        [TestMethod]
+        public void CreateMapMetode_ModelPutRoditeljaResursURoditeljproveraTipa_ReturnsTrue()
+        {
+            Mapper.Initialize(m => m.AddProfile<MappingProfile>());
+            Mapper.AssertConfigurationIsValid();
+            PutRoditeljaResource putRoditeljaResurs = new PutRoditeljaResource()
+            {
+                Id = 1,
+                ImeOca = "ImeOca",
+                PrezimeOca = "PrezimeOca",
+                BrojTelefonaOca = "123456789",
+                IdMajke = 1,
+                ImeMajke = "ImeMajke",
+                PrezimeMajke = "PrezimeMajke",
+                BrojTelefonaMajke = "123456789",
+                StrucnaSpremaMajkeId = 5,
+                StrucnaSpremaOcaId = 6,
+                UcenikId = 1
+            };
+            var result = Mapper.Map<PutRoditeljaResource, Roditelj>(putRoditeljaResurs);
+            Assert.IsInstanceOfType(result, typeof(Roditelj));
+            AutoMapper.Mapper.Reset();
+        }
 
     }
 }
