@@ -2,6 +2,7 @@ using AutoMapper;
 using DomUcenikaSvilajnac.Common.Interfaces;
 using DomUcenikaSvilajnac.Common.Models;
 using DomUcenikaSvilajnac.Common.Models.ModelResources;
+using DomUcenikaSvilajnac.Controllers;
 using DomUcenikaSvilajnac.DAL.Context;
 using DomUcenikaSvilajnac.DAL.RepoPattern;
 using DomUcenikaSvilajnac.Mapping;
@@ -390,6 +391,110 @@ namespace DomUcenikaSvilajnac.IntegratedTests
             Assert.Equal(listaRoditeljaZaBazu, roditeljiUBazi);
 
         }
+        [Fact]
+        public void RemoveRoditeljaUcenika_ProveraDaLiSeRoditeljiUcenikaUspesnoObrisaoIzUBaze_ReturnsFalse()
+        {
+            Mapper.Reset();
+
+            //upotreba funkcije UseInMemoryDatabase koju omogucava EF (EntityFramework), stvara fake bazu pomocu koje se vrsi provera rada odredjenih metoda.
+            var options = new DbContextOptionsBuilder<UcenikContext>().UseInMemoryDatabase(Guid.NewGuid().ToString()).EnableSensitiveDataLogging().Options;
+            var context = new UcenikContext(options);
+            var primeriRoditelja = data.roditeljResurs;
+
+            Mapper.Initialize(m => m.AddProfile<MappingProfile>());
+            Mapper.AssertConfigurationIsValid();
+            var roditeljZaBazu = Mapper.Map<PostRoditeljaResource, Roditelj>(primeriRoditelja);
+           
+            var config = new MapperConfiguration(cfg => cfg.CreateMap<Roditelj, PostRoditeljaResource>());
+            var mapper = config.CreateMapper();
+
+            IUnitOfWork unitOfWork = new UnitOfWork(context, mapper);
+            unitOfWork.Roditelji.Add(roditeljZaBazu);
+            unitOfWork.SaveChanges();
+
+            var roditeljUBazi = unitOfWork.Roditelji.Get(1);
+
+            unitOfWork.Roditelji.Remove(roditeljUBazi);
+            unitOfWork.SaveChanges();
+            var roditeljNakonBrisanja = unitOfWork.Roditelji.Get(1);
+
+            Assert.False(roditeljNakonBrisanja != null);
+        }
+
+        [Fact]
+        public void RoditeljGetById_TestiranjeGetByIdMetode_ReturnsTrue()
+        {
+            Mapper.Reset();
+
+            //upotreba funkcije UseInMemoryDatabase koju omogucava EF (EntityFramework), stvara fake bazu pomocu koje se vrsi provera rada odredjenih metoda.
+            var options = new DbContextOptionsBuilder<UcenikContext>().UseInMemoryDatabase(Guid.NewGuid().ToString()).EnableSensitiveDataLogging().Options;
+            var context = new UcenikContext(options);
+            var primeriRoditelja = data.roditeljResurs;
+
+            Mapper.Initialize(m => m.AddProfile<MappingProfile>());
+            Mapper.AssertConfigurationIsValid();
+            var roditeljZaBazu = Mapper.Map<PostRoditeljaResource, Roditelj>(primeriRoditelja);
+
+            var config = new MapperConfiguration(cfg => cfg.CreateMap<Roditelj, PostRoditeljaResource>());
+            var mapper = config.CreateMapper();
+
+            IUnitOfWork unitOfWork = new UnitOfWork(context, mapper);
+            unitOfWork.Roditelji.Add(roditeljZaBazu);
+            unitOfWork.SaveChanges();
+
+            var roditeljUBazi = unitOfWork.Roditelji.Get(1);
+            Assert.Equal(roditeljUBazi, roditeljZaBazu);
+        }
+
+        [Fact]
+        public void PutRoditelja_TestiranjeUpdateMetode_ReturnsTrue()
+        {
+            Mapper.Reset();
+
+            //upotreba funkcije UseInMemoryDatabase koju omogucava EF (EntityFramework), stvara fake bazu pomocu koje se vrsi provera rada odredjenih metoda.
+            var options = new DbContextOptionsBuilder<UcenikContext>().UseInMemoryDatabase(Guid.NewGuid().ToString()).EnableSensitiveDataLogging().Options;
+            var context = new UcenikContext(options);
+            var primeriRoditelja = data.roditeljResurs;
+
+            Mapper.Initialize(m => m.AddProfile<MappingProfile>());
+            Mapper.AssertConfigurationIsValid();
+            var roditeljZaBazu1 = Mapper.Map<PostRoditeljaResource, Roditelj>(primeriRoditelja);
+            Roditelj roditeljZaBazu2 = new Roditelj()
+            {
+                Id = 2,
+                Ime = "Neko",
+                Prezime = "Nesto",
+                BrojTelefona = "1234567",
+                StepenObrazovanjaId = 5,
+                UcenikId = 1
+            };
+            List<Roditelj> listaRoditeljaZaBazu = new List<Roditelj>() {
+                roditeljZaBazu1, roditeljZaBazu2
+            };
+            var config = new MapperConfiguration(cfg => cfg.CreateMap<Roditelj, PostRoditeljaResource>());
+            var mapper = config.CreateMapper();
+
+            IUnitOfWork unitOfWork = new UnitOfWork(context, mapper);
+            unitOfWork.Roditelji.AddRange(listaRoditeljaZaBazu);
+            unitOfWork.SaveChanges();
+
+            RoditeljController kontrolerRoditelja = new RoditeljController(mapper, unitOfWork);
+            var pom = kontrolerRoditelja.PutRoditelj(roditeljZaBazu1.UcenikId, data.putRoditeljaResurs);
+            unitOfWork.SaveChanges();
+
+            var apdejtovaniRoditelj1 = unitOfWork.Roditelji.Get(1);
+
+            Assert.True(apdejtovaniRoditelj1.Ime != data.putRoditeljaResurs.ImeOca);
+
+
+          //  mapper.Map<PutRoditeljaResource, Roditelj>(apdejtRoditelja, listaRoditeljaZaBazu);
+          
+
+            //var roditeljUBazi = unitOfWork.Roditelji.Get(1);
+            //Assert.Equal(roditeljUBazi, roditeljZaBazu);
+        }
+
+
 
     }
 }

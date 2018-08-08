@@ -67,24 +67,8 @@ namespace DomUcenikaSvilajnac.Controllers
 
             var stariOtac = await UnitOfWork.Roditelji.GetAsync(nizId[1]);
             var staraMajka = await UnitOfWork.Roditelji.GetAsync(nizId[0]);
-           
-
-
-
-            //if (id != stariRoditelj.Id)
-            //{
-            //    return BadRequest();
-            //}
-            //if (stariRoditelj == null)
-            // return NotFound();
-
-
-            
             roditelj.Id = nizId[1];
             roditelj.IdMajke = nizId[0];
-            
-
-
 
             var djesi = Mapper.Map<PutRoditeljaResource, MajkaResource>(roditelj);
             

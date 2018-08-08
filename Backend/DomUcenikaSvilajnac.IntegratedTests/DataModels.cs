@@ -109,9 +109,23 @@ namespace DomUcenikaSvilajnac.IntegratedTests
             ImeOca = "ImeOca",
             PrezimeOca = "PrezimeOca",
             BrojTelefonaOca = "123456789",
-            StrucnaSpremaOcaId = 5
+            StrucnaSpremaOcaId = 5,
+            UcenikId = 1
 
         };
-       
+        public PutRoditeljaResource putRoditeljaResurs = new PutRoditeljaResource()
+        {
+            Id = 1,
+            IdMajke = 2,
+            ImeMajke = "ImeMajke2",
+            PrezimeMajke = "PrezimeMajke2",
+            BrojTelefonaMajke = "1234567892",
+            StrucnaSpremaMajkeId = 2,
+            ImeOca = "ImeOca2",
+            PrezimeOca = "PrezimeOca2",
+            BrojTelefonaOca = "1234567892",
+            StrucnaSpremaOcaId = 6,
+            UcenikId = 1
+        };
     }
 }
