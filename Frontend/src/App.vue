@@ -51,7 +51,7 @@
         </template>
       </v-list>
     </v-navigation-drawer>
-     <v-toolbar dark class="blue-grey darken-2" app absolute clipped-left>
+     <v-toolbar dark class="blue-grey darken-2"  app  clipped-left>
       <v-toolbar-side-icon @click.native="drawer = !drawer"></v-toolbar-side-icon>
           <v-toolbar-title>
         <router-link to="/" tag="span" style="cursor: pointer">Dom učenika Svilajnac</router-link>
