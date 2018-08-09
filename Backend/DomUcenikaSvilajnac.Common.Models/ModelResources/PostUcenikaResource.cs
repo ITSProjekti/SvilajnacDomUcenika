@@ -8,8 +8,7 @@ using System.Threading.Tasks;
 namespace DomUcenikaSvilajnac.ModelResources
 {
     /// <summary>
-    /// Sluzi za podakte koji ce se slati na front, u slucaju da neki podatak nije potrebno poslati na front, smanjuje se broj property-a u odnosu na 
-    /// klasu Ucenik.
+    /// Prilikom post-ovanja novog ucenika bice prosledjeni podaci koji su navedeni u klasi ispod.
     /// </summary>
     public class PostUcenikaResource
     {

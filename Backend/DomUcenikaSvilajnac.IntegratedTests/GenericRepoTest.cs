@@ -53,7 +53,7 @@ namespace DomUcenikaSvilajnac.IntegratedTests
         }
 
         /// <summary>
-        ///  Test proverava broja elemenata u bazi.
+        ///  Test proverava broj elemenata u bazi.
         /// </summary>
         [Fact]
         public void GetAllUcenik_ProveraBrojaElemenataUBazi_ReturnsTrue()
@@ -250,8 +250,9 @@ namespace DomUcenikaSvilajnac.IntegratedTests
             Assert.Equal(1, ucenikZaBazu.Id);
         }
 
-
-
+        /// <summary>
+        /// Test proverava metodu GetAll, proverava da li se u bazu dodaje sve kako treba.
+        /// </summary>
         [Fact]
         public void GetAllUcenik_UporedjivanjePodatakaIzBazeSaDodatimObjektima_ReturnsTrue()
         {
@@ -322,6 +323,9 @@ namespace DomUcenikaSvilajnac.IntegratedTests
             Assert.Equal(listaUcenika[1].PrethodniUspeh, data.Ucenik2().PrethodniUspeh);
         }
 
+        /// <summary>
+        /// Test proverava metodu Remove, proverava se da li je baza osatala prazna nakon brisanja ucenika.
+        /// </summary>
         [Fact]
         public void RemoveUcenika_ProveraBazeNakonBrisanjaUcenika_ReturnsTrue()
         {
@@ -355,6 +359,9 @@ namespace DomUcenikaSvilajnac.IntegratedTests
                 Assert.True(listaUcenikaNakonBrisanja.Count == 0);
         }
 
+        /// <summary>
+        /// Test proverava metodu Create, proverava se da li su roditelji uspesno dodati u bazu.
+        /// </summary>
         [Fact]
         public void CreateRoditeljaUcenika_ProveraDaLiSeRoditeljiUcenikaUspesnoDodajuUBazi_ReturnsTrue()
         {
@@ -392,6 +399,10 @@ namespace DomUcenikaSvilajnac.IntegratedTests
             Assert.Equal(listaRoditeljaZaBazu, roditeljiUBazi);
 
         }
+
+        /// <summary>
+        /// Test proverava metodu Remove, proverava se da li je baza osatala prazna nakon brisanja roditelja.
+        /// </summary>
         [Fact]
         public void RemoveRoditeljaUcenika_ProveraDaLiSeRoditeljiUcenikaUspesnoObrisaoIzUBaze_ReturnsFalse()
         {
@@ -422,6 +433,9 @@ namespace DomUcenikaSvilajnac.IntegratedTests
             Assert.False(roditeljNakonBrisanja != null);
         }
 
+        /// <summary>
+        /// Test proverava metodu GetById (za roditelje), proverava se da li je roditelj uspesno dodat u bazu.
+        /// </summary>
         [Fact]
         public void RoditeljGetById_TestiranjeGetByIdMetode_ReturnsTrue()
         {
@@ -447,6 +461,9 @@ namespace DomUcenikaSvilajnac.IntegratedTests
             Assert.Equal(roditeljUBazi, roditeljZaBazu);
         }
 
+        /// <summary>
+        /// Test proverava metodu Put, proverava se da li su podaci o roditeljima uspesno promenjeni (updateovani).
+        /// </summary>
         [Fact]
         public void PutRoditelja_TestiranjeUpdateMetode_ReturnsTrue()
         {
@@ -522,12 +539,8 @@ namespace DomUcenikaSvilajnac.IntegratedTests
                 StrucnaSpremaMajkeId = roditeljiUBazi2[1].StepenObrazovanjaId,
                 UcenikId = 1
             };
-
-
+            
             Assert.NotEqual(roditeljUBaziResurs, apdejtovaniRoditelji);
-
         }
-       
-
     }
 }

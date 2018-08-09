@@ -4,9 +4,11 @@ using System.Text;
 
 namespace DomUcenikaSvilajnac.Common.Models.ModelResources
 {
+    /// <summary>
+    /// Prilikom brisanja roditelja, prosledjuju se podaci iz ove klase, navedeni ispod.
+    /// </summary>
     public class DeleteRoditeljaResource
     {
-
         public int IdMajke { get; set; }
         public int Id { get; set; }
 

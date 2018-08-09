@@ -4,6 +4,9 @@ using System.Text;
 
 namespace DomUcenikaSvilajnac.Common.Models.ModelResources
 {
+    /// <summary>
+    /// Prilikom put-ovanja (updateovanja) roditelja prosledjuju se podaci navedeni u klasi ispod.
+    /// </summary>
     public class PutRoditeljaResource
     {
         public int IdMajke { get; set; }

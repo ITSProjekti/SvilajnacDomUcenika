@@ -4,6 +4,9 @@ using System.Text;
 
 namespace DomUcenikaSvilajnac.Common.Models.ModelResources
 {
+    /// <summary>
+    /// Sluzi za put(update) majke, salju se podaci koji su navedeni ispod.
+    /// </summary>
     public class MajkaResource
     {
         public int IdMajke { get; set; }

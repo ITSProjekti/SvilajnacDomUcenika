@@ -4,6 +4,9 @@ using System.Text;
 
 namespace DomUcenikaSvilajnac.Common.Models.ModelResources
 {
+    /// <summary>
+    /// Prilikom post-ovanja novog roditelja prosledjuju se podaci navedeni u klasi ispod.
+    /// </summary>
     public class PostRoditeljaResource
     {
         public int IdMajke { get; set; }
