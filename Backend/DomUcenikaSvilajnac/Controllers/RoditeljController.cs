@@ -56,7 +56,7 @@ namespace DomUcenikaSvilajnac.Controllers
 
             int[] nizId = new int[2];
 
-              var listaRoditelja = await UnitOfWork.roditeljiUcenikaZaPut(id);
+            var listaRoditelja = await UnitOfWork.roditeljiUcenikaZaPut(id);
             foreach (var item in listaRoditelja)
             {
                 nizId[0] = item.IdMajke;

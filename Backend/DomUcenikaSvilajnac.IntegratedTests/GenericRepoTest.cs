@@ -12,6 +12,7 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
+using System.Threading.Tasks;
 using Xunit;
 namespace DomUcenikaSvilajnac.IntegratedTests
 {
@@ -477,24 +478,56 @@ namespace DomUcenikaSvilajnac.IntegratedTests
             IUnitOfWork unitOfWork = new UnitOfWork(context, mapper);
             unitOfWork.Roditelji.AddRange(listaRoditeljaZaBazu);
             unitOfWork.SaveChanges();
+            var roditeljiUBazi1 = unitOfWork.Roditelji.GetAll().ToList();
+         
+            var roditeljiUBazi = context.Roditelji
+                .Where(b => b.UcenikId == 1).ToList();
 
-            RoditeljController kontrolerRoditelja = new RoditeljController(mapper, unitOfWork);
-            var pom = kontrolerRoditelja.PutRoditelj(roditeljZaBazu1.UcenikId, data.putRoditeljaResurs);
+            PutRoditeljaResource roditeljUBaziResurs = new PutRoditeljaResource()
+            {
+                Id = roditeljiUBazi[0].Id,
+                ImeOca = roditeljiUBazi[0].Ime,
+                PrezimeOca = roditeljiUBazi[0].Prezime,
+                BrojTelefonaOca = roditeljiUBazi[0].BrojTelefona,
+                StrucnaSpremaOcaId = roditeljiUBazi[0].StepenObrazovanjaId,
+                IdMajke = roditeljiUBazi[1].Id,
+                ImeMajke = roditeljiUBazi[1].Ime,
+                PrezimeMajke = roditeljiUBazi[1].Prezime,
+                BrojTelefonaMajke = roditeljiUBazi[1].BrojTelefona,
+                StrucnaSpremaMajkeId = roditeljiUBazi[1].StepenObrazovanjaId,
+                UcenikId = 1
+            };
+            var stariOtac =  unitOfWork.Roditelji.Get(roditeljUBaziResurs.Id);
+            var staraMajka = unitOfWork.Roditelji.Get(roditeljUBaziResurs.IdMajke);
+
+            var djesi = Mapper.Map<PutRoditeljaResource, MajkaResource>(data.putRoditeljaResurs);
+
+            Mapper.Map<PutRoditeljaResource, Roditelj>(data.putRoditeljaResurs, stariOtac);
+            Mapper.Map<MajkaResource, Roditelj>(djesi, staraMajka);
             unitOfWork.SaveChanges();
 
-            var apdejtovaniRoditelj1 = unitOfWork.Roditelji.Get(1);
+            var roditeljiUBazi2 = unitOfWork.Roditelji.GetAll().ToList();
 
-            Assert.True(apdejtovaniRoditelj1.Ime != data.putRoditeljaResurs.ImeOca);
+            PutRoditeljaResource apdejtovaniRoditelji = new PutRoditeljaResource()
+            {
+                Id = roditeljiUBazi2[0].Id,
+                ImeOca = roditeljiUBazi2[0].Ime,
+                PrezimeOca = roditeljiUBazi2[0].Prezime,
+                BrojTelefonaOca = roditeljiUBazi2[0].BrojTelefona,
+                StrucnaSpremaOcaId = roditeljiUBazi2[0].StepenObrazovanjaId,
+                IdMajke = roditeljiUBazi2[1].Id,
+                ImeMajke = roditeljiUBazi2[1].Ime,
+                PrezimeMajke = roditeljiUBazi2[1].Prezime,
+                BrojTelefonaMajke = roditeljiUBazi2[1].BrojTelefona,
+                StrucnaSpremaMajkeId = roditeljiUBazi2[1].StepenObrazovanjaId,
+                UcenikId = 1
+            };
 
 
-          //  mapper.Map<PutRoditeljaResource, Roditelj>(apdejtRoditelja, listaRoditeljaZaBazu);
-          
+            Assert.NotEqual(roditeljUBaziResurs, apdejtovaniRoditelji);
 
-            //var roditeljUBazi = unitOfWork.Roditelji.Get(1);
-            //Assert.Equal(roditeljUBazi, roditeljZaBazu);
         }
-
-
+       
 
     }
 }
