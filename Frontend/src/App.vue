@@ -88,8 +88,11 @@
 /* eslint-disable */
   export default {
     data: () => ({
+      // promenljiva koja sluzi za rad sa navigacionim barom sa strane, true - false za paljenje i gasenje
       drawer: null,
+      // kolekcija opcija za side-navbar
       items: [
+        
         { icon: 'lightbulb_outline', text: 'Lista ucenika',link: '/ucenici' },
         { icon: 'touch_app', text: 'Dummy1' },
         { divider: true },
@@ -105,6 +108,7 @@
         { icon: 'phonelink', text: 'Dummy7' },
         { icon: 'keyboard', text: 'Dummy8' }
       ], 
+      // opcije koje se nalaze na glavnom toolbaru (na vrhu ekrana)
       menuItems: [
         {icon: 'supervisor_account', title: 'Lista ucenika',link: '/ucenici'},
         {icon: 'pets', title: 'Prijavi ucenika',link: '/prijava'},

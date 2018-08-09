@@ -1,6 +1,7 @@
 
 <template>
   <div>
+    
     <v-toolbar  color="white">
        <v-toolbar-title wrap >Spisak prijavljenih učenika</v-toolbar-title>
     
@@ -844,16 +845,12 @@ import moment from 'moment'
 
   export default {
     data: () => ({
+      // dialog je promenljiva koja sluzi za prikazivanje dijaloga pri menjanju ili prijavi ucenika
       dialog: false,
+      // headeri sluze za generisanje polja koja se prikazuju u tabeli
       headers: [
         {
-          text: 'Redni broj',
-          align: 'center',
-          sortable: true,
-           value: 'id',
-           width:'5%'
-           
-        },
+          text: 'Redni broj',  align: 'center', sortable: true,  value: 'id', width:'5%' },
         { text: 'Ime',value: 'ime' ,align: 'center',sortable:true, width:'7.5%'},
         { text: 'Prezime', value:'prezime', align: 'center',sortable:true,width:'7.5%'},
         { text: 'JMBG', value:'jmbg',align: 'center',sortable:true ,width:'7.5%'},
@@ -863,22 +860,30 @@ import moment from 'moment'
         { text: 'Opstina rođenja', value: 'opstina.nazivOpstine',align: 'center',sortable:true ,width:'7.5%'},
         { text: 'Opcije', value: 'opcije',align: 'center',sortable:false,width:'7.5%' }
       ],
+      // rules su pravila popunjavanja polja za unos
            rules: {
+      // requiered pravilo je pravilo za neophodnost postojanja informacije koja se trazi na odgovarajucem polju sa opcijom requiered
           required: (value) => !!value || 'Ovo polje je obavezno.',
+      // jmbg pravilo sluzi za pravilo duzine od tacno 13 cifara
           jmbg: (value) => {
             const pattern = /^(\w{13,13})$/ 
             return pattern.test(value) || 'Jmbg mora biti dugacak 13 cifara.'
           },
+      // uspehX pravilo sluzi za krieranje formata unosa u zeljenom opsegu i obliku
            uspehX: (value) => {
             const pattern = /^([1-4](\.\d+){1}|5(\.0+)?)$/
             return pattern.test(value) || 'Uspeh mora biti u formatu B.BB (B - broj).'
           }
         },
+      // pomocna promenljiva za generisanje podatka o datumu rodjenja
       datum: null,
       search: '',
-        custom: true,
+      // atribut za jmbg progress bar
+      custom: true,
       editedIndex: -1,
+      // brojevi su pomocna prom za rad sa postanskim brojevima
       brojevi: '',
+      // objekat koji sluzi kao maska za prijavu ucenika, koristi se pri prijavi i izmeni podataka o uceniku
       editedItem: {
         ime: '',
         prezime: '',
@@ -961,7 +966,8 @@ import moment from 'moment'
           ]
 
       },
-
+    // defaultItem je objekat koji je po strukturi identican editedItemu i sluzi za resetovanje podataka u editedItemu na prazne podatke
+    // pri zavrsetku prijave ili izmene podataka o uceniku
       defaultItem: {
         ime: '',
         prezime: '',
@@ -1046,15 +1052,20 @@ import moment from 'moment'
 
       }
     }),
+    // computed metode su metode koje se desavaju onda kada dodje do nekakvim promena stanja komponente, neki vid watcher-a
     computed: {
-      
+      // logika za racunanje progress bar-a kod jmbg, 105 je prva granica a drugi parametar u math.min funkciji sluzi za formiranje 13 podeoka 
+      // na progress baru za 13 jmbg cifara, dalje se ovi rezultati koriste za prikaz promene boja na progress baru
           progress () {
         return Math.min(105, this.editedItem.jmbg.length * 7.69)
       },
+      // boja progress bara se generise u opsezima koji se odredjuju na osnovo trenutne vrednosti promenljive progress koja govori
+      // dokle je stigao progress bar, 4 zone su crvena, narandzasta, zelena i na kraju opet crvena kad se predje 13 cifara
       color () {
       
         return ['error', 'warning', 'success','error'][Math.floor(this.progress / 34)]
       },
+      // metoda koja vodi racuna o tome da se ne moze prijaviti ucenik koji nije ispunio sve neophodne podatke prilikom prijave ili izmene podataka
       formIsValid () {
        
         if( this.editedItem.ime !== '' &&
@@ -1093,6 +1104,7 @@ import moment from 'moment'
           }
          
       },
+      // pozivi store action metoda za preuzimanje neophodnih podataka za prijavu ucenika
       StepeniStrucneSpreme () {
         return this.$store.getters.loadedSSS
       },
@@ -1131,18 +1143,20 @@ import moment from 'moment'
       loading () {
         return this.$store.getters.loading
       },
+      // promenljiva koja menja naslov dijaloga, ako se odabere za prijavu dobija sa prvi naslov, drugi naslov ako se radi o izmeni podataka
       formTitle () {
         return this.editedIndex === -1 ? 'Prijava novog ucenika' : 'Izmena podataka'
       }
     },
+    // watch se koristi kad se radi sa dijalozima
     watch: {
       dialog (val) {
-        console.log(this.datum)
-         console.log(this.editedItem.dan)
+
         val || this.close()
       }
     },
     methods: {
+      // metoda koja na osnovu odabrane opstine prikazuje njene jedinstvene postanske brojeve
       changedValue: function(value) {
         function broj (opstina){
           return opstina.id===value
@@ -1150,21 +1164,22 @@ import moment from 'moment'
       this.brojevi=this.opstine.find(broj)
       },
 
-      
+      // metoda koja daje funkcionalnost pretrage, moze se pretrazivati po svim podacima o uceniku
       customFilter(items, search, filter) {
       search = search.toString().toLowerCase()
-        
+       // ovo su podaci koji su odmah vidljivi u tabeli 
       var  filtered= items.filter(i => (
       Object.keys(i).some(j => filter(i[j], search)) 
     ))
     
     if (filtered.length !== 0)
     return filtered
+    // podaci koji nisu vidljivi u kolonama/redovima tabela vec samo kada se klikne na ucenika radi prikaza svih preostalih podataka
     else
     {
          return items.filter((item) => {
            item.datum=item.dan+"."+item.mesec+"."+item.godina
-           
+           // postoji prioritet pretrage koji je ovde prikazan u poretku uslova, najveci prioritet za drzave pa nazive opstina itd...
         return item.drzavaRodjenja.nazivDrzave.toLowerCase().match(this.search.toLowerCase()) ||
         item.opstina.nazivOpstine.toLowerCase().match(this.search.toLowerCase()) ||
         item.pol.nazivPola.toLowerCase().match(this.search.toLowerCase()) ||
@@ -1185,10 +1200,12 @@ import moment from 'moment'
         item.roditelji[1].ime.toLowerCase().match(this.search.toLowerCase()) ||
         item.roditelji[1].prezime.toLowerCase().match(this.search.toLowerCase()) ||
         item.roditelji[1].brojTelefona.toLowerCase().match(this.search.toLowerCase()) 
-       
+
         })
     }
         },
+        // v-date-picker generise datum u XX-XX-XXXX formatu koji treba prebaciti u 3 promenljive za dan, mesec i godinu pre nego sto se
+        // zeli raditi sa PUT ili POST metodama
        formatiranjeDatuma()
       {
        
@@ -1211,9 +1228,11 @@ import moment from 'moment'
       },
       deleteItem (item) {
         const index = this.ucenici.indexOf(item)
-   
+    // pitanje za potrvrdu o brisanju gde ako se odabere potvrdan odgovor vrsi se poziv HTTP delete-a i brisanje ucenika iz vue-x store-a sa splice
+    // na mestu index i broj 1 predstavlja broj ucenika koji se brisu
         confirm('Da li ste sigurni da zelite da izbrisete ovog ucenika?') && this.$store.dispatch('deleteUcenik',item.id) && this.ucenici.splice(index,1)
       },
+    // ako se odabere opcija close na dijalogu treba editeditem vratiti na pocetni sa praznim podacima
       close () {
         
         this.dialog = false
@@ -1223,16 +1242,20 @@ import moment from 'moment'
           this.editedIndex = -1
         }, 300)
       },
+      // ako se odabere potvrdan odgovor na dijalogu treba uradilit POST ili PUT metod u zavisnosti da li se radi o prijavi ili izmeni ucenika
       save () {
+        // na osnovu toga da li postoji editedindex proveravamo da li se radi o novom ili starom uceniku
+        // ako postoji onda je stari ucenik i radi se PUT zahtev nakon kojeg se datum i editedItem postavljaju na pocetne vrednosti
         if (this.editedIndex > -1) {    
           this.formatiranjeDatuma()
-         // Object.assign(this.ucenici[this.editedIndex], this.editedItem)
+        
           this.editedItem.roditelji.ucenikID= this.editedItem.id
           
           this.$store.dispatch('editUcenik',this.editedItem)
           this.editedItem = Object.assign({}, this.defaultItem)
           this.datum=null
         } else {
+          // u suprotnom radi se o novom uceniku te se vrsi POST metod nakon kojeg se editedItem i datum postavljaju na pocetne vrednosti
           this.formatiranjeDatuma() 
          
           this.$store.dispatch('createUcenik',this.editedItem)
@@ -1247,6 +1270,13 @@ import moment from 'moment'
 </script>
 
 <style >
+
+
+
+
+/* menanje inicijalnog izgleda tabele*/
+
+
 table {
   border-top: 1px solid grey   !important;
   border-bottom: 1px solid grey  !important;
@@ -1260,4 +1290,5 @@ table {
   background-color: white;
   border-top: 1px solid grey !important
 }
+
 </style>

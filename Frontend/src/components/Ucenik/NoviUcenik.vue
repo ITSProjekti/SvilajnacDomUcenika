@@ -47,7 +47,7 @@
 
 
        <v-flex offset-sm1 xs12>
-              <v-flex xs8 md6 class="ml-1" >
+              <v-flex xs8 md5 class="ml-1" >
                 <v-text-field
                   v-model="editedItem.jmbg"
                   label="jmbg"
@@ -165,7 +165,7 @@
                     <v-flex offset-sm1  xs12 sm3 class="mt-4">
                      <p>Opština prebivališta</p>
                     </v-flex>
-                           <v-flex xs12 sm4>
+                           <v-flex xs12 sm5>
                                <v-select
                                 :loading="loading"
                                 :items="opstine"
@@ -569,20 +569,29 @@
 import moment from 'moment'
   export default {
     data: () => ({   
+      // rules su pravila popunjavanja polja za unos
            rules: {
+      // requiered pravilo je pravilo za neophodnost postojanja informacije koja se trazi na odgovarajucem polju sa opcijom requiered
           required: (value) => !!value || 'Ovo polje je obavezno.',
-          jmbg: (value) => {
+       jmbg: (value) => {
             const pattern = /^(\w{13,13})$/ 
             return pattern.test(value) || 'Jmbg mora biti dugacak 13 cifara.'
           },
-          uspehX: (value) => {
+     
+           uspehX: (value) => {
             const pattern = /^([1-4](\.\d+){1}|5(\.0+)?)$/
             return pattern.test(value) || 'Uspeh mora biti u formatu B.BB (B - broj).'
           }
         },
-        custom: true,
+      // pomocna promenljiva za generisanje podatka o datumu rodjenja
       datum: null,
+      
+      // atribut za jmbg progress bar
+      custom: true,
+      editedIndex: -1,
+      // brojevi su pomocna prom za rad sa postanskim brojevima
       brojevi: '',
+      // objekat koji sluzi kao maska za prijavu ucenika, koristi se pri prijavi i izmeni podataka o uceniku
       editedItem: {
          ime: '',
         prezime: '',
@@ -666,15 +675,20 @@ import moment from 'moment'
       
       }
     }),
-    computed: { 
-            progress () {
+      // computed metode su metode koje se desavaju onda kada dodje do nekakvim promena stanja komponente, neki vid watcher-a
+    computed: {
+      // logika za racunanje progress bar-a kod jmbg, 105 je prva granica a drugi parametar u math.min funkciji sluzi za formiranje 13 podeoka 
+      // na progress baru za 13 jmbg cifara, dalje se ovi rezultati koriste za prikaz promene boja na progress baru
+          progress () {
         return Math.min(105, this.editedItem.jmbg.length * 7.69)
       },
+      // boja progress bara se generise u opsezima koji se odredjuju na osnovo trenutne vrednosti promenljive progress koja govori
+      // dokle je stigao progress bar, 4 zone su crvena, narandzasta, zelena i na kraju opet crvena kad se predje 13 cifara
       color () {
       
         return ['error', 'warning', 'success','error'][Math.floor(this.progress / 34)]
       },
-      
+      // metoda koja vodi racuna o tome da se ne moze prijaviti ucenik koji nije ispunio sve neophodne podatke prilikom prijave ili izmene podataka
       formIsValid () {      
         if( this.editedItem.ime !== '' &&
           this.editedItem.prezime!== '' &&         
@@ -786,5 +800,8 @@ import moment from 'moment'
 </script>
 
 <style>
+
+
+
 
 </style>

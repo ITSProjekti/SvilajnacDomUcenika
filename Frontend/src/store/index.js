@@ -3,14 +3,15 @@ import Vue from 'vue'
 import Vuex from 'vuex'
 import axios from 'axios'
 import VueAxios from 'vue-axios'
-
+// axios sluzi da upotrbu HTTP requestova
 Vue.use(VueAxios, axios)
-
+// Vuex sluzi za rad sa vue-store-om koji sluzi da stvaranje "baze" podataka za front
 Vue.use(Vuex)
 
 /* eslint-disable */
 export const store = new Vuex.Store({
-    
+    // veliki objekat koji sadrzi atribute neophodne za rad programa state-baza, mutatori-menjanje baze,
+    // getteri-uzimanje podataka iz baze, actions -metode koje se pozivaju van store-a za rad sa store-om
     state:{
         ucenici: [],
         opstine: [],
@@ -23,10 +24,14 @@ export const store = new Vuex.Store({
         razred: [],
         stepeniStrucneSpreme: [],
         postanskiBrojevi: [],
+        // atribut za ukljucivanje stanja ucitavanja prilikom rada sa bazom, obicno za prikazivanje loading stvari
         loading: false,
+        // atribut za prikazivanje gresaka prilikom HTTP zahteva sa bazom
         error: null
     },
+    // mutacije su metode koje imaju direktan kontakt sa bazom, obicno sluze za cuvanje podataka u bazu
     mutations: {
+        // sve setLoaded metode sluze za ubacivanje podataka u State sa backend-a
         setLoadedSSS (state,payload)
         {
             state.stepeniStrucneSpreme=payload
@@ -72,9 +77,6 @@ export const store = new Vuex.Store({
             state.drzave=payload
            
         },
-        createUcenik (state,payload) {
-            state.ucenici.push(payload)
-        },
         setLoading(state, payload) {
             state.loading = payload
         },
@@ -86,9 +88,10 @@ export const store = new Vuex.Store({
         },
         createUcenik(state,payload)
         {
+            // JSON kopiranje objekata gde je payload podatak koji stize sa backend-a
             var novi = JSON.parse(JSON.stringify(payload))
-           // novi.roditelji=null
-  
+        
+            // roditelji u payload-u su u drugacijem formatu te se ovde vrsi mapiranje iz tog resursa u objekat koji sadrzi 2 roditelja
             novi.roditelji=[
                 {
                     id:payload.roditelji.idMajke,
@@ -106,18 +109,20 @@ export const store = new Vuex.Store({
                  }
         
             ]
-            console.log(novi)
+    
             state.ucenici.push(novi)
 
                
         },
+        // brisanje ucenika iz state-a
         deleteUcenik(state,payload)
         {
             state.ucenici.splice(payload.id)
         },
+        // mutacija za promenu podataka ucenika iz state-a nakon PUT HTTP zahteva
         editUcenik(state,payload)
         {
-          
+            // mapiranje koje vrsi celokupni edit, mozda je moglo da se napravi da se menjaju samo promenjeni podaci
             const ucenikEdit = state.ucenici.find(ucenikEdit => {
                 return ucenikEdit.id === payload.id
               })
@@ -215,15 +220,19 @@ export const store = new Vuex.Store({
         }
         
     },
-    
+    // actions su metode koje se pozivaju van store-a da bi se nesto radilo sa store-om primer : this.$store.dispatch('loadedSSS')
     actions: {
+        // HTTP GET zahtev za stepene strucne spreme
         loadedSSS( {commit } ) {
+            // commit sluzi za pozivanje mutatacija (mutations) metoda
+            // podesavanjem loading na true ulazi se u fazu ucitavanja te se na odgovarajucem mesto prikazuje neki vid loading stanja
             commit('setLoading', true)
             axios.get('http://localhost:17044/api/stepenistrucnespreme').then((response) => {
-           
+            // pozivanje mutatora za popunjavanje State-a sa zeljenim podacima, response.data je ono sto stize sa backend-a
               commit('setLoadedSSS', response.data)
+              // nakon ucitanih podataka skinuti prikaz stanja loading-a sa odgovarajucih mesta
               commit('setLoading', false)
-              
+              // catch greske i prikazi ih na konzoli
             }).catch(
                 (error) => {
                   console.log(error)
@@ -231,6 +240,7 @@ export const store = new Vuex.Store({
                         }
                     )
           },
+          // HTTP GET zahtev za razrede koje ucenik moze da upise
         loadedRazred( {commit } ) {
             commit('setLoading', true)
             axios.get('http://localhost:17044/api/razredi').then((response) => {
@@ -245,6 +255,7 @@ export const store = new Vuex.Store({
                         }
                     )
           },
+          // HTTP GET zahtev za sva mesta u Srbiji
         loadedMesta( {commit } ) {
             commit('setLoading', true)
             axios.get('http://localhost:17044/api/mesta').then((response) => {
@@ -259,6 +270,7 @@ export const store = new Vuex.Store({
                         }
                     )
           },
+          // HTTP GET zahtev za sve osnovne skole u Srbiji
         loadedOS( {commit } ) {
             commit('setLoading', true)
             axios.get('http://localhost:17044/api/osnovneskole').then((response) => {
@@ -273,6 +285,7 @@ export const store = new Vuex.Store({
                         }
                     )
           },
+          // HTTP GET zahtev za sve srednje skole u Srbiji
           loadedSS( {commit } ) {
             commit('setLoading', true)
             axios.get('http://localhost:17044/api/srednjeskole').then((response) => {
@@ -287,7 +300,7 @@ export const store = new Vuex.Store({
                         }
                     )
           },
-        
+        // HTTP GET zahtev za sve smerove koje ucenik moze upisati u Svilajncu
         loadedSmerovi( {commit } ) {
             commit('setLoading', true)
             axios.get('http://localhost:17044/api/smerovi').then((response) => {
@@ -302,6 +315,7 @@ export const store = new Vuex.Store({
                         }
                     )
           },
+          // HTTP GET zahtev za sve postanske brojeve u srbiji
         loadedPostanskiBrojevi( {commit } ) {
         commit('setLoading', true)
         axios.get('http://localhost:17044/api/postanskiBrojevi').then((response) => {
@@ -316,6 +330,7 @@ export const store = new Vuex.Store({
                     }
                 )
       },
+      // HTTP GET zahtev za prikaz polova
         loadedPolovi( {commit } ) {
             commit('setLoading', true)
             axios.get('http://localhost:17044/api/polovi').then((response) => {
@@ -330,6 +345,7 @@ export const store = new Vuex.Store({
                         }
                     )
           },
+          // HTTP GET zahtev za sve prijavljene ucenike
         loadedUcenici( {commit } ) {
             commit('setLoading', true)
             axios.get('http://localhost:17044/api/ucenik').then((response) => {
@@ -344,6 +360,7 @@ export const store = new Vuex.Store({
                         }
                     )
           },
+          // HTTP GET zahtev za sve opstine u Srbiji
           loadedOpstine( {commit } ) {
             commit('setLoading', true)
             axios.get('http://localhost:17044/api/opstine').then((response) => {
@@ -359,6 +376,7 @@ export const store = new Vuex.Store({
                 }
                      )
           },
+          // HTTP GET zahtev za sve drzave na svetu
           loadedDrzave( {commit } ) {
             commit('setLoading', true)
             axios.get('http://localhost:17044/api/drzave').then((response) => {
@@ -375,8 +393,10 @@ export const store = new Vuex.Store({
       )
       
           },
-
+          // HTTP POST zahtev za prijavu novog ucenika
         createUcenik ({commit}, payload) {
+            // payload je objekat koji stize sa nekih od komponenti zaduzenih za prijavu novog ucenika
+            // kreira sa objekat adekvatan za slanje na HTTP POST
             const ucenik = {
                 ime: payload.ime,
                 prezime: payload.prezime,
@@ -426,6 +446,7 @@ export const store = new Vuex.Store({
                razred:{
                    id: payload.razred.id
                },
+               // post resurs zahteva roditelje u objektu koji nije kolekcija vec ima atribute za oca i majku
                roditelji:{
                  
                 ImeOca: payload.roditelji[0].ime,
@@ -437,14 +458,14 @@ export const store = new Vuex.Store({
                 BrojTelefonaMajke: payload.roditelji[0].brojTelefona,
                 BrojTelefonaOca: payload.roditelji[1].brojTelefona
                }
-            }
-        
+               }
+               
+               
             commit('setLoading', true)
             console.log(ucenik)
             axios.post('http://localhost:17044/api/ucenik',ucenik).then(function(response){
-               
 
-                   
+
                 commit('createUcenik', response.data)
                 commit('setLoading', false)
                  }).catch(
@@ -455,6 +476,7 @@ export const store = new Vuex.Store({
           )
   
         },
+        // HTTP DELETE zahtev za brisanje prijavljenog ucenika, zahteva ID ucenika koji se brise
         deleteUcenik( {commit },payload ) {
             commit('setLoading', true)
            
@@ -463,8 +485,9 @@ export const store = new Vuex.Store({
               commit('deleteUcenik', response.data)
               commit('setLoading', false)
             })
-          }
-          ,editUcenik ({commit}, payload) {
+          },
+          // HTTP PUT zahtev za menjanje podataka prijavljenog ucenika
+          editUcenik ({commit}, payload) {
             const ucenik = {
                 ime: payload.ime,
                 prezime: payload.prezime,
@@ -542,7 +565,7 @@ export const store = new Vuex.Store({
     
         }
     },
-
+    // getteri su metode koje sluze za preuzimanje (get-ovanje) podataka iz State-a
     getters: {
         loadedSSS (state) {
             return state.stepeniStrucneSpreme
