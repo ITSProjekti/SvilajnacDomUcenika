@@ -57,6 +57,7 @@
                   v-model="editedItem.jmbg"
                   label="jmbg"
                   required
+                  loading
                   input type="number" onkeydown="javascript: if(event.keyCode == 69) {return false} else 
                   {
                    if(event.keyCode == 107) {return false}
@@ -72,7 +73,16 @@
                      {return true} } } } } }"    
                   :rules="[rules.required,rules.jmbg]"
                   :counter="13"
-                    ></v-text-field>
+                    >
+                                <v-progress-linear
+                      v-if="custom"
+                      slot="progress"
+                      :value="progress"
+                      :color="color"
+                      height="7"
+                    ></v-progress-linear>
+                    
+                    </v-text-field>
               </v-flex>
           </v-flex>
 
@@ -372,11 +382,10 @@
                 <v-text-field
                  v-model="editedItem.prethodniUspeh"                 
                    label="br"
-                    input type="number"  onkeydown="javascript: if(event.keyCode == 69) {return false} else 
-                  {
+                    input type="number"     
+                    onkeydown="javascript: if(event.keyCode == 69) {return false} else 
+                          {
                    if(event.keyCode == 107) {return false}
-                    else {
-                   if(event.keyCode == 190) {return false}
                     else {
                    if(event.keyCode == 109) {return false}
                     else  {
@@ -384,8 +393,10 @@
                     else  {
                    if(event.keyCode == 189) {return false}
                    else
-                     {return true} } } } } }"    
-                   solo
+                     {return true} } } } }" 
+                    required
+                    :rules="[rules.required,rules.uspehX]"
+                  
                    ></v-text-field>
               
               </v-flex>
@@ -857,10 +868,15 @@ import moment from 'moment'
           jmbg: (value) => {
             const pattern = /^(\w{13,13})$/ 
             return pattern.test(value) || 'Jmbg mora biti dugacak 13 cifara.'
+          },
+           uspehX: (value) => {
+            const pattern = /^([1-4](\.\d+){1}|5(\.0+)?)$/
+            return pattern.test(value) || 'Uspeh mora biti u formatu B.BB (B - broj).'
           }
         },
       datum: null,
       search: '',
+        custom: true,
       editedIndex: -1,
       brojevi: '',
       editedItem: {
@@ -1030,7 +1046,16 @@ import moment from 'moment'
 
       }
     }),
-    computed: { formIsValid () {
+    computed: {
+      
+          progress () {
+        return Math.min(105, this.editedItem.jmbg.length * 7.69)
+      },
+      color () {
+      
+        return ['error', 'warning', 'success','error'][Math.floor(this.progress / 34)]
+      },
+      formIsValid () {
        
         if( this.editedItem.ime !== '' &&
           this.editedItem.prezime!== '' &&         
@@ -1048,6 +1073,7 @@ import moment from 'moment'
           this.editedItem.prethodnaSkola.id !== '' &&
           this.editedItem.upisanaSkola.id !== '' &&
           this.editedItem.razred.id !== '' &&
+          this.editedItem.prethodniUspeh !== '' &&
           this.editedItem.roditelji[0].ime !== '' &&
           this.editedItem.roditelji[0].prezime !== '' &&
           this.editedItem.roditelji[0].stepenObrazovanjaId !== '' &&
