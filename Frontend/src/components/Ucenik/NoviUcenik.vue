@@ -378,7 +378,8 @@
                 <v-text-field
                v-model="editedItem.prethodniUspeh"                 
                    label="br"
-                    input type="number"     onkeydown="javascript: if(event.keyCode == 69) {return false} else 
+                  
+                    input type="number" step=0.01     onkeydown="javascript: if(event.keyCode == 69) {return false} else 
                   {
                    if(event.keyCode == 107) {return false}
                     else {
@@ -391,6 +392,7 @@
                    else
                      {return true} } } }  }" 
                     required
+                    onwheel="this.blur()"
                     :rules="[rules.required,rules.uspehX]"
                    ></v-text-field>
               
@@ -550,8 +552,8 @@
 
                <v-flex xs12 sm6  offset-sm5  offset-xs4 >
               <v-btn
-                class="primary"
-                
+                dark
+                class="blue-grey darken-2"
                 :disabled="!formIsValid"
                 type="submit">Prijavi učenika</v-btn>
             </v-flex>            
@@ -775,7 +777,7 @@ import moment from 'moment'
         }
       this.brojevi=this.opstine.find(broj)
       },
-
+      // v-data-picker generise datum u formatu DD-MM-GGGG te je neophodno prebaciti ova 3 podatka u 3 promenljive: dan,mesec i godinu
        formatiranjeDatuma()
       {
         console.log(this.datum)
@@ -788,6 +790,7 @@ import moment from 'moment'
           this.editedItem.godina=this.datum.substring(0,4)
           } 
       },
+      // metoda koja se poziva nakon potrvrde o prijavi, shalje POST zahtev
       PrijavaUcenika () {
       
         this.formatiranjeDatuma() 
@@ -800,8 +803,15 @@ import moment from 'moment'
 </script>
 
 <style>
-
-
+/* Css koji iskljucuje na input poljima za brojeve HTML5 spinner za brojeve */
+input[type="number"]::-webkit-outer-spin-button, 
+input[type="number"]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+input[type="number"] {
+    -moz-appearance: textfield;
+}
 
 
 </style>

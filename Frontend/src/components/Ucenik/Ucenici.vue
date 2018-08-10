@@ -383,7 +383,7 @@
                 <v-text-field
                  v-model="editedItem.prethodniUspeh"                 
                    label="br"
-                    input type="number"     
+                    input type="number"      step=0.01
                     onkeydown="javascript: if(event.keyCode == 69) {return false} else 
                           {
                    if(event.keyCode == 107) {return false}
@@ -612,7 +612,7 @@
      >
       <template slot="items" slot-scope="props" >
         <tr class="pageRow" @click="props.expanded = !props.expanded">
-        <td class="text-xs-center">{{ props.item.id}}</td>
+        <td class="text-xs-center">{{ props.index+1}}</td>
         <td class="text-xs-center">{{ props.item.ime }}</td>
         <td class="text-xs-center">{{ props.item.prezime }}</td>
         <td class="text-xs-center">{{ props.item.jmbg }}</td>
@@ -850,7 +850,7 @@ import moment from 'moment'
       // headeri sluze za generisanje polja koja se prikazuju u tabeli
       headers: [
         {
-          text: 'Redni broj',  align: 'center', sortable: true,  value: 'id', width:'5%' },
+          text: 'Redni broj',  align: 'center', sortable: false,  value: 'id', width:'5%' },
         { text: 'Ime',value: 'ime' ,align: 'center',sortable:true, width:'7.5%'},
         { text: 'Prezime', value:'prezime', align: 'center',sortable:true,width:'7.5%'},
         { text: 'JMBG', value:'jmbg',align: 'center',sortable:true ,width:'7.5%'},
@@ -1204,7 +1204,7 @@ import moment from 'moment'
         })
     }
         },
-        // v-date-picker generise datum u XX-XX-XXXX formatu koji treba prebaciti u 3 promenljive za dan, mesec i godinu pre nego sto se
+        // v-date-picker generise datum u DD-MM-GGGG formatu koji treba prebaciti u 3 promenljive za dan, mesec i godinu pre nego sto se
         // zeli raditi sa PUT ili POST metodama
        formatiranjeDatuma()
       {
@@ -1270,9 +1270,16 @@ import moment from 'moment'
 </script>
 
 <style >
+/* Css koji iskljucuje na input poljima za brojeve HTML5 spinner za brojeve */
 
-
-
+input[type="number"]::-webkit-outer-spin-button, 
+input[type="number"]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+input[type="number"] {
+    -moz-appearance: textfield;
+}
 
 /* menanje inicijalnog izgleda tabele*/
 
