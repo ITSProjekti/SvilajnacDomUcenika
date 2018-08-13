@@ -22,6 +22,13 @@ namespace DomUcenikaSvilajnac.DAL.Context
         public DbSet<Pol> Polovi { get; set; }
         public DbSet<Telefon> Telefoni { get; set; }
         public DbSet<PostanskiBroj> Brojevi{ get; set; }
+        public DbSet<PrethodnaSkola> PrethodneSkole { get; set; }
+        public DbSet<UpisanaSkola> UpisaneSkole { get; set; }
+        public DbSet<Mesto> Mesta { get; set; }
+        public DbSet<Smer> Smerovi { get; set; }
+        public DbSet<Razred> Razredi { get; set; }
+        public DbSet<Roditelj> Roditelji { get; set; }
+        public DbSet<StepenStrucneSpreme> Stepeni { get; set; }
 
         /// <summary>
         /// Inicijalizuje se instaca UcenikContext klase.

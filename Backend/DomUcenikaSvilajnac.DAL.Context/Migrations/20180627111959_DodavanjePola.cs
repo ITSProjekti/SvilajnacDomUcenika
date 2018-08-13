@@ -22,8 +22,8 @@ namespace DomUcenikaSvilajnac.DAL.Context.Migrations
                     table.PrimaryKey("PK_Polovi", x => x.Id);
                 });
 
-            migrationBuilder.Sql("insert into Polovi (NazivPola) values ('Muški')");
-            migrationBuilder.Sql("insert into Polovi (NazivPola) values ('Ženski')");
+            migrationBuilder.Sql("insert into Polovi (NazivPola) values (N'Muški')");
+            migrationBuilder.Sql("insert into Polovi (NazivPola) values (N'Ženski')");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)

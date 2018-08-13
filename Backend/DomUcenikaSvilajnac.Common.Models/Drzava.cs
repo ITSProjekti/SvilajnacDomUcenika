@@ -13,6 +13,8 @@ namespace DomUcenikaSvilajnac.Common.Models
     public class Drzava
     {
         public int Id { get; set; }
+
+        [Column(TypeName = "NVARCHAR(MAX)")]
         public string NazivDrzave { get; set; }
 
         ICollection<Ucenik> Ucenici { get; set; }

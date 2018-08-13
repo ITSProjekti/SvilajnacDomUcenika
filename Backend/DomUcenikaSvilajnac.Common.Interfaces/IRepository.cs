@@ -22,7 +22,7 @@ namespace DomUcenikaSvilajnac.Common.Interfaces
         void Add(T entity);
         void AddRange(IEnumerable<T> entities);
         void Remove(T entity);
-        void RemoveRange(T entities);
+        void RemoveRange(IEnumerable<T> entities);
       
     }
 }

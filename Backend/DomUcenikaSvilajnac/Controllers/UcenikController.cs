@@ -41,14 +41,13 @@ namespace DomUcenikaSvilajnac.Controllers
         /// </summary>
         /// GET: api/Ucenik        
         [HttpGet]
-        public async Task<IEnumerable<UcenikResource>> GetUceniks()
+        public async Task<IEnumerable<UcenikResource>> GetUcenika()
         {
-           // var listaUcenika = await UnitOfWork.Ucenici.GetAllAsync(); -- promenljiva koja prima listu svih ucenika
-            var listaUcenikaMesta = await UnitOfWork.mestaUcenika();
-
+            // var listaUcenika = await UnitOfWork.Ucenici.GetAllAsync(); -- promenljiva koja prima listu svih ucenika
+            var listaUcenikaMesta = await UnitOfWork.podaciUcenika();
             var mapiranjeUcenikaMesta = _mapper.Map<List<UcenikResource>, List<Ucenik>>(listaUcenikaMesta.ToList());
-
             return _mapper.Map<List<Ucenik>, List<UcenikResource>>(mapiranjeUcenikaMesta.ToList());
+            
         }
 
 
@@ -64,7 +63,7 @@ namespace DomUcenikaSvilajnac.Controllers
                 return BadRequest(ModelState);
             }
 
-            var mapiranUcenik = UnitOfWork.mestaUcenikaById(id);
+            var mapiranUcenik = UnitOfWork.podaciUcenikaById(id);
 
 
             var ucenik = await UnitOfWork.Ucenici.GetAsync(id);
@@ -84,25 +83,34 @@ namespace DomUcenikaSvilajnac.Controllers
         /// </summary>
         // PUT: api/Ucenik/5
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutUcenik([FromRoute] int id, [FromBody] UcenikResource ucenik)
+        public async Task<IActionResult> PutUcenik([FromRoute] int id, [FromBody] PutUcenikaResource ucenik)
         {
+            PutRoditeljaResource roditeljResurs = new PutRoditeljaResource()
+            {
+                Id = ucenik.Roditelji.Id,
+                IdMajke = ucenik.Roditelji.IdMajke,
+                ImeMajke = ucenik.Roditelji.ImeMajke,
+                PrezimeMajke = ucenik.Roditelji.PrezimeMajke,
+                ImeOca = ucenik.Roditelji.ImeOca,
+                PrezimeOca = ucenik.Roditelji.PrezimeOca,
+                BrojTelefonaMajke = ucenik.Roditelji.BrojTelefonaMajke,
+                BrojTelefonaOca = ucenik.Roditelji.BrojTelefonaOca,
+                StrucnaSpremaMajkeId = ucenik.Roditelji.StrucnaSpremaMajkeId,
+                StrucnaSpremaOcaId = ucenik.Roditelji.StrucnaSpremaOcaId,
+                UcenikId = ucenik.Roditelji.UcenikId
+            };
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
             var stariUcenik = await UnitOfWork.Ucenici.GetAsync(id);
             int pom = stariUcenik.TelefonId;
-
             TelefonResource telefon = new TelefonResource { Id = pom, Mobilni = ucenik.Telefon.Mobilni, Kucni = ucenik.Telefon.Kucni };
             var stariTelefon = await UnitOfWork.Telefoni.GetAsync(telefon.Id);
 
-
-            var noviTelefon = _mapper.Map<TelefonResource, Telefon>(telefon, stariTelefon);
-
-            UnitOfWork.deleteTelefon(noviTelefon);
-
-            //   await UnitOfWork.SaveChangesAsync();
-
+            //koriscenje klase telefon kontrolera kako bih pozvao metodu put za taj objekat
+            TelefonController telefonKontroler = new TelefonController(_mapper, UnitOfWork);
+            await telefonKontroler.PutTelefon(telefon.Id, telefon);
 
             if (id != stariUcenik.Id)
             {
@@ -113,19 +121,19 @@ namespace DomUcenikaSvilajnac.Controllers
 
             ucenik.Id = id;
 
-            var novi = _mapper.Map<UcenikResource, Ucenik>(ucenik, stariUcenik);
+            var novi = _mapper.Map<PutUcenikaResource, Ucenik>(ucenik, stariUcenik);
             novi.TelefonId = pom;
-            novi.Opstina = null;
-            novi.DrzavaRodjenja = null;
-            novi.OpstinaPrebivalista = null;
-            novi.Pol = null;
-            novi.PostanskiBroj = null;
-            //  novi.Telefon = null;
+           
 
-            UnitOfWork.SaveChanges();
+            await UnitOfWork.SaveChangesAsync();
+
+            //kreiranje instance kontrolera roditelja
+            RoditeljController roditeljKontroler = new RoditeljController(_mapper, UnitOfWork);
+            await roditeljKontroler.PutRoditelj(novi.Id, roditeljResurs);
 
 
-            var noviUcenik = await UnitOfWork.mestaUcenikaById(id);
+
+            var noviUcenik = await UnitOfWork.mapiranjeZaPutUcenika(id);
             return Ok(noviUcenik);
         }
 
@@ -134,24 +142,38 @@ namespace DomUcenikaSvilajnac.Controllers
         /// </summary>
         // POST: api/Ucenik
         [HttpPost]
-        public async Task<IActionResult> PostUcenik([FromBody] UcenikResource ucenik)
+        public async Task<IActionResult> PostUcenik([FromBody] PostUcenikaResource ucenik)
         {
             //instanciranje objekta za telefon radi cuvanja u tabelu telefon
-            Telefon mobilni = new Telefon { Mobilni = ucenik.Telefon.Mobilni, Kucni = ucenik.Telefon.Kucni };
-    
+            // Telefon mobilni = new Telefon { Mobilni = ucenik.Telefon.Mobilni, Kucni = ucenik.Telefon.Kucni };
+            List<Roditelj> roditelji = new List<Roditelj>();
+            Roditelj otac = new Roditelj()
+            {
+                Ime = ucenik.Roditelji.ImeOca,
+                Prezime = ucenik.Roditelji.PrezimeOca,
+                BrojTelefona = ucenik.Roditelji.BrojTelefonaOca,
+                StepenObrazovanjaId = ucenik.Roditelji.StrucnaSpremaOcaId,
+            };
+           
+            Roditelj majka = new Roditelj()
+            {
+                Ime = ucenik.Roditelji.ImeMajke,
+                Prezime = ucenik.Roditelji.PrezimeMajke,
+                BrojTelefona = ucenik.Roditelji.BrojTelefonaMajke,
+                StepenObrazovanjaId = ucenik.Roditelji.StrucnaSpremaMajkeId,
+
+            };
+
+
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
-            var noviUcenik = _mapper.Map<UcenikResource, Ucenik>(ucenik);
+            var noviUcenik = _mapper.Map<PostUcenikaResource, Ucenik>(ucenik);
             noviUcenik.VremeUpisa = DateTime.Now;
 
-            noviUcenik.Opstina = null;
-            noviUcenik.DrzavaRodjenja = null;
-            noviUcenik.OpstinaPrebivalista = null;
-            noviUcenik.Pol = null;
-            noviUcenik.PostanskiBroj = null;
-
+     
+           
             //kada se cuvaju prvo kolone ne ide null
             // noviUcenik.Telefon = null;
 
@@ -159,8 +181,19 @@ namespace DomUcenikaSvilajnac.Controllers
             UnitOfWork.Ucenici.Add(noviUcenik);
             await UnitOfWork.SaveChangesAsync();
 
-            ucenik = _mapper.Map<Ucenik, UcenikResource>(noviUcenik);
-            var mapiranUcenik = await UnitOfWork.mapiranje(ucenik);
+
+            otac.UcenikId = noviUcenik.Id;
+            majka.UcenikId = noviUcenik.Id;
+
+            roditelji.Add(otac);
+            roditelji.Add(majka);
+
+            UnitOfWork.Roditelji.AddRange(roditelji);
+            UnitOfWork.SaveChanges();
+
+            ucenik = _mapper.Map<Ucenik, PostUcenikaResource>(noviUcenik);
+
+            var mapiranUcenik = await UnitOfWork.mapiranjeZaPostUcenika(ucenik);
 
             return Ok(mapiranUcenik);
         }
@@ -179,11 +212,8 @@ namespace DomUcenikaSvilajnac.Controllers
 
             var ucenik = await UnitOfWork.Ucenici.GetAsync(id);
 
-
-
-
             var noviUcenik = _mapper.Map<Ucenik, UcenikResource>(ucenik);
-            var mapiranUcenik = await UnitOfWork.mapiranje(noviUcenik);
+            var mapiranUcenik = await UnitOfWork.mapiranjeZaDeleteUcenika(noviUcenik);
 
             if (ucenik == null)
             {

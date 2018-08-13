@@ -25,11 +25,24 @@ namespace DomUcenikaSvilajnac.DAL.Context.Migrations
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<string>("NazivDrzave");
+                    b.Property<string>("NazivDrzave")
+                        .HasColumnType("NVARCHAR(MAX)");
 
                     b.HasKey("Id");
 
                     b.ToTable("Drzave");
+                });
+
+            modelBuilder.Entity("DomUcenikaSvilajnac.Common.Models.Mesto", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<string>("NazivMesta");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Mesta");
                 });
 
             modelBuilder.Entity("DomUcenikaSvilajnac.Common.Models.Opstina", b =>
@@ -37,7 +50,8 @@ namespace DomUcenikaSvilajnac.DAL.Context.Migrations
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<string>("NazivOpstine");
+                    b.Property<string>("NazivOpstine")
+                        .HasColumnType("NVARCHAR(MAX)");
 
                     b.HasKey("Id");
 
@@ -49,7 +63,8 @@ namespace DomUcenikaSvilajnac.DAL.Context.Migrations
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<string>("NazivPola");
+                    b.Property<string>("NazivPola")
+                        .HasColumnType("NVARCHAR(MAX)");
 
                     b.HasKey("Id");
 
@@ -63,7 +78,7 @@ namespace DomUcenikaSvilajnac.DAL.Context.Migrations
 
                     b.Property<string>("Broj");
 
-                    b.Property<int?>("OpstinaId");
+                    b.Property<int>("OpstinaId");
 
                     b.HasKey("Id");
 
@@ -72,14 +87,95 @@ namespace DomUcenikaSvilajnac.DAL.Context.Migrations
                     b.ToTable("PostanskiBrojevi");
                 });
 
+            modelBuilder.Entity("DomUcenikaSvilajnac.Common.Models.PrethodnaSkola", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<string>("NazivPrethodneSkole")
+                        .HasColumnType("NVARCHAR(MAX)");
+
+                    b.Property<int>("OpstinaId");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("OpstinaId");
+
+                    b.ToTable("OsnovneSkole");
+                });
+
+            modelBuilder.Entity("DomUcenikaSvilajnac.Common.Models.Razred", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<string>("BrojRazreda");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Razredi");
+                });
+
+            modelBuilder.Entity("DomUcenikaSvilajnac.Common.Models.Roditelj", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<string>("BrojTelefona");
+
+                    b.Property<string>("Ime");
+
+                    b.Property<string>("Prezime");
+
+                    b.Property<int>("StepenObrazovanjaId");
+
+                    b.Property<int>("UcenikId");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("StepenObrazovanjaId");
+
+                    b.HasIndex("UcenikId");
+
+                    b.ToTable("Roditelji");
+                });
+
+            modelBuilder.Entity("DomUcenikaSvilajnac.Common.Models.Smer", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<string>("NazivSmera");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Smerovi");
+                });
+
+            modelBuilder.Entity("DomUcenikaSvilajnac.Common.Models.StepenStrucneSpreme", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<string>("Opis");
+
+                    b.Property<string>("Stepen");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("StepeniStrucneSpreme");
+                });
+
             modelBuilder.Entity("DomUcenikaSvilajnac.Common.Models.Telefon", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<string>("Kucni");
+                    b.Property<string>("Kucni")
+                        .HasColumnType("NVARCHAR(MAX)");
 
-                    b.Property<string>("Mobilni");
+                    b.Property<string>("Mobilni")
+                        .HasColumnType("NVARCHAR(MAX)");
 
                     b.HasKey("Id");
 
@@ -91,7 +187,8 @@ namespace DomUcenikaSvilajnac.DAL.Context.Migrations
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<string>("Adresa");
+                    b.Property<string>("Adresa")
+                        .HasColumnType("NVARCHAR(MAX)");
 
                     b.Property<DateTime>("DatumRodjenja");
 
@@ -99,15 +196,18 @@ namespace DomUcenikaSvilajnac.DAL.Context.Migrations
 
                     b.Property<string>("Ime")
                         .IsRequired()
+                        .HasColumnType("NVARCHAR(MAX)")
                         .HasMaxLength(50);
 
                     b.Property<string>("JMBG")
                         .IsRequired()
                         .HasMaxLength(13);
 
-                    b.Property<string>("MestoPrebivalista");
+                    b.Property<int?>("MestoPrebivalistaId");
 
-                    b.Property<string>("MestoRodjenja");
+                    b.Property<int?>("MestoRodjenjaId");
+
+                    b.Property<int?>("MestoZavrseneSkoleId");
 
                     b.Property<int?>("OpstinaId");
 
@@ -117,17 +217,34 @@ namespace DomUcenikaSvilajnac.DAL.Context.Migrations
 
                     b.Property<int>("PostanskiBrojId");
 
+                    b.Property<int>("PrethodnaSkolaId");
+
+                    b.Property<float>("PrethodniUspeh");
+
                     b.Property<string>("Prezime")
                         .IsRequired()
+                        .HasColumnType("NVARCHAR(MAX)")
                         .HasMaxLength(50);
 
+                    b.Property<int>("RazredId");
+
+                    b.Property<int>("SmerId");
+
                     b.Property<int>("TelefonId");
+
+                    b.Property<int>("UpisanaSkolaId");
 
                     b.Property<DateTime>("VremeUpisa");
 
                     b.HasKey("Id");
 
                     b.HasIndex("DrzavaRodjenjaId");
+
+                    b.HasIndex("MestoPrebivalistaId");
+
+                    b.HasIndex("MestoRodjenjaId");
+
+                    b.HasIndex("MestoZavrseneSkoleId");
 
                     b.HasIndex("OpstinaId");
 
@@ -137,16 +254,63 @@ namespace DomUcenikaSvilajnac.DAL.Context.Migrations
 
                     b.HasIndex("PostanskiBrojId");
 
+                    b.HasIndex("PrethodnaSkolaId");
+
+                    b.HasIndex("RazredId");
+
+                    b.HasIndex("SmerId");
+
                     b.HasIndex("TelefonId");
 
+                    b.HasIndex("UpisanaSkolaId");
+
                     b.ToTable("Ucenici");
+                });
+
+            modelBuilder.Entity("DomUcenikaSvilajnac.Common.Models.UpisanaSkola", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<string>("NazivSrednjeSkole")
+                        .HasColumnType("NVARCHAR(MAX)");
+
+                    b.Property<int>("OpstinaId");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("OpstinaId");
+
+                    b.ToTable("SrednjeSkole");
                 });
 
             modelBuilder.Entity("DomUcenikaSvilajnac.Common.Models.PostanskiBroj", b =>
                 {
                     b.HasOne("DomUcenikaSvilajnac.Common.Models.Opstina")
                         .WithMany("PostanskiBrojevi")
-                        .HasForeignKey("OpstinaId");
+                        .HasForeignKey("OpstinaId")
+                        .OnDelete(DeleteBehavior.Cascade);
+                });
+
+            modelBuilder.Entity("DomUcenikaSvilajnac.Common.Models.PrethodnaSkola", b =>
+                {
+                    b.HasOne("DomUcenikaSvilajnac.Common.Models.Opstina", "Opstina")
+                        .WithMany("OsnovneSkole")
+                        .HasForeignKey("OpstinaId")
+                        .OnDelete(DeleteBehavior.Cascade);
+                });
+
+            modelBuilder.Entity("DomUcenikaSvilajnac.Common.Models.Roditelj", b =>
+                {
+                    b.HasOne("DomUcenikaSvilajnac.Common.Models.StepenStrucneSpreme", "StepenObrazovanja")
+                        .WithMany()
+                        .HasForeignKey("StepenObrazovanjaId")
+                        .OnDelete(DeleteBehavior.Cascade);
+
+                    b.HasOne("DomUcenikaSvilajnac.Common.Models.Ucenik", "Ucenik")
+                        .WithMany("Roditelji")
+                        .HasForeignKey("UcenikId")
+                        .OnDelete(DeleteBehavior.Cascade);
                 });
 
             modelBuilder.Entity("DomUcenikaSvilajnac.Common.Models.Ucenik", b =>
@@ -155,6 +319,18 @@ namespace DomUcenikaSvilajnac.DAL.Context.Migrations
                         .WithMany()
                         .HasForeignKey("DrzavaRodjenjaId")
                         .OnDelete(DeleteBehavior.Cascade);
+
+                    b.HasOne("DomUcenikaSvilajnac.Common.Models.Mesto", "MestoPrebivalista")
+                        .WithMany()
+                        .HasForeignKey("MestoPrebivalistaId");
+
+                    b.HasOne("DomUcenikaSvilajnac.Common.Models.Mesto", "MestoRodjenja")
+                        .WithMany()
+                        .HasForeignKey("MestoRodjenjaId");
+
+                    b.HasOne("DomUcenikaSvilajnac.Common.Models.Mesto", "MestoZavrseneSkole")
+                        .WithMany()
+                        .HasForeignKey("MestoZavrseneSkoleId");
 
                     b.HasOne("DomUcenikaSvilajnac.Common.Models.Opstina", "Opstina")
                         .WithMany()
@@ -174,9 +350,37 @@ namespace DomUcenikaSvilajnac.DAL.Context.Migrations
                         .HasForeignKey("PostanskiBrojId")
                         .OnDelete(DeleteBehavior.Cascade);
 
+                    b.HasOne("DomUcenikaSvilajnac.Common.Models.PrethodnaSkola", "PrethodnaSkola")
+                        .WithMany()
+                        .HasForeignKey("PrethodnaSkolaId")
+                        .OnDelete(DeleteBehavior.Cascade);
+
+                    b.HasOne("DomUcenikaSvilajnac.Common.Models.Razred", "Razred")
+                        .WithMany()
+                        .HasForeignKey("RazredId")
+                        .OnDelete(DeleteBehavior.Cascade);
+
+                    b.HasOne("DomUcenikaSvilajnac.Common.Models.Smer", "Smer")
+                        .WithMany()
+                        .HasForeignKey("SmerId")
+                        .OnDelete(DeleteBehavior.Cascade);
+
                     b.HasOne("DomUcenikaSvilajnac.Common.Models.Telefon", "Telefon")
                         .WithMany()
                         .HasForeignKey("TelefonId")
+                        .OnDelete(DeleteBehavior.Cascade);
+
+                    b.HasOne("DomUcenikaSvilajnac.Common.Models.UpisanaSkola", "UpisanaSkola")
+                        .WithMany()
+                        .HasForeignKey("UpisanaSkolaId")
+                        .OnDelete(DeleteBehavior.Cascade);
+                });
+
+            modelBuilder.Entity("DomUcenikaSvilajnac.Common.Models.UpisanaSkola", b =>
+                {
+                    b.HasOne("DomUcenikaSvilajnac.Common.Models.Opstina", "Opstina")
+                        .WithMany("SrednjeSkole")
+                        .HasForeignKey("OpstinaId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 #pragma warning restore 612, 618

@@ -39,8 +39,15 @@ namespace DomUcenikaSvilajnac.DAL.RepoPattern
             Polovi = new PolRepository(_context);
             Telefoni = new TelefonRepository(_context);
             Brojevi = new PostanskiBrojRepository(_context);
+            PrethodneSkole = new PrethodnaSkolaRepository(_context);
+            UpisaneSkole = new UpisanaSkolaRepository(_context);
+            Mesta = new MestoRepository(_context);
+            Smerovi = new SmerRepository(_context);
+            Razredi = new RazredRepository(_context);
+            Roditelji = new RoditeljRepository(_context);
+            Stepeni = new StepenStrucneSpremeRepository(_context);
 
-        }
+    }
 
         /// <summary>
         /// Za deklarisanje konteksta u konstruktoru iznad.
@@ -51,8 +58,14 @@ namespace DomUcenikaSvilajnac.DAL.RepoPattern
         public IPolRepository Polovi { get; set; }
         public ITelefonRepository Telefoni { get; set; }
         public IPostanskiBrojRepository Brojevi { get; set; }
-
+        public IPrethodnaSkolaRepository PrethodneSkole { get; set; }
+        public IUpisanaSkola UpisaneSkole { get; set; }
+        public IMestoRepository Mesta { get; set; }
         public IMapper Mapper { get; }
+        public ISmerRepository Smerovi { get; set; }
+        public IRazredRpository Razredi { get; set; }
+        public IRoditeljRepository Roditelji { get; set; }
+        public IStepenStrucneSpremeRepository Stepeni { get; set; }
 
         /// <summary>
         /// Izvršava zadatke definisane za aplikaciju povezane sa oslobađanjem, puštanjem ili poništavanjem nepovezanih resursa.
@@ -77,68 +90,179 @@ namespace DomUcenikaSvilajnac.DAL.RepoPattern
         {
             return await _context.SaveChangesAsync();
         }
-
-        public async Task<IEnumerable<OpstinaResource>> brojeviOpstine()
+        public async Task<IEnumerable<RoditeljResource>> spremaRoditelja()
         {
-            
-         
+            var spremaRoditelja = await _context.Roditelji
+                .Include(sss => sss.StepenObrazovanja)
+                .ToListAsync();
+            return Mapper.Map<List<Roditelj>, List<RoditeljResource>>(spremaRoditelja);
+
+        }
 
 
-            var nesto = await _context.Opstine
+        public async Task<IEnumerable<OpstinaResource>> podaciSaOpstinama()
+        {
+
+            var podaciSaOpstinama = await _context.Opstine
                 .Include(k => k.PostanskiBrojevi)
+                .Include(ss => ss.SrednjeSkole)
+                .Include(os=> os.OsnovneSkole)
                 .ToListAsync();
 
 
-            return Mapper.Map<List<Opstina>, List<OpstinaResource>>(nesto);
+            return Mapper.Map<List<Opstina>, List<OpstinaResource>>(podaciSaOpstinama);
 
         }
 
 
-        public async Task<IEnumerable<UcenikResource>> mestaUcenika()
+        public async Task<IEnumerable<UcenikResource>> podaciUcenika()
         {
 
 
-            var neki = await _context.Uceniks
-                .Include(o=> o.Opstina)
-                .Include(d=> d.DrzavaRodjenja)
-                .Include(op=> op.OpstinaPrebivalista)
-                .Include(p=> p.Pol)
-                .Include(t=> t.Telefon)
-                .Include(pb=> pb.PostanskiBroj)
-                .ToListAsync();
-            return Mapper.Map<List<Ucenik>, List<UcenikResource>>(neki);
-        }
-        public async Task<UcenikResource> mestaUcenikaById(int id)
-        {
-            var neki = await _context.Uceniks
-                 .Include(o => o.Opstina)
-                 .Include(d=> d.DrzavaRodjenja)
-                 .Include(op => op.OpstinaPrebivalista)
-                 .Include(p => p.Pol)
-                 .Include(t => t.Telefon)
-                  .Include(pb => pb.PostanskiBroj)
-                .SingleOrDefaultAsync(x => x.Id == id);
-            return Mapper.Map<Ucenik, UcenikResource>(neki);
-        }
-
-        public async Task<UcenikResource> mapiranje(UcenikResource ucenik)
-        {
-            var neki = await _context.Uceniks
-                .Include(o=> o.Opstina)
+            var podaciUcenika = await _context.Uceniks
+                .Include(o => o.Opstina)
                 .Include(d => d.DrzavaRodjenja)
                 .Include(op => op.OpstinaPrebivalista)
                 .Include(p => p.Pol)
                 .Include(t => t.Telefon)
-                 .Include(pb => pb.PostanskiBroj)
+                .Include(pb => pb.PostanskiBroj)
+                .Include(os => os.PrethodnaSkola)
+                .Include(ss => ss.UpisanaSkola.Opstina)
+                .Include(mr => mr.MestoRodjenja)
+                .Include(mr => mr.MestoPrebivalista)
+                .Include(mzs => mzs.MestoZavrseneSkole)
+                .Include(s => s.Smer)
+                .Include(r=>r.Razred)
+                .Include(rod=> rod.Roditelji)
+                .ToListAsync();
+
+            return Mapper.Map<List<Ucenik>, List<UcenikResource>>(podaciUcenika);
+        }
+        public async Task<UcenikResource> podaciUcenikaById(int id)
+        {
+            var podaciUcenikaById = await _context.Uceniks
+                  .Include(o => o.Opstina)
+                .Include(d => d.DrzavaRodjenja)
+                .Include(op => op.OpstinaPrebivalista)
+                .Include(p => p.Pol)
+                .Include(t => t.Telefon)
+                .Include(pb => pb.PostanskiBroj)
+                .Include(os => os.PrethodnaSkola)
+                .Include(ss => ss.UpisanaSkola)
+                .Include(mr => mr.MestoRodjenja)
+                .Include(mr => mr.MestoPrebivalista)
+                .Include(mzs => mzs.MestoZavrseneSkole)
+                .Include(s => s.Smer)
+                .Include(r=>r.Razred)
+                .Include(rod => rod.Roditelji)
+                .SingleOrDefaultAsync(x => x.Id == id);
+            return Mapper.Map<Ucenik, UcenikResource>(podaciUcenikaById);
+        }
+        public async Task<PutUcenikaResource> mapiranjeZaPutUcenika(int id)
+        {
+            var podaciUcenika = await _context.Uceniks
+                  .Include(o => o.Opstina)
+                .Include(d => d.DrzavaRodjenja)
+                .Include(op => op.OpstinaPrebivalista)
+                .Include(p => p.Pol)
+                .Include(t => t.Telefon)
+                .Include(pb => pb.PostanskiBroj)
+                .Include(os => os.PrethodnaSkola)
+                .Include(ss => ss.UpisanaSkola)
+                .Include(mr => mr.MestoRodjenja)
+                .Include(mr => mr.MestoPrebivalista)
+                .Include(mzs => mzs.MestoZavrseneSkole)
+                .Include(s => s.Smer)
+                .Include(r => r.Razred)
+                .Include(rod => rod.Roditelji)
+                .SingleOrDefaultAsync(x => x.Id == id);
+            return Mapper.Map<Ucenik, PutUcenikaResource>(podaciUcenika);
+        }
+
+        public async Task<PostUcenikaResource> mapiranjeZaPostUcenika(PostUcenikaResource ucenik)
+        {
+            var podaciUcenika = await _context.Uceniks
+                 .Include(o => o.Opstina)
+                .Include(d => d.DrzavaRodjenja)
+                .Include(op => op.OpstinaPrebivalista)
+                .Include(p => p.Pol)
+                .Include(t => t.Telefon)
+                .Include(pb => pb.PostanskiBroj)
+                .Include(os => os.PrethodnaSkola)
+                .Include(ss => ss.UpisanaSkola)
+                .Include(mr => mr.MestoRodjenja)
+                .Include(mr => mr.MestoPrebivalista)
+                .Include(mzs => mzs.MestoZavrseneSkole)
+                .Include(s => s.Smer)
+                .Include(r => r.Razred)
                 .SingleOrDefaultAsync(x => x.Id == ucenik.Id);
 
-            return Mapper.Map<Ucenik, UcenikResource>(neki);
+            return Mapper.Map<Ucenik, PostUcenikaResource>(podaciUcenika);
 
-           
+
+        }
+        public async Task<UcenikResource> mapiranjeZaDeleteUcenika(UcenikResource ucenik)
+        {
+            var podaciUcenika = await _context.Uceniks
+                 .Include(o => o.Opstina)
+                .Include(d => d.DrzavaRodjenja)
+                .Include(op => op.OpstinaPrebivalista)
+                .Include(p => p.Pol)
+                .Include(t => t.Telefon)
+                .Include(pb => pb.PostanskiBroj)
+                .Include(os => os.PrethodnaSkola)
+                .Include(ss => ss.UpisanaSkola)
+                .Include(mr => mr.MestoRodjenja)
+                .Include(mr => mr.MestoPrebivalista)
+                .Include(mzs => mzs.MestoZavrseneSkole)
+                .Include(s => s.Smer)
+                .Include(r => r.Razred)
+                .Include(rod=> rod.Roditelji)
+                .SingleOrDefaultAsync(x => x.Id == ucenik.Id);
+
+            return Mapper.Map<Ucenik, UcenikResource>(podaciUcenika);
+
         }
         public void deleteTelefon(Telefon telefon)
         {
             _context.Telefoni.Remove(telefon);
         }
+
+        public async Task<IEnumerable<RoditeljResource>> roditeljiUcenika(int UcenikId)
+        {
+            var roditeljiUcenika = await _context.Roditelji.
+                FromSql(
+                $"select *  from dbo.Roditelji  where UcenikId = {UcenikId}"
+                )
+                .ToListAsync();
+
+            return  Mapper.Map<List<Roditelj>, List<RoditeljResource>>(roditeljiUcenika);
+        }
+
+        public async Task<IEnumerable<PutRoditeljaResource>> roditeljiUcenikaZaPut(int UcenikId)
+        {
+            var roditeljiUcenika = await _context.Roditelji.
+                FromSql(
+                $"select *  from dbo.Roditelji  where UcenikId = {UcenikId}"
+                )
+                .ToListAsync();
+
+            return Mapper.Map<List<Roditelj>, List<PutRoditeljaResource>>(roditeljiUcenika);
+        }
+
+        public async Task<IEnumerable<DeleteRoditeljaResource>> brisanjeRoditelja(int UcenikId)
+        {
+            var roditeljiUcenika = await _context.Roditelji.
+                FromSql(
+                $"select *  from dbo.Roditelji  where UcenikId = {UcenikId}"
+                )
+                .ToListAsync();
+
+            _context.RemoveRange(roditeljiUcenika);
+            await SaveChangesAsync();
+
+            return Mapper.Map<List<Roditelj>, List<DeleteRoditeljaResource>>(roditeljiUcenika);
+        }
     }
 }
+

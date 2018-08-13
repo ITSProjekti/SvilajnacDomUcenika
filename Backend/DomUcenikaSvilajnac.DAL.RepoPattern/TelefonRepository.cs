@@ -9,6 +9,10 @@ namespace DomUcenikaSvilajnac.DAL.RepoPattern
 {
     public  class TelefonRepository : Repository<Telefon>, ITelefonRepository
     {
+        /// <summary>
+        /// Nasledjuje genericku klasu Repository sa tipom Telefon i ITelefonRepository interfejs
+        /// Videti Repository i Telefon klasu i ITelefonRepository interfejs radi dodatnog pojasnjena.
+        /// </summary>
         public TelefonRepository(UcenikContext context) : base(context)
         {
 

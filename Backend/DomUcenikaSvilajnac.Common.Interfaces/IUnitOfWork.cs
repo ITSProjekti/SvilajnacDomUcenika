@@ -25,16 +25,34 @@ namespace DomUcenikaSvilajnac.Common.Interfaces
         IPolRepository Polovi { get; }
         ITelefonRepository Telefoni { get; }
         IPostanskiBrojRepository Brojevi { get; }
+        IPrethodnaSkolaRepository PrethodneSkole { get; }
+
+        IUpisanaSkola UpisaneSkole { get; }
+        IMestoRepository    Mesta { get; }
+
+        ISmerRepository Smerovi { get; }
+        IRazredRpository Razredi { get; }
+        IRoditeljRepository Roditelji { get; }
+        IStepenStrucneSpremeRepository Stepeni { get; }
 
         int SaveChanges();
         Task<int> SaveChangesAsync();
-        Task<IEnumerable<UcenikResource>> mestaUcenika();
+        Task<IEnumerable<UcenikResource>> podaciUcenika();
 
-        Task<UcenikResource> mestaUcenikaById(int id);
-        Task<UcenikResource> mapiranje(UcenikResource ucenik);
+        Task<UcenikResource> podaciUcenikaById(int id);
+        Task<PostUcenikaResource> mapiranjeZaPostUcenika(PostUcenikaResource ucenik);
+ 
         void deleteTelefon(Telefon telefon);
 
-        Task<IEnumerable<OpstinaResource>> brojeviOpstine();
+        Task<IEnumerable<OpstinaResource>> podaciSaOpstinama();
+        Task<IEnumerable<RoditeljResource>> roditeljiUcenika(int UcenikId);
+        Task<IEnumerable<DeleteRoditeljaResource>> brisanjeRoditelja(int UcenikId);
+
+        Task<IEnumerable<RoditeljResource>> spremaRoditelja();
+
+        Task<UcenikResource> mapiranjeZaDeleteUcenika(UcenikResource ucenik);
+        Task<PutUcenikaResource> mapiranjeZaPutUcenika(int id);
+        Task<IEnumerable<PutRoditeljaResource>> roditeljiUcenikaZaPut(int UcenikId);
 
     }
 }
