@@ -103,5 +103,10 @@ namespace DomUcenikaSvilajnac.Common.Models
             Roditelji = new Collection<Roditelj>();
         }
         public float PrethodniUspeh { get; set; }
+        public byte[] Slika  { get; set; }
+
+
+        public int TipPorodiceId { get; set; }
+        public TipPorodice TipPorodice { get; set; }
     }
 }

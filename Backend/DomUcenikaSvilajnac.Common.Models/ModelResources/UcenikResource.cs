@@ -47,5 +47,6 @@ namespace DomUcenikaSvilajnac.Common.Models.ModelResources
 
         public float PrethodniUspeh { get; set; }
 
+        public TipPorodiceResource TipPorodice { get; set; }
     }
 }
