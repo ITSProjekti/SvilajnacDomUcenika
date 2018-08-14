@@ -597,7 +597,8 @@
         </v-flex>
       </v-layout>
 
-   
+   <transition name="fade" appear  mode="in-out">
+
     <v-data-table
    
       :headers="headers"
@@ -832,7 +833,7 @@
         Vasa pretraga za "{{ search }}" nije pronasla rezultate.
       </v-alert>
     </v-data-table>
-
+</transition >
     </v-card>
 
   </div>
@@ -1270,6 +1271,17 @@ import moment from 'moment'
 </script>
 
 <style >
+
+
+
+.fade-enter-active, .fade-leave-active {
+  transition: opacity 2s ease-out;
+}
+
+.fade-enter, .fade-leave-to {
+  opacity: 0;
+}
+
 /* Css koji iskljucuje na input poljima za brojeve HTML5 spinner za brojeve */
 
 input[type="number"]::-webkit-outer-spin-button, 

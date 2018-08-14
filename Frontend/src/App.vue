@@ -75,7 +75,9 @@
         <v-layout justify-center align-center>
           <v-flex xs12>
 <main>
+
   <router-view></router-view>
+
 </main>
           </v-flex>
         </v-layout>
@@ -133,4 +135,6 @@
   .text {
     font-weight: 400;
   }
+
+  
 </style>

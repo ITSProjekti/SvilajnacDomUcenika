@@ -11,7 +11,7 @@
         <v-container grid-list-md>
             <v-layout wrap>
               
-              
+              <transition name="fade" appear  mode="in-out">
      <v-flex xs10 class="ml-5">
             <v-card >
               <v-card-title  primary-title>
@@ -422,6 +422,7 @@
 
    </v-card>
           </v-flex>
+          </transition >
 <v-flex xs12>
   <p>
 <br>
@@ -429,6 +430,7 @@
   </p>
 </v-flex>
 
+    <transition name="fade" appear  mode="in-out">
 
        <v-flex xs10 class="ml-5">
             <v-card >
@@ -549,13 +551,18 @@
 
    </v-card>
           </v-flex>
-
+  </transition >
                <v-flex xs12 sm6  offset-sm5  offset-xs4 >
               <v-btn
-                dark
+              
                 class="blue-grey darken-2"
+                
+                type="submit"
+                
                 :disabled="!formIsValid"
-                type="submit">Prijavi učenika</v-btn>
+                >
+                Prijavi učenika
+                </v-btn>
             </v-flex>            
             </v-layout>
           </v-container>
