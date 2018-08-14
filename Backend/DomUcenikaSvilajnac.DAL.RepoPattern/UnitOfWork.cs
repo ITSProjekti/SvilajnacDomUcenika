@@ -47,6 +47,7 @@ namespace DomUcenikaSvilajnac.DAL.RepoPattern
             Roditelji = new RoditeljRepository(_context);
             Stepeni = new StepenStrucneSpremeRepository(_context);
             TipoviPorodice = new TipPorodiceRepository(_context);
+            Staratelji = new StarateljRepository(_context);
 
     }
 
@@ -68,6 +69,7 @@ namespace DomUcenikaSvilajnac.DAL.RepoPattern
         public IRoditeljRepository Roditelji { get; set; }
         public IStepenStrucneSpremeRepository Stepeni { get; set; }
         public ITipPorodiceRepository TipoviPorodice  { get; set; }
+        public IStarateljRepository Staratelji { get; set; }
 
         /// <summary>
         /// Izvršava zadatke definisane za aplikaciju povezane sa oslobađanjem, puštanjem ili poništavanjem nepovezanih resursa.
