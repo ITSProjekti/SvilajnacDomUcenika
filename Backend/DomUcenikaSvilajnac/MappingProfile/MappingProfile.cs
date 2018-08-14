@@ -65,7 +65,8 @@ namespace DomUcenikaSvilajnac.Mapping
                 .ForMember(v => v.Smer, opt => opt.Ignore())
                 .ForMember(v => v.VremeUpisa, opt => opt.Ignore())
                 .ForMember(v => v.Razred, opt => opt.Ignore())
-                .ForMember(v => v.TipPorodice, opt => opt.Ignore());
+                .ForMember(v => v.TipPorodice, opt => opt.Ignore())
+                .ForMember(v => v.Staratelji, opt => opt.Ignore());
 
             //mapira Ucenik u PostUcenikaResource, odnosno omogucava da se datum unese putem tri promenljive, Dan, Mesec, Godina.
             CreateMap<Ucenik, PostUcenikaResource>()
@@ -85,7 +86,14 @@ namespace DomUcenikaSvilajnac.Mapping
                                                                     BrojTelefonaOca = src.Roditelji[1].BrojTelefona,
                                                                     StrucnaSpremaOcaId = src.Roditelji[1].StepenObrazovanjaId,
                                                                        }
-                ));
+                ))
+                .ForMember(v=> v.Staratelj, opt=> opt.MapFrom(src=> new StarateljResource() {
+                    
+                        Id = src.Staratelji[0].Id,
+                       Ime = src.Staratelji[0].Ime,
+                       Prezime = src.Staratelji[0].Prezime,
+                       UcenikId = src.Staratelji[0].UcenikId
+                }));
 
 
 
@@ -438,6 +446,9 @@ namespace DomUcenikaSvilajnac.Mapping
 
             CreateMap<PutRoditeljaResource, MajkaResource>();
             CreateMap<MajkaResource, PutRoditeljaResource>();
+
+            CreateMap<Staratelj, StarateljResource>();
+            CreateMap<StarateljResource, Staratelj>();
 
         }
     }

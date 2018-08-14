@@ -30,10 +30,10 @@ namespace DomUcenikaSvilajnac.Controllers
         /// <summary>
         /// Inicijalizacija instance klase UcenikController i deklarisanje mappera i unitofwork-a.
         /// </summary>
-        public UcenikController(IMapper mapper,IUnitOfWork unitOfWork)
+        public UcenikController(IMapper mapper, IUnitOfWork unitOfWork)
         {
             _mapper = mapper;
-            UnitOfWork =unitOfWork ;
+            UnitOfWork = unitOfWork;
         }
 
         /// <summary>
@@ -47,7 +47,7 @@ namespace DomUcenikaSvilajnac.Controllers
             var listaUcenikaMesta = await UnitOfWork.podaciUcenika();
             var mapiranjeUcenikaMesta = _mapper.Map<List<UcenikResource>, List<Ucenik>>(listaUcenikaMesta.ToList());
             return _mapper.Map<List<Ucenik>, List<UcenikResource>>(mapiranjeUcenikaMesta.ToList());
-            
+
         }
 
 
@@ -123,7 +123,7 @@ namespace DomUcenikaSvilajnac.Controllers
 
             var novi = _mapper.Map<PutUcenikaResource, Ucenik>(ucenik, stariUcenik);
             novi.TelefonId = pom;
-           
+
 
             await UnitOfWork.SaveChangesAsync();
 
@@ -154,7 +154,7 @@ namespace DomUcenikaSvilajnac.Controllers
                 BrojTelefona = ucenik.Roditelji.BrojTelefonaOca,
                 StepenObrazovanjaId = ucenik.Roditelji.StrucnaSpremaOcaId,
             };
-           
+
             Roditelj majka = new Roditelj()
             {
                 Ime = ucenik.Roditelji.ImeMajke,
@@ -171,9 +171,9 @@ namespace DomUcenikaSvilajnac.Controllers
             }
             var noviUcenik = _mapper.Map<PostUcenikaResource, Ucenik>(ucenik);
             noviUcenik.VremeUpisa = DateTime.Now;
+            ucenik.Staratelj.UcenikId = noviUcenik.Id;
 
-     
-           
+
             //kada se cuvaju prvo kolone ne ide null
             // noviUcenik.Telefon = null;
 
@@ -181,7 +181,15 @@ namespace DomUcenikaSvilajnac.Controllers
             UnitOfWork.Ucenici.Add(noviUcenik);
             await UnitOfWork.SaveChangesAsync();
 
-
+            //provera da li je tip porodice koji zahteva da ucenik ima staratelja, ako jeste pozvace se staratelj kontroler i njegova post metoda
+            if (noviUcenik.TipPorodiceId == 4 || noviUcenik.TipPorodiceId == 5)
+            {
+                StarateljController starateljKontroler = new StarateljController(_mapper, UnitOfWork);
+                ucenik.Staratelj.UcenikId = noviUcenik.Id;
+                await starateljKontroler.PostStaratelj(ucenik.Staratelj);
+            }
+            
+            
             otac.UcenikId = noviUcenik.Id;
             majka.UcenikId = noviUcenik.Id;
 
@@ -191,9 +199,15 @@ namespace DomUcenikaSvilajnac.Controllers
             UnitOfWork.Roditelji.AddRange(roditelji);
             UnitOfWork.SaveChanges();
 
+            //proverava da li je tip porodice koji zahteva da ucenik ima staratelja
+            if (noviUcenik.TipPorodiceId != 4 || noviUcenik.TipPorodiceId != 5)
+                noviUcenik.Staratelji.Add(new Staratelj { Id = 0, Ime = "", Prezime = "", UcenikId = 0 });
             ucenik = _mapper.Map<Ucenik, PostUcenikaResource>(noviUcenik);
 
             var mapiranUcenik = await UnitOfWork.mapiranjeZaPostUcenika(ucenik);
+
+           
+
 
             return Ok(mapiranUcenik);
         }

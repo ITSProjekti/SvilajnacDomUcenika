@@ -10,5 +10,9 @@ namespace DomUcenikaSvilajnac.Common.Models
         public string Ime { get; set; }
         public string Prezime { get; set; }
 
+        public int UcenikId { get; set; }
+        public Ucenik Ucenik { get; set; }
+
+
     }
 }
