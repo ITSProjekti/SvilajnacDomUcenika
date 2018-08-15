@@ -43,10 +43,9 @@ namespace DomUcenikaSvilajnac.Controllers
         [HttpGet]
         public async Task<IEnumerable<UcenikResource>> GetUcenika()
         {
-            // var listaUcenika = await UnitOfWork.Ucenici.GetAllAsync(); -- promenljiva koja prima listu svih ucenika
-            var listaUcenikaMesta = await UnitOfWork.podaciUcenika();
-            var mapiranjeUcenikaMesta = _mapper.Map<List<UcenikResource>, List<Ucenik>>(listaUcenikaMesta.ToList());
-            return _mapper.Map<List<Ucenik>, List<UcenikResource>>(mapiranjeUcenikaMesta.ToList());
+           
+            return  await UnitOfWork.podaciUcenika();
+        
 
         }
 
@@ -128,10 +127,10 @@ namespace DomUcenikaSvilajnac.Controllers
 
             ucenik.Id = id;
 
-
+            //u zavisnosti od tipa porodice, ako ucenik nema staratelja u bazi nece postojati ni jedan staratelj tog ucenika
+            //ovo treba promeniti ako se budemo odlucili da arhiviramo sve tabele
             if (ucenik.TipPorodice.Id == 4 || ucenik.TipPorodice.Id == 5)
             {
-
 
                 ucenik.Staratelj.UcenikId = stariUcenik.Id;
                 await starateljKontroler.PutStaratelj(starateljUcenika.Id, ucenik.Staratelj);
@@ -140,6 +139,7 @@ namespace DomUcenikaSvilajnac.Controllers
             else
             {
 
+                //ovaj deo treba ponovo pogledati ako zelimo arhivirati stare staratelje
                 await starateljKontroler.DeleteStaratelj(starateljUcenika.Id);
                 stariUcenik.Staratelji.Add(new Staratelj { Id = 0, Ime = "", Prezime = "", UcenikId = 0 });
                 ucenik.Staratelj = null;

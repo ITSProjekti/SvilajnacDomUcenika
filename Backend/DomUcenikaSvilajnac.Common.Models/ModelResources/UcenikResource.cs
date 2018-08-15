@@ -50,6 +50,6 @@ namespace DomUcenikaSvilajnac.Common.Models.ModelResources
 
         public TipPorodiceResource TipPorodice { get; set; }
 
-        public Staratelj Staratelji { get; set; }
+        public StarateljResource Staratelji { get; set; }
     }
 }

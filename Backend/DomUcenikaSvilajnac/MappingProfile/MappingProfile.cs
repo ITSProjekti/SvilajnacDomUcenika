@@ -28,7 +28,8 @@ namespace DomUcenikaSvilajnac.Mapping
             .ForMember(v => v.MestoPrebivalista, opt => opt.MapFrom(src => new Mesto() { Id = src.MestoPrebivalista.Id, NazivMesta = src.MestoPrebivalista.NazivMesta }))
             .ForMember(v => v.MestoZavrseneSkole, opt => opt.MapFrom(src => new Mesto() { Id = src.MestoZavrseneSkole.Id, NazivMesta = src.MestoZavrseneSkole.NazivMesta }))
             .ForMember(v => v.Pol, opt => opt.MapFrom(src => new Pol() { Id = src.Pol.Id, NazivPola = src.Pol.NazivPola }))
-            .ForMember(v => v.VremeUpisa, opt => opt.Ignore());
+            .ForMember(v => v.VremeUpisa, opt => opt.Ignore())
+            .ForMember(v => v.Staratelji, opt => opt.Ignore());
 
 
             ;
@@ -37,7 +38,15 @@ namespace DomUcenikaSvilajnac.Mapping
             CreateMap<Ucenik, UcenikResource>()
                 .ForMember(v => v.Godina, opt => opt.MapFrom(src => src.DatumRodjenja.Year))
                 .ForMember(v => v.Dan, opt => opt.MapFrom(src => src.DatumRodjenja.Day))
-                .ForMember(v => v.Mesec, opt => opt.MapFrom(src => src.DatumRodjenja.Month));
+                .ForMember(v => v.Mesec, opt => opt.MapFrom(src => src.DatumRodjenja.Month))
+                .ForMember(v => v.Staratelji, opt => opt.MapFrom(src => new StarateljResource()
+                {
+                    Id = src.Staratelji[0].Id,
+                    Ime = src.Staratelji[0].Ime,
+                    Prezime = src.Staratelji[0].Prezime,
+                    UcenikId = src.Staratelji[0].UcenikId
+                }));
+
 
             //mapira PostUcenikaResource u Ucenik, odnosno omogucava da se datum unese putem jedne promenljive DatumRodjenja.
             CreateMap<PostUcenikaResource, Ucenik>()
@@ -461,25 +470,17 @@ namespace DomUcenikaSvilajnac.Mapping
             CreateMap<StarateljResource, Staratelj>();
 
 
-            CreateMap<List<Ucenik>, List<UcenikResource>>()
-               .AfterMap((ucenik, resurs) =>
-               {
-                   resurs[0].Staratelji.Id = ucenik[0].Staratelji[0].Id;
-                   resurs[0].Staratelji.Ime = ucenik[0].Staratelji[0].Ime;
-                   resurs[0].Staratelji.Prezime = ucenik[0].Staratelji[0].Prezime;
-                   resurs[0].Staratelji.UcenikId = ucenik[0].Staratelji[0].UcenikId;
+            //    CreateMap<List<Ucenik>, List<UcenikResource>>();
 
-               });
-
-            CreateMap<List<UcenikResource>, List<Ucenik>>()
-                .AfterMap((resurs, ucenik) =>
-                {
-                    ucenik[0].Staratelji[0].Id = resurs[0].Staratelji.Id;
-                    ucenik[0].Staratelji[0].Ime = resurs[0].Staratelji.Ime;
-                    ucenik[0].Staratelji[0].Prezime = resurs[0].Staratelji.Prezime;
-                    ucenik[0].Staratelji[0].UcenikId = resurs[0].Staratelji.UcenikId;
+          //  CreateMap<List<Ucenik>, List<UcenikResource>>();
+               //.AfterMap((ucenik, resurs) =>
+               //{
                   
-                });
+
+
+               //});
+
+
 
 
         }
