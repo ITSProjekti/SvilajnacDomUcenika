@@ -56,5 +56,8 @@ namespace DomUcenikaSvilajnac.Common.Interfaces
         Task<PutUcenikaResource> mapiranjeZaPutUcenika(int id);
         Task<IEnumerable<PutRoditeljaResource>> roditeljiUcenikaZaPut(int UcenikId);
 
+        //metoda za test
+        Task<Staratelj> selektIdStarateljaUcenika(int UcenikId);
+
     }
 }

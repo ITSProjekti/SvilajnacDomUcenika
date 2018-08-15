@@ -105,13 +105,20 @@ namespace DomUcenikaSvilajnac.Controllers
             }
             var stariUcenik = await UnitOfWork.Ucenici.GetAsync(id);
             int pom = stariUcenik.TelefonId;
+
+
+
+
             TelefonResource telefon = new TelefonResource { Id = pom, Mobilni = ucenik.Telefon.Mobilni, Kucni = ucenik.Telefon.Kucni };
             var stariTelefon = await UnitOfWork.Telefoni.GetAsync(telefon.Id);
 
             //koriscenje klase telefon kontrolera kako bih pozvao metodu put za taj objekat
             TelefonController telefonKontroler = new TelefonController(_mapper, UnitOfWork);
-            await telefonKontroler.PutTelefon(telefon.Id, telefon);
+            StarateljController starateljKontroler = new StarateljController(_mapper, UnitOfWork);
+            var starateljUcenika = await UnitOfWork.selektIdStarateljaUcenika(stariUcenik.Id);
 
+
+            await telefonKontroler.PutTelefon(telefon.Id, telefon);
             if (id != stariUcenik.Id)
             {
                 return BadRequest();
@@ -121,10 +128,25 @@ namespace DomUcenikaSvilajnac.Controllers
 
             ucenik.Id = id;
 
+
+            if (ucenik.TipPorodice.Id == 4 || ucenik.TipPorodice.Id == 5)
+            {
+
+
+                ucenik.Staratelj.UcenikId = stariUcenik.Id;
+                await starateljKontroler.PutStaratelj(starateljUcenika.Id, ucenik.Staratelj);
+            }
+
+            else
+            {
+
+                await starateljKontroler.DeleteStaratelj(starateljUcenika.Id);
+                stariUcenik.Staratelji.Add(new Staratelj { Id = 0, Ime = "", Prezime = "", UcenikId = 0 });
+                ucenik.Staratelj = null;
+            }
+
             var novi = _mapper.Map<PutUcenikaResource, Ucenik>(ucenik, stariUcenik);
             novi.TelefonId = pom;
-
-
             await UnitOfWork.SaveChangesAsync();
 
             //kreiranje instance kontrolera roditelja
@@ -134,6 +156,12 @@ namespace DomUcenikaSvilajnac.Controllers
 
 
             var noviUcenik = await UnitOfWork.mapiranjeZaPutUcenika(id);
+            if (ucenik.TipPorodice.Id != 4 && ucenik.TipPorodice.Id != 5)
+            {
+                await starateljKontroler.DeleteStaratelj(noviUcenik.Staratelj.Id);
+            }
+
+
             return Ok(noviUcenik);
         }
 

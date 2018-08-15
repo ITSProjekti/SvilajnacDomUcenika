@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Text;
 
 namespace DomUcenikaSvilajnac.Common.Models.ModelResources
@@ -48,5 +49,7 @@ namespace DomUcenikaSvilajnac.Common.Models.ModelResources
         public float PrethodniUspeh { get; set; }
 
         public TipPorodiceResource TipPorodice { get; set; }
+
+        public Staratelj Staratelji { get; set; }
     }
 }

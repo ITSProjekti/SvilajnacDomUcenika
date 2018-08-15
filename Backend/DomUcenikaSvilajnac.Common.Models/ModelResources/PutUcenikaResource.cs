@@ -46,5 +46,9 @@ namespace DomUcenikaSvilajnac.Common.Models.ModelResources
 
         public PostRoditeljaResource Roditelji { get; set; }
         public float PrethodniUspeh { get; set; }
+
+
+        public TipPorodiceResource TipPorodice { get; set; }
+        public StarateljResource Staratelj { get; set; }
     }
 }

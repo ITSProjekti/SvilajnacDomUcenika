@@ -124,7 +124,8 @@ namespace DomUcenikaSvilajnac.Mapping
                 .ForMember(v => v.Smer, opt => opt.Ignore())
                 .ForMember(v => v.VremeUpisa, opt => opt.Ignore())
                 .ForMember(v => v.Razred, opt => opt.Ignore())
-                .ForMember(v => v.TipPorodice, opt => opt.Ignore());
+                .ForMember(v => v.TipPorodice, opt => opt.Ignore())
+                  .ForMember(v => v.Staratelji, opt => opt.Ignore());
 
 
 
@@ -149,7 +150,16 @@ namespace DomUcenikaSvilajnac.Mapping
                     BrojTelefonaOca = src.Roditelji[1].BrojTelefona,
                     StrucnaSpremaOcaId = src.Roditelji[1].StepenObrazovanjaId,
                 }
-                ));
+                ))
+                .ForMember(v => v.Staratelj, opt => opt.MapFrom(src => new StarateljResource()
+                {
+
+                    Id = src.Staratelji[0].Id,
+                    Ime = src.Staratelji[0].Ime,
+                    Prezime = src.Staratelji[0].Prezime,
+                    UcenikId = src.Staratelji[0].UcenikId
+                }));
+
 
 
             CreateMap<Roditelj, RoditeljiUcenikaResource>();
@@ -449,6 +459,28 @@ namespace DomUcenikaSvilajnac.Mapping
 
             CreateMap<Staratelj, StarateljResource>();
             CreateMap<StarateljResource, Staratelj>();
+
+
+            CreateMap<List<Ucenik>, List<UcenikResource>>()
+               .AfterMap((ucenik, resurs) =>
+               {
+                   resurs[0].Staratelji.Id = ucenik[0].Staratelji[0].Id;
+                   resurs[0].Staratelji.Ime = ucenik[0].Staratelji[0].Ime;
+                   resurs[0].Staratelji.Prezime = ucenik[0].Staratelji[0].Prezime;
+                   resurs[0].Staratelji.UcenikId = ucenik[0].Staratelji[0].UcenikId;
+
+               });
+
+            CreateMap<List<UcenikResource>, List<Ucenik>>()
+                .AfterMap((resurs, ucenik) =>
+                {
+                    ucenik[0].Staratelji[0].Id = resurs[0].Staratelji.Id;
+                    ucenik[0].Staratelji[0].Ime = resurs[0].Staratelji.Ime;
+                    ucenik[0].Staratelji[0].Prezime = resurs[0].Staratelji.Prezime;
+                    ucenik[0].Staratelji[0].UcenikId = resurs[0].Staratelji.UcenikId;
+                  
+                });
+
 
         }
     }

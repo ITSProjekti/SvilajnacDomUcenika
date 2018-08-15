@@ -96,13 +96,13 @@ namespace DomUcenikaSvilajnac.Common.Models
         public DateTime VremeUpisa { get; set; }
 
         public Collection<Roditelj> Roditelji { get; set; }
-        public Collection<Staratelj> Staratelji { get; set; }
+        public List<Staratelj> Staratelji { get; set; }
 
         public Ucenik()
         {
 
             Roditelji = new Collection<Roditelj>();
-            Staratelji = new Collection<Staratelj>();
+            Staratelji = new List<Staratelj>();
         }
         public float PrethodniUspeh { get; set; }
         public byte[] Slika  { get; set; }

@@ -139,6 +139,7 @@ namespace DomUcenikaSvilajnac.DAL.RepoPattern
                 .Include(r=>r.Razred)
                 .Include(rod=> rod.Roditelji)
                 .Include(tipP=> tipP.TipPorodice)
+                .Include(st=> st.Staratelji)
                 .ToListAsync();
 
             return Mapper.Map<List<Ucenik>, List<UcenikResource>>(podaciUcenika);
@@ -161,6 +162,7 @@ namespace DomUcenikaSvilajnac.DAL.RepoPattern
                 .Include(r=>r.Razred)
                 .Include(rod => rod.Roditelji)
                  .Include(tipP => tipP.TipPorodice)
+                 .Include(st=> st.Staratelji)
                 .SingleOrDefaultAsync(x => x.Id == id);
             return Mapper.Map<Ucenik, UcenikResource>(podaciUcenikaById);
         }
@@ -271,6 +273,12 @@ namespace DomUcenikaSvilajnac.DAL.RepoPattern
             await SaveChangesAsync();
 
             return Mapper.Map<List<Roditelj>, List<DeleteRoditeljaResource>>(roditeljiUcenika);
+        }
+
+        public async Task<Staratelj> selektIdStarateljaUcenika(int UcenikId)
+        {
+            var nesto = await _context.Staratelji.SingleOrDefaultAsync(n => n.UcenikId == UcenikId);
+            return nesto;
         }
     }
 }
