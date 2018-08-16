@@ -12,6 +12,7 @@ using AutoMapper;
 using DomUcenikaSvilajnac.ModelResources;
 using Microsoft.AspNetCore.Mvc;
 using DomUcenikaSvilajnac.Common.Models.ModelResources;
+using System.Collections.ObjectModel;
 
 namespace DomUcenikaSvilajnac.DAL.RepoPattern
 {
@@ -141,6 +142,20 @@ namespace DomUcenikaSvilajnac.DAL.RepoPattern
                 .Include(tipP=> tipP.TipPorodice)
                 .Include(st=> st.Staratelji)
                 .ToListAsync();
+
+            foreach (var item in podaciUcenika)
+            {
+                if (item.Staratelji.Count == 0)
+                    item.Staratelji = new Collection<Staratelj>() {
+                        new Staratelj()
+                        {
+                            Id = 0,
+                            Ime = "",
+                            Prezime = "",
+                            UcenikId = 0
+                        }
+                    };
+            }
 
             return Mapper.Map<List<Ucenik>, List<UcenikResource>>(podaciUcenika);
         }

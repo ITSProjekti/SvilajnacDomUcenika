@@ -39,13 +39,15 @@ namespace DomUcenikaSvilajnac.Mapping
                 .ForMember(v => v.Godina, opt => opt.MapFrom(src => src.DatumRodjenja.Year))
                 .ForMember(v => v.Dan, opt => opt.MapFrom(src => src.DatumRodjenja.Day))
                 .ForMember(v => v.Mesec, opt => opt.MapFrom(src => src.DatumRodjenja.Month))
-                .ForMember(v => v.Staratelji, opt => opt.MapFrom(src => new StarateljResource()
-                {
-                    Id = src.Staratelji[0].Id,
-                    Ime = src.Staratelji[0].Ime,
-                    Prezime = src.Staratelji[0].Prezime,
-                    UcenikId = src.Staratelji[0].UcenikId
-                }));
+                 .ForMember(v => v.Staratelji, opt => opt.MapFrom(src => new StarateljResource()
+                 {
+                     Id = src.Staratelji[0].Id,
+                     Ime = src.Staratelji[0].Ime,
+                     Prezime = src.Staratelji[0].Prezime,
+                     UcenikId = src.Staratelji[0].UcenikId
+                 }));
+
+
 
 
             //mapira PostUcenikaResource u Ucenik, odnosno omogucava da se datum unese putem jedne promenljive DatumRodjenja.
