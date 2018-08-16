@@ -106,9 +106,6 @@ namespace DomUcenikaSvilajnac.Controllers
             var stariUcenik = await UnitOfWork.Ucenici.GetAsync(id);
             int pom = stariUcenik.TelefonId;
 
-
-
-
             TelefonResource telefon = new TelefonResource { Id = pom, Mobilni = ucenik.Telefon.Mobilni, Kucni = ucenik.Telefon.Kucni };
             var stariTelefon = await UnitOfWork.Telefoni.GetAsync(telefon.Id);
 
@@ -136,10 +133,8 @@ namespace DomUcenikaSvilajnac.Controllers
                 ucenik.Staratelj.UcenikId = stariUcenik.Id;
                 await starateljKontroler.PutStaratelj(starateljUcenika.Id, ucenik.Staratelj);
             }
-
             else
             {
-
                 //ovaj deo treba ponovo pogledati ako zelimo arhivirati stare staratelje
                 await starateljKontroler.DeleteStaratelj(starateljUcenika.Id);
                 stariUcenik.Staratelji.Add(new Staratelj { Id = 0, Ime = "", Prezime = "", UcenikId = 0 });
@@ -154,14 +149,11 @@ namespace DomUcenikaSvilajnac.Controllers
             RoditeljController roditeljKontroler = new RoditeljController(_mapper, UnitOfWork);
             await roditeljKontroler.PutRoditelj(novi.Id, roditeljResurs);
 
-
-
             var noviUcenik = await UnitOfWork.mapiranjeZaPutUcenika(id);
             if (ucenik.TipPorodice.Id != 4 && ucenik.TipPorodice.Id != 5)
             {
                 await starateljKontroler.DeleteStaratelj(noviUcenik.Staratelj.Id);
             }
-
 
             return Ok(noviUcenik);
         }

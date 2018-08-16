@@ -50,6 +50,7 @@ namespace DomUcenikaSvilajnac.DAL.Context.Migrations
                 name: "IX_Ucenici_OpstinaId",
                 table: "Ucenici",
                 column: "OpstinaId");
+
         }
 
                
