@@ -244,6 +244,7 @@ namespace DomUcenikaSvilajnac.DAL.RepoPattern
                 .Include(r => r.Razred)
                 .Include(rod=> rod.Roditelji)
                 .Include(tipP => tipP.TipPorodice)
+                .Include(st=> st.Staratelji)
                 .SingleOrDefaultAsync(x => x.Id == ucenik.Id);
 
             return Mapper.Map<Ucenik, UcenikResource>(podaciUcenika);

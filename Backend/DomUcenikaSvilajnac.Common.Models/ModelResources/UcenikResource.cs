@@ -52,5 +52,6 @@ namespace DomUcenikaSvilajnac.Common.Models.ModelResources
 
         public StarateljResource Staratelji { get; set; }
         public byte[] Slika { get; set; }
+        public int MaterijalniPrihodi { get; set; }
     }
 }

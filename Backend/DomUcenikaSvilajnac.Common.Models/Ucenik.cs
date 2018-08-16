@@ -110,5 +110,7 @@ namespace DomUcenikaSvilajnac.Common.Models
 
         public int TipPorodiceId { get; set; }
         public TipPorodice TipPorodice { get; set; }
+
+        public int MaterijalniPrihodi { get; set; }
     }
 }

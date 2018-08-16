@@ -12,6 +12,7 @@ using AutoMapper;
 using DomUcenikaSvilajnac.ModelResources;
 using DomUcenikaSvilajnac.Common.Interfaces;
 using DomUcenikaSvilajnac.Common.Models.ModelResources;
+using System.Collections.ObjectModel;
 
 namespace DomUcenikaSvilajnac.Controllers
 {
@@ -254,6 +255,20 @@ namespace DomUcenikaSvilajnac.Controllers
 
             var ucenik = await UnitOfWork.Ucenici.GetAsync(id);
 
+
+            if (ucenik.Staratelji.Count == 0)
+                ucenik.Staratelji = new Collection<Staratelj>()
+                {
+                    new Staratelj()
+                    {
+                        Id = 0,
+                        Ime = "",
+                        Prezime ="",
+                        UcenikId = 0
+                    }
+                };
+          
+               
             var noviUcenik = _mapper.Map<Ucenik, UcenikResource>(ucenik);
             var mapiranUcenik = await UnitOfWork.mapiranjeZaDeleteUcenika(noviUcenik);
 
