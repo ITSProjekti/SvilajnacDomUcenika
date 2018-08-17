@@ -11,8 +11,8 @@ using System;
 namespace DomUcenikaSvilajnac.DAL.Context.Migrations
 {
     [DbContext(typeof(UcenikContext))]
-    [Migration("20180814093226_SpajanjeUcenikaSaTipomPorodice")]
-    partial class SpajanjeUcenikaSaTipomPorodice
+    [Migration("20180817084133_SlikaUcenikaIOstaliAtributi")]
+    partial class SlikaUcenikaIOstaliAtributi
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -153,6 +153,24 @@ namespace DomUcenikaSvilajnac.DAL.Context.Migrations
                     b.ToTable("Smerovi");
                 });
 
+            modelBuilder.Entity("DomUcenikaSvilajnac.Common.Models.Staratelj", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<string>("Ime");
+
+                    b.Property<string>("Prezime");
+
+                    b.Property<int>("UcenikId");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("UcenikId");
+
+                    b.ToTable("Staratelji");
+                });
+
             modelBuilder.Entity("DomUcenikaSvilajnac.Common.Models.StepenStrucneSpreme", b =>
                 {
                     b.Property<int>("Id")
@@ -216,6 +234,8 @@ namespace DomUcenikaSvilajnac.DAL.Context.Migrations
                         .IsRequired()
                         .HasMaxLength(13);
 
+                    b.Property<int>("MaterijalniPrihodi");
+
                     b.Property<int?>("MestoPrebivalistaId");
 
                     b.Property<int?>("MestoRodjenjaId");
@@ -241,7 +261,7 @@ namespace DomUcenikaSvilajnac.DAL.Context.Migrations
 
                     b.Property<int>("RazredId");
 
-                    b.Property<byte[]>("Slika");
+                    b.Property<string>("Slika");
 
                     b.Property<int>("SmerId");
 
@@ -328,6 +348,14 @@ namespace DomUcenikaSvilajnac.DAL.Context.Migrations
 
                     b.HasOne("DomUcenikaSvilajnac.Common.Models.Ucenik", "Ucenik")
                         .WithMany("Roditelji")
+                        .HasForeignKey("UcenikId")
+                        .OnDelete(DeleteBehavior.Cascade);
+                });
+
+            modelBuilder.Entity("DomUcenikaSvilajnac.Common.Models.Staratelj", b =>
+                {
+                    b.HasOne("DomUcenikaSvilajnac.Common.Models.Ucenik", "Ucenik")
+                        .WithMany("Staratelji")
                         .HasForeignKey("UcenikId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });

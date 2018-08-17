@@ -51,7 +51,7 @@ namespace DomUcenikaSvilajnac.Common.Models.ModelResources
         public TipPorodiceResource TipPorodice { get; set; }
 
         public StarateljResource Staratelji { get; set; }
-        public byte[] Slika { get; set; }
+        public string Slika { get; set; }
         public int MaterijalniPrihodi { get; set; }
     }
 }

@@ -260,7 +260,7 @@ namespace DomUcenikaSvilajnac.DAL.Context.Migrations
 
                     b.Property<int>("RazredId");
 
-                    b.Property<byte[]>("Slika");
+                    b.Property<string>("Slika");
 
                     b.Property<int>("SmerId");
 

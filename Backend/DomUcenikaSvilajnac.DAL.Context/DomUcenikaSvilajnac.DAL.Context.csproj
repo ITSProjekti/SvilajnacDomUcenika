@@ -28,6 +28,13 @@
     <Compile Remove="Migrations\20180709114930_SeedovanjeMesta.cs" />
     <Compile Remove="Migrations\20180709121118_SeedovanjeOsnovnihSkola.cs" />
     <Compile Remove="Migrations\20180712111047_RazredUcenika.cs" />
+    <Compile Remove="Migrations\20180814081511_SlikaUcenika.cs" />
+    <Compile Remove="Migrations\20180814085526_TipPorodice.cs" />
+    <Compile Remove="Migrations\20180814093226_SpajanjeUcenikaSaTipomPorodice.cs" />
+    <Compile Remove="Migrations\20180814100121_StarateljiRoditelja.cs" />
+    <Compile Remove="Migrations\20180814104322_PovezivanjeUcenikaSaStarateljom.cs" />
+    <Compile Remove="Migrations\20180816091502_MaterijalniPrihodiUcenika.cs" />
+    <Compile Remove="Migrations\20180817083858_SlikaUcenikaIOstaliAtributi.cs" />
   </ItemGroup>
 
   <ItemGroup>
