@@ -192,7 +192,7 @@ namespace DomUcenikaSvilajnac.Controllers
             }
             var noviUcenik = _mapper.Map<PostUcenikaResource, Ucenik>(ucenik);
             noviUcenik.VremeUpisa = DateTime.Now;
-            ucenik.Staratelj.UcenikId = noviUcenik.Id;
+            ucenik.Staratelji.UcenikId = noviUcenik.Id;
 
 
             //kada se cuvaju prvo kolone ne ide null
@@ -206,8 +206,8 @@ namespace DomUcenikaSvilajnac.Controllers
             if (noviUcenik.TipPorodiceId == 4 || noviUcenik.TipPorodiceId == 5)
             {
                 StarateljController starateljKontroler = new StarateljController(_mapper, UnitOfWork);
-                ucenik.Staratelj.UcenikId = noviUcenik.Id;
-                await starateljKontroler.PostStaratelj(ucenik.Staratelj);
+                ucenik.Staratelji.UcenikId = noviUcenik.Id;
+                await starateljKontroler.PostStaratelj(ucenik.Staratelji);
             }
             
             

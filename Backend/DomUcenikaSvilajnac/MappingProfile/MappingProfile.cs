@@ -98,7 +98,7 @@ namespace DomUcenikaSvilajnac.Mapping
                                                                     StrucnaSpremaOcaId = src.Roditelji[1].StepenObrazovanjaId,
                                                                        }
                 ))
-                .ForMember(v=> v.Staratelj, opt=> opt.MapFrom(src=> new StarateljResource() {
+                .ForMember(v=> v.Staratelji, opt=> opt.MapFrom(src=> new StarateljResource() {
                     
                         Id = src.Staratelji[0].Id,
                        Ime = src.Staratelji[0].Ime,

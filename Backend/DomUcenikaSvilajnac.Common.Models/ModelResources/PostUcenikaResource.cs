@@ -51,7 +51,7 @@ namespace DomUcenikaSvilajnac.ModelResources
         public float PrethodniUspeh { get; set; }
 
         public TipPorodiceResource TipPorodice { get; set; }
-        public StarateljResource Staratelj { get; set; }
+        public StarateljResource Staratelji { get; set; }
 
         public string Slika { get; set; }
         public int MaterijalniPrihodi { get; set; }

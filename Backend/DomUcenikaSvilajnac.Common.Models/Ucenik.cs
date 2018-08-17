@@ -42,9 +42,9 @@ namespace DomUcenikaSvilajnac.Common.Models
         public Drzava DrzavaRodjenja { get; set; }
 
         //================
-       // propertiji za komentarisanje prije svake migracije
-        //public int OpstinaPrebivalistaId { get; set; }
-        //public int OpstinaId { get; set; }
+        // propertiji za komentarisanje prije svake migracije
+        public int OpstinaPrebivalistaId { get; set; }
+        public int OpstinaId { get; set; }
         //================
         public Opstina Opstina { get; set; }
         public Opstina OpstinaPrebivalista { get; set; }
@@ -54,9 +54,9 @@ namespace DomUcenikaSvilajnac.Common.Models
 
         //================
         //propertiji za komentarisanje prije svake migracije
-        //public int MestoRodjenjaId { get; set; }
-        //public int MestoPrebivalistaId { get; set; }
-        //public int MestoZavrseneSkoleId { get; set; }
+        public int MestoRodjenjaId { get; set; }
+        public int MestoPrebivalistaId { get; set; }
+        public int MestoZavrseneSkoleId { get; set; }
         //================
 
 
