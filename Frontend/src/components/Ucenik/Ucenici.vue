@@ -27,16 +27,35 @@
               </v-card-title>
 
 
-            <v-flex offset-sm1 xs12>
-              <v-flex xs8 md5 class="ml-1" >
-                <v-text-field
-                 v-model="editedItem.ime"
-                  label="Ime" 
-                  required
-                   :rules="[rules.required]"
-                  ></v-text-field>
-              </v-flex>
-              </v-flex>
+                <template>
+                 <v-container fluid>
+                    <v-layout row wrap>
+                    <v-flex offset-sm1  xs12 sm5 class="mt-4 ">
+                        <v-text-field
+                      v-model="editedItem.ime"
+                        label="Ime" 
+                        required
+                        :rules="[rules.required]"
+                        ></v-text-field>
+                          </v-flex>
+                           <v-flex xs12 sm3 offset-sm1 class="mt-4">
+                             <v-card>
+           <v-card-text>
+                          <input type="file" id="file" ref="file" accept="image/*" v-on:change="handleFileUpload()"/>
+
+                        <img v-bind:src="imagePreview" class="responsive" v-show="showPreview"/>
+                       <!-- <button v-show="this.file!==''" v-on:click="ClearPicture()">Reset</button> -->
+                        <v-btn dark left  class="blue-grey darken" small
+                        v-show="this.file!==''" v-on:click="ClearPicture()"
+                        >
+                            Hello
+                        </v-btn>
+                  </v-card-text>
+                    </v-card>
+                            </v-flex>
+                          </v-layout>
+                        </v-container>
+                      </template>
 
             <v-flex offset-sm1 xs12>
               <v-flex xs8 md5 class="ml-1" >
@@ -551,6 +570,61 @@
               </v-flex>
               </v-flex>
 
+        <v-flex offset-sm1 xs12>
+              <v-flex xs8 md5 class="ml-1" >
+                <v-text-field
+                   v-model="editedItem.materijalniPrihodi" 
+                               
+                   label="Materijalni prihodi"   
+                  ></v-text-field>
+              </v-flex>
+              </v-flex>
+
+ <v-container fluid>
+                    <v-layout row wrap>
+                    <v-flex offset-sm1 xs12 sm3 class="mt-4">
+                     <p>Tip porodice</p>
+                    </v-flex>
+                           <v-flex xs12 sm6>
+                               <v-select
+                                :loading="loading"
+                                :items="TipoviPorodice"
+                                v-model="editedItem.tipPorodice.id"
+                                label="Izaberite tip porodice"
+                                item-text="nazivTipaPorodice"
+                                item-value="id"
+                                autocomplete
+                                @change="changedTip"
+                              ></v-select>
+                            </v-flex>
+                          </v-layout>
+                        </v-container>
+
+   <v-flex     offset-sm1 xs12>
+      <transition name="fade" appear  mode="in-out">
+              <v-flex v-if="editedItem.tipPorodice.id ===4 || editedItem.tipPorodice.id ===5 " xs8 md5 class="ml-1" >
+                <v-text-field
+                   v-model="editedItem.staratelji.ime" 
+                              
+                   label="Ime staratelja"   
+                  ></v-text-field>
+              </v-flex>
+      </transition>
+              </v-flex>
+                 <v-flex offset-sm1 xs12>
+                     <transition name="fade" appear  mode="in-out">
+              <v-flex v-if="editedItem.tipPorodice.id ===4 || editedItem.tipPorodice.id ===5 " xs8 md5 class="ml-1" >
+                
+                <v-text-field
+                   v-model="editedItem.staratelji.prezime" 
+                       
+                   label="Prezime staratelja"   
+                  ></v-text-field>
+                 
+              </v-flex>
+               </transition>
+              </v-flex>
+
                </v-card>
              </v-flex>         
             </v-layout>
@@ -826,6 +900,57 @@
                               </v-card-text>
                        </v-flex>
 
+                   
+                               <v-flex xs2>
+                       <v-subheader class="text-lg-right" v-text="'Tip porodice '"></v-subheader>
+                       </v-flex>
+                        <v-flex xs2>
+                        <v-card-text class="text-lg-left">
+                                {{ props.item.tipPorodice.nazivTipaPorodice }}
+                              </v-card-text>
+                       </v-flex>
+
+                                  <v-flex xs12 v-if=" props.item.staratelji.ime !== ''">  
+                               <v-flex xs2>
+                       <v-subheader class="text-lg-right" v-text="'Ime staratelja '"></v-subheader>
+                       </v-flex>
+                        <v-flex xs2>
+                        <v-card-text class="text-lg-left">
+                                {{ props.item.staratelji.ime }}
+                              </v-card-text>
+                       </v-flex>
+
+
+                                          
+                               <v-flex xs2>
+                       <v-subheader class="text-lg-right" v-text="'Prezime staratelja '"></v-subheader>
+                       </v-flex>
+                        <v-flex xs2>
+                        <v-card-text class="text-lg-left">
+                                {{ props.item.staratelji.prezime  }}
+                              </v-card-text>
+                       </v-flex>
+  </v-flex>
+
+                     <v-flex xs2>
+                       <v-subheader class="text-lg-right" v-text="'Slika '"></v-subheader>
+                       </v-flex>
+                        <v-flex xs2>
+                        <v-card-text class="text-lg-left">
+                                <img v-bind:src="props.item.slika" class="responsive"/>
+                              </v-card-text>
+                       </v-flex>
+  </v-flex>
+            <v-flex xs2>
+                       <v-subheader class="text-lg-right" v-text="'Materijalni prihodi '"></v-subheader>
+                       </v-flex>
+                        <v-flex xs2>
+                        <v-card-text class="text-lg-left">
+                                {{ props.item.materijalniPrihodi }}
+                              </v-card-text>
+                       </v-flex>
+
+
                     </v-layout>                  
                 </v-card>
               </template>
@@ -879,7 +1004,11 @@ import moment from 'moment'
       // pomocna promenljiva za generisanje podatka o datumu rodjenja
       datum: null,
       search: '',
+                file: '',
+        showPreview: false,
+        imagePreview: '',
       // atribut za jmbg progress bar
+
       custom: true,
       editedIndex: -1,
       // brojevi su pomocna prom za rad sa postanskim brojevima
@@ -964,7 +1093,19 @@ import moment from 'moment'
               brojTelefona: '',
               stepenObrazovanjaId: ''
             }
-          ]
+          ],
+           tipPorodice:{
+                id: '',
+                nazivTipaPorodice: ''
+           },
+           staratelji:{
+               ime:  '',
+               prezime:   ''
+               
+            },
+           slika: '',
+           materijalniPrihodi: ''
+
 
       },
     // defaultItem je objekat koji je po strukturi identican editedItemu i sluzi za resetovanje podataka u editedItemu na prazne podatke
@@ -1050,6 +1191,17 @@ import moment from 'moment'
               stepenObrazovanjaId: ''
             }
           ],
+           tipPorodice:{
+                id: '',
+                nazivTipaPorodice: ''
+           },
+           staratelji:{
+               ime:  '',
+               prezime:   ''
+              
+            },
+           slika: '',
+           materijalniPrihodi: ''
 
       }
     }),
@@ -1104,6 +1256,9 @@ import moment from 'moment'
             return false
           }
          
+      }, 
+      TipoviPorodice () {
+        return this.$store.getters.loadedTipoviPorodice
       },
       // pozivi store action metoda za preuzimanje neophodnih podataka za prijavu ucenika
       StepeniStrucneSpreme () {
@@ -1157,11 +1312,66 @@ import moment from 'moment'
       }
     },
     methods: {
+         ClearPicture(){
+   this.file=''
+   this.imagePreview=''
+    this.editedItem.slika= ''
+    	const input = this.$refs.file;
+        input.type = 'text';
+        input.type = 'file';
+      },
+
+           handleFileUpload(){
+        /*
+          Set the local file variable to what the user has selected.
+        */
+        this.file = this.$refs.file.files[0];
+
+        /*
+          Initialize a File Reader object
+        */
+        let reader  = new FileReader();
+
+        /*
+          Add an event listener to the reader that when the file
+          has been loaded, we flag the show preview as true and set the
+          image to be what was read from the reader.
+        */
+        reader.addEventListener("load", function () {
+          this.showPreview = true;
+          this.imagePreview = reader.result;
+            this.editedItem.slika= reader.result
+        }.bind(this), false);
+         console.log(this.editedItem.slika)
+        console.log( this.file)
+        /*
+          Check to see if the file is not empty.
+        */
+        if( this.file ){
+          /*
+            Ensure the file is an image file.
+          */
+          if ( /\.(jpe?g|png|gif)$/i.test( this.file.name ) ) {
+            /*
+              Fire the readAsDataURL method which will read the file in and
+              upon completion fire a 'load' event which we will listen to and
+              display the image in the preview.
+            */
+            reader.readAsDataURL( this.file );
+          }
+        }
+      },
+   
+      changedTip: function(value) {
+     this.editedItem.staratelji.ime=''
+     this.editedItem.staratelji.prezime=''
+      },
       // metoda koja na osnovu odabrane opstine prikazuje njene jedinstvene postanske brojeve
       changedValue: function(value) {
         function broj (opstina){
           return opstina.id===value
         }
+        this.editedItem.postanskiBroj.id=''
       this.brojevi=this.opstine.find(broj)
       },
 
@@ -1258,7 +1468,7 @@ import moment from 'moment'
         } else {
           // u suprotnom radi se o novom uceniku te se vrsi POST metod nakon kojeg se editedItem i datum postavljaju na pocetne vrednosti
           this.formatiranjeDatuma() 
-         
+
           this.$store.dispatch('createUcenik',this.editedItem)
           this.editedItem = Object.assign({}, this.defaultItem)
           this.datum=null
@@ -1309,5 +1519,8 @@ table {
   background-color: white;
   border-top: 1px solid grey !important
 }
-
+  .responsive {
+    width: 100%;
+    height: auto;
+}
 </style>

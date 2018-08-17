@@ -27,6 +27,7 @@ new Vue({
   created () {
     // pozovi sve inicijalne metode za popunjavanje store-a sa podacima neophodnim za funkcionisanje programe
     this.$store.dispatch('loadedUcenici')
+    this.$store.dispatch('loadedTipoviPorodice')
     this.$store.dispatch('loadedSSS')
     this.$store.dispatch('loadedDrzave')
     this.$store.dispatch('loadedPostanskiBrojevi')

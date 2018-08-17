@@ -2,7 +2,9 @@
 <v-container>
     <v-layout row>
         <v-flex xs12  >
+          <transition name="slidetoleft" appear>
             <h1> Prijava novog učenika</h1>
+          </transition>
         </v-flex>
     </v-layout>
     <v-layout row wrap>
@@ -20,20 +22,46 @@
               </v-flex>
               </v-card-title>
 
+              <template>
+                 <v-container fluid>
+                    <v-layout row wrap>
+                    <v-flex offset-sm1  xs12 sm5 class="mt-4 ">
+                        <v-text-field
+                      v-model="editedItem.ime"
+                        label="Ime" 
+                        required
+                        :rules="[rules.required]"
+                        ></v-text-field>
+                          </v-flex>
+                           <v-flex xs12 sm3 offset-sm1 class="mt-4">
+                            
+                             <v-card>
+           <v-card-text>
+                          <input type="file" id="file" ref="file" accept="image/*" v-on:change="handleFileUpload()"/>
+                  <transition name="fade" appear  mode="in-out">
+                        <img v-bind:src="imagePreview" class="responsive" v-show="showPreview"/>
+                         </transition>
+                       <!-- <button v-show="this.file!==''" v-on:click="ClearPicture()">Reset</button> -->
+                        <v-btn dark left  class="blue-grey darken" small
+                        v-show="this.file!==''" v-on:click="ClearPicture()"
+                        >
+                            Hello
+                        </v-btn>
+                  </v-card-text>
+                    </v-card>
+                            
+                            </v-flex>
+                          </v-layout>
+                        </v-container>
+                      </template>
 
-            <v-flex offset-sm1 xs12>
-              <v-flex xs8 md5 class="ml-1" >
-                <v-text-field
-                 v-model="editedItem.ime"
-                  label="Ime" 
-                  required
-                   :rules="[rules.required]"
-                  ></v-text-field>
-              </v-flex>
-              </v-flex>
 
+
+            <template>
+                 <v-container fluid>
+                    <v-layout row wrap>
             <v-flex offset-sm1 xs12>
-              <v-flex xs8 md5 class="ml-1" >
+              <v-flex xs8 md5  >
                 <v-text-field
                  v-model="editedItem.prezime"
                   label="Prezime"
@@ -47,7 +75,7 @@
 
 
        <v-flex offset-sm1 xs12>
-              <v-flex xs8 md5 class="ml-1" >
+              <v-flex xs8 md5  >
                 <v-text-field
                   v-model="editedItem.jmbg"
                   label="jmbg"
@@ -83,7 +111,7 @@
           </v-flex>
 
           <v-flex offset-sm1 xs12>
-                   <v-flex xs8 md5 class="ml-1" >
+                   <v-flex xs8 md5  >
                 <v-text-field
                  v-model="editedItem.adresa"
                   label="Adresa prebivališta" 
@@ -92,6 +120,11 @@
                   ></v-text-field>
               </v-flex>
           </v-flex>
+
+
+        </v-layout>
+                        </v-container>
+                      </template>
 
               <template>
                  <v-container fluid>
@@ -420,6 +453,16 @@
               </v-flex>
               </v-flex>
 
+
+
+
+
+
+
+
+
+
+
    </v-card>
           </v-flex>
           </transition >
@@ -549,6 +592,62 @@
               </v-flex>
               </v-flex>
 
+                <v-flex offset-sm1 xs12>
+              <v-flex xs8 md5 class="ml-1" >
+                <v-text-field
+                   v-model="editedItem.materijalniPrihodi" 
+                               
+                   label="Materijalni prihodi"   
+                  ></v-text-field>
+              </v-flex>
+              </v-flex>
+
+  <v-container fluid>
+                    <v-layout row wrap>
+                    <v-flex offset-sm1 xs12 sm3 class="mt-4">
+                     <p>Tip porodice</p>
+                    </v-flex>
+                           <v-flex xs12 sm6>
+                               <v-select
+                                :loading="loading"
+                                :items="TipoviPorodice"
+                                v-model="editedItem.tipPorodice.id"
+                                label="Izaberite tip porodice"
+                                item-text="nazivTipaPorodice"
+                                item-value="id"
+                                autocomplete
+                                @change="changedTip"
+                              ></v-select>
+                            </v-flex>
+                          </v-layout>
+                        </v-container>
+
+   <v-flex     offset-sm1 xs12>
+      <transition name="fade" appear  mode="in-out">
+              <v-flex v-if="editedItem.tipPorodice.id ===4 || editedItem.tipPorodice.id ===5 " xs8 md5 class="ml-1" >
+                <v-text-field
+                   v-model="editedItem.staratelji.ime" 
+                              
+                   label="Ime staratelja"   
+                  ></v-text-field>
+              </v-flex>
+      </transition>
+              </v-flex>
+                 <v-flex offset-sm1 xs12>
+                     <transition name="fade" appear  mode="in-out">
+              <v-flex v-if="editedItem.tipPorodice.id ===4 || editedItem.tipPorodice.id ===5 " xs8 md5 class="ml-1" >
+                
+                <v-text-field
+                   v-model="editedItem.staratelji.prezime" 
+                       
+                   label="Prezime staratelja"   
+                  ></v-text-field>
+                 
+              </v-flex>
+               </transition>
+              </v-flex>
+
+
    </v-card>
           </v-flex>
   </transition >
@@ -594,7 +693,9 @@ import moment from 'moment'
         },
       // pomocna promenljiva za generisanje podatka o datumu rodjenja
       datum: null,
-      
+          file: '',
+        showPreview: false,
+        imagePreview: '',
       // atribut za jmbg progress bar
       custom: true,
       editedIndex: -1,
@@ -680,8 +781,18 @@ import moment from 'moment'
               brojTelefona: '',
               stepenObrazovanjaId: ''
             }
-          ]
-      
+          ],
+           tipPorodice:{
+                id: '',
+                nazivTipaPorodice: ''
+           },
+           staratelji:{
+               ime:  '',
+               prezime:   ''
+               
+            },
+           slika: '',
+           materijalniPrihodi: ''
       }
     }),
       // computed metode su metode koje se desavaju onda kada dodje do nekakvim promena stanja komponente, neki vid watcher-a
@@ -732,6 +843,9 @@ import moment from 'moment'
             return false
           }
          
+      }, 
+      TipoviPorodice () {
+        return this.$store.getters.loadedTipoviPorodice
       },
       StepeniStrucneSpreme () {
         return this.$store.getters.loadedSSS
@@ -775,13 +889,64 @@ import moment from 'moment'
     },
    
     methods: {
+       ClearPicture(){
+       this.file=''
+      this.imagePreview=''
+      this.editedItem.slika= ''
+    	const input = this.$refs.file;
+        input.type = 'text';
+        input.type = 'file';
+      },
 
+           handleFileUpload(){
+        /*
+          Set the local file variable to what the user has selected.
+        */
+        this.file = this.$refs.file.files[0];
 
-      
+        /*
+          Initialize a File Reader object
+        */
+        let reader  = new FileReader();
+
+        /*
+          Add an event listener to the reader that when the file
+          has been loaded, we flag the show preview as true and set the
+          image to be what was read from the reader.
+        */
+        reader.addEventListener("load", function () {
+          this.showPreview = true;
+          this.imagePreview = reader.result;
+          this.editedItem.slika= reader.result
+        }.bind(this), false);
+        console.log(this.editedItem.slika)
+        console.log( this.file)
+        /*
+          Check to see if the file is not empty.
+        */
+        if( this.file ){
+          /*
+            Ensure the file is an image file.
+          */
+          if ( /\.(jpe?g|png|gif)$/i.test( this.file.name ) ) {
+            /*
+              Fire the readAsDataURL method which will read the file in and
+              upon completion fire a 'load' event which we will listen to and
+              display the image in the preview.
+            */
+            reader.readAsDataURL( this.file );
+          }
+        }
+      },
+      changedTip: function(value) {
+     this.editedItem.staratelji.ime=''
+     this.editedItem.staratelji.prezime=''
+      },
       changedValue: function(value) {
         function broj (opstina){
           return opstina.id===value
         }
+        this.editedItem.postanskiBroj.id=''
       this.brojevi=this.opstine.find(broj)
       },
       // v-data-picker generise datum u formatu DD-MM-GGGG te je neophodno prebaciti ova 3 podatka u 3 promenljive: dan,mesec i godinu
@@ -801,7 +966,18 @@ import moment from 'moment'
       PrijavaUcenika () {
       
         this.formatiranjeDatuma() 
-        console.log(this.editedItem)      
+       
+      
+
+            /*
+                Add the form data we need to submit
+            */
+      
+         // this.editedItem.slika=prepslika;
+         //  console.log(this.editedItem)    
+ 
+
+    console.log(this.editedItem)
         this.$store.dispatch('createUcenik',this.editedItem)
         this.$router.push('/ucenici')
       }  
@@ -821,4 +997,57 @@ input[type="number"] {
 }
 
 
+.fade-enter-active, .fade-leave-active {
+  transition: opacity 2s ease-out;
+}
+
+.fade-enter, .fade-leave-to {
+  opacity: 0;
+}
+.slidetoleft-enter{
+  opacity: 0;
+}
+
+.slidetoleft-enter-active{
+  animation: slidetoleft-in 1s ease-out forwards;
+  transition: opacity 2s ease-out;
+  
+}
+
+.slidetoleft-leave-active {
+  animation: slidetoleft-out 1s ease-out forwards;
+  transition: opacity 2s ease-out;
+  opacity: 0;
+}
+
+
+@keyframes slidetoleft-in {
+  from {
+    transform: translateX(50px)
+  }
+  to
+  {
+    transform: translateX(0)
+  }
+}
+@keyframes slidetoleft-out {
+  from {
+    transform: translateX(0)
+  }
+  to
+  {
+    transform: translateX(50px)
+  }
+}
+</style>
+<style>
+  div.container img{
+    max-width: 200px;
+    max-height: 200px;
+  }
+
+  .responsive {
+    width: 100%;
+    height: auto;
+}
 </style>
