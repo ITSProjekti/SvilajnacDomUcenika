@@ -130,15 +130,15 @@ namespace DomUcenikaSvilajnac.Controllers
             if (ucenik.TipPorodice.Id == 4 || ucenik.TipPorodice.Id == 5)
             {
 
-                ucenik.Staratelj.UcenikId = stariUcenik.Id;
-                await starateljKontroler.PutStaratelj(starateljUcenika.Id, ucenik.Staratelj);
+                ucenik.Staratelji.UcenikId = stariUcenik.Id;
+                await starateljKontroler.PutStaratelj(starateljUcenika.Id, ucenik.Staratelji);
             }
             else
             {
                 //ovaj deo treba ponovo pogledati ako zelimo arhivirati stare staratelje
                 await starateljKontroler.DeleteStaratelj(starateljUcenika.Id);
                 stariUcenik.Staratelji.Add(new Staratelj { Id = 0, Ime = "", Prezime = "", UcenikId = 0 });
-                ucenik.Staratelj = null;
+                ucenik.Staratelji = null;
             }
 
             var novi = _mapper.Map<PutUcenikaResource, Ucenik>(ucenik, stariUcenik);
@@ -152,7 +152,7 @@ namespace DomUcenikaSvilajnac.Controllers
             var noviUcenik = await UnitOfWork.mapiranjeZaPutUcenika(id);
             if (ucenik.TipPorodice.Id != 4 && ucenik.TipPorodice.Id != 5)
             {
-                await starateljKontroler.DeleteStaratelj(noviUcenik.Staratelj.Id);
+                await starateljKontroler.DeleteStaratelj(noviUcenik.Staratelji.Id);
             }
 
             return Ok(noviUcenik);

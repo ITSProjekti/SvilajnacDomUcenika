@@ -55,6 +55,8 @@ namespace DomUcenikaSvilajnac.ModelResources
 
         public string Slika { get; set; }
         public int MaterijalniPrihodi { get; set; }
+        public string Pohvale { get; set; }
+        public string Kazne { get; set; }
 
     }
 }
