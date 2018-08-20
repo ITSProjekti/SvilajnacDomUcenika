@@ -33,6 +33,7 @@ namespace DomUcenikaSvilajnac.DAL.Context.Migrations
 
                     b.ToTable("Drzave");
                 });
+         
 
             modelBuilder.Entity("DomUcenikaSvilajnac.Common.Models.Mesto", b =>
                 {
