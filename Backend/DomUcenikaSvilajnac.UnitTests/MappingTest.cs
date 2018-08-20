@@ -8,6 +8,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 
 namespace DomUcenikaSvilajnac.UnitTests
 {
@@ -24,6 +25,7 @@ namespace DomUcenikaSvilajnac.UnitTests
         [TestMethod]
         public void CreateMapMetode_ResursModelproveraTipa_ReturnsTrue()
         {
+            AutoMapper.Mapper.Reset();
             Mapper.Initialize(m => m.AddProfile<MappingProfile>());
             Mapper.AssertConfigurationIsValid();
             Ucenik ucenik = new Ucenik()
@@ -34,10 +36,10 @@ namespace DomUcenikaSvilajnac.UnitTests
                 JMBG = "1231231231233",
                 DatumRodjenja = new DateTime(1998, 04, 30),
                 DrzavaRodjenjaId = 1,
-                //MestoPrebivalistaId = 1,
-                //MestoRodjenjaId = 1,
-                //MestoZavrseneSkoleId = 1,
-                //OpstinaPrebivalistaId = 1,
+                MestoPrebivalistaId = 1,
+                MestoRodjenjaId = 1,
+                MestoZavrseneSkoleId = 1,
+                OpstinaPrebivalistaId = 1,
                 PolId = 1,
                 Adresa = "Milutaina Milankovica 74",
                 TelefonId = 1,
@@ -46,12 +48,26 @@ namespace DomUcenikaSvilajnac.UnitTests
                 SmerId = 1,
                 RazredId = 1,
                 PrethodnaSkolaId = 1,
-                PrethodniUspeh = 4.55f
+                PrethodniUspeh = 4.55f,
+                Kazne = "1",
+                Pohvale = "1",
+                Slika = "132312312321321",
+                Staratelji = new Collection<Staratelj>()
+                {
+                    new Staratelj()
+                    {
+                        Id = 1,
+                        Ime = "StarateljIme",
+                        Prezime = "StarateljPrezime",
+                        UcenikId = 1
+                    }
+                },
+                MaterijalniPrihodi = 5,
+                TipPorodiceId = 3
             };
             var result = Mapper.Map<Ucenik, UcenikResource>(ucenik);
 
             Assert.IsInstanceOfType(result, typeof(UcenikResource));
-            AutoMapper.Mapper.Reset();
         }
 
         /// <summary>
@@ -60,6 +76,7 @@ namespace DomUcenikaSvilajnac.UnitTests
         [TestMethod]
         public void CreateMapMetode_ModelResursproveraTipa_ReturnsTrue()
         {
+            AutoMapper.Mapper.Reset();
             Mapper.Initialize(m => m.AddProfile<MappingProfile>());
             Mapper.AssertConfigurationIsValid();
             UcenikResource ucenikResurs = new UcenikResource()
@@ -242,7 +259,7 @@ namespace DomUcenikaSvilajnac.UnitTests
         [TestMethod]
         public void CreateMapMetode_ModelPostRoditeljaResursURoditeljproveraTipa_ReturnsTrue()
         {
-
+            AutoMapper.Mapper.Reset();
             Mapper.Initialize(m => m.AddProfile<MappingProfile>());
             Mapper.AssertConfigurationIsValid();
 
