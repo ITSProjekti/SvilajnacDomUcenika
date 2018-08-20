@@ -592,15 +592,31 @@
               </v-flex>
               </v-flex>
 
-                <v-flex offset-sm1 xs12>
-              <v-flex xs8 md5 class="ml-1" >
+               <v-flex offset-sm1 xs12>
+              <v-flex xs8 md5  >
                 <v-text-field
-                   v-model="editedItem.materijalniPrihodi" 
-                               
-                   label="Materijalni prihodi"   
-                  ></v-text-field>
+                  v-model="editedItem.materijalniPrihodi"
+                  label="Materijalni prihodi"
+
+                  input type="number"  onkeydown="javascript: if(event.keyCode == 69) {return false} else 
+                  {
+                   if(event.keyCode == 107) {return false}
+                    else {
+                   if(event.keyCode == 190) {return false}
+                    else {
+                   if(event.keyCode == 109) {return false}
+                    else  {
+                   if(event.keyCode == 187) {return false}
+                    else  {
+                   if(event.keyCode == 189) {return false}
+                   else
+                     {return true} } } } } }"                                       
+                        >
+            
+                        
+                        </v-text-field>
               </v-flex>
-              </v-flex>
+          </v-flex>
 
   <v-container fluid>
                     <v-layout row wrap>
@@ -647,6 +663,59 @@
                </transition>
               </v-flex>
 
+       <v-flex offset-sm1 xs12>
+              <v-flex xs8 md5  >
+                <v-text-field 
+                  v-model="editedItem.pohvale"
+                  label="Broj pohvala"
+                  required
+                  input type="number"  onkeydown="javascript: if(event.keyCode == 69) {return false} else 
+                  {
+                   if(event.keyCode == 107) {return false}
+                    else {
+                   if(event.keyCode == 190) {return false}
+                    else {
+                   if(event.keyCode == 109) {return false}
+                    else  {
+                   if(event.keyCode == 187) {return false}
+                    else  {
+                   if(event.keyCode == 189) {return false}
+                   else
+                     {return true} } } } } }"                                       
+
+               >
+                        
+                        </v-text-field>
+              </v-flex>
+          </v-flex>
+
+
+                 <v-flex offset-sm1 xs12>
+              <v-flex xs8 md5  >
+                <v-text-field
+                  v-model="editedItem.kazne"
+                  label="Broj kazni"
+
+                  input type="number"  onkeydown="javascript: if(event.keyCode == 69) {return false} else 
+                  {
+                   if(event.keyCode == 107) {return false}
+                    else {
+                   if(event.keyCode == 190) {return false}
+                    else {
+                   if(event.keyCode == 109) {return false}
+                    else  {
+                   if(event.keyCode == 187) {return false}
+                    else  {
+                   if(event.keyCode == 189) {return false}
+                   else
+                     {return true} } } } } }"                                       
+                        >
+            
+                        
+                        </v-text-field>
+              </v-flex>
+          </v-flex>
+
 
    </v-card>
           </v-flex>
@@ -671,9 +740,11 @@
 </v-container>
 </template>
 
-
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 <script>
+
 /* eslint-disable */
+
 import moment from 'moment'
   export default {
     data: () => ({   
@@ -792,9 +863,12 @@ import moment from 'moment'
                
             },
            slika: '',
-           materijalniPrihodi: ''
+           materijalniPrihodi: '',
+           kazne: '',
+           pohvale: ''
       }
     }),
+    
       // computed metode su metode koje se desavaju onda kada dodje do nekakvim promena stanja komponente, neki vid watcher-a
     computed: {
       // logika za racunanje progress bar-a kod jmbg, 105 je prva granica a drugi parametar u math.min funkciji sluzi za formiranje 13 podeoka 
@@ -979,11 +1053,16 @@ import moment from 'moment'
 
     console.log(this.editedItem)
         this.$store.dispatch('createUcenik',this.editedItem)
+         this.file=''
+          this.imagePreview=''
         this.$router.push('/ucenici')
       }  
       }
   }
 </script>
+
+
+
 
 <style>
 /* Css koji iskljucuje na input poljima za brojeve HTML5 spinner za brojeve */

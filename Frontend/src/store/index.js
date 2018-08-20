@@ -114,8 +114,8 @@ export const store = new Vuex.Store({
                  }
         
             ]
-            console.log('hello')
-            console.log(novi)
+        
+           
             state.ucenici.push(novi)
 
                
@@ -234,8 +234,9 @@ export const store = new Vuex.Store({
              ucenikId: payload.staratelji.ucenikId
              },
              ucenikEdit.slika= payload.slika,
-             ucenikEdit.materijalniPrihodi=payload.materijalniPrihodi
-           
+             ucenikEdit.materijalniPrihodi=payload.materijalniPrihodi,
+             ucenikEdit.pohvale=payload.pohvale,
+             ucenikEdit.kazne=payload.kazne
              
               
         }
@@ -502,12 +503,14 @@ export const store = new Vuex.Store({
                  
                },
                slika: payload.slika,
-               materijalniPrihodi: payload.materijalniPrihodi
+               materijalniPrihodi: payload.materijalniPrihodi,
+               pohvale: payload.pohvale,
+               kazne: payload.kazne
                }
                
                
             commit('setLoading', true)
-            console.log(ucenik)
+          
             axios.post('http://localhost:50146/api/ucenik',ucenik, {
                 onUploadProgress: uploadEvent =>{
                     console.log('Put request progress:' + Math.round(uploadEvent.loaded / uploadEvent.total * 100) + '%'  )                    
@@ -606,10 +609,12 @@ export const store = new Vuex.Store({
                    ucenikId:  payload.staratelji.ucenikId
                },
                slika:payload.slika,
-               materijalniPrihodi: payload.materijalniPrihodi
+               materijalniPrihodi: payload.materijalniPrihodi,
+               pohvale: payload.pohvale,
+               kazne: payload.kazne
                 
             }
-            console.log(ucenik)
+          
             commit('setLoading', true)
             axios.put('http://localhost:50146/api/ucenik/'+payload.id, ucenik).then(function(response){
                

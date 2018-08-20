@@ -570,15 +570,31 @@
               </v-flex>
               </v-flex>
 
-        <v-flex offset-sm1 xs12>
-              <v-flex xs8 md5 class="ml-1" >
+                    <v-flex offset-sm1 xs12>
+              <v-flex xs8 md5  >
                 <v-text-field
-                   v-model="editedItem.materijalniPrihodi" 
-                               
-                   label="Materijalni prihodi"   
-                  ></v-text-field>
+                  v-model="editedItem.materijalniPrihodi"
+                  label="Materijalni prihodi"
+
+                  input type="number"  onkeydown="javascript: if(event.keyCode == 69) {return false} else 
+                  {
+                   if(event.keyCode == 107) {return false}
+                    else {
+                   if(event.keyCode == 190) {return false}
+                    else {
+                   if(event.keyCode == 109) {return false}
+                    else  {
+                   if(event.keyCode == 187) {return false}
+                    else  {
+                   if(event.keyCode == 189) {return false}
+                   else
+                     {return true} } } } } }"                                       
+                        >
+            
+                        
+                        </v-text-field>
               </v-flex>
-              </v-flex>
+          </v-flex>
 
  <v-container fluid>
                     <v-layout row wrap>
@@ -624,6 +640,63 @@
               </v-flex>
                </transition>
               </v-flex>
+
+
+       <v-flex offset-sm1 xs12>
+              <v-flex xs8 md5  >
+                <v-text-field
+                  v-model="editedItem.pohvale"
+                  label="Broj pohvala"
+              
+                  input type="number"  onkeydown="javascript: if(event.keyCode == 69) {return false} else 
+                  {
+                   if(event.keyCode == 107) {return false}
+                    else {
+                   if(event.keyCode == 190) {return false}
+                    else {
+                   if(event.keyCode == 109) {return false}
+                    else  {
+                   if(event.keyCode == 187) {return false}
+                    else  {
+                   if(event.keyCode == 189) {return false}
+                   else
+                     {return true} } } } } }"                                       
+
+               >
+                        
+                        </v-text-field>
+              </v-flex>
+          </v-flex>
+
+
+
+
+                 <v-flex offset-sm1 xs12>
+              <v-flex xs8 md5  >
+                <v-text-field
+                  v-model="editedItem.kazne"
+                  label="Broj kazni"
+
+                  input type="number"  onkeydown="javascript: if(event.keyCode == 69) {return false} else 
+                  {
+                   if(event.keyCode == 107) {return false}
+                    else {
+                   if(event.keyCode == 190) {return false}
+                    else {
+                   if(event.keyCode == 109) {return false}
+                    else  {
+                   if(event.keyCode == 187) {return false}
+                    else  {
+                   if(event.keyCode == 189) {return false}
+                   else
+                     {return true} } } } } }"                                       
+                        >
+            
+                        
+                        </v-text-field>
+              </v-flex>
+          </v-flex>
+
 
                </v-card>
              </v-flex>         
@@ -919,10 +992,10 @@
                                 {{ props.item.staratelji.ime }}
                               </v-card-text>
                        </v-flex>
+                          </v-flex>
 
-
-                                          
-                               <v-flex xs2>
+                                       <v-flex xs12 v-if=" props.item.staratelji.ime !== ''">    
+                               <v-flex xs2 >
                        <v-subheader class="text-lg-right" v-text="'Prezime staratelja '"></v-subheader>
                        </v-flex>
                         <v-flex xs2>
@@ -930,7 +1003,7 @@
                                 {{ props.item.staratelji.prezime  }}
                               </v-card-text>
                        </v-flex>
-  </v-flex>
+                      </v-flex>
 
                      <v-flex xs2>
                        <v-subheader class="text-lg-right" v-text="'Slika '"></v-subheader>
@@ -940,8 +1013,8 @@
                                 <img v-bind:src="props.item.slika" class="responsive"/>
                               </v-card-text>
                        </v-flex>
-  </v-flex>
-            <v-flex xs2>
+                           </v-flex>
+                             <v-flex xs2>
                        <v-subheader class="text-lg-right" v-text="'Materijalni prihodi '"></v-subheader>
                        </v-flex>
                         <v-flex xs2>
@@ -950,6 +1023,23 @@
                               </v-card-text>
                        </v-flex>
 
+     <v-flex xs2>
+                       <v-subheader class="text-lg-right" v-text="'Broj pohvala '"></v-subheader>
+                       </v-flex>
+                        <v-flex xs2>
+                        <v-card-text class="text-lg-left">
+                                {{ props.item.pohvale }}
+                              </v-card-text>
+                       </v-flex>
+
+                          <v-flex xs2>
+                       <v-subheader class="text-lg-right" v-text="'Broj kazni '"></v-subheader>
+                       </v-flex>
+                        <v-flex xs2>
+                        <v-card-text class="text-lg-left">
+                                {{ props.item.kazne }}
+                              </v-card-text>
+                       </v-flex>
 
                     </v-layout>                  
                 </v-card>
@@ -1004,7 +1094,7 @@ import moment from 'moment'
       // pomocna promenljiva za generisanje podatka o datumu rodjenja
       datum: null,
       search: '',
-                file: '',
+        file: '',
         showPreview: false,
         imagePreview: '',
       // atribut za jmbg progress bar
@@ -1104,7 +1194,9 @@ import moment from 'moment'
                
             },
            slika: '',
-           materijalniPrihodi: ''
+           materijalniPrihodi: '',
+           pohvale: '',
+           kazne: ''
 
 
       },
@@ -1201,7 +1293,9 @@ import moment from 'moment'
               
             },
            slika: '',
-           materijalniPrihodi: ''
+           materijalniPrihodi: '',
+           pohvale: '',
+           kazne: ''
 
       }
     }),
@@ -1342,8 +1436,7 @@ import moment from 'moment'
           this.imagePreview = reader.result;
             this.editedItem.slika= reader.result
         }.bind(this), false);
-         console.log(this.editedItem.slika)
-        console.log( this.file)
+
         /*
           Check to see if the file is not empty.
         */
@@ -1441,7 +1534,8 @@ import moment from 'moment'
         const index = this.ucenici.indexOf(item)
     // pitanje za potrvrdu o brisanju gde ako se odabere potvrdan odgovor vrsi se poziv HTTP delete-a i brisanje ucenika iz vue-x store-a sa splice
     // na mestu index i broj 1 predstavlja broj ucenika koji se brisu
-        confirm('Da li ste sigurni da zelite da izbrisete ovog ucenika?') && this.$store.dispatch('deleteUcenik',item.id) && this.ucenici.splice(index,1)
+        confirm('Da li ste sigurni da zelite da izbrisete ovog ucenika?') && this.$store.dispatch('deleteUcenik',item.id)
+        // && this.ucenici.splice(index,1)
       },
     // ako se odabere opcija close na dijalogu treba editeditem vratiti na pocetni sa praznim podacima
       close () {
@@ -1449,6 +1543,8 @@ import moment from 'moment'
         this.dialog = false
         setTimeout(() => {
            this.editedItem = Object.assign({}, this.defaultItem)
+             this.file=''
+             this.imagePreview=''
            this.datum=null
           this.editedIndex = -1
         }, 300)
@@ -1464,13 +1560,17 @@ import moment from 'moment'
           
           this.$store.dispatch('editUcenik',this.editedItem)
           this.editedItem = Object.assign({}, this.defaultItem)
+          this.file=''
+          this.imagePreview=''
           this.datum=null
         } else {
           // u suprotnom radi se o novom uceniku te se vrsi POST metod nakon kojeg se editedItem i datum postavljaju na pocetne vrednosti
           this.formatiranjeDatuma() 
-
+         
           this.$store.dispatch('createUcenik',this.editedItem)
           this.editedItem = Object.assign({}, this.defaultItem)
+          this.file=''
+          this.imagePreview=''
           this.datum=null
         }
         this.close()
