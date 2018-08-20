@@ -15,6 +15,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\DomUcenikaSvilajnac.IntegratedTests\DomUcenikaSvilajnac.IntegratedTests.csproj" />
     <ProjectReference Include="..\DomUcenikaSvilajnac\DomUcenikaSvilajnac.csproj" />
   </ItemGroup>
 

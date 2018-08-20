@@ -399,6 +399,7 @@ namespace DomUcenikaSvilajnac.Mapping
                     }
                 }
             });
+
             CreateMap<List<PutRoditeljaResource>, List<Roditelj>>()
             .AfterMap((resurs, roditelj) =>
             {
@@ -443,8 +444,6 @@ namespace DomUcenikaSvilajnac.Mapping
 
 
 
-
-
             //oovo ispdo treba da se uradi
             CreateMap<MajkaResource, Roditelj>()
                 .ForMember(v => v.Id, opt => opt.MapFrom(src => src.IdMajke))
@@ -457,19 +456,14 @@ namespace DomUcenikaSvilajnac.Mapping
 
 
 
-
-
-
-
-
-
             CreateMap<PutRoditeljaResource, MajkaResource>();
             CreateMap<MajkaResource, PutRoditeljaResource>();
 
-            //CreateMap<Staratelj, StarateljResource>();
-            //CreateMap<StarateljResource, Staratelj>();
+            CreateMap<Staratelj, StarateljResource>();
+            CreateMap<StarateljResource, Staratelj>()
+                .ForMember(v => v.Ucenik, opt => opt.Ignore());
 
-      
+
 
 
         }

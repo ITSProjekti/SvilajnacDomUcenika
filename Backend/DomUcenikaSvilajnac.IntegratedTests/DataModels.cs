@@ -32,6 +32,9 @@ namespace DomUcenikaSvilajnac.IntegratedTests
 
         UpisanaSkolaResource usr = new UpisanaSkolaResource() { Id = 333 };
 
+        TipPorodiceResource tp = new TipPorodiceResource() { Id = 4 };
+
+
 
 
         Collection<Roditelj> roditelji = new Collection<Roditelj>() {
@@ -43,8 +46,6 @@ namespace DomUcenikaSvilajnac.IntegratedTests
         /// </summary>
         public PostUcenikaResource Ucenik()
         {
-
-
             return new PostUcenikaResource
             {
                 Ime = "Pera",
@@ -68,35 +69,54 @@ namespace DomUcenikaSvilajnac.IntegratedTests
                 Telefon = t,
                 Smer = sr,
                 UpisanaSkola = usr,
-                PrethodniUspeh = 4.55f
+                PrethodniUspeh = 4.55f,
+                Pohvale = "2",
+                Kazne = "1",
+                MaterijalniPrihodi = 15,
+                TipPorodice = tp,
+                Slika = "1010101010101"
             };
         }
         public Ucenik Ucenik2()
         {
             Ucenik ucenik = new Ucenik()
             {
-                Ime = "Igor",
-                Prezime = "Marjanovic",
-                JMBG = "1234567891234",
-                DatumRodjenja = DateTime.Now,
+                Id = 1,
+                Ime = "Pera",
+                Prezime = "Peric",
+                JMBG = "1231231231233",
+                DatumRodjenja = new DateTime(1998, 04, 30),
                 DrzavaRodjenjaId = 1,
-                Adresa = "Savnicka 25",
-                //MestoRodjenjaId = 5,
-                //MestoPrebivalistaId = 11,
-                //MestoZavrseneSkoleId = 4,
-                PrethodnaSkolaId = 55,
-                UpisanaSkolaId = 44,
-                //OpstinaId = 11,
-                //OpstinaPrebivalistaId = 33,
+                MestoPrebivalistaId = 1,
+                MestoRodjenjaId = 1,
+                MestoZavrseneSkoleId = 1,
+                OpstinaPrebivalistaId = 1,
                 PolId = 1,
-                PostanskiBrojId = 55,
-                RazredId = 4,
+                Adresa = "Milutaina Milankovica 74",
+                TelefonId = 1,
+                PostanskiBrojId = 1,
+                UpisanaSkolaId = 1,
                 SmerId = 1,
-                PrethodniUspeh = 4.22f,
-                Roditelji = roditelji
-            };
+                RazredId = 1,
+                PrethodnaSkolaId = 1,
+                PrethodniUspeh = 4.55f,
+                Kazne = "1",
+                Pohvale = "1",
+                Slika = "132312312321321",
+                Staratelji = new Collection<Staratelj>()
+                {
+                    new Staratelj()
+                    {
+                        Id = 1,
+                        Ime = "StarateljIme",
+                        Prezime = "StarateljPrezime",
+                        UcenikId = 1
+                    }
+                },
+                MaterijalniPrihodi = 5,
+                TipPorodiceId = 3
+        };
             return ucenik;
-
         }
         public PostRoditeljaResource roditeljResurs = new PostRoditeljaResource()
         {

@@ -76,8 +76,7 @@ namespace DomUcenikaSvilajnac.DAL.Context.Migrations
                                "UpisanaSkolaId, MestoPrebivalistaId, MestoRodjenjaId, MestoZavrseneSkoleId, SmerId, RazredId, PrethodniUspeh, Slika, TipPorodiceId) " +
                                "values " +
                                "('4-4-2010 12:00:00 AM', 'Pera', '1234567890123', 151, 'Perić', 151, 151, 1, (select top 1 Id from BrojeviTelefona)," +
-                               " 'Atlanitda 15', '4-4-2010 12:00:00 AM', 151, 151, 151, 151, 151, 151, 4, 1, 5, 'slika', 1)");
-
+                               " 'Atlantida 15', '4-4-2010 12:00:00 AM', 151, 151, 151, 151, 151, 151, 4, 1, 5, 'slika', 1)");
 
 
             migrationBuilder.Sql("insert into Roditelji (Ime, Prezime, UcenikId, BrojTelefona, StepenObrazovanjaId) " +
@@ -86,12 +85,6 @@ namespace DomUcenikaSvilajnac.DAL.Context.Migrations
 
 
             
-
-            
-
-            
-
-
             migrationBuilder.CreateIndex(
                 name: "IX_Ucenici_TipPorodiceId",
                 table: "Ucenici",
