@@ -92,18 +92,18 @@ namespace DomUcenikaSvilajnac.Controllers
         /// Dodavanje novog reda u tabeli, tj. nove drzave.
         /// </summary>
         [HttpPost]
-        public async Task<IActionResult> PostDrzava([FromBody] DrzavaResource drzava)
+        public async Task<IActionResult> PostDrzava([FromBody] SaveDrzavuResource drzava)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
-            var novaDrzava = Mapper.Map<DrzavaResource, Drzava>(drzava);
+            var novaDrzava = Mapper.Map<SaveDrzavuResource, Drzava>(drzava);
 
             UnitOfWork.Drzave.Add(novaDrzava);
             await UnitOfWork.SaveChangesAsync();
 
-            drzava = Mapper.Map<Drzava, DrzavaResource>(novaDrzava);
+            drzava = Mapper.Map<Drzava, SaveDrzavuResource>(novaDrzava);
 
             return Ok(novaDrzava);
         }
