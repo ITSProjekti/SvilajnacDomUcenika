@@ -49,6 +49,7 @@ namespace DomUcenikaSvilajnac.DAL.RepoPattern
             Stepeni = new StepenStrucneSpremeRepository(_context);
             TipoviPorodice = new TipPorodiceRepository(_context);
             Staratelji = new StarateljRepository(_context);
+            Kontinenti = new KontinentRepository(_context);
 
     }
 
@@ -71,6 +72,7 @@ namespace DomUcenikaSvilajnac.DAL.RepoPattern
         public IStepenStrucneSpremeRepository Stepeni { get; set; }
         public ITipPorodiceRepository TipoviPorodice  { get; set; }
         public IStarateljRepository Staratelji { get; set; }
+        public IKontinentRepository Kontinenti { get; set; }
 
         /// <summary>
         /// Izvršava zadatke definisane za aplikaciju povezane sa oslobađanjem, puštanjem ili poništavanjem nepovezanih resursa.
@@ -294,6 +296,15 @@ namespace DomUcenikaSvilajnac.DAL.RepoPattern
         public async Task<Staratelj> selektIdStarateljaUcenika(int UcenikId)
         {
             var nesto = await _context.Staratelji.SingleOrDefaultAsync(n => n.UcenikId == UcenikId);
+            return nesto;
+        }
+
+
+        public async Task<Drzava> GetDrzaveKontinente (int id)
+        {
+            var nesto = await _context.Drzave.Include(v => v.Kontinenti)
+                .ThenInclude(vf => vf.Kontinent)
+                .SingleOrDefaultAsync(v => v.Id == id);
             return nesto;
         }
     }

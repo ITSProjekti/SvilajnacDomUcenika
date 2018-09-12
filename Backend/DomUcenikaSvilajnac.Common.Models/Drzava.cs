@@ -19,11 +19,14 @@ namespace DomUcenikaSvilajnac.Common.Models
 
         ICollection<Ucenik> Ucenici { get; set; }
 
+      
+
+        public ICollection<DrzavaKontinent> Kontinenti { get; set; }
         public Drzava()
         {
             Ucenici = new Collection<Ucenik>();
+            Kontinenti = new Collection<DrzavaKontinent>();
         }
-
 
     }
 }

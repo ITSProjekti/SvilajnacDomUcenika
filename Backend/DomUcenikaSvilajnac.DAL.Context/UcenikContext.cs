@@ -31,6 +31,7 @@ namespace DomUcenikaSvilajnac.DAL.Context
         public DbSet<StepenStrucneSpreme> Stepeni { get; set; }
         public DbSet<TipPorodice> TipoviPorodice { get; set; }
         public DbSet<Staratelj> Staratelji { get; set; }
+        public DbSet<Kontinent> Kontinenti { get; set; }
 
         /// <summary>
         /// Inicijalizuje se instaca UcenikContext klase.
@@ -40,9 +41,10 @@ namespace DomUcenikaSvilajnac.DAL.Context
 
         }
 
-        //protected override void OnModelCreating(ModelBuilder modelBuilder)
-        //{
-          
-        //}
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<DrzavaKontinent>().HasKey(vf =>
+            new { vf.DrzavaId, vf.KontinentId });
+        }
     }
 }

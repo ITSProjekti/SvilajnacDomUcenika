@@ -41,19 +41,22 @@ namespace DomUcenikaSvilajnac.Controllers
         [HttpGet("{id}")]
         public async Task<IActionResult> GetDrzavaById([FromRoute] int id)
         {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
+            //if (!ModelState.IsValid)
+            //{
+            //    return BadRequest(ModelState);
+            //}
 
-            var drzava = await UnitOfWork.Drzave.GetAsync(id);
-            var drzavaNova = Mapper.Map<Drzava, DrzavaResource>(drzava);
-            if (drzava == null)
-            {
-                return NotFound();
-            }
+            //var drzava = await UnitOfWork.Drzave.GetAsync(id);
+            //var drzavaNova = Mapper.Map<Drzava, DrzavaResource>(drzava);
+            //if (drzava == null)
+            //{
+            //    return NotFound();
+            //}
+          var nesto = await  UnitOfWork.GetDrzaveKontinente(id);
 
-            return Ok(drzavaNova);
+
+
+            return Ok(nesto);
         }
         /// <summary>
         /// Metoda za update, menja podatke u nekom redu u tabeli, tj. o nekoj drzavi na osnovu prosledjenog Id-a 

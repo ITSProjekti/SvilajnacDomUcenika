@@ -11,9 +11,10 @@ using System;
 namespace DomUcenikaSvilajnac.DAL.Context.Migrations
 {
     [DbContext(typeof(UcenikContext))]
-    partial class UcenikContextModelSnapshot : ModelSnapshot
+    [Migration("20180912084542_Kontinent")]
+    partial class Kontinent
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -31,19 +32,6 @@ namespace DomUcenikaSvilajnac.DAL.Context.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Drzave");
-                });
-
-            modelBuilder.Entity("DomUcenikaSvilajnac.Common.Models.DrzavaKontinent", b =>
-                {
-                    b.Property<int>("DrzavaId");
-
-                    b.Property<int>("KontinentId");
-
-                    b.HasKey("DrzavaId", "KontinentId");
-
-                    b.HasIndex("KontinentId");
-
-                    b.ToTable("DrzavaKontinent");
                 });
 
             modelBuilder.Entity("DomUcenikaSvilajnac.Common.Models.Kontinent", b =>
@@ -349,19 +337,6 @@ namespace DomUcenikaSvilajnac.DAL.Context.Migrations
                     b.HasIndex("OpstinaId");
 
                     b.ToTable("SrednjeSkole");
-                });
-
-            modelBuilder.Entity("DomUcenikaSvilajnac.Common.Models.DrzavaKontinent", b =>
-                {
-                    b.HasOne("DomUcenikaSvilajnac.Common.Models.Drzava", "Drzava")
-                        .WithMany("Kontinenti")
-                        .HasForeignKey("DrzavaId")
-                        .OnDelete(DeleteBehavior.Cascade);
-
-                    b.HasOne("DomUcenikaSvilajnac.Common.Models.Kontinent", "Kontinent")
-                        .WithMany()
-                        .HasForeignKey("KontinentId")
-                        .OnDelete(DeleteBehavior.Cascade);
                 });
 
             modelBuilder.Entity("DomUcenikaSvilajnac.Common.Models.PostanskiBroj", b =>

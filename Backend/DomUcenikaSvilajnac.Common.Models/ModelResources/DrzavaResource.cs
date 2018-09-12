@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Text;
 
 namespace DomUcenikaSvilajnac.Common.Models.ModelResources
@@ -12,5 +13,12 @@ namespace DomUcenikaSvilajnac.Common.Models.ModelResources
     {
         public int Id { get; set; }
         public string NazivDrzave { get; set; }
+
+        public ICollection<KeyValueResource> Kontinenti { get; set; }
+        public DrzavaResource()
+        {
+            Kontinenti = new Collection<KeyValueResource>();
+        }
+
     }
 }

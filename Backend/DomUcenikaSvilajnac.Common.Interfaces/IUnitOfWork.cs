@@ -36,6 +36,7 @@ namespace DomUcenikaSvilajnac.Common.Interfaces
         IStepenStrucneSpremeRepository Stepeni { get; }
         ITipPorodiceRepository TipoviPorodice { get; }
         IStarateljRepository Staratelji { get; }
+        IKontinentRepository Kontinenti { get; }
 
         int SaveChanges();
         Task<int> SaveChangesAsync();
@@ -59,5 +60,9 @@ namespace DomUcenikaSvilajnac.Common.Interfaces
         //metoda za test
         Task<Staratelj> selektIdStarateljaUcenika(int UcenikId);
 
+
+
+
+        Task<Drzava> GetDrzaveKontinente(int id);
     }
 }

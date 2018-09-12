@@ -462,7 +462,33 @@ namespace DomUcenikaSvilajnac.Mapping
             CreateMap<Staratelj, StarateljResource>();
             CreateMap<StarateljResource, Staratelj>()
                 .ForMember(v => v.Ucenik, opt => opt.Ignore());
-            
+
+
+            //domain to api resource
+            CreateMap<Drzava, DrzavaResource>()
+                .ForMember(vr => vr.Kontinenti, opt => opt.MapFrom(v => v.Kontinenti.Select(vf =>  new KeyValueResource {Id = vf.Kontinent.Id, Naziv = vf.Kontinent.Naziv })));
+
+
+            //resource to domain
+
+            CreateMap<SaveDrzavuResource, Drzava>()
+             // .ForMember(vr => vr.Kontinenti, opt => opt.MapFrom(v => v.Kontinenti.Select(id => new DrzavaKontinent {KontinentId = id})));
+             .ForMember(v => v.Kontinenti, opt => opt.Ignore())
+             .AfterMap((vr, v) =>
+             {
+                 var removedKontinents = v.Kontinenti.Where(f => !vr.Kontinenti.Contains(f.KontinentId));
+                 foreach (var f in removedKontinents)
+                     v.Kontinenti.Remove(f);
+
+                 //dodavanje novih kontinenata xD
+                 var addedKontinenta = vr.Kontinenti.Where(id => !v.Kontinenti.Any(f => f.KontinentId == id)).Select(id => new DrzavaKontinent { KontinentId = id });
+                 foreach (var f in addedKontinenta)
+                     v.Kontinenti.Add(f);
+                 
+             });
+
+
+
         }
     }
 }
