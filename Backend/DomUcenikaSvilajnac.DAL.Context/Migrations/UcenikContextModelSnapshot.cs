@@ -4,8 +4,6 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
-using Microsoft.EntityFrameworkCore.Storage;
-using Microsoft.EntityFrameworkCore.Storage.Internal;
 using System;
 
 namespace DomUcenikaSvilajnac.DAL.Context.Migrations
@@ -233,8 +231,6 @@ namespace DomUcenikaSvilajnac.DAL.Context.Migrations
                         .IsRequired()
                         .HasMaxLength(13);
 
-                    b.Property<string>("Kazne");
-
                     b.Property<int>("MaterijalniPrihodi");
 
                     b.Property<int?>("MestoPrebivalistaId");
@@ -246,8 +242,6 @@ namespace DomUcenikaSvilajnac.DAL.Context.Migrations
                     b.Property<int?>("OpstinaId");
 
                     b.Property<int?>("OpstinaPrebivalistaId");
-
-                    b.Property<string>("Pohvale");
 
                     b.Property<int>("PolId");
 
