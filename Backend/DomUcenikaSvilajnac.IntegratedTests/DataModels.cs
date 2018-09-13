@@ -70,8 +70,6 @@ namespace DomUcenikaSvilajnac.IntegratedTests
                 Smer = sr,
                 UpisanaSkola = usr,
                 PrethodniUspeh = 4.55f,
-                Pohvale = "2",
-                Kazne = "1",
                 MaterijalniPrihodi = 15,
                 TipPorodice = tp,
                 Slika = "1010101010101"
@@ -87,10 +85,10 @@ namespace DomUcenikaSvilajnac.IntegratedTests
                 JMBG = "1231231231233",
                 DatumRodjenja = new DateTime(1998, 04, 30),
                 DrzavaRodjenjaId = 1,
-                MestoPrebivalistaId = 1,
-                MestoRodjenjaId = 1,
-                MestoZavrseneSkoleId = 1,
-                OpstinaPrebivalistaId = 1,
+                //MestoPrebivalistaId = 1,
+                //MestoRodjenjaId = 1,
+                //MestoZavrseneSkoleId = 1,
+                //OpstinaPrebivalistaId = 1,
                 PolId = 1,
                 Adresa = "Milutaina Milankovica 74",
                 TelefonId = 1,
@@ -100,8 +98,6 @@ namespace DomUcenikaSvilajnac.IntegratedTests
                 RazredId = 1,
                 PrethodnaSkolaId = 1,
                 PrethodniUspeh = 4.55f,
-                Kazne = "1",
-                Pohvale = "1",
                 Slika = "132312312321321",
                 Staratelji = new Collection<Staratelj>()
                 {

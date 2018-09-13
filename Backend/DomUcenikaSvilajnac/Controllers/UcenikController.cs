@@ -114,6 +114,14 @@ namespace DomUcenikaSvilajnac.Controllers
             StarateljController starateljKontroler = new StarateljController(_mapper, UnitOfWork);
             var starateljUcenika = await UnitOfWork.selektIdStarateljaUcenika(stariUcenik.Id);
 
+            bool noviStarateljKrozPut = false;
+            if (starateljUcenika == null && ucenik.Staratelji.Ime != "")
+            {
+                await starateljKontroler.PostStaratelj(ucenik.Staratelji);
+                noviStarateljKrozPut = true;
+            }
+             
+
 
             await telefonKontroler.PutTelefon(telefon.Id, telefon);
             if (id != stariUcenik.Id)
@@ -127,16 +135,17 @@ namespace DomUcenikaSvilajnac.Controllers
 
             //u zavisnosti od tipa porodice, ako ucenik nema staratelja u bazi nece postojati ni jedan staratelj tog ucenika
             //ovo treba promeniti ako se budemo odlucili da arhiviramo sve tabele
-            if (ucenik.TipPorodice.Id == 4 || ucenik.TipPorodice.Id == 5)
+            if ((ucenik.TipPorodice.Id == 4 || ucenik.TipPorodice.Id == 5) && starateljUcenika != null)
             {
 
                 ucenik.Staratelji.UcenikId = stariUcenik.Id;
                 await starateljKontroler.PutStaratelj(starateljUcenika.Id, ucenik.Staratelji);
             }
-            else
+            else if (!noviStarateljKrozPut)
             {
                 //ovaj deo treba ponovo pogledati ako zelimo arhivirati stare staratelje
-                await starateljKontroler.DeleteStaratelj(starateljUcenika.Id);
+                if (starateljUcenika !=null)
+                     await starateljKontroler.DeleteStaratelj(starateljUcenika.Id);
                 stariUcenik.Staratelji.Add(new Staratelj { Id = 0, Ime = "", Prezime = "", UcenikId = 0 });
                 ucenik.Staratelji = null;
             }
@@ -150,7 +159,7 @@ namespace DomUcenikaSvilajnac.Controllers
             await roditeljKontroler.PutRoditelj(novi.Id, roditeljResurs);
 
             var noviUcenik = await UnitOfWork.mapiranjeZaPutUcenika(id);
-            if (ucenik.TipPorodice.Id != 4 && ucenik.TipPorodice.Id != 5)
+            if ((ucenik.TipPorodice.Id != 4 && ucenik.TipPorodice.Id != 5) && starateljUcenika != null)
             {
                 await starateljKontroler.DeleteStaratelj(noviUcenik.Staratelji.Id);
             }
@@ -226,10 +235,6 @@ namespace DomUcenikaSvilajnac.Controllers
             ucenik = _mapper.Map<Ucenik, PostUcenikaResource>(noviUcenik);
 
             var mapiranUcenik = await UnitOfWork.mapiranjeZaPostUcenika(ucenik);
-
-           
-
-
             return Ok(mapiranUcenik);
         }
 

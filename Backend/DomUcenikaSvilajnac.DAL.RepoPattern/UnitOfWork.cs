@@ -49,6 +49,7 @@ namespace DomUcenikaSvilajnac.DAL.RepoPattern
             Stepeni = new StepenStrucneSpremeRepository(_context);
             TipoviPorodice = new TipPorodiceRepository(_context);
             Staratelji = new StarateljRepository(_context);
+            Pohvale = new PohvalaRepository(_context);
 
     }
 
@@ -71,6 +72,7 @@ namespace DomUcenikaSvilajnac.DAL.RepoPattern
         public IStepenStrucneSpremeRepository Stepeni { get; set; }
         public ITipPorodiceRepository TipoviPorodice  { get; set; }
         public IStarateljRepository Staratelji { get; set; }
+        public IPohvalaRepository Pohvale { get; set; }
 
         /// <summary>
         /// Izvršava zadatke definisane za aplikaciju povezane sa oslobađanjem, puštanjem ili poništavanjem nepovezanih resursa.
@@ -141,6 +143,7 @@ namespace DomUcenikaSvilajnac.DAL.RepoPattern
                 .Include(rod=> rod.Roditelji)
                 .Include(tipP=> tipP.TipPorodice)
                 .Include(st=> st.Staratelji)
+                .Include(poh=> poh.Pohvala)
                 .ToListAsync();
 
             foreach (var item in podaciUcenika)
@@ -178,6 +181,7 @@ namespace DomUcenikaSvilajnac.DAL.RepoPattern
                 .Include(rod => rod.Roditelji)
                  .Include(tipP => tipP.TipPorodice)
                  .Include(st=> st.Staratelji)
+                 .Include(poh => poh.Pohvala)
                 .SingleOrDefaultAsync(x => x.Id == id);
             return Mapper.Map<Ucenik, UcenikResource>(podaciUcenikaById);
         }
@@ -199,6 +203,7 @@ namespace DomUcenikaSvilajnac.DAL.RepoPattern
                 .Include(r => r.Razred)
                 .Include(rod => rod.Roditelji)
                  .Include(tipP => tipP.TipPorodice)
+                 .Include(poh => poh.Pohvala)
                 .SingleOrDefaultAsync(x => x.Id == id);
             return Mapper.Map<Ucenik, PutUcenikaResource>(podaciUcenika);
         }
@@ -220,6 +225,7 @@ namespace DomUcenikaSvilajnac.DAL.RepoPattern
                 .Include(s => s.Smer)
                 .Include(r => r.Razred)
                 .Include(tipP=> tipP.TipPorodice)
+                .Include(poh => poh.Pohvala)
                 .SingleOrDefaultAsync(x => x.Id == ucenik.Id);
 
             return Mapper.Map<Ucenik, PostUcenikaResource>(podaciUcenika);
@@ -245,6 +251,7 @@ namespace DomUcenikaSvilajnac.DAL.RepoPattern
                 .Include(rod=> rod.Roditelji)
                 .Include(tipP => tipP.TipPorodice)
                 .Include(st=> st.Staratelji)
+                .Include(poh => poh.Pohvala)
                 .SingleOrDefaultAsync(x => x.Id == ucenik.Id);
 
             return Mapper.Map<Ucenik, UcenikResource>(podaciUcenika);
@@ -294,6 +301,7 @@ namespace DomUcenikaSvilajnac.DAL.RepoPattern
         public async Task<Staratelj> selektIdStarateljaUcenika(int UcenikId)
         {
             var nesto = await _context.Staratelji.SingleOrDefaultAsync(n => n.UcenikId == UcenikId);
+          
             return nesto;
         }
     }
