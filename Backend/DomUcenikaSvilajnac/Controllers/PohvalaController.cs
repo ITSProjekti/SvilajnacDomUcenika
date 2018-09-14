@@ -92,7 +92,7 @@ namespace DomUcenikaSvilajnac.Controllers
 
             pohvala = Mapper.Map<Pohvala, PohvalaResource>(novaPohvala);
 
-            return Ok(novaPohvala);
+            return Ok(pohvala);
         }
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeletePohvala([FromRoute] int id)

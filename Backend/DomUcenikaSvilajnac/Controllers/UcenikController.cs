@@ -167,10 +167,11 @@ namespace DomUcenikaSvilajnac.Controllers
             return Ok(noviUcenik);
         }
 
+
         /// <summary>
         /// Dodavanje novog reda u tabeli, tj. novog ucenika.
         /// </summary>
-        // POST: api/Ucenik
+            // POST: api/Ucenik
         [HttpPost]
         public async Task<IActionResult> PostUcenik([FromBody] PostUcenikaResource ucenik)
         {

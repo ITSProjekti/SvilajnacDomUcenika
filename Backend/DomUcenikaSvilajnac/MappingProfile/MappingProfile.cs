@@ -462,7 +462,10 @@ namespace DomUcenikaSvilajnac.Mapping
             CreateMap<Staratelj, StarateljResource>();
             CreateMap<StarateljResource, Staratelj>()
                 .ForMember(v => v.Ucenik, opt => opt.Ignore());
-            
+
+            CreateMap<Pohvala, PohvalaResource>();
+            CreateMap<PohvalaResource, Pohvala>();
+
         }
     }
 }
