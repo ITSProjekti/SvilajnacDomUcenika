@@ -50,7 +50,7 @@ namespace DomUcenikaSvilajnac.DAL.RepoPattern
             TipoviPorodice = new TipPorodiceRepository(_context);
             Staratelji = new StarateljRepository(_context);
             Pohvale = new PohvalaRepository(_context);
-
+            VaspitneGrupe = new VaspitnaGrupaRepository(_context);
     }
 
         /// <summary>
@@ -73,6 +73,7 @@ namespace DomUcenikaSvilajnac.DAL.RepoPattern
         public ITipPorodiceRepository TipoviPorodice  { get; set; }
         public IStarateljRepository Staratelji { get; set; }
         public IPohvalaRepository Pohvale { get; set; }
+        public IVaspitnaGrupaRepository VaspitneGrupe { get; set; }
 
         /// <summary>
         /// Izvršava zadatke definisane za aplikaciju povezane sa oslobađanjem, puštanjem ili poništavanjem nepovezanih resursa.

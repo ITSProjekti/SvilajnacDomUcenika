@@ -37,6 +37,7 @@ namespace DomUcenikaSvilajnac.Common.Interfaces
         ITipPorodiceRepository TipoviPorodice { get; }
         IStarateljRepository Staratelji { get; }
         IPohvalaRepository Pohvale { get; }
+        IVaspitnaGrupaRepository VaspitneGrupe { get; }
 
         int SaveChanges();
         Task<int> SaveChangesAsync();
