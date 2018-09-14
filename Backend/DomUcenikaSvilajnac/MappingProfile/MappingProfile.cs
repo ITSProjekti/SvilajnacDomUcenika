@@ -76,8 +76,8 @@ namespace DomUcenikaSvilajnac.Mapping
                 .ForMember(v => v.Razred, opt => opt.Ignore())
                 .ForMember(v => v.TipPorodice, opt => opt.Ignore())
                 .ForMember(v => v.Staratelji, opt => opt.Ignore())
-                .ForMember(v => v.Pohvala, opt => opt.Ignore());
-
+                .ForMember(v => v.Pohvala, opt => opt.Ignore())
+                .ForMember(v => v.Kazna, opt => opt.Ignore());
 
             //mapira Ucenik u PostUcenikaResource, odnosno omogucava da se datum unese putem tri promenljive, Dan, Mesec, Godina.
             CreateMap<Ucenik, PostUcenikaResource>()
@@ -137,7 +137,8 @@ namespace DomUcenikaSvilajnac.Mapping
                 .ForMember(v => v.Razred, opt => opt.Ignore())
                 .ForMember(v => v.TipPorodice, opt => opt.Ignore())
                 .ForMember(v => v.Staratelji, opt => opt.Ignore())
-                .ForMember(v => v.Pohvala, opt => opt.Ignore());
+                .ForMember(v => v.Pohvala, opt => opt.Ignore())
+                .ForMember(v => v.Kazna, opt => opt.Ignore());
 
 
 
