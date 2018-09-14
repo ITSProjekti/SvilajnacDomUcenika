@@ -11,9 +11,10 @@ using System;
 namespace DomUcenikaSvilajnac.DAL.Context.Migrations
 {
     [DbContext(typeof(UcenikContext))]
-    partial class UcenikContextModelSnapshot : ModelSnapshot
+    [Migration("20180914085332_KaznaUcenika")]
+    partial class KaznaUcenika
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -352,18 +353,6 @@ namespace DomUcenikaSvilajnac.DAL.Context.Migrations
                     b.HasIndex("OpstinaId");
 
                     b.ToTable("SrednjeSkole");
-                });
-
-            modelBuilder.Entity("DomUcenikaSvilajnac.Common.Models.VaspitnaGrupa", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd();
-
-                    b.Property<string>("Naziv");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("VaspitneGrupe");
                 });
 
             modelBuilder.Entity("DomUcenikaSvilajnac.Common.Models.PostanskiBroj", b =>

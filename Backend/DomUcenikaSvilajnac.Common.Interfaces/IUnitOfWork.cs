@@ -26,10 +26,8 @@ namespace DomUcenikaSvilajnac.Common.Interfaces
         ITelefonRepository Telefoni { get; }
         IPostanskiBrojRepository Brojevi { get; }
         IPrethodnaSkolaRepository PrethodneSkole { get; }
-
         IUpisanaSkola UpisaneSkole { get; }
         IMestoRepository    Mesta { get; }
-
         ISmerRepository Smerovi { get; }
         IRazredRpository Razredi { get; }
         IRoditeljRepository Roditelji { get; }
@@ -38,6 +36,9 @@ namespace DomUcenikaSvilajnac.Common.Interfaces
         IStarateljRepository Staratelji { get; }
         IPohvalaRepository Pohvale { get; }
         IVaspitnaGrupaRepository VaspitneGrupe { get; }
+        IKaznaRepository Kazne { get; }
+
+
 
         int SaveChanges();
         Task<int> SaveChangesAsync();
