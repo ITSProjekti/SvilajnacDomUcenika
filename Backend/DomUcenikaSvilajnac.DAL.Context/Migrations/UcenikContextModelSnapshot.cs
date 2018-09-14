@@ -257,8 +257,6 @@ namespace DomUcenikaSvilajnac.DAL.Context.Migrations
                         .IsRequired()
                         .HasMaxLength(13);
 
-                    b.Property<int>("KaznaId");
-
                     b.Property<int>("MaterijalniPrihodi");
 
                     b.Property<int?>("MestoPrebivalistaId");
@@ -270,8 +268,6 @@ namespace DomUcenikaSvilajnac.DAL.Context.Migrations
                     b.Property<int?>("OpstinaId");
 
                     b.Property<int?>("OpstinaPrebivalistaId");
-
-                    b.Property<int>("PohvalaId");
 
                     b.Property<int>("PolId");
 
@@ -304,8 +300,6 @@ namespace DomUcenikaSvilajnac.DAL.Context.Migrations
 
                     b.HasIndex("DrzavaRodjenjaId");
 
-                    b.HasIndex("KaznaId");
-
                     b.HasIndex("MestoPrebivalistaId");
 
                     b.HasIndex("MestoRodjenjaId");
@@ -315,8 +309,6 @@ namespace DomUcenikaSvilajnac.DAL.Context.Migrations
                     b.HasIndex("OpstinaId");
 
                     b.HasIndex("OpstinaPrebivalistaId");
-
-                    b.HasIndex("PohvalaId");
 
                     b.HasIndex("PolId");
 
@@ -410,11 +402,6 @@ namespace DomUcenikaSvilajnac.DAL.Context.Migrations
                         .HasForeignKey("DrzavaRodjenjaId")
                         .OnDelete(DeleteBehavior.Cascade);
 
-                    b.HasOne("DomUcenikaSvilajnac.Common.Models.Kazna", "Kazna")
-                        .WithMany()
-                        .HasForeignKey("KaznaId")
-                        .OnDelete(DeleteBehavior.Cascade);
-
                     b.HasOne("DomUcenikaSvilajnac.Common.Models.Mesto", "MestoPrebivalista")
                         .WithMany()
                         .HasForeignKey("MestoPrebivalistaId");
@@ -434,11 +421,6 @@ namespace DomUcenikaSvilajnac.DAL.Context.Migrations
                     b.HasOne("DomUcenikaSvilajnac.Common.Models.Opstina", "OpstinaPrebivalista")
                         .WithMany()
                         .HasForeignKey("OpstinaPrebivalistaId");
-
-                    b.HasOne("DomUcenikaSvilajnac.Common.Models.Pohvala", "Pohvala")
-                        .WithMany()
-                        .HasForeignKey("PohvalaId")
-                        .OnDelete(DeleteBehavior.Cascade);
 
                     b.HasOne("DomUcenikaSvilajnac.Common.Models.Pol", "Pol")
                         .WithMany()

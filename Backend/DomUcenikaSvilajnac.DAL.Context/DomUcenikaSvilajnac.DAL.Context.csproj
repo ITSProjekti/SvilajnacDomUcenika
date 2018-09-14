@@ -37,6 +37,9 @@
     <Compile Remove="Migrations\20180817083858_SlikaUcenikaIOstaliAtributi.cs" />
     <Compile Remove="Migrations\20180817113709_PohvaleIKazneUcenika.cs" />
     <Compile Remove="Migrations\20180913085708_PohvalaUcenika.cs" />
+    <Compile Remove="Migrations\20180913090107_PohvalaUcenika.cs" />
+    <Compile Remove="Migrations\20180914083723_VaspitnaGrupaUcenika.cs" />
+    <Compile Remove="Migrations\20180914085332_KaznaUcenika.cs" />
   </ItemGroup>
 
   <ItemGroup>

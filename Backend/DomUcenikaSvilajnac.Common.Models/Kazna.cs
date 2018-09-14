@@ -9,11 +9,11 @@ namespace DomUcenikaSvilajnac.Common.Models
     {
         public int Id { get; set; }
         public string Opis { get; set; }
-        ICollection<Ucenik> Ucenici { get; set; }
+        //ICollection<Ucenik> Ucenici { get; set; }
 
-        public Kazna()
-        {
-            Ucenici = new Collection<Ucenik>();
-        }
+        //public Kazna()
+        //{
+        //    Ucenici = new Collection<Ucenik>();
+        //}
     }
 }

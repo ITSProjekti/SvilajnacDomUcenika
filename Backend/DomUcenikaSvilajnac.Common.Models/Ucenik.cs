@@ -114,11 +114,7 @@ namespace DomUcenikaSvilajnac.Common.Models
         public int MaterijalniPrihodi { get; set; }
 
 
-        public int PohvalaId { get; set; }
-        public Pohvala Pohvala { get; set; }
-
-        public int KaznaId { get; set; }
-        public Kazna Kazna { get; set; }
+    
 
 
     }
