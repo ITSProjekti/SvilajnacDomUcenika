@@ -26,7 +26,7 @@ namespace DomUcenikaSvilajnac.Controllers
         /// Vraca listu svih polova koje se trenutno nalaze u bazi.
         /// </summary>
         [HttpGet]
-        public async Task<IEnumerable<StarateljResource>> GetPolovi()
+        public async Task<IEnumerable<StarateljResource>> GetStaratelji()
         {
             var listaStaratelja = await UnitOfWork.Staratelji.GetAllAsync();
             return Mapper.Map<List<Staratelj>, List<StarateljResource>>(listaStaratelja.ToList());

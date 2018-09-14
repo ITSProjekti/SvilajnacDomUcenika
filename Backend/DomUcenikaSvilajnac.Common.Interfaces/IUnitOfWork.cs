@@ -62,5 +62,7 @@ namespace DomUcenikaSvilajnac.Common.Interfaces
         //metoda za test
         Task<Staratelj> selektIdStarateljaUcenika(int UcenikId);
 
+        Task<IEnumerable<PohvalaResource>> pohvaleUcenikaById(int UcenikId);
+
     }
 }

@@ -304,6 +304,16 @@ namespace DomUcenikaSvilajnac.DAL.RepoPattern
           
             return nesto;
         }
+        public async Task<IEnumerable<PohvalaResource>> pohvaleUcenikaById(int UcenikId)
+        {
+            var pohvaleUcenika = await _context.Pohvale.
+                FromSql(
+                $"select *  from dbo.Pohvale  where UcenikId = {UcenikId}"
+                )
+                .ToListAsync();
+
+            return Mapper.Map<List<Pohvala>, List<PohvalaResource>>(pohvaleUcenika);
+        }
     }
 }
 

@@ -37,21 +37,9 @@ namespace DomUcenikaSvilajnac.Controllers
         }
 
         [HttpGet("{id}")]
-        public async Task<IActionResult> GetPohvaluById([FromRoute] int id)
+        public async Task<IEnumerable<PohvalaResource>> GetPohvaluById([FromRoute] int id)
         {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
-
-            var pohvala = await UnitOfWork.Pohvale.GetAsync(id);
-            var novaPohvala = Mapper.Map<Pohvala, PohvalaResource>(pohvala);
-            if (pohvala == null)
-            {
-                return NotFound();
-            }
-
-            return Ok(novaPohvala);
+            return await UnitOfWork.pohvaleUcenikaById(id);
         }
         [HttpPut("{id}")]
         public async Task<IActionResult> PutPohvala([FromRoute] int id, [FromBody] PohvalaResource pohvala)
