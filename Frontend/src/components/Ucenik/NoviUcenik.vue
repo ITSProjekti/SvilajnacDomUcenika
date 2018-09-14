@@ -723,7 +723,7 @@
                <v-flex xs12 sm6  offset-sm5  offset-xs4 >
               <v-btn
               
-                class="blue-grey darken-2"
+               
                 
                 type="submit"
                 
@@ -988,6 +988,7 @@ import moment from 'moment'
           has been loaded, we flag the show preview as true and set the
           image to be what was read from the reader.
         */
+    
         reader.addEventListener("load", function () {
           this.showPreview = true;
           this.imagePreview = reader.result;

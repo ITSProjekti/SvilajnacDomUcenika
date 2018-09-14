@@ -1,14 +1,16 @@
 
 <template>
   <div>
-    
+  
+   
     <v-toolbar  color="white">
-       <v-toolbar-title wrap >Spisak prijavljenih učenika</v-toolbar-title>
+       <v-toolbar-title wrap >Pregled svih prijavljenih učenika</v-toolbar-title>
     
       <v-spacer></v-spacer>
       
     <v-dialog v-model="dialog" max-width="800">
-      <v-btn  slot="activator" color="blue-grey darken-2" dark class="mb-2">Prijavi učenika</v-btn>
+    
+    <!--  <v-btn  slot="activator" color="blue-grey darken-2" dark class="mb-2">Prijavi učenika</v-btn> -->
       <v-card>
         <v-card-title>
           <span class="headline">{{ formTitle }}</span>
@@ -752,7 +754,7 @@
       :items="ucenici"
        v-if="!loading"
       rows-per-page-text="Redova po stranici"
-      :rows-per-page-items="[5,10,15,20,25,30,35]"
+      :rows-per-page-items="[10,15,20,ucenici.length]"
       :search="search"
 
       :custom-filter="customFilter"
@@ -790,7 +792,7 @@
       </v-alert> 
     </template>
     <template slot="pageText" slot-scope="{ pageStart, pageStop }">
-        Od {{ pageStart }} do {{ pageStop }}
+         {{ pageStart }} - {{ pageStop }} od {{ ucenici.length}}
 </template>
               <template slot="expand" slot-scope="props">
                 <v-card flat>
@@ -1416,40 +1418,22 @@ import moment from 'moment'
       },
 
            handleFileUpload(){
-        /*
-          Set the local file variable to what the user has selected.
-        */
+        
+      
         this.file = this.$refs.file.files[0];
 
-        /*
-          Initialize a File Reader object
-        */
+
         let reader  = new FileReader();
 
-        /*
-          Add an event listener to the reader that when the file
-          has been loaded, we flag the show preview as true and set the
-          image to be what was read from the reader.
-        */
+       this.editedItem.slika=null;
         reader.addEventListener("load", function () {
           this.showPreview = true;
           this.imagePreview = reader.result;
             this.editedItem.slika= reader.result
         }.bind(this), false);
 
-        /*
-          Check to see if the file is not empty.
-        */
-        if( this.file ){
-          /*
-            Ensure the file is an image file.
-          */
+        if( this.file ){      
           if ( /\.(jpe?g|png|gif)$/i.test( this.file.name ) ) {
-            /*
-              Fire the readAsDataURL method which will read the file in and
-              upon completion fire a 'load' event which we will listen to and
-              display the image in the preview.
-            */
             reader.readAsDataURL( this.file );
           }
         }
@@ -1535,7 +1519,7 @@ import moment from 'moment'
     // pitanje za potrvrdu o brisanju gde ako se odabere potvrdan odgovor vrsi se poziv HTTP delete-a i brisanje ucenika iz vue-x store-a sa splice
     // na mestu index i broj 1 predstavlja broj ucenika koji se brisu
         confirm('Da li ste sigurni da zelite da izbrisete ovog ucenika?') && this.$store.dispatch('deleteUcenik',item.id)
-        // && this.ucenici.splice(index,1)
+         && this.ucenici.splice(index,1)
       },
     // ako se odabere opcija close na dijalogu treba editeditem vratiti na pocetni sa praznim podacima
       close () {

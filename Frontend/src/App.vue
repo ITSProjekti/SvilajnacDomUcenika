@@ -1,15 +1,22 @@
 <template>
   <v-app id="inspire">
+
+
+
     <v-navigation-drawer
       v-model="drawer"
       fixed
       clipped
-      class="grey lighten-4"
+      class="navbarcolor"
       app
+      
     >
+   
       <v-list
         dense
-        class="grey lighten-4"
+        dark
+       
+        class="navbarcolor"
       >
         <template v-for="(item, i) in items">
           <v-layout
@@ -19,13 +26,14 @@
             align-center
           >
             <v-flex xs6>
-              <v-subheader v-if="item.heading">
+              
+              <v-subheader class="white--text"  v-if="item.heading">
+                <v-icon class="mr-3" > {{ item.mainicon }}</v-icon>
+                
                 {{ item.heading }}
               </v-subheader>
             </v-flex>
-            <v-flex xs6 class="text-xs-right">
-              <v-btn small flat>Dummy Edit btn</v-btn>
-            </v-flex>
+        
           </v-layout>
           <v-divider
             v-else-if="item.divider"
@@ -38,12 +46,13 @@
             :key="i"
               router
            :to="item.link"
+           active-class="redactive"
           >
             <v-list-tile-action>
-              <v-icon>{{ item.icon }}</v-icon>
+              <v-icon class="ml-4">{{ item.icon }}</v-icon>
             </v-list-tile-action>
             <v-list-tile-content>
-              <v-list-tile-title class="grey--text">
+              <v-list-tile-title  class="text-xs-ml3">
                 {{ item.text }}
               </v-list-tile-title>
             </v-list-tile-content>
@@ -51,9 +60,15 @@
         </template>
       </v-list>
     </v-navigation-drawer>
-     <v-toolbar dark class="blue-grey darken-2"  app  clipped-left>
+     <v-toolbar  class="white"  app  clipped-left height=30px>
       <v-toolbar-side-icon @click.native="drawer = !drawer"></v-toolbar-side-icon>
-          <v-toolbar-title>
+      <!--
+          <v-breadcrumbs icons divider="chevron_right">
+   
+    <breadcrumbs >
+    </breadcrumbs>
+    </v-breadcrumbs> -->
+        <!--  <v-toolbar-title>
         <router-link to="/" tag="span" style="cursor: pointer">Dom učenika Svilajnac</router-link>
         </v-toolbar-title>
 
@@ -68,13 +83,14 @@
          {{item.title}}
           </v-btn>
 
-      </v-toolbar-items>
-    </v-toolbar>
+      </v-toolbar-items> -->
+    </v-toolbar> 
     <v-content>
       <v-container fluid fill-height class="grey lighten-4">
         <v-layout justify-center align-center>
           <v-flex xs12>
 <main>
+
 
   <router-view></router-view>
 
@@ -88,27 +104,31 @@
 
 <script>
 /* eslint-disable */
+
+
   export default {
     data: () => ({
+     
       // promenljiva koja sluzi za rad sa navigacionim barom sa strane, true - false za paljenje i gasenje
       drawer: null,
       // kolekcija opcija za side-navbar
+      
       items: [
         
-        { icon: 'lightbulb_outline', text: 'Lista ucenika',link: '/ucenici' },
-        { icon: 'touch_app', text: 'Dummy1' },
+        { heading: 'Učenik' ,mainicon: 'person'},        
+        { icon: 'group', text: 'Pregled učenika u domu',link: '/ucenici' },
+        { icon: 'group_add', text: 'Novi učenik - prijava',link: '/prijava' },
+        { icon: 'list_alt', text: 'Pregled svih prijavljenih',link: '/ucenici' },
+
         { divider: true },
-        { heading: 'Dummy title' },
-        { icon: 'add', text: 'Prijavi novog ucenika',link: '/prijava' },
+        { heading: 'Vaspitni rad' ,mainicon: 'book' },
+        { icon: 'timer', text: 'Godišnji program rada' },
+        { icon: 'insert_invitation', text: 'Mesečni plan rada' },
+        { icon: 'ballot', text: 'Evidencija ostvarivanja programa'},
+        
         { divider: true },
-        { icon: 'archive', text: 'Dummy2' },
-        { icon: 'delete', text: 'Dummy3' },
-        { divider: true },
-        { icon: 'settings', text: 'Dummy4' },
-        { icon: 'chat_bubble', text: 'Dummy5' },
-        { icon: 'help', text: 'Dummy6' },
-        { icon: 'phonelink', text: 'Dummy7' },
-        { icon: 'keyboard', text: 'Dummy8' }
+        { heading: 'Izveštaji' ,mainicon: 'bar_chart'}
+        
       ], 
       // opcije koje se nalaze na glavnom toolbaru (na vrhu ekrana)
       menuItems: [

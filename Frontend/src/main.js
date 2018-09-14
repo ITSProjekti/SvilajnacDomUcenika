@@ -7,14 +7,20 @@ import 'vuetify/dist/vuetify.min.css'
 import {store} from './store'
 import axios from 'axios'
 import VueAxios from 'vue-axios'
-
+import Breabcrumbs from 'vue-2-breadcrumbs'
+ /* eslint-disable no-new */
+Vue.use(Breabcrumbs)
 // Osposobljavanje Axios-a za HTTP zahteve i Vuetify za HTML/CSS programa (nalik na Google dizajn)
 Vue.use(VueAxios, axios)
-Vue.use(Vuetify)
+Vue.use(Vuetify, {
+  theme: {
+    navbarcolor: '#001B40',
+    redactive: '#800042'
+  }
+})
 
 Vue.config.productionTip = false
 
-/* eslint-disable no-new */
 new Vue({
   el: '#app',
   // router sluzi za mogucnost prelaza sa strane na stranu koriscenjem v-router-a
