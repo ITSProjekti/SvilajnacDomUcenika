@@ -314,6 +314,17 @@ namespace DomUcenikaSvilajnac.DAL.RepoPattern
 
             return Mapper.Map<List<Pohvala>, List<PohvalaResource>>(pohvaleUcenika);
         }
+        public async Task<IEnumerable<KaznaResource>> kazneUcenikaById(int UcenikId)
+        {
+            var kazneUcenika = await _context.Kazne.
+                FromSql(
+                $"select *  from dbo.Kazne  where UcenikId = {UcenikId}"
+                )
+                .ToListAsync();
+
+            return Mapper.Map<List<Kazna>, List<KaznaResource>>(kazneUcenika);
+        }
+
     }
 }
 

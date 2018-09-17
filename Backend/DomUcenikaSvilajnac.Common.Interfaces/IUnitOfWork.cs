@@ -63,6 +63,6 @@ namespace DomUcenikaSvilajnac.Common.Interfaces
         Task<Staratelj> selektIdStarateljaUcenika(int UcenikId);
 
         Task<IEnumerable<PohvalaResource>> pohvaleUcenikaById(int UcenikId);
-
+        Task<IEnumerable<KaznaResource>> kazneUcenikaById(int UcenikId);
     }
 }

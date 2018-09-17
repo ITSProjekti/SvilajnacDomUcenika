@@ -37,21 +37,11 @@ namespace DomUcenikaSvilajnac.Controllers
         }
 
         [HttpGet("{id}")]
-        public async Task<IActionResult> GetKaznuById([FromRoute] int id)
+        public async Task<IEnumerable<KaznaResource>> GetKaznuById([FromRoute] int id)
         {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
+            //ovde ces trebati da napravis isto kao za pohvale u istoj metodi
 
-            var kazna = await UnitOfWork.Kazne.GetAsync(id);
-            var novaKazna = Mapper.Map<Kazna, KaznaResource>(kazna);
-            if (kazna == null)
-            {
-                return NotFound();
-            }
-
-            return Ok(novaKazna);
+            return await UnitOfWork.kazneUcenikaById(id);
         }
 
         [HttpPut("{id}")]
