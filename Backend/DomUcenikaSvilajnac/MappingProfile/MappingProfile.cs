@@ -466,6 +466,9 @@ namespace DomUcenikaSvilajnac.Mapping
             CreateMap<Pohvala, PohvalaResource>();
             CreateMap<PohvalaResource, Pohvala>();
 
+            CreateMap<Kazna, KaznaResource>();
+            CreateMap<KaznaResource, Kazna>();
+
         }
     }
 }

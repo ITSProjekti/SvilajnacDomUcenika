@@ -38,9 +38,15 @@ namespace DomUcenikaSvilajnac.DAL.Context.Migrations
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
 
+                    b.Property<int>("BodoviKazne");
+
                     b.Property<string>("Opis");
 
+                    b.Property<int>("UcenikId");
+
                     b.HasKey("Id");
+
+                    b.HasIndex("UcenikId");
 
                     b.ToTable("Kazne");
                 });
@@ -362,6 +368,14 @@ namespace DomUcenikaSvilajnac.DAL.Context.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("VaspitneGrupe");
+                });
+
+            modelBuilder.Entity("DomUcenikaSvilajnac.Common.Models.Kazna", b =>
+                {
+                    b.HasOne("DomUcenikaSvilajnac.Common.Models.Ucenik", "Ucenik")
+                        .WithMany("Kazne")
+                        .HasForeignKey("UcenikId")
+                        .OnDelete(DeleteBehavior.Cascade);
                 });
 
             modelBuilder.Entity("DomUcenikaSvilajnac.Common.Models.Pohvala", b =>

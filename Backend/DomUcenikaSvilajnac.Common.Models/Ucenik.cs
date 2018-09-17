@@ -43,8 +43,8 @@ namespace DomUcenikaSvilajnac.Common.Models
 
         //================
         // propertiji za komentarisanje prije svake migracije
-        //public int OpstinaPrebivalistaId { get; set; }
-        //public int OpstinaId { get; set; }
+        public int OpstinaPrebivalistaId { get; set; }
+        public int OpstinaId { get; set; }
         //================
         public Opstina Opstina { get; set; }
         public Opstina OpstinaPrebivalista { get; set; }
@@ -54,9 +54,9 @@ namespace DomUcenikaSvilajnac.Common.Models
 
         //================
         //propertiji za komentarisanje prije svake migracije
-        //public int MestoRodjenjaId { get; set; }
-        //public int MestoPrebivalistaId { get; set; }
-        //public int MestoZavrseneSkoleId { get; set; }
+        public int MestoRodjenjaId { get; set; }
+        public int MestoPrebivalistaId { get; set; }
+        public int MestoZavrseneSkoleId { get; set; }
         //================
 
 
@@ -98,6 +98,7 @@ namespace DomUcenikaSvilajnac.Common.Models
         public Collection<Roditelj> Roditelji { get; set; }
         public Collection<Staratelj> Staratelji { get; set; }
         public Collection<Pohvala> Pohvale { get; set; }
+        public Collection<Kazna> Kazne { get; set; }
 
         public Ucenik()
         {
@@ -105,6 +106,9 @@ namespace DomUcenikaSvilajnac.Common.Models
             Roditelji = new Collection<Roditelj>();
             Staratelji = new Collection<Staratelj>();
             Pohvale = new Collection<Pohvala>();
+            Kazne = new Collection<Kazna>();
+
+
         }
         public float PrethodniUspeh { get; set; }
         public string Slika  { get; set; }

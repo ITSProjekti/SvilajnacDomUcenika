@@ -94,7 +94,7 @@ namespace DomUcenikaSvilajnac.Controllers
 
             kazna = Mapper.Map<Kazna, KaznaResource>(novaKazna);
 
-            return Ok(novaKazna);
+            return Ok(kazna);
         }
 
         [HttpDelete("{id}")]
