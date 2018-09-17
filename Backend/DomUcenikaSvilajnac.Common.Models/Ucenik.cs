@@ -108,8 +108,10 @@ namespace DomUcenikaSvilajnac.Common.Models
 
         public int MaterijalniPrihodi { get; set; }
 
+        public int VaspitnaGrupaId { get; set; }
 
-        
+        public VaspitnaGrupa VaspitnaGrupa { get; set; }
+
 
         public Ucenik()
         {
@@ -118,6 +120,7 @@ namespace DomUcenikaSvilajnac.Common.Models
             Staratelji = new Collection<Staratelj>();
             Pohvale = new Collection<Pohvala>();
             Kazne = new Collection<Kazna>();
+
 
 
         }

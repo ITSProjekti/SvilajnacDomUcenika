@@ -53,8 +53,8 @@ namespace DomUcenikaSvilajnac.Common.Models.ModelResources
         public StarateljResource Staratelji { get; set; }
         public string Slika { get; set; }
         public int MaterijalniPrihodi { get; set; }
-      
-      
+
+        public VaspitnaGrupaResource VaspitnaGrupa { get; set; }
 
     }
 }
