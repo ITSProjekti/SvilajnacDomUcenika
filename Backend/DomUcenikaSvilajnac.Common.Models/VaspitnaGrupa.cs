@@ -8,5 +8,7 @@ namespace DomUcenikaSvilajnac.Common.Models
     {
         public int Id { get; set; }
         public string Naziv { get; set; }
+        public int VaspitacId { get; set; }
+        public Vaspitac Vaspitac { get; set; }
     }
 }

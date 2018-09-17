@@ -52,6 +52,7 @@ namespace DomUcenikaSvilajnac.DAL.RepoPattern
             Pohvale = new PohvalaRepository(_context);
             VaspitneGrupe = new VaspitnaGrupaRepository(_context);
             Kazne = new KaznaRepository(_context);
+            Vaspitaci = new VaspitacRepository(_context);
 
     }
 
@@ -77,6 +78,7 @@ namespace DomUcenikaSvilajnac.DAL.RepoPattern
         public IPohvalaRepository Pohvale { get; set; }
         public IVaspitnaGrupaRepository VaspitneGrupe { get; set; }
         public IKaznaRepository Kazne { get; set; }
+        public IVaspitacRepository Vaspitaci { get; set; }
 
 
         /// <summary>
@@ -324,6 +326,13 @@ namespace DomUcenikaSvilajnac.DAL.RepoPattern
 
             return Mapper.Map<List<Kazna>, List<KaznaResource>>(kazneUcenika);
         }
+
+
+
+
+
+
+
 
     }
 }

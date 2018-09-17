@@ -99,6 +99,17 @@ namespace DomUcenikaSvilajnac.Common.Models
         public Collection<Staratelj> Staratelji { get; set; }
         public Collection<Pohvala> Pohvale { get; set; }
         public Collection<Kazna> Kazne { get; set; }
+        public float PrethodniUspeh { get; set; }
+        public string Slika { get; set; }
+
+
+        public int TipPorodiceId { get; set; }
+        public TipPorodice TipPorodice { get; set; }
+
+        public int MaterijalniPrihodi { get; set; }
+
+
+        
 
         public Ucenik()
         {
@@ -110,14 +121,7 @@ namespace DomUcenikaSvilajnac.Common.Models
 
 
         }
-        public float PrethodniUspeh { get; set; }
-        public string Slika  { get; set; }
-
-
-        public int TipPorodiceId { get; set; }
-        public TipPorodice TipPorodice { get; set; }
-
-        public int MaterijalniPrihodi { get; set; }
+       
 
 
     

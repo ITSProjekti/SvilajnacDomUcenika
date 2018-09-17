@@ -37,6 +37,7 @@ namespace DomUcenikaSvilajnac.Common.Interfaces
         IPohvalaRepository Pohvale { get; }
         IVaspitnaGrupaRepository VaspitneGrupe { get; }
         IKaznaRepository Kazne { get; }
+        IVaspitacRepository Vaspitaci { get; }
 
 
 
