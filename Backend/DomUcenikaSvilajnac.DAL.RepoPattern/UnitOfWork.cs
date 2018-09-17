@@ -193,7 +193,7 @@ namespace DomUcenikaSvilajnac.DAL.RepoPattern
         public async Task<PutUcenikaResource> mapiranjeZaPutUcenika(int id)
         {
             var podaciUcenika = await _context.Uceniks
-                  .Include(o => o.Opstina)
+                .Include(o => o.Opstina)
                 .Include(d => d.DrzavaRodjenja)
                 .Include(op => op.OpstinaPrebivalista)
                 .Include(p => p.Pol)
@@ -207,7 +207,7 @@ namespace DomUcenikaSvilajnac.DAL.RepoPattern
                 .Include(s => s.Smer)
                 .Include(r => r.Razred)
                 .Include(rod => rod.Roditelji)
-                 .Include(tipP => tipP.TipPorodice)
+                .Include(tipP => tipP.TipPorodice)
                 .SingleOrDefaultAsync(x => x.Id == id);
             return Mapper.Map<Ucenik, PutUcenikaResource>(podaciUcenika);
         }
@@ -327,13 +327,50 @@ namespace DomUcenikaSvilajnac.DAL.RepoPattern
             return Mapper.Map<List<Kazna>, List<KaznaResource>>(kazneUcenika);
         }
 
+        public async Task<IEnumerable<VaspitnaGrupaResource>> vaspitneGrupe()
+        {
+            var podaciVaspitaca = await _context.VaspitneGrupe
+                .Include(v => v.Vaspitac)
+                .ToListAsync();
 
+            return Mapper.Map<List<VaspitnaGrupa>, List<VaspitnaGrupaResource>>(podaciVaspitaca);
+        }
 
+        public async Task<VaspitnaGrupaResource> vaspitneGrupeById(int id)
+        {
+            var vaspitnaGrupaById = await _context.VaspitneGrupe
+                .Include(v => v.Vaspitac)
+                .SingleOrDefaultAsync(x => x.Id == id);
 
+            return Mapper.Map<VaspitnaGrupa, VaspitnaGrupaResource>(vaspitnaGrupaById);
+        }
 
+        public async Task<VaspitnaGrupaResource> mapiranjeZaPostVaspitneGrupe(VaspitnaGrupaResource vaspitnaGrupa)
+        {
+            var podaciGrupe = await _context.VaspitneGrupe
+                .Include(v => v.Vaspitac)
+                .SingleOrDefaultAsync(x => x.Id == vaspitnaGrupa.Id);
 
+                return Mapper.Map<VaspitnaGrupa, VaspitnaGrupaResource>(podaciGrupe);
+        }
 
+        public async Task<VaspitnaGrupaResource> mapiranjeZaPutGrupe(int id)
+        {
+            var podaciGrupe = await _context.VaspitneGrupe
+                .Include(v => v.Vaspitac)
+                .SingleOrDefaultAsync(x => x.Id == id);
 
+            return Mapper.Map<VaspitnaGrupa, VaspitnaGrupaResource>(podaciGrupe);
+        }
+
+        public async Task<VaspitnaGrupaResource> mapiranjeZaDeleteGrupe(VaspitnaGrupaResource vaspitnaGrupa)
+        {
+            var podaciGrupe = await _context.VaspitneGrupe
+                .Include(v => v.Vaspitac)
+                .SingleOrDefaultAsync(x => x.Id == vaspitnaGrupa.Id);
+
+            return Mapper.Map<VaspitnaGrupa, VaspitnaGrupaResource>(podaciGrupe);
+        }
     }
 }
 

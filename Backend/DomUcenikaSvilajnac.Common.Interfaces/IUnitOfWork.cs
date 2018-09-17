@@ -65,5 +65,14 @@ namespace DomUcenikaSvilajnac.Common.Interfaces
 
         Task<IEnumerable<PohvalaResource>> pohvaleUcenikaById(int UcenikId);
         Task<IEnumerable<KaznaResource>> kazneUcenikaById(int UcenikId);
+
+        Task<IEnumerable<VaspitnaGrupaResource>> vaspitneGrupe();
+        Task<VaspitnaGrupaResource> vaspitneGrupeById(int id);
+
+        Task<VaspitnaGrupaResource> mapiranjeZaPostVaspitneGrupe(VaspitnaGrupaResource vaspitna);
+
+        Task<VaspitnaGrupaResource> mapiranjeZaPutGrupe(int id);
+
+        Task<VaspitnaGrupaResource> mapiranjeZaDeleteGrupe(VaspitnaGrupaResource vaspitnaGrupa);
     }
 }

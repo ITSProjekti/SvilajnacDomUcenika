@@ -27,8 +27,7 @@ namespace DomUcenikaSvilajnac.Controllers
         [HttpGet]
         public async Task<IEnumerable<VaspitnaGrupaResource>> GetVaspitneGrupe()
         {
-            var listaVaspitnihGrupa = await UnitOfWork.VaspitneGrupe.GetAllAsync();
-            return Mapper.Map<List<VaspitnaGrupa>, List<VaspitnaGrupaResource>>(listaVaspitnihGrupa.ToList());
+            return await UnitOfWork.vaspitneGrupe();
         }
 
         [HttpGet("{id}")]
@@ -38,6 +37,8 @@ namespace DomUcenikaSvilajnac.Controllers
             {
                 return BadRequest(ModelState);
             }
+
+            var mapiranaGrupa = UnitOfWork.vaspitneGrupeById(id);
 
             var vaspitnaGrupa = await UnitOfWork.VaspitneGrupe.GetAsync(id);
             var novaVaspitnaGrupa = Mapper.Map<VaspitnaGrupa, VaspitnaGrupaResource>(vaspitnaGrupa);
@@ -70,9 +71,8 @@ namespace DomUcenikaSvilajnac.Controllers
             Mapper.Map<VaspitnaGrupaResource, VaspitnaGrupa>(vaspitnaGrupa, staraVaspitnaGrupa);
             await UnitOfWork.SaveChangesAsync();
 
-            var novaVaspitnaGrupa = await UnitOfWork.VaspitneGrupe.GetAsync(id);
-            Mapper.Map<VaspitnaGrupa, VaspitnaGrupaResource>(novaVaspitnaGrupa);
-            return Ok(vaspitnaGrupa);
+            var novaVaspitnaGrupa = await UnitOfWork.mapiranjeZaPutGrupe(id);
+            return Ok(novaVaspitnaGrupa);
         }
         [HttpPost]
         public async Task<IActionResult> PostVaspitnaGrupa([FromBody] VaspitnaGrupaResource vaspitnaGrupa)
@@ -88,7 +88,8 @@ namespace DomUcenikaSvilajnac.Controllers
 
             vaspitnaGrupa = Mapper.Map<VaspitnaGrupa, VaspitnaGrupaResource>(novaVaspitnaGrupa);
 
-            return Ok(vaspitnaGrupa);
+            var mapiranaGrupa = await UnitOfWork.mapiranjeZaPostVaspitneGrupe(vaspitnaGrupa);
+            return Ok(mapiranaGrupa);
         }
 
         [HttpDelete("{id}")]
@@ -100,16 +101,18 @@ namespace DomUcenikaSvilajnac.Controllers
             }
 
             var vaspitnaGrupa = await UnitOfWork.VaspitneGrupe.GetAsync(id);
+            
             if (vaspitnaGrupa == null)
             {
                 return NotFound();
             }
 
             var novaVaspitnaGrupa = Mapper.Map<VaspitnaGrupa, VaspitnaGrupaResource>(vaspitnaGrupa);
+            var mapiranaGrupa = await UnitOfWork.mapiranjeZaDeleteGrupe(novaVaspitnaGrupa);
             UnitOfWork.VaspitneGrupe.Remove(vaspitnaGrupa);
             await UnitOfWork.SaveChangesAsync();
 
-            return Ok(novaVaspitnaGrupa);
+            return Ok(mapiranaGrupa);
         }
     }
 }

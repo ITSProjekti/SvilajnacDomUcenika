@@ -86,7 +86,7 @@ namespace DomUcenikaSvilajnac.Controllers
         /// Dodavanje novog reda u tabeli, tj. novog stepena strucne spreme.
         /// </summary>
         [HttpPost]
-        public async Task<IActionResult> PostRazred([FromBody] StepenStrucneSpremeResource stepen)
+        public async Task<IActionResult> PostStepenStrucneSpreme([FromBody] StepenStrucneSpremeResource stepen)
         {
             if (!ModelState.IsValid)
             {

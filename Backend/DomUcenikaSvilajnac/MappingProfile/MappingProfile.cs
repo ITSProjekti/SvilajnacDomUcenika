@@ -469,6 +469,9 @@ namespace DomUcenikaSvilajnac.Mapping
             CreateMap<Kazna, KaznaResource>();
             CreateMap<KaznaResource, Kazna>();
 
+            CreateMap<VaspitnaGrupaResource, VaspitnaGrupa>()
+                .ForMember(v => v.Vaspitac, opt => opt.Ignore());
+
         }
     }
 }

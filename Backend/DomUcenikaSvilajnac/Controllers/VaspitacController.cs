@@ -33,6 +33,8 @@ namespace DomUcenikaSvilajnac.Controllers
         {
             var listaVaspitaca = await UnitOfWork.Vaspitaci.GetAllAsync();
             return Mapper.Map<List<Vaspitac>, List<VaspitacResource>>(listaVaspitaca.ToList());
+
+
         }
 
         [HttpGet("{id}")]
