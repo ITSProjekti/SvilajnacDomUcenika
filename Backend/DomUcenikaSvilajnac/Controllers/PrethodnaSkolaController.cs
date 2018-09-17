@@ -101,7 +101,7 @@ namespace DomUcenikaSvilajnac.Controllers
 
             prethodnaSkola = Mapper.Map<PrethodnaSkola, PrethodnaSkolaResource>(novaPrethodnaSkola);
 
-            return Ok(novaPrethodnaSkola);
+            return Ok(prethodnaSkola);
         }
         /// <summary>
         /// Brisanje jednog reda iz tabele na osnvou prosledjenog Id-a, tj. brisanje odredjene osnovne skole iz tabele.

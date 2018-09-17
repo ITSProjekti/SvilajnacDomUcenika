@@ -103,7 +103,7 @@ namespace DomUcenikaSvilajnac.Controllers
 
             pol = Mapper.Map<Pol, PolResource>(noviPol);
 
-            return Ok(noviPol);
+            return Ok(pol);
         }
 
         /// <summary>

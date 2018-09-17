@@ -99,7 +99,7 @@ namespace DomUcenikaSvilajnac.Controllers
 
             razred = Mapper.Map<Razred, RazredResource>(noviRazred);
 
-            return Ok(noviRazred);
+            return Ok(razred);
         }
         /// <summary>
         /// Brisanje jednog reda iz tabele na osnvou prosledjenog Id-a, tj. brisanje odredjenog razreda iz tabele.

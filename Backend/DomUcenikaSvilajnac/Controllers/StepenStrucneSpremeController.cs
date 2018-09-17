@@ -99,7 +99,7 @@ namespace DomUcenikaSvilajnac.Controllers
 
             stepen = Mapper.Map<StepenStrucneSpreme, StepenStrucneSpremeResource>(noviStepen);
 
-            return Ok(noviStepen);
+            return Ok(stepen);
         }
         /// <summary>
         /// Brisanje jednog reda iz tabele na osnvou prosledjenog Id-a, tj. brisanje odredjenog stepena strucne spreme iz tabele.

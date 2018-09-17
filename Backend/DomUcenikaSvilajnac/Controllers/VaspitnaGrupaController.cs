@@ -88,7 +88,7 @@ namespace DomUcenikaSvilajnac.Controllers
 
             vaspitnaGrupa = Mapper.Map<VaspitnaGrupa, VaspitnaGrupaResource>(novaVaspitnaGrupa);
 
-            return Ok(novaVaspitnaGrupa);
+            return Ok(vaspitnaGrupa);
         }
 
         [HttpDelete("{id}")]

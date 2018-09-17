@@ -102,7 +102,7 @@ namespace DomUcenikaSvilajnac.Controllers
 
             mesto = Mapper.Map<Mesto, MestoResource>(novoMesto);
 
-            return Ok(novoMesto);
+            return Ok(mesto);
         }
         /// <summary>
         /// Brisanje jednog reda iz tabele na osnvou prosledjenog Id-a, tj. brisanje odredjenog mesta iz tabele.

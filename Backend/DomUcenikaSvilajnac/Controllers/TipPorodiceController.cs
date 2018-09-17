@@ -96,7 +96,7 @@ namespace DomUcenikaSvilajnac.Controllers
 
             tipPorodice = Mapper.Map<TipPorodice, TipPorodiceResource>(noviTipPorodice);
 
-            return Ok(noviTipPorodice);
+            return Ok(tipPorodice);
         }
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteTipPorodice([FromRoute] int id)

@@ -93,7 +93,7 @@ namespace DomUcenikaSvilajnac.Controllers
 
             staratelj = Mapper.Map<Staratelj, StarateljResource>(noviStaratelj);
 
-            return Ok(noviStaratelj);
+            return Ok(staratelj);
         }
 
         [HttpDelete("{id}")]

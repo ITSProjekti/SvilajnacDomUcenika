@@ -105,7 +105,7 @@ namespace DomUcenikaSvilajnac.Controllers
 
             postanskiBroj = Mapper.Map<PostanskiBroj, PostanskiBrojResource>(noviPostasnkiBroj);
 
-            return Ok(noviPostasnkiBroj);
+            return Ok(postanskiBroj);
         }
 
         /// <summary>

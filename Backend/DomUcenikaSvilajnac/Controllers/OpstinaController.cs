@@ -88,7 +88,7 @@ namespace DomUcenikaSvilajnac.Controllers
 
             opstina = Mapper.Map<Opstina, OpstinaResource>(novaOpstina);
 
-            return Ok(novaOpstina);
+            return Ok(opstina);
         }
 
         /// <summary>

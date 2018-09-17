@@ -102,7 +102,7 @@ namespace DomUcenikaSvilajnac.Controllers
 
             drzava = Mapper.Map<Drzava, DrzavaResource>(novaDrzava);
 
-            return Ok(novaDrzava);
+            return Ok(drzava);
         }
         /// <summary>
         /// Brisanje jednog reda iz tabele na osnvou prosledjenog Id-a, tj. brisanje odredjene drzave iz tabele.

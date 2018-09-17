@@ -103,7 +103,7 @@ namespace DomUcenikaSvilajnac.Controllers
 
             telefon = Mapper.Map<Telefon, TelefonResource>(noviTelefon);
 
-            return Ok(noviTelefon);
+            return Ok(telefon);
         }
 
         /// <summary>
