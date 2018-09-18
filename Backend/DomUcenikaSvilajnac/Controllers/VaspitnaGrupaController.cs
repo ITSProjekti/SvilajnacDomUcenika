@@ -81,6 +81,7 @@ namespace DomUcenikaSvilajnac.Controllers
             {
                 return BadRequest(ModelState);
             }
+            vaspitnaGrupa.Vaspitac = new VaspitacResource() { Id = 1 };
             var novaVaspitnaGrupa = Mapper.Map<VaspitnaGrupaResource, VaspitnaGrupa>(vaspitnaGrupa);
 
             UnitOfWork.VaspitneGrupe.Add(novaVaspitnaGrupa);
