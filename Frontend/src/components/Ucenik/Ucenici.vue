@@ -4,8 +4,9 @@
   
    
     <v-toolbar  color="white">
+          <transition name="slidetoleft" appear>
        <v-toolbar-title wrap >Pregled svih prijavljenih učenika</v-toolbar-title>
-    
+          </transition>
       <v-spacer></v-spacer>
       
     <v-dialog v-model="dialog" max-width="800">
@@ -454,7 +455,6 @@
   </p>
 </v-flex>
 
-
        <v-flex xs12 class="ml-1">
             <v-card raised >
               <v-card-title primary-title>
@@ -762,7 +762,7 @@
      >
       <template slot="items" slot-scope="props" >
         <tr class="pageRow" @click="props.expanded = !props.expanded">
-        <td class="text-xs-center">{{ props.index+1}}</td>
+        <td class="text-xs-center">{{ props.item.id}}</td>
         <td class="text-xs-center">{{ props.item.ime }}</td>
         <td class="text-xs-center">{{ props.item.prezime }}</td>
         <td class="text-xs-center">{{ props.item.jmbg }}</td>
@@ -783,6 +783,13 @@
               color="pink">delete
               </v-icon>
           </v-btn>
+             <v-btn center icon class="mx-0"
+          v-bind:to="'/detalji/'+props.item.id">    
+          
+            <v-icon
+              color="blue">edit
+              </v-icon>
+          </v-btn>
         </td>
          </tr>
       </template>
@@ -794,7 +801,7 @@
     <template slot="pageText" slot-scope="{ pageStart, pageStop }">
          {{ pageStart }} - {{ pageStop }} od {{ ucenici.length}}
 </template>
-              <template slot="expand" slot-scope="props">
+     <!--         <template slot="expand" slot-scope="props">
                 <v-card flat>
                   <v-card-text> <h2>Ostali podaci</h2> </v-card-text>
                   <v-layout  xs12 sm8 md6  row wrap>  
@@ -1045,7 +1052,7 @@
 
                     </v-layout>                  
                 </v-card>
-              </template>
+              </template> -->
     <v-alert slot="no-results" :value="true" color="error" icon="warning">
         Vasa pretraga za "{{ search }}" nije pronasla rezultate.
       </v-alert>
@@ -1073,7 +1080,7 @@ import moment from 'moment'
         { text: 'Prezime', value:'prezime', align: 'center',sortable:true,width:'7.5%'},
         { text: 'JMBG', value:'jmbg',align: 'center',sortable:true ,width:'7.5%'},
         { text: 'Pol', value: 'pol.nazivPola',align: 'center',sortable:true,width:'7.5%' },
-        { text: 'Datum rođenja', value: 'godina',align: 'center',sortable:true,width:'7.5%' },
+        { text: 'Datum rođenja', value: 'godina',align: 'center',sortable:false,width:'7.5%' },
         { text: 'Mesto rođenja', value: 'mestoRodjenja.nazivMesta',align: 'center',sortable:true,width:'7.5%' },
         { text: 'Opstina rođenja', value: 'opstina.nazivOpstine',align: 'center',sortable:true ,width:'7.5%'},
         { text: 'Opcije', value: 'opcije',align: 'center',sortable:false,width:'7.5%' }
@@ -1303,6 +1310,7 @@ import moment from 'moment'
     }),
     // computed metode su metode koje se desavaju onda kada dodje do nekakvim promena stanja komponente, neki vid watcher-a
     computed: {
+    
       // logika za racunanje progress bar-a kod jmbg, 105 je prva granica a drugi parametar u math.min funkciji sluzi za formiranje 13 podeoka 
       // na progress baru za 13 jmbg cifara, dalje se ovi rezultati koriste za prikaz promene boja na progress baru
           progress () {
@@ -1566,6 +1574,21 @@ import moment from 'moment'
 
 <style >
 
+.slidetoleft-enter{
+  opacity: 0;
+}
+
+.slidetoleft-enter-active{
+  animation: slidetoleft-in 1s ease-out forwards;
+  transition: opacity 2s ease-out;
+  
+}
+
+.slidetoleft-leave-active {
+  animation: slidetoleft-out 1s ease-out forwards;
+  transition: opacity 2s ease-out;
+  opacity: 0;
+}
 
 
 .fade-enter-active, .fade-leave-active {

@@ -631,6 +631,15 @@ export const store = new Vuex.Store({
     },
     // getteri su metode koje sluze za preuzimanje (get-ovanje) podataka iz State-a
     getters: {
+        getUcenikById: (state )  => (id) =>{ 
+            console.log(id)
+            const ucenikEdit = state.ucenici.find(ucenikEdit => {
+                
+                 ucenikEdit.id === id
+              })
+  
+              
+          },
         loadedTipoviPorodice (state) {
             return state.tipoviPorodice
         },
@@ -666,6 +675,7 @@ export const store = new Vuex.Store({
         },
         loadedUcenici (state)
     {       
+        console.log(state.ucenici)
         return state.ucenici       
     }, loadedOpstine (state)
     {     
@@ -675,12 +685,15 @@ export const store = new Vuex.Store({
         return state.drzave       
     },
     loadedUceniciID (state) {
-        return (id) => {
-            return state.ucenici.find((id) => {
-                return ucenik.id===id
-            })
-        }
-    }, loading(state){
+        
+     return (id) => {
+         return state.ucenici.find((ucenik) =>
+     {
+         return ucenik.id===id
+     })
+     }
+        },
+     loading(state){
         return state.loading
         console.log(state.loading)
     }
