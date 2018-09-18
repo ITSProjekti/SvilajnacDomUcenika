@@ -37,7 +37,6 @@ namespace DomUcenikaSvilajnac.Common.Models
 
 
         public DateTime DatumRodjenja { get; set; }
-
         public int DrzavaRodjenjaId { get; set; }
         public Drzava DrzavaRodjenja { get; set; }
 
@@ -50,8 +49,6 @@ namespace DomUcenikaSvilajnac.Common.Models
         public Opstina OpstinaPrebivalista { get; set; }
 
 
-
-
         //================
         //propertiji za komentarisanje prije svake migracije
         public int MestoRodjenjaId { get; set; }
@@ -59,76 +56,41 @@ namespace DomUcenikaSvilajnac.Common.Models
         public int MestoZavrseneSkoleId { get; set; }
         //================
 
-
-
         public Mesto MestoRodjenja { get; set; }
-
         public Mesto MestoPrebivalista { get; set; }
-
         public Mesto MestoZavrseneSkole { get; set; }
         public int PolId { get; set; }
-
         public Pol Pol { get; set; }
-
         public int TelefonId { get; set; }
         public Telefon Telefon { get; set; }
-
-  
-
         public int PrethodnaSkolaId { get; set; }
-
         public PrethodnaSkola PrethodnaSkola { get; set; }
-
-
         public int PostanskiBrojId { get; set; }
         public PostanskiBroj PostanskiBroj { get; set; }
-
         public int UpisanaSkolaId { get; set; }
         public UpisanaSkola UpisanaSkola { get; set; }
-
         public int SmerId { get; set; }
         public Smer Smer { get; set; }
-
         public int RazredId { get; set; }
         public Razred Razred { get; set; }
-
-
         public DateTime VremeUpisa { get; set; }
-
         public Collection<Roditelj> Roditelji { get; set; }
         public Collection<Staratelj> Staratelji { get; set; }
         public Collection<Pohvala> Pohvale { get; set; }
         public Collection<Kazna> Kazne { get; set; }
         public float PrethodniUspeh { get; set; }
         public string Slika { get; set; }
-
-
         public int TipPorodiceId { get; set; }
         public TipPorodice TipPorodice { get; set; }
-
         public int MaterijalniPrihodi { get; set; }
-
         public int VaspitnaGrupaId { get; set; }
-
         public VaspitnaGrupa VaspitnaGrupa { get; set; }
-
-
         public Ucenik()
         {
-
             Roditelji = new Collection<Roditelj>();
             Staratelji = new Collection<Staratelj>();
             Pohvale = new Collection<Pohvala>();
             Kazne = new Collection<Kazna>();
-
-
-
         }
-       
-
-
-    
-
-
     }
 }
