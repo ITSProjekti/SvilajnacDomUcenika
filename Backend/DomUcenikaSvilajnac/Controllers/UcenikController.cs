@@ -85,6 +85,7 @@ namespace DomUcenikaSvilajnac.Controllers
         [HttpPut("{id}")]
         public async Task<IActionResult> PutUcenik([FromRoute] int id, [FromBody] PutUcenikaResource ucenik)
         {
+
             PutRoditeljaResource roditeljResurs = new PutRoditeljaResource()
             {
                 Id = ucenik.Roditelji.Id,
@@ -197,6 +198,11 @@ namespace DomUcenikaSvilajnac.Controllers
             {
                 return BadRequest(ModelState);
             }
+
+           /*  hardkodovan id vaspitne grupe kako bi se ucenik nakon posta dodao u difoltnu vaspitnu grupu
+            jer ne moze vaspitna grupa da bude null zbog foreign key-a */
+            ucenik.VaspitnaGrupa.Id = 1; 
+
             var noviUcenik = _mapper.Map<PostUcenikaResource, Ucenik>(ucenik);
             noviUcenik.VremeUpisa = DateTime.Now;
             ucenik.Staratelji.UcenikId = noviUcenik.Id;
