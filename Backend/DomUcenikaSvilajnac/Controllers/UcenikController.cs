@@ -122,7 +122,6 @@ namespace DomUcenikaSvilajnac.Controllers
             }
              
 
-
             await telefonKontroler.PutTelefon(telefon.Id, telefon);
             if (id != stariUcenik.Id)
             {
@@ -163,7 +162,6 @@ namespace DomUcenikaSvilajnac.Controllers
             {
                 await starateljKontroler.DeleteStaratelj(noviUcenik.Staratelji.Id);
             }
-
             return Ok(noviUcenik);
         }
 
@@ -192,7 +190,6 @@ namespace DomUcenikaSvilajnac.Controllers
                 Prezime = ucenik.Roditelji.PrezimeMajke,
                 BrojTelefona = ucenik.Roditelji.BrojTelefonaMajke,
                 StepenObrazovanjaId = ucenik.Roditelji.StrucnaSpremaMajkeId,
-
             };
 
 
