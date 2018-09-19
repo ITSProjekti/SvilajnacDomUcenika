@@ -104,6 +104,11 @@ namespace DomUcenikaSvilajnac.Controllers
             {
                 return BadRequest(ModelState);
             }
+            // pozivanje metode za update broja ucenika u vaspitnoj grupi
+            UnitOfWork.updateBrojaUcenikaUVaspitnojGrupi(ucenik.VaspitnaGrupa.Id);
+
+
+
             var stariUcenik = await UnitOfWork.Ucenici.GetAsync(id);
             int pom = stariUcenik.TelefonId;
 
@@ -163,6 +168,10 @@ namespace DomUcenikaSvilajnac.Controllers
             {
                 await starateljKontroler.DeleteStaratelj(noviUcenik.Staratelji.Id);
             }
+            // pozivanje metode za update broja ucenika u vaspitnoj grupi
+            await UnitOfWork.updateBrojaUcenikaUVaspitnojGrupi(noviUcenik.VaspitnaGrupa.Id);
+
+
             return Ok(noviUcenik);
         }
 
@@ -192,7 +201,8 @@ namespace DomUcenikaSvilajnac.Controllers
                 BrojTelefona = ucenik.Roditelji.BrojTelefonaMajke,
                 StepenObrazovanjaId = ucenik.Roditelji.StrucnaSpremaMajkeId,
             };
-
+           
+           
 
             if (!ModelState.IsValid)
             {
@@ -230,6 +240,11 @@ namespace DomUcenikaSvilajnac.Controllers
             roditelji.Add(otac);
             roditelji.Add(majka);
 
+
+
+            // pozivanje metode za update broja ucenika u vaspitnoj grupi
+            await UnitOfWork.updateBrojaUcenikaUVaspitnojGrupi(1);
+
             UnitOfWork.Roditelji.AddRange(roditelji);
             UnitOfWork.SaveChanges();
 
@@ -239,6 +254,8 @@ namespace DomUcenikaSvilajnac.Controllers
             ucenik = _mapper.Map<Ucenik, PostUcenikaResource>(noviUcenik);
 
             var mapiranUcenik = await UnitOfWork.mapiranjeZaPostUcenika(ucenik);
+
+         
             return Ok(mapiranUcenik);
         }
 
@@ -284,6 +301,9 @@ namespace DomUcenikaSvilajnac.Controllers
             UnitOfWork.Ucenici.Remove(ucenik);
             UnitOfWork.Telefoni.Remove(telefonUcenika);
             await UnitOfWork.SaveChangesAsync();
+
+            // pozivanje metode za update broja ucenika u vaspitnoj grupi nnakon brisanja
+            UnitOfWork.updateBrojaUcenikaUVaspitnojGrupi(ucenik.VaspitnaGrupa.Id);
 
             return Ok(mapiranUcenik);
         }       

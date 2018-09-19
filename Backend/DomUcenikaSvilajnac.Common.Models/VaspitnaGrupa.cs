@@ -12,6 +12,7 @@ namespace DomUcenikaSvilajnac.Common.Models
         public int VaspitacId { get; set; }
         public Vaspitac Vaspitac { get; set; }
 
+        public int BrojUcenika { get; set; }
         ICollection<Ucenik> Ucenici { get; set; }
 
         public VaspitnaGrupa()

@@ -372,8 +372,10 @@ namespace DomUcenikaSvilajnac.DAL.RepoPattern
             return Mapper.Map<VaspitnaGrupa, VaspitnaGrupaResource>(podaciGrupe);
         }
 
-        public async void updateVaspitneGrupeId(int IdObrisaneVaspitneGrupe)
+        public async void updateUcenikaVaspitnaGrupaId(int IdObrisaneVaspitneGrupe)
         {
+           
+
             var listaUcenikaIsteVaspitneGrupe = await _context.Uceniks.
             FromSql(
             $"select *  from dbo.Ucenici  where VaspitnaGrupaId = {IdObrisaneVaspitneGrupe}"
@@ -388,19 +390,19 @@ namespace DomUcenikaSvilajnac.DAL.RepoPattern
             _context.UpdateRange(listaUcenikaIsteVaspitneGrupe);
         }
 
-        public async void updateVaspitaca(int ObrisanVaspitacId)
+       
+        public async Task<VaspitnaGrupa> updateBrojaUcenikaUVaspitnojGrupi(int IdVaspitneGrupe)
         {
-            var vaspitnaGrupaObrisanogVaspitaca = await _context.VaspitneGrupe.
-                FromSql(
-                $"select * from dbo.VaspitneGrupe where VaspitacId = {ObrisanVaspitacId}"
-                ).ToListAsync();
+            //linq koji vraca broj ucenika date vaspitne grupe
+            var brojUcenika = await _context.Uceniks.CountAsync(n => n.VaspitnaGrupaId == IdVaspitneGrupe);
 
-            vaspitnaGrupaObrisanogVaspitaca.ForEach(v =>
-            {
-                v.VaspitacId = 1;
-            });
 
-            _context.UpdateRange(vaspitnaGrupaObrisanogVaspitaca);
+            //smestanje vaspitne grupe koja je izabrana kako bismo promenili vrednost broja Ucenika u toj tabeli
+            var vaspitnaGrupa = await _context.VaspitneGrupe.FirstOrDefaultAsync(n => n.Id == IdVaspitneGrupe);
+            vaspitnaGrupa.BrojUcenika = brojUcenika;
+            _context.VaspitneGrupe.Update(vaspitnaGrupa);
+            await _context.SaveChangesAsync();
+            return vaspitnaGrupa;
         }
     } 
 }
