@@ -644,60 +644,7 @@
               </v-flex>
 
 
-       <v-flex offset-sm1 xs12>
-              <v-flex xs8 md5  >
-                <v-text-field
-                  v-model="editedItem.pohvale"
-                  label="Broj pohvala"
-              
-                  input type="number"  onkeydown="javascript: if(event.keyCode == 69) {return false} else 
-                  {
-                   if(event.keyCode == 107) {return false}
-                    else {
-                   if(event.keyCode == 190) {return false}
-                    else {
-                   if(event.keyCode == 109) {return false}
-                    else  {
-                   if(event.keyCode == 187) {return false}
-                    else  {
-                   if(event.keyCode == 189) {return false}
-                   else
-                     {return true} } } } } }"                                       
 
-               >
-                        
-                        </v-text-field>
-              </v-flex>
-          </v-flex>
-
-
-
-
-                 <v-flex offset-sm1 xs12>
-              <v-flex xs8 md5  >
-                <v-text-field
-                  v-model="editedItem.kazne"
-                  label="Broj kazni"
-
-                  input type="number"  onkeydown="javascript: if(event.keyCode == 69) {return false} else 
-                  {
-                   if(event.keyCode == 107) {return false}
-                    else {
-                   if(event.keyCode == 190) {return false}
-                    else {
-                   if(event.keyCode == 109) {return false}
-                    else  {
-                   if(event.keyCode == 187) {return false}
-                    else  {
-                   if(event.keyCode == 189) {return false}
-                   else
-                     {return true} } } } } }"                                       
-                        >
-            
-                        
-                        </v-text-field>
-              </v-flex>
-          </v-flex>
 
 
                </v-card>
@@ -768,26 +715,27 @@
         <td class="text-xs-center">{{ props.item.jmbg }}</td>
         <td class="text-xs-center">{{ props.item.pol.nazivPola }}</td>
         <td class="text-xs-center">{{ props.item.dan }}.{{ props.item.mesec }}.{{ props.item.godina }}.</td>
-        <td class="text-xs-center">{{ props.item.mestoRodjenja.nazivMesta }}</td>
-        <td class="text-xs-center">{{ props.item.opstina.nazivOpstine }}</td>
-        <td class="justify-center layout px-0">         
+        <td class="text-xs-center">{{ props.item.vaspitnaGrupa.naziv }}</td>
+        <td class="text-xs-center">{{ props.item.upisanaSkola.nazivSrednjeSkole }}</td>
+        <td class="justify-center layout px-0">
+          <!--         
           <v-btn center  icon class="mx-0"
            @click="editItem(props.item)">
             <v-icon
              color="teal">edit
              </v-icon>
-          </v-btn>
+          </v-btn> -->
           <v-btn center icon class="mx-0"
            @click="deleteItem(props.item)">
             <v-icon
-              color="pink">delete
+              color="navbarcolor">delete
               </v-icon>
           </v-btn>
              <v-btn center icon class="mx-0"
           v-bind:to="'/detalji/'+props.item.id">    
           
             <v-icon
-              color="blue">edit
+              color="navbarcolor">edit
               </v-icon>
           </v-btn>
         </td>
@@ -1081,8 +1029,8 @@ import moment from 'moment'
         { text: 'JMBG', value:'jmbg',align: 'center',sortable:true ,width:'7.5%'},
         { text: 'Pol', value: 'pol.nazivPola',align: 'center',sortable:true,width:'7.5%' },
         { text: 'Datum rođenja', value: 'godina',align: 'center',sortable:false,width:'7.5%' },
-        { text: 'Mesto rođenja', value: 'mestoRodjenja.nazivMesta',align: 'center',sortable:true,width:'7.5%' },
-        { text: 'Opstina rođenja', value: 'opstina.nazivOpstine',align: 'center',sortable:true ,width:'7.5%'},
+        { text: 'Vaspitna grupa', value: 'vaspitnaGrupa.naziv',align: 'center',sortable:true,width:'7.5%' },
+        { text: 'Skola', value: 'upisanaSkola.nazivSrednjeSkole',align: 'center',sortable:true ,width:'7.5%'},
         { text: 'Opcije', value: 'opcije',align: 'center',sortable:false,width:'7.5%' }
       ],
       // rules su pravila popunjavanja polja za unos
@@ -1204,8 +1152,10 @@ import moment from 'moment'
             },
            slika: '',
            materijalniPrihodi: '',
-           pohvale: '',
-           kazne: ''
+            vaspitnaGrupa:{
+              id:'',
+              naziv: ''
+            }
 
 
       },
@@ -1302,9 +1252,12 @@ import moment from 'moment'
               
             },
            slika: '',
-           materijalniPrihodi: '',
-           pohvale: '',
-           kazne: ''
+           materijalniPrihodi: '',      
+           vaspitnaGrupa:{
+              id:'',
+              naziv: ''
+            }
+
 
       }
     }),

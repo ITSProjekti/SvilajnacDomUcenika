@@ -6,6 +6,9 @@ import EditUcenik from '@/components/Ucenik/EditUcenik'
 import NoviUcenik from '@/components/Ucenik/NoviUcenik'
 import Ucenici from '@/components/Ucenik/Ucenici'
 import Ucenik from '@/components/Ucenik/Ucenik'
+import VaspitnaGrupa from '@/components/Ucenik/VaspitnaGrupa'
+import VaspitneGrupe from '@/components/Ucenik/VaspitneGrupe'
+import Vasitac from '@/components/Ucenik/Vaspitac'
 
 import Profile from '@/components/User/Profile'
 import Register from '@/components/User/Register'
@@ -26,12 +29,15 @@ export default new Router({
     meta: {
       breadcrumb: 'Prijavljeni ucenici'  
     }},
-    {path:'/prijava', component: NoviUcenik, name:'/Prijava',
+    {path:'/prijava', component: NoviUcenik, name:'Prijava',
     meta: {
       breadcrumb: 'Prijava ucenika'  
     }},
     {path:'/detalji/:id', component: Ucenik},
+    {path:'/vaspitaci', component: Vasitac},
     {path:'/izmena_ucenika/:id', component: EditUcenik},
+    {path:'/vasptinagrupa/:id', component: VaspitnaGrupa},
+    {path:'/vaspitnegrupe/', component: VaspitneGrupe},
     {path:'/profil/', component: Profile},
     {path:'/registracija/', component: Register},
     {path:'/logovanje/', component: SignIn}

@@ -18,10 +18,14 @@ export const store = new Vuex.Store({
         drzave: [],
         polovi: [],
         mesta: [],
+        vaspitaci: [],
         osnovneSkole: [],
         srednjeSkole: [],
         smer: [],
         razred: [],
+        kazne: [],
+        pohvale: [],
+        vaspitnegrupe: [],
         stepeniStrucneSpreme: [],
         postanskiBrojevi: [],
         tipoviPorodice: [],
@@ -33,6 +37,22 @@ export const store = new Vuex.Store({
     // mutacije su metode koje imaju direktan kontakt sa bazom, obicno sluze za cuvanje podataka u bazu
     mutations: {
         // sve setLoaded metode sluze za ubacivanje podataka u State sa backend-a
+        setLoadedVaspitac (state,payload)
+        {
+            state.vaspitaci=payload
+        },
+        setLoadedKazne (state,payload)
+        {
+            state.kazne=payload
+        },
+        setLoadedPohvale (state,payload)
+        {
+            state.pohvale=payload
+        },
+        setLoadedVaspitneGrupe (state,payload)
+        {
+            state.vaspitnegrupe=payload
+        },
         setLoadedTipovePorodice (state,payload)
         {
             state.tipoviPorodice=payload
@@ -113,19 +133,85 @@ export const store = new Vuex.Store({
                     stepenObrazovanjaId:payload.roditelji.strucnaSpremaOcaId
                  }
         
-            ]
-        
-           
-            state.ucenici.push(novi)
-
-               
+            ]          
+            state.ucenici.push(novi)               
+        },
+        createVaspitnaGrupa(state,payload)
+        {
+            state.vaspitnegrupe.push(payload)
+        },
+        createVaspitac(state,payload)
+        {
+            state.vaspitaci.push(payload)
+        },
+        createPohvala(state,payload)
+        {
+            state.pohvale.push(payload)
+        },
+        createKazna(state,payload)
+        {
+            state.kazne.push(payload)
         },
         // brisanje ucenika iz state-a
         deleteUcenik(state,payload)
         {
             state.ucenici.splice(payload.id)
         },
-        // mutacija za promenu podataka ucenika iz state-a nakon PUT HTTP zahteva
+        deleteVaspitnaGrupa(state,payload)
+        {
+            state.vaspitnegrupe.splice(payload.id)
+        },
+        deleteKazna(state,payload)
+        {
+            state.kazne.splice(payload.id)
+        },
+        deletePohvala(state,payload)
+        {
+            state.pohvale.splice(payload.id)
+        },
+        deleteVaspitac(state,payload)
+        {
+            state.vaspitaci.splice(payload.id)
+        },
+        editKazne(state,payload){
+            const kazneEdit = state.kazne.find(kazneEdit =>{
+                return kazneEdit.id ===payload.id
+            })
+            kazneEdit.opis=payload.opis,
+            kazneEdit.bodoviKazne=payload.bodoviKazne,
+            kazneEdit.ucenikId=payload.ucenikId
+        },
+        editPohvale(state,payload) {
+            const pohvalaEdit = state.pohvale.find(pohvalaEdit => {
+                return pohvalaEdit.id===payload.id
+            })
+            pohvalaEdit.opis = payload.opis,
+            pohvalaEdit.bodoviPohvale = payload.bodoviPohvale,
+            pohvalaEdit.ucenikId=payload.ucenikId
+        },
+
+        editVaspitneGrupe(state,payload)
+        {
+            const vaspitnaGrupaEdit = state.vaspitnegrupe.find(vaspitnaGrupaEdit =>{
+                return vaspitnaGrupaEdit.id === payload.id
+            })
+            vaspitnaGrupaEdit.naziv=payload.naziv,
+            vaspitnaGrupaEdit.vaspitac = {
+                id: payload.vaspitnaGrupa.id
+            }
+        },
+        editVaspitaca(state,payload)
+        {
+            const vaspitacEdit = state.vaspitaci.find(vaspitacEdit =>{
+                return vaspitacEdit.id=== payload.id
+            })
+           
+            vaspitacEdit.ime = payload.ime,
+            vaspitacEdit.prezime = payload.prezime,
+            vaspitacEdit.brojTelefona = payload.brojTelefona,
+            vaspitacEdit.slika = payload.slika
+        },
+          // mutacija za promenu podataka ucenika iz state-a nakon PUT HTTP zahteva
         editUcenik(state,payload)
         {
             // mapiranje koje vrsi celokupni edit, mozda je moglo da se napravi da se menjaju samo promenjeni podaci
@@ -234,11 +320,10 @@ export const store = new Vuex.Store({
              ucenikId: payload.staratelji.ucenikId
              },
              ucenikEdit.slika= payload.slika,
-             ucenikEdit.materijalniPrihodi=payload.materijalniPrihodi,
-             ucenikEdit.pohvale=payload.pohvale,
-             ucenikEdit.kazne=payload.kazne
-             
-              
+             ucenikEdit.materijalniPrihodi=payload.materijalniPrihodi       
+             vaspitnaGrupa={
+                 id:payload.vaspitnaGrupa.id
+             }                
         }
         
     },
@@ -255,6 +340,60 @@ export const store = new Vuex.Store({
               // nakon ucitanih podataka skinuti prikaz stanja loading-a sa odgovarajucih mesta
               commit('setLoading', false)
               // catch greske i prikazi ih na konzoli
+            }).catch(
+                (error) => {
+                  console.log(error)
+                  commit('setLoading', false)
+                        }
+                    )
+          },loadedVaspitneGrupe( {commit } ) {
+            commit('setLoading', true)
+            axios.get('http://localhost:50146/api/vaspitnegrupe').then((response) => {
+              
+              commit('setLoadedVaspitneGrupe', response.data)
+              commit('setLoading', false)
+              
+            }).catch(
+                (error) => {
+                  console.log(error)
+                  commit('setLoading', false)
+                        }
+                    )
+          },loadedVaspitac( {commit } ) {
+            commit('setLoading', true)
+            axios.get('http://localhost:50146/api/vaspitaci').then((response) => {
+           
+              commit('setLoadedVaspitac', response.data)
+              commit('setLoading', false)
+              
+            }).catch(
+                (error) => {
+                  console.log(error)
+                  commit('setLoading', false)
+                        }
+                    )
+          },
+          loadedKazne( {commit } ) {
+            commit('setLoading', true)
+            axios.get('http://localhost:50146/api/kazne').then((response) => {
+           
+              commit('setLoadedKazne', response.data)
+              commit('setLoading', false)
+              
+            }).catch(
+                (error) => {
+                  console.log(error)
+                  commit('setLoading', false)
+                        }
+                    )
+          },
+          loadedPohvale( {commit } ) {
+            commit('setLoading', true)
+            axios.get('http://localhost:50146/api/pohvale').then((response) => {
+           
+              commit('setLoadedPohvale', response.data)
+              commit('setLoading', false)
+              
             }).catch(
                 (error) => {
                   console.log(error)
@@ -429,6 +568,101 @@ export const store = new Vuex.Store({
       )
       
           },
+          createKazna ({commit},payload) {
+            const kazna ={
+                opis: payload.opis,
+                bodoviKazne: payload.bodoviKazne,
+                ucenikId: payload.ucenikId
+            }
+            commit('setLoading', true)
+          
+            axios.post('http://localhost:50146/api/kazne',kazna, {
+                onUploadProgress: uploadEvent =>{
+                    console.log('Post request progress:' + Math.round(uploadEvent.loaded / uploadEvent.total * 100) + '%'  )                    
+                }
+            }).then(function(response){
+
+               
+                commit('createKazna', response.data)
+                commit('setLoading', false)
+                 }).catch(
+                    (error) => {
+                      console.log(error)
+                      commit('setLoading', false)
+                    }
+          )
+        },
+          createPohvala ({commit},payload) {
+            const pohvala ={
+                opis: payload.opis,
+                bodoviPohvale: payload.bodoviPohvale,
+                ucenikId: payload.ucenikId
+            }
+            commit('setLoading', true)
+          
+            axios.post('http://localhost:50146/api/pohvale',pohvala, {
+                onUploadProgress: uploadEvent =>{
+                    console.log('Post request progress:' + Math.round(uploadEvent.loaded / uploadEvent.total * 100) + '%'  )                    
+                }
+            }).then(function(response){
+
+               
+                commit('createPohvala', response.data)
+                commit('setLoading', false)
+                 }).catch(
+                    (error) => {
+                      console.log(error)
+                      commit('setLoading', false)
+                    }
+          )
+        },
+          createVaspitnaGrupa ({commit},payload) {
+            const vaspitnaGrupa ={
+                naziv: payload.naziv
+            }
+            commit('setLoading', true)
+          
+            axios.post('http://localhost:50146/api/vaspitnegrupe',vaspitnaGrupa, {
+                onUploadProgress: uploadEvent =>{
+                    console.log('Post request progress:' + Math.round(uploadEvent.loaded / uploadEvent.total * 100) + '%'  )                    
+                }
+            }).then(function(response){
+
+               
+                commit('createVaspitnaGrupa', response.data)
+                commit('setLoading', false)
+                 }).catch(
+                    (error) => {
+                      console.log(error)
+                      commit('setLoading', false)
+                    }
+          )
+        },
+        createVaspitac ({commit},payload) {
+            const vaspitac ={
+                ime: payload.ime,
+                prezime: payload.prezime,
+                brojTelefona: payload.brojTelefona,
+                slika: payload.slika
+            }
+            commit('setLoading', true)
+          
+            axios.post('http://localhost:50146/api/vaspitaci',vaspitac, {
+                onUploadProgress: uploadEvent =>{
+                    console.log('Post request progress:' + Math.round(uploadEvent.loaded / uploadEvent.total * 100) + '%'  )                    
+                }
+            }).then(function(response){
+
+               
+                commit('createVaspitac', response.data)
+                commit('setLoading', false)
+                 }).catch(
+                    (error) => {
+                      console.log(error)
+                      commit('setLoading', false)
+                    }
+          )
+        },
           // HTTP POST zahtev za prijavu novog ucenika
         createUcenik ({commit}, payload) {
             // payload je objekat koji stize sa nekih od komponenti zaduzenih za prijavu novog ucenika
@@ -504,8 +738,7 @@ export const store = new Vuex.Store({
                },
                slika: payload.slika,
                materijalniPrihodi: payload.materijalniPrihodi,
-               pohvale: payload.pohvale,
-               kazne: payload.kazne
+
                }
                
                
@@ -513,7 +746,7 @@ export const store = new Vuex.Store({
           
             axios.post('http://localhost:50146/api/ucenik',ucenik, {
                 onUploadProgress: uploadEvent =>{
-                    console.log('Put request progress:' + Math.round(uploadEvent.loaded / uploadEvent.total * 100) + '%'  )                    
+                    console.log('Post request progress:' + Math.round(uploadEvent.loaded / uploadEvent.total * 100) + '%'  )                    
                 }
             }).then(function(response){
 
@@ -528,6 +761,42 @@ export const store = new Vuex.Store({
           )
   
         },
+        deleteVaspitnaGrupa( {commit },payload ) {
+            commit('setLoading', true)
+           
+            axios.delete('http://localhost:50146/api/vaspitneGrupe/'+payload).then((response) => {
+              
+              commit('deleteVaspitnaGrupa', response.data)
+              commit('setLoading', false)
+            })
+          },
+          deleteKazna( {commit },payload ) {
+            commit('setLoading', true)
+           
+            axios.delete('http://localhost:50146/api/kazne/'+payload).then((response) => {
+              
+              commit('deleteKazna', response.data)
+              commit('setLoading', false)
+            })
+          },
+          deletePohvala( {commit },payload ) {
+            commit('setLoading', true)
+           
+            axios.delete('http://localhost:50146/api/pohvale/'+payload).then((response) => {
+              
+              commit('deletePohvala', response.data)
+              commit('setLoading', false)
+            })
+          },
+          deleteVaspitac( {commit },payload ) {
+            commit('setLoading', true)
+           
+            axios.delete('http://localhost:50146/api/vaspitaci/'+payload).then((response) => {
+              
+              commit('deleteVaspitac', response.data)
+              commit('setLoading', false)
+            })
+          },
         // HTTP DELETE zahtev za brisanje prijavljenog ucenika, zahteva ID ucenika koji se brise
         deleteUcenik( {commit },payload ) {
             commit('setLoading', true)
@@ -537,6 +806,77 @@ export const store = new Vuex.Store({
               commit('deleteUcenik', response.data)
               commit('setLoading', false)
             })
+          },
+          editVaspitneGrupe ({commit}, payload) {
+                const vaspitneGrupe = {
+                naziv: payload.naziv
+            }
+            commit('setLoading', true)
+            axios.put('http://localhost:50146/api/vaspitnegrupe/'+payload.id, vaspitneGrupe).then(function(response){
+               
+                commit('editVaspitneGrupe', response.data)
+                commit('setLoading', false)
+                 }).catch(
+                    (error) => {
+                      console.log(error)
+                      commit('setLoading', false)
+                    }
+          )
+          },
+          editVaspitaca ({commit}, payload) {
+            const vaspitac = {
+                ime: payload.ime,
+                prezime: payload.prezime,
+                brojTelefona: payoad.brojTelefona,
+                slika: payload.slika
+            }
+            commit('setLoading', true)
+            axios.put('http://localhost:50146/api/vaspitaci/'+payload.id, vaspitac).then(function(response){
+               
+                commit('editVaspitaca', response.data)
+                commit('setLoading', false)
+                 }).catch(
+                    (error) => {
+                      console.log(error)
+                      commit('setLoading', false)
+                    }
+          )
+          },
+          editKazne ({commit}, payload) {
+            const kazna = {
+                opis : payload.opis,
+                bodoviKazne : payload.bodoviKazne,
+                ucenikId: payload.ucenikId
+            }
+            commit('setLoading', true)
+            axios.put('http://localhost:50146/api/kazne/'+payload.id, kazna).then(function(response){
+               
+                commit('editKazne', response.data)
+                commit('setLoading', false)
+                 }).catch(
+                    (error) => {
+                      console.log(error)
+                      commit('setLoading', false)
+                    }
+          )
+          },
+          editPohvale ({commit}, payload) {
+            const pohvala = {
+                opis : payload.opis,
+                bodoviKazne : payload.bodoviKazne,
+                ucenikId: payload.ucenikId
+            }
+            commit('setLoading', true)
+            axios.put('http://localhost:50146/api/pohvale/'+payload.id, pohvala).then(function(response){
+               
+                commit('editPohvale', response.data)
+                commit('setLoading', false)
+                 }).catch(
+                    (error) => {
+                      console.log(error)
+                      commit('setLoading', false)
+                    }
+          )
           },
           // HTTP PUT zahtev za menjanje podataka prijavljenog ucenika
           editUcenik ({commit}, payload) {
@@ -610,9 +950,7 @@ export const store = new Vuex.Store({
                },
                slika:payload.slika,
                materijalniPrihodi: payload.materijalniPrihodi,
-               pohvale: payload.pohvale,
-               kazne: payload.kazne
-                
+
             }
           
             commit('setLoading', true)
@@ -633,13 +971,22 @@ export const store = new Vuex.Store({
     getters: {
         getUcenikById: (state )  => (id) =>{ 
             console.log(id)
-            const ucenikEdit = state.ucenici.find(ucenikEdit => {
-                
+            const ucenikEdit = state.ucenici.find(ucenikEdit => {               
                  ucenikEdit.id === id
-              })
-  
-              
-          },
+              })            
+        },
+        loadedVaspitneGrupe (state) {
+            return state.vaspitnegrupe
+        },
+        loadedVaspitac (state) {
+            return state.vaspitaci
+        },
+        loadedKazne (state) {
+            return state.kazne
+        },
+        loadedPohvale (state) {
+            return state.pohvale
+        },
         loadedTipoviPorodice (state) {
             return state.tipoviPorodice
         },
@@ -685,7 +1032,7 @@ export const store = new Vuex.Store({
         return state.drzave       
     },
     loadedUceniciID (state) {
-        
+
      return (id) => {
          return state.ucenici.find((ucenik) =>
      {

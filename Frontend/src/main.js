@@ -14,8 +14,8 @@ Vue.use(Breabcrumbs)
 Vue.use(VueAxios, axios)
 Vue.use(Vuetify, {
   theme: {
-    navbarcolor: '#001B40',
-    redactive: '#800042'
+    navbarcolor: '#03996F',
+    redactive: '#E4B056'
   }
 })
 
@@ -43,6 +43,10 @@ new Vue({
     this.$store.dispatch('loadedOS')
     this.$store.dispatch('loadedMesta')
     this.$store.dispatch('loadedRazred')
+    this.$store.dispatch('loadedVaspitneGrupe')
+    this.$store.dispatch('loadedPohvale')
+    this.$store.dispatch('loadedKazne')
+    this.$store.dispatch('loadedVaspitac')
     return this.$store.dispatch('loadedOpstine')
   }
 })

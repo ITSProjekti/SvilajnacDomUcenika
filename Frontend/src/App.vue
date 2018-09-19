@@ -119,7 +119,7 @@
         { icon: 'group', text: 'Pregled učenika u domu',link: '/ucenici' },
         { icon: 'group_add', text: 'Novi učenik - prijava',link: '/prijava' },
         { icon: 'list_alt', text: 'Pregled svih prijavljenih',link: '/ucenici' },
-
+        { icon: 'group_work', text: 'Vaspitne grupe',link: '/vaspitnegrupe' },
         { divider: true },
         { heading: 'Vaspitni rad' ,mainicon: 'book' },
         { icon: 'timer', text: 'Godišnji program rada' },
