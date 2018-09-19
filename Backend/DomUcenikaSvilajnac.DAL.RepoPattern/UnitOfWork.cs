@@ -54,7 +54,7 @@ namespace DomUcenikaSvilajnac.DAL.RepoPattern
             Kazne = new KaznaRepository(_context);
             Vaspitaci = new VaspitacRepository(_context);
             Sastanci = new SastanakRepository(_context);
-    }
+        }
 
         /// <summary>
         /// Za deklarisanje konteksta u konstruktoru iznad.
@@ -73,7 +73,7 @@ namespace DomUcenikaSvilajnac.DAL.RepoPattern
         public IRazredRpository Razredi { get; set; }
         public IRoditeljRepository Roditelji { get; set; }
         public IStepenStrucneSpremeRepository Stepeni { get; set; }
-        public ITipPorodiceRepository TipoviPorodice  { get; set; }
+        public ITipPorodiceRepository TipoviPorodice { get; set; }
         public IStarateljRepository Staratelji { get; set; }
         public IPohvalaRepository Pohvale { get; set; }
         public IVaspitnaGrupaRepository VaspitneGrupe { get; set; }
@@ -121,7 +121,7 @@ namespace DomUcenikaSvilajnac.DAL.RepoPattern
             var podaciSaOpstinama = await _context.Opstine
                 .Include(k => k.PostanskiBrojevi)
                 .Include(ss => ss.SrednjeSkole)
-                .Include(os=> os.OsnovneSkole)
+                .Include(os => os.OsnovneSkole)
                 .ToListAsync();
 
 
@@ -132,6 +132,7 @@ namespace DomUcenikaSvilajnac.DAL.RepoPattern
 
         public async Task<IEnumerable<UcenikResource>> podaciUcenika()
         {
+
 
 
             var podaciUcenika = await _context.Uceniks
@@ -147,11 +148,11 @@ namespace DomUcenikaSvilajnac.DAL.RepoPattern
                 .Include(mr => mr.MestoPrebivalista)
                 .Include(mzs => mzs.MestoZavrseneSkole)
                 .Include(s => s.Smer)
-                .Include(r=>r.Razred)
-                .Include(rod=> rod.Roditelji)
-                .Include(tipP=> tipP.TipPorodice)
-                .Include(st=> st.Staratelji)
-                .Include(vg=> vg.VaspitnaGrupa)
+                .Include(r => r.Razred)
+                .Include(rod => rod.Roditelji)
+                .Include(tipP => tipP.TipPorodice)
+                .Include(st => st.Staratelji)
+                .Include(vg => vg.VaspitnaGrupa)
                 .ToListAsync();
 
             foreach (var item in podaciUcenika)
@@ -185,10 +186,10 @@ namespace DomUcenikaSvilajnac.DAL.RepoPattern
                 .Include(mr => mr.MestoPrebivalista)
                 .Include(mzs => mzs.MestoZavrseneSkole)
                 .Include(s => s.Smer)
-                .Include(r=>r.Razred)
+                .Include(r => r.Razred)
                 .Include(rod => rod.Roditelji)
                  .Include(tipP => tipP.TipPorodice)
-                 .Include(st=> st.Staratelji)
+                 .Include(st => st.Staratelji)
                  .Include(vg => vg.VaspitnaGrupa)
                 .SingleOrDefaultAsync(x => x.Id == id);
             return Mapper.Map<Ucenik, UcenikResource>(podaciUcenikaById);
@@ -232,7 +233,7 @@ namespace DomUcenikaSvilajnac.DAL.RepoPattern
                 .Include(mzs => mzs.MestoZavrseneSkole)
                 .Include(s => s.Smer)
                 .Include(r => r.Razred)
-                .Include(tipP=> tipP.TipPorodice)
+                .Include(tipP => tipP.TipPorodice)
                 .Include(vg => vg.VaspitnaGrupa)
                 .SingleOrDefaultAsync(x => x.Id == ucenik.Id);
 
@@ -242,6 +243,8 @@ namespace DomUcenikaSvilajnac.DAL.RepoPattern
         }
         public async Task<UcenikResource> mapiranjeZaDeleteUcenika(UcenikResource ucenik)
         {
+
+
             var podaciUcenika = await _context.Uceniks
                  .Include(o => o.Opstina)
                 .Include(d => d.DrzavaRodjenja)
@@ -256,9 +259,9 @@ namespace DomUcenikaSvilajnac.DAL.RepoPattern
                 .Include(mzs => mzs.MestoZavrseneSkole)
                 .Include(s => s.Smer)
                 .Include(r => r.Razred)
-                .Include(rod=> rod.Roditelji)
+                .Include(rod => rod.Roditelji)
                 .Include(tipP => tipP.TipPorodice)
-                .Include(st=> st.Staratelji)
+                .Include(st => st.Staratelji)
                 .Include(vg => vg.VaspitnaGrupa)
                 .SingleOrDefaultAsync(x => x.Id == ucenik.Id);
 
@@ -278,7 +281,13 @@ namespace DomUcenikaSvilajnac.DAL.RepoPattern
                 )
                 .ToListAsync();
 
-            return  Mapper.Map<List<Roditelj>, List<RoditeljResource>>(roditeljiUcenika);
+
+
+
+
+
+
+            return Mapper.Map<List<Roditelj>, List<RoditeljResource>>(roditeljiUcenika);
         }
 
         public async Task<IEnumerable<PutRoditeljaResource>> roditeljiUcenikaZaPut(int UcenikId)
@@ -309,7 +318,7 @@ namespace DomUcenikaSvilajnac.DAL.RepoPattern
         public async Task<Staratelj> selektIdStarateljaUcenika(int UcenikId)
         {
             var nesto = await _context.Staratelji.SingleOrDefaultAsync(n => n.UcenikId == UcenikId);
-          
+
             return nesto;
         }
         public async Task<IEnumerable<PohvalaResource>> pohvaleUcenikaById(int UcenikId)
@@ -357,7 +366,7 @@ namespace DomUcenikaSvilajnac.DAL.RepoPattern
                 .Include(v => v.Vaspitac)
                 .SingleOrDefaultAsync(x => x.Id == vaspitnaGrupa.Id);
 
-                return Mapper.Map<VaspitnaGrupa, VaspitnaGrupaResource>(podaciGrupe);
+            return Mapper.Map<VaspitnaGrupa, VaspitnaGrupaResource>(podaciGrupe);
         }
 
         public async Task<VaspitnaGrupaResource> mapiranjeZaPutGrupe(int id)
@@ -377,6 +386,22 @@ namespace DomUcenikaSvilajnac.DAL.RepoPattern
 
             return Mapper.Map<VaspitnaGrupa, VaspitnaGrupaResource>(podaciGrupe);
         }
-    }
+
+        public async void updateVaspitneGrupeId(int IdObrisaneVaspitneGrupe)
+        {
+            var listaUcenikaIsteVaspitneGrupe = await _context.Uceniks.
+            FromSql(
+            $"select *  from dbo.Ucenici  where VaspitnaGrupaId = {IdObrisaneVaspitneGrupe}"
+            )
+            .ToListAsync();
+
+            listaUcenikaIsteVaspitneGrupe.ForEach(a =>
+            {
+                a.VaspitnaGrupaId = 1;
+            });
+
+            _context.UpdateRange(listaUcenikaIsteVaspitneGrupe);
+        }
+    } 
 }
 
