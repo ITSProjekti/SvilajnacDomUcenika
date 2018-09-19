@@ -18,9 +18,7 @@ namespace DomUcenikaSvilajnac.Common.Interfaces
     public interface IUnitOfWork : IDisposable
     {
         IUcenikRepository Ucenici { get; }
-       
         IOpstinaRepository Opstine { get; }
-
         IDrzavaRepository Drzave { get; }
         IPolRepository Polovi { get; }
         ITelefonRepository Telefoni { get; }
@@ -77,5 +75,7 @@ namespace DomUcenikaSvilajnac.Common.Interfaces
         Task<VaspitnaGrupaResource> mapiranjeZaDeleteGrupe(VaspitnaGrupaResource vaspitnaGrupa);
 
         void updateVaspitneGrupeId(int IdObrisaneVaspitneGrupe);
+
+        void updateVaspitaca(int ObrisanVaspitacId);
     }
 }
