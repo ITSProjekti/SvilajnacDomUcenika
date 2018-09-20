@@ -85,7 +85,6 @@ namespace DomUcenikaSvilajnac.Controllers
         [HttpPut("{id}")]
         public async Task<IActionResult> PutUcenik([FromRoute] int id, [FromBody] PutUcenikaResource ucenik)
         {
-
             PutRoditeljaResource roditeljResurs = new PutRoditeljaResource()
             {
                 Id = ucenik.Roditelji.Id,

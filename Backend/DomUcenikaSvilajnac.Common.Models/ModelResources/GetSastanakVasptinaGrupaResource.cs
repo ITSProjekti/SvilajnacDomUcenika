@@ -4,13 +4,9 @@ using System.Text;
 
 namespace DomUcenikaSvilajnac.Common.Models.ModelResources
 {
-    public class VaspitnaGrupaResource
+    public class GetSastanakVasptinaGrupaResource
     {
         public int Id { get; set; }
         public string Naziv { get; set; }
-        public VaspitacResource Vaspitac { get; set; }
-
-        public int BrojUcenika { get; set; }
-
     }
 }

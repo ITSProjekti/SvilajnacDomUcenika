@@ -79,5 +79,12 @@ namespace DomUcenikaSvilajnac.Common.Interfaces
         Task<VaspitnaGrupa> updateBrojaUcenikaUVaspitnojGrupi();
 
         void updateVaspitaca(int ObrisanVaspitacId);
+
+        Task<IEnumerable<SastanakResource>> sviSastanci();
+        Task<SastanakResource> sastanakById(int id);
+        Task<SastanakResource> mapiranjeZaPostSastanka(SastanakResource sastanak);
+        Task<SastanakResource> mapiranjeZaPutSastanka(int id);
+        Task<SastanakResource> mapiranjeZaDeleteSastanka(SastanakResource sastanak);
+
     }
 }

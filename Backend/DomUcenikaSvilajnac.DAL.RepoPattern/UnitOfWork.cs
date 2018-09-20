@@ -401,7 +401,6 @@ namespace DomUcenikaSvilajnac.DAL.RepoPattern
                 )
                 .ToListAsync();
 
-
             //nizovi u kojima cemo da smestimo listu id-eva i broj ucenika za datu vaspitnu grupu
             int[] NizIdVaspitnihGrupa = new int[listaVaspitnihGrupa.Count];
             int[] nizBrojaUcenika = new int[listaVaspitnihGrupa.Count];
@@ -420,8 +419,6 @@ namespace DomUcenikaSvilajnac.DAL.RepoPattern
                 item.BrojUcenika = brojUcenika;
                 i++;
             }
-
-
 
             //smestanje vaspitne grupe koja je izabrana kako bismo promenili vrednost broja Ucenika u toj tabeli
             var vaspitnaGrupa = await _context.VaspitneGrupe.FirstOrDefaultAsync(n => n.Id == 1);
@@ -443,6 +440,50 @@ namespace DomUcenikaSvilajnac.DAL.RepoPattern
             });
 
             _context.UpdateRange(vaspitnaGrupaObrisanogVaspitaca);
+        }
+
+        public async Task<IEnumerable<SastanakResource>> sviSastanci()
+        {
+            var podaciSastanaka = await _context.Sastanci
+                .Include(v => v.VaspitnaGrupa)
+                .ToListAsync();
+
+            return Mapper.Map<List<Sastanak>, List<SastanakResource>>(podaciSastanaka);
+        }
+
+        public async Task<SastanakResource> sastanakById(int id)
+        {
+            var podaciSastanak = await _context.Sastanci
+                .Include(v => v.VaspitnaGrupa)
+                .SingleOrDefaultAsync(x => x.Id == id);
+            return Mapper.Map<Sastanak, SastanakResource>(podaciSastanak);
+        }
+
+        public async Task<SastanakResource> mapiranjeZaPostSastanka(SastanakResource sastanak)
+        {
+            var podaciSastanka = await _context.Sastanci
+                .Include(v => v.VaspitnaGrupa)
+                .SingleOrDefaultAsync(x => x.Id == sastanak.Id);
+
+            return Mapper.Map<Sastanak, SastanakResource>(podaciSastanka);
+        }
+
+        public async Task<SastanakResource> mapiranjeZaPutSastanka(int id)
+        {
+            var podaciSastanka = await _context.Sastanci
+                .Include(v => v.VaspitnaGrupa)
+                .SingleOrDefaultAsync(x => x.Id == id);
+
+            return Mapper.Map<Sastanak, SastanakResource>(podaciSastanka);
+        }
+
+        public async Task<SastanakResource> mapiranjeZaDeleteSastanka(SastanakResource sastanak)
+        {
+            var podaciSastnka = await _context.Sastanci
+                .Include(v => v.VaspitnaGrupa)
+                .SingleOrDefaultAsync(x => x.Id == sastanak.Id);
+
+            return Mapper.Map<Sastanak, SastanakResource>(podaciSastnka);
         }
     } 
 }

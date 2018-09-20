@@ -11,9 +11,10 @@ using System;
 namespace DomUcenikaSvilajnac.DAL.Context.Migrations
 {
     [DbContext(typeof(UcenikContext))]
-    partial class UcenikContextModelSnapshot : ModelSnapshot
+    [Migration("20180920093213_ProsirivanjeModelaSastanak")]
+    partial class ProsirivanjeModelaSastanak
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -187,11 +188,7 @@ namespace DomUcenikaSvilajnac.DAL.Context.Migrations
 
                     b.Property<int>("UkupanBrojPrisutnihUcenika");
 
-                    b.Property<int>("VaspitnaGrupaId");
-
                     b.HasKey("Id");
-
-                    b.HasIndex("VaspitnaGrupaId");
 
                     b.ToTable("Sastanci");
                 });
@@ -460,14 +457,6 @@ namespace DomUcenikaSvilajnac.DAL.Context.Migrations
                     b.HasOne("DomUcenikaSvilajnac.Common.Models.Ucenik", "Ucenik")
                         .WithMany("Roditelji")
                         .HasForeignKey("UcenikId")
-                        .OnDelete(DeleteBehavior.Cascade);
-                });
-
-            modelBuilder.Entity("DomUcenikaSvilajnac.Common.Models.Sastanak", b =>
-                {
-                    b.HasOne("DomUcenikaSvilajnac.Common.Models.VaspitnaGrupa", "VaspitnaGrupa")
-                        .WithMany()
-                        .HasForeignKey("VaspitnaGrupaId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 

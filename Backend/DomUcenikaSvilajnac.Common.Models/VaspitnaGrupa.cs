@@ -14,10 +14,12 @@ namespace DomUcenikaSvilajnac.Common.Models
 
         public int BrojUcenika { get; set; }
         ICollection<Ucenik> Ucenici { get; set; }
+        ICollection<Sastanak> Sastanci { get; set; }
 
         public VaspitnaGrupa()
         {
             Ucenici = new Collection<Ucenik>();
+            Sastanci = new Collection<Sastanak>();
         }
     }
 }

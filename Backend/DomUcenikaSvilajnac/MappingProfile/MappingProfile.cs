@@ -481,7 +481,8 @@ namespace DomUcenikaSvilajnac.Mapping
                 .ForMember(v => v.Mesec, opt => opt.MapFrom(src => src.DatumOdrzavanja.Month));
 
             CreateMap<SastanakResource, Sastanak>()
-                .ForMember(v => v.DatumOdrzavanja, opt => opt.MapFrom(src => new DateTime(src.Godina, src.Mesec, src.Dan + 1).ToUniversalTime()));
+                .ForMember(v => v.DatumOdrzavanja, opt => opt.MapFrom(src => new DateTime(src.Godina, src.Mesec, src.Dan + 1).ToUniversalTime()))
+                .ForMember(v => v.VaspitnaGrupa, opt => opt.Ignore());
         }
     }
 }
