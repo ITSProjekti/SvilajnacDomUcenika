@@ -44,7 +44,7 @@ namespace DomUcenikaSvilajnac.Controllers
         {
             //ovde ces trebati da napravis isto kao za pohvale u istoj metodi
 
-            return await UnitOfWork.kazneUcenikaById(id);
+            return await UnitOfWork.Kazne.kazneUcenikaById(id);
         }
 
         /// <summary>

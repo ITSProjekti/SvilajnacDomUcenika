@@ -43,8 +43,8 @@ namespace DomUcenikaSvilajnac.Controllers
         /// GET: api/Ucenik        
         [HttpGet]
         public async Task<IEnumerable<UcenikResource>> GetUcenika()
-        {          
-            return  await UnitOfWork.podaciUcenika();
+        {
+            return  await UnitOfWork.Ucenici.podaciUcenika();
         }
 
         /// <summary>
@@ -59,7 +59,7 @@ namespace DomUcenikaSvilajnac.Controllers
                 return BadRequest(ModelState);
             }
 
-            var mapiranUcenik = UnitOfWork.podaciUcenikaById(id);
+            var mapiranUcenik = UnitOfWork.Ucenici.podaciUcenikaById(id);
 
 
             var ucenik = await UnitOfWork.Ucenici.GetAsync(id);
@@ -71,6 +71,7 @@ namespace DomUcenikaSvilajnac.Controllers
 
             return Ok(ucenikNovi);
         }
+
 
         /// <summary>
         /// Metoda za update, menja podatke u nekom redu u tabeli, tj. o nekom uceniku na osnovu prosledjenog Id-a 
@@ -110,7 +111,7 @@ namespace DomUcenikaSvilajnac.Controllers
             //koriscenje klase telefon kontrolera kako bih pozvao metodu put za taj objekat
             TelefonController telefonKontroler = new TelefonController(_mapper, UnitOfWork);
             StarateljController starateljKontroler = new StarateljController(_mapper, UnitOfWork);
-            var starateljUcenika = await UnitOfWork.selektIdStarateljaUcenika(stariUcenik.Id);
+            var starateljUcenika = await UnitOfWork.Staratelji.selektIdStarateljaUcenika(stariUcenik.Id);
 
             bool noviStarateljKrozPut = false;
             if (starateljUcenika == null && ucenik.Staratelji.Ime != "")
@@ -118,7 +119,6 @@ namespace DomUcenikaSvilajnac.Controllers
                 await starateljKontroler.PostStaratelj(ucenik.Staratelji);
                 noviStarateljKrozPut = true;
             }
-             
 
             await telefonKontroler.PutTelefon(telefon.Id, telefon);
             if (id != stariUcenik.Id)
@@ -155,7 +155,7 @@ namespace DomUcenikaSvilajnac.Controllers
             RoditeljController roditeljKontroler = new RoditeljController(_mapper, UnitOfWork);
             await roditeljKontroler.PutRoditelj(novi.Id, roditeljResurs);
 
-            var noviUcenik = await UnitOfWork.mapiranjeZaPutUcenika(id);
+            var noviUcenik = await UnitOfWork.Ucenici.mapiranjeZaPutUcenika(id);
             if ((ucenik.TipPorodice.Id != 4 && ucenik.TipPorodice.Id != 5) && starateljUcenika != null)
             {
                 await starateljKontroler.DeleteStaratelj(noviUcenik.Staratelji.Id);
@@ -192,6 +192,8 @@ namespace DomUcenikaSvilajnac.Controllers
                 StepenObrazovanjaId = ucenik.Roditelji.StrucnaSpremaMajkeId,
             };
            
+           
+
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
@@ -221,7 +223,6 @@ namespace DomUcenikaSvilajnac.Controllers
                 await starateljKontroler.PostStaratelj(ucenik.Staratelji);
             }
             
-            
             otac.UcenikId = noviUcenik.Id;
             majka.UcenikId = noviUcenik.Id;
 
@@ -239,8 +240,9 @@ namespace DomUcenikaSvilajnac.Controllers
                 noviUcenik.Staratelji.Add(new Staratelj { Id = 0, Ime = "", Prezime = "", UcenikId = 0 });
             ucenik = _mapper.Map<Ucenik, PostUcenikaResource>(noviUcenik);
 
-            var mapiranUcenik = await UnitOfWork.mapiranjeZaPostUcenika(ucenik);
-    
+            var mapiranUcenik = await UnitOfWork.Ucenici.mapiranjeZaPostUcenika(ucenik);
+
+         
             return Ok(mapiranUcenik);
         }
 
@@ -271,9 +273,8 @@ namespace DomUcenikaSvilajnac.Controllers
                     }
                 };
           
-               
             var noviUcenik = _mapper.Map<Ucenik, UcenikResource>(ucenik);
-            var mapiranUcenik = await UnitOfWork.mapiranjeZaDeleteUcenika(noviUcenik);
+            var mapiranUcenik = await UnitOfWork.Ucenici.mapiranjeZaDeleteUcenika(noviUcenik);
 
             if (ucenik == null)
             {

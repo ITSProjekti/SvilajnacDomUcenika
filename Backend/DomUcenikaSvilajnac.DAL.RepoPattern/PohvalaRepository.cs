@@ -1,18 +1,27 @@
-﻿using DomUcenikaSvilajnac.Common.Interfaces;
+﻿using AutoMapper;
+using DomUcenikaSvilajnac.Common.Interfaces;
 using DomUcenikaSvilajnac.Common.Models;
+using DomUcenikaSvilajnac.Common.Models.ModelResources;
 using DomUcenikaSvilajnac.DAL.Context;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace DomUcenikaSvilajnac.DAL.RepoPattern
 {
     public class PohvalaRepository : Repository<Pohvala>, IPohvalaRepository
     {
-        public PohvalaRepository(UcenikContext context) : base(context)
+        protected readonly UcenikContext _context;
+        public IMapper Mapper { get; }
+        public PohvalaRepository(UcenikContext context, IMapper mapper) : base(context)
         {
-
+            _context = context;
+            Mapper = mapper;
         }
+
+        public IPohvalaRepository Pohvale { get; set; }
 
         /// <summary>
         /// Get the context.
@@ -20,6 +29,17 @@ namespace DomUcenikaSvilajnac.DAL.RepoPattern
         public UcenikContext context
         {
             get { return context as UcenikContext; }
+        }
+
+        public async Task<IEnumerable<PohvalaResource>> pohvaleUcenikaById(int UcenikId)
+        {
+            var pohvaleUcenika = await _context.Pohvale.
+                FromSql(
+                $"select *  from dbo.Pohvale  where UcenikId = {UcenikId}"
+                )
+                .ToListAsync();
+
+            return Mapper.Map<List<Pohvala>, List<PohvalaResource>>(pohvaleUcenika);
         }
     }
 }

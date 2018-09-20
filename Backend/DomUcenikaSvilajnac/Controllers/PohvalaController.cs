@@ -42,7 +42,7 @@ namespace DomUcenikaSvilajnac.Controllers
         [HttpGet("{id}")]
         public async Task<IEnumerable<PohvalaResource>> GetPohvaluById([FromRoute] int id)
         {
-            return await UnitOfWork.pohvaleUcenikaById(id);
+            return await UnitOfWork.Pohvale.pohvaleUcenikaById(id);
         }
 
         /// <summary>

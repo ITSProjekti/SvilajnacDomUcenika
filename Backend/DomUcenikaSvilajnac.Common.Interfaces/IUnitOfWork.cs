@@ -42,41 +42,7 @@ namespace DomUcenikaSvilajnac.Common.Interfaces
 
         int SaveChanges();
         Task<int> SaveChangesAsync();
-        Task<IEnumerable<UcenikResource>> podaciUcenika();
 
-        Task<UcenikResource> podaciUcenikaById(int id);
-        Task<PostUcenikaResource> mapiranjeZaPostUcenika(PostUcenikaResource ucenik);
- 
-        void deleteTelefon(Telefon telefon);
-
-        Task<IEnumerable<OpstinaResource>> podaciSaOpstinama();
-        Task<IEnumerable<RoditeljResource>> roditeljiUcenika(int UcenikId);
         Task<IEnumerable<DeleteRoditeljaResource>> brisanjeRoditelja(int UcenikId);
-
-        Task<IEnumerable<RoditeljResource>> spremaRoditelja();
-
-        Task<UcenikResource> mapiranjeZaDeleteUcenika(UcenikResource ucenik);
-        Task<PutUcenikaResource> mapiranjeZaPutUcenika(int id);
-        Task<IEnumerable<PutRoditeljaResource>> roditeljiUcenikaZaPut(int UcenikId);
-
-        //metoda za test
-        Task<Staratelj> selektIdStarateljaUcenika(int UcenikId);
-
-        Task<IEnumerable<PohvalaResource>> pohvaleUcenikaById(int UcenikId);
-        Task<IEnumerable<KaznaResource>> kazneUcenikaById(int UcenikId);
-
-        //Task<IEnumerable<VaspitnaGrupaResource>> vaspitneGrupe();
-        //Task<VaspitnaGrupaResource> vaspitneGrupeById(int id);
-
-        //Task<VaspitnaGrupaResource> mapiranjeZaPostVaspitneGrupe(VaspitnaGrupaResource vaspitna);
-
-        //Task<VaspitnaGrupaResource> mapiranjeZaPutGrupe(int id);
-
-  
-      
-     
-      
-      
-
     }
 }

@@ -30,18 +30,18 @@ namespace DomUcenikaSvilajnac.Controllers
         [HttpGet]
         public async Task<IEnumerable<RoditeljResource>> GetRoditelji()
         {
-
-            return await UnitOfWork.spremaRoditelja();
+            return await UnitOfWork.Roditelji.spremaRoditelja();
         }
+
         /// <summary>
         /// Vraca dva reda iz tabele, tj. roditelje na osnovu prosledjenog Id-a.
         /// </summary>
         [HttpGet("{id}")]
         public async Task<IEnumerable<RoditeljResource>> GetRoditeljById([FromRoute] int id)
         {
-
-            return  await UnitOfWork.roditeljiUcenika(id);
+            return  await UnitOfWork.Roditelji.roditeljiUcenika(id);
         }
+
         /// <summary>
         /// Metoda za update, menja podatke u nekom redu u tabeli, tj. o nekom roditelju na osnovu prosledjenog Id-a 
         /// i vraca podatke o roditelju koji su namenjeni za front.
@@ -56,7 +56,7 @@ namespace DomUcenikaSvilajnac.Controllers
 
             int[] nizId = new int[2];
 
-            var listaRoditelja = await UnitOfWork.roditeljiUcenikaZaPut(id);
+            var listaRoditelja = await UnitOfWork.Roditelji.roditeljiUcenikaZaPut(id);
             foreach (var item in listaRoditelja)
             {
                 nizId[0] = item.IdMajke;
@@ -87,6 +87,7 @@ namespace DomUcenikaSvilajnac.Controllers
             Mapper.Map<Roditelj, PutRoditeljaResource>(noviRoditelj);
             return Ok(roditelj);
         }
+
         /// <summary>
         /// Dodavanje novog reda u tabeli, tj. novog roditlja.
         /// </summary>
@@ -111,6 +112,7 @@ namespace DomUcenikaSvilajnac.Controllers
             
             return Ok(roditelj);
         }
+
         /// <summary>
         /// Brisanje jednog reda iz tabele na osnvou prosledjenog Id-a, tj. brisanje odredjenog roditelja iz tabele.
         /// </summary>
@@ -122,7 +124,6 @@ namespace DomUcenikaSvilajnac.Controllers
                 return BadRequest(ModelState);
             } 
            var noviRoditelj= await UnitOfWork.brisanjeRoditelja(UcenikId);
-
 
            return Ok(noviRoditelj);
         }

@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace DomUcenikaSvilajnac.Common.Interfaces
 {
@@ -11,6 +12,6 @@ namespace DomUcenikaSvilajnac.Common.Interfaces
     /// </summary>
     public interface IStarateljRepository : IRepository<Staratelj>
     {
-
+        Task<Staratelj> selektIdStarateljaUcenika(int UcenikId);
     }
 }

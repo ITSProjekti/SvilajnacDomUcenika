@@ -4,6 +4,10 @@ using System.Text;
 using System.Linq.Expressions;
 using System.Linq;
 using DomUcenikaSvilajnac.Common.Models;
+using System.Threading.Tasks;
+using DomUcenikaSvilajnac.Common.Models.ModelResources;
+using DomUcenikaSvilajnac.ModelResources;
+
 namespace DomUcenikaSvilajnac.Common.Interfaces
 {
     /// <summary>
@@ -12,6 +16,10 @@ namespace DomUcenikaSvilajnac.Common.Interfaces
     /// </summary>
     public interface IUcenikRepository:IRepository<Ucenik>
     {
-     
+        Task<IEnumerable<UcenikResource>> podaciUcenika();
+        Task<UcenikResource> podaciUcenikaById(int id);
+        Task<PostUcenikaResource> mapiranjeZaPostUcenika(PostUcenikaResource ucenik);
+        Task<UcenikResource> mapiranjeZaDeleteUcenika(UcenikResource ucenik);
+        Task<PutUcenikaResource> mapiranjeZaPutUcenika(int id);
     }
 }
