@@ -104,7 +104,6 @@ namespace DomUcenikaSvilajnac.Controllers
                 return BadRequest(ModelState);
             }
 
-            UnitOfWork.updateVaspitaca(id);
 
             var vaspitac = await UnitOfWork.Vaspitaci.GetAsync(id);
             if (vaspitac == null)

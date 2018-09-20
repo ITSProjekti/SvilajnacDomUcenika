@@ -76,6 +76,6 @@ namespace DomUcenikaSvilajnac.Common.Interfaces
 
         void updateUcenikaVaspitnaGrupaId(int IdObrisaneVaspitneGrupe);
 
-        Task<VaspitnaGrupa> updateBrojaUcenikaUVaspitnojGrupi(int IdVaspitneGrupe);
+        Task<VaspitnaGrupa> updateBrojaUcenikaUVaspitnojGrupi();
     }
 }

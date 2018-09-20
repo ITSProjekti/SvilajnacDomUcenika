@@ -391,16 +391,41 @@ namespace DomUcenikaSvilajnac.DAL.RepoPattern
         }
 
        
-        public async Task<VaspitnaGrupa> updateBrojaUcenikaUVaspitnojGrupi(int IdVaspitneGrupe)
+        public async Task<VaspitnaGrupa> updateBrojaUcenikaUVaspitnojGrupi()
         {
-            //linq koji vraca broj ucenika date vaspitne grupe
-            var brojUcenika = await _context.Uceniks.CountAsync(n => n.VaspitnaGrupaId == IdVaspitneGrupe);
+       
+            //promenljiva u kojoj se smesta lista svih vaspitnih grupa
+            var listaVaspitnihGrupa = await _context.VaspitneGrupe.
+            FromSql(
+                $"select *  from dbo.VaspitneGrupe"
+                )
+                .ToListAsync();
+
+
+            //nizovi u kojima cemo da smestimo listu id-eva i broj ucenika za datu vaspitnu grupu
+            int[] NizIdVaspitnihGrupa = new int[listaVaspitnihGrupa.Count];
+            int[] nizBrojaUcenika = new int[listaVaspitnihGrupa.Count];
+            int i = 0;
+
+            //petlja za uzimanje id-a svih vaspitnih grupa
+            foreach (var item in listaVaspitnihGrupa)
+                NizIdVaspitnihGrupa[i++] = item.Id;
+            i = 0;
+
+             /*  petlja u kojoj se u svakoj iteraciji broje ucenici za datu vaspitnu grupu
+             i update se broj ucenika svake vaspitne grupe*/
+            foreach (var item in listaVaspitnihGrupa)
+            {
+                var brojUcenika = await _context.Uceniks.CountAsync(n => n.VaspitnaGrupaId == NizIdVaspitnihGrupa[i]);
+                item.BrojUcenika = brojUcenika;
+                i++;
+            }
+
 
 
             //smestanje vaspitne grupe koja je izabrana kako bismo promenili vrednost broja Ucenika u toj tabeli
-            var vaspitnaGrupa = await _context.VaspitneGrupe.FirstOrDefaultAsync(n => n.Id == IdVaspitneGrupe);
-            vaspitnaGrupa.BrojUcenika = brojUcenika;
-            _context.VaspitneGrupe.Update(vaspitnaGrupa);
+            var vaspitnaGrupa = await _context.VaspitneGrupe.FirstOrDefaultAsync(n => n.Id == 1);
+            _context.VaspitneGrupe.UpdateRange(listaVaspitnihGrupa);
             await _context.SaveChangesAsync();
             return vaspitnaGrupa;
         }

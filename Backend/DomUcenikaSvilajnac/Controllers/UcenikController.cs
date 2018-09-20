@@ -105,7 +105,7 @@ namespace DomUcenikaSvilajnac.Controllers
                 return BadRequest(ModelState);
             }
             // pozivanje metode za update broja ucenika u vaspitnoj grupi
-            UnitOfWork.updateBrojaUcenikaUVaspitnojGrupi(ucenik.VaspitnaGrupa.Id);
+            await UnitOfWork.updateBrojaUcenikaUVaspitnojGrupi();
 
 
 
@@ -169,7 +169,7 @@ namespace DomUcenikaSvilajnac.Controllers
                 await starateljKontroler.DeleteStaratelj(noviUcenik.Staratelji.Id);
             }
             // pozivanje metode za update broja ucenika u vaspitnoj grupi
-            await UnitOfWork.updateBrojaUcenikaUVaspitnojGrupi(noviUcenik.VaspitnaGrupa.Id);
+            await UnitOfWork.updateBrojaUcenikaUVaspitnojGrupi();
 
 
             return Ok(noviUcenik);
@@ -243,7 +243,7 @@ namespace DomUcenikaSvilajnac.Controllers
 
 
             // pozivanje metode za update broja ucenika u vaspitnoj grupi
-            await UnitOfWork.updateBrojaUcenikaUVaspitnojGrupi(1);
+            await UnitOfWork.updateBrojaUcenikaUVaspitnojGrupi();
 
             UnitOfWork.Roditelji.AddRange(roditelji);
             UnitOfWork.SaveChanges();
@@ -303,7 +303,7 @@ namespace DomUcenikaSvilajnac.Controllers
             await UnitOfWork.SaveChangesAsync();
 
             // pozivanje metode za update broja ucenika u vaspitnoj grupi nnakon brisanja
-            UnitOfWork.updateBrojaUcenikaUVaspitnojGrupi(ucenik.VaspitnaGrupa.Id);
+            await UnitOfWork.updateBrojaUcenikaUVaspitnojGrupi();
 
             return Ok(mapiranUcenik);
         }       
