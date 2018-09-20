@@ -101,7 +101,7 @@ namespace DomUcenikaSvilajnac.Controllers
                 return BadRequest(ModelState);
             }
 
-           await UnitOfWork.updateBrojaUcenikaUVaspitnojGrupi();
+             UnitOfWork.updateUcenikaVaspitnaGrupaId(id);
 
             var vaspitnaGrupa = await UnitOfWork.VaspitneGrupe.GetAsync(id);
             

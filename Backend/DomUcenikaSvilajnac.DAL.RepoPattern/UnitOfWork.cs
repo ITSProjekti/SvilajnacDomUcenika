@@ -429,6 +429,21 @@ namespace DomUcenikaSvilajnac.DAL.RepoPattern
             await _context.SaveChangesAsync();
             return vaspitnaGrupa;
         }
+
+        public async void updateVaspitaca(int ObrisanVaspitacId)
+        {
+            var vaspitnaGrupaObrisanogVaspitaca = await _context.VaspitneGrupe.
+                FromSql(
+                $"select * from dbo.VaspitneGrupe where VaspitacId = {ObrisanVaspitacId}"
+                ).ToListAsync();
+
+            vaspitnaGrupaObrisanogVaspitaca.ForEach(v =>
+            {
+                v.VaspitacId = 1;
+            });
+
+            _context.UpdateRange(vaspitnaGrupaObrisanogVaspitaca);
+        }
     } 
 }
 
