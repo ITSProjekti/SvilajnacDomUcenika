@@ -18,7 +18,7 @@ namespace DomUcenikaSvilajnac.Controllers
         public IMapper Mapper { get; }
         public IUnitOfWork UnitOfWork { get; }
         /// <summary>
-        /// Inicijalizacija instance klase PolController i deklarisanje mappera i unitofwork-a.
+        /// Inicijalizacija instance klase KaznaController i deklarisanje mappera i unitofwork-a.
         /// </summary>
         public KaznaController(IMapper mapper, IUnitOfWork unitOfWork)
         {
@@ -27,7 +27,7 @@ namespace DomUcenikaSvilajnac.Controllers
         }
 
         /// <summary>
-        /// Vraca listu svih polova koje se trenutno nalaze u bazi.
+        /// Vraca listu svih kazni koje se trenutno nalaze u bazi.
         /// </summary>
         [HttpGet]
         public async Task<IEnumerable<KaznaResource>> GetKazne()
@@ -36,6 +36,9 @@ namespace DomUcenikaSvilajnac.Controllers
             return Mapper.Map<List<Kazna>, List<KaznaResource>>(listaKazni.ToList());
         }
 
+        /// <summary>
+        /// Vraca jedan red iz tabele tj. jednu kaznu na osnovu prosledjenog Id-a
+        /// </summary>
         [HttpGet("{id}")]
         public async Task<IEnumerable<KaznaResource>> GetKaznuById([FromRoute] int id)
         {
@@ -44,6 +47,10 @@ namespace DomUcenikaSvilajnac.Controllers
             return await UnitOfWork.kazneUcenikaById(id);
         }
 
+        /// <summary>
+        /// Metoda za update, menja podatke u nekom redu u tabeli, tj. o nekoj kazni na osnovu prosledjenog Id-a 
+        /// i vraca podatke o kazni koji su namenjeni za front.
+        /// </summary>
         [HttpPut("{id}")]
         public async Task<IActionResult> PutKazna([FromRoute] int id, [FromBody] KaznaResource kazna)
         {
@@ -70,6 +77,9 @@ namespace DomUcenikaSvilajnac.Controllers
             return Ok(kazna);
         }
 
+        /// <summary>
+        /// Dodavanje novog reda u tabeli, tj. nove kazne.
+        /// </summary>
         [HttpPost]
         public async Task<IActionResult> PostKazna([FromBody] KaznaResource kazna)
         {
@@ -87,6 +97,9 @@ namespace DomUcenikaSvilajnac.Controllers
             return Ok(kazna);
         }
 
+        /// <summary>
+        /// Brisanje jednog reda iz tabele na osnvou prosledjenog Id-a, tj. brisanje odredjene kazne iz tabele.
+        /// </summary>
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteKazna([FromRoute] int id)
         {

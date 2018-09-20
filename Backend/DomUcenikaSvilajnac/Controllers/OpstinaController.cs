@@ -29,7 +29,7 @@ namespace DomUcenikaSvilajnac.Controllers
         }
 
         /// <summary>
-        /// Vraca listu sviih opstina, koje se trenutno nalaze u bazi.
+        /// Vraca listu svih opstina koje se trenutno nalaze u bazi.
         /// </summary>
         [HttpGet]
         public async Task<IEnumerable<OpstinaResource>> GetOpstine()

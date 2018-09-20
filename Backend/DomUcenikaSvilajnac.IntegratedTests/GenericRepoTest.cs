@@ -171,7 +171,7 @@ namespace DomUcenikaSvilajnac.IntegratedTests
 
 
         /// <summary>
-        /// Test proverava da li pronadjen odgovarajuci ucenik na osnovu atributa, uovom slucaju Imena.
+        /// Test proverava da li pronadjen odgovarajuci ucenik na osnovu atributa, u ovom slucaju Imena.
         /// </summary>
         [Fact]
         public void FindUcenik_NalazenjeUcenikaPoAtributuIme()

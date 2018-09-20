@@ -17,19 +17,26 @@ namespace DomUcenikaSvilajnac.Controllers
         public IMapper Mapper { get; }
         public IUnitOfWork UnitOfWork { get; }
         /// <summary>
-        /// Inicijalizacija instance klase PolController i deklarisanje mappera i unitofwork-a.
+        /// Inicijalizacija instance klase VaspitnaGrupaController i deklarisanje mappera i unitofwork-a.
         /// </summary>
         public VaspitnaGrupaController(IMapper mapper, IUnitOfWork unitOfWork)
         {
             Mapper = mapper;
             UnitOfWork = unitOfWork;
         }
+
+        /// <summary>
+        /// Vraca listu svih vaspitnih grupa koje se trenutno nalaze u bazi.
+        /// </summary>
         [HttpGet]
         public async Task<IEnumerable<VaspitnaGrupaResource>> GetVaspitneGrupe()
         {
             return await UnitOfWork.vaspitneGrupe();
         }
 
+        /// <summary>
+        /// Vraca jedan red iz tabele, tj. vaspitnu grupu na osnovu prosledjenog Id-a.
+        /// </summary>
         [HttpGet("{id}")]
         public async Task<IActionResult> GetVaspitneGrupeById([FromRoute] int id)
         {
@@ -50,6 +57,10 @@ namespace DomUcenikaSvilajnac.Controllers
             return Ok(novaVaspitnaGrupa);
         }
 
+        /// <summary>
+        /// Metoda za update, menja podatke u nekom redu u tabeli, tj. o nekoj vaspitnoj grupi na osnovu prosledjenog Id-a 
+        /// i vraca podatke o vaspitnoj grupi koji su namenjeni za front.
+        /// </summary>
         [HttpPut("{id}")]
         public async Task<IActionResult> PutVaspitneGrupe([FromRoute] int id, [FromBody] VaspitnaGrupaResource vaspitnaGrupa)
         {
@@ -74,6 +85,10 @@ namespace DomUcenikaSvilajnac.Controllers
             var novaVaspitnaGrupa = await UnitOfWork.mapiranjeZaPutGrupe(id);
             return Ok(novaVaspitnaGrupa);
         }
+
+        /// <summary>
+        /// Dodavanje novog reda u tabeli, tj. nove vaspitne grupe.
+        /// </summary>
         [HttpPost]
         public async Task<IActionResult> PostVaspitnaGrupa([FromBody] VaspitnaGrupaResource vaspitnaGrupa)
         {
@@ -93,6 +108,9 @@ namespace DomUcenikaSvilajnac.Controllers
             return Ok(mapiranaGrupa);
         }
 
+        /// <summary>
+        /// Brisanje jednog reda iz tabele na osnvou prosledjenog Id-a, tj. brisanje odredjene vaspitne grupe iz tabele.
+        /// </summary>
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteVaspitneGrupe([FromRoute] int id)
         {

@@ -83,7 +83,7 @@ namespace DomUcenikaSvilajnac.Controllers
             return Ok(razred);
         }
         /// <summary>
-        /// Dodavanje novog reda u tabeli, tj. novog razred.
+        /// Dodavanje novog reda u tabeli, tj. novog razreda.
         /// </summary>
         [HttpPost]
         public async Task<IActionResult> PostRazred([FromBody] RazredResource razred)

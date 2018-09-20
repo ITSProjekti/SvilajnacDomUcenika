@@ -36,6 +36,9 @@ namespace DomUcenikaSvilajnac.Controllers
             return await UnitOfWork.sviSastanci();
         }
 
+        /// <summary>
+        /// Vraca listu svih sastanaka koji se trenutno nalaze u bazi.
+        /// </summary>
         [HttpGet("{id}")]
         public async Task<IActionResult> GetSastanakById([FromRoute] int id)
         {
@@ -56,6 +59,10 @@ namespace DomUcenikaSvilajnac.Controllers
             return Ok(noviSastanak);
         }
 
+        /// <summary>
+        /// Metoda za update, menja podatke u nekom redu u tabeli, tj. o nekom sastanku na osnovu prosledjenog Id-a 
+        /// i vraca podatke o sastanku koji su namenjeni za front.
+        /// </summary>
         [HttpPut("{id}")]
         public async Task<IActionResult> PutSastanak([FromRoute] int id, [FromBody] SastanakResource sastanak)
         {
@@ -82,6 +89,9 @@ namespace DomUcenikaSvilajnac.Controllers
             return Ok(noviSastanak);
         }
 
+        /// <summary>
+        /// Dodavanje novog reda u tabeli, tj. novog sastanka.
+        /// </summary>
         [HttpPost]
         public async Task<IActionResult> PostSastanak([FromBody] SastanakResource sastanak)
         {
@@ -100,6 +110,9 @@ namespace DomUcenikaSvilajnac.Controllers
             return Ok(mapiranSastanak);
         }
 
+        /// <summary>
+        /// Brisanje jednog reda iz tabele na osnvou prosledjenog Id-a, tj. brisanje odredjenog sastanka iz tabele.
+        /// </summary>
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteSastanak([FromRoute] int id)
         {

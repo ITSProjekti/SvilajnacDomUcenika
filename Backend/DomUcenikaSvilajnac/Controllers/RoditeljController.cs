@@ -43,7 +43,7 @@ namespace DomUcenikaSvilajnac.Controllers
             return  await UnitOfWork.roditeljiUcenika(id);
         }
         /// <summary>
-        /// Metoda za update, menja podatke u nekom redu u tabeli, tj. o nekom roditlju na osnovu prosledjenog Id-a 
+        /// Metoda za update, menja podatke u nekom redu u tabeli, tj. o nekom roditelju na osnovu prosledjenog Id-a 
         /// i vraca podatke o roditelju koji su namenjeni za front.
         /// </summary>
         [HttpPut("{id}")]
@@ -81,10 +81,6 @@ namespace DomUcenikaSvilajnac.Controllers
             staraMajka.Id = nizId[0];
             Mapper.Map<MajkaResource, Roditelj>(djesi, staraMajka);
             await UnitOfWork.SaveChangesAsync();
-
-
-
-            //   UnitOfWork.SaveChanges();
 
 
             var noviRoditelj = await UnitOfWork.Roditelji.GetAsync(id);

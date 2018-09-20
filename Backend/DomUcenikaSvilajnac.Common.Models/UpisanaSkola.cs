@@ -25,9 +25,5 @@ namespace DomUcenikaSvilajnac.Common.Models
         {
             Ucenici = new Collection<Ucenik>();
         }
-        // ICollection<Ucenik> Ucenici { get; set; }
-
-
-
     }
 }

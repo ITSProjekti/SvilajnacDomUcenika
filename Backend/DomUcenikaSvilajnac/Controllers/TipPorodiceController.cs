@@ -19,7 +19,7 @@ namespace DomUcenikaSvilajnac.Controllers
         public IMapper Mapper { get; }
         public IUnitOfWork UnitOfWork { get; }
         /// <summary>
-        /// Inicijalizacija instance klase DrzavaController i deklarisanje mappera i unitofwork-a.
+        /// Inicijalizacija instance klase TipPorodiceController i deklarisanje mappera i unitofwork-a.
         /// </summary>
         public TipPorodiceController(IMapper mapper, IUnitOfWork unitOfWork)
         {
@@ -28,7 +28,7 @@ namespace DomUcenikaSvilajnac.Controllers
         }
 
         /// <summary>
-        /// Vraca listu svih drzava koje se trenutno nalaze u bazi.
+        /// Vraca listu svih tipova porodice koje se trenutno nalaze u bazi.
         /// </summary>
         [HttpGet]
         public async Task<IEnumerable<TipPorodiceResource>> GetTipovePorodice()
@@ -36,6 +36,10 @@ namespace DomUcenikaSvilajnac.Controllers
             var listaTipovaPorodice = await UnitOfWork.TipoviPorodice.GetAllAsync();
             return Mapper.Map<List<TipPorodice>, List<TipPorodiceResource>>(listaTipovaPorodice.ToList());
         }
+
+        /// <summary>
+        /// Vraca jedan red iz tabele, tj. jedan tip porodice na osnovu prosledjenog Id-a.
+        /// </summary>
         [HttpGet("{id}")]
         public async Task<IActionResult> GetTipPorodiceById([FromRoute] int id)
         {
@@ -54,6 +58,10 @@ namespace DomUcenikaSvilajnac.Controllers
             return Ok(noviTipPorodice);
         }
 
+        /// <summary>
+        /// Metoda za update, menja podatke u nekom redu u tabeli, tj. o nekom tipu porodice na osnovu prosledjenog Id-a 
+        /// i vraca podatke o tipu porodice koji su namenjeni za front.
+        /// </summary>
         [HttpPut("{id}")]
         public async Task<IActionResult> PutTipPorodice([FromRoute] int id, [FromBody] TipPorodiceResource tipPorodice)
         {
@@ -82,6 +90,9 @@ namespace DomUcenikaSvilajnac.Controllers
             return Ok(tipPorodice);
         }
 
+        /// <summary>
+        /// Dodavanje novog reda u tabeli, tj. novog tipa porodice.
+        /// </summary>
         [HttpPost]
         public async Task<IActionResult> PostTipPorodice([FromBody] TipPorodiceResource tipPorodice)
         {
@@ -98,6 +109,10 @@ namespace DomUcenikaSvilajnac.Controllers
 
             return Ok(tipPorodice);
         }
+
+        /// <summary>
+        /// Brisanje jednog reda iz tabele na osnvou prosledjenog Id-a, tj. brisanje odredjenog tipa porodice iz tabele.
+        /// </summary>
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteTipPorodice([FromRoute] int id)
         {

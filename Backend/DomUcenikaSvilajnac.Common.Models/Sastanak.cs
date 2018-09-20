@@ -4,7 +4,10 @@ using System.ComponentModel.DataAnnotations.Schema;
 using System.Text;
 
 namespace DomUcenikaSvilajnac.Common.Models
-{ 
+{
+    /// <summary>
+    /// Klasa Sastanak, pravi tabelu "Sastanci" u bazi podataka sa poljima koja su navedena kao property u datoj klasi.
+    /// </summary>
     [Table("Sastanci")]
     public class Sastanak
     {

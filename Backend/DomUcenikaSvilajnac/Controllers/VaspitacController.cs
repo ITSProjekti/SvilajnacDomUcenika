@@ -17,7 +17,7 @@ namespace DomUcenikaSvilajnac.Controllers
         public IMapper Mapper { get; }
         public IUnitOfWork UnitOfWork { get; }
         /// <summary>
-        /// Inicijalizacija instance klase PolController i deklarisanje mappera i unitofwork-a.
+        /// Inicijalizacija instance klase VaspitacController i deklarisanje mappera i unitofwork-a.
         /// </summary>
         public VaspitacController(IMapper mapper, IUnitOfWork unitOfWork)
         {
@@ -26,7 +26,7 @@ namespace DomUcenikaSvilajnac.Controllers
         }
 
         /// <summary>
-        /// Vraca listu svih polova koje se trenutno nalaze u bazi.
+        /// Vraca listu svih vaspitaca koje se trenutno nalaze u bazi.
         /// </summary>
         [HttpGet]
         public async Task<IEnumerable<VaspitacResource>> GetVaspitace()
@@ -37,6 +37,9 @@ namespace DomUcenikaSvilajnac.Controllers
 
         }
 
+        /// <summary>
+        /// Vraca jedan red iz tabele, tj. vaspitaca na osnovu prosledjenog Id-a.
+        /// </summary>
         [HttpGet("{id}")]
         public async Task<IActionResult> GetVaspitacById([FromRoute] int id)
         {
@@ -54,6 +57,11 @@ namespace DomUcenikaSvilajnac.Controllers
 
             return Ok(noviVaspitac);
         }
+
+        /// <summary>
+        /// Metoda za update, menja podatke u nekom redu u tabeli, tj. o nekom vaspitacu na osnovu prosledjenog Id-a 
+        /// i vraca podatke o vaspitacu koji su namenjeni za front.
+        /// </summary>
         [HttpPut("{id}")]
         public async Task<IActionResult> PutVaspitac([FromRoute] int id, [FromBody] VaspitacResource vaspitac)
         {
@@ -80,6 +88,9 @@ namespace DomUcenikaSvilajnac.Controllers
             return Ok(vaspitac);
         }
 
+        /// <summary>
+        /// Dodavanje novog reda u tabeli, tj. novog vaspitaca.
+        /// </summary>
         [HttpPost]
         public async Task<IActionResult> PostVaspitac([FromBody] VaspitacResource vaspitac)
         {
@@ -96,6 +107,10 @@ namespace DomUcenikaSvilajnac.Controllers
 
             return Ok(vaspitac);
         }
+
+        /// <summary>
+        /// Brisanje jednog reda iz tabele na osnvou prosledjenog Id-a, tj. brisanje odredjenog vaspitaca iz tabele.
+        /// </summary>
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteVaspitac([FromRoute] int id)
         {

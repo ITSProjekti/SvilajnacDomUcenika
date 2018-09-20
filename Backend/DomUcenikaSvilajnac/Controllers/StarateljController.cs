@@ -16,6 +16,9 @@ namespace DomUcenikaSvilajnac.Controllers
     {
         public IMapper Mapper { get; }
         public IUnitOfWork UnitOfWork { get; }
+        /// <summary>
+        /// Inicijalizacija instance klase StarateljController i deklarisanje mappera i unitofwork-a.
+        /// </summary>
         public StarateljController(IMapper mapper, IUnitOfWork unitOfWork)
         {
             Mapper = mapper;
@@ -23,7 +26,7 @@ namespace DomUcenikaSvilajnac.Controllers
         }
 
         /// <summary>
-        /// Vraca listu svih polova koje se trenutno nalaze u bazi.
+        /// Vraca listu svih staratelja koje se trenutno nalaze u bazi.
         /// </summary>
         [HttpGet]
         public async Task<IEnumerable<StarateljResource>> GetStaratelji()
@@ -32,7 +35,9 @@ namespace DomUcenikaSvilajnac.Controllers
             return Mapper.Map<List<Staratelj>, List<StarateljResource>>(listaStaratelja.ToList());
         }
 
-
+        /// <summary>
+        /// Vraca jedan red iz tabele, tj. staratelja na osnovu prosledjenog Id-a.
+        /// </summary>
         [HttpGet("{id}")]
         public async Task<IActionResult> GetStarateljById([FromRoute] int id)
         {
@@ -51,7 +56,10 @@ namespace DomUcenikaSvilajnac.Controllers
             return Ok(noviStaratelj);
         }
 
-
+        /// <summary>
+        /// Metoda za update, menja podatke u nekom redu u tabeli, tj. o nekom staratelju na osnovu prosledjenog Id-a 
+        /// i vraca podatke o staratelju koji su namenjeni za front.
+        /// </summary>
         [HttpPut("{id}")]
         public async Task<IActionResult> PutStaratelj([FromRoute] int id, [FromBody] StarateljResource staratelj)
         {
@@ -79,6 +87,9 @@ namespace DomUcenikaSvilajnac.Controllers
 
         }
 
+        /// <summary>
+        /// Dodavanje novog reda u tabeli, tj. novog staratelja.
+        /// </summary>
         [HttpPost]
         public async Task<IActionResult> PostStaratelj([FromBody] StarateljResource staratelj)
         {
@@ -96,6 +107,9 @@ namespace DomUcenikaSvilajnac.Controllers
             return Ok(staratelj);
         }
 
+        /// <summary>
+        /// Brisanje jednog reda iz tabele na osnvou prosledjenog Id-a, tj. brisanje odredjenog staratelja iz tabele.
+        /// </summary>
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteStaratelj([FromRoute] int id)
         {

@@ -18,7 +18,7 @@ namespace DomUcenikaSvilajnac.Controllers
         public IMapper Mapper { get; }
         public IUnitOfWork UnitOfWork { get; }
         /// <summary>
-        /// Inicijalizacija instance klase PolController i deklarisanje mappera i unitofwork-a.
+        /// Inicijalizacija instance klase PohvalaController i deklarisanje mappera i unitofwork-a.
         /// </summary>
         public PohvalaController(IMapper mapper, IUnitOfWork unitOfWork)
         {
@@ -27,7 +27,7 @@ namespace DomUcenikaSvilajnac.Controllers
         }
 
         /// <summary>
-        /// Vraca listu svih polova koje se trenutno nalaze u bazi.
+        /// Vraca listu svih pohvala koje se trenutno nalaze u bazi.
         /// </summary>
         [HttpGet]
         public async Task<IEnumerable<PohvalaResource>> GetPohvale()
@@ -36,11 +36,19 @@ namespace DomUcenikaSvilajnac.Controllers
             return Mapper.Map<List<Pohvala>, List<PohvalaResource>>(listaPohvala.ToList());
         }
 
+        /// <summary>
+        /// Vraca jedan red iz tabele, tj. jednu pohvalu na osnovu prosledjenog Id-a.
+        /// </summary>
         [HttpGet("{id}")]
         public async Task<IEnumerable<PohvalaResource>> GetPohvaluById([FromRoute] int id)
         {
             return await UnitOfWork.pohvaleUcenikaById(id);
         }
+
+        /// <summary>
+        /// Metoda za update, menja podatke u nekom redu u tabeli, tj. o nekoj pohvali na osnovu prosledjenog Id-a 
+        /// i vraca podatke o pohvali koji su namenjeni za front.
+        /// </summary>
         [HttpPut("{id}")]
         public async Task<IActionResult> PutPohvala([FromRoute] int id, [FromBody] PohvalaResource pohvala)
         {
@@ -66,6 +74,10 @@ namespace DomUcenikaSvilajnac.Controllers
             Mapper.Map<Pohvala, PohvalaResource>(novaPohvala);
             return Ok(pohvala);
         }
+
+        /// <summary>
+        /// Dodavanje novog reda u tabeli, tj. nove pohvale.
+        /// </summary>
         [HttpPost]
         public async Task<IActionResult> PostPohvala([FromBody] PohvalaResource pohvala)
         {
@@ -82,6 +94,10 @@ namespace DomUcenikaSvilajnac.Controllers
 
             return Ok(pohvala);
         }
+
+        /// <summary>
+        /// Brisanje jednog reda iz tabele na osnvou prosledjenog Id-a, tj. brisanje odredjene pohvale iz tabele.
+        /// </summary>
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeletePohvala([FromRoute] int id)
         {

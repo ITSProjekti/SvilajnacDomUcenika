@@ -85,7 +85,7 @@ namespace DomUcenikaSvilajnac.Controllers
             return Ok(prethodnaSkola);
         }
         /// <summary>
-        /// Dodavanje novog reda u tabeli, tj. novoe osnovne skole.
+        /// Dodavanje novog reda u tabeli, tj. nove osnovne skole.
         /// </summary>
         [HttpPost]
         public async Task<IActionResult> PostPrethodnuSkolu([FromBody]  PrethodnaSkolaResource prethodnaSkola)

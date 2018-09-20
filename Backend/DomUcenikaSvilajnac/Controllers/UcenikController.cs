@@ -43,13 +43,9 @@ namespace DomUcenikaSvilajnac.Controllers
         /// GET: api/Ucenik        
         [HttpGet]
         public async Task<IEnumerable<UcenikResource>> GetUcenika()
-        {
-           
+        {          
             return  await UnitOfWork.podaciUcenika();
-        
-
         }
-
 
         /// <summary>
         /// Vraca jedan red iz tabele, tj. jednog ucenika na osnovu prosledjenog Id-a.
@@ -75,7 +71,6 @@ namespace DomUcenikaSvilajnac.Controllers
 
             return Ok(ucenikNovi);
         }
-
 
         /// <summary>
         /// Metoda za update, menja podatke u nekom redu u tabeli, tj. o nekom uceniku na osnovu prosledjenog Id-a 
@@ -105,8 +100,6 @@ namespace DomUcenikaSvilajnac.Controllers
             }
             // pozivanje metode za update broja ucenika u vaspitnoj grupi
             await UnitOfWork.updateBrojaUcenikaUVaspitnojGrupi();
-
-
 
             var stariUcenik = await UnitOfWork.Ucenici.GetAsync(id);
             int pom = stariUcenik.TelefonId;
@@ -170,10 +163,8 @@ namespace DomUcenikaSvilajnac.Controllers
             // pozivanje metode za update broja ucenika u vaspitnoj grupi
             await UnitOfWork.updateBrojaUcenikaUVaspitnojGrupi();
 
-
             return Ok(noviUcenik);
         }
-
 
         /// <summary>
         /// Dodavanje novog reda u tabeli, tj. novog ucenika.
@@ -201,8 +192,6 @@ namespace DomUcenikaSvilajnac.Controllers
                 StepenObrazovanjaId = ucenik.Roditelji.StrucnaSpremaMajkeId,
             };
            
-           
-
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
@@ -211,7 +200,6 @@ namespace DomUcenikaSvilajnac.Controllers
            /*  hardkodovan id vaspitne grupe kako bi se ucenik nakon posta dodao u difoltnu vaspitnu grupu
             jer ne moze vaspitna grupa da bude null zbog foreign key-a */
              
-
             var noviUcenik = _mapper.Map<PostUcenikaResource, Ucenik>(ucenik);
             noviUcenik.VaspitnaGrupaId = 1;
             noviUcenik.VremeUpisa = DateTime.Now;
@@ -240,8 +228,6 @@ namespace DomUcenikaSvilajnac.Controllers
             roditelji.Add(otac);
             roditelji.Add(majka);
 
-
-
             // pozivanje metode za update broja ucenika u vaspitnoj grupi
             await UnitOfWork.updateBrojaUcenikaUVaspitnojGrupi();
 
@@ -254,8 +240,7 @@ namespace DomUcenikaSvilajnac.Controllers
             ucenik = _mapper.Map<Ucenik, PostUcenikaResource>(noviUcenik);
 
             var mapiranUcenik = await UnitOfWork.mapiranjeZaPostUcenika(ucenik);
-
-         
+    
             return Ok(mapiranUcenik);
         }
 

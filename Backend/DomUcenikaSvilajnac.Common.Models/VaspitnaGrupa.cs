@@ -1,10 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Text;
 
 namespace DomUcenikaSvilajnac.Common.Models
 {
+    /// <summary>
+    /// Klasa VaspitnaGrupa, pravi tabelu "VaspitneGrupe" u bazi podataka sa poljima koja su navedena kao property u datoj klasi.
+    /// </summary>
+    [Table("VaspitneGrupe")]
     public class VaspitnaGrupa
     {
         public int Id { get; set; }

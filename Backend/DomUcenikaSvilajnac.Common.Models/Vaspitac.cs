@@ -5,6 +5,9 @@ using System.Text;
 
 namespace DomUcenikaSvilajnac.Common.Models
 {
+    /// <summary>
+    /// Klasa Vaspitac, pravi tabelu "Vaspitaci" u bazi podataka sa poljima koja su navedena kao property u datoj klasi.
+    /// </summary>
     [Table("Vaspitaci")]
     public class Vaspitac
     {
@@ -13,6 +16,5 @@ namespace DomUcenikaSvilajnac.Common.Models
         public string Prezime { get; set; }
         public string BrojTelefona { get; set; }
         public string Slika { get; set; }
-
     }
 }
