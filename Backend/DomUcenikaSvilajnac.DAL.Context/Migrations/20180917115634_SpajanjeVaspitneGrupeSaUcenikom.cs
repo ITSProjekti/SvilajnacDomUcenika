@@ -36,9 +36,9 @@ namespace DomUcenikaSvilajnac.DAL.Context.Migrations
 
             migrationBuilder.Sql("insert into BrojeviTelefona (Kucni, Mobilni) values ('01123485', '06x124598')");
 
-            migrationBuilder.Sql("insert into Vaspitaci (BrojTelefona, Ime, Prezime, Slika) values ('062123456', 'Marko', 'Marković', 'slika')");
+            migrationBuilder.Sql("insert into Vaspitaci (BrojTelefona, Ime, Prezime, Slika) values ('123456789', 'VaspitacIme', 'VaspitacPrezime', 'slika')");
 
-            migrationBuilder.Sql("insert into VaspitneGrupe (Naziv, VaspitacId) values ('Grupa I', (select top 1 Id from Vaspitaci))");
+            migrationBuilder.Sql("insert into VaspitneGrupe (Naziv, VaspitacId) values ('VaspitnaGrupa', (select top 1 Id from Vaspitaci))");
 
             migrationBuilder.Sql("insert into Ucenici (DatumRodjenja, Ime, JMBG, OpstinaId, Prezime, DrzavaRodjenjaId, " +
                               "OpstinaPrebivalistaId, PolId, TelefonId, Adresa, VremeUpisa, PostanskiBrojId, PrethodnaSkolaId, " +

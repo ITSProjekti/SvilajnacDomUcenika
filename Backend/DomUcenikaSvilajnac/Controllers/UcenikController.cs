@@ -211,9 +211,10 @@ namespace DomUcenikaSvilajnac.Controllers
 
            /*  hardkodovan id vaspitne grupe kako bi se ucenik nakon posta dodao u difoltnu vaspitnu grupu
             jer ne moze vaspitna grupa da bude null zbog foreign key-a */
-            ucenik.VaspitnaGrupa.Id = 1; 
+             
 
             var noviUcenik = _mapper.Map<PostUcenikaResource, Ucenik>(ucenik);
+            noviUcenik.VaspitnaGrupaId = 1;
             noviUcenik.VremeUpisa = DateTime.Now;
             ucenik.Staratelji.UcenikId = noviUcenik.Id;
 
