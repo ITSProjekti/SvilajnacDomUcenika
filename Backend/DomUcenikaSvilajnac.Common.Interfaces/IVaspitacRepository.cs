@@ -11,5 +11,6 @@ namespace DomUcenikaSvilajnac.Common.Interfaces
     /// </summary>
     public interface IVaspitacRepository : IRepository<Vaspitac>
     {
+        void updateVaspitaca(int ObrisanVaspitacId);
     }
 }

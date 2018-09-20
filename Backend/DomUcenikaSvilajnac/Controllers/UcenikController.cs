@@ -99,7 +99,7 @@ namespace DomUcenikaSvilajnac.Controllers
                 return BadRequest(ModelState);
             }
             // pozivanje metode za update broja ucenika u vaspitnoj grupi
-            await UnitOfWork.updateBrojaUcenikaUVaspitnojGrupi();
+            await UnitOfWork.VaspitneGrupe.updateBrojaUcenikaUVaspitnojGrupi();
 
             var stariUcenik = await UnitOfWork.Ucenici.GetAsync(id);
             int pom = stariUcenik.TelefonId;
@@ -161,7 +161,7 @@ namespace DomUcenikaSvilajnac.Controllers
                 await starateljKontroler.DeleteStaratelj(noviUcenik.Staratelji.Id);
             }
             // pozivanje metode za update broja ucenika u vaspitnoj grupi
-            await UnitOfWork.updateBrojaUcenikaUVaspitnojGrupi();
+            await UnitOfWork.VaspitneGrupe.updateBrojaUcenikaUVaspitnojGrupi();
 
             return Ok(noviUcenik);
         }
@@ -229,7 +229,7 @@ namespace DomUcenikaSvilajnac.Controllers
             roditelji.Add(majka);
 
             // pozivanje metode za update broja ucenika u vaspitnoj grupi
-            await UnitOfWork.updateBrojaUcenikaUVaspitnojGrupi();
+            await UnitOfWork.VaspitneGrupe.updateBrojaUcenikaUVaspitnojGrupi();
 
             UnitOfWork.Roditelji.AddRange(roditelji);
             UnitOfWork.SaveChanges();
@@ -288,7 +288,7 @@ namespace DomUcenikaSvilajnac.Controllers
             await UnitOfWork.SaveChangesAsync();
 
             // pozivanje metode za update broja ucenika u vaspitnoj grupi nnakon brisanja
-            await UnitOfWork.updateBrojaUcenikaUVaspitnojGrupi();
+            await UnitOfWork.VaspitneGrupe.updateBrojaUcenikaUVaspitnojGrupi();
 
             return Ok(mapiranUcenik);
         }       

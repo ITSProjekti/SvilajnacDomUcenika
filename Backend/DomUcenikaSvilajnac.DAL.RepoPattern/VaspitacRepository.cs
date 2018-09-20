@@ -1,6 +1,8 @@
-﻿using DomUcenikaSvilajnac.Common.Interfaces;
+﻿using AutoMapper;
+using DomUcenikaSvilajnac.Common.Interfaces;
 using DomUcenikaSvilajnac.Common.Models;
 using DomUcenikaSvilajnac.DAL.Context;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -9,17 +11,37 @@ namespace DomUcenikaSvilajnac.DAL.RepoPattern
 {
     public class VaspitacRepository : Repository<Vaspitac>, IVaspitacRepository
     {
-        public VaspitacRepository(UcenikContext context) : base(context)
+        protected readonly UcenikContext _context;
+        public IMapper Mapper { get; }
+        public IVaspitnaGrupaRepository VaspitneGrupe { get; set; }
+
+        public VaspitacRepository(UcenikContext context, IMapper mapper) : base(context)
         {
-
+            _context = context;
+            Mapper = mapper;
         }
-
+  
         /// <summary>
         /// Get the context.
         /// </summary>
         public UcenikContext context
         {
             get { return context as UcenikContext; }
+        }
+
+        public async void updateVaspitaca(int ObrisanVaspitacId)
+        {
+            var vaspitnaGrupaObrisanogVaspitaca = await context.VaspitneGrupe.
+                FromSql(
+                $"select * from dbo.VaspitneGrupe where VaspitacId = {ObrisanVaspitacId}"
+                ).ToListAsync();
+
+            vaspitnaGrupaObrisanogVaspitaca.ForEach(v =>
+            {
+                v.VaspitacId = 1;
+            });
+
+            context.UpdateRange(vaspitnaGrupaObrisanogVaspitaca);
         }
     }
 }

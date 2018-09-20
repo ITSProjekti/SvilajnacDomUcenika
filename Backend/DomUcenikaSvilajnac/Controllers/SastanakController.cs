@@ -31,9 +31,7 @@ namespace DomUcenikaSvilajnac.Controllers
         [HttpGet]
         public async Task<IEnumerable<SastanakResource>> GetSastanci()
         {
-            //var listaSastanaka = await UnitOfWork.Sastanci.GetAllAsync();
-            //return Mapper.Map<List<Sastanak>, List<SastanakResource>>(listaSastanaka.ToList());
-            return await UnitOfWork.sviSastanci();
+            return await UnitOfWork.Sastanci.sviSastanci();
         }
 
         /// <summary>
@@ -47,7 +45,7 @@ namespace DomUcenikaSvilajnac.Controllers
                 return BadRequest(ModelState);
             }
 
-            var mapiranSastanak = await UnitOfWork.sastanakById(id);
+            var mapiranSastanak = await UnitOfWork.Sastanci.sastanakById(id);
 
             var sastanak = await UnitOfWork.Sastanci.GetAsync(id);
             var noviSastanak = Mapper.Map<Sastanak, SastanakResource>(sastanak);
@@ -84,7 +82,7 @@ namespace DomUcenikaSvilajnac.Controllers
             Mapper.Map<SastanakResource, Sastanak>(sastanak, stariSastanak);
             await UnitOfWork.SaveChangesAsync();
 
-            var noviSastanak = await UnitOfWork.mapiranjeZaPutSastanka(id);
+            var noviSastanak = await UnitOfWork.Sastanci.mapiranjeZaPutSastanka(id);
             
             return Ok(noviSastanak);
         }
@@ -105,7 +103,7 @@ namespace DomUcenikaSvilajnac.Controllers
             await UnitOfWork.SaveChangesAsync();
 
             sastanak = Mapper.Map<Sastanak, SastanakResource>(noviSastanak);
-            var mapiranSastanak = await UnitOfWork.mapiranjeZaPostSastanka(sastanak);
+            var mapiranSastanak = await UnitOfWork.Sastanci.mapiranjeZaPostSastanka(sastanak);
 
             return Ok(mapiranSastanak);
         }
@@ -128,7 +126,7 @@ namespace DomUcenikaSvilajnac.Controllers
             }
             
             var noviSastanak = Mapper.Map<Sastanak, SastanakResource>(sastanak);
-            var mapiranSastanak = await UnitOfWork.mapiranjeZaDeleteSastanka(noviSastanak);
+            var mapiranSastanak = await UnitOfWork.Sastanci.mapiranjeZaDeleteSastanka(noviSastanak);
             UnitOfWork.Sastanci.Remove(sastanak);
             await UnitOfWork.SaveChangesAsync();
 

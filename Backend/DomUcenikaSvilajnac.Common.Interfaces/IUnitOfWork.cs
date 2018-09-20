@@ -65,26 +65,18 @@ namespace DomUcenikaSvilajnac.Common.Interfaces
         Task<IEnumerable<PohvalaResource>> pohvaleUcenikaById(int UcenikId);
         Task<IEnumerable<KaznaResource>> kazneUcenikaById(int UcenikId);
 
-        Task<IEnumerable<VaspitnaGrupaResource>> vaspitneGrupe();
-        Task<VaspitnaGrupaResource> vaspitneGrupeById(int id);
+        //Task<IEnumerable<VaspitnaGrupaResource>> vaspitneGrupe();
+        //Task<VaspitnaGrupaResource> vaspitneGrupeById(int id);
 
-        Task<VaspitnaGrupaResource> mapiranjeZaPostVaspitneGrupe(VaspitnaGrupaResource vaspitna);
+        //Task<VaspitnaGrupaResource> mapiranjeZaPostVaspitneGrupe(VaspitnaGrupaResource vaspitna);
 
-        Task<VaspitnaGrupaResource> mapiranjeZaPutGrupe(int id);
+        //Task<VaspitnaGrupaResource> mapiranjeZaPutGrupe(int id);
 
-        Task<VaspitnaGrupaResource> mapiranjeZaDeleteGrupe(VaspitnaGrupaResource vaspitnaGrupa);
-
-        void updateUcenikaVaspitnaGrupaId(int IdObrisaneVaspitneGrupe);
-
-        Task<VaspitnaGrupa> updateBrojaUcenikaUVaspitnojGrupi();
-
-        void updateVaspitaca(int ObrisanVaspitacId);
-
-        Task<IEnumerable<SastanakResource>> sviSastanci();
-        Task<SastanakResource> sastanakById(int id);
-        Task<SastanakResource> mapiranjeZaPostSastanka(SastanakResource sastanak);
-        Task<SastanakResource> mapiranjeZaPutSastanka(int id);
-        Task<SastanakResource> mapiranjeZaDeleteSastanka(SastanakResource sastanak);
+  
+      
+     
+      
+      
 
     }
 }
