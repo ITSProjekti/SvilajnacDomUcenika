@@ -499,6 +499,46 @@ namespace DomUcenikaSvilajnac.UnitTests
             Assert.IsInstanceOfType(result, typeof(Staratelj));
             AutoMapper.Mapper.Reset();
         }
+
+        [TestMethod]
+        public void CreateMapMetode_ModelVaspitneGrupeUResursVaspitneGrupeProveraTipa_ReturnsTrue()
+        {
+            Mapper.Initialize(m => m.AddProfile<MappingProfile>());
+            Mapper.AssertConfigurationIsValid();
+            VaspitnaGrupa vaspitnaGrupa = new VaspitnaGrupa()
+            {
+                Id = 1,
+                BrojUcenika = 2,
+                Naziv = "Grupa I",
+                 Vaspitac = new Vaspitac() { Id = 1, Ime = "Vaspitac", BrojTelefona = "31231" },
+                VaspitacId = 1
+
+            };
+            var result = Mapper.Map<VaspitnaGrupa, VaspitnaGrupaResource>(vaspitnaGrupa);
+            Assert.IsInstanceOfType(result, typeof(VaspitnaGrupaResource));
+            AutoMapper.Mapper.Reset();
+        }
+        [TestMethod]
+        public void CreateMapMetode_ModelVaspitneGrupeResursUVaspitneGrupeProveraTipa_ReturnsTrue()
+        {
+            Mapper.Initialize(m => m.AddProfile<MappingProfile>());
+            Mapper.AssertConfigurationIsValid();
+            VaspitnaGrupaResource vaspitnaGrupaResurs = new VaspitnaGrupaResource()
+            {
+                Id = 1,
+                BrojUcenika = 2,
+                Naziv = "Grupa I",
+                Vaspitac = new VaspitacResource() { Id = 1, BrojTelefona = "312312", Ime = "Vaspitac" }
+            };
+
+
+            var result = Mapper.Map<VaspitnaGrupaResource, VaspitnaGrupa>(vaspitnaGrupaResurs);
+            Assert.IsInstanceOfType(result, typeof(VaspitnaGrupa));
+            AutoMapper.Mapper.Reset();
+        }
+
+
+
     }
 }
 
