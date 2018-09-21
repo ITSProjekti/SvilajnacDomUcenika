@@ -11,6 +11,10 @@ using System.Threading.Tasks;
 
 namespace DomUcenikaSvilajnac.DAL.RepoPattern
 {
+    /// <summary>
+    /// Nasledjuje genericku klasu Repository sa tipom Sastanak i ISastanakRepository interfejs
+    /// Videti Repository i Sastanak klasu i ISastanakRepository interfejs radi dodatnog pojasnjena.
+    /// </summary>
     public class SastanakRepository : Repository<Sastanak>, ISastanakRepository
     {
         protected readonly UcenikContext _context;

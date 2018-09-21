@@ -8,12 +8,13 @@ using System.Text;
 
 namespace DomUcenikaSvilajnac.DAL.RepoPattern
 {
+    /// <summary>
+    /// Nasledjuje genericku klasu Repository sa tipom StepenStrucneSpreme i IStepenStrucneSpremeRepository interfejs
+    /// Videti Repository i StepenStrucneSpreme klasu i IStepenStrucneSpremeRepository interfejs radi dodatnog pojasnjena.
+    /// </summary>
     public class StepenStrucneSpremeRepository : Repository<StepenStrucneSpreme>, IStepenStrucneSpremeRepository
     {
-        /// <summary>
-        /// Nasledjuje genericku klasu Repository sa tipom StepenStrucneSpreme i IStepenStrucneSpremeRepository interfejs
-        /// Videti Repository i StepenStrucneSpreme klasu i IStepenStrucneSpremeRepository interfejs radi dodatnog pojasnjena.
-        /// </summary>
+       
         public StepenStrucneSpremeRepository(UcenikContext context) : base(context)
         {
         }

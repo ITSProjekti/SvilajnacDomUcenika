@@ -500,6 +500,9 @@ namespace DomUcenikaSvilajnac.UnitTests
             AutoMapper.Mapper.Reset();
         }
 
+        /// <summary>
+        /// Proveravanje mapiranja VaspitneGrupeResource u VaspitnuGrupu, da li je objekat nakon mapiranja ocekivanog tipa. 
+        /// </summary>
         [TestMethod]
         public void CreateMapMetode_ModelVaspitneGrupeUResursVaspitneGrupeProveraTipa_ReturnsTrue()
         {
@@ -512,12 +515,16 @@ namespace DomUcenikaSvilajnac.UnitTests
                 Naziv = "Grupa I",
                  Vaspitac = new Vaspitac() { Id = 1, Ime = "Vaspitac", BrojTelefona = "31231" },
                 VaspitacId = 1
-
+               
             };
             var result = Mapper.Map<VaspitnaGrupa, VaspitnaGrupaResource>(vaspitnaGrupa);
             Assert.IsInstanceOfType(result, typeof(VaspitnaGrupaResource));
             AutoMapper.Mapper.Reset();
         }
+
+        /// <summary>
+        /// Proveravanje mapiranja VaspitneGrupeResource u VaspitnuGrupu, da li je objekat nakon mapiranja ocekivanog tipa. 
+        /// </summary>
         [TestMethod]
         public void CreateMapMetode_ModelVaspitneGrupeResursUVaspitneGrupeProveraTipa_ReturnsTrue()
         {
@@ -537,8 +544,94 @@ namespace DomUcenikaSvilajnac.UnitTests
             AutoMapper.Mapper.Reset();
         }
 
+        /// <summary>
+        /// Proveravanje mapiranja KaznaResource u Kazna, da li je objekat nakon mapiranja ocekivanog tipa. 
+        /// </summary>
+        [TestMethod]
+        public void CreateMapMetode_ModelKaznaResursUKazneProveraTipa_ReturnsTrue()
+        {
+            Mapper.Initialize(m => m.AddProfile<MappingProfile>());
+            Mapper.AssertConfigurationIsValid();
+            KaznaResource kaznaResurs = new KaznaResource()
+            {
+                Id = 1,
+                Opis = "Kazna",
+                BodoviKazne = 1,
+                UcenikId = 1
+            };
 
 
+            var result = Mapper.Map<KaznaResource, Kazna>(kaznaResurs);
+            Assert.IsInstanceOfType(result, typeof(Kazna));
+            AutoMapper.Mapper.Reset();
+        }
+
+        /// <summary>
+        /// Proveravanje mapiranja PohvalaResource u Pohvala, da li je objekat nakon mapiranja ocekivanog tipa. 
+        /// </summary>
+        [TestMethod]
+        public void CreateMapMetode_ModelPohvalaResursUPohvaleProveraTipa_ReturnsTrue()
+        {
+            Mapper.Initialize(m => m.AddProfile<MappingProfile>());
+            Mapper.AssertConfigurationIsValid();
+            PohvalaResource pohvalaResurs = new PohvalaResource()
+            {
+                Id = 1,
+                Opis = "Kazna",
+                BodoviPohvale = 1,
+                UcenikId = 1
+            };
+
+
+            var result = Mapper.Map<PohvalaResource, Pohvala>(pohvalaResurs);
+            Assert.IsInstanceOfType(result, typeof(Pohvala));
+            AutoMapper.Mapper.Reset();
+        }
+
+        /// <summary>
+        /// Proveravanje mapiranja Sastanak u SastanakResource, da li je objekat nakon mapiranja ocekivanog tipa. 
+        /// </summary>
+        [TestMethod]
+        public void CreateMapMetode_ModelSastanakUResursSastanakProveraTipa_ReturnsTrue()
+        {
+            Mapper.Initialize(m => m.AddProfile<MappingProfile>());
+            Mapper.AssertConfigurationIsValid();
+            Sastanak sastanak = new Sastanak()
+            {
+                Id=1,
+                BrojPrisutnihUcenika=20,
+                UkupanBrojPrisutnihUcenika=20,
+                DatumOdrzavanja=Convert.ToDateTime("2/5/2015"),
+                VaspitnaGrupaId=1,
+
+            };
+            var result = Mapper.Map<Sastanak, SastanakResource>(sastanak);
+            Assert.IsInstanceOfType(result, typeof(SastanakResource));
+            AutoMapper.Mapper.Reset();
+        }
+
+        /// <summary>
+        /// Proveravanje mapiranja SastanakResource u Sastanak, da li je objekat nakon mapiranja ocekivanog tipa. 
+        /// </summary>
+        [TestMethod]
+        public void CreateMapMetode_ModelSastanakResursUSastanakProveraTipa_ReturnsTrue()
+        {
+            Mapper.Initialize(m => m.AddProfile<MappingProfile>());
+            Mapper.AssertConfigurationIsValid();
+            SastanakResource sastanakResurs = new SastanakResource()
+            {
+                Id = 1,
+                BrojPrisutnihUcenika = 20,
+                UkupanBrojPrisutnihUcenika = 20,
+                Dan=10,
+                Mesec=2,
+                Godina=2015               
+
+            };
+            var result = Mapper.Map<SastanakResource, Sastanak>(sastanakResurs);
+            Assert.IsInstanceOfType(result, typeof(Sastanak));
+            AutoMapper.Mapper.Reset();
+        }
     }
 }
 

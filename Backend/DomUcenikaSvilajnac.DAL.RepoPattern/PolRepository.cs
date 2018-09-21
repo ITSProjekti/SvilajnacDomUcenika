@@ -7,12 +7,13 @@ using System.Text;
 
 namespace DomUcenikaSvilajnac.DAL.RepoPattern
 {
+    /// <summary>
+    /// Nasledjuje genericku klasu Repository sa tipom Pol i IPolRepository interfejs
+    /// Videti Repository i Pol klasu i IPolRepository interfejs radi dodatnog pojasnjena.
+    /// </summary>
     public class PolRepository : Repository<Pol>, IPolRepository
     {
-        /// <summary>
-        /// Nasledjuje genericku klasu Repository sa tipom Pol i IPolRepository interfejs
-        /// Videti Repository i Pol klasu i IPolRepository interfejs radi dodatnog pojasnjena.
-        /// </summary>
+       
         public PolRepository(UcenikContext context) : base(context)
         {
 

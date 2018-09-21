@@ -11,6 +11,10 @@ using System.Threading.Tasks;
 
 namespace DomUcenikaSvilajnac.DAL.RepoPattern
 {
+    /// <summary>
+    /// Nasledjuje genericku klasu Repository sa tipom Pohvala i IPohvalaRepository interfejs
+    /// Videti Repository i Pohvala klasu i IPohvalaRepository interfejs radi dodatnog pojasnjena.
+    /// </summary>
     public class PohvalaRepository : Repository<Pohvala>, IPohvalaRepository
     {
         protected readonly UcenikContext _context;

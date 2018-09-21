@@ -9,7 +9,7 @@ namespace DomUcenikaSvilajnac.Common.Interfaces
     /// Interfejs za metode koje su samo za UpisanaSkola klasu, tj. upisanu skolu.
     /// Pogledati IRepository i klasu UpisanaSkola radi dodatnih pojasnjenja.
     /// </summary>
-    public interface IUpisanaSkola : IRepository<UpisanaSkola>
+    public interface IUpisanaSkolaRepository : IRepository<UpisanaSkola>
     {
 
     }

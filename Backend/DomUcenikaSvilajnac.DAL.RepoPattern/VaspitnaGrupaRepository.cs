@@ -11,6 +11,10 @@ using System.Threading.Tasks;
 
 namespace DomUcenikaSvilajnac.DAL.RepoPattern
 {
+    /// <summary>
+    /// Nasledjuje genericku klasu Repository sa tipom VaspitnaGrupa i IVaspitnaGrupaRepository interfejs
+    /// Videti Repository i VaspitnaGrupa klasu i IVaspitnaGrupaRepository interfejs radi dodatnog pojasnjena.
+    /// </summary>
     public class VaspitnaGrupaRepository : Repository<VaspitnaGrupa>, IVaspitnaGrupaRepository
     {
         protected readonly UcenikContext _context;

@@ -83,6 +83,7 @@ namespace DomUcenikaSvilajnac.Controllers
             await UnitOfWork.SaveChangesAsync();
 
             var novaVaspitnaGrupa = await UnitOfWork.VaspitneGrupe.mapiranjeZaPutGrupe(id);
+            await UnitOfWork.VaspitneGrupe.updateBrojaUcenikaUVaspitnojGrupi();
             return Ok(novaVaspitnaGrupa);
         }
 
@@ -105,6 +106,7 @@ namespace DomUcenikaSvilajnac.Controllers
             vaspitnaGrupa = Mapper.Map<VaspitnaGrupa, VaspitnaGrupaResource>(novaVaspitnaGrupa);
 
             var mapiranaGrupa = await UnitOfWork.VaspitneGrupe.mapiranjeZaPostVaspitneGrupe(vaspitnaGrupa);
+            await UnitOfWork.VaspitneGrupe.updateBrojaUcenikaUVaspitnojGrupi();
             return Ok(mapiranaGrupa);
         }
 
@@ -132,7 +134,7 @@ namespace DomUcenikaSvilajnac.Controllers
             var mapiranaGrupa = await UnitOfWork.VaspitneGrupe.mapiranjeZaDeleteGrupe(novaVaspitnaGrupa);
             UnitOfWork.VaspitneGrupe.Remove(vaspitnaGrupa);
             await UnitOfWork.SaveChangesAsync();
-
+            await UnitOfWork.VaspitneGrupe.updateBrojaUcenikaUVaspitnojGrupi();
             return Ok(mapiranaGrupa);
         }
     }

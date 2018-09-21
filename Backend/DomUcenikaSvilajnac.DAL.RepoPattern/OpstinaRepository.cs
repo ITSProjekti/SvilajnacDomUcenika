@@ -11,14 +11,15 @@ using System.Threading.Tasks;
 
 namespace DomUcenikaSvilajnac.DAL.RepoPattern
 {
+    /// <summary>
+    /// Nasledjuje genericku klasu Repository sa tipom Opstina i IOpstinaRepository interfejs
+    /// Videti Repository i Opstina klasu i IOpstinaRepository interfejs radi dodatnog pojasnjena.
+    /// </summary>
     public class OpstinaRepository : Repository<Opstina>, IOpstinaRepository
     {
         protected readonly UcenikContext _context;
         public IMapper Mapper { get; }
-        /// <summary>
-        /// Nasledjuje genericku klasu Repository sa tipom Opstina i IOpstinaRepository interfejs
-        /// Videti Repository i Opstina klasu i IOpstinaRepository interfejs radi dodatnog pojasnjena.
-        /// </summary>
+        
         public OpstinaRepository(UcenikContext context, IMapper mapper ) : base (context)
         {
             _context = context;

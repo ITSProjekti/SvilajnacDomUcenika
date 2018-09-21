@@ -9,7 +9,7 @@ namespace DomUcenikaSvilajnac.Common.Interfaces
     /// Interfejs za metode koje su samo za Razred klasu, tj. razrede.
     /// Pogledati IRepository i klasu Razred radi dodatnih pojasnjenja.
     /// </summary>
-    public interface IRazredRpository : IRepository<Razred>
+    public interface IRazredRepository : IRepository<Razred>
     {
     }
 }

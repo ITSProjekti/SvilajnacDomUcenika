@@ -9,6 +9,10 @@ using System.Text;
 
 namespace DomUcenikaSvilajnac.DAL.RepoPattern
 {
+    /// <summary>
+    /// Nasledjuje genericku klasu Repository sa tipom Vaspitac i IVaspitacRepository interfejs
+    /// Videti Repository i Vaspitac klasu i IVaspitacRepository interfejs radi dodatnog pojasnjena.
+    /// </summary>
     public class VaspitacRepository : Repository<Vaspitac>, IVaspitacRepository
     {
         protected readonly UcenikContext _context;

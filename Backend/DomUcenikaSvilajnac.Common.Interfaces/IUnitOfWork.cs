@@ -24,10 +24,10 @@ namespace DomUcenikaSvilajnac.Common.Interfaces
         ITelefonRepository Telefoni { get; }
         IPostanskiBrojRepository Brojevi { get; }
         IPrethodnaSkolaRepository PrethodneSkole { get; }
-        IUpisanaSkola UpisaneSkole { get; }
+        IUpisanaSkolaRepository UpisaneSkole { get; }
         IMestoRepository    Mesta { get; }
         ISmerRepository Smerovi { get; }
-        IRazredRpository Razredi { get; }
+        IRazredRepository Razredi { get; }
         IRoditeljRepository Roditelji { get; }
         IStepenStrucneSpremeRepository Stepeni { get; }
         ITipPorodiceRepository TipoviPorodice { get; }

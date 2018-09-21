@@ -66,11 +66,11 @@ namespace DomUcenikaSvilajnac.DAL.RepoPattern
         public ITelefonRepository Telefoni { get; set; }
         public IPostanskiBrojRepository Brojevi { get; set; }
         public IPrethodnaSkolaRepository PrethodneSkole { get; set; }
-        public IUpisanaSkola UpisaneSkole { get; set; }
+        public IUpisanaSkolaRepository UpisaneSkole { get; set; }
         public IMestoRepository Mesta { get; set; }
         public IMapper Mapper { get; }
         public ISmerRepository Smerovi { get; set; }
-        public IRazredRpository Razredi { get; set; }
+        public IRazredRepository Razredi { get; set; }
         public IRoditeljRepository Roditelji { get; set; }
         public IStepenStrucneSpremeRepository Stepeni { get; set; }
         public ITipPorodiceRepository TipoviPorodice { get; set; }

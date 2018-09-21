@@ -10,6 +10,10 @@ using System.Threading.Tasks;
 
 namespace DomUcenikaSvilajnac.DAL.RepoPattern
 {
+    /// <summary>
+    /// Nasledjuje genericku klasu Repository sa tipom Staratelj i IStarateljRepository interfejs
+    /// Videti Repository i Staratelj klasu i IStarateljRepository interfejs radi dodatnog pojasnjena.
+    /// </summary>
     public class StarateljRepository : Repository<Staratelj>, IStarateljRepository
     {
         protected readonly UcenikContext _context;

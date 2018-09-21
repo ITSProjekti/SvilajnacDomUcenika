@@ -11,14 +11,15 @@ using System.Threading.Tasks;
 
 namespace DomUcenikaSvilajnac.DAL.RepoPattern
 {
+    /// <summary>
+    /// Nasledjuje genericku klasu Repository sa tipom Roditelj i IRoditeljRepository interfejs
+    /// Videti Repository i Roditelj klasu i IRoditeljRepository interfejs radi dodatnog pojasnjena.
+    /// </summary>
     public class RoditeljRepository : Repository<Roditelj>, IRoditeljRepository
     {
         protected readonly UcenikContext _context;
         public IMapper Mapper { get; }
-        /// <summary>
-        /// Nasledjuje genericku klasu Repository sa tipom Roditelj i IRoditeljRepository interfejs
-        /// Videti Repository i Roditelj klasu i IRoditeljRepository interfejs radi dodatnog pojasnjena.
-        /// </summary>
+        
         public RoditeljRepository(UcenikContext context, IMapper mapper) : base(context)
         {
             _context = context;
