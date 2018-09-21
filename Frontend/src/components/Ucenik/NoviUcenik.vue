@@ -3,7 +3,7 @@
     <v-layout row>
         <v-flex xs12  >
           <transition name="slidetoleft" appear>
-            <h1> Prijava novog učenika</h1>
+            <h1> Novi učenik - Prijava za upis učenika u dom</h1>
           </transition>
         </v-flex>
     </v-layout>
@@ -22,6 +22,24 @@
               </v-flex>
               </v-card-title>
 
+  <v-flex xs6 class="px-5 ml-4">
+                 <v-card class="px-5">
+                <v-card-text>
+                          <input type="file" id="file" ref="file" accept="image/*" v-on:change="handleFileUpload()"/>
+                  <transition name="fade" appear  mode="in-out">
+                        <img v-bind:src="imagePreview" class="responsive" v-show="showPreview"/>
+                         </transition>
+                       <!-- <button v-show="this.file!==''" v-on:click="ClearPicture()">Reset</button> -->
+                       <v-card-actions>
+                        <v-btn dark left class="navbarcolor"  small
+                        v-show="this.file!==''" v-on:click="ClearPicture()"
+                        >
+                            Resetuj
+                        </v-btn>
+                        </v-card-actions>
+                  </v-card-text>
+                    </v-card>
+</v-flex>
               <template>
                  <v-container fluid>
                     <v-layout row wrap>
@@ -35,20 +53,7 @@
                           </v-flex>
                            <v-flex xs12 sm3 offset-sm1 class="mt-4">
                             
-                             <v-card>
-           <v-card-text>
-                          <input type="file" id="file" ref="file" accept="image/*" v-on:change="handleFileUpload()"/>
-                  <transition name="fade" appear  mode="in-out">
-                        <img v-bind:src="imagePreview" class="responsive" v-show="showPreview"/>
-                         </transition>
-                       <!-- <button v-show="this.file!==''" v-on:click="ClearPicture()">Reset</button> -->
-                        <v-btn dark left  class="blue-grey darken" small
-                        v-show="this.file!==''" v-on:click="ClearPicture()"
-                        >
-                            Hello
-                        </v-btn>
-                  </v-card-text>
-                    </v-card>
+            
                             
                             </v-flex>
                           </v-layout>
@@ -663,58 +668,8 @@
                </transition>
               </v-flex>
 
-       <v-flex offset-sm1 xs12>
-              <v-flex xs8 md5  >
-                <v-text-field 
-                  v-model="editedItem.pohvale"
-                  label="Broj pohvala"
-                  required
-                  input type="number"  onkeydown="javascript: if(event.keyCode == 69) {return false} else 
-                  {
-                   if(event.keyCode == 107) {return false}
-                    else {
-                   if(event.keyCode == 190) {return false}
-                    else {
-                   if(event.keyCode == 109) {return false}
-                    else  {
-                   if(event.keyCode == 187) {return false}
-                    else  {
-                   if(event.keyCode == 189) {return false}
-                   else
-                     {return true} } } } } }"                                       
 
-               >
-                        
-                        </v-text-field>
-              </v-flex>
-          </v-flex>
-
-
-                 <v-flex offset-sm1 xs12>
-              <v-flex xs8 md5  >
-                <v-text-field
-                  v-model="editedItem.kazne"
-                  label="Broj kazni"
-
-                  input type="number"  onkeydown="javascript: if(event.keyCode == 69) {return false} else 
-                  {
-                   if(event.keyCode == 107) {return false}
-                    else {
-                   if(event.keyCode == 190) {return false}
-                    else {
-                   if(event.keyCode == 109) {return false}
-                    else  {
-                   if(event.keyCode == 187) {return false}
-                    else  {
-                   if(event.keyCode == 189) {return false}
-                   else
-                     {return true} } } } } }"                                       
-                        >
-            
-                        
-                        </v-text-field>
-              </v-flex>
-          </v-flex>
+    
 
 
    </v-card>
@@ -863,9 +818,7 @@ import moment from 'moment'
                
             },
            slika: '',
-           materijalniPrihodi: '',
-           kazne: '',
-           pohvale: ''
+           materijalniPrihodi: ''
       }
     }),
     
@@ -973,42 +926,17 @@ import moment from 'moment'
       },
 
            handleFileUpload(){
-        /*
-          Set the local file variable to what the user has selected.
-        */
         this.file = this.$refs.file.files[0];
 
-        /*
-          Initialize a File Reader object
-        */
         let reader  = new FileReader();
-
-        /*
-          Add an event listener to the reader that when the file
-          has been loaded, we flag the show preview as true and set the
-          image to be what was read from the reader.
-        */
-    
         reader.addEventListener("load", function () {
           this.showPreview = true;
           this.imagePreview = reader.result;
           this.editedItem.slika= reader.result
         }.bind(this), false);
         console.log(this.editedItem.slika)
-        console.log( this.file)
-        /*
-          Check to see if the file is not empty.
-        */
         if( this.file ){
-          /*
-            Ensure the file is an image file.
-          */
           if ( /\.(jpe?g|png|gif)$/i.test( this.file.name ) ) {
-            /*
-              Fire the readAsDataURL method which will read the file in and
-              upon completion fire a 'load' event which we will listen to and
-              display the image in the preview.
-            */
             reader.readAsDataURL( this.file );
           }
         }
@@ -1041,16 +969,6 @@ import moment from 'moment'
       PrijavaUcenika () {
       
         this.formatiranjeDatuma() 
-       
-      
-
-            /*
-                Add the form data we need to submit
-            */
-      
-         // this.editedItem.slika=prepslika;
-         //  console.log(this.editedItem)    
- 
 
     console.log(this.editedItem)
         this.$store.dispatch('createUcenik',this.editedItem)

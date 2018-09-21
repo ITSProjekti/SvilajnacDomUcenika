@@ -38,6 +38,7 @@
                           <input type="file" id="file" ref="file" accept="image/*" v-on:change="handleFileUpload()"/>
 
                         <img v-bind:src="imagePreview" class="responsive" v-show="showPreview"/>
+                         <img v-bind:src="imagePreview" class="responsive" v-show="!showPreview"/>
                        <!-- <button v-show="this.file!==''" v-on:click="ClearPicture()">Reset</button> -->
                         <v-btn dark left  class="blue-grey darken" small
                         v-show="this.file!==''" v-on:click="ClearPicture()"
@@ -133,7 +134,28 @@
                           </v-layout>
                         </v-container>
                       </template>
+                                <template>
+                 <v-container fluid>
+                    <v-layout row wrap>
+                    <v-flex offset-sm1  xs12 sm3 class="mt-4 ">
+                     <p>Vaspitna grupa</p>
+                    </v-flex>
+                           <v-flex xs12 sm6>
+                               <v-select
+                                :loading="loading"
+                                :items="VaspitneGrupe"
+                                v-model="editedItem.vaspitnaGrupa.id"
+                                label="Naziv vaspitne grupe"
+                                item-text="naziv"
+                                item-value="id"
+                   
+                              ></v-select>
+                            </v-flex>
+                          </v-layout>
+                        </v-container>
+                      </template>
                 <template>
+                  
                  <v-container fluid>
                     <v-layout row wrap>
                     <v-flex offset-sm1  xs12 sm3 class="mt-4">
@@ -629,7 +651,11 @@
               </v-flex>
                </transition>
               </v-flex>
-
+<v-card-actions>
+  <v-btn @click="IzmeniUcenika">
+    Izmeni
+  </v-btn>
+</v-card-actions>
                </v-card>
              </v-flex>  
             </form>
@@ -736,6 +762,9 @@ import moment from 'moment'
           }
          
       }, 
+       VaspitneGrupe () {
+        return this.$store.getters.loadedVaspitneGrupe
+      },
       TipoviPorodice () {
         return this.$store.getters.loadedTipoviPorodice
       },
@@ -788,41 +817,19 @@ import moment from 'moment'
       },
 
            handleFileUpload(){
-        /*
-          Set the local file variable to what the user has selected.
-        */
         this.file = this.$refs.file.files[0];
 
-        /*
-          Initialize a File Reader object
-        */
-        let reader  = new FileReader();
-
-        /*
-          Add an event listener to the reader that when the file
-          has been loaded, we flag the show preview as true and set the
-          image to be what was read from the reader.
-        */
-    
+        let reader  = new FileReader(); 
         reader.addEventListener("load", function () {
           this.showPreview = true;
           this.imagePreview = reader.result;
           this.editedItem.slika= reader.result
         }.bind(this), false);
 
-        /*
-          Check to see if the file is not empty.
-        */
         if( this.file ){
-          /*
-            Ensure the file is an image file.
-          */
+
           if ( /\.(jpe?g|png|gif)$/i.test( this.file.name ) ) {
-            /*
-              Fire the readAsDataURL method which will read the file in and
-              upon completion fire a 'load' event which we will listen to and
-              display the image in the preview.
-            */
+
             reader.readAsDataURL( this.file );
           }
         }
@@ -852,22 +859,14 @@ import moment from 'moment'
           } 
       },
       // metoda koja se poziva nakon potrvrde o prijavi, shalje POST zahtev
-      Prijavaucenika () {
+      IzmeniUcenika () {
       
         this.formatiranjeDatuma() 
-       
+   
       
-
-            /*
-                Add the form data we need to submit
-            */
-      
-         // this.editedItem.slika=prepslika;
-         //  console.log(this.editedItem)    
- 
-
-    console.log(this.editedItem)
-        this.$store.dispatch('createeditedItem',this.editedItem)
+          this.editedItem.roditelji.ucenikID= this.editedItem.id
+           console.log(this.editedItem)
+          this.$store.dispatch('editUcenik',this.editedItem)
          this.file=''
           this.imagePreview=''
         this.$router.push('/ucenici')

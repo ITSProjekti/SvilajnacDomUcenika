@@ -1,8 +1,5 @@
 <template>
   <v-app id="inspire">
-
-
-
     <v-navigation-drawer
       v-model="drawer"
       fixed
@@ -60,8 +57,8 @@
         </template>
       </v-list>
     </v-navigation-drawer>
-     <v-toolbar  class="white"  app  clipped-left height=30px>
-      <v-toolbar-side-icon @click.native="drawer = !drawer"></v-toolbar-side-icon>
+     <v-toolbar color="grey" class="white"  app  clipped-left height=30px>
+      <v-toolbar-side-icon dark @click.native="drawer = !drawer"></v-toolbar-side-icon>
       <!--
           <v-breadcrumbs icons divider="chevron_right">
    

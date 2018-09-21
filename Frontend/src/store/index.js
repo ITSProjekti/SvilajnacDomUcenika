@@ -197,8 +197,12 @@ export const store = new Vuex.Store({
             })
             vaspitnaGrupaEdit.naziv=payload.naziv,
             vaspitnaGrupaEdit.vaspitac = {
-                id: payload.vaspitnaGrupa.id
+                id: payload.vaspitac.id,
+                ime: payload.vaspitac.ime,
+                prezime: payload.vaspitac.prezime,
+                slika: payload.vaspitac.slika
             }
+      
         },
         editVaspitaca(state,payload)
         {
@@ -261,7 +265,7 @@ export const store = new Vuex.Store({
             
               ucenikEdit.upisanaSkola={
                 id: payload.upisanaSkola.id,
-                nazivSrednjeSkole: payload.upisanaSkola.nazivPrethodneSkole,
+                nazivSrednjeSkole: payload.upisanaSkola.nazivSrednjeSkole,
                 opstinaId: payload.upisanaSkola.opstinaId
 
               },
@@ -309,6 +313,10 @@ export const store = new Vuex.Store({
                  }
 
              ],
+             ucenikEdit.vaspitnaGrupa={
+                 id:payload.vaspitnaGrupa.id,
+                 naziv:payload.vaspitnaGrupa.naziv
+             }
              ucenikEdit.tipPorodice={
                 id: payload.tipPorodice.id,
                 nazivTipaPorodice: payload.tipPorodice.nazivTipaPorodice
@@ -320,12 +328,9 @@ export const store = new Vuex.Store({
              ucenikId: payload.staratelji.ucenikId
              },
              ucenikEdit.slika= payload.slika,
-             ucenikEdit.materijalniPrihodi=payload.materijalniPrihodi       
-             vaspitnaGrupa={
-                 id:payload.vaspitnaGrupa.id
-             }                
+             ucenikEdit.materijalniPrihodi=payload.materijalniPrihodi            
         }
-        
+    
     },
     // actions su metode koje se pozivaju van store-a da bi se nesto radilo sa store-om primer : this.$store.dispatch('loadedSSS')
     actions: {
@@ -616,19 +621,21 @@ export const store = new Vuex.Store({
                     }
           )
         },
+        
           createVaspitnaGrupa ({commit},payload) {
             const vaspitnaGrupa ={
                 naziv: payload.naziv
+          
             }
             commit('setLoading', true)
-          
+   
             axios.post('http://localhost:50146/api/vaspitnegrupe',vaspitnaGrupa, {
                 onUploadProgress: uploadEvent =>{
                     console.log('Post request progress:' + Math.round(uploadEvent.loaded / uploadEvent.total * 100) + '%'  )                    
                 }
             }).then(function(response){
 
-               
+               console.log(response.data)
                 commit('createVaspitnaGrupa', response.data)
                 commit('setLoading', false)
                  }).catch(
@@ -646,13 +653,13 @@ export const store = new Vuex.Store({
                 slika: payload.slika
             }
             commit('setLoading', true)
-          
+            console.log(vaspitac)
             axios.post('http://localhost:50146/api/vaspitaci',vaspitac, {
                 onUploadProgress: uploadEvent =>{
                     console.log('Post request progress:' + Math.round(uploadEvent.loaded / uploadEvent.total * 100) + '%'  )                    
                 }
             }).then(function(response){
-
+                console.log(response.data)
                
                 commit('createVaspitac', response.data)
                 commit('setLoading', false)
@@ -767,6 +774,8 @@ export const store = new Vuex.Store({
             axios.delete('http://localhost:50146/api/vaspitneGrupe/'+payload).then((response) => {
               
               commit('deleteVaspitnaGrupa', response.data)
+              store.dispatch('loadedUcenici')
+              store.dispatch('loadedVaspitneGrupe')
               commit('setLoading', false)
             })
           },
@@ -806,10 +815,14 @@ export const store = new Vuex.Store({
               commit('deleteUcenik', response.data)
               commit('setLoading', false)
             })
+            
           },
           editVaspitneGrupe ({commit}, payload) {
                 const vaspitneGrupe = {
-                naziv: payload.naziv
+                naziv: payload.naziv,
+                vaspitac: {
+                    id:payload.vaspitac.id
+                }
             }
             commit('setLoading', true)
             axios.put('http://localhost:50146/api/vaspitnegrupe/'+payload.id, vaspitneGrupe).then(function(response){
@@ -950,13 +963,28 @@ export const store = new Vuex.Store({
                },
                slika:payload.slika,
                materijalniPrihodi: payload.materijalniPrihodi,
-
+               vaspitnaGrupa:{
+                            id:payload.vaspitnaGrupa.id
+               } 
             }
-          
+            console.log('yo')
+            console.log(ucenik)
             commit('setLoading', true)
             axios.put('http://localhost:50146/api/ucenik/'+payload.id, ucenik).then(function(response){
-               
+               console.log(response.data)
                 commit('editUcenik', response.data)
+                commit('setLoading', true)
+                axios.get('http://localhost:50146/api/vaspitnegrupe').then((response) => {
+                  
+                  commit('setLoadedVaspitneGrupe', response.data)
+                  commit('setLoading', false)
+                  
+                }).catch(
+                    (error) => {
+                      console.log(error)
+                      commit('setLoading', false)
+                            }
+                        )
                 commit('setLoading', false)
                  }).catch(
                     (error) => {
@@ -964,7 +992,7 @@ export const store = new Vuex.Store({
                       commit('setLoading', false)
                     }
           )
-    
+   
         }
     },
     // getteri su metode koje sluze za preuzimanje (get-ovanje) podataka iz State-a
