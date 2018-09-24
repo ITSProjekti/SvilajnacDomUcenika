@@ -7,12 +7,13 @@ using System.Text;
 
 namespace DomUcenikaSvilajnac.DAL.RepoPattern
 {
-    public class UpisanaSkolaRepository : Repository<UpisanaSkola>, IUpisanaSkola
-    {
-        /// <summary>
+    /// <summary>
         /// Nasledjuje genericku klasu Repository sa tipom UpisanaSkola i IUpisanaSkolaRepository interfejs
         /// Videti Repository i UpisanaSkola klasu i IUpisanaSkolaRepository interfejs radi dodatnog pojasnjena.
         /// </summary>
+    public class UpisanaSkolaRepository : Repository<UpisanaSkola>, IUpisanaSkolaRepository
+    {
+        
         public UpisanaSkolaRepository(UcenikContext context) : base(context)
         {
 

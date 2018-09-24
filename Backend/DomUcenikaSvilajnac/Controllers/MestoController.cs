@@ -87,7 +87,6 @@ namespace DomUcenikaSvilajnac.Controllers
         /// <summary>
         /// Dodavanje novog reda u tabeli, tj. novog mesta.
         /// </summary>
-
         [HttpPost]
         public async Task<IActionResult> PostMesto([FromBody] MestoResource mesto)
         {
@@ -102,7 +101,7 @@ namespace DomUcenikaSvilajnac.Controllers
 
             mesto = Mapper.Map<Mesto, MestoResource>(novoMesto);
 
-            return Ok(novoMesto);
+            return Ok(mesto);
         }
         /// <summary>
         /// Brisanje jednog reda iz tabele na osnvou prosledjenog Id-a, tj. brisanje odredjenog mesta iz tabele.

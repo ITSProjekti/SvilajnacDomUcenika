@@ -29,6 +29,15 @@ namespace DomUcenikaSvilajnac.DAL.Context
         public DbSet<Razred> Razredi { get; set; }
         public DbSet<Roditelj> Roditelji { get; set; }
         public DbSet<StepenStrucneSpreme> Stepeni { get; set; }
+        public DbSet<TipPorodice> TipoviPorodice { get; set; }
+        public DbSet<Staratelj> Staratelji { get; set; }
+        public DbSet<Pohvala> Pohvale { get; set; }
+        public DbSet<VaspitnaGrupa> VaspitneGrupe { get; set; }
+        public DbSet<Kazna> Kazne { get; set; }
+        public DbSet<Vaspitac> Vaspitaci { get; set; }
+        public DbSet<Sastanak> Sastanci { get; set; }
+
+
 
         /// <summary>
         /// Inicijalizuje se instaca UcenikContext klase.
@@ -37,10 +46,5 @@ namespace DomUcenikaSvilajnac.DAL.Context
         {
 
         }
-
-        //protected override void OnModelCreating(ModelBuilder modelBuilder)
-        //{
-          
-        //}
     }
 }

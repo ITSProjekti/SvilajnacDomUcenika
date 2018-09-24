@@ -55,7 +55,7 @@ namespace DomUcenikaSvilajnac.Controllers
         }
         /// <summary>
         /// Metoda za update, menja podatke u nekom redu u tabeli, tj. o nekoj srednjoj skoli na osnovu prosledjenog Id-a 
-        /// i vraca podatke o stepenu strucne spreme koji su namenjeni za front.
+        /// i vraca podatke o srednjoj skoli koji su namenjeni za front.
         /// </summary>
         [HttpPut("{id}")]
         public async Task<IActionResult> PutSrednjaSkola([FromRoute] int id, [FromBody] UpisanaSkolaResource srednjaSkola)
@@ -84,7 +84,7 @@ namespace DomUcenikaSvilajnac.Controllers
             return Ok(srednjaSkola);
         }
         /// <summary>
-        /// Dodavanje novog reda u tabeli, tj. novoe srednje skole.
+        /// Dodavanje novog reda u tabeli, tj. nove srednje skole.
         /// </summary>
         [HttpPost]
         public async Task<IActionResult> PostSrednjaSkola([FromBody] UpisanaSkolaResource srednjaSkola)
@@ -100,7 +100,7 @@ namespace DomUcenikaSvilajnac.Controllers
 
             srednjaSkola = Mapper.Map<UpisanaSkola, UpisanaSkolaResource>(novaSrednjaSkola);
 
-            return Ok(novaSrednjaSkola);
+            return Ok(srednjaSkola);
         }
         /// <summary>
         /// Brisanje jednog reda iz tabele na osnvou prosledjenog Id-a, tj. brisanje odredjene srednje skole iz tabele.

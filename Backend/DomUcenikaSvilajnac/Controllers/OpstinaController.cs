@@ -29,13 +29,13 @@ namespace DomUcenikaSvilajnac.Controllers
         }
 
         /// <summary>
-        /// Vraca listu sviih opstina, koje se trenutno nalaze u bazi.
+        /// Vraca listu svih opstina koje se trenutno nalaze u bazi.
         /// </summary>
         [HttpGet]
         public async Task<IEnumerable<OpstinaResource>> GetOpstine()
         {
 
-            var listaOpstina = await UnitOfWork.podaciSaOpstinama();
+            var listaOpstina = await UnitOfWork.Opstine.podaciSaOpstinama();
             var mapiranjeUcenikaMesta = Mapper.Map<List<OpstinaResource>, List<Opstina>>(listaOpstina.ToList());
             return Mapper.Map<List<Opstina>, List<OpstinaResource>>(mapiranjeUcenikaMesta.ToList());
 
@@ -88,7 +88,7 @@ namespace DomUcenikaSvilajnac.Controllers
 
             opstina = Mapper.Map<Opstina, OpstinaResource>(novaOpstina);
 
-            return Ok(novaOpstina);
+            return Ok(opstina);
         }
 
         /// <summary>

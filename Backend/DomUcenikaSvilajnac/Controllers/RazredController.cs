@@ -83,7 +83,7 @@ namespace DomUcenikaSvilajnac.Controllers
             return Ok(razred);
         }
         /// <summary>
-        /// Dodavanje novog reda u tabeli, tj. novog razred.
+        /// Dodavanje novog reda u tabeli, tj. novog razreda.
         /// </summary>
         [HttpPost]
         public async Task<IActionResult> PostRazred([FromBody] RazredResource razred)
@@ -99,7 +99,7 @@ namespace DomUcenikaSvilajnac.Controllers
 
             razred = Mapper.Map<Razred, RazredResource>(noviRazred);
 
-            return Ok(noviRazred);
+            return Ok(razred);
         }
         /// <summary>
         /// Brisanje jednog reda iz tabele na osnvou prosledjenog Id-a, tj. brisanje odredjenog razreda iz tabele.

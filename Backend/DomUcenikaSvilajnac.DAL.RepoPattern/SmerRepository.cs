@@ -7,12 +7,13 @@ using System.Text;
 
 namespace DomUcenikaSvilajnac.DAL.RepoPattern
 {
+    /// <summary>
+    /// Nasledjuje genericku klasu Repository sa tipom Smer i ISmerRepository interfejs
+    /// Videti Repository i Smer klasu i ISmerRepository interfejs radi dodatnog pojasnjena.
+    /// </summary>
     class SmerRepository : Repository<Smer>, ISmerRepository
     {
-        /// <summary>
-        /// Nasledjuje genericku klasu Repository sa tipom Smer i ISmerRepository interfejs
-        /// Videti Repository i Smer klasu i ISmerRepository interfejs radi dodatnog pojasnjena.
-        /// </summary>
+        
         public SmerRepository(UcenikContext context) : base(context)
         {
 

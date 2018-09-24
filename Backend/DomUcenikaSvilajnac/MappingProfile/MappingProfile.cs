@@ -17,27 +17,40 @@ namespace DomUcenikaSvilajnac.Mapping
         public MappingProfile()
         {
 
-            CreateMap<UcenikResource, Ucenik>()
-            .ForMember(v => v.DatumRodjenja, opt => opt.MapFrom(src => new DateTime(src.Godina, src.Mesec, src.Dan + 1).ToUniversalTime()))
-            .ForMember(v => v.UpisanaSkola, opt => opt.MapFrom(src => new UpisanaSkola() { NazivSrednjeSkole = src.UpisanaSkola.NazivSrednjeSkole, Id = src.UpisanaSkola.Id, OpstinaId = src.UpisanaSkola.OpstinaId }))
-            .ForMember(v => v.PrethodnaSkola, opt => opt.MapFrom(src => new PrethodnaSkola() { NazivPrethodneSkole = src.PrethodnaSkola.NazivPrethodneSkole, Id = src.PrethodnaSkola.Id, OpstinaId = src.PrethodnaSkola.OpstinaId }))
-            .ForMember(v => v.PostanskiBroj, opt => opt.MapFrom(src => new PostanskiBroj() { Broj = src.PostanskiBroj.Broj, Id = src.PostanskiBroj.Id, OpstinaId = src.PostanskiBroj.Id }))
-            .ForMember(v => v.Opstina, opt => opt.MapFrom(src => new Opstina() { NazivOpstine = src.Opstina.NazivOpstine, Id = src.Opstina.Id }))
-            .ForMember(v => v.OpstinaPrebivalista, opt => opt.MapFrom(src => new Opstina() { NazivOpstine = src.OpstinaPrebivalista.NazivOpstine, Id = src.OpstinaPrebivalista.Id }))
-            .ForMember(v => v.MestoRodjenja, opt => opt.MapFrom(src => new Mesto() { Id = src.MestoRodjenja.Id, NazivMesta = src.MestoRodjenja.NazivMesta }))
-            .ForMember(v => v.MestoPrebivalista, opt => opt.MapFrom(src => new Mesto() { Id = src.MestoPrebivalista.Id, NazivMesta = src.MestoPrebivalista.NazivMesta }))
-            .ForMember(v => v.MestoZavrseneSkole, opt => opt.MapFrom(src => new Mesto() { Id = src.MestoZavrseneSkole.Id, NazivMesta = src.MestoZavrseneSkole.NazivMesta }))
-            .ForMember(v => v.Pol, opt => opt.MapFrom(src => new Pol() { Id = src.Pol.Id, NazivPola = src.Pol.NazivPola }))
-            .ForMember(v => v.VremeUpisa, opt => opt.Ignore());
-
-
-            ;
+           
 
             //mapira Ucenik u UcenikResource, odnosno omogucava da se datum unese putem tri promenljive, Dan, Mesec, Godina.
             CreateMap<Ucenik, UcenikResource>()
                 .ForMember(v => v.Godina, opt => opt.MapFrom(src => src.DatumRodjenja.Year))
                 .ForMember(v => v.Dan, opt => opt.MapFrom(src => src.DatumRodjenja.Day))
-                .ForMember(v => v.Mesec, opt => opt.MapFrom(src => src.DatumRodjenja.Month));
+                .ForMember(v => v.Mesec, opt => opt.MapFrom(src => src.DatumRodjenja.Month))
+                 .ForMember(v => v.Staratelji, opt => opt.MapFrom(src => new StarateljResource()
+                 {
+                     Id = src.Staratelji[0].Id,
+                     Ime = src.Staratelji[0].Ime,
+                     Prezime = src.Staratelji[0].Prezime,
+                     UcenikId = src.Staratelji[0].UcenikId
+                 }));
+
+            //mapira UcenikResource u Ucenik
+            CreateMap<UcenikResource, Ucenik>()
+           .ForMember(v => v.DatumRodjenja, opt => opt.MapFrom(src => new DateTime(src.Godina, src.Mesec, src.Dan + 1).ToUniversalTime()))
+           .ForMember(v => v.UpisanaSkola, opt => opt.MapFrom(src => new UpisanaSkola() { NazivSrednjeSkole = src.UpisanaSkola.NazivSrednjeSkole, Id = src.UpisanaSkola.Id, OpstinaId = src.UpisanaSkola.OpstinaId }))
+           .ForMember(v => v.PrethodnaSkola, opt => opt.MapFrom(src => new PrethodnaSkola() { NazivPrethodneSkole = src.PrethodnaSkola.NazivPrethodneSkole, Id = src.PrethodnaSkola.Id, OpstinaId = src.PrethodnaSkola.OpstinaId }))
+           .ForMember(v => v.PostanskiBroj, opt => opt.MapFrom(src => new PostanskiBroj() { Broj = src.PostanskiBroj.Broj, Id = src.PostanskiBroj.Id, OpstinaId = src.PostanskiBroj.Id }))
+           .ForMember(v => v.Opstina, opt => opt.MapFrom(src => new Opstina() { NazivOpstine = src.Opstina.NazivOpstine, Id = src.Opstina.Id }))
+           .ForMember(v => v.OpstinaPrebivalista, opt => opt.MapFrom(src => new Opstina() { NazivOpstine = src.OpstinaPrebivalista.NazivOpstine, Id = src.OpstinaPrebivalista.Id }))
+           .ForMember(v => v.MestoRodjenja, opt => opt.MapFrom(src => new Mesto() { Id = src.MestoRodjenja.Id, NazivMesta = src.MestoRodjenja.NazivMesta }))
+           .ForMember(v => v.MestoPrebivalista, opt => opt.MapFrom(src => new Mesto() { Id = src.MestoPrebivalista.Id, NazivMesta = src.MestoPrebivalista.NazivMesta }))
+           .ForMember(v => v.MestoZavrseneSkole, opt => opt.MapFrom(src => new Mesto() { Id = src.MestoZavrseneSkole.Id, NazivMesta = src.MestoZavrseneSkole.NazivMesta }))
+           .ForMember(v => v.Pol, opt => opt.MapFrom(src => new Pol() { Id = src.Pol.Id, NazivPola = src.Pol.NazivPola }))
+           .ForMember(v => v.VremeUpisa, opt => opt.Ignore())
+           .ForMember(v => v.Staratelji, opt => opt.Ignore())
+           .ForMember(v=> v.VaspitnaGrupa, opt=> opt.Ignore())
+           .ForMember(v=> v.Pohvale, opt=> opt.Ignore())
+           .ForMember(v=> v.Kazne, opt=> opt.Ignore())
+            ;
+
 
             //mapira PostUcenikaResource u Ucenik, odnosno omogucava da se datum unese putem jedne promenljive DatumRodjenja.
             CreateMap<PostUcenikaResource, Ucenik>()
@@ -64,7 +77,14 @@ namespace DomUcenikaSvilajnac.Mapping
                 .ForMember(v => v.UpisanaSkola, opt => opt.Ignore())
                 .ForMember(v => v.Smer, opt => opt.Ignore())
                 .ForMember(v => v.VremeUpisa, opt => opt.Ignore())
-                .ForMember(v => v.Razred, opt => opt.Ignore());
+                .ForMember(v => v.Razred, opt => opt.Ignore())
+                .ForMember(v => v.TipPorodice, opt => opt.Ignore())
+                .ForMember(v => v.Staratelji, opt => opt.Ignore())
+                .ForMember(v => v.VaspitnaGrupa, opt => opt.Ignore())
+                .ForMember(v => v.Pohvale, opt => opt.Ignore())
+                .ForMember(v => v.Kazne, opt => opt.Ignore())
+                //ovo treba da se testira u postmanu da li oce da radi
+                .ForMember(v => v.VaspitnaGrupaId, opt => opt.Ignore());
 
             //mapira Ucenik u PostUcenikaResource, odnosno omogucava da se datum unese putem tri promenljive, Dan, Mesec, Godina.
             CreateMap<Ucenik, PostUcenikaResource>()
@@ -84,11 +104,18 @@ namespace DomUcenikaSvilajnac.Mapping
                                                                     BrojTelefonaOca = src.Roditelji[1].BrojTelefona,
                                                                     StrucnaSpremaOcaId = src.Roditelji[1].StepenObrazovanjaId,
                                                                        }
-                ));
+                ))
+                .ForMember(v=> v.Staratelji, opt=> opt.MapFrom(src=> new StarateljResource() {
+                    
+                        Id = src.Staratelji[0].Id,
+                       Ime = src.Staratelji[0].Ime,
+                       Prezime = src.Staratelji[0].Prezime,
+                       UcenikId = src.Staratelji[0].UcenikId
+                }));
 
 
 
-
+            //mapira PutUcenikaResource u Ucenik
             CreateMap<PutUcenikaResource, Ucenik>()
                 .ForMember(v => v.DatumRodjenja, opt => opt.MapFrom(src => new DateTime(src.Godina, src.Mesec, src.Dan + 1).ToUniversalTime()))
                 .ForMember(v => v.UpisanaSkola, opt => opt.MapFrom(src => new UpisanaSkola() { NazivSrednjeSkole = src.UpisanaSkola.NazivSrednjeSkole, Id = src.UpisanaSkola.Id, OpstinaId = src.UpisanaSkola.OpstinaId }))
@@ -114,13 +141,17 @@ namespace DomUcenikaSvilajnac.Mapping
                 .ForMember(v => v.UpisanaSkola, opt => opt.Ignore())
                 .ForMember(v => v.Smer, opt => opt.Ignore())
                 .ForMember(v => v.VremeUpisa, opt => opt.Ignore())
-                .ForMember(v => v.Razred, opt => opt.Ignore());
+                .ForMember(v => v.Razred, opt => opt.Ignore())
+                .ForMember(v => v.TipPorodice, opt => opt.Ignore())
+                .ForMember(v => v.Staratelji, opt => opt.Ignore())
+                .ForMember(v => v.Pohvale, opt => opt.Ignore())
+                .ForMember(v => v.Kazne, opt => opt.Ignore());
 
 
 
 
 
-            //mapira Ucenik u PostUcenikaResource, odnosno omogucava da se datum unese putem tri promenljive, Dan, Mesec, Godina.
+            //mapira Ucenik u PutUcenikaResource, odnosno omogucava da se datum unese putem tri promenljive, Dan, Mesec, Godina.
             CreateMap<Ucenik, PutUcenikaResource>()
                 .ForMember(v => v.Godina, opt => opt.MapFrom(src => src.DatumRodjenja.Year))
                 .ForMember(v => v.Dan, opt => opt.MapFrom(src => src.DatumRodjenja.Day))
@@ -139,26 +170,32 @@ namespace DomUcenikaSvilajnac.Mapping
                     BrojTelefonaOca = src.Roditelji[1].BrojTelefona,
                     StrucnaSpremaOcaId = src.Roditelji[1].StepenObrazovanjaId,
                 }
-                ));
+                ))
+                .ForMember(v => v.Staratelji, opt => opt.MapFrom(src => new StarateljResource()
+                {
+
+                    Id = src.Staratelji[0].Id,
+                    Ime = src.Staratelji[0].Ime,
+                    Prezime = src.Staratelji[0].Prezime,
+                    UcenikId = src.Staratelji[0].UcenikId
+                }));
 
 
+            //mapira Roditelj u RoditeljUcenikaResource
             CreateMap<Roditelj, RoditeljiUcenikaResource>();
 
+            //mapira RoditeljUcenikaResource u Roditelj
             CreateMap<RoditeljiUcenikaResource, Roditelj>()
                 .ForMember(v => v.StepenObrazovanja, v => v.Ignore())
                 .ForMember(v => v.UcenikId, v => v.Ignore())
                 .ForMember(v => v.Ucenik, v => v.Ignore());
 
-
-
-
-            // CreateMap<OpstinaResource, Opstina>();
-
-
+            //mapira PostanskiBrojResource u PostanskiBroj
             CreateMap<PostanskiBrojResource, PostanskiBroj>();
+            //mapira Razred u RazredResource
             CreateMap<Razred, RazredResource>();
 
-
+            //mapira RoditeljResource u Roditelj
             CreateMap<RoditeljResource, Roditelj>()
              .ForMember(v => v.Ime, opt => opt.MapFrom(src => src.ImeOca))
              .ForMember(v => v.Prezime, opt => opt.MapFrom(src => src.PrezimeOca))
@@ -167,7 +204,7 @@ namespace DomUcenikaSvilajnac.Mapping
             .ForMember(v => v.BrojTelefona, v => v.Ignore())
             .ForMember(v => v.Ucenik, v => v.Ignore());
 
-
+            //mapira Roditelj u RoditeljResource
             CreateMap<Roditelj, RoditeljResource>()
               .ForMember(v => v.ImeOca, opt => opt.MapFrom(src => src.Ime))
               .ForMember(v => v.PrezimeOca, opt => opt.MapFrom(src => src.Prezime))
@@ -182,6 +219,7 @@ namespace DomUcenikaSvilajnac.Mapping
 
             //sa ovom mapom ispod je greska, zato nece unit testovi da prodju
 
+            //mapira listu Roditelja u RoditeljResource
             CreateMap<List<Roditelj>, RoditeljResource>()
                 .ForMember(v => v.ImeOca, opt => opt.MapFrom(src => src[1].Ime))
              .ForMember(v => v.PrezimeOca, opt => opt.MapFrom(src => src[1].Prezime))
@@ -196,7 +234,7 @@ namespace DomUcenikaSvilajnac.Mapping
              .ForMember(v => v.BrojTelefonaMajke, opt => opt.MapFrom(src => src[0].BrojTelefona))
              .ForMember(v => v.BrojTelefonaOca, opt => opt.MapFrom(src => src[1].BrojTelefona));
 
-
+            //mapira listu Roditelja u listu RoditeljResource
             CreateMap<List<Roditelj>, List<RoditeljResource>>()
             .AfterMap((roditelj, resurs) =>
             {
@@ -230,6 +268,7 @@ namespace DomUcenikaSvilajnac.Mapping
                     }
                 }
             });
+            //mapira listu RoditeljResource u listu Roditelja
             CreateMap<List<RoditeljResource>, List<Roditelj>>()
             .AfterMap((resurs, roditelj) =>
             {
@@ -263,7 +302,7 @@ namespace DomUcenikaSvilajnac.Mapping
             });
 
 
-
+            //mapira listu Roditelja u listu DeleteRoditeljResource
             CreateMap<List<Roditelj>, List<DeleteRoditeljaResource>>()
            .AfterMap((roditelj, resurs) =>
            {
@@ -295,7 +334,7 @@ namespace DomUcenikaSvilajnac.Mapping
            });
 
 
-
+            //mapira PostRoditeljaResource u Resource
             CreateMap<PostRoditeljaResource, Roditelj>()
              .ForMember(v => v.Ime, opt => opt.MapFrom(src => src.ImeOca))
              .ForMember(v => v.Prezime, opt => opt.MapFrom(src => src.PrezimeOca))
@@ -304,7 +343,7 @@ namespace DomUcenikaSvilajnac.Mapping
              .ForMember(v => v.Ucenik, opt => opt.Ignore())
              .ForMember(v => v.StepenObrazovanja, opt => opt.Ignore());
 
-
+            //mapira listu Roditelja u PostRoditeljaResource
             CreateMap<List<Roditelj>, PostRoditeljaResource>()
              .ForMember(v => v.ImeOca, opt => opt.MapFrom(src => src[1].Ime))
              .ForMember(v => v.PrezimeOca, opt => opt.MapFrom(src => src[1].Prezime))
@@ -319,8 +358,7 @@ namespace DomUcenikaSvilajnac.Mapping
              .ForMember(v => v.BrojTelefonaMajke, opt => opt.MapFrom(src => src[0].BrojTelefona))
              .ForMember(v => v.BrojTelefonaOca, opt => opt.MapFrom(src => src[1].BrojTelefona));
 
-
-            //CreateMap<PutRoditeljaResource, Roditelj>();
+            //mapira Roditelja u PutRoditeljaResource
             CreateMap<Roditelj, PutRoditeljaResource>()
                 .ForMember(v => v.IdMajke, opt => opt.Ignore())
                 .ForMember(v => v.ImeMajke, opt => opt.Ignore())
@@ -333,12 +371,7 @@ namespace DomUcenikaSvilajnac.Mapping
                 .ForMember(v => v.BrojTelefonaMajke, opt => opt.Ignore())
                 .ForMember(v => v.BrojTelefonaOca, opt => opt.Ignore());
 
-
-
-
-            ///////////
-
-
+            //mapira listu Roditelja u listu PutRoditeljaResource
             CreateMap<List<Roditelj>, List<PutRoditeljaResource>>()
             .AfterMap((roditelj, resurs) =>
             {
@@ -370,6 +403,8 @@ namespace DomUcenikaSvilajnac.Mapping
                     }
                 }
             });
+
+            //mapira listu PutRoditeljaResource u listu Roditelja
             CreateMap<List<PutRoditeljaResource>, List<Roditelj>>()
             .AfterMap((resurs, roditelj) =>
             {
@@ -402,8 +437,7 @@ namespace DomUcenikaSvilajnac.Mapping
 
             });
 
-
-            ///////////////////////
+            //mapira PutRoditeljaResource u Roditelja
             CreateMap<PutRoditeljaResource, Roditelj>()
              .ForMember(v => v.Ime, opt => opt.MapFrom(src => src.ImeOca))
              .ForMember(v => v.Prezime, opt => opt.MapFrom(src => src.PrezimeOca))
@@ -414,9 +448,7 @@ namespace DomUcenikaSvilajnac.Mapping
 
 
 
-
-
-            //oovo ispdo treba da se uradi
+            //ovo ispod treba da se uradi
             CreateMap<MajkaResource, Roditelj>()
                 .ForMember(v => v.Id, opt => opt.MapFrom(src => src.IdMajke))
              .ForMember(v => v.Ime, opt => opt.MapFrom(src => src.ImeMajke))
@@ -427,15 +459,45 @@ namespace DomUcenikaSvilajnac.Mapping
               .ForMember(v => v.Ucenik, opt => opt.Ignore());
 
 
-
-
-
-
-
-
-
+            //mapira PutRoditeljaResource u MajkaResoruce
             CreateMap<PutRoditeljaResource, MajkaResource>();
+            //mapira MajkaResource u PutRoditeljaResource
             CreateMap<MajkaResource, PutRoditeljaResource>();
+
+            //mapira Staratelj u StarateljResource
+            CreateMap<Staratelj, StarateljResource>();
+            //mapira StarateljResource u Staratelja
+            CreateMap<StarateljResource, Staratelj>()
+                .ForMember(v => v.Ucenik, opt => opt.Ignore());
+
+            //mapira Pohvala u PohvalaResource
+            CreateMap<Pohvala, PohvalaResource>();
+            //mapira PohvalaResource u Pohvala
+            CreateMap<PohvalaResource, Pohvala>()
+                .ForMember(v => v.Ucenik, opt => opt.Ignore());
+
+            //mapira Kazna u KaznaResource
+            CreateMap<Kazna, KaznaResource>();
+            //mapira KaznaResource u Kazna
+            CreateMap<KaznaResource, Kazna>()
+                .ForMember(v => v.Ucenik, opt => opt.Ignore());
+
+            //mapira VaspitnaGrupaResource u VaspitnaGrupa
+            CreateMap<VaspitnaGrupaResource, VaspitnaGrupa>()
+                .ForMember(v => v.Vaspitac, opt => opt.Ignore());
+
+            //mapira Sastanak u SastanakResource
+            CreateMap<Sastanak, SastanakResource>()
+                .ForMember(v => v.Godina, opt => opt.MapFrom(src => src.DatumOdrzavanja.Year))
+                .ForMember(v => v.Dan, opt => opt.MapFrom(src => src.DatumOdrzavanja.Day))
+                .ForMember(v => v.Mesec, opt => opt.MapFrom(src => src.DatumOdrzavanja.Month));
+
+            //mapira SastanakResource u Sastanak
+            CreateMap<SastanakResource, Sastanak>()
+                .ForMember(v => v.DatumOdrzavanja, opt => opt.MapFrom(src => new DateTime(src.Godina, src.Mesec, src.Dan + 1).ToUniversalTime()))
+                .ForMember(v => v.VaspitnaGrupa, opt => opt.Ignore());
+
+
 
         }
     }

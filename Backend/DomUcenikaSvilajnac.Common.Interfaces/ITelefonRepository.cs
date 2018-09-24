@@ -11,5 +11,6 @@ namespace DomUcenikaSvilajnac.Common.Interfaces
     /// </summary>
     public interface ITelefonRepository: IRepository<Telefon>
     {
+        void deleteTelefon(Telefon telefon);
     }
 }

@@ -33,6 +33,24 @@ namespace DomUcenikaSvilajnac.DAL.Context.Migrations
                     b.ToTable("Drzave");
                 });
 
+            modelBuilder.Entity("DomUcenikaSvilajnac.Common.Models.Kazna", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<int>("BodoviKazne");
+
+                    b.Property<string>("Opis");
+
+                    b.Property<int>("UcenikId");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("UcenikId");
+
+                    b.ToTable("Kazne");
+                });
+
             modelBuilder.Entity("DomUcenikaSvilajnac.Common.Models.Mesto", b =>
                 {
                     b.Property<int>("Id")
@@ -56,6 +74,24 @@ namespace DomUcenikaSvilajnac.DAL.Context.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Opstine");
+                });
+
+            modelBuilder.Entity("DomUcenikaSvilajnac.Common.Models.Pohvala", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<int>("BodoviPohvale");
+
+                    b.Property<string>("Opis");
+
+                    b.Property<int>("UcenikId");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("UcenikId");
+
+                    b.ToTable("Pohvale");
                 });
 
             modelBuilder.Entity("DomUcenikaSvilajnac.Common.Models.Pol", b =>
@@ -140,6 +176,26 @@ namespace DomUcenikaSvilajnac.DAL.Context.Migrations
                     b.ToTable("Roditelji");
                 });
 
+            modelBuilder.Entity("DomUcenikaSvilajnac.Common.Models.Sastanak", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<int>("BrojPrisutnihUcenika");
+
+                    b.Property<DateTime>("DatumOdrzavanja");
+
+                    b.Property<int>("UkupanBrojPrisutnihUcenika");
+
+                    b.Property<int>("VaspitnaGrupaId");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("VaspitnaGrupaId");
+
+                    b.ToTable("Sastanci");
+                });
+
             modelBuilder.Entity("DomUcenikaSvilajnac.Common.Models.Smer", b =>
                 {
                     b.Property<int>("Id")
@@ -150,6 +206,24 @@ namespace DomUcenikaSvilajnac.DAL.Context.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Smerovi");
+                });
+
+            modelBuilder.Entity("DomUcenikaSvilajnac.Common.Models.Staratelj", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<string>("Ime");
+
+                    b.Property<string>("Prezime");
+
+                    b.Property<int>("UcenikId");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("UcenikId");
+
+                    b.ToTable("Staratelji");
                 });
 
             modelBuilder.Entity("DomUcenikaSvilajnac.Common.Models.StepenStrucneSpreme", b =>
@@ -182,6 +256,18 @@ namespace DomUcenikaSvilajnac.DAL.Context.Migrations
                     b.ToTable("BrojeviTelefona");
                 });
 
+            modelBuilder.Entity("DomUcenikaSvilajnac.Common.Models.TipPorodice", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<string>("NazivTipaPorodice");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("TipoviPorodice");
+                });
+
             modelBuilder.Entity("DomUcenikaSvilajnac.Common.Models.Ucenik", b =>
                 {
                     b.Property<int>("Id")
@@ -202,6 +288,8 @@ namespace DomUcenikaSvilajnac.DAL.Context.Migrations
                     b.Property<string>("JMBG")
                         .IsRequired()
                         .HasMaxLength(13);
+
+                    b.Property<int>("MaterijalniPrihodi");
 
                     b.Property<int?>("MestoPrebivalistaId");
 
@@ -228,11 +316,17 @@ namespace DomUcenikaSvilajnac.DAL.Context.Migrations
 
                     b.Property<int>("RazredId");
 
+                    b.Property<string>("Slika");
+
                     b.Property<int>("SmerId");
 
                     b.Property<int>("TelefonId");
 
+                    b.Property<int>("TipPorodiceId");
+
                     b.Property<int>("UpisanaSkolaId");
+
+                    b.Property<int>("VaspitnaGrupaId");
 
                     b.Property<DateTime>("VremeUpisa");
 
@@ -262,7 +356,11 @@ namespace DomUcenikaSvilajnac.DAL.Context.Migrations
 
                     b.HasIndex("TelefonId");
 
+                    b.HasIndex("TipPorodiceId");
+
                     b.HasIndex("UpisanaSkolaId");
+
+                    b.HasIndex("VaspitnaGrupaId");
 
                     b.ToTable("Ucenici");
                 });
@@ -282,6 +380,58 @@ namespace DomUcenikaSvilajnac.DAL.Context.Migrations
                     b.HasIndex("OpstinaId");
 
                     b.ToTable("SrednjeSkole");
+                });
+
+            modelBuilder.Entity("DomUcenikaSvilajnac.Common.Models.Vaspitac", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<string>("BrojTelefona");
+
+                    b.Property<string>("Ime");
+
+                    b.Property<string>("Prezime");
+
+                    b.Property<string>("Slika");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Vaspitaci");
+                });
+
+            modelBuilder.Entity("DomUcenikaSvilajnac.Common.Models.VaspitnaGrupa", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<int>("BrojUcenika");
+
+                    b.Property<string>("Naziv");
+
+                    b.Property<int>("VaspitacId");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("VaspitacId");
+
+                    b.ToTable("VaspitneGrupe");
+                });
+
+            modelBuilder.Entity("DomUcenikaSvilajnac.Common.Models.Kazna", b =>
+                {
+                    b.HasOne("DomUcenikaSvilajnac.Common.Models.Ucenik", "Ucenik")
+                        .WithMany("Kazne")
+                        .HasForeignKey("UcenikId")
+                        .OnDelete(DeleteBehavior.Cascade);
+                });
+
+            modelBuilder.Entity("DomUcenikaSvilajnac.Common.Models.Pohvala", b =>
+                {
+                    b.HasOne("DomUcenikaSvilajnac.Common.Models.Ucenik", "Ucenik")
+                        .WithMany("Pohvale")
+                        .HasForeignKey("UcenikId")
+                        .OnDelete(DeleteBehavior.Cascade);
                 });
 
             modelBuilder.Entity("DomUcenikaSvilajnac.Common.Models.PostanskiBroj", b =>
@@ -309,6 +459,22 @@ namespace DomUcenikaSvilajnac.DAL.Context.Migrations
 
                     b.HasOne("DomUcenikaSvilajnac.Common.Models.Ucenik", "Ucenik")
                         .WithMany("Roditelji")
+                        .HasForeignKey("UcenikId")
+                        .OnDelete(DeleteBehavior.Cascade);
+                });
+
+            modelBuilder.Entity("DomUcenikaSvilajnac.Common.Models.Sastanak", b =>
+                {
+                    b.HasOne("DomUcenikaSvilajnac.Common.Models.VaspitnaGrupa", "VaspitnaGrupa")
+                        .WithMany()
+                        .HasForeignKey("VaspitnaGrupaId")
+                        .OnDelete(DeleteBehavior.Cascade);
+                });
+
+            modelBuilder.Entity("DomUcenikaSvilajnac.Common.Models.Staratelj", b =>
+                {
+                    b.HasOne("DomUcenikaSvilajnac.Common.Models.Ucenik", "Ucenik")
+                        .WithMany("Staratelji")
                         .HasForeignKey("UcenikId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
@@ -370,9 +536,19 @@ namespace DomUcenikaSvilajnac.DAL.Context.Migrations
                         .HasForeignKey("TelefonId")
                         .OnDelete(DeleteBehavior.Cascade);
 
+                    b.HasOne("DomUcenikaSvilajnac.Common.Models.TipPorodice", "TipPorodice")
+                        .WithMany()
+                        .HasForeignKey("TipPorodiceId")
+                        .OnDelete(DeleteBehavior.Cascade);
+
                     b.HasOne("DomUcenikaSvilajnac.Common.Models.UpisanaSkola", "UpisanaSkola")
                         .WithMany()
                         .HasForeignKey("UpisanaSkolaId")
+                        .OnDelete(DeleteBehavior.Cascade);
+
+                    b.HasOne("DomUcenikaSvilajnac.Common.Models.VaspitnaGrupa", "VaspitnaGrupa")
+                        .WithMany()
+                        .HasForeignKey("VaspitnaGrupaId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 
@@ -381,6 +557,14 @@ namespace DomUcenikaSvilajnac.DAL.Context.Migrations
                     b.HasOne("DomUcenikaSvilajnac.Common.Models.Opstina", "Opstina")
                         .WithMany("SrednjeSkole")
                         .HasForeignKey("OpstinaId")
+                        .OnDelete(DeleteBehavior.Cascade);
+                });
+
+            modelBuilder.Entity("DomUcenikaSvilajnac.Common.Models.VaspitnaGrupa", b =>
+                {
+                    b.HasOne("DomUcenikaSvilajnac.Common.Models.Vaspitac", "Vaspitac")
+                        .WithMany()
+                        .HasForeignKey("VaspitacId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 #pragma warning restore 612, 618

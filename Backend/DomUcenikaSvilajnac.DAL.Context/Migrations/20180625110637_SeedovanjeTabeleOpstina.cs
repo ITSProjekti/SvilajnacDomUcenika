@@ -38,8 +38,6 @@ namespace DomUcenikaSvilajnac.DAL.Context.Migrations
     " (N'Tutin'), (N'Ćićevac'), (N'Ćuprija'), (N'Ub'), (N'Užice'), (N'Uroševac'), (N'Crveni Krst')," +
     " (N'Crna Trava'), (N'Čajetina'),(N'Čačak'), (N'Čoka'), (N'Čukarica'), (N'Šabac'), (N'Šid')," +
     " (N'Štimlje'), (N'Štrpce'); ");
-
-
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)

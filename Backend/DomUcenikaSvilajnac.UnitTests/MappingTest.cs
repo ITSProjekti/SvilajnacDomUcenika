@@ -2,12 +2,14 @@ using AutoMapper;
 using DomUcenikaSvilajnac.Common.Interfaces;
 using DomUcenikaSvilajnac.Common.Models;
 using DomUcenikaSvilajnac.Common.Models.ModelResources;
+using DomUcenikaSvilajnac.IntegratedTests;
 using DomUcenikaSvilajnac.Mapping;
 using DomUcenikaSvilajnac.ModelResources;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 
 namespace DomUcenikaSvilajnac.UnitTests
 {
@@ -17,49 +19,30 @@ namespace DomUcenikaSvilajnac.UnitTests
     [TestClass]
     public class MappingTest
     {
+        DataModels dm = new DataModels();
 
         /// <summary>
         /// Provera da li mapiranje radi kako treba kada se posalju potrebni podaci, a podaci o datumu u okviru promenljive DatumRodjenja.
         /// </summary>
         [TestMethod]
-        public void CreateMapMetode_ResursModelproveraTipa_ReturnsTrue()
+        public void CreateMapMetode_ResursModelProveraTipa_ReturnsTrue()
         {
+            AutoMapper.Mapper.Reset();
             Mapper.Initialize(m => m.AddProfile<MappingProfile>());
             Mapper.AssertConfigurationIsValid();
-            Ucenik ucenik = new Ucenik()
-            {
-                Id = 1,
-                Ime = "Pera",
-                Prezime = "Peric",
-                JMBG = "1231231231233",
-                DatumRodjenja = new DateTime(1998, 04, 30),
-                DrzavaRodjenjaId = 1,
-                MestoPrebivalistaId = 1,
-                MestoRodjenjaId = 1,
-                MestoZavrseneSkoleId = 1,
-                OpstinaPrebivalistaId = 1,
-                PolId = 1,
-                Adresa = "Milutaina Milankovica 74",
-                TelefonId = 1,
-                PostanskiBrojId = 1,
-                UpisanaSkolaId = 1,
-                SmerId = 1,
-                RazredId = 1,
-                PrethodnaSkolaId = 1,
-                PrethodniUspeh = 4.55f
-            };
+            var ucenik = dm.Ucenik2();
             var result = Mapper.Map<Ucenik, UcenikResource>(ucenik);
 
             Assert.IsInstanceOfType(result, typeof(UcenikResource));
-            AutoMapper.Mapper.Reset();
         }
 
         /// <summary>
         /// Provera da li mapiranje radi kako treba kada se posalju potrebni podaci, a podaci o datumu u vidu tri pormenljive dan, mesec, godina.
         /// </summary>
         [TestMethod]
-        public void CreateMapMetode_ModelResursproveraTipa_ReturnsTrue()
+        public void CreateMapMetode_ModelResursProveraTipa_ReturnsTrue()
         {
+            AutoMapper.Mapper.Reset();
             Mapper.Initialize(m => m.AddProfile<MappingProfile>());
             Mapper.AssertConfigurationIsValid();
             UcenikResource ucenikResurs = new UcenikResource()
@@ -82,7 +65,7 @@ namespace DomUcenikaSvilajnac.UnitTests
         /// Provera da li mapiranje nece raditi kako treba kada se ne posalju svi podaci.
         /// </summary>
         [TestMethod]
-        public void CreateMapMetode_ModelResursproveraTipa_ReturnsFalseModel()
+        public void CreateMapMetode_ModelResursProveraTipa_ReturnsFalseModel()
         {
             Mapper.Initialize(m => m.AddProfile<MappingProfile>());
             Mapper.AssertConfigurationIsValid();
@@ -113,7 +96,7 @@ namespace DomUcenikaSvilajnac.UnitTests
         /// Proveravanje mapiranja RoditeljResource u Roditelj, da li je objekat nakon mapiranja ocekivanog tipa.
         /// </summary>
         [TestMethod]
-        public void CreateMapMetode_ModelRoditeljResursproveraTipa_ReturnsTrue()
+        public void CreateMapMetode_ModelRoditeljResursProveraTipa_ReturnsTrue()
         {
             Mapper.Initialize(m => m.AddProfile<MappingProfile>());
             Mapper.AssertConfigurationIsValid();
@@ -138,7 +121,7 @@ namespace DomUcenikaSvilajnac.UnitTests
         /// Proveravanje mapiranja Roditelj u RoditeljResource, da li je objekat nakon mapiranja ocekivanog tipa.
         /// </summary>
         [TestMethod]
-        public void CreateMapMetode_ModelRoditeljproveraTipa_ReturnsTrue()
+        public void CreateMapMetode_ModelRoditeljProveraTipa_ReturnsTrue()
         {
             Mapper.Initialize(m => m.AddProfile<MappingProfile>());
             Mapper.AssertConfigurationIsValid();
@@ -161,7 +144,7 @@ namespace DomUcenikaSvilajnac.UnitTests
         /// Proveravanje mapiranja liste Roditelj u RoditeljResource, da li je objekat nakon mapiranja ocekivanog tipa.
         /// </summary>
         [TestMethod]
-        public void CreateMapMetode_ModelListaRoditeljaproveraTipa_ReturnsTrue()
+        public void CreateMapMetode_ModelListaRoditeljaProveraTipa_ReturnsTrue()
         {
             Mapper.Initialize(m => m.AddProfile<MappingProfile>());
             Mapper.AssertConfigurationIsValid();
@@ -179,7 +162,7 @@ namespace DomUcenikaSvilajnac.UnitTests
         /// Proveravanje mapiranja liste Roditelj u listu RoditeljResource, da li je objekat nakon mapiranja ocekivanog tipa (list<RoditeljResource>).
         /// </summary>
         [TestMethod]
-        public void CreateMapMetode_ModelListaRoditeljaUListaRoditeljaResursproveraTipa_ReturnsTrue()
+        public void CreateMapMetode_ModelListaRoditeljaUListaRoditeljaResursProveraTipa_ReturnsTrue()
         {
             Mapper.Initialize(m => m.AddProfile<MappingProfile>());
             Mapper.AssertConfigurationIsValid();
@@ -198,7 +181,7 @@ namespace DomUcenikaSvilajnac.UnitTests
         /// Proveravanje mapiranja liste RoditeljResource u listu Roditelj, da li je objekat nakon mapiranja ocekivanog tipa (list<Roditelj>).
         /// </summary>
         [TestMethod]
-        public void CreateMapMetode_ModelListaRoditeljaResursUListaRoditeljaproveraTipa_ReturnsTrue()
+        public void CreateMapMetode_ModelListaRoditeljaResursUListaRoditeljaProveraTipa_ReturnsTrue()
         {
 
             Mapper.Initialize(m => m.AddProfile<MappingProfile>());
@@ -219,7 +202,7 @@ namespace DomUcenikaSvilajnac.UnitTests
         /// Proveravanje mapiranja liste Roditelj u listu DeleteRoditeljResource, da li je objekat nakon mapiranja ocekivanog tipa (list<DeleteRoditeljaResource>).
         /// </summary>
         [TestMethod]
-        public void CreateMapMetode_ModelListaRoditeljaUListaDeleteRoditeljaResursproveraTipa_ReturnsTrue()
+        public void CreateMapMetode_ModelListaRoditeljaUListaDeleteRoditeljaResursProveraTipa_ReturnsTrue()
         {
 
             Mapper.Initialize(m => m.AddProfile<MappingProfile>());
@@ -240,9 +223,9 @@ namespace DomUcenikaSvilajnac.UnitTests
         /// Proveravanje mapiranja PostRoditeljaResource u Roditelj, da li je objekat nakon mapiranja ocekivanog tipa.
         /// </summary>
         [TestMethod]
-        public void CreateMapMetode_ModelPostRoditeljaResursURoditeljproveraTipa_ReturnsTrue()
+        public void CreateMapMetode_ModelPostRoditeljaResursURoditeljProveraTipa_ReturnsTrue()
         {
-
+            AutoMapper.Mapper.Reset();
             Mapper.Initialize(m => m.AddProfile<MappingProfile>());
             Mapper.AssertConfigurationIsValid();
 
@@ -269,7 +252,7 @@ namespace DomUcenikaSvilajnac.UnitTests
         /// Proveravanje mapiranja liste Roditelj u PostRoditeljaResource, da li je objekat nakon mapiranja ocekivanog tipa.
         /// </summary>
         [TestMethod]
-        public void CreateMapMetode_ModelListaRoditeljaUPostRoditeljaResursproveraTipa_ReturnsTrue()
+        public void CreateMapMetode_ModelListaRoditeljaUPostRoditeljaResursProveraTipa_ReturnsTrue()
         {
 
             Mapper.Initialize(m => m.AddProfile<MappingProfile>());
@@ -290,7 +273,7 @@ namespace DomUcenikaSvilajnac.UnitTests
         /// Proveravanje mapiranja Roditelj u PutRoditeljaResource, da li je objekat nakon mapiranja ocekivanog tipa.
         /// </summary>
         [TestMethod]
-        public void CreateMapMetode_ModelRoditeljUPutRoditeljaResursproveraTipa_ReturnsTrue()
+        public void CreateMapMetode_ModelRoditeljUPutRoditeljaResursProveraTipa_ReturnsTrue()
         {
             Mapper.Initialize(m => m.AddProfile<MappingProfile>());
             Mapper.AssertConfigurationIsValid();
@@ -313,7 +296,7 @@ namespace DomUcenikaSvilajnac.UnitTests
         /// Proveravanje mapiranja Roditelj u listu PutRoditeljaResource, da li je objekat nakon mapiranja ocekivanog tipa (list<PutRoditeljaResource>).
         /// </summary>
         [TestMethod]
-        public void CreateMapMetode_ModelListaRoditeljaUListuPutRoditeljaResursproveraTipa_ReturnsTrue()
+        public void CreateMapMetode_ModelListaRoditeljaUListuPutRoditeljaResursProveraTipa_ReturnsTrue()
         {
             Mapper.Initialize(m => m.AddProfile<MappingProfile>());
             Mapper.AssertConfigurationIsValid();
@@ -332,7 +315,7 @@ namespace DomUcenikaSvilajnac.UnitTests
         /// Proveravanje mapiranja liste PutRoditeljaResource u listu Roditelj, da li je objekat nakon mapiranja ocekivanog tipa (list<Rodielj>).
         /// </summary>
         [TestMethod]
-        public void CreateMapMetode_ModelListaPutRoditeljaResursUListuRoditeljaproveraTipa_ReturnsTrue()
+        public void CreateMapMetode_ModelListaPutRoditeljaReusrsUListuRoditeljaProveraTipa_ReturnsTrue()
         {
             Mapper.Initialize(m => m.AddProfile<MappingProfile>());
             Mapper.AssertConfigurationIsValid();
@@ -373,7 +356,7 @@ namespace DomUcenikaSvilajnac.UnitTests
         /// Proveravanje mapiranja PutRoditeljaResource u Roditelj, da li je objekat nakon mapiranja ocekivanog tipa. 
         /// </summary>
         [TestMethod]
-        public void CreateMapMetode_ModelPutRoditeljaResursURoditeljproveraTipa_ReturnsTrue()
+        public void CreateMapMetode_ModelPutRoditeljaResursURoditeljProveraTipa_ReturnsTrue()
         {
             Mapper.Initialize(m => m.AddProfile<MappingProfile>());
             Mapper.AssertConfigurationIsValid();
@@ -393,6 +376,260 @@ namespace DomUcenikaSvilajnac.UnitTests
             };
             var result = Mapper.Map<PutRoditeljaResource, Roditelj>(putRoditeljaResurs);
             Assert.IsInstanceOfType(result, typeof(Roditelj));
+            AutoMapper.Mapper.Reset();
+        }
+
+        /// <summary>
+        /// Proveravanje mapiranja MajkaResoruce u Roditelj, da li je objekat nakon mapiranja ocekivanog tipa. 
+        /// </summary>
+        [TestMethod]
+        public void CreateMapMetode_ModelMajkaResursURoditeljProveraTipa_ReturnsTrue()
+        {
+            Mapper.Initialize(m => m.AddProfile<MappingProfile>());
+            Mapper.AssertConfigurationIsValid();
+            MajkaResource majkaResurs = new MajkaResource()
+            {
+                Id = 1,
+                ImeOca = "ImeOca",
+                PrezimeOca = "PrezimeOca",
+                BrojTelefonaOca = "123456789",
+                IdMajke = 1,
+                ImeMajke = "ImeMajke",
+                PrezimeMajke = "PrezimeMajke",
+                BrojTelefonaMajke = "123456789",
+                StrucnaSpremaMajkeId = 5,
+                StrucnaSpremaOcaId = 6,
+                UcenikId = 1
+            };
+            var result = Mapper.Map<MajkaResource, Roditelj>(majkaResurs);
+            Assert.IsInstanceOfType(result, typeof(Roditelj));
+            AutoMapper.Mapper.Reset();
+        }
+
+        /// <summary>
+        /// Proveravanje mapiranja PutRoditeljaResource u MajkaResource, da li je objekat nakon mapiranja ocekivanog tipa. 
+        /// </summary>
+        [TestMethod]
+        public void CreateMapMetode_ModelPutRoditeljaResursUMajkaResursProveraTipa_ReturnsTrue()
+        {
+            Mapper.Initialize(m => m.AddProfile<MappingProfile>());
+            Mapper.AssertConfigurationIsValid();
+            PutRoditeljaResource putRoditeljaResurs = new PutRoditeljaResource()
+            {
+                Id = 1,
+                ImeOca = "ImeOca",
+                PrezimeOca = "PrezimeOca",
+                BrojTelefonaOca = "123456789",
+                IdMajke = 1,
+                ImeMajke = "ImeMajke",
+                PrezimeMajke = "PrezimeMajke",
+                BrojTelefonaMajke = "123456789",
+                StrucnaSpremaMajkeId = 5,
+                StrucnaSpremaOcaId = 6,
+                UcenikId = 1
+            };
+            var result = Mapper.Map<PutRoditeljaResource, MajkaResource>(putRoditeljaResurs);
+            Assert.IsInstanceOfType(result, typeof(MajkaResource));
+            AutoMapper.Mapper.Reset();
+        }
+
+        /// <summary>
+        /// Proveravanje mapiranja MajkaResource u PutRoditeljResource, da li je objekat nakon mapiranja ocekivanog tipa. 
+        /// </summary>
+        [TestMethod]
+        public void CreateMapMetode_ModelMajkaResursUPutRoditeljaResursProveraTipa_ReturnsTrue()
+        {
+            Mapper.Initialize(m => m.AddProfile<MappingProfile>());
+            Mapper.AssertConfigurationIsValid();
+            MajkaResource majkaResurs = new MajkaResource()
+            {
+                Id = 1,
+                ImeOca = "ImeOca",
+                PrezimeOca = "PrezimeOca",
+                BrojTelefonaOca = "123456789",
+                IdMajke = 1,
+                ImeMajke = "ImeMajke",
+                PrezimeMajke = "PrezimeMajke",
+                BrojTelefonaMajke = "123456789",
+                StrucnaSpremaMajkeId = 5,
+                StrucnaSpremaOcaId = 6,
+                UcenikId = 1
+            };
+            var result = Mapper.Map<MajkaResource, PutRoditeljaResource>(majkaResurs);
+            Assert.IsInstanceOfType(result, typeof(PutRoditeljaResource));
+            AutoMapper.Mapper.Reset();
+        }
+
+        /// <summary>
+        /// Proveravanje mapiranja Staratelj u StarateljResource, da li je objekat nakon mapiranja ocekivanog tipa. 
+        /// </summary>
+        [TestMethod]
+        public void CreateMapMetode_ModelStarateljUStarateljResursProveraTipa_ReturnsTrue()
+        {
+            Mapper.Initialize(m => m.AddProfile<MappingProfile>());
+            Mapper.AssertConfigurationIsValid();
+            Staratelj staratelj = new Staratelj()
+            {
+                Id = 1,
+                Ime = "Staratelj",
+                Prezime = "Prezime",
+                UcenikId = 1
+            };
+            var result = Mapper.Map<Staratelj, StarateljResource>(staratelj);
+            Assert.IsInstanceOfType(result, typeof(StarateljResource));
+            AutoMapper.Mapper.Reset();
+        }
+
+        /// <summary>
+        /// Proveravanje mapiranja StarateljResource u Staratelj, da li je objekat nakon mapiranja ocekivanog tipa. 
+        /// </summary>
+        [TestMethod]
+        public void CreateMapMetode_ModelStarateljResursUStarateljProveraTipa_ReturnsTrue()
+        {
+            Mapper.Initialize(m => m.AddProfile<MappingProfile>());
+            Mapper.AssertConfigurationIsValid();
+            StarateljResource starateljResurs = new StarateljResource()
+            {
+                Id = 1,
+                Ime = "Staratelj",
+                Prezime = "Prezime",
+                UcenikId = 1
+            };
+            var result = Mapper.Map<StarateljResource, Staratelj>(starateljResurs);
+            Assert.IsInstanceOfType(result, typeof(Staratelj));
+            AutoMapper.Mapper.Reset();
+        }
+
+        /// <summary>
+        /// Proveravanje mapiranja VaspitneGrupeResource u VaspitnuGrupu, da li je objekat nakon mapiranja ocekivanog tipa. 
+        /// </summary>
+        [TestMethod]
+        public void CreateMapMetode_ModelVaspitneGrupeUResursVaspitneGrupeProveraTipa_ReturnsTrue()
+        {
+            Mapper.Initialize(m => m.AddProfile<MappingProfile>());
+            Mapper.AssertConfigurationIsValid();
+            VaspitnaGrupa vaspitnaGrupa = new VaspitnaGrupa()
+            {
+                Id = 1,
+                BrojUcenika = 2,
+                Naziv = "Grupa I",
+                 Vaspitac = new Vaspitac() { Id = 1, Ime = "Vaspitac", BrojTelefona = "31231" },
+                VaspitacId = 1
+               
+            };
+            var result = Mapper.Map<VaspitnaGrupa, VaspitnaGrupaResource>(vaspitnaGrupa);
+            Assert.IsInstanceOfType(result, typeof(VaspitnaGrupaResource));
+            AutoMapper.Mapper.Reset();
+        }
+
+        /// <summary>
+        /// Proveravanje mapiranja VaspitneGrupeResource u VaspitnuGrupu, da li je objekat nakon mapiranja ocekivanog tipa. 
+        /// </summary>
+        [TestMethod]
+        public void CreateMapMetode_ModelVaspitneGrupeResursUVaspitneGrupeProveraTipa_ReturnsTrue()
+        {
+            Mapper.Initialize(m => m.AddProfile<MappingProfile>());
+            Mapper.AssertConfigurationIsValid();
+            VaspitnaGrupaResource vaspitnaGrupaResurs = new VaspitnaGrupaResource()
+            {
+                Id = 1,
+                BrojUcenika = 2,
+                Naziv = "Grupa I",
+                Vaspitac = new VaspitacResource() { Id = 1, BrojTelefona = "312312", Ime = "Vaspitac" }
+            };
+
+
+            var result = Mapper.Map<VaspitnaGrupaResource, VaspitnaGrupa>(vaspitnaGrupaResurs);
+            Assert.IsInstanceOfType(result, typeof(VaspitnaGrupa));
+            AutoMapper.Mapper.Reset();
+        }
+
+        /// <summary>
+        /// Proveravanje mapiranja KaznaResource u Kazna, da li je objekat nakon mapiranja ocekivanog tipa. 
+        /// </summary>
+        [TestMethod]
+        public void CreateMapMetode_ModelKaznaResursUKazneProveraTipa_ReturnsTrue()
+        {
+            Mapper.Initialize(m => m.AddProfile<MappingProfile>());
+            Mapper.AssertConfigurationIsValid();
+            KaznaResource kaznaResurs = new KaznaResource()
+            {
+                Id = 1,
+                Opis = "Kazna",
+                BodoviKazne = 1,
+                UcenikId = 1
+            };
+
+
+            var result = Mapper.Map<KaznaResource, Kazna>(kaznaResurs);
+            Assert.IsInstanceOfType(result, typeof(Kazna));
+            AutoMapper.Mapper.Reset();
+        }
+
+        /// <summary>
+        /// Proveravanje mapiranja PohvalaResource u Pohvala, da li je objekat nakon mapiranja ocekivanog tipa. 
+        /// </summary>
+        [TestMethod]
+        public void CreateMapMetode_ModelPohvalaResursUPohvaleProveraTipa_ReturnsTrue()
+        {
+            Mapper.Initialize(m => m.AddProfile<MappingProfile>());
+            Mapper.AssertConfigurationIsValid();
+            PohvalaResource pohvalaResurs = new PohvalaResource()
+            {
+                Id = 1,
+                Opis = "Kazna",
+                BodoviPohvale = 1,
+                UcenikId = 1
+            };
+
+
+            var result = Mapper.Map<PohvalaResource, Pohvala>(pohvalaResurs);
+            Assert.IsInstanceOfType(result, typeof(Pohvala));
+            AutoMapper.Mapper.Reset();
+        }
+
+        /// <summary>
+        /// Proveravanje mapiranja Sastanak u SastanakResource, da li je objekat nakon mapiranja ocekivanog tipa. 
+        /// </summary>
+        [TestMethod]
+        public void CreateMapMetode_ModelSastanakUResursSastanakProveraTipa_ReturnsTrue()
+        {
+            Mapper.Initialize(m => m.AddProfile<MappingProfile>());
+            Mapper.AssertConfigurationIsValid();
+            Sastanak sastanak = new Sastanak()
+            {
+                Id=1,
+                BrojPrisutnihUcenika=20,
+                UkupanBrojPrisutnihUcenika=20,
+                DatumOdrzavanja=Convert.ToDateTime("2/5/2015"),
+                VaspitnaGrupaId=1,
+
+            };
+            var result = Mapper.Map<Sastanak, SastanakResource>(sastanak);
+            Assert.IsInstanceOfType(result, typeof(SastanakResource));
+            AutoMapper.Mapper.Reset();
+        }
+
+        /// <summary>
+        /// Proveravanje mapiranja SastanakResource u Sastanak, da li je objekat nakon mapiranja ocekivanog tipa. 
+        /// </summary>
+        [TestMethod]
+        public void CreateMapMetode_ModelSastanakResursUSastanakProveraTipa_ReturnsTrue()
+        {
+            Mapper.Initialize(m => m.AddProfile<MappingProfile>());
+            Mapper.AssertConfigurationIsValid();
+            SastanakResource sastanakResurs = new SastanakResource()
+            {
+                Id = 1,
+                BrojPrisutnihUcenika = 20,
+                UkupanBrojPrisutnihUcenika = 20,
+                Dan=10,
+                Mesec=2,
+                Godina=2015               
+
+            };
+            var result = Mapper.Map<SastanakResource, Sastanak>(sastanakResurs);
+            Assert.IsInstanceOfType(result, typeof(Sastanak));
             AutoMapper.Mapper.Reset();
         }
     }

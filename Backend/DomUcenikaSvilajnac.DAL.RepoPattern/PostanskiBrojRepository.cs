@@ -8,12 +8,13 @@ using System.Text;
 
 namespace DomUcenikaSvilajnac.DAL.RepoPattern
 {
+    /// <summary>
+    /// Nasledjuje genericku klasu Repository sa tipom PostanskiBroj i IPostanskiBrojRepository interfejs
+    /// Videti Repository i PostanskiBroj klasu i IPostanskiBrojRepository interfejs radi dodatnog pojasnjena.
+    /// </summary>
     public class PostanskiBrojRepository : Repository<PostanskiBroj>, IPostanskiBrojRepository
     {
-        /// <summary>
-        /// Nasledjuje genericku klasu Repository sa tipom PostanskiBroj i IPostanskiBrojRepository interfejs
-        /// Videti Repository i PostanskiBroj klasu i IPostanskiBrojRepository interfejs radi dodatnog pojasnjena.
-        /// </summary>
+        
         public PostanskiBrojRepository(UcenikContext context) : base(context)
         {
         }

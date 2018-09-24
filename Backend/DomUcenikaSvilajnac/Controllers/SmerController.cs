@@ -100,7 +100,7 @@ namespace DomUcenikaSvilajnac.Controllers
 
             smer = Mapper.Map<Smer, SmerResource>(noviSmer);
 
-            return Ok(noviSmer);
+            return Ok(smer);
         }
         /// <summary>
         /// Brisanje jednog reda iz tabele na osnvou prosledjenog Id-a, tj. brisanje odredjenog smera iz tabele.

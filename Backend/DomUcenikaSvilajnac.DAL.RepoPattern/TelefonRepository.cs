@@ -1,4 +1,5 @@
-﻿using DomUcenikaSvilajnac.Common.Interfaces;
+﻿using AutoMapper;
+using DomUcenikaSvilajnac.Common.Interfaces;
 using DomUcenikaSvilajnac.Common.Models;
 using DomUcenikaSvilajnac.DAL.Context;
 using System;
@@ -7,16 +8,22 @@ using System.Text;
 
 namespace DomUcenikaSvilajnac.DAL.RepoPattern
 {
-    public  class TelefonRepository : Repository<Telefon>, ITelefonRepository
+    /// <summary>
+    /// Nasledjuje genericku klasu Repository sa tipom Telefon i ITelefonRepository interfejs
+    /// Videti Repository i Telefon klasu i ITelefonRepository interfejs radi dodatnog pojasnjena.
+    /// </summary>
+    public class TelefonRepository : Repository<Telefon>, ITelefonRepository
     {
-        /// <summary>
-        /// Nasledjuje genericku klasu Repository sa tipom Telefon i ITelefonRepository interfejs
-        /// Videti Repository i Telefon klasu i ITelefonRepository interfejs radi dodatnog pojasnjena.
-        /// </summary>
-        public TelefonRepository(UcenikContext context) : base(context)
+        protected readonly UcenikContext _context;
+        public IMapper Mapper { get; }
+       
+        public TelefonRepository(UcenikContext context, IMapper mapper) : base(context)
         {
-
+            _context = context;
+            Mapper = mapper;
         }
+
+        public ITelefonRepository Telefoni { get; set; }
 
         /// <summary>
         /// Get the context.
@@ -24,6 +31,10 @@ namespace DomUcenikaSvilajnac.DAL.RepoPattern
         public UcenikContext context
         {
             get { return context as UcenikContext; }
+        }
+        public void deleteTelefon(Telefon telefon)
+        {
+            _context.Telefoni.Remove(telefon);
         }
     }
 }

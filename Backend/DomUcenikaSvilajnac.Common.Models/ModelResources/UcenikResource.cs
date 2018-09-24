@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Text;
 
 namespace DomUcenikaSvilajnac.Common.Models.ModelResources
@@ -46,6 +47,14 @@ namespace DomUcenikaSvilajnac.Common.Models.ModelResources
         public List<RoditeljiUcenikaResource> Roditelji { get; set; }
 
         public float PrethodniUspeh { get; set; }
+
+        public TipPorodiceResource TipPorodice { get; set; }
+
+        public StarateljResource Staratelji { get; set; }
+        public string Slika { get; set; }
+        public int MaterijalniPrihodi { get; set; }
+
+        public VaspitnaGrupaResource VaspitnaGrupa { get; set; }
 
     }
 }

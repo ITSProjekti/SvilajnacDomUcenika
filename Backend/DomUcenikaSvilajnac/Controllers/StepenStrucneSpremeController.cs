@@ -86,7 +86,7 @@ namespace DomUcenikaSvilajnac.Controllers
         /// Dodavanje novog reda u tabeli, tj. novog stepena strucne spreme.
         /// </summary>
         [HttpPost]
-        public async Task<IActionResult> PostRazred([FromBody] StepenStrucneSpremeResource stepen)
+        public async Task<IActionResult> PostStepenStrucneSpreme([FromBody] StepenStrucneSpremeResource stepen)
         {
             if (!ModelState.IsValid)
             {
@@ -99,7 +99,7 @@ namespace DomUcenikaSvilajnac.Controllers
 
             stepen = Mapper.Map<StepenStrucneSpreme, StepenStrucneSpremeResource>(noviStepen);
 
-            return Ok(noviStepen);
+            return Ok(stepen);
         }
         /// <summary>
         /// Brisanje jednog reda iz tabele na osnvou prosledjenog Id-a, tj. brisanje odredjenog stepena strucne spreme iz tabele.

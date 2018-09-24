@@ -7,12 +7,13 @@ using System.Text;
 
 namespace DomUcenikaSvilajnac.DAL.RepoPattern
 {
-    class RazredRepository : Repository<Razred>, IRazredRpository
+    /// <summary>
+    /// Nasledjuje genericku klasu Repository sa tipom Razred i IRazredRepository interfejs
+    /// Videti Repository i Razred klasu i IRazredRepository interfejs radi dodatnog pojasnjena.
+    /// </summary>
+    class RazredRepository : Repository<Razred>, IRazredRepository
     {
-        /// <summary>
-        /// Nasledjuje genericku klasu Repository sa tipom Razred i IRazredRepository interfejs
-        /// Videti Repository i Razred klasu i IRazredRepository interfejs radi dodatnog pojasnjena.
-        /// </summary>
+        
         public RazredRepository(UcenikContext context) : base(context)
         {
 
