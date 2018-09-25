@@ -36,6 +36,7 @@ namespace DomUcenikaSvilajnac.DAL.Context
         public DbSet<Kazna> Kazne { get; set; }
         public DbSet<Vaspitac> Vaspitaci { get; set; }
         public DbSet<Sastanak> Sastanci { get; set; }
+        public DbSet<Statistika> Statistike { get; set; }
 
 
 

@@ -497,6 +497,10 @@ namespace DomUcenikaSvilajnac.Mapping
                 .ForMember(v => v.DatumOdrzavanja, opt => opt.MapFrom(src => new DateTime(src.Godina, src.Mesec, src.Dan + 1).ToUniversalTime()))
                 .ForMember(v => v.VaspitnaGrupa, opt => opt.Ignore());
 
+            //mapira Statistiku u StatistikuResource
+            CreateMap<Statistika, StatistikaResource>();
+            // mapira StatistikuResource u Statistiku
+            CreateMap<StatistikaResource, Statistika>();
 
 
         }
