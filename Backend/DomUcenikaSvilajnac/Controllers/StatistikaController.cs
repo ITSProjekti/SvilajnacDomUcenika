@@ -31,8 +31,7 @@ namespace DomUcenikaSvilajnac.Controllers
         [HttpGet]
         public async Task<IEnumerable<StatistikaResource>> GetStatistike()
         {
-            var listaStatistika = await UnitOfWork.Statistike.GetAllAsync();
-            return Mapper.Map<List<Statistika>, List<StatistikaResource>>(listaStatistika.ToList());
+            return await UnitOfWork.Statistike.podaciStatistike();
         }
 
         /// <summary>

@@ -11,5 +11,7 @@ namespace DomUcenikaSvilajnac.Common.Models.ModelResources
     public class StatistikaResource
     {
         public int Id { get; set; }
+        public float UspehVaspitneGrupe { get; set; }
+        public VaspitnaGrupaResource VaspitnaGrupa { get; set; }
     }
 }

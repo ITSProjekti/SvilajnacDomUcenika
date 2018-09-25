@@ -1,10 +1,13 @@
 ﻿using AutoMapper;
 using DomUcenikaSvilajnac.Common.Interfaces;
 using DomUcenikaSvilajnac.Common.Models;
+using DomUcenikaSvilajnac.Common.Models.ModelResources;
 using DomUcenikaSvilajnac.DAL.Context;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace DomUcenikaSvilajnac.DAL.RepoPattern
 {
@@ -14,9 +17,12 @@ namespace DomUcenikaSvilajnac.DAL.RepoPattern
     /// </summary>
     public class StatistikaRepository : Repository<Statistika>, IStatistikaRepository
     {
-        public StatistikaRepository(UcenikContext context) : base(context)
+        protected readonly UcenikContext _context;
+        public IMapper Mapper { get; }
+        public StatistikaRepository(UcenikContext context, IMapper mapper) : base(context)
         {
-
+            _context = context;
+            Mapper = mapper;
         }
 
         /// <summary>
@@ -26,5 +32,20 @@ namespace DomUcenikaSvilajnac.DAL.RepoPattern
         {
             get { return context as UcenikContext; }
         }
-    }
+
+        public IStatistikaRepository Statistike { get; set; }
+
+        public async Task<IEnumerable<StatistikaResource>> podaciStatistike()
+        {
+            var statistika = await _context.Statistike.Include(vp => vp.VaspitnaGrupa).ToListAsync();
+
+            return Mapper.Map<List<Statistika>, List<StatistikaResource>>(statistika);
+        }
+
+
+
+
+
+
+        }
 }

@@ -1,7 +1,9 @@
 ﻿using DomUcenikaSvilajnac.Common.Models;
+using DomUcenikaSvilajnac.Common.Models.ModelResources;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace DomUcenikaSvilajnac.Common.Interfaces
 {
@@ -11,5 +13,6 @@ namespace DomUcenikaSvilajnac.Common.Interfaces
     /// </summary>
     public interface IStatistikaRepository : IRepository<Statistika>
     {
+        Task<IEnumerable<StatistikaResource>> podaciStatistike();
     }
 }

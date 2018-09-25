@@ -12,5 +12,10 @@ namespace DomUcenikaSvilajnac.Common.Models
     public class Statistika
     {     
         public int Id { get; set; }
+        public float UspehVaspitneGrupe { get; set; }
+
+        public int VaspitnaGrupaId { get; set; }
+        public VaspitnaGrupa VaspitnaGrupa { get; set; }
+
     }
 }

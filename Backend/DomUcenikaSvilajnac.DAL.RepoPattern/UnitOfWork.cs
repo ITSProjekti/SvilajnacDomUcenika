@@ -54,7 +54,7 @@ namespace DomUcenikaSvilajnac.DAL.RepoPattern
             Kazne = new KaznaRepository(_context, mapper);
             Vaspitaci = new VaspitacRepository(_context, mapper);
             Sastanci = new SastanakRepository(_context,mapper);
-            Statistike = new StatistikaRepository(_context);
+            Statistike = new StatistikaRepository(_context, mapper);
         }
 
         /// <summary>
