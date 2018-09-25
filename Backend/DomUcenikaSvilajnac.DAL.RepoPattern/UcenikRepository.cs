@@ -9,6 +9,7 @@ using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -77,7 +78,7 @@ namespace DomUcenikaSvilajnac.DAL.RepoPattern
             }
             return Mapper.Map<List<Ucenik>, List<UcenikResource>>(podaciUcenika);
         }
-
+     
         public async Task<UcenikResource> podaciUcenikaById(int id)
         {
             var podaciUcenikaById = await _context.Uceniks

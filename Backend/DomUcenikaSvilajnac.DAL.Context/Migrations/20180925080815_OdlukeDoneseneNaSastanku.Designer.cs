@@ -11,9 +11,10 @@ using System;
 namespace DomUcenikaSvilajnac.DAL.Context.Migrations
 {
     [DbContext(typeof(UcenikContext))]
-    partial class UcenikContextModelSnapshot : ModelSnapshot
+    [Migration("20180925080815_OdlukeDoneseneNaSastanku")]
+    partial class OdlukeDoneseneNaSastanku
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -192,8 +193,6 @@ namespace DomUcenikaSvilajnac.DAL.Context.Migrations
                     b.Property<int>("UkupanBrojPrisutnihUcenika");
 
                     b.Property<int>("VaspitnaGrupaId");
-
-                    b.Property<string>("ZakljucciSastanka");
 
                     b.HasKey("Id");
 

@@ -18,5 +18,10 @@ namespace DomUcenikaSvilajnac.Common.Models
         public int VaspitnaGrupaId { get; set; }
         public VaspitnaGrupa VaspitnaGrupa { get; set; }
 
+        public string OpisDnevnogRada { get; set; }
+        public string OdlukeDoneseneNaSastanku { get; set; }
+        public string ZakljucciSastanka { get; set; }
+
+
     }
 }

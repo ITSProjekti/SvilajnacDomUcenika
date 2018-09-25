@@ -17,5 +17,11 @@ namespace DomUcenikaSvilajnac.Common.Models.ModelResources
         public int BrojPrisutnihUcenika { get; set; }
         public int UkupanBrojPrisutnihUcenika { get; set; }
         public GetSastanakVasptinaGrupaResource VaspitnaGrupa { get; set; }
+
+        public string OpisDnevnogRada { get; set; }
+
+        public string OdlukeDoneseneNaSastanku { get; set; }
+
+        public string ZakljucciSastanka { get; set; }
     }
 }
