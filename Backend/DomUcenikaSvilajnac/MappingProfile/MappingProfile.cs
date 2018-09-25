@@ -500,7 +500,13 @@ namespace DomUcenikaSvilajnac.Mapping
             //mapira Statistiku u StatistikuResource
             CreateMap<Statistika, StatistikaResource>();
             // mapira StatistikuResource u Statistiku
-            CreateMap<StatistikaResource, Statistika>();
+            CreateMap<StatistikaResource, Statistika>()
+                .ForMember(v => v.VaspitnaGrupa, opt => opt.Ignore());
+
+            // mapira VaspitnaGrupaStatistikeResource u Statistiku
+            CreateMap<VaspitnaGrupaStatistikeResource, VaspitnaGrupa>();
+            // mapira Statistiku u VaspitnaGrupaStatistikeResource
+            CreateMap<VaspitnaGrupa, VaspitnaGrupaStatistikeResource>();
 
 
         }

@@ -35,8 +35,6 @@ namespace DomUcenikaSvilajnac.IntegratedTests
         TipPorodiceResource tp = new TipPorodiceResource() { Id = 4 };
 
 
-
-
         Collection<Roditelj> roditelji = new Collection<Roditelj>() {
             new Roditelj (){ Ime = "Otac", Prezime = "Prezime"},
             new Roditelj () {Ime = "Majka", Prezime = "Prezime"}
@@ -143,5 +141,29 @@ namespace DomUcenikaSvilajnac.IntegratedTests
             StrucnaSpremaOcaId = 6,
             UcenikId = 1
         };
+
+        public VaspitacResource vaspitac()
+        {
+            return new VaspitacResource
+            {
+                Id = 1,
+                Ime = "ImeVaspitaca",
+                Prezime = "PrezimeVaspitaca",
+                BrojTelefona = "1234567",
+                Slika = "101010101"
+            };
+        }
+
+        public Vaspitac vaspitac1()
+        {
+            return new Vaspitac
+            {
+                Id = 1,
+                Ime = "ImeVaspitaca",
+                Prezime = "PrezimeVaspitaca",
+                BrojTelefona = "1234567",
+                Slika = "101010101"
+            };
+        }
     }
 }

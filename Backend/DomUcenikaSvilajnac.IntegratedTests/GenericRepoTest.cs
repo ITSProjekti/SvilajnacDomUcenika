@@ -542,5 +542,88 @@ namespace DomUcenikaSvilajnac.IntegratedTests
             
             Assert.NotEqual(roditeljUBaziResurs, apdejtovaniRoditelji);
         }
+
+        /// <summary>
+        /// Test proverava da li se vaspitac uspesno dodaje u bazu.
+        /// </summary>
+        [Fact]
+        public void CreateVaspitaca_ProveraDaLiSeVaspitacUspesnoDodajeUBazu()
+        {
+            Mapper.Reset();
+
+            //upotreba funkcije UseInMemoryDatabase koju omogucava EF (EntityFramework), stvara fake bazu pomocu koje se vrsi provera rada odredjenih metoda.
+            var options = new DbContextOptionsBuilder<UcenikContext>().UseInMemoryDatabase(Guid.NewGuid().ToString()).EnableSensitiveDataLogging().Options;
+            var context = new UcenikContext(options);
+            var primerVaspitaca = data.vaspitac();
+
+            Mapper.Initialize(m => m.AddProfile<MappingProfile>());
+            Mapper.AssertConfigurationIsValid();
+            var vaspitacZaBazu = Mapper.Map<VaspitacResource, Vaspitac>(primerVaspitaca);
+
+            var config = new MapperConfiguration(cfg => cfg.CreateMap<Vaspitac, VaspitacResource>());
+            var mapper = config.CreateMapper();
+
+            IUnitOfWork unitOfWork = new UnitOfWork(context, mapper);
+            unitOfWork.Vaspitaci.Add(vaspitacZaBazu);
+            unitOfWork.SaveChanges();
+
+            var vaspitacUBazi = unitOfWork.Vaspitaci.Get(vaspitacZaBazu.Id);
+
+            Assert.Equal(vaspitacUBazi, vaspitacZaBazu);
+        }
+
+        /// <summary>
+        ///  Test proverava broj elemenata u bazi.
+        /// </summary>
+        [Fact]
+        public void GetAllVaspitac_ProveraBrojaElemenataUBazi_ReturnsTrue()
+        {
+            Mapper.Reset();
+
+            var options = new DbContextOptionsBuilder<UcenikContext>().UseInMemoryDatabase(Guid.NewGuid().ToString()).EnableSensitiveDataLogging().Options;
+            var context = new UcenikContext(options);
+            var primerVaspitaca = data.vaspitac();
+
+            Mapper.Initialize(m => m.AddProfile<MappingProfile>());
+            Mapper.AssertConfigurationIsValid();
+            var vaspitacZaBazu = Mapper.Map<VaspitacResource, Vaspitac>(primerVaspitaca);
+
+            var config = new MapperConfiguration(cfg => cfg.CreateMap<Vaspitac, VaspitacResource>());
+            var mapper = config.CreateMapper();
+
+            IUnitOfWork unitOfWork = new UnitOfWork(context, mapper);
+            unitOfWork.Vaspitaci.Add(vaspitacZaBazu);
+            unitOfWork.Vaspitaci.Add(new Vaspitac { Id= 2, Ime = "Ime", Prezime = "Prezime" });
+            unitOfWork.SaveChanges();
+
+            var listaVasptaca = unitOfWork.Vaspitaci.GetAll().ToList();
+            Assert.Equal(2, listaVasptaca.Count);
+        }
+
+        /// <summary>
+        /// Test proverava da li se dobro uzima vaspitac tj podaci o vaspitacu na osnovu prosledjenog Id-a
+        /// </summary>
+        [Fact]
+        public void GetVaspitacById_ReturnTrue()
+        {
+            Mapper.Reset();
+            //inicijalizacija privremene baze
+            var options = new DbContextOptionsBuilder<UcenikContext>().UseInMemoryDatabase(Guid.NewGuid().ToString()).Options;
+            var context = new UcenikContext(options);
+            var primerVaspitaca = data.vaspitac();
+
+            Mapper.Initialize(m => m.AddProfile<MappingProfile>());
+            Mapper.AssertConfigurationIsValid();
+
+            var config = new MapperConfiguration(cfg => cfg.CreateMap<Vaspitac, VaspitacResource>());
+            var mapper = config.CreateMapper();
+
+            var vaspitacZaBazu = Mapper.Map<VaspitacResource, Vaspitac>(primerVaspitaca);
+            IUnitOfWork unitOfWork = new UnitOfWork(context, mapper);
+            unitOfWork.Vaspitaci.Add(vaspitacZaBazu);
+            unitOfWork.SaveChanges();
+
+            Assert.Equal(unitOfWork.Vaspitaci.Get(1), vaspitacZaBazu);
+        }
     }
 }

@@ -42,10 +42,47 @@ namespace DomUcenikaSvilajnac.DAL.RepoPattern
             return Mapper.Map<List<Statistika>, List<StatistikaResource>>(statistika);
         }
 
+        public async Task<StatistikaResource> podaciStatistikeById(int id)
+        {
+            var statistika = await _context.Statistike
+                .Include(vp => vp.VaspitnaGrupa)
+                .SingleOrDefaultAsync(x => x.Id == id);
 
-
-
-
-
+            return Mapper.Map<Statistika, StatistikaResource>(statistika);
         }
+
+        public async Task<StatistikaResource> mapiranjeZaPostStatistike(StatistikaResource statistika)
+        {
+            var podaciStatistike = await _context.Statistike
+                .Include(vp => vp.VaspitnaGrupa)
+                .SingleOrDefaultAsync(x => x.Id == statistika.Id);
+
+            return Mapper.Map<Statistika, StatistikaResource>(podaciStatistike);
+        }
+
+        public async Task<StatistikaResource> mapiranjeZaPutStatistike(int id)
+        {
+            var podaciStatistike = await _context.Statistike
+                .Include(vp => vp.VaspitnaGrupa)
+                .SingleOrDefaultAsync(x => x.Id == id);
+
+            return Mapper.Map<Statistika, StatistikaResource>(podaciStatistike);
+        }
+
+        public async Task<StatistikaResource> mapiranjeZaDeleteStatistike(StatistikaResource statistika)
+        {
+            var podaciStatistike = await _context.Statistike
+               .Include(vp => vp.VaspitnaGrupa)
+               .SingleOrDefaultAsync(x => x.Id == statistika.Id);
+
+            return Mapper.Map<Statistika, StatistikaResource>(podaciStatistike);
+        }
+
+
+
+
+
+
+
+    }
 }

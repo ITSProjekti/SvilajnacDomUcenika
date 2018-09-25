@@ -20,5 +20,6 @@ namespace DomUcenikaSvilajnac.Common.Interfaces
         Task<VaspitnaGrupaResource> mapiranjeZaDeleteGrupe(VaspitnaGrupaResource vaspitnaGrupa);
         void updateUcenikaVaspitnaGrupaId(int IdObrisaneVaspitneGrupe);
         Task<VaspitnaGrupa> updateBrojaUcenikaUVaspitnojGrupi();
+        void updateSastanka(int ObrisanaGrupaId);
     }
 }

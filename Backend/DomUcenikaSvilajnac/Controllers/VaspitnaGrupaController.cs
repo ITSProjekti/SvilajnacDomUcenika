@@ -122,6 +122,7 @@ namespace DomUcenikaSvilajnac.Controllers
             }
 
              UnitOfWork.VaspitneGrupe.updateUcenikaVaspitnaGrupaId(id);
+             UnitOfWork.VaspitneGrupe.updateSastanka(id);
 
             var vaspitnaGrupa = await UnitOfWork.VaspitneGrupe.GetAsync(id);
             

@@ -45,6 +45,8 @@ namespace DomUcenikaSvilajnac.Controllers
                 return BadRequest(ModelState);
             }
 
+            var mapiranaStatistika = UnitOfWork.Statistike.podaciStatistikeById(id);
+
             var statistika = await UnitOfWork.Statistike.GetAsync(id);
             var novaStatistika = Mapper.Map<Statistika, StatistikaResource>(statistika);
             if (statistika == null)
@@ -80,9 +82,9 @@ namespace DomUcenikaSvilajnac.Controllers
             Mapper.Map<StatistikaResource, Statistika>(statistika, staraStatistika);
             await UnitOfWork.SaveChangesAsync();
 
-            var novaStatistika = await UnitOfWork.Statistike.GetAsync(id);
-            Mapper.Map<Statistika, StatistikaResource>(novaStatistika);
-            return Ok(statistika);
+            var novaStatistika = await UnitOfWork.Statistike.mapiranjeZaPutStatistike(id);
+            
+            return Ok(novaStatistika);
         }
 
         /// <summary>
@@ -96,13 +98,13 @@ namespace DomUcenikaSvilajnac.Controllers
                 return BadRequest(ModelState);
             }
             var novaStatistika = Mapper.Map<StatistikaResource, Statistika>(statistika);
-
+           
             UnitOfWork.Statistike.Add(novaStatistika);
             await UnitOfWork.SaveChangesAsync();
 
             statistika = Mapper.Map<Statistika, StatistikaResource>(novaStatistika);
-
-            return Ok(statistika);
+            var mapiranaGrupa = await UnitOfWork.Statistike.mapiranjeZaPostStatistike(statistika);
+            return Ok(mapiranaGrupa);
         }
 
         /// <summary>
@@ -121,12 +123,13 @@ namespace DomUcenikaSvilajnac.Controllers
             {
                 return NotFound();
             }
-
+            
             var novaStatistika = Mapper.Map<Statistika, StatistikaResource>(statistika);
+            var mapiranaGrupa = await UnitOfWork.Statistike.mapiranjeZaDeleteStatistike(novaStatistika);
             UnitOfWork.Statistike.Remove(statistika);
             await UnitOfWork.SaveChangesAsync();
-
-            return Ok(novaStatistika);
+            
+            return Ok(mapiranaGrupa);
         }
     }
 }

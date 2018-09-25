@@ -14,5 +14,9 @@ namespace DomUcenikaSvilajnac.Common.Interfaces
     public interface IStatistikaRepository : IRepository<Statistika>
     {
         Task<IEnumerable<StatistikaResource>> podaciStatistike();
+        Task<StatistikaResource> podaciStatistikeById(int id);
+        Task<StatistikaResource> mapiranjeZaPostStatistike(StatistikaResource statistika);
+        Task<StatistikaResource> mapiranjeZaPutStatistike(int id);
+        Task<StatistikaResource> mapiranjeZaDeleteStatistike(StatistikaResource statistika);
     }
 }
