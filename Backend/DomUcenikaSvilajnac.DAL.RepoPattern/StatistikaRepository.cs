@@ -6,6 +6,7 @@ using DomUcenikaSvilajnac.DAL.Context;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -76,6 +77,18 @@ namespace DomUcenikaSvilajnac.DAL.RepoPattern
                .SingleOrDefaultAsync(x => x.Id == statistika.Id);
 
             return Mapper.Map<Statistika, StatistikaResource>(podaciStatistike);
+        }
+        public async Task<IEnumerable<StatistikaResource>> uspehUcenikaPoVaspitnimGrupama()
+        {
+          
+            var statistike = await _context.Statistike.ToListAsync();
+            var neki = _context.Uceniks.GroupBy(n => n.VaspitnaGrupaId).Select(k => k.Average(p => p.PrethodniUspeh)).ToList();
+            int i = 0;
+            foreach (var item in statistike)
+            {
+                item.UspehVaspitneGrupe = neki[i++];
+            }
+            return Mapper.Map<List<Statistika>, List<StatistikaResource>>(statistike);
         }
 
 

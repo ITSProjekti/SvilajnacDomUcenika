@@ -31,6 +31,13 @@ namespace DomUcenikaSvilajnac.Controllers
         [HttpGet]
         public async Task<IEnumerable<StatistikaResource>> GetStatistike()
         {
+
+         
+
+            var test = await UnitOfWork.Statistike.uspehUcenikaPoVaspitnimGrupama();
+
+            await UnitOfWork.SaveChangesAsync();
+
             return await UnitOfWork.Statistike.podaciStatistike();
         }
 
@@ -49,6 +56,14 @@ namespace DomUcenikaSvilajnac.Controllers
 
             var statistika = await UnitOfWork.Statistike.GetAsync(id);
             var novaStatistika = Mapper.Map<Statistika, StatistikaResource>(statistika);
+
+
+
+            var test = await UnitOfWork.Statistike.uspehUcenikaPoVaspitnimGrupama();
+
+            await UnitOfWork.SaveChangesAsync();
+
+
             if (statistika == null)
             {
                 return NotFound();
@@ -113,6 +128,7 @@ namespace DomUcenikaSvilajnac.Controllers
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteStatistika([FromRoute] int id)
         {
+      
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
@@ -125,11 +141,14 @@ namespace DomUcenikaSvilajnac.Controllers
             }
             
             var novaStatistika = Mapper.Map<Statistika, StatistikaResource>(statistika);
-            var mapiranaGrupa = await UnitOfWork.Statistike.mapiranjeZaDeleteStatistike(novaStatistika);
+
+
+          
+            var mapiranaStatistika = await UnitOfWork.Statistike.mapiranjeZaDeleteStatistike(novaStatistika);
             UnitOfWork.Statistike.Remove(statistika);
             await UnitOfWork.SaveChangesAsync();
             
-            return Ok(mapiranaGrupa);
+            return Ok(mapiranaStatistika);
         }
     }
 }

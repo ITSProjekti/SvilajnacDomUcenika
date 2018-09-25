@@ -18,5 +18,6 @@ namespace DomUcenikaSvilajnac.Common.Interfaces
         Task<StatistikaResource> mapiranjeZaPostStatistike(StatistikaResource statistika);
         Task<StatistikaResource> mapiranjeZaPutStatistike(int id);
         Task<StatistikaResource> mapiranjeZaDeleteStatistike(StatistikaResource statistika);
+        Task<IEnumerable<StatistikaResource>> uspehUcenikaPoVaspitnimGrupama();
     }
 }
