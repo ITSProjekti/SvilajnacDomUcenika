@@ -55,7 +55,8 @@ namespace DomUcenikaSvilajnac.ModelResources
 
         public string Slika { get; set; }
         public int MaterijalniPrihodi { get; set; }
+        public VaspitnaGrupaResource VaspitnaGrupa { get; set; }
 
- 
+
     }
 }
