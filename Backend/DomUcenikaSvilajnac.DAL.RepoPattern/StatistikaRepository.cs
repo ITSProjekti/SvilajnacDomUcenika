@@ -117,7 +117,42 @@ namespace DomUcenikaSvilajnac.DAL.RepoPattern
             return Mapper.Map<List<Statistika>, List<StatistikaResource>>(statistike);
         }
 
+        public async Task<IEnumerable<StatistikaResource>> posecenostSastanaka()
+        {
 
+            var sastanciVaspitnihGrupa = await _context.Sastanci
+                                                 .Select(n => n.VaspitnaGrupaId)
+                                                 .Distinct().ToListAsync();
+
+
+
+            var sastanci = await _context.Statistike
+                .Where(n => sastanciVaspitnihGrupa.Contains(n.VaspitnaGrupaId))
+                .ToListAsync();
+
+
+
+            var posecenostPoGrupama = _context.Sastanci
+                .GroupBy(n => n.VaspitnaGrupaId)
+                .Select(k => k.Sum(o=> ((o.UkupanBrojPrisutnihUcenika - o.BrojPrisutnihUcenika) / Convert.ToSingle( k.Sum(n=> n.UkupanBrojPrisutnihUcenika))))*100f)
+                .ToList();
+
+
+            int i = 0;
+
+         
+
+            foreach (var item in sastanci)
+            {
+                posecenostPoGrupama[i] -= 100;
+                posecenostPoGrupama[i] *= -1;
+                item.Posecenost = posecenostPoGrupama[i++].ToString() + "%";
+
+            }
+
+
+            return Mapper.Map<List<Statistika>, List<StatistikaResource>>(sastanci);
+        }
 
 
 

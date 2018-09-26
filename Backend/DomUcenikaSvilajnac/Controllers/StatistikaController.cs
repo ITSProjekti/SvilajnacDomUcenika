@@ -36,6 +36,8 @@ namespace DomUcenikaSvilajnac.Controllers
 
             var uspehUcenikaPoGrupama = await UnitOfWork.Statistike.uspehUcenikaPoVaspitnimGrupama();
 
+            var nesto = await UnitOfWork.Statistike.posecenostSastanaka();
+
             await UnitOfWork.SaveChangesAsync();
 
             return await UnitOfWork.Statistike.podaciStatistike();

@@ -13,6 +13,7 @@ namespace DomUcenikaSvilajnac.Common.Models
     {     
         public int Id { get; set; }
         public float UspehVaspitneGrupe { get; set; }
+        public string Posecenost { get; set; }
 
         public int VaspitnaGrupaId { get; set; }
         public VaspitnaGrupa VaspitnaGrupa { get; set; }
