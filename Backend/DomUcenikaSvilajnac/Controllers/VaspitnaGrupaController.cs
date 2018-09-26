@@ -97,6 +97,9 @@ namespace DomUcenikaSvilajnac.Controllers
             {
                 return BadRequest(ModelState);
             }
+            StatistikaController statistikaController = new StatistikaController(Mapper, UnitOfWork);
+            
+
             vaspitnaGrupa.Vaspitac = new VaspitacResource() { Id = 1 };
             var novaVaspitnaGrupa = Mapper.Map<VaspitnaGrupaResource, VaspitnaGrupa>(vaspitnaGrupa);
 
@@ -106,6 +109,14 @@ namespace DomUcenikaSvilajnac.Controllers
             vaspitnaGrupa = Mapper.Map<VaspitnaGrupa, VaspitnaGrupaResource>(novaVaspitnaGrupa);
 
             var mapiranaGrupa = await UnitOfWork.VaspitneGrupe.mapiranjeZaPostVaspitneGrupe(vaspitnaGrupa);
+
+
+            VaspitnaGrupaStatistikeResource modelStatistike = new VaspitnaGrupaStatistikeResource() { Id = mapiranaGrupa.Id };
+
+            StatistikaResource statistikaResurs = new StatistikaResource() { UspehVaspitneGrupe = 0, VaspitnaGrupa = modelStatistike};
+
+            await statistikaController.PostStatistika(statistikaResurs);
+
             await UnitOfWork.VaspitneGrupe.updateBrojaUcenikaUVaspitnojGrupi();
             return Ok(mapiranaGrupa);
         }

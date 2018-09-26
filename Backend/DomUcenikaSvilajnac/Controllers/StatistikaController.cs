@@ -34,7 +34,7 @@ namespace DomUcenikaSvilajnac.Controllers
 
          
 
-            var test = await UnitOfWork.Statistike.uspehUcenikaPoVaspitnimGrupama();
+            var uspehUcenikaPoGrupama = await UnitOfWork.Statistike.uspehUcenikaPoVaspitnimGrupama();
 
             await UnitOfWork.SaveChangesAsync();
 
@@ -59,7 +59,7 @@ namespace DomUcenikaSvilajnac.Controllers
 
 
 
-            var test = await UnitOfWork.Statistike.uspehUcenikaPoVaspitnimGrupama();
+            var uspehUcenikaPoGrupama = await UnitOfWork.Statistike.uspehUcenikaPoVaspitnimGrupama();
 
             await UnitOfWork.SaveChangesAsync();
 

@@ -80,14 +80,40 @@ namespace DomUcenikaSvilajnac.DAL.RepoPattern
         }
         public async Task<IEnumerable<StatistikaResource>> uspehUcenikaPoVaspitnimGrupama()
         {
-          
-            var statistike = await _context.Statistike.ToListAsync();
-            var neki = _context.Uceniks.GroupBy(n => n.VaspitnaGrupaId).Select(k => k.Average(p => p.PrethodniUspeh)).ToList();
+
+            /* linq koji vraca id-eve vaspitnih grupa u kojima se nalazi bar jedan ucenik, distinct sluzi
+             * da nam vrati rezultat bez duplih id-eva
+             */
+            var grupeUcenika = await _context.Uceniks
+                .Select(n => n.VaspitnaGrupaId)
+                .Distinct().ToListAsync();
+
+
+            /* linq koji vraca  redove iz statistike, onih vaspitnih grupa u kojima se nalazi bar jedan ucenik
+             * koje smo prethodno selektovali sa gornjim upitom (grupeUcenika), time cemo biti sigurni da se ne selektuje
+             * red u statistici cija vaspitna grupa jos nema ucenika u sebi
+            */
+            var statistike = await _context.Statistike
+                .Where(n=> grupeUcenika.Contains(n.VaspitnaGrupaId))
+                .ToListAsync();
+
+            /* linq koji vraca prosecni uspeh ucenika po vaspitnim grupama  */
+
+            var uspehPoGrupama = _context.Uceniks
+                .GroupBy(n => n.VaspitnaGrupaId)
+                .Select(k => k.Average(p => p.PrethodniUspeh))
+                .ToList();
+
+
+
             int i = 0;
+
+            /* foreach-om prolazimo kroz sve selektovane redove iz tabele statistika
+             * i propertiju UspehVaspitneGrupe dodeljuje prethodno izracunati prosek ucenika po vaspitnim grupama
+            */
             foreach (var item in statistike)
-            {
-                item.UspehVaspitneGrupe = neki[i++];
-            }
+                item.UspehVaspitneGrupe = uspehPoGrupama[i++];
+            
             return Mapper.Map<List<Statistika>, List<StatistikaResource>>(statistike);
         }
 
