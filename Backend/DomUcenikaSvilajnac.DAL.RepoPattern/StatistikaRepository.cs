@@ -82,8 +82,8 @@ namespace DomUcenikaSvilajnac.DAL.RepoPattern
         {
 
             /* linq koji vraca id-eve vaspitnih grupa u kojima se nalazi bar jedan ucenik, distinct sluzi
-             * da nam vrati rezultat bez duplih id-eva
-             */
+             * da nam vrati rezultat bez duplih id-eva */
+
             var grupeUcenika = await _context.Uceniks
                 .Select(n => n.VaspitnaGrupaId)
                 .Distinct().ToListAsync();
@@ -91,8 +91,8 @@ namespace DomUcenikaSvilajnac.DAL.RepoPattern
 
             /* linq koji vraca  redove iz statistike, onih vaspitnih grupa u kojima se nalazi bar jedan ucenik
              * koje smo prethodno selektovali sa gornjim upitom (grupeUcenika), time cemo biti sigurni da se ne selektuje
-             * red u statistici cija vaspitna grupa jos nema ucenika u sebi
-            */
+             * red u statistici cija vaspitna grupa jos nema ucenika u sebi    */
+
             var statistike = await _context.Statistike
                 .Where(n=> grupeUcenika.Contains(n.VaspitnaGrupaId))
                 .ToListAsync();
@@ -109,8 +109,8 @@ namespace DomUcenikaSvilajnac.DAL.RepoPattern
             int i = 0;
 
             /* foreach-om prolazimo kroz sve selektovane redove iz tabele statistika
-             * i propertiju UspehVaspitneGrupe dodeljuje prethodno izracunati prosek ucenika po vaspitnim grupama
-            */
+             * i propertiju UspehVaspitneGrupe dodeljuje prethodno izracunati prosek ucenika po vaspitnim grupama*/
+
             foreach (var item in statistike)
                 item.UspehVaspitneGrupe = uspehPoGrupama[i++];
             

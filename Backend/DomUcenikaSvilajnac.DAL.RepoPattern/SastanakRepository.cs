@@ -6,6 +6,7 @@ using DomUcenikaSvilajnac.DAL.Context;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -76,5 +77,12 @@ namespace DomUcenikaSvilajnac.DAL.RepoPattern
 
             return Mapper.Map<Sastanak, SastanakResource>(podaciSastanka);
         }
+        public int brojUcenikaNaSastanku(int IdVaspitneGrupe)
+        {
+            var brojUcenika =  _context.Uceniks
+                                .Count(n => n.VaspitnaGrupaId == IdVaspitneGrupe);
+            return brojUcenika;
+        }
+
     }
 }

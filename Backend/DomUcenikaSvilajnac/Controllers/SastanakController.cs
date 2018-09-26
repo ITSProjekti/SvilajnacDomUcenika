@@ -99,11 +99,18 @@ namespace DomUcenikaSvilajnac.Controllers
             }
             var noviSastanak = Mapper.Map<SastanakResource, Sastanak>(sastanak);
 
+            noviSastanak.UkupanBrojPrisutnihUcenika =  UnitOfWork.Sastanci.brojUcenikaNaSastanku(noviSastanak.VaspitnaGrupaId);
+
             UnitOfWork.Sastanci.Add(noviSastanak);
             await UnitOfWork.SaveChangesAsync();
+            //metoda koja ce da pokupi broj ucenika u toj vaspitnoj grupi
+            //sastanak.VaspitnaGrupa.Id
 
             sastanak = Mapper.Map<Sastanak, SastanakResource>(noviSastanak);
             var mapiranSastanak = await UnitOfWork.Sastanci.mapiranjeZaPostSastanka(sastanak);
+
+
+          
 
             return Ok(mapiranSastanak);
         }
