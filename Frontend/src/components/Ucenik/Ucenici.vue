@@ -8,7 +8,7 @@
   
 
     <v-layout wrap > 
-        <v-flex xs12 sm8 md6 class="text-xs-center">
+        <v-flex xs12  class="text-xs-center">
         <v-progress-circular
           indeterminate
           class="primary--text"
@@ -37,22 +37,20 @@
       </v-layout>
 
    <transition name="fade" appear  mode="in-out">
-<v-flex xs12>
-    <v-data-table
-   
+        <v-flex xs12>
+    <v-data-table  
       :headers="headers"
       :items="ucenici"
        v-if="!loading"
       rows-per-page-text="Redova po stranici"
       :rows-per-page-items="[10,15,20,ucenici.length]"
       :search="search"
-  
       :custom-filter="customFilter"
       class="elevation-1"    
      >
       <template slot="items" slot-scope="props" >
-        <tr class="pageRow" >
-        <td class="text-xs-center">{{ props.item.id}}</td>
+        <tr  >
+        <td class="text-xs-center" >{{ props.item.id}}</td>
         <td class="text-xs-center">{{ props.item.ime }}</td>
         <td class="text-xs-center">{{ props.item.prezime }}</td>
         <td class="text-xs-center">{{ props.item.jmbg }}</td>
@@ -68,8 +66,7 @@
               </v-icon>
           </v-btn>
              <v-btn center icon class="mx-0"
-          v-bind:to="'/detalji/'+props.item.id">    
-          
+          v-bind:to="'/detalji/'+props.item.id">          
             <v-icon
               color="navbarcolor">edit
               </v-icon>
@@ -108,15 +105,15 @@ import moment from 'moment'
       // headeri sluze za generisanje polja koja se prikazuju u tabeli
       headers: [
         {
-          text: 'Redni broj',  align: 'center', sortable: false,  value: 'id', width:'5%' },
-        { text: 'Ime',value: 'ime' ,align: 'center',sortable:true, width:'10%'},
-        { text: 'Prezime', value:'prezime', align: 'center',sortable:true,width:'10%'},
-        { text: 'JMBG', value:'jmbg',align: 'center',sortable:true ,width:'10%'},
+          text: 'Redni broj',  align: 'center', sortable: false,  value: 'id', width:'6%' },
+        { text: 'Ime',value: 'ime' ,align: 'center',sortable:true, width:'7%'},
+        { text: 'Prezime', value:'prezime', align: 'center',sortable:true,width:'8%'},
+        { text: 'JMBG', value:'jmbg',align: 'center',sortable:true ,width:'7%'},
         { text: 'Pol', value: 'pol.nazivPola',align: 'center',sortable:true,width:'5%' },
-        { text: 'Datum rođenja', value: 'godina',align: 'center',sortable:false,width:'10%' },
-        { text: 'Vaspitna grupa', value: 'vaspitnaGrupa.naziv',align: 'center',sortable:true,width:'10%' },
-        { text: 'Skola', value: 'upisanaSkola.nazivSrednjeSkole',align: 'center',sortable:true ,width:'10%'},
-        { text: 'Opcije', value: 'opcije',align: 'center',sortable:false,width:'5%' }
+        { text: 'Datum rođenja', value: 'godina',align: 'center',sortable:false,width:'7%' },
+        { text: 'Vaspitna grupa', value: 'vaspitnaGrupa.naziv',align: 'left',sortable:true,width:'7%' },
+        { text: 'Skola', value: 'upisanaSkola.nazivSrednjeSkole',align: 'center',sortable:true ,width:'7%'},
+        { text: 'Opcije', value: 'opcije',align: 'left',sortable:false,width:'5%' }
       ],
       // rules su pravila popunjavanja polja za unos
            rules: {
@@ -521,7 +518,7 @@ import moment from 'moment'
         item.smer.nazivSmera.toLowerCase().match(this.search.toLowerCase()) ||
      
         item.upisanaSkola.nazivSrednjeSkole.toLowerCase().match(this.search.toLowerCase()) ||
-     
+        item.vaspitnaGrupa.naziv.toLowerCase().match(this.search.toLowerCase()) ||
         item.datum.toLowerCase().match(this.search.toLowerCase()) ||
         item.roditelji[0].ime.toLowerCase().match(this.search.toLowerCase()) ||
         item.roditelji[0].prezime.toLowerCase().match(this.search.toLowerCase()) ||
@@ -655,20 +652,23 @@ table {
   border-bottom: 1px solid grey  !important;
   table-layout: fixed; width: 100%;
 }
-.pageRow td:nth-child(odd) {
+tr:nth-child(even) {background-color: lightgrey;}
+td:nth-child(odd) {
     white-space:nowrap;
   overflow:hidden;
   text-overflow:ellipsis;
-  background-color: white;
-  border-top: 1px solid grey !important
-}
-.pageRow td:nth-child(even) {
+
+
+}td:nth-child(even) {
     white-space:nowrap;
   overflow:hidden;
   text-overflow:ellipsis;
-  background-color: white;
-  border-top: 1px solid grey !important
+ 
+
 }
+
+
+
   .responsive {
     width: 100%;
     height: auto;

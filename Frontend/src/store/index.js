@@ -580,7 +580,7 @@ export const store = new Vuex.Store({
                 ucenikId: payload.ucenikId
             }
             commit('setLoading', true)
-          
+            console.log(kazna)
             axios.post('http://localhost:50146/api/kazne',kazna, {
                 onUploadProgress: uploadEvent =>{
                     console.log('Post request progress:' + Math.round(uploadEvent.loaded / uploadEvent.total * 100) + '%'  )                    
@@ -598,13 +598,14 @@ export const store = new Vuex.Store({
           )
         },
           createPohvala ({commit},payload) {
-            const pohvala ={
-                opis: payload.opis,
-                bodoviPohvale: payload.bodoviPohvale,
-                ucenikId: payload.ucenikId
-            }
+              console.log(payload)
+          const pohvala = {
+              opis: payload.opis,
+              bodoviPohvale: payload.bodoviPohvale,
+              ucenikId: payload.ucenikId
+          }
             commit('setLoading', true)
-          
+            console.log(pohvala)
             axios.post('http://localhost:50146/api/pohvale',pohvala, {
                 onUploadProgress: uploadEvent =>{
                     console.log('Post request progress:' + Math.round(uploadEvent.loaded / uploadEvent.total * 100) + '%'  )                    
@@ -876,7 +877,7 @@ export const store = new Vuex.Store({
           editPohvale ({commit}, payload) {
             const pohvala = {
                 opis : payload.opis,
-                bodoviKazne : payload.bodoviKazne,
+                bodoviPohvale : payload.bodoviPohvale,
                 ucenikId: payload.ucenikId
             }
             commit('setLoading', true)

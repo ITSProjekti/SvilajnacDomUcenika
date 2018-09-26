@@ -48,6 +48,8 @@
                       v-model="editedItem.ime"
                         label="Ime" 
                         required
+                        
+                        clearable
                         :rules="[rules.required]"
                         ></v-text-field>
                           </v-flex>
@@ -71,6 +73,7 @@
                  v-model="editedItem.prezime"
                   label="Prezime"
                    required
+                   clearable
                    :rules="[rules.required]"
                    ></v-text-field>
               </v-flex>
@@ -85,6 +88,7 @@
                   v-model="editedItem.jmbg"
                   label="jmbg"
                   required
+                  clearable
                   progress
                   input type="number"  onkeydown="javascript: if(event.keyCode == 69) {return false} else 
                   {
@@ -121,6 +125,7 @@
                  v-model="editedItem.adresa"
                   label="Adresa prebivališta" 
                   required
+                  clearable
                    :rules="[rules.required]"
                   ></v-text-field>
               </v-flex>
@@ -291,6 +296,7 @@
                       </v-flex>  
                       <v-flex xs12 sm6>         
                             <v-date-picker
+                    
                             v-model="datum"
                             locale="sr-Latn"
                             ></v-date-picker>
@@ -416,7 +422,7 @@
                 <v-text-field
                v-model="editedItem.prethodniUspeh"                 
                    label="br"
-                  
+                  clearable
                     input type="number" step=0.01     onkeydown="javascript: if(event.keyCode == 69) {return false} else 
                   {
                    if(event.keyCode == 107) {return false}
@@ -443,7 +449,7 @@
                 <v-text-field
                v-model="editedItem.telefon.mobilni"                 
                    label="Mobilni telefon"
-
+clearable
                   ></v-text-field>
               </v-flex>
               </v-flex>
@@ -453,7 +459,7 @@
                 <v-text-field
                v-model="editedItem.telefon.kucni"                
                    label="Kućni telefon" 
-
+clearable
                   ></v-text-field>
               </v-flex>
               </v-flex>
@@ -494,6 +500,7 @@
                     v-model="editedItem.roditelji[1].ime"                
                    label="Ime majke"   
                       required
+                      clearable
                       :rules="[rules.required]" 
                   ></v-text-field>
               </v-flex>
@@ -504,6 +511,7 @@
                 <v-text-field
                     v-model="editedItem.roditelji[1].prezime"  
                     required
+                    clearable
                     :rules="[rules.required]"              
                    label="Prezime majke" 
                   ></v-text-field>
@@ -536,7 +544,8 @@
                 <v-text-field
                   v-model="editedItem.roditelji[1].brojTelefona" 
                     required
-                    :rules="[rules.required]"               
+                    :rules="[rules.required]"     
+                    clearable          
                    label="Broj telefona majke"  
                   ></v-text-field>
               </v-flex>
@@ -547,6 +556,7 @@
                 <v-text-field
                v-model="editedItem.roditelji[0].ime" 
                     required
+                    clearable
                     :rules="[rules.required]"               
                    label="Ime oca" 
                   ></v-text-field>
@@ -559,6 +569,7 @@
                        v-model="editedItem.roditelji[0].prezime"                
                    label="Prezime oca"  
                       required
+                      clearable
                       :rules="[rules.required]"   
                   ></v-text-field>
               </v-flex>
@@ -591,7 +602,8 @@
                 <v-text-field
                    v-model="editedItem.roditelji[0].brojTelefona" 
                     required
-                    :rules="[rules.required]"               
+                    :rules="[rules.required]"      
+                    clearable         
                    label="Broj telefona oca"   
                   ></v-text-field>
               </v-flex>
@@ -602,6 +614,7 @@
                 <v-text-field
                   v-model="editedItem.materijalniPrihodi"
                   label="Materijalni prihodi"
+                  clearable
 
                   input type="number"  onkeydown="javascript: if(event.keyCode == 69) {return false} else 
                   {
@@ -648,7 +661,7 @@
               <v-flex v-if="editedItem.tipPorodice.id ===4 || editedItem.tipPorodice.id ===5 " xs8 md5 class="ml-1" >
                 <v-text-field
                    v-model="editedItem.staratelji.ime" 
-                              
+                       clearable       
                    label="Ime staratelja"   
                   ></v-text-field>
               </v-flex>
@@ -660,7 +673,7 @@
                 
                 <v-text-field
                    v-model="editedItem.staratelji.prezime" 
-                       
+                       clearable
                    label="Prezime staratelja"   
                   ></v-text-field>
                  
@@ -727,8 +740,10 @@ import moment from 'moment'
       editedIndex: -1,
       // brojevi su pomocna prom za rad sa postanskim brojevima
       brojevi: '',
+ 
       // objekat koji sluzi kao maska za prijavu ucenika, koristi se pri prijavi i izmeni podataka o uceniku
       editedItem: {
+        id:'',
          ime: '',
         prezime: '',
         jmbg: '',
@@ -913,8 +928,9 @@ import moment from 'moment'
         return this.$store.getters.loading
       }
      
-    },
-   
+    }
+
+   ,
     methods: {
        ClearPicture(){
        this.file=''

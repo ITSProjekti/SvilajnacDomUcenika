@@ -365,21 +365,16 @@ export default {
          this.$store.dispatch('loadedUcenici')
         this.closeC()
       }, izmeniGrupu () {                
-              console.log(this.editedItem)
-   
-                             
+              console.log(this.editedItem)                            
           this.$store.dispatch('editVaspitneGrupe',this.editedItem)     
 
            this.$store.dispatch('loadedUcenici')  
         this.closeE()
       },
-
       delGrupa (item){
                const index = this.vaspitneGrupe.indexOf(item)
         confirm('Da li ste sigurni da želite da izbrisete ovu grupu?') && this.$store.dispatch('deleteVaspitnaGrupa',item.id)
-         && this.vaspitneGrupe.splice(index,1)
-
-     
+         && this.vaspitneGrupe.splice(index,1)    
       }
       }
 }

@@ -12,8 +12,162 @@
             <form @submit.prevent="Prijavaucenika">
         <v-container grid-list-md>
             <v-layout wrap>
-              
-            <v-card >
+              <v-flex xs12>
+                                                      <v-dialog v-model="dialogEditPohvala" max-width="500">
+        <v-card>
+                    <v-card-title>
+          <span class="headline">Izmena podataka o pohvali</span>
+        </v-card-title>
+        <v-card-text>
+            <v-container>  
+                      <v-flex offset-sm1 xs12>
+              <v-flex xs8 md8 class="ml-1" >
+                <v-text-field
+                 v-model="editedPohvale.opis"
+                  label="Opis pohvale"               
+                  ></v-text-field>
+              </v-flex>
+              </v-flex>
+
+                         <v-flex offset-sm1 xs12>
+              <v-flex xs8 md5 class="ml-1" >
+                <v-text-field
+                 v-model="editedPohvale.bodoviPohvale"
+                  label="Bodovi pohvale"               
+                  ></v-text-field>
+              </v-flex>
+              </v-flex>
+
+            </v-container>
+        </v-card-text>
+                <v-card-actions>
+          <v-spacer></v-spacer>
+          <v-btn color="blue darken-1" flat @click.native="closeEditPohvala">
+            Otkaži
+            </v-btn>
+          <v-btn color="blue darken-1" flat @click.native="izmeniPohvalu()"  
+          >Sačuvaj
+          </v-btn>
+        </v-card-actions>
+        </v-card>
+    </v-dialog>
+                                      <v-dialog v-model="dialogEditKazna" max-width="500">
+        <v-card>
+                    <v-card-title>
+          <span class="headline">Izmena podataka o kazni</span>
+        </v-card-title>
+        <v-card-text>
+            <v-container>  
+                      <v-flex offset-sm1 xs12>
+              <v-flex xs8 md8 class="ml-1" >
+                <v-text-field
+                 v-model="editedKazne.opis"
+                  label="Opis kazne"               
+                  ></v-text-field>
+              </v-flex>
+              </v-flex>
+
+                         <v-flex offset-sm1 xs12>
+              <v-flex xs8 md5 class="ml-1" >
+                <v-text-field
+                 v-model="editedKazne.bodoviKazne"
+                  label="Bodovi kazne"               
+                  ></v-text-field>
+              </v-flex>
+              </v-flex>
+
+            </v-container>
+        </v-card-text>
+                <v-card-actions>
+          <v-spacer></v-spacer>
+          <v-btn color="blue darken-1" flat @click.native="closeEditKazna">
+            Otkaži
+            </v-btn>
+          <v-btn color="blue darken-1" flat @click.native="izmeniKaznu()"  
+          >Sačuvaj
+          </v-btn>
+        </v-card-actions>
+        </v-card>
+    </v-dialog>
+                                      <v-dialog v-model="dialogNewKazna" max-width="500">
+        <v-card>
+                    <v-card-title>
+          <span class="headline">Nova kazna</span>
+        </v-card-title>
+        <v-card-text>
+            <v-container>  
+                      <v-flex offset-sm1 xs12>
+              <v-flex xs8 md8 class="ml-1" >
+                <v-text-field
+                 v-model="editedKazne.opis"
+                  label="Opis kazne"               
+                  ></v-text-field>
+              </v-flex>
+              </v-flex>
+
+                         <v-flex offset-sm1 xs12>
+              <v-flex xs8 md5 class="ml-1" >
+                <v-text-field
+                 v-model="editedKazne.bodoviKazne"
+                  label="Bodovi kazne"               
+                  ></v-text-field>
+              </v-flex>
+              </v-flex>
+
+            </v-container>
+        </v-card-text>
+                <v-card-actions>
+          <v-spacer></v-spacer>
+          <v-btn color="blue darken-1" flat @click.native="closeCreateKazna">
+            Otkaži
+            </v-btn>
+          <v-btn color="blue darken-1" flat @click.native="napraviKaznu()"  
+          >Sačuvaj
+          </v-btn>
+        </v-card-actions>
+        </v-card>
+    </v-dialog>
+
+                      <v-dialog v-model="dialogNewPohvala" max-width="500">
+        <v-card>
+                    <v-card-title>
+          <span class="headline">Nova pohvala</span>
+        </v-card-title>
+        <v-card-text>
+            <v-container>  
+                      <v-flex offset-sm1 xs12>
+              <v-flex xs8 md8 class="ml-1" >
+                <v-text-field
+                 v-model="editedPohvale.opis"
+                  label="Opis pohvale"               
+                  ></v-text-field>
+              </v-flex>
+              </v-flex>
+
+                         <v-flex offset-sm1 xs12>
+              <v-flex xs8 md5 class="ml-1" >
+                <v-text-field
+                 v-model="editedPohvale.bodoviPohvale"
+                  label="Bodovi pohvale"               
+                  ></v-text-field>
+              </v-flex>
+              </v-flex>
+
+            </v-container>
+        </v-card-text>
+                <v-card-actions>
+          <v-spacer></v-spacer>
+          <v-btn color="blue darken-1" flat @click.native="closeCreatePohvala">
+            Otkaži
+            </v-btn>
+          <v-btn color="blue darken-1" flat @click.native="napraviPohvalu()"  
+          >Sačuvaj
+          </v-btn>
+        </v-card-actions>
+        </v-card>
+    </v-dialog>
+
+            <v-card width=1000px>
               <v-card-title  primary-title>
                 <v-flex offset-sm5>
                 <div class="headline">Podaci o učeniku</div>
@@ -460,12 +614,12 @@
               </v-flex>
 
    </v-card>
-                    
+               </v-flex>     
             </v-layout>
           </v-container>
-
-       <v-flex xs12 class="ml-1">
-            <v-card raised >
+     <div><br></div>
+       <v-flex xs12 class="ml-2">
+            <v-card width=1000px >
               <v-card-title primary-title>
                 <v-flex offset-sm4>
                 <div class="headline">Podaci o roditelju - staratelju </div>
@@ -581,31 +735,7 @@
               </v-flex>
               </v-flex>
 
-                    <v-flex offset-sm1 xs12>
-              <v-flex xs8 md5  >
-                <v-text-field
-                  v-model="editedItem.materijalniPrihodi"
-                  label="Materijalni prihodi"
-
-                  input type="number"  onkeydown="javascript: if(event.keyCode == 69) {return false} else 
-                  {
-                   if(event.keyCode == 107) {return false}
-                    else {
-                   if(event.keyCode == 190) {return false}
-                    else {
-                   if(event.keyCode == 109) {return false}
-                    else  {
-                   if(event.keyCode == 187) {return false}
-                    else  {
-                   if(event.keyCode == 189) {return false}
-                   else
-                     {return true} } } } } }"                                       
-                        >
-            
-                        
-                        </v-text-field>
-              </v-flex>
-          </v-flex>
+   
 
  <v-container fluid>
                     <v-layout row wrap>
@@ -651,13 +781,144 @@
               </v-flex>
                </transition>
               </v-flex>
-<v-card-actions>
+     </v-card>
+             </v-flex>  
+             <div><br></div>
+                 <v-flex xs12 >
+                   <v-container>
+            <v-card width=1000px >
+              <v-card-title primary-title>
+                <v-flex offset-sm4>
+                <div class="headline">Vrednovanje ucenika za upis u dom </div>
+              </v-flex>
+              </v-card-title>
+                 <v-flex offset-sm1 xs12>
+              <v-flex xs2 md2  >
+                <v-text-field
+                  v-model="editedItem.materijalniPrihodi"
+                  label="Materijalni prihodi"
+
+                  input type="number"  onkeydown="javascript: if(event.keyCode == 69) {return false} else 
+                  {
+                   if(event.keyCode == 107) {return false}
+                    else {
+                   if(event.keyCode == 190) {return false}
+                    else {
+                   if(event.keyCode == 109) {return false}
+                    else  {
+                   if(event.keyCode == 187) {return false}
+                    else  {
+                   if(event.keyCode == 189) {return false}
+                   else
+                     {return true} } } } } }"                                       
+                        >
+            
+                        
+                        </v-text-field>
+              </v-flex>
+          </v-flex>
+                 <v-flex offset-sm1 xs12>
+                     <transition name="fade" appear  mode="in-out">
+              <v-flex xs12 md8 class="ml-1" >
+                
+
+                    <v-data-table
+      :headers="headers"
+      :items="Pohvale"
+       v-if="!loading"
+        hide-actions
+      class="elevation-1"    
+     >
+      <template  slot="items" slot-scope="props" >
+       
+        <tr v-if="props.item.ucenikId=== editedItem.id" >
+        <td class="text-xs-center" >{{ props.item.bodoviPohvale}}</td>
+        <td class="text-xs-center">{{ props.item.opis }}</td>
+ 
+        <td class="justify-center layout px-0">
+  
+          <v-btn center icon class="mx-0"
+           @click="deletePohvala(props.item)">
+            <v-icon
+              color="navbarcolor">delete
+              </v-icon>
+          </v-btn>
+             <v-btn center icon class="mx-0"
+         @click="editPohvala(props.item)">    
+          
+            <v-icon
+              color="navbarcolor">edit
+              </v-icon>
+          </v-btn>
+        </td>
+         </tr>
+        
+      </template>
+
+    </v-data-table>
+             <v-flex>
+ <v-btn  dark class="navbarcolor" @click="dialogNewPohvala = true">Nova pohvala</v-btn>
+             </v-flex>
+ 
+
+              </v-flex>
+               </transition>
+              </v-flex>
+                 
+                                 <v-flex offset-sm1 xs12>
+                     <transition name="fade" appear  mode="in-out">
+              <v-flex xs12  md8  class="ml-1" >
+                
+
+                    <v-data-table
+      :headers="headers"
+      :items="Kazne"
+       v-if="!loading"
+        hide-actions
+      class="elevation-1"    
+     >
+      <template  slot="items" slot-scope="props" >
+       
+        <tr v-if="props.item.ucenikId=== editedItem.id" >
+        <td class="text-xs-center" >{{ props.item.bodoviKazne}}</td>
+        <td class="text-xs-center">{{ props.item.opis }}</td>
+ 
+        <td class="justify-center layout px-0">
+          
+          <v-btn center icon class="mx-0"
+           @click="deleteKazna(props.item)">
+            <v-icon
+              color="navbarcolor">delete
+              </v-icon>
+          </v-btn>
+             <v-btn center icon class="mx-0"
+         @click="editKazna(props.item)">    
+          
+            <v-icon
+              color="navbarcolor">edit
+              </v-icon>
+          </v-btn>
+        </td>
+         </tr>
+        
+      </template>
+
+    </v-data-table>
+                  <v-btn  dark class="navbarcolor" @click="dialogNewKazna = true">Nova kazna</v-btn>
+              </v-flex>
+               </transition>
+              </v-flex>
+              <v-card-actions>
+                
   <v-btn @click="IzmeniUcenika">
     Izmeni
   </v-btn>
 </v-card-actions>
-               </v-card>
-             </v-flex>  
+            </v-card>
+            </v-container>
+                 </v-flex>
+
+          
             </form>
         </v-flex>
     </v-layout>
@@ -672,7 +933,14 @@
 import moment from 'moment'
   export default {
     data: () => ({  
-       
+ 
+            headers: [
+        {
+          text: 'Broj bodova',  align: 'center', sortable: true,  value: 'id', width:'20%' },
+        { text: 'Opis',value: 'opis' ,align: 'center',sortable:true, width:'15%'},
+         { text: 'Opcije' ,align: 'center',sortable:false, width:'15%'},
+   
+      ],
       // rules su pravila popunjavanja polja za unos
            rules: {
       // requiered pravilo je pravilo za neophodnost postojanja informacije koja se trazi na odgovarajucem polju sa opcijom requiered
@@ -695,10 +963,40 @@ import moment from 'moment'
       // atribut za jmbg progress bar
       custom: true,
       editedIndex: -1,
+      dialogEditPohvala: false,
+      dialogEditKazna: false,
+      dialogNewPohvala: false,
+      dialogNewKazna: false,
+
       // brojevi su pomocna prom za rad sa postanskim brojevima
       brojevi: '',
-     
-      default: ''
+          pohvaleID: '',
+      kazneID: '',
+      default: '',
+      editedPohvale: {
+        id: '',
+        opis: '',
+        ucenikId: '',
+        bodoviPohvale: ''
+      },
+      defaultEditedPohvale: {
+              id: '',
+        opis: '',
+        ucenikId: '',
+        bodoviPohvale: ''
+      },
+      editedKazne: {
+        id: '',
+        opis: '',
+        ucenikId: '',
+        bodoviKazne: ''
+      },
+      defaultEditedKazne: {
+            id: '',
+        opis: '',
+        ucenikId: '',
+        bodoviKazne: ''
+      }
       // objekat koji sluzi kao maska za prijavu editedItema, koristi se pri prijavi i izmeni podataka o editedItemu
       
     }),
@@ -710,7 +1008,8 @@ import moment from 'moment'
          
            
             const y= parseInt(this.$route.params.id,10)
- console.log(y)
+            console.log(y)
+             console.log(this.$store.getters.loadedUceniciID(y))
             return this.$store.getters.loadedUceniciID(y)  
 
         },
@@ -768,6 +1067,13 @@ import moment from 'moment'
       TipoviPorodice () {
         return this.$store.getters.loadedTipoviPorodice
       },
+      Pohvale () {
+        return this.$store.getters.loadedPohvale
+      },
+ 
+      Kazne () {
+        return this.$store.getters.loadedKazne
+      },
       StepeniStrucneSpreme () {
         return this.$store.getters.loadedSSS
       },
@@ -806,7 +1112,109 @@ import moment from 'moment'
      
     },
    
+
     methods: {
+         editPohvala (item)
+      {
+                this.editedIndex = this.Pohvale.indexOf(item)
+        this.editedPohvale = Object.assign({}, item)
+         console.log(this.editedPohvale)
+        this.dialogEditPohvala = true
+      },
+      editKazna (item)
+      {
+
+                this.editedIndex = this.Kazne.indexOf(item)
+        this.editedKazne = Object.assign({}, item)
+       console.log(this.editedKazne)
+        this.dialogEditKazna = true
+      },
+          izmeniPohvalu()
+      {
+        console.log('helloP')
+      console.log(this.editedPohvale)                            
+         this.$store.dispatch('editPohvale',this.editedPohvale)     
+
+        
+        this.closeEditPohvala()
+      },
+      izmeniKaznu()
+      {
+  console.log('helloK')
+      console.log(this.editedKazne)                            
+          this.$store.dispatch('editKazne',this.editedKazne)     
+
+          
+        this.closeEditKazna()
+      },
+      napraviKaznu()
+      {
+                     console.log(this.editedKazne) 
+                    this.editedKazne.ucenikId=this.editedItem.id    
+                   
+          this.$store.dispatch('createKazna',this.editedKazne)   
+                      this.editedKazne.opis=''     
+                    this.editedKazne.bodoviKazne=''  
+                    this.editedKazne.ucenikId=''
+          this.closeCreateKazna()
+      },
+      napraviPohvalu()
+      {
+                     console.log(this.editedPohvale)   
+                     this.editedPohvale.ucenikId=this.editedItem.id   
+          this.$store.dispatch('createPohvala',this.editedPohvale)   
+                    this.editedPohvale.opis=''     
+                    this.editedPohvale.bodoviPohvale=''  
+                    this.editedPohvale.ucenikId=''
+          this.closeCreatePohvala()
+      },
+         closeCreateKazna () {
+        
+        this.dialogNewKazna = false
+        
+        setTimeout(() => {
+          this.editedIndex = -1
+        }, 300)
+      }, 
+         closeCreatePohvala () {
+        
+        this.dialogNewPohvala = false
+         
+        setTimeout(() => {
+          this.editedIndex = -1
+        }, 300)
+      }, 
+         closeEditKazna () {
+        
+        this.dialogEditKazna = false
+           this.editedKazne = Object.assign({}, this.defaultEditedKazne)
+        setTimeout(() => {
+          this.editedIndex = -1
+        }, 300)
+      }, 
+         closeEditPohvala () {
+          this.editedPohvale = Object.assign({}, this.defaultEditedPohvale)
+        this.dialogEditPohvala = false
+         
+        setTimeout(() => {
+          this.editedIndex = -1
+        }, 300)
+      }, 
+            deletePohvala (item) {
+        const index = this.Pohvale.indexOf(item)
+    // pitanje za potrvrdu o brisanju gde ako se odabere potvrdan odgovor vrsi se poziv HTTP delete-a i brisanje ucenika iz vue-x store-a sa splice
+    // na mestu index i broj 1 predstavlja broj ucenika koji se brisu
+        confirm('Da li ste sigurni da zelite da izbrisete ovu pokvalu?') && this.$store.dispatch('deletePohvala',item.id)
+         && this.Pohvale.splice(index,1)
+      },
+            deleteKazna (item) {
+        const index = this.Kazne.indexOf(item)
+    // pitanje za potrvrdu o brisanju gde ako se odabere potvrdan odgovor vrsi se poziv HTTP delete-a i brisanje ucenika iz vue-x store-a sa splice
+    // na mestu index i broj 1 predstavlja broj ucenika koji se brisu
+        confirm('Da li ste sigurni da zelite da izbrisete ovu kaznu?') && this.$store.dispatch('deleteKazna',item.id)
+         && this.Kazne.splice(index,1)
+      },
+
        ClearPicture(){
        this.file=''
       this.imagePreview=''
