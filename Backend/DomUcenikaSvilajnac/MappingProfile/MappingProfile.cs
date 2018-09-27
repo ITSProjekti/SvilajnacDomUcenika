@@ -145,7 +145,8 @@ namespace DomUcenikaSvilajnac.Mapping
                 .ForMember(v => v.TipPorodice, opt => opt.Ignore())
                 .ForMember(v => v.Staratelji, opt => opt.Ignore())
                 .ForMember(v => v.Pohvale, opt => opt.Ignore())
-                .ForMember(v => v.Kazne, opt => opt.Ignore());
+                .ForMember(v => v.Kazne, opt => opt.Ignore())
+                .ForMember(v => v.VaspitnaGrupa, opt => opt.Ignore());
 
 
 
@@ -248,7 +249,7 @@ namespace DomUcenikaSvilajnac.Mapping
                             i++;
                             j++;
                         }
-                        RoditeljResource nesto = new RoditeljResource()
+                        RoditeljResource roditeljResurs = new RoditeljResource()
                         {
                             IdMajke = roditelj[i].Id,
                             ImeMajke = roditelj[i].Ime,
@@ -263,7 +264,7 @@ namespace DomUcenikaSvilajnac.Mapping
                             UcenikId = roditelj[i].UcenikId,
                             BrojTelefonaOca = roditelj[j + 1].BrojTelefona
                         };
-                        resurs.Add(nesto);
+                        resurs.Add(roditeljResurs);
 
                     }
                 }
@@ -276,7 +277,7 @@ namespace DomUcenikaSvilajnac.Mapping
                 StepenStrucneSpreme stepenOca = new StepenStrucneSpreme() { Id = resurs[0].Id, Opis = resurs[0].StrucnaSpremaOca };
 
 
-                Roditelj nesto = new Roditelj()
+                Roditelj majka = new Roditelj()
                 {
 
                     Ime = resurs[0].ImeMajke,
@@ -287,7 +288,7 @@ namespace DomUcenikaSvilajnac.Mapping
 
                     UcenikId = resurs[0].UcenikId
                 };
-                Roditelj majka = new Roditelj()
+                Roditelj otac = new Roditelj()
                 {
 
                     Ime = resurs[0].ImeOca,
@@ -296,8 +297,8 @@ namespace DomUcenikaSvilajnac.Mapping
                     StepenObrazovanjaId = stepenOca.Id,
                     UcenikId = resurs[0].UcenikId
                 };
+                roditelj.Add(otac);
                 roditelj.Add(majka);
-                roditelj.Add(nesto);
 
             });
 
@@ -315,7 +316,7 @@ namespace DomUcenikaSvilajnac.Mapping
                            i++;
                            j++;
                        }
-                       DeleteRoditeljaResource nesto = new DeleteRoditeljaResource()
+                       DeleteRoditeljaResource roditeljResurs = new DeleteRoditeljaResource()
                        {
                            IdMajke = roditelj[i].Id,
                            ImeMajke = roditelj[i].Ime,
@@ -328,7 +329,7 @@ namespace DomUcenikaSvilajnac.Mapping
                            UcenikId = roditelj[i].UcenikId,
                            BrojTelefonaOca = roditelj[j + 1].BrojTelefona
                        };
-                       resurs.Add(nesto);
+                       resurs.Add(roditeljResurs);
                    }
                }
            });
@@ -384,7 +385,7 @@ namespace DomUcenikaSvilajnac.Mapping
                             i++;
                             j++;
                         }
-                        PutRoditeljaResource nesto = new PutRoditeljaResource()
+                        PutRoditeljaResource roditeljResurs = new PutRoditeljaResource()
                         {
                             IdMajke = roditelj[i].Id,
                             ImeMajke = roditelj[i].Ime,
@@ -399,7 +400,7 @@ namespace DomUcenikaSvilajnac.Mapping
                             UcenikId = roditelj[i].UcenikId,
                             BrojTelefonaOca = roditelj[j + 1].BrojTelefona
                         };
-                        resurs.Add(nesto);
+                        resurs.Add(roditeljResurs);
                     }
                 }
             });
@@ -412,7 +413,7 @@ namespace DomUcenikaSvilajnac.Mapping
                 StepenStrucneSpreme stepenOca = new StepenStrucneSpreme() { Id = resurs[0].Id };
 
 
-                Roditelj nesto = new Roditelj()
+                Roditelj majka = new Roditelj()
                 {
 
                     Ime = resurs[0].ImeMajke,
@@ -423,7 +424,7 @@ namespace DomUcenikaSvilajnac.Mapping
 
                     UcenikId = resurs[0].UcenikId
                 };
-                Roditelj majka = new Roditelj()
+                Roditelj otac = new Roditelj()
                 {
 
                     Ime = resurs[0].ImeOca,
@@ -432,8 +433,8 @@ namespace DomUcenikaSvilajnac.Mapping
                     StepenObrazovanjaId = stepenOca.Id,
                     UcenikId = resurs[0].UcenikId
                 };
+                roditelj.Add(otac);
                 roditelj.Add(majka);
-                roditelj.Add(nesto);
 
             });
 

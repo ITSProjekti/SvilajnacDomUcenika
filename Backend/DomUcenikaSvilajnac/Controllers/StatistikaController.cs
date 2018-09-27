@@ -32,14 +32,13 @@ namespace DomUcenikaSvilajnac.Controllers
         public async Task<IEnumerable<StatistikaResource>> GetStatistike()
         {
 
-         
-
             var uspehUcenikaPoGrupama = await UnitOfWork.Statistike.uspehUcenikaPoVaspitnimGrupama();
 
-            var nesto = await UnitOfWork.Statistike.posecenostSastanaka();
+            var posecenostSastanakaPoGrupama = await UnitOfWork.Statistike.posecenostSastanaka();
+
+            var bodoviPohvalaPoGrupama = await UnitOfWork.Statistike.bodoviPohvalaUcenikaPoGrupama();
 
             await UnitOfWork.SaveChangesAsync();
-
             return await UnitOfWork.Statistike.podaciStatistike();
         }
 

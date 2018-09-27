@@ -15,6 +15,8 @@ namespace DomUcenikaSvilajnac.Common.Models
         public float UspehVaspitneGrupe { get; set; }
         public string Posecenost { get; set; }
 
+        public int BodoviPohvalaGrupa { get; set; }
+
         public int VaspitnaGrupaId { get; set; }
         public VaspitnaGrupa VaspitnaGrupa { get; set; }
 

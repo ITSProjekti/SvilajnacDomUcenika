@@ -517,10 +517,10 @@ namespace DomUcenikaSvilajnac.IntegratedTests
             var stariOtac =  unitOfWork.Roditelji.Get(roditeljUBaziResurs.Id);
             var staraMajka = unitOfWork.Roditelji.Get(roditeljUBaziResurs.IdMajke);
 
-            var djesi = Mapper.Map<PutRoditeljaResource, MajkaResource>(data.putRoditeljaResurs);
+            var majkaResurs = Mapper.Map<PutRoditeljaResource, MajkaResource>(data.putRoditeljaResurs);
 
             Mapper.Map<PutRoditeljaResource, Roditelj>(data.putRoditeljaResurs, stariOtac);
-            Mapper.Map<MajkaResource, Roditelj>(djesi, staraMajka);
+            Mapper.Map<MajkaResource, Roditelj>(majkaResurs, staraMajka);
             unitOfWork.SaveChanges();
 
             var roditeljiUBazi2 = unitOfWork.Roditelji.GetAll().ToList();

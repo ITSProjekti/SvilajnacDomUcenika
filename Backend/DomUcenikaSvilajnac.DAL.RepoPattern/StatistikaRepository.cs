@@ -155,7 +155,55 @@ namespace DomUcenikaSvilajnac.DAL.RepoPattern
         }
 
 
+        public async Task<IEnumerable<StatistikaResource>> bodoviPohvalaUcenikaPoGrupama()
+        {
+            // linq koji vraca listu id-eva ucenika koji imaju bar jednu pohvalu
+            var idUcenikaUPohvalama = await _context.Pohvale
+                                    .Select(n => n.UcenikId)
+                                    .Distinct()
+                                    .ToListAsync();
+            // linq koji vraca id-eve vaspitnih grupa onih ucenika koji imaju pohvale    
 
+
+            var idVaspitnihGrupaUcenikaSaPohvalom = await _context.Uceniks
+                                                    .Where(k => idUcenikaUPohvalama.Contains(k.Id))
+                                                    .Select(n => n.VaspitnaGrupaId).Distinct()
+                                                    .ToListAsync();
+
+            var statistikeZaUpdate = await _context.Statistike
+              .Where(n => idVaspitnihGrupaUcenikaSaPohvalom.Contains(n.VaspitnaGrupaId))
+              .ToListAsync();
+
+            var sveStatistike = await _context.Statistike
+                                      .ToListAsync();
+
+
+            //resetovanje statistike pre novog racunanja bodova pohvala ucenika po vaspitnim grupama
+            foreach (var item in sveStatistike)
+                item.BodoviPohvalaGrupa = 0;
+
+
+            /* sumiranje bodova pohvala ucenika po vaspitnim grupama 
+             */
+            var bodoviPohvala = _context.Pohvale
+                                  .Where(n => idUcenikaUPohvalama.Contains(n.UcenikId))
+                                  .GroupBy(n => new { n.Ucenik.VaspitnaGrupaId })
+                                  .Select(n => n.Sum( o=> o.BodoviPohvale))
+                                  .ToList();
+
+
+            int i = 0;
+
+            /* foreach-om prolazimo kroz sve selektovane redove iz tabele statistika
+             * i propertiju bodoviPohvalaGrupa dodeljuje prethodno izracunatu sumu bodova pohvala ucenika po vaspitnim grupama*/
+
+            foreach (var item in statistikeZaUpdate)
+                item.BodoviPohvalaGrupa = bodoviPohvala[i++];
+
+
+
+            return Mapper.Map<List<Statistika>, List<StatistikaResource>>(statistikeZaUpdate);
+        }
 
 
     }
