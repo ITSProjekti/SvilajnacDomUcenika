@@ -25,7 +25,7 @@
           </transition>
       <v-layout wrap justify-end >
   
-        <v-flex xs3 class="mb-2">
+        <v-flex xs3 class="mb-2 mr-3">
         <v-text-field
         v-model="search"
         append-icon="search"
@@ -61,15 +61,12 @@
         <td class="justify-center layout px-0">
           <v-btn center icon class="mx-0"
            @click="deleteItem(props.item)">
-            <v-icon
-              color="navbarcolor">delete
-              </v-icon>
+      
+              <img :src=kanta.srcmain>
           </v-btn>
              <v-btn center icon class="mx-0"
           v-bind:to="'/detalji/'+props.item.id">          
-            <v-icon
-              color="navbarcolor">edit
-              </v-icon>
+         <img :src=izmena.srcmain>
           </v-btn>
         </td>
          </tr>
@@ -102,6 +99,8 @@ import moment from 'moment'
     data: () => ({
       // dialog je promenljiva koja sluzi za prikazivanje dijaloga pri menjanju ili prijavi ucenika
       dialog: false,
+      kanta: { srcmain: require('../../assets/KANTA2.png')},
+      izmena: { srcmain: require('../../assets/EDIT.png')} ,
       // headeri sluze za generisanje polja koja se prikazuju u tabeli
       headers: [
         {

@@ -746,7 +746,7 @@ export const store = new Vuex.Store({
                },
                slika: payload.slika,
                materijalniPrihodi: payload.materijalniPrihodi,
-
+               
                }
                
                

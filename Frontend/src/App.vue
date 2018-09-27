@@ -25,8 +25,8 @@
             <v-flex xs6>
               
               <v-subheader class="white--text"  v-if="item.heading">
-                <v-icon class="mr-3" > {{ item.mainicon }}</v-icon>
-                
+              
+                <img class="mr-3" :src=item.srcmain >
                 {{ item.heading }}
               </v-subheader>
             </v-flex>
@@ -46,7 +46,7 @@
            active-class="redactive"
           >
             <v-list-tile-action>
-              <v-icon class="ml-4">{{ item.icon }}</v-icon>
+            <!--  <v-icon class="ml-4">{{ item.icon }}</v-icon> -->
             </v-list-tile-action>
             <v-list-tile-content>
               <v-list-tile-title  class="text-xs-ml3">
@@ -112,19 +112,19 @@
       
       items: [
         
-        { heading: 'Učenik' ,mainicon: 'person'},        
+        { heading: 'Učenik' ,mainicon: 'person',srcmain: require('./assets/ucenikikonica.png')},        
         { icon: 'group', text: 'Pregled učenika u domu',link: '/ucenici' },
         { icon: 'group_add', text: 'Novi učenik - prijava',link: '/prijava' },
         { icon: 'list_alt', text: 'Pregled svih prijavljenih',link: '/ucenici' },
         { icon: 'group_work', text: 'Vaspitne grupe',link: '/vaspitnegrupe' },
         { divider: true },
-        { heading: 'Vaspitni rad' ,mainicon: 'book' },
+        { heading: 'Vaspitni rad' ,mainicon: 'book',srcmain: require('./assets/vaspitnirad.png') },
         { icon: 'timer', text: 'Godišnji program rada' },
         { icon: 'insert_invitation', text: 'Mesečni plan rada' },
         { icon: 'ballot', text: 'Evidencija ostvarivanja programa'},
         
         { divider: true },
-        { heading: 'Izveštaji' ,mainicon: 'bar_chart'}
+        { heading: 'Izveštaji' ,mainicon: 'bar_chart',srcmain: require('./assets/izvestaji.png')}
         
       ], 
       // opcije koje se nalaze na glavnom toolbaru (na vrhu ekrana)

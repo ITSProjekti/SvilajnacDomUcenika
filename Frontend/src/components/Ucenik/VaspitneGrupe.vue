@@ -190,13 +190,13 @@
          </v-layout>
           <v-card-actions>
                   <v-btn flat icon>
-                        <v-icon color="grey">search</v-icon>
+                        <img :src=ikonice.lupa>
                   </v-btn>
                   <v-btn flat icon @click="editVaspitnaGrupa(grupa)">
-                    <v-icon color="grey">edit</v-icon>
+                    <img :src=ikonice.edit>
                   </v-btn>
                   <v-btn flat icon @click="delGrupa(grupa)">
-                    <v-icon color="grey">cancel</v-icon>
+                  <img :src=ikonice.delete>
                   </v-btn>
           </v-card-actions>
         
@@ -213,7 +213,11 @@
 /* eslint-disable */
 export default {
      data: () => ({ 
-  
+       ikonice:{
+          lupa: require('../../assets/lupa.png'),
+           edit: require('../../assets/EDIT.png'),
+            delete: require('../../assets/XnaInputu.png')
+       },
        dialogNewGrupa: false,
        dialogEditGrupa: false,
        dialogNewVaspitac: false,

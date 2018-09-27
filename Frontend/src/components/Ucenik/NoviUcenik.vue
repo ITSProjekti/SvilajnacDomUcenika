@@ -47,9 +47,9 @@
                         <v-text-field
                       v-model="editedItem.ime"
                         label="Ime" 
-                        required
-                        
+                        required                 
                         clearable
+                       
                         :rules="[rules.required]"
                         ></v-text-field>
                           </v-flex>
@@ -732,6 +732,9 @@ import moment from 'moment'
         },
       // pomocna promenljiva za generisanje podatka o datumu rodjenja
       datum: null,
+      clearicon: {
+         srcmain: require('../../assets/XnaInputu.png')
+      },
           file: '',
         showPreview: false,
         imagePreview: '',
@@ -986,7 +989,7 @@ import moment from 'moment'
       
         this.formatiranjeDatuma() 
 
-    console.log(this.editedItem)
+  //  console.log(this.editedItem)
         this.$store.dispatch('createUcenik',this.editedItem)
          this.file=''
           this.imagePreview=''
