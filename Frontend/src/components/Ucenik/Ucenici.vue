@@ -24,7 +24,10 @@
         <h3>Pregled svih prijavljenih učenika</h3> </v-card-title>
           </transition>
       <v-layout wrap justify-end >
-  
+        
+
+
+
         <v-flex xs3 class="mb-2 mr-3">
         <v-text-field
         v-model="search"
@@ -32,7 +35,8 @@
         label="Pretraga"
         single-line
         hide-details
-      ></v-text-field> 
+      ></v-text-field>
+       
         </v-flex>
       </v-layout>
 
@@ -50,14 +54,14 @@
      >
       <template slot="items" slot-scope="props" >
         <tr  >
-        <td class="text-xs-center" >{{ props.item.id}}</td>
-        <td class="text-xs-center">{{ props.item.ime }}</td>
-        <td class="text-xs-center">{{ props.item.prezime }}</td>
-        <td class="text-xs-center">{{ props.item.jmbg }}</td>
-        <td class="text-xs-center">{{ props.item.pol.nazivPola }}</td>
-        <td class="text-xs-center">{{ props.item.dan }}.{{ props.item.mesec }}.{{ props.item.godina }}.</td>
-        <td class="text-xs-center">{{ props.item.vaspitnaGrupa.naziv }}</td>
-        <td class="text-xs-center">{{ props.item.upisanaSkola.nazivSrednjeSkole }}</td>
+        <td class="text-xs-left priority-1" >{{ props.item.id}}</td>
+        <td class="text-xs-left priority-1">{{ props.item.ime }}</td>
+        <td class="text-xs-left priority-1">{{ props.item.prezime }}</td>
+        <td class="text-xs-left priority-3">{{ props.item.jmbg }}</td>
+        <td class="text-xs-left priority-3">{{ props.item.pol.nazivPola }}</td>
+        <td class="text-xs-left priority-3">{{ props.item.dan }}.{{ props.item.mesec }}.{{ props.item.godina }}.</td>
+        <td class="text-xs-left priority-4">{{ props.item.vaspitnaGrupa.naziv }}</td>
+        <td class="text-xs-left priority-5">{{ props.item.upisanaSkola.nazivSrednjeSkole }}</td>
         <td class="justify-center layout px-0">
           <v-btn center icon class="mx-0"
            @click="deleteItem(props.item)">
@@ -99,20 +103,26 @@ import moment from 'moment'
     data: () => ({
       // dialog je promenljiva koja sluzi za prikazivanje dijaloga pri menjanju ili prijavi ucenika
       dialog: false,
+      select: '',
+      opcijeX: [
+        'Ime',
+        'Prezime',
+        'Škola'
+      ],
       kanta: { srcmain: require('../../assets/KANTA2.png')},
       izmena: { srcmain: require('../../assets/EDIT.png')} ,
       // headeri sluze za generisanje polja koja se prikazuju u tabeli
       headers: [
         {
-          text: 'Redni broj',  align: 'center', sortable: false,  value: 'id', width:'6%' },
-        { text: 'Ime',value: 'ime' ,align: 'center',sortable:true, width:'7%'},
-        { text: 'Prezime', value:'prezime', align: 'center',sortable:true,width:'8%'},
-        { text: 'JMBG', value:'jmbg',align: 'center',sortable:true ,width:'7%'},
-        { text: 'Pol', value: 'pol.nazivPola',align: 'center',sortable:true,width:'5%' },
-        { text: 'Datum rođenja', value: 'godina',align: 'center',sortable:false,width:'7%' },
-        { text: 'Vaspitna grupa', value: 'vaspitnaGrupa.naziv',align: 'left',sortable:true,width:'7%' },
-        { text: 'Skola', value: 'upisanaSkola.nazivSrednjeSkole',align: 'center',sortable:true ,width:'7%'},
-        { text: 'Opcije', value: 'opcije',align: 'left',sortable:false,width:'5%' }
+          text: 'Redni broj',  align: 'left', sortable: false,  value: 'id', width:'100%' ,class: 'priority-1'},
+        { text: 'Ime',value: 'ime' ,align: 'left',sortable:true, width:'100%',class: 'priority-1'},
+        { text: 'Prezime', value:'prezime', align: 'left',sortable:true,width:'100%',class: 'priority-1'},
+        { text: 'JMBG', value:'jmbg',align: 'left',sortable:true ,width:'100%',class: 'priority-3'},
+        { text: 'Pol', value: 'pol.nazivPola',align: 'left',sortable:true,width:'100%',class: 'priority-3' },
+        { text: 'Datum rođenja', value: 'godina',align: 'left',sortable:false,width:'100%',class: 'priority-3' },
+        { text: 'Vaspitna grupa', value: 'vaspitnaGrupa.naziv',align: 'left',sortable:true,width:'100%',class: 'priority-4' },
+        { text: 'Škola', value: 'upisanaSkola.nazivSrednjeSkole',align: 'left',sortable:true ,width:'100%',class: 'priority-5'},
+        { text: 'Opcije', value: 'opcije',align: 'center',sortable:false,width:'100%' }
       ],
       // rules su pravila popunjavanja polja za unos
            rules: {
@@ -666,7 +676,57 @@ td:nth-child(odd) {
 
 }
 
+      @media screen and (max-width: 1225px) and (min-width: 1045px) {
+		.priority-5{
+			display:none;
+		}
+    
+	}
+	
+	@media screen and (max-width: 1045px) and (min-width: 835px) {
+		.priority-5{
+			display:none;
+		}
+		.priority-4{
+			display:none;
+		}
+	}
+	
+	@media screen and (max-width: 565px) and (min-width: 300px) {
+		.priority-5{
+			display:none;
+		}
+		.priority-4{
+			display:none;
+		}
+		.priority-3{
+			display:none;
+		}
+	}
+	
+	@media screen and (max-width: 300px) {
+		.priority-5{
+			display:none;
+		}
+		.priority-4{
+			display:none;
+		}
+		.priority-3{
+			display:none;
+		}
+		.priority-2{
+			display:none;
+		}
+	
+	}
 
+  @media screen and (max-width: 300px) {
+   table tr:nth-child(1)
+    {
+      display:none;
+    }
+	
+	}
 
   .responsive {
     width: 100%;

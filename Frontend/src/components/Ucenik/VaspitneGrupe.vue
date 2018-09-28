@@ -18,6 +18,7 @@
                       <v-flex offset-sm1 xs12>
               <v-flex xs8 class="ml-1" >
                 <v-text-field
+                  color="navbarcolor"
                  v-model="editedVaspitac.ime"
                   label="Ime vaspitača"               
                   ></v-text-field>
@@ -26,6 +27,7 @@
                           <v-flex offset-sm1 xs12>
               <v-flex xs8 class="ml-1" >
                 <v-text-field
+                  color="navbarcolor"
                  v-model="editedVaspitac.prezime"
                   label="Prezime vaspitača"               
                   ></v-text-field>
@@ -34,6 +36,7 @@
                           <v-flex offset-sm1 xs12>
               <v-flex xs8 class="ml-1" >
                 <v-text-field
+                  color="navbarcolor"
                  v-model="editedVaspitac.brojTelefona"
                   label="Broj telefona vaspitača"               
                   ></v-text-field>
@@ -85,6 +88,7 @@
                       <v-flex offset-sm1 xs12>
               <v-flex xs8 class="ml-1" >
                 <v-text-field
+                  color="navbarcolor"
                  v-model="editedItem.naziv"
                   label="Naziv vaspitne grupe"               
                   ></v-text-field>
@@ -114,6 +118,7 @@
                       <v-flex offset-sm1 xs12>
               <v-flex xs8 md5 class="ml-1" >
                 <v-text-field
+                  color="navbarcolor"
                  v-model="editedItem.naziv"
                   label="Naziv vaspitne grupe"               
                   ></v-text-field>
@@ -128,7 +133,7 @@
                     </v-flex>
                            <v-flex xs12 sm6>
                                <v-select
-                            
+                              color="navbarcolor"
                                 :items="vaspitaci"
                                 v-model="editedItem.vaspitac.id"
                                 label="Vaspitac vaspitne grupe"
@@ -159,36 +164,28 @@
             <v-flex
               v-for="grupa in vaspitneGrupe"
               :key="grupa.id"
-              xs4    >
-              <v-card class="mb-2 mr-2"  >
-                  <v-layout row>
+              xs4  
+              class= "mt-2"  >
+              <v-card class="mb-2 mr-2" height="100%" >
+                  <v-layout row warp>
 <v-flex xs8>
           <v-card-title primary-title >
               <div>
-              <div class="headline">
+              <div class="headline mb-4">
                   {{grupa.naziv}} 
               </div>
-                    <div>
+                    <div class="mb-2">
                 Broj učenika: {{grupa.brojUcenika}}
             </div> 
-            <div>
+            <div  class="mb-2">
                 Ime v. : {{grupa.vaspitac.ime}}
             </div>
-             <div>
+             <div  class="mb-2">
                 Prezime v. : {{grupa.vaspitac.prezime}}
             </div>
               </div>
           </v-card-title>
-        </v-flex>
-       
-                <v-flex xs4 class="mt-3 mr-2">
-                    <v-card-media :src="grupa.vaspitac.slika" height="100px" contain>
-                        
-                    </v-card-media>
-                    
-                </v-flex>
-         </v-layout>
-          <v-card-actions>
+                  <v-card-actions>
                   <v-btn flat icon>
                         <img :src=ikonice.lupa>
                   </v-btn>
@@ -199,6 +196,16 @@
                   <img :src=ikonice.delete>
                   </v-btn>
           </v-card-actions>
+        </v-flex>
+       
+                <v-flex xs4 class="mt-3 mr-2">
+                    <v-card-media :src="grupa.vaspitac.slika" height="100px" contain>
+                        
+                    </v-card-media>
+                    
+                </v-flex>
+         </v-layout>
+  
         
               </v-card>
                 </v-flex>

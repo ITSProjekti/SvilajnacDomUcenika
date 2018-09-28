@@ -45,6 +45,7 @@
                     <v-layout row wrap>
                     <v-flex offset-sm1  xs12 sm5 class="mt-4 ">
                         <v-text-field
+                        color="navbarcolor"
                       v-model="editedItem.ime"
                         label="Ime" 
                         required                 
@@ -70,6 +71,7 @@
             <v-flex offset-sm1 xs12>
               <v-flex xs8 md5  >
                 <v-text-field
+                  color="navbarcolor"
                  v-model="editedItem.prezime"
                   label="Prezime"
                    required
@@ -87,6 +89,7 @@
                 <v-text-field
                   v-model="editedItem.jmbg"
                   label="jmbg"
+                    color="navbarcolor"
                   required
                   clearable
                   progress
@@ -123,6 +126,7 @@
                    <v-flex xs8 md5  >
                 <v-text-field
                  v-model="editedItem.adresa"
+                   color="navbarcolor"
                   label="Adresa prebivališta" 
                   required
                   clearable
@@ -144,6 +148,7 @@
                     </v-flex>
                            <v-flex xs12 sm3>
                                <v-select
+                                 color="navbarcolor"
                                 :loading="loading"
                                 :items="drzave"
                                 v-model="editedItem.drzavaRodjenja.id"
@@ -168,6 +173,7 @@
                                <v-select
                                 :loading="loading"
                                 :items="polovi"
+                                  color="navbarcolor"
                                 v-model="editedItem.pol.id"
                                  item-text="nazivPola"
                                  item-value="id"
@@ -188,6 +194,7 @@
                     </v-flex>
                            <v-flex xs12 sm4>
                                <v-select
+                                 color="navbarcolor"
                                 :loading="loading"
                                 :items="opstine"
                                 v-model="editedItem.opstina.id"
@@ -210,6 +217,7 @@
                     </v-flex>
                            <v-flex xs12 sm5>
                                <v-select
+                                 color="navbarcolor"
                                 :loading="loading"
                                 :items="opstine"
                                 v-model="editedItem.opstinaPrebivalista.id"
@@ -233,6 +241,7 @@
                     </v-flex>
                            <v-flex xs12 sm5>
                                <v-select
+                                 color="navbarcolor"
                                 :loading="loading"
                                 :items="brojevi.postanskiBrojevi"
                                 v-model="editedItem.postanskiBroj.id"
@@ -255,6 +264,7 @@
                     </v-flex>
                            <v-flex xs12 sm4>
                                <v-select
+                                 color="navbarcolor"
                                 :loading="loading"
                                 :items="mesta"
                                 v-model="editedItem.mestoRodjenja.id"
@@ -275,6 +285,7 @@
                     </v-flex>
                            <v-flex xs12 sm4>
                                <v-select
+                                 color="navbarcolor"
                                 :loading="loading"
                                 :items="mesta"
                                 v-model="editedItem.mestoPrebivalista.id"
@@ -296,7 +307,7 @@
                       </v-flex>  
                       <v-flex xs12 sm6>         
                             <v-date-picker
-                    
+                      color="navbarcolor"
                             v-model="datum"
                             locale="sr-Latn"
                             ></v-date-picker>
@@ -318,6 +329,7 @@
                               </v-flex>
                                     <v-flex xs12 sm4>
                                         <v-select
+                                          color="navbarcolor"
                                           :loading="loading"
                                           :items="osnovneSkole"
                                           v-model="editedItem.prethodnaSkola.id"
@@ -340,6 +352,7 @@
                                <v-select
                                 :loading="loading"
                                 :items="mesta"
+                                  color="navbarcolor"
                                 v-model="editedItem.mestoZavrseneSkole.id"
                                 label="Izaberite mesto prethodno završene škole"
                                 item-text="nazivMesta"
@@ -358,6 +371,7 @@
                     </v-flex>
                            <v-flex xs12 sm6>
                                <v-select
+                                 color="navbarcolor"
                                 :loading="loading"
                                 :items="srednjeSkole"
                                 v-model="editedItem.upisanaSkola.id"
@@ -378,6 +392,7 @@
                     </v-flex>
                            <v-flex xs12 sm5>
                                <v-select
+                                 color="navbarcolor"
                                 :loading="loading"
                                 :items="smerovi"
                                 v-model="editedItem.smer.id"
@@ -398,6 +413,7 @@
                     </v-flex>
                            <v-flex xs12 sm2>
                                <v-select
+                                 color="navbarcolor"
                             :loading="loading"
                                 :items="razredi"
                                 v-model="editedItem.razred.id"
@@ -420,6 +436,7 @@
                 <v-flex xs2 class="mt-2" >
                    
                 <v-text-field
+                  color="navbarcolor"
                v-model="editedItem.prethodniUspeh"                 
                    label="br"
                   clearable
@@ -447,9 +464,10 @@
         <v-flex offset-sm1 xs12>
               <v-flex xs8 md5 class="ml-1" >
                 <v-text-field
+                  color="navbarcolor"
                v-model="editedItem.telefon.mobilni"                 
                    label="Mobilni telefon"
-clearable
+                clearable
                   ></v-text-field>
               </v-flex>
               </v-flex>
@@ -457,9 +475,10 @@ clearable
                   <v-flex offset-sm1 xs12>
               <v-flex xs8 md5 class="ml-1" >
                 <v-text-field
+                  color="navbarcolor"
                v-model="editedItem.telefon.kucni"                
                    label="Kućni telefon" 
-clearable
+            clearable
                   ></v-text-field>
               </v-flex>
               </v-flex>
@@ -497,6 +516,7 @@ clearable
             <v-flex offset-sm1 xs12>
               <v-flex xs8 md5 class="ml-1" >
                 <v-text-field
+                 color="navbarcolor"
                     v-model="editedItem.roditelji[1].ime"                
                    label="Ime majke"   
                       required
@@ -509,6 +529,7 @@ clearable
              <v-flex offset-sm1 xs12>
               <v-flex xs8 md5 class="ml-1" >
                 <v-text-field
+                 color="navbarcolor"
                     v-model="editedItem.roditelji[1].prezime"  
                     required
                     clearable
@@ -525,6 +546,7 @@ clearable
                     </v-flex>
                            <v-flex xs12 sm6>
                                <v-select
+                                color="navbarcolor"
                                 :loading="loading"
                                 :items="StepeniStrucneSpreme"
                                 v-model="editedItem.roditelji[1].stepenObrazovanjaId"
@@ -542,6 +564,7 @@ clearable
        <v-flex offset-sm1 xs12>
               <v-flex xs8 md5 class="ml-1" >
                 <v-text-field
+                 color="navbarcolor"
                   v-model="editedItem.roditelji[1].brojTelefona" 
                     required
                     :rules="[rules.required]"     
@@ -554,6 +577,7 @@ clearable
             <v-flex offset-sm1 xs12>
               <v-flex xs8 md5 class="ml-1" >
                 <v-text-field
+                 color="navbarcolor"
                v-model="editedItem.roditelji[0].ime" 
                     required
                     clearable
@@ -566,6 +590,7 @@ clearable
      <v-flex offset-sm1 xs12>
               <v-flex xs8 md5 class="ml-1" >
                 <v-text-field
+                 color="navbarcolor"
                        v-model="editedItem.roditelji[0].prezime"                
                    label="Prezime oca"  
                       required
@@ -582,6 +607,7 @@ clearable
                     </v-flex>
                            <v-flex xs12 sm6>
                                <v-select
+                                color="navbarcolor"
                                 :loading="loading"
                                 :items="StepeniStrucneSpreme"
                                 v-model="editedItem.roditelji[0].stepenObrazovanjaId"
@@ -600,6 +626,7 @@ clearable
    <v-flex offset-sm1 xs12>
               <v-flex xs8 md5 class="ml-1" >
                 <v-text-field
+                 color="navbarcolor"
                    v-model="editedItem.roditelji[0].brojTelefona" 
                     required
                     :rules="[rules.required]"      
@@ -612,6 +639,7 @@ clearable
                <v-flex offset-sm1 xs12>
               <v-flex xs8 md5  >
                 <v-text-field
+                 color="navbarcolor"
                   v-model="editedItem.materijalniPrihodi"
                   label="Materijalni prihodi"
                   clearable
@@ -643,6 +671,7 @@ clearable
                     </v-flex>
                            <v-flex xs12 sm6>
                                <v-select
+                                color="navbarcolor"
                                 :loading="loading"
                                 :items="TipoviPorodice"
                                 v-model="editedItem.tipPorodice.id"
@@ -660,6 +689,7 @@ clearable
       <transition name="fade" appear  mode="in-out">
               <v-flex v-if="editedItem.tipPorodice.id ===4 || editedItem.tipPorodice.id ===5 " xs8 md5 class="ml-1" >
                 <v-text-field
+                 color="navbarcolor"
                    v-model="editedItem.staratelji.ime" 
                        clearable       
                    label="Ime staratelja"   
@@ -672,6 +702,7 @@ clearable
               <v-flex v-if="editedItem.tipPorodice.id ===4 || editedItem.tipPorodice.id ===5 " xs8 md5 class="ml-1" >
                 
                 <v-text-field
+                 color="navbarcolor"
                    v-model="editedItem.staratelji.prezime" 
                        clearable
                    label="Prezime staratelja"   
