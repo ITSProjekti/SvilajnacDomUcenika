@@ -39,6 +39,8 @@ namespace DomUcenikaSvilajnac.Common.Interfaces
         ISastanakRepository Sastanci { get; }
         IStatistikaRepository Statistike { get; }
 
+        IStatusPrijaveRepository StatusiPrijave { get; set; }
+
         int SaveChanges();
         Task<int> SaveChangesAsync();
 

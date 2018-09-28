@@ -61,6 +61,7 @@ namespace DomUcenikaSvilajnac.DAL.RepoPattern
                 .Include(tipP => tipP.TipPorodice)
                 .Include(st => st.Staratelji)
                 .Include(vg => vg.VaspitnaGrupa)
+                .Include(sp => sp.StatusPrijave)
                 .ToListAsync();
 
             foreach (var item in podaciUcenika)
@@ -96,9 +97,10 @@ namespace DomUcenikaSvilajnac.DAL.RepoPattern
                 .Include(s => s.Smer)
                 .Include(r => r.Razred)
                 .Include(rod => rod.Roditelji)
-                 .Include(tipP => tipP.TipPorodice)
-                 .Include(st => st.Staratelji)
-                 .Include(vg => vg.VaspitnaGrupa)
+                .Include(tipP => tipP.TipPorodice)
+                .Include(st => st.Staratelji)
+                .Include(vg => vg.VaspitnaGrupa)
+                .Include(sp => sp.StatusPrijave)
                 .SingleOrDefaultAsync(x => x.Id == id);
             return Mapper.Map<Ucenik, UcenikResource>(podaciUcenikaById);
         }
@@ -121,6 +123,7 @@ namespace DomUcenikaSvilajnac.DAL.RepoPattern
                 .Include(r => r.Razred)
                 .Include(tipP => tipP.TipPorodice)
                 .Include(vg => vg.VaspitnaGrupa)
+                .Include(sp => sp.StatusPrijave)
                 .SingleOrDefaultAsync(x => x.Id == ucenik.Id);
 
             return Mapper.Map<Ucenik, PostUcenikaResource>(podaciUcenika);
@@ -145,6 +148,7 @@ namespace DomUcenikaSvilajnac.DAL.RepoPattern
                 .Include(rod => rod.Roditelji)
                 .Include(tipP => tipP.TipPorodice)
                 .Include(vg => vg.VaspitnaGrupa)
+                .Include(sp => sp.StatusPrijave)
                 .SingleOrDefaultAsync(x => x.Id == id);
             return Mapper.Map<Ucenik, PutUcenikaResource>(podaciUcenika);
         }
@@ -169,6 +173,7 @@ namespace DomUcenikaSvilajnac.DAL.RepoPattern
                 .Include(tipP => tipP.TipPorodice)
                 .Include(st => st.Staratelji)
                 .Include(vg => vg.VaspitnaGrupa)
+                .Include(sp => sp.StatusPrijave)
                 .SingleOrDefaultAsync(x => x.Id == ucenik.Id);
 
             return Mapper.Map<Ucenik, UcenikResource>(podaciUcenika);

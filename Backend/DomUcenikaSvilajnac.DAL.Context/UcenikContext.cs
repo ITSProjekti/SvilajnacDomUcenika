@@ -38,7 +38,7 @@ namespace DomUcenikaSvilajnac.DAL.Context
         public DbSet<Sastanak> Sastanci { get; set; }
         public DbSet<Statistika> Statistike { get; set; }
 
-
+        public DbSet<StatusPrijave> StatusiPrijave { get; set; }
 
         /// <summary>
         /// Inicijalizuje se instaca UcenikContext klase.

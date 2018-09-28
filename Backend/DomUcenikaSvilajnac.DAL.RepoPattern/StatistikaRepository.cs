@@ -149,8 +149,6 @@ namespace DomUcenikaSvilajnac.DAL.RepoPattern
                 item.Posecenost = posecenostPoGrupama[i++].ToString() + "%";
 
             }
-
-
             return Mapper.Map<List<Statistika>, List<StatistikaResource>>(sastanci);
         }
 
@@ -162,9 +160,9 @@ namespace DomUcenikaSvilajnac.DAL.RepoPattern
                                     .Select(n => n.UcenikId)
                                     .Distinct()
                                     .ToListAsync();
+
+
             // linq koji vraca id-eve vaspitnih grupa onih ucenika koji imaju pohvale    
-
-
             var idVaspitnihGrupaUcenikaSaPohvalom = await _context.Uceniks
                                                     .Where(k => idUcenikaUPohvalama.Contains(k.Id))
                                                     .Select(n => n.VaspitnaGrupaId).Distinct()
@@ -191,7 +189,6 @@ namespace DomUcenikaSvilajnac.DAL.RepoPattern
                                   .Select(n => n.Sum( o=> o.BodoviPohvale))
                                   .ToList();
 
-
             int i = 0;
 
             /* foreach-om prolazimo kroz sve selektovane redove iz tabele statistika
@@ -199,12 +196,7 @@ namespace DomUcenikaSvilajnac.DAL.RepoPattern
 
             foreach (var item in statistikeZaUpdate)
                 item.BodoviPohvalaGrupa = bodoviPohvala[i++];
-
-
-
             return Mapper.Map<List<Statistika>, List<StatistikaResource>>(statistikeZaUpdate);
         }
-
-
     }
 }

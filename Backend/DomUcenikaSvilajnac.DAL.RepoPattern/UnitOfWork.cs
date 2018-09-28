@@ -55,6 +55,7 @@ namespace DomUcenikaSvilajnac.DAL.RepoPattern
             Vaspitaci = new VaspitacRepository(_context, mapper);
             Sastanci = new SastanakRepository(_context,mapper);
             Statistike = new StatistikaRepository(_context, mapper);
+            StatusiPrijave = new StatusPrijaveRepository(_context); 
         }
 
         /// <summary>
@@ -83,6 +84,7 @@ namespace DomUcenikaSvilajnac.DAL.RepoPattern
         public ISastanakRepository Sastanci { get; set; }
         public IStatistikaRepository Statistike { get; set; }
 
+        public IStatusPrijaveRepository StatusiPrijave { get; set; }
 
         /// <summary>
         /// Izvršava zadatke definisane za aplikaciju povezane sa oslobađanjem, puštanjem ili poništavanjem nepovezanih resursa.

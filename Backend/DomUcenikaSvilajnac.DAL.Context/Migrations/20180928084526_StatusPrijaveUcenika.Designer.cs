@@ -11,9 +11,10 @@ using System;
 namespace DomUcenikaSvilajnac.DAL.Context.Migrations
 {
     [DbContext(typeof(UcenikContext))]
-    partial class UcenikContextModelSnapshot : ModelSnapshot
+    [Migration("20180928084526_StatusPrijaveUcenika")]
+    partial class StatusPrijaveUcenika
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -358,8 +359,6 @@ namespace DomUcenikaSvilajnac.DAL.Context.Migrations
 
                     b.Property<int>("SmerId");
 
-                    b.Property<int>("StatusPrijaveId");
-
                     b.Property<int>("TelefonId");
 
                     b.Property<int>("TipPorodiceId");
@@ -393,8 +392,6 @@ namespace DomUcenikaSvilajnac.DAL.Context.Migrations
                     b.HasIndex("RazredId");
 
                     b.HasIndex("SmerId");
-
-                    b.HasIndex("StatusPrijaveId");
 
                     b.HasIndex("TelefonId");
 
@@ -579,11 +576,6 @@ namespace DomUcenikaSvilajnac.DAL.Context.Migrations
                     b.HasOne("DomUcenikaSvilajnac.Common.Models.Smer", "Smer")
                         .WithMany()
                         .HasForeignKey("SmerId")
-                        .OnDelete(DeleteBehavior.Cascade);
-
-                    b.HasOne("DomUcenikaSvilajnac.Common.Models.StatusPrijave", "StatusPrijave")
-                        .WithMany()
-                        .HasForeignKey("StatusPrijaveId")
                         .OnDelete(DeleteBehavior.Cascade);
 
                     b.HasOne("DomUcenikaSvilajnac.Common.Models.Telefon", "Telefon")

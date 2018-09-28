@@ -85,6 +85,10 @@ namespace DomUcenikaSvilajnac.Common.Models
         public int MaterijalniPrihodi { get; set; }
         public int VaspitnaGrupaId { get; set; }
         public VaspitnaGrupa VaspitnaGrupa { get; set; }
+
+
+        public int StatusPrijaveId { get; set; }
+        public StatusPrijave StatusPrijave { get; set; }
         public Ucenik()
         {
             Roditelji = new Collection<Roditelj>();
