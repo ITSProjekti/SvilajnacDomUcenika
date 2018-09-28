@@ -625,5 +625,72 @@ namespace DomUcenikaSvilajnac.IntegratedTests
 
             Assert.Equal(unitOfWork.Vaspitaci.Get(1), vaspitacZaBazu);
         }
+
+        /// <summary>
+        /// Test proverava metodu Put, proverava se da li su podaci o vaspitacima uspesno promenjeni (updateovani).
+        /// </summary>
+        [Fact]
+        public void PutVaspitaca_TestiranjeUpdateMetode_ReturnsTrue()
+        {
+            Mapper.Reset();
+            VaspitacResource updateVaspitac = new VaspitacResource() { Ime = "Nikola", Prezime = "Petrovic", BrojTelefona = "06x555333", Slika = "slika" };
+            
+            //inicijalizacija privremene baze
+            var options = new DbContextOptionsBuilder<UcenikContext>().UseInMemoryDatabase(Guid.NewGuid().ToString()).Options;
+            var context = new UcenikContext(options);
+            var primerVaspitaca = data.vaspitac();
+
+            Mapper.Initialize(m => m.AddProfile<MappingProfile>());
+            Mapper.AssertConfigurationIsValid();
+
+            var vaspitacZaBazu = Mapper.Map<VaspitacResource, Vaspitac>(primerVaspitaca);
+            var config = new MapperConfiguration(cfg => cfg.CreateMap<Vaspitac, VaspitacResource>());
+            var mapper = config.CreateMapper();
+
+            
+            IUnitOfWork unitOfWork = new UnitOfWork(context, mapper);
+            unitOfWork.Vaspitaci.Add(vaspitacZaBazu);
+
+            var noviVaspitac = Mapper.Map<VaspitacResource, Vaspitac>(updateVaspitac, vaspitacZaBazu);
+
+            unitOfWork.SaveChanges();
+
+            Assert.Equal(noviVaspitac.Ime, vaspitacZaBazu.Ime);
+        }
+
+        /// <summary>
+        /// Test proverava metodu remove, proverava se da li je baza osatala prazna nakon brisanja vaspitaca.
+        /// </summary>
+        [Fact] //DOBAR TEST
+        public void RemoveVaspitaca_ProveraBazeNakonBrisanjaVaspitaca_ReturnsTrue()
+        {
+            Mapper.Reset();
+            var options = new DbContextOptionsBuilder<UcenikContext>().UseInMemoryDatabase(Guid.NewGuid().ToString()).EnableSensitiveDataLogging().Options;
+            var context = new UcenikContext(options);
+            var primerVaspitaca = data.vaspitac();
+
+            Mapper.Initialize(m => m.AddProfile<MappingProfile>());
+            Mapper.AssertConfigurationIsValid();
+            var vaspitacZaBazu = Mapper.Map<VaspitacResource, Vaspitac>(primerVaspitaca);
+
+            var config = new MapperConfiguration(cfg => cfg.CreateMap<Vaspitac, VaspitacResource>());
+            var mapper = config.CreateMapper();
+
+            IUnitOfWork unitOfWork = new UnitOfWork(context, mapper);
+            unitOfWork.Vaspitaci.Add(vaspitacZaBazu);
+            unitOfWork.SaveChanges();
+
+            var listaVaspitacaNakonDodavanjaUBazi = unitOfWork.Vaspitaci.GetAll().ToList();
+
+            //testiranje metode za brisanje
+            unitOfWork.Vaspitaci.Remove(vaspitacZaBazu);
+            unitOfWork.SaveChanges();
+
+            var listaVaspitacaNakonBrisanja = unitOfWork.Vaspitaci.GetAll().ToList();
+
+            //proverava da li je u bazi nakon brisanja vaspitaca ostalo
+            if (!listaVaspitacaNakonDodavanjaUBazi.Any())
+                Assert.True(listaVaspitacaNakonBrisanja.Count == 1);
+        }      
     }
 }

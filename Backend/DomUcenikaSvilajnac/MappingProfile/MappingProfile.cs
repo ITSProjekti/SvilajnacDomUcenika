@@ -507,12 +507,18 @@ namespace DomUcenikaSvilajnac.Mapping
                 .ForMember(v => v.VaspitnaGrupa, opt => opt.Ignore());
 
             // mapira VaspitnaGrupaStatistikeResource u Statistiku
-            CreateMap<VaspitnaGrupaStatistikeResource, VaspitnaGrupa>();
+            CreateMap<VaspitnaGrupaStatistikeResource, VaspitnaGrupa>()
+               .ForMember(v => v.VaspitacId, otp => otp.MapFrom(src => src.Id))
+               .ForMember(v => v.Vaspitac, otp => otp.MapFrom(src => new Vaspitac()))
+               .ForMember(v => v.BrojUcenika, otp => otp.Ignore());
+
             // mapira Statistiku u VaspitnaGrupaStatistikeResource
             CreateMap<VaspitnaGrupa, VaspitnaGrupaStatistikeResource>();
 
+            // mapira StatusPrijave u StatusPrijaveResource
             CreateMap<StatusPrijave, StatusPrijaveResource>();
 
+            // mapira StatusPrijaveResource u StatusPrijave
             CreateMap<StatusPrijaveResource, StatusPrijave>();
 
 
