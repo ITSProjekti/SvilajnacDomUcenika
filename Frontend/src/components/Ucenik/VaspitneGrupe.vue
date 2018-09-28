@@ -164,7 +164,7 @@
             <v-flex
               v-for="grupa in vaspitneGrupe"
               :key="grupa.id"
-              xs4  
+              xs12   md6 lg4
               class= "mt-2"  >
               <v-card class="mb-2 mr-2" height="100%" >
                   <v-layout row warp>
