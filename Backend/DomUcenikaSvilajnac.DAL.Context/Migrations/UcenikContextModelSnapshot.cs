@@ -44,6 +44,8 @@ namespace DomUcenikaSvilajnac.DAL.Context.Migrations
 
                     b.Property<int>("UcenikId");
 
+                    b.Property<DateTime>("VremeUpisa");
+
                     b.HasKey("Id");
 
                     b.HasIndex("UcenikId");
@@ -86,6 +88,8 @@ namespace DomUcenikaSvilajnac.DAL.Context.Migrations
                     b.Property<string>("Opis");
 
                     b.Property<int>("UcenikId");
+
+                    b.Property<DateTime>("VremeUpisa");
 
                     b.HasKey("Id");
 

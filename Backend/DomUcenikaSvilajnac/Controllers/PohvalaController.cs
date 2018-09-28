@@ -67,10 +67,12 @@ namespace DomUcenikaSvilajnac.Controllers
 
 
             pohvala.Id = id;
+            pohvala.VremeUpisa = DateTime.Now;
             Mapper.Map<PohvalaResource, Pohvala>(pohvala, staraPohvala);
             await UnitOfWork.SaveChangesAsync();
-
+           
             var novaPohvala = await UnitOfWork.Pohvale.GetAsync(id);
+            
             Mapper.Map<Pohvala, PohvalaResource>(novaPohvala);
             return Ok(pohvala);
         }
@@ -86,6 +88,8 @@ namespace DomUcenikaSvilajnac.Controllers
                 return BadRequest(ModelState);
             }
             var novaPohvala = Mapper.Map<PohvalaResource, Pohvala>(pohvala);
+
+            novaPohvala.VremeUpisa = DateTime.Now;
 
             UnitOfWork.Pohvale.Add(novaPohvala);
             await UnitOfWork.SaveChangesAsync();
