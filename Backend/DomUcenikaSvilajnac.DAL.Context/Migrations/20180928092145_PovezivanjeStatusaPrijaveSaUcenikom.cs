@@ -55,9 +55,9 @@ namespace DomUcenikaSvilajnac.DAL.Context.Migrations
                                "values ('ImeO', 'PrezimeO', (select top 1 Id from Ucenici), '06x165584', 8) ," +
                                "('ImeM', 'PrezimeM', (select top 1 Id from Ucenici), '06x46864', 7)");
 
-            migrationBuilder.Sql("insert into Kazne (Opis, BodoviKazne, UcenikId) values ('Izbacen sa casa', 3, (select top 1 Id from Ucenici) )");
+            migrationBuilder.Sql("insert into Sastanci (DatumOdrzavanja, BrojPrisutnihUcenika, UkupanBrojPrisutnihUcenika, VaspitnaGrupaId, OpisDnevnogRada, OdlukeDoneseneNaSastanku, ZakljucciSastanka) values (getdate(), 20, 20, (select top 1 Id from VaspitneGrupe), 'Dnevni red', 'Odluke', 'Zakljucak')");
 
-            migrationBuilder.Sql("insert into Pohvale (Opis, UcenikId, BodoviPohvale) values ('Ističe se', (select top 1 Id from Ucenici), 5)");
+           
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)

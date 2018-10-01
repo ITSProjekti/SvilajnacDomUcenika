@@ -82,9 +82,8 @@ namespace DomUcenikaSvilajnac.DAL.RepoPattern
 
 
             foreach (var ucenik in podaciUcenika)
-            {
-                ucenik.BodoviZaUpis = Convert.ToSingle(Math.Round(formulaZaRangiranje(ucenik.Id), 2));
-            }
+                ucenik.BodoviZaUpis = formulaZaRangiranje(ucenik.Id);
+
 
             _context.UpdateRange(podaciUcenika);
 

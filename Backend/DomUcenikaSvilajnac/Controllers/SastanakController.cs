@@ -79,6 +79,7 @@ namespace DomUcenikaSvilajnac.Controllers
 
 
             sastanak.Id = id;
+            sastanak.DatumOdrzavanja = DateTime.Now;
             Mapper.Map<SastanakResource, Sastanak>(sastanak, stariSastanak);
             await UnitOfWork.SaveChangesAsync();
 
@@ -100,6 +101,8 @@ namespace DomUcenikaSvilajnac.Controllers
             var noviSastanak = Mapper.Map<SastanakResource, Sastanak>(sastanak);
 
             noviSastanak.UkupanBrojPrisutnihUcenika =  UnitOfWork.Sastanci.brojUcenikaNaSastanku(noviSastanak.VaspitnaGrupaId);
+
+            noviSastanak.DatumOdrzavanja = DateTime.Now;
 
             UnitOfWork.Sastanci.Add(noviSastanak);
             await UnitOfWork.SaveChangesAsync();

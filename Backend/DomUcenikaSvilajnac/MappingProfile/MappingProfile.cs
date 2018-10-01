@@ -490,14 +490,10 @@ namespace DomUcenikaSvilajnac.Mapping
                 .ForMember(v => v.Vaspitac, opt => opt.Ignore());
 
             //mapira Sastanak u SastanakResource
-            CreateMap<Sastanak, SastanakResource>()
-                .ForMember(v => v.Godina, opt => opt.MapFrom(src => src.DatumOdrzavanja.Year))
-                .ForMember(v => v.Dan, opt => opt.MapFrom(src => src.DatumOdrzavanja.Day))
-                .ForMember(v => v.Mesec, opt => opt.MapFrom(src => src.DatumOdrzavanja.Month));
+            CreateMap<Sastanak, SastanakResource>();
 
             //mapira SastanakResource u Sastanak
             CreateMap<SastanakResource, Sastanak>()
-                .ForMember(v => v.DatumOdrzavanja, opt => opt.MapFrom(src => new DateTime(src.Godina, src.Mesec, src.Dan + 1).ToUniversalTime()))
                 .ForMember(v => v.VaspitnaGrupa, opt => opt.Ignore());
 
             //mapira Statistiku u StatistikuResource

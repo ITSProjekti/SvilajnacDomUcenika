@@ -19,6 +19,10 @@ namespace DomUcenikaSvilajnac.DAL.Context.Migrations
                 table: "Kazne",
                 nullable: false,
                 defaultValue: new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified));
+
+            migrationBuilder.Sql("insert into Kazne (Opis, BodoviKazne, UcenikId, VremeUpisa) values ('Izbacen sa casa', 3, (select top 1 Id from Ucenici), getdate())");
+
+            migrationBuilder.Sql("insert into Pohvale (Opis, UcenikId, BodoviPohvale, VremeUpisa) values ('Ističe se', (select top 1 Id from Ucenici), 5, getdate())");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)

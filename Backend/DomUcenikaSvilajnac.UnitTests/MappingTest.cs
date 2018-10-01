@@ -622,10 +622,7 @@ namespace DomUcenikaSvilajnac.UnitTests
             {
                 Id = 1,
                 BrojPrisutnihUcenika = 20,
-                UkupanBrojPrisutnihUcenika = 20,
-                Dan=10,
-                Mesec=2,
-                Godina=2015               
+                UkupanBrojPrisutnihUcenika = 20
 
             };
             var result = Mapper.Map<SastanakResource, Sastanak>(sastanakResurs);
