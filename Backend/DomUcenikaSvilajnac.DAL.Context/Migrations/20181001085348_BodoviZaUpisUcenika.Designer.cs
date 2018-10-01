@@ -11,9 +11,10 @@ using System;
 namespace DomUcenikaSvilajnac.DAL.Context.Migrations
 {
     [DbContext(typeof(UcenikContext))]
-    partial class UcenikContextModelSnapshot : ModelSnapshot
+    [Migration("20181001085348_BodoviZaUpisUcenika")]
+    partial class BodoviZaUpisUcenika
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -317,8 +318,6 @@ namespace DomUcenikaSvilajnac.DAL.Context.Migrations
 
                     b.Property<string>("Adresa")
                         .HasColumnType("NVARCHAR(MAX)");
-
-                    b.Property<bool>("BioUDomu");
 
                     b.Property<float>("BodoviZaUpis");
 

@@ -44,7 +44,9 @@ namespace DomUcenikaSvilajnac.Controllers
         [HttpGet]
         public async Task<IEnumerable<UcenikResource>> GetUcenika()
         {
-            return  await UnitOfWork.Ucenici.podaciUcenika();
+            var pom = await UnitOfWork.Ucenici.podaciUcenika();
+            await UnitOfWork.SaveChangesAsync();
+            return pom;
         }
 
         /// <summary>

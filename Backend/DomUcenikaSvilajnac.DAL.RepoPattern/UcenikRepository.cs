@@ -19,14 +19,14 @@ namespace DomUcenikaSvilajnac.DAL.RepoPattern
     /// Nasledjuje genericku klasu Repository sa tipom Ucenik i IUcenikRepository interfejs
     /// Videti Repository i Ucenik klasu i IUcenikRepository interfejs radi dodatnog pojasnjena.
     /// </summary>
-    public class UcenikRepository: Repository<Ucenik>,IUcenikRepository
+    public class UcenikRepository : Repository<Ucenik>, IUcenikRepository
     {
         protected readonly UcenikContext _context;
         public IMapper Mapper { get; }
         /// <summary>
         /// Inicijalizacije instance klase UcenikRepository.
         /// </summary>
-        public UcenikRepository(UcenikContext context, IMapper mapper):base(context)
+        public UcenikRepository(UcenikContext context, IMapper mapper) : base(context)
         {
             _context = context;
             Mapper = mapper;
@@ -64,6 +64,7 @@ namespace DomUcenikaSvilajnac.DAL.RepoPattern
                 .Include(sp => sp.StatusPrijave)
                 .ToListAsync();
 
+
             foreach (var item in podaciUcenika)
             {
                 if (item.Staratelji.Count == 0)
@@ -77,9 +78,20 @@ namespace DomUcenikaSvilajnac.DAL.RepoPattern
                         }
                     };
             }
+
+
+
+            foreach (var ucenik in podaciUcenika)
+            {
+                ucenik.BodoviZaUpis = Convert.ToSingle(Math.Round(formulaZaRangiranje(ucenik.Id), 2));
+            }
+
+            _context.UpdateRange(podaciUcenika);
+
+
             return Mapper.Map<List<Ucenik>, List<UcenikResource>>(podaciUcenika);
         }
-     
+
         public async Task<UcenikResource> podaciUcenikaById(int id)
         {
             var podaciUcenikaById = await _context.Uceniks
@@ -177,6 +189,21 @@ namespace DomUcenikaSvilajnac.DAL.RepoPattern
                 .SingleOrDefaultAsync(x => x.Id == ucenik.Id);
 
             return Mapper.Map<Ucenik, UcenikResource>(podaciUcenika);
+        }
+
+        public float formulaZaRangiranje(int idUcenika)
+        {
+
+            var ucenik = _context.Uceniks.SingleOrDefault(n => n.Id == idUcenika);
+            float rezultat = 0;
+            float sumaBodovaPohvala = _context.Pohvale.Where(o => o.UcenikId == idUcenika).Sum(n => n.BodoviPohvale);
+            float sumaBodovaKazni = _context.Kazne.Where(o => o.UcenikId == idUcenika).Sum(n => n.BodoviKazne);
+
+            rezultat =(ucenik.PrethodniUspeh * 7) + sumaBodovaPohvala - sumaBodovaKazni;
+            if (ucenik.BioUDomu && (ucenik.RazredId == 2 || ucenik.RazredId == 3 || ucenik.RazredId == 4))
+                rezultat += 3;
+
+            return Convert.ToSingle(Math.Round(rezultat,2));
         }
     }
 }

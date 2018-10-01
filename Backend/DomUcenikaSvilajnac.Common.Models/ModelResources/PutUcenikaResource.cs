@@ -56,5 +56,6 @@ namespace DomUcenikaSvilajnac.Common.Models.ModelResources
         public VaspitnaGrupaResource VaspitnaGrupa { get; set; }
 
         public StatusPrijaveResource StatusPrijave { get; set; }
+        public bool BioUDomu { get; set; }
     }
 }

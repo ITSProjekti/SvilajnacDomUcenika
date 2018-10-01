@@ -123,6 +123,9 @@ namespace DomUcenikaSvilajnac.DAL.RepoPattern
 
             return Mapper.Map<List<Roditelj>, List<DeleteRoditeljaResource>>(roditeljiUcenika);
         }
+
+
+        
     } 
 }
 

@@ -57,7 +57,7 @@ namespace DomUcenikaSvilajnac.ModelResources
         public int MaterijalniPrihodi { get; set; }
         public VaspitnaGrupaResource VaspitnaGrupa { get; set; }
         public StatusPrijaveResource StatusPrijave { get; set; }
-
+        public bool BioUDomu { get; set; }
 
     }
 }

@@ -55,8 +55,9 @@ namespace DomUcenikaSvilajnac.Common.Models.ModelResources
         public int MaterijalniPrihodi { get; set; }
 
         public VaspitnaGrupaResource VaspitnaGrupa { get; set; }
-
+        public bool BioUDomu { get; set; }
         public StatusPrijave StatusPrijave { get; set; }
+        public float BodoviZaUpis { get; set; }
 
     }
 }

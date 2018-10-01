@@ -22,6 +22,7 @@ namespace DomUcenikaSvilajnac.Common.Models.ModelResources
         public string BrojTelefonaMajke { get; set; }
         public string BrojTelefonaOca { get; set; }
 
+
         public int UcenikId { get; set; }
 
     }

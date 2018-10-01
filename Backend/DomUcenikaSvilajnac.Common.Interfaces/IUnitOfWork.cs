@@ -45,5 +45,7 @@ namespace DomUcenikaSvilajnac.Common.Interfaces
         Task<int> SaveChangesAsync();
 
         Task<IEnumerable<DeleteRoditeljaResource>> brisanjeRoditelja(int UcenikId);
+
+      
     }
 }
