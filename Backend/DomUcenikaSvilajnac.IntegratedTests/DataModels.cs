@@ -108,7 +108,8 @@ namespace DomUcenikaSvilajnac.IntegratedTests
                     }
                 },
                 MaterijalniPrihodi = 5,
-                TipPorodiceId = 3
+                TipPorodiceId = 3,
+                VaspitnaGrupaId =1
         };
             return ucenik;
         }
@@ -176,6 +177,7 @@ namespace DomUcenikaSvilajnac.IntegratedTests
                 BodoviPohvale = 5
             };
         }
+    
 
         public Kazna kazna()
         {

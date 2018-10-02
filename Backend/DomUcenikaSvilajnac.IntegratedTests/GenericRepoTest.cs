@@ -696,29 +696,38 @@ namespace DomUcenikaSvilajnac.IntegratedTests
         }
 
         [Fact]
-        public void Statistika()
+        public void sumaBodovaPohvale()
         {
             Mapper.Reset();
             var options = new DbContextOptionsBuilder<UcenikContext>().UseInMemoryDatabase(Guid.NewGuid().ToString()).EnableSensitiveDataLogging().Options;
             var context = new UcenikContext(options);
-            var primerVaspitaca = data.vaspitac();
+
 
             Mapper.Initialize(m => m.AddProfile<MappingProfile>());
             Mapper.AssertConfigurationIsValid();
-            var vaspitacZaBazu = Mapper.Map<VaspitacResource, Vaspitac>(primerVaspitaca);
 
             var config = new MapperConfiguration(cfg => cfg.CreateMap<Vaspitac, VaspitacResource>());
             var mapper = config.CreateMapper();
 
+            List<Pohvala> pohvale = new List<Pohvala>()
+            {
+                data.pohvala(),
+                new Pohvala() {Id =2, UcenikId =1, BodoviPohvale = 6,Opis = "Afekat"}
+            };
+
             IUnitOfWork unitOfWork = new UnitOfWork(context, mapper);
+            unitOfWork.Ucenici.Add(data.Ucenik2());
+            unitOfWork.VaspitneGrupe.Add(data.vaspitnaGrupa());
+            unitOfWork.Pohvale.AddRange(pohvale);
+            unitOfWork.Kazne.Add(data.kazna());
+            unitOfWork.Statistike.Add(data.statistika());
+            unitOfWork.SaveChangesAsync();
 
-            StatistikaRepository repo = new StatistikaRepository(context, mapper);
+            var rezultat = unitOfWork.Statistike.bodoviPohvalaUcenikaPoGrupama();
 
-            var djesi = repo.bodoviPohvalaUcenikaPoGrupama();
-
-
-
-
+            /* testira da li je rezultat funkcije bodoviPohvalaUcenikaPoGrupama tacno vratio sumu pohvala
+             ucenika u vaspitnoj grupi sa id = 1 */
+            Assert.Equal(11, Convert.ToDecimal( rezultat.Result.Select(n=> n.BodoviPohvalaGrupa).SingleOrDefault()));
         }
     }
 }
