@@ -287,12 +287,12 @@ namespace DomUcenikaSvilajnac.IntegratedTests
             Assert.Equal(listaUcenika[0].DatumRodjenja.Month, primerUcenika.Mesec);
             Assert.Equal(listaUcenika[0].DatumRodjenja.Year, primerUcenika.Godina);
             Assert.Equal(listaUcenika[0].DrzavaRodjenjaId, primerUcenika.DrzavaRodjenja.Id);
-            //Assert.Equal(listaUcenika[0].MestoRodjenjaId, primerUcenika.MestoRodjenja.Id);
-            //Assert.Equal(listaUcenika[0].PrethodnaSkolaId, primerUcenika.PrethodnaSkola.Id);
-            //Assert.Equal(listaUcenika[0].MestoPrebivalistaId, primerUcenika.MestoPrebivalista.Id);
-            //Assert.Equal(listaUcenika[0].MestoZavrseneSkoleId, primerUcenika.MestoZavrseneSkole.Id);
-            //Assert.Equal(listaUcenika[0].OpstinaId, primerUcenika.Opstina.Id);
-            //Assert.Equal(listaUcenika[0].OpstinaPrebivalistaId, primerUcenika.OpstinaPrebivalista.Id);
+            Assert.Equal(listaUcenika[0].MestoRodjenjaId, primerUcenika.MestoRodjenja.Id);
+            Assert.Equal(listaUcenika[0].PrethodnaSkolaId, primerUcenika.PrethodnaSkola.Id);
+            Assert.Equal(listaUcenika[0].MestoPrebivalistaId, primerUcenika.MestoPrebivalista.Id);
+            Assert.Equal(listaUcenika[0].MestoZavrseneSkoleId, primerUcenika.MestoZavrseneSkole.Id);
+            Assert.Equal(listaUcenika[0].OpstinaId, primerUcenika.Opstina.Id);
+            Assert.Equal(listaUcenika[0].OpstinaPrebivalistaId, primerUcenika.OpstinaPrebivalista.Id);
             Assert.Equal(listaUcenika[0].PolId, primerUcenika.Pol.Id);
             Assert.Equal(listaUcenika[0].PostanskiBrojId, primerUcenika.PostanskiBroj.Id);
             Assert.Equal(listaUcenika[0].RazredId, primerUcenika.Razred.Id);
@@ -300,7 +300,7 @@ namespace DomUcenikaSvilajnac.IntegratedTests
             Assert.Equal(listaUcenika[0].SmerId, primerUcenika.Smer.Id);
             Assert.Equal(listaUcenika[0].UpisanaSkolaId, primerUcenika.UpisanaSkola.Id);
             Assert.Equal(listaUcenika[0].PrethodniUspeh, primerUcenika.PrethodniUspeh);
-         //   Assert.Equal(listaUcenika[0].Roditelji, primerUcenika.Roditelji);
+    
 
             //testiranje za prvog ucenika u bazi
 
@@ -308,13 +308,13 @@ namespace DomUcenikaSvilajnac.IntegratedTests
             Assert.Equal(listaUcenika[1].Prezime, data.Ucenik2().Prezime);
             Assert.Equal(listaUcenika[1].JMBG, data.Ucenik2().JMBG);
             Assert.Equal(listaUcenika[1].DrzavaRodjenjaId, data.Ucenik2().DrzavaRodjenjaId);
-            //Assert.Equal(listaUcenika[1].MestoRodjenjaId, data.Ucenik2().MestoRodjenjaId);
-            //Assert.Equal(listaUcenika[1].PrethodnaSkolaId, data.Ucenik2().PrethodnaSkolaId);
-            //Assert.Equal(listaUcenika[1].MestoPrebivalistaId, data.Ucenik2().MestoPrebivalistaId);
-            //Assert.Equal(listaUcenika[1].MestoZavrseneSkoleId, data.Ucenik2().MestoZavrseneSkoleId);
-            //Assert.Equal(listaUcenika[1].OpstinaId, data.Ucenik2().OpstinaId);
-            //Assert.Equal(listaUcenika[1].OpstinaPrebivalistaId, data.Ucenik2().OpstinaPrebivalistaId);
-            //Assert.Equal(listaUcenika[1].PolId, data.Ucenik2().PolId);
+            Assert.Equal(listaUcenika[1].MestoRodjenjaId, data.Ucenik2().MestoRodjenjaId);
+            Assert.Equal(listaUcenika[1].PrethodnaSkolaId, data.Ucenik2().PrethodnaSkolaId);
+            Assert.Equal(listaUcenika[1].MestoPrebivalistaId, data.Ucenik2().MestoPrebivalistaId);
+            Assert.Equal(listaUcenika[1].MestoZavrseneSkoleId, data.Ucenik2().MestoZavrseneSkoleId);
+            Assert.Equal(listaUcenika[1].OpstinaId, data.Ucenik2().OpstinaId);
+            Assert.Equal(listaUcenika[1].OpstinaPrebivalistaId, data.Ucenik2().OpstinaPrebivalistaId);
+            Assert.Equal(listaUcenika[1].PolId, data.Ucenik2().PolId);
             Assert.Equal(listaUcenika[1].PostanskiBrojId, data.Ucenik2().PostanskiBrojId);
             Assert.Equal(listaUcenika[1].RazredId, data.Ucenik2().RazredId);
             Assert.Equal(listaUcenika[1].TelefonId, data.Ucenik2().TelefonId);
@@ -686,11 +686,39 @@ namespace DomUcenikaSvilajnac.IntegratedTests
             unitOfWork.Vaspitaci.Remove(vaspitacZaBazu);
             unitOfWork.SaveChanges();
 
+            
+
             var listaVaspitacaNakonBrisanja = unitOfWork.Vaspitaci.GetAll().ToList();
 
             //proverava da li je u bazi nakon brisanja vaspitaca ostalo
             if (!listaVaspitacaNakonDodavanjaUBazi.Any())
                 Assert.True(listaVaspitacaNakonBrisanja.Count == 1);
-        }      
+        }
+
+        [Fact]
+        public void Statistika()
+        {
+            Mapper.Reset();
+            var options = new DbContextOptionsBuilder<UcenikContext>().UseInMemoryDatabase(Guid.NewGuid().ToString()).EnableSensitiveDataLogging().Options;
+            var context = new UcenikContext(options);
+            var primerVaspitaca = data.vaspitac();
+
+            Mapper.Initialize(m => m.AddProfile<MappingProfile>());
+            Mapper.AssertConfigurationIsValid();
+            var vaspitacZaBazu = Mapper.Map<VaspitacResource, Vaspitac>(primerVaspitaca);
+
+            var config = new MapperConfiguration(cfg => cfg.CreateMap<Vaspitac, VaspitacResource>());
+            var mapper = config.CreateMapper();
+
+            IUnitOfWork unitOfWork = new UnitOfWork(context, mapper);
+
+            StatistikaRepository repo = new StatistikaRepository(context, mapper);
+
+            var djesi = repo.bodoviPohvalaUcenikaPoGrupama();
+
+
+
+
+        }
     }
 }
