@@ -95,7 +95,7 @@ namespace DomUcenikaSvilajnac.IntegratedTests
                 SmerId = 1,
                 RazredId = 1,
                 PrethodnaSkolaId = 1,
-                PrethodniUspeh = 4.55f,
+                PrethodniUspeh = 4,
                 Slika = "132312312321321",
                 Staratelji = new Collection<Staratelj>()
                 {

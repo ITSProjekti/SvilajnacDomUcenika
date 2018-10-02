@@ -729,5 +729,41 @@ namespace DomUcenikaSvilajnac.IntegratedTests
              ucenika u vaspitnoj grupi sa id = 1 */
             Assert.Equal(11, Convert.ToDecimal( rezultat.Result.Select(n=> n.BodoviPohvalaGrupa).SingleOrDefault()));
         }
+
+        [Fact]
+        public void sumaBodovaKazne()
+        {
+            Mapper.Reset();
+            var options = new DbContextOptionsBuilder<UcenikContext>().UseInMemoryDatabase(Guid.NewGuid().ToString()).EnableSensitiveDataLogging().Options;
+            var context = new UcenikContext(options);
+
+
+            Mapper.Initialize(m => m.AddProfile<MappingProfile>());
+            Mapper.AssertConfigurationIsValid();
+
+            var config = new MapperConfiguration(cfg => cfg.CreateMap<Vaspitac, VaspitacResource>());
+            var mapper = config.CreateMapper();
+
+            List<Ucenik> ucenici = new List<Ucenik>()
+            {
+                data.Ucenik2(),
+                new Ucenik() {Id = 2,
+                PrethodniUspeh = 5,
+                VaspitnaGrupaId =1}
+            };
+
+            IUnitOfWork unitOfWork = new UnitOfWork(context, mapper);
+            unitOfWork.Ucenici.AddRange(ucenici);
+            unitOfWork.VaspitneGrupe.Add(data.vaspitnaGrupa());
+            unitOfWork.Statistike.Add(data.statistika());
+            unitOfWork.SaveChangesAsync();
+
+            var rezultat = unitOfWork.Statistike.uspehUcenikaPoVaspitnimGrupama();
+
+            /* testira da li je rezultat funkcije uspehUcenikaPoVaspitnimGrupama tacno vratio prosek uspeha
+             ucenika u vaspitnoj grupi sa id = 1 */
+            Assert.Equal(Convert.ToDecimal(4.5), Convert.ToDecimal(rezultat.Result.Select(n => n.UspehVaspitneGrupe).SingleOrDefault()));
+        }
+
     }
 }
