@@ -318,9 +318,9 @@ namespace DomUcenikaSvilajnac.DAL.Context.Migrations
                     b.Property<string>("Adresa")
                         .HasColumnType("NVARCHAR(MAX)");
 
-                    b.Property<bool>("BioUDomu");
-
                     b.Property<float>("BodoviZaUpis");
+
+                    b.Property<int>("BrojPutaUDomu");
 
                     b.Property<DateTime>("DatumRodjenja");
 

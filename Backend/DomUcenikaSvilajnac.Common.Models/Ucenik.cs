@@ -91,7 +91,7 @@ namespace DomUcenikaSvilajnac.Common.Models
         public StatusPrijave StatusPrijave { get; set; }
 
         public float BodoviZaUpis { get; set; }
-        public bool  BioUDomu { get; set; }
+        public int  BrojPutaUDomu { get; set; }
         public Ucenik()
         {
             Roditelji = new Collection<Roditelj>();

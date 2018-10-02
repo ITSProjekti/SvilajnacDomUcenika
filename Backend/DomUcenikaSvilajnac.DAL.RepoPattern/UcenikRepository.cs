@@ -198,11 +198,9 @@ namespace DomUcenikaSvilajnac.DAL.RepoPattern
             float sumaBodovaPohvala = _context.Pohvale.Where(o => o.UcenikId == idUcenika).Sum(n => n.BodoviPohvale);
             float sumaBodovaKazni = _context.Kazne.Where(o => o.UcenikId == idUcenika).Sum(n => n.BodoviKazne);
 
-            rezultat =(ucenik.PrethodniUspeh * 7) + sumaBodovaPohvala - sumaBodovaKazni;
-            if (ucenik.BioUDomu && (ucenik.RazredId == 2 || ucenik.RazredId == 3 || ucenik.RazredId == 4))
-                rezultat += 3;
+            rezultat =((ucenik.PrethodniUspeh * 7) + (sumaBodovaPohvala - sumaBodovaKazni))+(3*ucenik.BrojPutaUDomu);
 
             return Convert.ToSingle(Math.Round(rezultat,2));
         }
-    }
+    } 
 }

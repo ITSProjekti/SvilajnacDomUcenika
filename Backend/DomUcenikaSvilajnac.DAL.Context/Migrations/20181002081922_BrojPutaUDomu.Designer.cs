@@ -11,8 +11,8 @@ using System;
 namespace DomUcenikaSvilajnac.DAL.Context.Migrations
 {
     [DbContext(typeof(UcenikContext))]
-    [Migration("20181001090338_BioUDomuUcenik")]
-    partial class BioUDomuUcenik
+    [Migration("20181002081922_BrojPutaUDomu")]
+    partial class BrojPutaUDomu
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -319,9 +319,9 @@ namespace DomUcenikaSvilajnac.DAL.Context.Migrations
                     b.Property<string>("Adresa")
                         .HasColumnType("NVARCHAR(MAX)");
 
-                    b.Property<bool>("BioUDomu");
-
                     b.Property<float>("BodoviZaUpis");
+
+                    b.Property<int>("BrojPutaUDomu");
 
                     b.Property<DateTime>("DatumRodjenja");
 
