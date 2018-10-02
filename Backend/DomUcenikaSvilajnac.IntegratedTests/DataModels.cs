@@ -165,5 +165,51 @@ namespace DomUcenikaSvilajnac.IntegratedTests
                 Slika = "101010101"
             };
         }
+        public Pohvala pohvala()
+        {
+            return new Pohvala
+            {
+                Id = 1,
+                UcenikId = 1,
+                VremeUpisa = DateTime.Now,
+                Opis = "Istici se",
+                BodoviPohvale = 5
+            };
+        }
+
+        public Kazna kazna()
+        {
+            return new Kazna
+            {
+                Id = 1,
+                UcenikId = 1,
+                VremeUpisa = DateTime.Now,
+                Opis = "Izbacen sa casa",
+                BodoviKazne = 5
+            };
+        }
+
+        public Statistika statistika()
+        {
+            return new Statistika
+            {
+                Id = 1,
+                VaspitnaGrupaId = 1,
+                Posecenost = "0",
+                UspehVaspitneGrupe = 0,
+                BodoviPohvalaGrupa = 0
+            };
+        }
+
+        public VaspitnaGrupa vaspitnaGrupa()
+        {
+            return new VaspitnaGrupa
+            {
+                Id = 1,
+                VaspitacId = 1,
+                Naziv = "Test Grupa",
+                BrojUcenika = 20
+            };
+        }
     }
 }
