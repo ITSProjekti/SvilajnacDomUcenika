@@ -137,10 +137,15 @@
                                 :items="vaspitaci"
                                 v-model="editedItem.vaspitac.id"
                                 label="Vaspitac vaspitne grupe"
-                                item-text="ime"
-                                item-value="id"
-                   
-                              ></v-select>
+                                item-text="prezime"
+                                item-value="id" 
+                              >
+                                           
+                                            <template slot="item" slot-scope="data">
+                  {{ data.item.ime }} - {{data.item.prezime}} <v-spacer> </v-spacer> <img :src="data.item.slika" height="25px" contain> 
+                </template>
+                </v-select>
+             
                             </v-flex>
                           </v-layout>
                         </v-container>
@@ -164,7 +169,7 @@
             <v-flex
               v-for="grupa in vaspitneGrupe"
               :key="grupa.id"
-              xs12   md6 lg4
+              xs12  md6 lg4
               class= "mt-2"  >
               <v-card class="mb-2 mr-2" height="100%" >
                   <v-layout row warp>

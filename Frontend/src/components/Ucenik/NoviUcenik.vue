@@ -643,7 +643,7 @@
                   v-model="editedItem.materijalniPrihodi"
                   label="Materijalni prihodi"
                   clearable
-
+                  :rules="[rules.required,rules.materijalniPrihodiX]"
                   input type="number"  onkeydown="javascript: if(event.keyCode == 69) {return false} else 
                   {
                    if(event.keyCode == 107) {return false}
@@ -759,6 +759,10 @@ import moment from 'moment'
            uspehX: (value) => {
             const pattern = /^([1-4](\.\d+){1}|5(\.0+)?)$/
             return pattern.test(value) || 'Uspeh mora biti u formatu B.BB (B - broj).'
+          },
+          materijalniPrihodiX: (value) => {
+            const pattern = /^[1-5]$/
+            return pattern.test(value) || 'Materijalni prihodi moraju biti brojevi od 1-5'
           }
         },
       // pomocna promenljiva za generisanje podatka o datumu rodjenja
@@ -910,6 +914,8 @@ import moment from 'moment'
           this.editedItem.roditelji[1].prezime !== '' &&
           this.editedItem.roditelji[1].stepenObrazovanjaId !== '' &&
           this.editedItem.roditelji[1].brojTelefona !== '' &&
+          this.editedItem.materijalniPrihodi !== '' &&
+          this.editedItem.prethodniUspeh !== '' &&
           this.datum !== null
           )
           {

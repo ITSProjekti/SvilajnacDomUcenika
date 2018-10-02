@@ -113,7 +113,7 @@
       items: [
         
         { heading: 'Učenik' ,mainicon: 'person',srcmain: require('./assets/ucenikikonica.png')},        
-        { icon: 'group', text: 'Pregled učenika u domu',link: '/ucenici' },
+        { icon: 'group', text: 'Pregled učenika u domu'},
         { icon: 'group_add', text: 'Novi učenik - prijava',link: '/prijava' },
         { icon: 'list_alt', text: 'Pregled svih prijavljenih',link: '/ucenici' },
         { icon: 'group_work', text: 'Vaspitne grupe',link: '/vaspitnegrupe' },

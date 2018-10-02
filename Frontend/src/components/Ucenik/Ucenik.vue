@@ -25,7 +25,8 @@
                 <v-text-field
                   color="navbarcolor"
                  v-model="editedPohvale.opis"
-                  label="Opis pohvale"               
+                  label="Opis pohvale"     
+                  clearable          
                   ></v-text-field>
               </v-flex>
               </v-flex>
@@ -35,7 +36,23 @@
                 <v-text-field
                   color="navbarcolor"
                  v-model="editedPohvale.bodoviPohvale"
-                  label="Bodovi pohvale"               
+                  label="Bodovi pohvale"   
+                  clearable
+                  :rules="[rules.required,rules.bodoviPohvaleX]"
+                  input type="number"  onkeydown="javascript: if(event.keyCode == 69) {return false} else 
+                  {
+                   if(event.keyCode == 107) {return false}
+                    else {
+                   if(event.keyCode == 190) {return false}
+                    else {
+                   if(event.keyCode == 109) {return false}
+                    else  {
+                   if(event.keyCode == 187) {return false}
+                    else  {
+                   if(event.keyCode == 189) {return false}
+                   else
+                     {return true} } } } } }"                                       
+                                    
                   ></v-text-field>
               </v-flex>
               </v-flex>
@@ -65,6 +82,7 @@
                 <v-text-field
                   color="navbarcolor"
                  v-model="editedKazne.opis"
+                 clearable
                   label="Opis kazne"               
                   ></v-text-field>
               </v-flex>
@@ -74,8 +92,24 @@
               <v-flex xs8 md5 class="ml-1" >
                 <v-text-field
                   color="navbarcolor"
+                  clearable
                  v-model="editedKazne.bodoviKazne"
-                  label="Bodovi kazne"               
+                  label="Bodovi kazne"   
+                  :rules="[rules.required,rules.bodoviKazneX]"
+                  input type="number"  onkeydown="javascript: if(event.keyCode == 69) {return false} else 
+                  {
+                   if(event.keyCode == 107) {return false}
+                    else {
+                   if(event.keyCode == 190) {return false}
+                    else {
+                   if(event.keyCode == 109) {return false}
+                    else  {
+                   if(event.keyCode == 187) {return false}
+                    else  {
+                   if(event.keyCode == 189) {return false}
+                   else
+                     {return true} } } } } }"                                       
+                                    
                   ></v-text-field>
               </v-flex>
               </v-flex>
@@ -104,6 +138,7 @@
               <v-flex xs8 md8 class="ml-1" >
                 <v-text-field
                   color="navbarcolor"
+                  clearable
                  v-model="editedKazne.opis"
                   label="Opis kazne"               
                   ></v-text-field>
@@ -114,8 +149,24 @@
               <v-flex xs8 md5 class="ml-1" >
                 <v-text-field
                   color="navbarcolor"
+                  clearable
                  v-model="editedKazne.bodoviKazne"
-                  label="Bodovi kazne"               
+                  label="Bodovi kazne"    
+                  :rules="[rules.required,rules.bodoviKazneX]"
+                  input type="number"  onkeydown="javascript: if(event.keyCode == 69) {return false} else 
+                  {
+                   if(event.keyCode == 107) {return false}
+                    else {
+                   if(event.keyCode == 190) {return false}
+                    else {
+                   if(event.keyCode == 109) {return false}
+                    else  {
+                   if(event.keyCode == 187) {return false}
+                    else  {
+                   if(event.keyCode == 189) {return false}
+                   else
+                     {return true} } } } } }"                                       
+                                   
                   ></v-text-field>
               </v-flex>
               </v-flex>
@@ -145,6 +196,7 @@
               <v-flex xs8 md8 class="ml-1" >
                 <v-text-field
                   color="navbarcolor"
+                  clearable
                  v-model="editedPohvale.opis"
                   label="Opis pohvale"               
                   ></v-text-field>
@@ -156,7 +208,23 @@
                 <v-text-field
                   color="navbarcolor"
                  v-model="editedPohvale.bodoviPohvale"
-                  label="Bodovi pohvale"               
+                  label="Bodovi pohvale"  
+                  clearable
+                  :rules="[rules.required,rules.bodoviPohvaleX]"
+                  input type="number"  onkeydown="javascript: if(event.keyCode == 69) {return false} else 
+                  {
+                   if(event.keyCode == 107) {return false}
+                    else {
+                   if(event.keyCode == 190) {return false}
+                    else {
+                   if(event.keyCode == 109) {return false}
+                    else  {
+                   if(event.keyCode == 187) {return false}
+                    else  {
+                   if(event.keyCode == 189) {return false}
+                   else
+                     {return true} } } } } }"                                       
+                                     
                   ></v-text-field>
               </v-flex>
               </v-flex>
@@ -192,6 +260,7 @@
                       v-model="editedItem.ime"
                         label="Ime" 
                         required
+                        clearable
                         :rules="[rules.required]"
                         ></v-text-field>
                           </v-flex>
@@ -219,6 +288,7 @@
               <v-flex xs8 md5 class="ml-1" >
                 <v-text-field
                   color="navbarcolor"
+                  clearable
                  v-model="editedItem.prezime"
                   label="Prezime"
                    required
@@ -237,6 +307,7 @@
                   v-model="editedItem.jmbg"
                   label="jmbg"
                   required
+                  clearable
                   loading
                   input type="number" onkeydown="javascript: if(event.keyCode == 69) {return false} else 
                   {
@@ -273,6 +344,7 @@
                  v-model="editedItem.adresa"
                   label="Adresa prebivališta" 
                   required
+                  clearable
                    :rules="[rules.required]"
                   ></v-text-field>
               </v-flex>
@@ -596,6 +668,7 @@
                  <v-flex xs2 class="mt-2" >
                    
                 <v-text-field
+                clearable
                   color="navbarcolor"
                  v-model="editedItem.prethodniUspeh"                 
                    label="br"
@@ -624,6 +697,7 @@
               <v-flex xs8 md5 class="ml-1" >
                 <v-text-field
                   color="navbarcolor"
+                  clearable
                v-model="editedItem.telefon.mobilni"                 
                    label="Mobilni telefon"
 
@@ -634,6 +708,7 @@
                   <v-flex offset-sm1 xs12>
               <v-flex xs8 md5 class="ml-1" >
                 <v-text-field
+                clearable
                   color="navbarcolor"
                v-model="editedItem.telefon.kucni"                
                    label="Kućni telefon" 
@@ -659,6 +734,7 @@
               <v-flex xs8 md5 class="ml-1" >
                 <v-text-field
                   color="navbarcolor"
+                  clearable
                     v-model="editedItem.roditelji[1].ime"                
                    label="Ime majke"   
                       required
@@ -675,6 +751,7 @@
                     required
                     :rules="[rules.required]"              
                    label="Prezime majke" 
+                   clearable
                   ></v-text-field>
               </v-flex>
               </v-flex>
@@ -705,6 +782,7 @@
               <v-flex xs8 md5 class="ml-1" >
                 <v-text-field
                   color="navbarcolor"
+                  clearable
                   v-model="editedItem.roditelji[1].brojTelefona" 
                     required
                     :rules="[rules.required]"               
@@ -719,6 +797,7 @@
                   color="navbarcolor"
                v-model="editedItem.roditelji[0].ime" 
                     required
+                    clearable
                     :rules="[rules.required]"               
                    label="Ime oca" 
                   ></v-text-field>
@@ -729,6 +808,7 @@
               <v-flex xs8 md5 class="ml-1" >
                 <v-text-field
                   color="navbarcolor"
+                  clearable
                        v-model="editedItem.roditelji[0].prezime"                
                    label="Prezime oca"  
                       required
@@ -764,6 +844,7 @@
               <v-flex xs8 md5 class="ml-1" >
                 <v-text-field
                   color="navbarcolor"
+                  clearable
                    v-model="editedItem.roditelji[0].brojTelefona" 
                     required
                     :rules="[rules.required]"               
@@ -801,7 +882,7 @@
                 <v-text-field
                   color="navbarcolor"
                    v-model="editedItem.staratelji.ime" 
-                              
+                              clearable
                    label="Ime staratelja"   
                   ></v-text-field>
               </v-flex>
@@ -814,7 +895,7 @@
                 <v-text-field
                   color="navbarcolor"
                    v-model="editedItem.staratelji.prezime" 
-                       
+                       clearable
                    label="Prezime staratelja"   
                   ></v-text-field>
                  
@@ -836,9 +917,11 @@
               <v-flex xs2 md2  >
                 <v-text-field
                   color="navbarcolor"
+                  clearable
                   v-model="editedItem.materijalniPrihodi"
                   label="Materijalni prihodi"
-
+                  required
+                   :rules="[rules.required,rules.materijalniPrihodiX]"
                   input type="number"  onkeydown="javascript: if(event.keyCode == 69) {return false} else 
                   {
                    if(event.keyCode == 107) {return false}
@@ -951,8 +1034,9 @@
               </v-flex>
               <v-card-actions>
                 
-  <v-btn @click="IzmeniUcenika">
+  <v-btn @click="IzmeniUcenika"     :disabled="!formIsValid">
     Izmeni
+    
   </v-btn>
 </v-card-actions>
             </v-card>
@@ -994,7 +1078,19 @@ import moment from 'moment'
            uspehX: (value) => {
             const pattern = /^([1-4](\.\d+){1}|5(\.0+)?)$/
             return pattern.test(value) || 'Uspeh mora biti u formatu B.BB (B - broj).'
-          }
+          },
+          materijalniPrihodiX: (value) => {
+            const pattern = /^[1-5]$/
+            return pattern.test(value) || 'Materijalni prihodi moraju biti brojevi od 1-5'
+          },
+            bodoviPohvaleX: (value) => {
+            const pattern = /^[1-5]$/
+            return pattern.test(value) || 'Bodovi pohvale moraju biti brojevi od 1-5'
+          },
+            bodoviKazneX: (value) => {
+            const pattern = /^[1-5]$/
+            return pattern.test(value) || 'Bodovi kazne moraju biti brojevi od 1-5'
+          },
         },
       // pomocna promenljiva za generisanje podatka o datumu rodjenja
       datum: null,
@@ -1067,7 +1163,8 @@ import moment from 'moment'
         return ['error', 'warning', 'success','error'][Math.floor(this.progress / 34)]
       },
       // metoda koja vodi racuna o tome da se ne moze prijaviti editedItem koji nije ispunio sve neophodne podatke prilikom prijave ili izmene podataka
-      formIsValid () {      
+      formIsValid () {
+       
         if( this.editedItem.ime !== '' &&
           this.editedItem.prezime!== '' &&         
           this.editedItem.jmbg !== '' &&
@@ -1084,6 +1181,7 @@ import moment from 'moment'
           this.editedItem.prethodnaSkola.id !== '' &&
           this.editedItem.upisanaSkola.id !== '' &&
           this.editedItem.razred.id !== '' &&
+          this.editedItem.prethodniUspeh !== '' &&
           this.editedItem.roditelji[0].ime !== '' &&
           this.editedItem.roditelji[0].prezime !== '' &&
           this.editedItem.roditelji[0].stepenObrazovanjaId !== '' &&
@@ -1092,7 +1190,10 @@ import moment from 'moment'
           this.editedItem.roditelji[1].prezime !== '' &&
           this.editedItem.roditelji[1].stepenObrazovanjaId !== '' &&
           this.editedItem.roditelji[1].brojTelefona !== '' &&
-          this.datum !== null
+          this.editedItem.prethodniUspeh !== '' &&
+            this.editedItem.materijalniPrihodi !== '' &&
+         (this.editedItem.dan !== '' ||  this.datum !== null)
+          
           )
           {
             return true
@@ -1101,7 +1202,7 @@ import moment from 'moment'
             return false
           }
          
-      }, 
+      },
        VaspitneGrupe () {
         return this.$store.getters.loadedVaspitneGrupe
       },

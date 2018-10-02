@@ -30,6 +30,7 @@
 
         <v-flex xs3 class="mb-2 mr-3">
         <v-text-field
+       
         v-model="search"
         append-icon="search"
         label="Pretraga"
@@ -53,7 +54,7 @@
       class="elevation-1"    
      >
       <template slot="items" slot-scope="props" >
-        <tr  >
+        <tr >
         <td class="text-xs-left priority-1" >{{ props.item.id}}</td>
         <td class="text-xs-left priority-1">{{ props.item.ime }}</td>
         <td class="text-xs-left priority-1">{{ props.item.prezime }}</td>
@@ -124,21 +125,6 @@ import moment from 'moment'
         { text: 'Škola', value: 'upisanaSkola.nazivSrednjeSkole',align: 'left',sortable:true ,width:'100%',class: 'priority-5'},
         { text: 'Opcije', value: 'opcije',align: 'center',sortable:false,width:'100%' }
       ],
-      // rules su pravila popunjavanja polja za unos
-           rules: {
-      // requiered pravilo je pravilo za neophodnost postojanja informacije koja se trazi na odgovarajucem polju sa opcijom requiered
-          required: (value) => !!value || 'Ovo polje je obavezno.',
-      // jmbg pravilo sluzi za pravilo duzine od tacno 13 cifara
-          jmbg: (value) => {
-            const pattern = /^(\w{13,13})$/ 
-            return pattern.test(value) || 'Jmbg mora biti dugacak 13 cifara.'
-          },
-      // uspehX pravilo sluzi za krieranje formata unosa u zeljenom opsegu i obliku
-           uspehX: (value) => {
-            const pattern = /^([1-4](\.\d+){1}|5(\.0+)?)$/
-            return pattern.test(value) || 'Uspeh mora biti u formatu B.BB (B - broj).'
-          }
-        },
       // pomocna promenljiva za generisanje podatka o datumu rodjenja
       datum: null,
       search: '',
@@ -366,45 +352,7 @@ import moment from 'moment'
       
         return ['error', 'warning', 'success','error'][Math.floor(this.progress / 34)]
       },
-      // metoda koja vodi racuna o tome da se ne moze prijaviti ucenik koji nije ispunio sve neophodne podatke prilikom prijave ili izmene podataka
-      formIsValid () {
-       
-        if( this.editedItem.ime !== '' &&
-          this.editedItem.prezime!== '' &&         
-          this.editedItem.jmbg !== '' &&
-          this.editedItem.jmbg.length === 13 &&
-          this.editedItem.pol.id !== '' &&
-          this.editedItem.drzavaRodjenja.id !== '' &&
-          this.editedItem.opstinaPrebivalista.id !== '' &&
-          this.editedItem.opstina.id !== '' &&
-          this.editedItem.postanskiBroj.id !== '' &&
-          this.editedItem.mestoRodjenja.id !== '' &&
-          this.editedItem.mestoPrebivalista.id !== '' &&
-          this.editedItem.mestoZavrseneSkole.id !== '' &&
-          this.editedItem.smer.id !== '' &&
-          this.editedItem.prethodnaSkola.id !== '' &&
-          this.editedItem.upisanaSkola.id !== '' &&
-          this.editedItem.razred.id !== '' &&
-          this.editedItem.prethodniUspeh !== '' &&
-          this.editedItem.roditelji[0].ime !== '' &&
-          this.editedItem.roditelji[0].prezime !== '' &&
-          this.editedItem.roditelji[0].stepenObrazovanjaId !== '' &&
-          this.editedItem.roditelji[0].brojTelefona !== '' &&
-          this.editedItem.roditelji[1].ime !== '' &&
-          this.editedItem.roditelji[1].prezime !== '' &&
-          this.editedItem.roditelji[1].stepenObrazovanjaId !== '' &&
-          this.editedItem.roditelji[1].brojTelefona !== '' &&
-         (this.editedItem.dan !== '' ||  this.datum !== null)
-          
-          )
-          {
-            return true
-            }
-          else{
-            return false
-          }
-         
-      }, 
+      // metoda koja vodi racuna o tome da se ne moze prijaviti ucenik koji nije ispunio sve neophodne podatke prilikom prijave ili izmene podataka 
       TipoviPorodice () {
         return this.$store.getters.loadedTipoviPorodice
       },
