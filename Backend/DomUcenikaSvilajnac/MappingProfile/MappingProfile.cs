@@ -519,8 +519,6 @@ namespace DomUcenikaSvilajnac.Mapping
             // mapira StatusPrijaveResource u StatusPrijave
             CreateMap<StatusPrijaveResource, StatusPrijave>();
 
-
-
         }
     }
 }

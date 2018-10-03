@@ -213,5 +213,16 @@ namespace DomUcenikaSvilajnac.IntegratedTests
                 BrojUcenika = 20
             };
         }
+
+        public Sastanak sastanak()
+        {
+            return new Sastanak
+            {
+                Id = 1,
+                BrojPrisutnihUcenika = 2,
+                UkupanBrojPrisutnihUcenika = 2,
+                VaspitnaGrupaId = 1
+            };
+        }
     }
 }

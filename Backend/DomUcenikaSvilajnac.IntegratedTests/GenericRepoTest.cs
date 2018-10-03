@@ -661,7 +661,7 @@ namespace DomUcenikaSvilajnac.IntegratedTests
         /// <summary>
         /// Test proverava metodu remove, proverava se da li je baza osatala prazna nakon brisanja vaspitaca.
         /// </summary>
-        [Fact] //DOBAR TEST
+        [Fact] 
         public void RemoveVaspitaca_ProveraBazeNakonBrisanjaVaspitaca_ReturnsTrue()
         {
             Mapper.Reset();
@@ -765,5 +765,36 @@ namespace DomUcenikaSvilajnac.IntegratedTests
             Assert.Equal(Convert.ToDecimal(4.5), Convert.ToDecimal(rezultat.Result.Select(n => n.UspehVaspitneGrupe).SingleOrDefault()));
         }
 
+        [Fact]
+        public void posecenost()
+        {
+            Mapper.Reset();
+            var options = new DbContextOptionsBuilder<UcenikContext>().UseInMemoryDatabase(Guid.NewGuid().ToString()).EnableSensitiveDataLogging().Options;
+            var context = new UcenikContext(options);
+
+
+            Mapper.Initialize(m => m.AddProfile<MappingProfile>());
+            Mapper.AssertConfigurationIsValid();
+
+            var config = new MapperConfiguration(cfg => cfg.CreateMap<Vaspitac, VaspitacResource>());
+            var mapper = config.CreateMapper();
+
+            List<Ucenik> ucenici = new List<Ucenik>()
+            {
+                data.Ucenik2(),
+                new Ucenik() {Id = 2,            
+                VaspitnaGrupaId =1}
+            };
+
+            IUnitOfWork unitOfWork = new UnitOfWork(context, mapper);
+            unitOfWork.Ucenici.AddRange(ucenici);
+            unitOfWork.VaspitneGrupe.Add(data.vaspitnaGrupa());
+            unitOfWork.Sastanci.Add(data.sastanak());
+            unitOfWork.Statistike.Add(data.statistika());
+            unitOfWork.SaveChangesAsync();
+
+            var rezultat = unitOfWork.Statistike.posecenostSastanaka();
+            Assert.Equal("100%" ,Convert.ToString((rezultat.Result.Select(n => n.Posecenost).SingleOrDefault())));
+        }
     }
 }
