@@ -794,7 +794,7 @@ namespace DomUcenikaSvilajnac.IntegratedTests
             unitOfWork.SaveChangesAsync();
 
             var rezultat = unitOfWork.Statistike.posecenostSastanaka();
-            Assert.Equal("100%" ,Convert.ToString((rezultat.Result.Select(n => n.Posecenost).SingleOrDefault())));
+            Assert.Equal("100%", Convert.ToString((rezultat.Result.Select(n => n.Posecenost).SingleOrDefault())));
         }
     }
 }

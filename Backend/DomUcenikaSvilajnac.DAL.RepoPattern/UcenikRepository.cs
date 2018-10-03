@@ -82,7 +82,10 @@ namespace DomUcenikaSvilajnac.DAL.RepoPattern
 
 
             foreach (var ucenik in podaciUcenika)
-                ucenik.BodoviZaUpis = formulaZaRangiranje(ucenik.Id);
+                if (ucenik.StatusPrijaveId == 1)
+                    ucenik.BodoviZaUpis = formulaZaRangiranje(ucenik.Id);
+                else
+                    ucenik.BodoviZaUpis = 0;
 
 
             _context.UpdateRange(podaciUcenika);
