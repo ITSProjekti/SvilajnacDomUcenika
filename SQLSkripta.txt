@@ -35,4 +35,10 @@ create table Naselja (
 	Id int not null identity(1,1) primary key,
 	NazivNaselja varchar(100)
 
+
+)
+
+create table Drzave(
+	Id int primary key identity,
+	NazivDrzave nvarchar(100)
 )
