@@ -35,6 +35,10 @@ namespace DomUcenikaSvilajnac.Controllers
             var statusiPrijave = await UnitOfWork.StatusiPrijave.GetAllAsync();
             return Mapper.Map<List<StatusPrijave>, List<StatusPrijaveResource>>(statusiPrijave.ToList());
         }
+
+        /// <summary>
+        /// Vraca jedan red iz tabele tj. jednu statistiku na osnovu prosledjenog Id-a
+        /// </summary>
         [HttpGet("{id}")]
         public async Task<IActionResult> GetStatusPrijaveById([FromRoute] int id)
         {
@@ -53,6 +57,10 @@ namespace DomUcenikaSvilajnac.Controllers
             return Ok(noviStatusPrijave);
         }
 
+        /// <summary>
+        /// Metoda za update, menja podatke u nekom redu u tabeli, tj. o nekom statusuPrijave na osnovu prosledjenog Id-a 
+        /// i vraca podatke o statusuPrijave koji su namenjeni za front.
+        /// </summary>
         [HttpPut("{id}")]
         public async Task<IActionResult> PutStatusPrijave([FromRoute] int id, [FromBody] StatusPrijaveResource statusPrijave)
         {
@@ -79,6 +87,10 @@ namespace DomUcenikaSvilajnac.Controllers
 
             return Ok(noviStatusPrijave);
         }
+
+        /// <summary>
+        /// Dodavanje novog reda u tabeli, tj. novog statusaPrijave.
+        /// </summary>
         [HttpPost]
         public async Task<IActionResult> PostStatusPrijave([FromBody] StatusPrijaveResource statusPrijave)
         {
@@ -95,6 +107,10 @@ namespace DomUcenikaSvilajnac.Controllers
 
             return Ok(statusPrijave);
         }
+
+        /// <summary>
+        /// Brisanje jednog reda iz tabele na osnvou prosledjenog Id-a, tj. brisanje odredjenog statusaPrijave iz tabele.
+        /// </summary>
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteStatusPrijave([FromRoute] int id)
         {

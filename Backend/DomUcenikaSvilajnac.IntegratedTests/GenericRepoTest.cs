@@ -695,6 +695,10 @@ namespace DomUcenikaSvilajnac.IntegratedTests
                 Assert.True(listaVaspitacaNakonBrisanja.Count == 1);
         }
 
+        /// <summary>
+        /// Test proverava metodu sumaBodovaPohvale, odnosno da li je rezultat funkcije bodoviPohvalaUcenikaPoGrupama tacno vratio sumu pohvala
+        ///ucenika u vaspitnoj grupi
+        /// </summary>
         [Fact]
         public void sumaBodovaPohvale()
         {
@@ -730,6 +734,10 @@ namespace DomUcenikaSvilajnac.IntegratedTests
             Assert.Equal(11, Convert.ToDecimal( rezultat.Result.Select(n=> n.BodoviPohvalaGrupa).SingleOrDefault()));
         }
 
+        /// <summary>
+        /// Test proverava metodu sumaBodovaKazne, odnosno da li je rezultat funkcije bodoviPohvalaUcenikaPoGrupama tacno vratio sumu kazni
+        ///ucenika u vaspitnoj grupi
+        /// </summary>
         [Fact]
         public void sumaBodovaKazne()
         {
@@ -765,6 +773,9 @@ namespace DomUcenikaSvilajnac.IntegratedTests
             Assert.Equal(Convert.ToDecimal(4.5), Convert.ToDecimal(rezultat.Result.Select(n => n.UspehVaspitneGrupe).SingleOrDefault()));
         }
 
+        /// <summary>
+        /// Test proverava metodu posecenost, odnosno posecenost sastanka po vaspitnoj grupi
+        /// </summary>
         [Fact]
         public void posecenost()
         {
