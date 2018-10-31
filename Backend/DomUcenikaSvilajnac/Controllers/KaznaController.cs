@@ -69,10 +69,12 @@ namespace DomUcenikaSvilajnac.Controllers
 
 
             kazna.Id = id;
+            kazna.VremeUpisa = DateTime.Now;
             Mapper.Map<KaznaResource, Kazna>(kazna, staraKazna);
             await UnitOfWork.SaveChangesAsync();
 
             var novaKazna = await UnitOfWork.Kazne.GetAsync(id);
+            
             Mapper.Map<Kazna, KaznaResource>(novaKazna);
             return Ok(kazna);
         }
@@ -88,6 +90,7 @@ namespace DomUcenikaSvilajnac.Controllers
                 return BadRequest(ModelState);
             }
             var novaKazna = Mapper.Map<KaznaResource, Kazna>(kazna);
+            novaKazna.VremeUpisa = DateTime.Now;
 
             UnitOfWork.Kazne.Add(novaKazna);
             await UnitOfWork.SaveChangesAsync();

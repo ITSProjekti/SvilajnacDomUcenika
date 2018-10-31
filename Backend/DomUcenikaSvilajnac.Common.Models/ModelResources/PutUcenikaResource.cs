@@ -54,5 +54,8 @@ namespace DomUcenikaSvilajnac.Common.Models.ModelResources
         public int MaterijalniPrihodi { get; set; }
 
         public VaspitnaGrupaResource VaspitnaGrupa { get; set; }
+
+        public StatusPrijaveResource StatusPrijave { get; set; }
+        public int BrojPutaUDomu { get; set; }
     }
 }

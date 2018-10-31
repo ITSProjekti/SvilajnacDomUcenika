@@ -35,8 +35,6 @@ namespace DomUcenikaSvilajnac.IntegratedTests
         TipPorodiceResource tp = new TipPorodiceResource() { Id = 4 };
 
 
-
-
         Collection<Roditelj> roditelji = new Collection<Roditelj>() {
             new Roditelj (){ Ime = "Otac", Prezime = "Prezime"},
             new Roditelj () {Ime = "Majka", Prezime = "Prezime"}
@@ -97,7 +95,7 @@ namespace DomUcenikaSvilajnac.IntegratedTests
                 SmerId = 1,
                 RazredId = 1,
                 PrethodnaSkolaId = 1,
-                PrethodniUspeh = 4.55f,
+                PrethodniUspeh = 4,
                 Slika = "132312312321321",
                 Staratelji = new Collection<Staratelj>()
                 {
@@ -110,7 +108,8 @@ namespace DomUcenikaSvilajnac.IntegratedTests
                     }
                 },
                 MaterijalniPrihodi = 5,
-                TipPorodiceId = 3
+                TipPorodiceId = 3,
+                VaspitnaGrupaId =1
         };
             return ucenik;
         }
@@ -143,5 +142,87 @@ namespace DomUcenikaSvilajnac.IntegratedTests
             StrucnaSpremaOcaId = 6,
             UcenikId = 1
         };
+
+        public VaspitacResource vaspitac()
+        {
+            return new VaspitacResource
+            {
+                Id = 1,
+                Ime = "ImeVaspitaca",
+                Prezime = "PrezimeVaspitaca",
+                BrojTelefona = "1234567",
+                Slika = "101010101"
+            };
+        }
+
+        public Vaspitac vaspitac1()
+        {
+            return new Vaspitac
+            {
+                Id = 1,
+                Ime = "ImeVaspitaca",
+                Prezime = "PrezimeVaspitaca",
+                BrojTelefona = "1234567",
+                Slika = "101010101"
+            };
+        }
+        public Pohvala pohvala()
+        {
+            return new Pohvala
+            {
+                Id = 1,
+                UcenikId = 1,
+                VremeUpisa = DateTime.Now,
+                Opis = "Istici se",
+                BodoviPohvale = 5
+            };
+        }
+    
+
+        public Kazna kazna()
+        {
+            return new Kazna
+            {
+                Id = 1,
+                UcenikId = 1,
+                VremeUpisa = DateTime.Now,
+                Opis = "Izbacen sa casa",
+                BodoviKazne = 5
+            };
+        }
+
+        public Statistika statistika()
+        {
+            return new Statistika
+            {
+                Id = 1,
+                VaspitnaGrupaId = 1,
+                Posecenost = "0",
+                UspehVaspitneGrupe = 0,
+                BodoviPohvalaGrupa = 0
+            };
+        }
+
+        public VaspitnaGrupa vaspitnaGrupa()
+        {
+            return new VaspitnaGrupa
+            {
+                Id = 1,
+                VaspitacId = 1,
+                Naziv = "Test Grupa",
+                BrojUcenika = 20
+            };
+        }
+
+        public Sastanak sastanak()
+        {
+            return new Sastanak
+            {
+                Id = 1,
+                BrojPrisutnihUcenika = 2,
+                UkupanBrojPrisutnihUcenika = 2,
+                VaspitnaGrupaId = 1
+            };
+        }
     }
 }

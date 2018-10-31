@@ -17,5 +17,6 @@ namespace DomUcenikaSvilajnac.Common.Models
         public int UcenikId { get; set; }
         public int BodoviPohvale { get; set; }
         public Ucenik Ucenik { get; set; }
+        public DateTime VremeUpisa { get; set; }
     }
 }

@@ -41,6 +41,7 @@
     <Compile Remove="Migrations\20180914083723_VaspitnaGrupaUcenika.cs" />
     <Compile Remove="Migrations\20180914085332_KaznaUcenika.cs" />
     <Compile Remove="Migrations\20180917091956_VaspitacVaspitneGrupe.cs" />
+    <Compile Remove="Migrations\20181001090338_BioUDomuUcenik.cs" />
   </ItemGroup>
 
   <ItemGroup>

@@ -81,8 +81,6 @@ namespace DomUcenikaSvilajnac.DAL.RepoPattern
         }
         public async void updateUcenikaVaspitnaGrupaId(int IdObrisaneVaspitneGrupe)
         {
-
-
             var listaUcenikaIsteVaspitneGrupe = await _context.Uceniks.
             FromSql(
             $"select *  from dbo.Ucenici  where VaspitnaGrupaId = {IdObrisaneVaspitneGrupe}"
@@ -96,9 +94,9 @@ namespace DomUcenikaSvilajnac.DAL.RepoPattern
 
             _context.UpdateRange(listaUcenikaIsteVaspitneGrupe);
         }
+
          public async Task<VaspitnaGrupa> updateBrojaUcenikaUVaspitnojGrupi()
         {
-       
             //promenljiva u kojoj se smesta lista svih vaspitnih grupa
             var listaVaspitnihGrupa = await _context.VaspitneGrupe.
             FromSql(
@@ -132,5 +130,19 @@ namespace DomUcenikaSvilajnac.DAL.RepoPattern
             return vaspitnaGrupa;
         }
 
+        public async void updateSastanka(int ObrisanaGrupaId)
+        {
+            var sastanakObrisaneVaspitneGrupe = await _context.Sastanci.
+                FromSql(
+                $"select * from dbo.Sastanci where VaspitnaGrupaId = {ObrisanaGrupaId}"
+                ).ToListAsync();
+
+            sastanakObrisaneVaspitneGrupe.ForEach(v =>
+            {
+                v.VaspitnaGrupaId = 1;
+            });
+
+            _context.UpdateRange(sastanakObrisaneVaspitneGrupe);
+        }
     }
 }

@@ -21,5 +21,6 @@ namespace DomUcenikaSvilajnac.Common.Interfaces
         Task<PostUcenikaResource> mapiranjeZaPostUcenika(PostUcenikaResource ucenik);
         Task<UcenikResource> mapiranjeZaDeleteUcenika(UcenikResource ucenik);
         Task<PutUcenikaResource> mapiranjeZaPutUcenika(int id);
+        float formulaZaRangiranje(int idUcenika);
     }
 }

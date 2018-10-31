@@ -622,14 +622,52 @@ namespace DomUcenikaSvilajnac.UnitTests
             {
                 Id = 1,
                 BrojPrisutnihUcenika = 20,
-                UkupanBrojPrisutnihUcenika = 20,
-                Dan=10,
-                Mesec=2,
-                Godina=2015               
+                UkupanBrojPrisutnihUcenika = 20
 
             };
             var result = Mapper.Map<SastanakResource, Sastanak>(sastanakResurs);
             Assert.IsInstanceOfType(result, typeof(Sastanak));
+            AutoMapper.Mapper.Reset();
+        }
+
+
+        /// <summary>
+        /// Proveravanje mapiranja VaspitnaGrupaStatistikaResource u VaspitnaGrupa, da li je objekat nakon mapiranja ocekivanog tipa. 
+        /// </summary>
+        [TestMethod]
+        public void CreateMapMetode_ModelVaspitnaGrupaStatistikeResursUVaspitnaGrupaProveraTipa_ReturnsTrue()
+        {
+            Mapper.Initialize(m => m.AddProfile<MappingProfile>());
+            Mapper.AssertConfigurationIsValid();
+            VaspitnaGrupaStatistikeResource statistika = new VaspitnaGrupaStatistikeResource()
+            {
+               Id=1,
+               Naziv="statistika"
+
+            };
+            var result = Mapper.Map<VaspitnaGrupaStatistikeResource, VaspitnaGrupa>(statistika);
+            Assert.IsInstanceOfType(result, typeof(VaspitnaGrupa));
+            AutoMapper.Mapper.Reset();
+        }
+
+        /// <summary>
+        /// Proveravanje mapiranja StatistikaResource u Statistika, da li je objekat nakon mapiranja ocekivanog tipa. 
+        /// </summary>
+        [TestMethod]
+        public void CreateMapMetode_ModelStatistikaResursUStatistikaProveraTipa_ReturnsTrue()
+        {
+            Mapper.Initialize(m => m.AddProfile<MappingProfile>());
+            Mapper.AssertConfigurationIsValid();
+            StatistikaResource statistikaResurs = new StatistikaResource()
+            {
+               Id=1,
+               BodoviPohvalaGrupa=5,
+               Posecenost="30%",
+                UspehVaspitneGrupe = 4.5f
+
+            };
+            var result = Mapper.Map<StatistikaResource, Statistika>(statistikaResurs);
+            Assert.IsInstanceOfType(result, typeof(Statistika));
             AutoMapper.Mapper.Reset();
         }
     }

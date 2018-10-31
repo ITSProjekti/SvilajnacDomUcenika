@@ -1,5 +1,5 @@
 <template>
     <div>
-        <p>Kreiranje Ucenika strana</p>
+        <p>placeholder</p>
     </div>
 </template>

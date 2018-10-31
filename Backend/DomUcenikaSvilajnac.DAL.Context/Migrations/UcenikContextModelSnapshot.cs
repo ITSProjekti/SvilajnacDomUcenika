@@ -44,6 +44,8 @@ namespace DomUcenikaSvilajnac.DAL.Context.Migrations
 
                     b.Property<int>("UcenikId");
 
+                    b.Property<DateTime>("VremeUpisa");
+
                     b.HasKey("Id");
 
                     b.HasIndex("UcenikId");
@@ -86,6 +88,8 @@ namespace DomUcenikaSvilajnac.DAL.Context.Migrations
                     b.Property<string>("Opis");
 
                     b.Property<int>("UcenikId");
+
+                    b.Property<DateTime>("VremeUpisa");
 
                     b.HasKey("Id");
 
@@ -185,9 +189,15 @@ namespace DomUcenikaSvilajnac.DAL.Context.Migrations
 
                     b.Property<DateTime>("DatumOdrzavanja");
 
+                    b.Property<string>("OdlukeDoneseneNaSastanku");
+
+                    b.Property<string>("OpisDnevnogRada");
+
                     b.Property<int>("UkupanBrojPrisutnihUcenika");
 
                     b.Property<int>("VaspitnaGrupaId");
+
+                    b.Property<string>("ZakljucciSastanka");
 
                     b.HasKey("Id");
 
@@ -224,6 +234,38 @@ namespace DomUcenikaSvilajnac.DAL.Context.Migrations
                     b.HasIndex("UcenikId");
 
                     b.ToTable("Staratelji");
+                });
+
+            modelBuilder.Entity("DomUcenikaSvilajnac.Common.Models.Statistika", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<int>("BodoviPohvalaGrupa");
+
+                    b.Property<string>("Posecenost");
+
+                    b.Property<float>("UspehVaspitneGrupe");
+
+                    b.Property<int>("VaspitnaGrupaId");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("VaspitnaGrupaId");
+
+                    b.ToTable("Statistike");
+                });
+
+            modelBuilder.Entity("DomUcenikaSvilajnac.Common.Models.StatusPrijave", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<string>("Status");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("StatusiPrijave");
                 });
 
             modelBuilder.Entity("DomUcenikaSvilajnac.Common.Models.StepenStrucneSpreme", b =>
@@ -276,6 +318,10 @@ namespace DomUcenikaSvilajnac.DAL.Context.Migrations
                     b.Property<string>("Adresa")
                         .HasColumnType("NVARCHAR(MAX)");
 
+                    b.Property<float>("BodoviZaUpis");
+
+                    b.Property<int>("BrojPutaUDomu");
+
                     b.Property<DateTime>("DatumRodjenja");
 
                     b.Property<int>("DrzavaRodjenjaId");
@@ -320,6 +366,8 @@ namespace DomUcenikaSvilajnac.DAL.Context.Migrations
 
                     b.Property<int>("SmerId");
 
+                    b.Property<int>("StatusPrijaveId");
+
                     b.Property<int>("TelefonId");
 
                     b.Property<int>("TipPorodiceId");
@@ -353,6 +401,8 @@ namespace DomUcenikaSvilajnac.DAL.Context.Migrations
                     b.HasIndex("RazredId");
 
                     b.HasIndex("SmerId");
+
+                    b.HasIndex("StatusPrijaveId");
 
                     b.HasIndex("TelefonId");
 
@@ -479,6 +529,14 @@ namespace DomUcenikaSvilajnac.DAL.Context.Migrations
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 
+            modelBuilder.Entity("DomUcenikaSvilajnac.Common.Models.Statistika", b =>
+                {
+                    b.HasOne("DomUcenikaSvilajnac.Common.Models.VaspitnaGrupa", "VaspitnaGrupa")
+                        .WithMany()
+                        .HasForeignKey("VaspitnaGrupaId")
+                        .OnDelete(DeleteBehavior.Cascade);
+                });
+
             modelBuilder.Entity("DomUcenikaSvilajnac.Common.Models.Ucenik", b =>
                 {
                     b.HasOne("DomUcenikaSvilajnac.Common.Models.Drzava", "DrzavaRodjenja")
@@ -529,6 +587,11 @@ namespace DomUcenikaSvilajnac.DAL.Context.Migrations
                     b.HasOne("DomUcenikaSvilajnac.Common.Models.Smer", "Smer")
                         .WithMany()
                         .HasForeignKey("SmerId")
+                        .OnDelete(DeleteBehavior.Cascade);
+
+                    b.HasOne("DomUcenikaSvilajnac.Common.Models.StatusPrijave", "StatusPrijave")
+                        .WithMany()
+                        .HasForeignKey("StatusPrijaveId")
                         .OnDelete(DeleteBehavior.Cascade);
 
                     b.HasOne("DomUcenikaSvilajnac.Common.Models.Telefon", "Telefon")

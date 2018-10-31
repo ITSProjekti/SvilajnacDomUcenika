@@ -18,5 +18,9 @@ namespace DomUcenikaSvilajnac.Common.Interfaces
         Task<SastanakResource> mapiranjeZaPostSastanka(SastanakResource sastanak);
         Task<SastanakResource> mapiranjeZaPutSastanka(int id);
         Task<SastanakResource> mapiranjeZaDeleteSastanka(SastanakResource sastanak);
+        int brojUcenikaNaSastanku(int IdVaspitneGrupe);
+
+
+
     }
 }

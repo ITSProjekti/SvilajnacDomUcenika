@@ -13,7 +13,6 @@ namespace DomUcenikaSvilajnac.Common.Models.ModelResources
         public int Id { get; set; }
         public string Naziv { get; set; }
         public VaspitacResource Vaspitac { get; set; }
-
         public int BrojUcenika { get; set; }
 
     }

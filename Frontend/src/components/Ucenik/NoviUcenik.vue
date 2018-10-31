@@ -3,7 +3,7 @@
     <v-layout row>
         <v-flex xs12  >
           <transition name="slidetoleft" appear>
-            <h1> Prijava novog učenika</h1>
+            <h1> Novi učenik - Prijava za upis učenika u dom</h1>
           </transition>
         </v-flex>
     </v-layout>
@@ -22,33 +22,41 @@
               </v-flex>
               </v-card-title>
 
-              <template>
-                 <v-container fluid>
-                    <v-layout row wrap>
-                    <v-flex offset-sm1  xs12 sm5 class="mt-4 ">
-                        <v-text-field
-                      v-model="editedItem.ime"
-                        label="Ime" 
-                        required
-                        :rules="[rules.required]"
-                        ></v-text-field>
-                          </v-flex>
-                           <v-flex xs12 sm3 offset-sm1 class="mt-4">
-                            
-                             <v-card>
-           <v-card-text>
+  <v-flex xs6 class="px-5 ml-4">
+                 <v-card class="px-5">
+                <v-card-text>
                           <input type="file" id="file" ref="file" accept="image/*" v-on:change="handleFileUpload()"/>
                   <transition name="fade" appear  mode="in-out">
                         <img v-bind:src="imagePreview" class="responsive" v-show="showPreview"/>
                          </transition>
                        <!-- <button v-show="this.file!==''" v-on:click="ClearPicture()">Reset</button> -->
-                        <v-btn dark left  class="blue-grey darken" small
+                       <v-card-actions>
+                        <v-btn dark left class="navbarcolor"  small
                         v-show="this.file!==''" v-on:click="ClearPicture()"
                         >
-                            Hello
+                            Resetuj
                         </v-btn>
+                        </v-card-actions>
                   </v-card-text>
                     </v-card>
+</v-flex>
+              <template>
+                 <v-container fluid>
+                    <v-layout row wrap>
+                    <v-flex offset-sm1  xs12 sm5 class="mt-4 ">
+                        <v-text-field
+                        color="navbarcolor"
+                      v-model="editedItem.ime"
+                        label="Ime" 
+                        required                 
+                        clearable
+                       
+                        :rules="[rules.required]"
+                        ></v-text-field>
+                          </v-flex>
+                           <v-flex xs12 sm3 offset-sm1 class="mt-4">
+                            
+            
                             
                             </v-flex>
                           </v-layout>
@@ -63,9 +71,11 @@
             <v-flex offset-sm1 xs12>
               <v-flex xs8 md5  >
                 <v-text-field
+                  color="navbarcolor"
                  v-model="editedItem.prezime"
                   label="Prezime"
                    required
+                   clearable
                    :rules="[rules.required]"
                    ></v-text-field>
               </v-flex>
@@ -79,7 +89,9 @@
                 <v-text-field
                   v-model="editedItem.jmbg"
                   label="jmbg"
+                    color="navbarcolor"
                   required
+                  clearable
                   progress
                   input type="number"  onkeydown="javascript: if(event.keyCode == 69) {return false} else 
                   {
@@ -114,8 +126,10 @@
                    <v-flex xs8 md5  >
                 <v-text-field
                  v-model="editedItem.adresa"
+                   color="navbarcolor"
                   label="Adresa prebivališta" 
                   required
+                  clearable
                    :rules="[rules.required]"
                   ></v-text-field>
               </v-flex>
@@ -134,6 +148,7 @@
                     </v-flex>
                            <v-flex xs12 sm3>
                                <v-select
+                                 color="navbarcolor"
                                 :loading="loading"
                                 :items="drzave"
                                 v-model="editedItem.drzavaRodjenja.id"
@@ -158,6 +173,7 @@
                                <v-select
                                 :loading="loading"
                                 :items="polovi"
+                                  color="navbarcolor"
                                 v-model="editedItem.pol.id"
                                  item-text="nazivPola"
                                  item-value="id"
@@ -178,6 +194,7 @@
                     </v-flex>
                            <v-flex xs12 sm4>
                                <v-select
+                                 color="navbarcolor"
                                 :loading="loading"
                                 :items="opstine"
                                 v-model="editedItem.opstina.id"
@@ -200,6 +217,7 @@
                     </v-flex>
                            <v-flex xs12 sm5>
                                <v-select
+                                 color="navbarcolor"
                                 :loading="loading"
                                 :items="opstine"
                                 v-model="editedItem.opstinaPrebivalista.id"
@@ -223,6 +241,7 @@
                     </v-flex>
                            <v-flex xs12 sm5>
                                <v-select
+                                 color="navbarcolor"
                                 :loading="loading"
                                 :items="brojevi.postanskiBrojevi"
                                 v-model="editedItem.postanskiBroj.id"
@@ -245,6 +264,7 @@
                     </v-flex>
                            <v-flex xs12 sm4>
                                <v-select
+                                 color="navbarcolor"
                                 :loading="loading"
                                 :items="mesta"
                                 v-model="editedItem.mestoRodjenja.id"
@@ -265,6 +285,7 @@
                     </v-flex>
                            <v-flex xs12 sm4>
                                <v-select
+                                 color="navbarcolor"
                                 :loading="loading"
                                 :items="mesta"
                                 v-model="editedItem.mestoPrebivalista.id"
@@ -286,6 +307,7 @@
                       </v-flex>  
                       <v-flex xs12 sm6>         
                             <v-date-picker
+                      color="navbarcolor"
                             v-model="datum"
                             locale="sr-Latn"
                             ></v-date-picker>
@@ -307,6 +329,7 @@
                               </v-flex>
                                     <v-flex xs12 sm4>
                                         <v-select
+                                          color="navbarcolor"
                                           :loading="loading"
                                           :items="osnovneSkole"
                                           v-model="editedItem.prethodnaSkola.id"
@@ -329,6 +352,7 @@
                                <v-select
                                 :loading="loading"
                                 :items="mesta"
+                                  color="navbarcolor"
                                 v-model="editedItem.mestoZavrseneSkole.id"
                                 label="Izaberite mesto prethodno završene škole"
                                 item-text="nazivMesta"
@@ -347,6 +371,7 @@
                     </v-flex>
                            <v-flex xs12 sm6>
                                <v-select
+                                 color="navbarcolor"
                                 :loading="loading"
                                 :items="srednjeSkole"
                                 v-model="editedItem.upisanaSkola.id"
@@ -367,6 +392,7 @@
                     </v-flex>
                            <v-flex xs12 sm5>
                                <v-select
+                                 color="navbarcolor"
                                 :loading="loading"
                                 :items="smerovi"
                                 v-model="editedItem.smer.id"
@@ -387,6 +413,7 @@
                     </v-flex>
                            <v-flex xs12 sm2>
                                <v-select
+                                 color="navbarcolor"
                             :loading="loading"
                                 :items="razredi"
                                 v-model="editedItem.razred.id"
@@ -409,9 +436,10 @@
                 <v-flex xs2 class="mt-2" >
                    
                 <v-text-field
+                  color="navbarcolor"
                v-model="editedItem.prethodniUspeh"                 
                    label="br"
-                  
+                  clearable
                     input type="number" step=0.01     onkeydown="javascript: if(event.keyCode == 69) {return false} else 
                   {
                    if(event.keyCode == 107) {return false}
@@ -436,9 +464,10 @@
         <v-flex offset-sm1 xs12>
               <v-flex xs8 md5 class="ml-1" >
                 <v-text-field
+                  color="navbarcolor"
                v-model="editedItem.telefon.mobilni"                 
                    label="Mobilni telefon"
-
+                clearable
                   ></v-text-field>
               </v-flex>
               </v-flex>
@@ -446,9 +475,10 @@
                   <v-flex offset-sm1 xs12>
               <v-flex xs8 md5 class="ml-1" >
                 <v-text-field
+                  color="navbarcolor"
                v-model="editedItem.telefon.kucni"                
                    label="Kućni telefon" 
-
+            clearable
                   ></v-text-field>
               </v-flex>
               </v-flex>
@@ -486,9 +516,11 @@
             <v-flex offset-sm1 xs12>
               <v-flex xs8 md5 class="ml-1" >
                 <v-text-field
+                 color="navbarcolor"
                     v-model="editedItem.roditelji[1].ime"                
                    label="Ime majke"   
                       required
+                      clearable
                       :rules="[rules.required]" 
                   ></v-text-field>
               </v-flex>
@@ -497,8 +529,10 @@
              <v-flex offset-sm1 xs12>
               <v-flex xs8 md5 class="ml-1" >
                 <v-text-field
+                 color="navbarcolor"
                     v-model="editedItem.roditelji[1].prezime"  
                     required
+                    clearable
                     :rules="[rules.required]"              
                    label="Prezime majke" 
                   ></v-text-field>
@@ -512,6 +546,7 @@
                     </v-flex>
                            <v-flex xs12 sm6>
                                <v-select
+                                color="navbarcolor"
                                 :loading="loading"
                                 :items="StepeniStrucneSpreme"
                                 v-model="editedItem.roditelji[1].stepenObrazovanjaId"
@@ -529,9 +564,11 @@
        <v-flex offset-sm1 xs12>
               <v-flex xs8 md5 class="ml-1" >
                 <v-text-field
+                 color="navbarcolor"
                   v-model="editedItem.roditelji[1].brojTelefona" 
                     required
-                    :rules="[rules.required]"               
+                    :rules="[rules.required]"     
+                    clearable          
                    label="Broj telefona majke"  
                   ></v-text-field>
               </v-flex>
@@ -540,8 +577,10 @@
             <v-flex offset-sm1 xs12>
               <v-flex xs8 md5 class="ml-1" >
                 <v-text-field
+                 color="navbarcolor"
                v-model="editedItem.roditelji[0].ime" 
                     required
+                    clearable
                     :rules="[rules.required]"               
                    label="Ime oca" 
                   ></v-text-field>
@@ -551,9 +590,11 @@
      <v-flex offset-sm1 xs12>
               <v-flex xs8 md5 class="ml-1" >
                 <v-text-field
+                 color="navbarcolor"
                        v-model="editedItem.roditelji[0].prezime"                
                    label="Prezime oca"  
                       required
+                      clearable
                       :rules="[rules.required]"   
                   ></v-text-field>
               </v-flex>
@@ -566,6 +607,7 @@
                     </v-flex>
                            <v-flex xs12 sm6>
                                <v-select
+                                color="navbarcolor"
                                 :loading="loading"
                                 :items="StepeniStrucneSpreme"
                                 v-model="editedItem.roditelji[0].stepenObrazovanjaId"
@@ -584,9 +626,11 @@
    <v-flex offset-sm1 xs12>
               <v-flex xs8 md5 class="ml-1" >
                 <v-text-field
+                 color="navbarcolor"
                    v-model="editedItem.roditelji[0].brojTelefona" 
                     required
-                    :rules="[rules.required]"               
+                    :rules="[rules.required]"      
+                    clearable         
                    label="Broj telefona oca"   
                   ></v-text-field>
               </v-flex>
@@ -595,9 +639,11 @@
                <v-flex offset-sm1 xs12>
               <v-flex xs8 md5  >
                 <v-text-field
+                 color="navbarcolor"
                   v-model="editedItem.materijalniPrihodi"
                   label="Materijalni prihodi"
-
+                  clearable
+                  :rules="[rules.required,rules.materijalniPrihodiX]"
                   input type="number"  onkeydown="javascript: if(event.keyCode == 69) {return false} else 
                   {
                    if(event.keyCode == 107) {return false}
@@ -625,6 +671,7 @@
                     </v-flex>
                            <v-flex xs12 sm6>
                                <v-select
+                                color="navbarcolor"
                                 :loading="loading"
                                 :items="TipoviPorodice"
                                 v-model="editedItem.tipPorodice.id"
@@ -642,8 +689,9 @@
       <transition name="fade" appear  mode="in-out">
               <v-flex v-if="editedItem.tipPorodice.id ===4 || editedItem.tipPorodice.id ===5 " xs8 md5 class="ml-1" >
                 <v-text-field
+                 color="navbarcolor"
                    v-model="editedItem.staratelji.ime" 
-                              
+                       clearable       
                    label="Ime staratelja"   
                   ></v-text-field>
               </v-flex>
@@ -654,8 +702,9 @@
               <v-flex v-if="editedItem.tipPorodice.id ===4 || editedItem.tipPorodice.id ===5 " xs8 md5 class="ml-1" >
                 
                 <v-text-field
+                 color="navbarcolor"
                    v-model="editedItem.staratelji.prezime" 
-                       
+                       clearable
                    label="Prezime staratelja"   
                   ></v-text-field>
                  
@@ -663,58 +712,8 @@
                </transition>
               </v-flex>
 
-       <v-flex offset-sm1 xs12>
-              <v-flex xs8 md5  >
-                <v-text-field 
-                  v-model="editedItem.pohvale"
-                  label="Broj pohvala"
-                  required
-                  input type="number"  onkeydown="javascript: if(event.keyCode == 69) {return false} else 
-                  {
-                   if(event.keyCode == 107) {return false}
-                    else {
-                   if(event.keyCode == 190) {return false}
-                    else {
-                   if(event.keyCode == 109) {return false}
-                    else  {
-                   if(event.keyCode == 187) {return false}
-                    else  {
-                   if(event.keyCode == 189) {return false}
-                   else
-                     {return true} } } } } }"                                       
 
-               >
-                        
-                        </v-text-field>
-              </v-flex>
-          </v-flex>
-
-
-                 <v-flex offset-sm1 xs12>
-              <v-flex xs8 md5  >
-                <v-text-field
-                  v-model="editedItem.kazne"
-                  label="Broj kazni"
-
-                  input type="number"  onkeydown="javascript: if(event.keyCode == 69) {return false} else 
-                  {
-                   if(event.keyCode == 107) {return false}
-                    else {
-                   if(event.keyCode == 190) {return false}
-                    else {
-                   if(event.keyCode == 109) {return false}
-                    else  {
-                   if(event.keyCode == 187) {return false}
-                    else  {
-                   if(event.keyCode == 189) {return false}
-                   else
-                     {return true} } } } } }"                                       
-                        >
-            
-                        
-                        </v-text-field>
-              </v-flex>
-          </v-flex>
+    
 
 
    </v-card>
@@ -760,10 +759,17 @@ import moment from 'moment'
            uspehX: (value) => {
             const pattern = /^([1-4](\.\d+){1}|5(\.0+)?)$/
             return pattern.test(value) || 'Uspeh mora biti u formatu B.BB (B - broj).'
+          },
+          materijalniPrihodiX: (value) => {
+            const pattern = /^[1-5]$/
+            return pattern.test(value) || 'Materijalni prihodi moraju biti brojevi od 1-5'
           }
         },
       // pomocna promenljiva za generisanje podatka o datumu rodjenja
       datum: null,
+      clearicon: {
+         srcmain: require('../../assets/XnaInputu.png')
+      },
           file: '',
         showPreview: false,
         imagePreview: '',
@@ -772,8 +778,10 @@ import moment from 'moment'
       editedIndex: -1,
       // brojevi su pomocna prom za rad sa postanskim brojevima
       brojevi: '',
+ 
       // objekat koji sluzi kao maska za prijavu ucenika, koristi se pri prijavi i izmeni podataka o uceniku
       editedItem: {
+        id:'',
          ime: '',
         prezime: '',
         jmbg: '',
@@ -863,9 +871,7 @@ import moment from 'moment'
                
             },
            slika: '',
-           materijalniPrihodi: '',
-           kazne: '',
-           pohvale: ''
+           materijalniPrihodi: ''
       }
     }),
     
@@ -908,6 +914,8 @@ import moment from 'moment'
           this.editedItem.roditelji[1].prezime !== '' &&
           this.editedItem.roditelji[1].stepenObrazovanjaId !== '' &&
           this.editedItem.roditelji[1].brojTelefona !== '' &&
+          this.editedItem.materijalniPrihodi !== '' &&
+          this.editedItem.prethodniUspeh !== '' &&
           this.datum !== null
           )
           {
@@ -960,9 +968,12 @@ import moment from 'moment'
         return this.$store.getters.loading
       }
      
-    },
+    }
+
+   ,
    
     methods: {
+      // metoda za brisanje slike (osvezavanje)
        ClearPicture(){
        this.file=''
       this.imagePreview=''
@@ -971,44 +982,20 @@ import moment from 'moment'
         input.type = 'text';
         input.type = 'file';
       },
+      //metoda za formiranje slike u odredjenom formatu
 
            handleFileUpload(){
-        /*
-          Set the local file variable to what the user has selected.
-        */
         this.file = this.$refs.file.files[0];
 
-        /*
-          Initialize a File Reader object
-        */
         let reader  = new FileReader();
-
-        /*
-          Add an event listener to the reader that when the file
-          has been loaded, we flag the show preview as true and set the
-          image to be what was read from the reader.
-        */
-    
         reader.addEventListener("load", function () {
           this.showPreview = true;
           this.imagePreview = reader.result;
           this.editedItem.slika= reader.result
         }.bind(this), false);
         console.log(this.editedItem.slika)
-        console.log( this.file)
-        /*
-          Check to see if the file is not empty.
-        */
         if( this.file ){
-          /*
-            Ensure the file is an image file.
-          */
           if ( /\.(jpe?g|png|gif)$/i.test( this.file.name ) ) {
-            /*
-              Fire the readAsDataURL method which will read the file in and
-              upon completion fire a 'load' event which we will listen to and
-              display the image in the preview.
-            */
             reader.readAsDataURL( this.file );
           }
         }
@@ -1041,18 +1028,8 @@ import moment from 'moment'
       PrijavaUcenika () {
       
         this.formatiranjeDatuma() 
-       
-      
 
-            /*
-                Add the form data we need to submit
-            */
-      
-         // this.editedItem.slika=prepslika;
-         //  console.log(this.editedItem)    
- 
-
-    console.log(this.editedItem)
+  //  console.log(this.editedItem)
         this.$store.dispatch('createUcenik',this.editedItem)
          this.file=''
           this.imagePreview=''
@@ -1076,7 +1053,7 @@ input[type="number"] {
     -moz-appearance: textfield;
 }
 
-
+/* css animacije za slide in-out i fade in-out*/
 .fade-enter-active, .fade-leave-active {
   transition: opacity 2s ease-out;
 }

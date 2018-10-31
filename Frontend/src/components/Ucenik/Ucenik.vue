@@ -12,8 +12,238 @@
             <form @submit.prevent="Prijavaucenika">
         <v-container grid-list-md>
             <v-layout wrap>
-              
-            <v-card >
+              <v-flex xs12>
+                      <v-dialog v-model="dialogEditPohvala" max-width="500">
+        <v-card>
+                    <v-card-title>
+          <span class="headline">Izmena podataka o pohvali</span>
+        </v-card-title>
+        <v-card-text>
+            <v-container>  
+                      <v-flex offset-sm1 xs12>
+              <v-flex xs8 md8 class="ml-1" >
+                <v-text-field
+                  color="navbarcolor"
+                 v-model="editedPohvale.opis"
+                  label="Opis pohvale"     
+                  clearable          
+                  ></v-text-field>
+              </v-flex>
+              </v-flex>
+
+                         <v-flex offset-sm1 xs12>
+              <v-flex xs8 md5 class="ml-1" >
+                <v-text-field
+                  color="navbarcolor"
+                 v-model="editedPohvale.bodoviPohvale"
+                  label="Bodovi pohvale"   
+                  clearable
+                  :rules="[rules.required,rules.bodoviPohvaleX]"
+                  input type="number"  onkeydown="javascript: if(event.keyCode == 69) {return false} else 
+                  {
+                   if(event.keyCode == 107) {return false}
+                    else {
+                   if(event.keyCode == 190) {return false}
+                    else {
+                   if(event.keyCode == 109) {return false}
+                    else  {
+                   if(event.keyCode == 187) {return false}
+                    else  {
+                   if(event.keyCode == 189) {return false}
+                   else
+                     {return true} } } } } }"                                       
+                                    
+                  ></v-text-field>
+              </v-flex>
+              </v-flex>
+
+            </v-container>
+        </v-card-text>
+                <v-card-actions>
+          <v-spacer></v-spacer>
+          <v-btn color="blue darken-1" flat @click.native="closeEditPohvala">
+            Otkaži
+            </v-btn>
+          <v-btn color="blue darken-1" flat @click.native="izmeniPohvalu()"  
+          >Sačuvaj
+          </v-btn>
+        </v-card-actions>
+        </v-card>
+    </v-dialog>
+                 <v-dialog v-model="dialogEditKazna" max-width="500">
+        <v-card>
+                    <v-card-title>
+          <span class="headline">Izmena podataka o kazni</span>
+        </v-card-title>
+        <v-card-text>
+            <v-container>  
+                      <v-flex offset-sm1 xs12>
+              <v-flex xs8 md8 class="ml-1" >
+                <v-text-field
+                  color="navbarcolor"
+                 v-model="editedKazne.opis"
+                 clearable
+                  label="Opis kazne"               
+                  ></v-text-field>
+              </v-flex>
+              </v-flex>
+
+                         <v-flex offset-sm1 xs12>
+              <v-flex xs8 md5 class="ml-1" >
+                <v-text-field
+                  color="navbarcolor"
+                  clearable
+                 v-model="editedKazne.bodoviKazne"
+                  label="Bodovi kazne"   
+                  :rules="[rules.required,rules.bodoviKazneX]"
+                  input type="number"  onkeydown="javascript: if(event.keyCode == 69) {return false} else 
+                  {
+                   if(event.keyCode == 107) {return false}
+                    else {
+                   if(event.keyCode == 190) {return false}
+                    else {
+                   if(event.keyCode == 109) {return false}
+                    else  {
+                   if(event.keyCode == 187) {return false}
+                    else  {
+                   if(event.keyCode == 189) {return false}
+                   else
+                     {return true} } } } } }"                                       
+                                    
+                  ></v-text-field>
+              </v-flex>
+              </v-flex>
+
+            </v-container>
+        </v-card-text>
+                <v-card-actions>
+          <v-spacer></v-spacer>
+          <v-btn color="blue darken-1" flat @click.native="closeEditKazna">
+            Otkaži
+            </v-btn>
+          <v-btn color="blue darken-1" flat @click.native="izmeniKaznu()"  
+          >Sačuvaj
+          </v-btn>
+        </v-card-actions>
+        </v-card>
+    </v-dialog>
+                                      <v-dialog v-model="dialogNewKazna" max-width="500">
+        <v-card>
+                    <v-card-title>
+          <span class="headline">Nova kazna</span>
+        </v-card-title>
+        <v-card-text>
+            <v-container>  
+                      <v-flex offset-sm1 xs12>
+              <v-flex xs8 md8 class="ml-1" >
+                <v-text-field
+                  color="navbarcolor"
+                  clearable
+                 v-model="editedKazne.opis"
+                  label="Opis kazne"               
+                  ></v-text-field>
+              </v-flex>
+              </v-flex>
+
+                         <v-flex offset-sm1 xs12>
+              <v-flex xs8 md5 class="ml-1" >
+                <v-text-field
+                  color="navbarcolor"
+                  clearable
+                 v-model="editedKazne.bodoviKazne"
+                  label="Bodovi kazne"    
+                  :rules="[rules.required,rules.bodoviKazneX]"
+                  input type="number"  onkeydown="javascript: if(event.keyCode == 69) {return false} else 
+                  {
+                   if(event.keyCode == 107) {return false}
+                    else {
+                   if(event.keyCode == 190) {return false}
+                    else {
+                   if(event.keyCode == 109) {return false}
+                    else  {
+                   if(event.keyCode == 187) {return false}
+                    else  {
+                   if(event.keyCode == 189) {return false}
+                   else
+                     {return true} } } } } }"                                       
+                                   
+                  ></v-text-field>
+              </v-flex>
+              </v-flex>
+
+            </v-container>
+        </v-card-text>
+                <v-card-actions>
+          <v-spacer></v-spacer>
+          <v-btn color="blue darken-1" flat @click.native="closeCreateKazna">
+            Otkaži
+            </v-btn>
+          <v-btn color="blue darken-1" flat @click.native="napraviKaznu()"  
+          >Sačuvaj
+          </v-btn>
+        </v-card-actions>
+        </v-card>
+    </v-dialog>
+
+                      <v-dialog v-model="dialogNewPohvala" max-width="500">
+        <v-card>
+                    <v-card-title>
+          <span class="headline">Nova pohvala</span>
+        </v-card-title>
+        <v-card-text>
+            <v-container>  
+                      <v-flex offset-sm1 xs12>
+              <v-flex xs8 md8 class="ml-1" >
+                <v-text-field
+                  color="navbarcolor"
+                  clearable
+                 v-model="editedPohvale.opis"
+                  label="Opis pohvale"               
+                  ></v-text-field>
+              </v-flex>
+              </v-flex>
+
+                         <v-flex offset-sm1 xs12>
+              <v-flex xs8 md5 class="ml-1" >
+                <v-text-field
+                  color="navbarcolor"
+                 v-model="editedPohvale.bodoviPohvale"
+                  label="Bodovi pohvale"  
+                  clearable
+                  :rules="[rules.required,rules.bodoviPohvaleX]"
+                  input type="number"  onkeydown="javascript: if(event.keyCode == 69) {return false} else 
+                  {
+                   if(event.keyCode == 107) {return false}
+                    else {
+                   if(event.keyCode == 190) {return false}
+                    else {
+                   if(event.keyCode == 109) {return false}
+                    else  {
+                   if(event.keyCode == 187) {return false}
+                    else  {
+                   if(event.keyCode == 189) {return false}
+                   else
+                     {return true} } } } } }"                                       
+                                     
+                  ></v-text-field>
+              </v-flex>
+              </v-flex>
+
+            </v-container>
+        </v-card-text>
+                <v-card-actions>
+          <v-spacer></v-spacer>
+          <v-btn color="blue darken-1" flat @click.native="closeCreatePohvala">
+            Otkaži
+            </v-btn>
+          <v-btn color="blue darken-1" flat @click.native="napraviPohvalu()"  
+          >Sačuvaj
+          </v-btn>
+        </v-card-actions>
+        </v-card>
+    </v-dialog>
+
+            <v-card width=1000px>
               <v-card-title  primary-title>
                 <v-flex offset-sm5>
                 <div class="headline">Podaci o učeniku</div>
@@ -26,9 +256,11 @@
                     <v-layout row wrap>
                     <v-flex offset-sm1  xs12 sm5 class="mt-4 ">
                         <v-text-field
+                          color="navbarcolor"
                       v-model="editedItem.ime"
                         label="Ime" 
                         required
+                        clearable
                         :rules="[rules.required]"
                         ></v-text-field>
                           </v-flex>
@@ -37,7 +269,8 @@
            <v-card-text>
                           <input type="file" id="file" ref="file" accept="image/*" v-on:change="handleFileUpload()"/>
 
-                        <img v-bind:src="imagePreview" class="responsive" v-show="showPreview"/>
+                        <img v-bind:src="editedItem.slika" height="100px" contain class="responsive" v-show="showPreview"/>
+                         <img v-bind:src="editedItem.slika" height="100px" contain class="responsive" v-show="!showPreview"/>
                        <!-- <button v-show="this.file!==''" v-on:click="ClearPicture()">Reset</button> -->
                         <v-btn dark left  class="blue-grey darken" small
                         v-show="this.file!==''" v-on:click="ClearPicture()"
@@ -54,6 +287,8 @@
             <v-flex offset-sm1 xs12>
               <v-flex xs8 md5 class="ml-1" >
                 <v-text-field
+                  color="navbarcolor"
+                  clearable
                  v-model="editedItem.prezime"
                   label="Prezime"
                    required
@@ -62,15 +297,38 @@
               </v-flex>
              </v-flex>
 
-       
+        <template>
+                 <v-container fluid>
+                    <v-layout row wrap>
+                    <v-flex offset-sm1  xs12 sm3 class="mt-4 ">
+                     <p>Država rođenja</p>
+                    </v-flex>
+                           <v-flex xs12 sm6>
+                               <v-select
+                                 color="navbarcolor"
+                                :loading="loading"
+                                :items="statusiPrijave"
+                                v-model="editedItem.statusPrijave.id"
+                                label="Status prijave"
+                                item-text="status"
+                                item-value="id"
+                                autocomplete
+                              
+                              ></v-select>
+                            </v-flex>
+                          </v-layout>
+                        </v-container>
+                      </template>
 
 
        <v-flex offset-sm1 xs12>
               <v-flex xs8 md5 class="ml-1" >
                 <v-text-field
+                  color="navbarcolor"
                   v-model="editedItem.jmbg"
                   label="jmbg"
                   required
+                  clearable
                   loading
                   input type="number" onkeydown="javascript: if(event.keyCode == 69) {return false} else 
                   {
@@ -103,9 +361,11 @@
           <v-flex offset-sm1 xs12>
                    <v-flex xs8 md5 class="ml-1" >
                 <v-text-field
+                  color="navbarcolor"
                  v-model="editedItem.adresa"
                   label="Adresa prebivališta" 
                   required
+                  clearable
                    :rules="[rules.required]"
                   ></v-text-field>
               </v-flex>
@@ -119,6 +379,7 @@
                     </v-flex>
                            <v-flex xs12 sm6>
                                <v-select
+                                 color="navbarcolor"
                                 :loading="loading"
                                 :items="drzave"
                                 v-model="editedItem.drzavaRodjenja.id"
@@ -133,7 +394,29 @@
                           </v-layout>
                         </v-container>
                       </template>
+                                <template>
+                 <v-container fluid>
+                    <v-layout row wrap>
+                    <v-flex offset-sm1  xs12 sm3 class="mt-4 ">
+                     <p>Vaspitna grupa</p>
+                    </v-flex>
+                           <v-flex xs12 sm6>
+                               <v-select
+                                 color="navbarcolor"
+                                :loading="loading"
+                                :items="VaspitneGrupe"
+                                v-model="editedItem.vaspitnaGrupa.id"
+                                label="Naziv vaspitne grupe"
+                                item-text="naziv"
+                                item-value="id"
+                   
+                              ></v-select>
+                            </v-flex>
+                          </v-layout>
+                        </v-container>
+                      </template>
                 <template>
+                  
                  <v-container fluid>
                     <v-layout row wrap>
                     <v-flex offset-sm1  xs12 sm3 class="mt-4">
@@ -141,6 +424,7 @@
                     </v-flex>
                            <v-flex xs12 sm6>
                                <v-select
+                                 color="navbarcolor"
                                 :loading="loading"
                                 :items="polovi"
                                 v-model="editedItem.pol.id"
@@ -163,6 +447,7 @@
                     </v-flex>
                            <v-flex xs12 sm6>
                                <v-select
+                                 color="navbarcolor"
                                 :loading="loading"
                                 :items="opstine"
                                 v-model="editedItem.opstina.id"
@@ -185,6 +470,7 @@
                     </v-flex>
                            <v-flex xs12 sm6>
                                <v-select
+                                 color="navbarcolor"
                                 :loading="loading"
                                 :items="opstine"
                                 v-model="editedItem.opstinaPrebivalista.id"
@@ -208,6 +494,7 @@
                     </v-flex>
                            <v-flex xs12 sm6>
                                <v-select
+                                 color="navbarcolor"
                                 :loading="loading"
                                 :items="brojevi.postanskiBrojevi"
                                 v-model="editedItem.postanskiBroj.id"
@@ -230,6 +517,7 @@
                     </v-flex>
                            <v-flex xs12 sm6>
                                <v-select
+                                 color="navbarcolor"
                                 :loading="loading"
                                 :items="mesta"
                                 v-model="editedItem.mestoRodjenja.id"
@@ -250,6 +538,7 @@
                     </v-flex>
                            <v-flex xs12 sm6>
                                <v-select
+                                 color="navbarcolor"
                                 :loading="loading"
                                 :items="mesta"
                                 v-model="editedItem.mestoPrebivalista.id"
@@ -271,6 +560,7 @@
                       </v-flex>  
                       <v-flex xs12 sm6>         
                             <v-date-picker
+                              color="navbarcolor"
                             v-model="datum"
                             locale="sr-Latn"
                             ></v-date-picker>
@@ -292,6 +582,7 @@
                               </v-flex>
                                     <v-flex xs12 sm6>
                                         <v-select
+                                          color="navbarcolor"
                                           :loading="loading"
                                           :items="osnovneSkole"
                                           v-model="editedItem.prethodnaSkola.id"
@@ -312,6 +603,7 @@
                     </v-flex>
                            <v-flex xs12 sm6>
                                <v-select
+                                 color="navbarcolor"
                                 :loading="loading"
                                 :items="mesta"
                                 v-model="editedItem.mestoZavrseneSkole.id"
@@ -332,6 +624,7 @@
                     </v-flex>
                            <v-flex xs12 sm6>
                                <v-select
+                                 color="navbarcolor"
                                 :loading="loading"
                                 :items="srednjeSkole"
                                 v-model="editedItem.upisanaSkola.id"
@@ -352,6 +645,7 @@
                     </v-flex>
                            <v-flex xs12 sm6>
                                <v-select
+                                 color="navbarcolor"
                                 :loading="loading"
                                 :items="smerovi"
                                 v-model="editedItem.smer.id"
@@ -372,6 +666,7 @@
                     </v-flex>
                            <v-flex xs12 sm6>
                                <v-select
+                                 color="navbarcolor"
                             :loading="loading"
                                 :items="razredi"
                                 v-model="editedItem.razred.id"
@@ -394,6 +689,8 @@
                  <v-flex xs2 class="mt-2" >
                    
                 <v-text-field
+                clearable
+                  color="navbarcolor"
                  v-model="editedItem.prethodniUspeh"                 
                    label="br"
                     input type="number"      step=0.01
@@ -420,6 +717,8 @@
         <v-flex offset-sm1 xs12>
               <v-flex xs8 md5 class="ml-1" >
                 <v-text-field
+                  color="navbarcolor"
+                  clearable
                v-model="editedItem.telefon.mobilni"                 
                    label="Mobilni telefon"
 
@@ -430,6 +729,8 @@
                   <v-flex offset-sm1 xs12>
               <v-flex xs8 md5 class="ml-1" >
                 <v-text-field
+                clearable
+                  color="navbarcolor"
                v-model="editedItem.telefon.kucni"                
                    label="Kućni telefon" 
 
@@ -438,12 +739,12 @@
               </v-flex>
 
    </v-card>
-                    
+               </v-flex>     
             </v-layout>
           </v-container>
-
-       <v-flex xs12 class="ml-1">
-            <v-card raised >
+     <div><br></div>
+       <v-flex xs12 class="ml-2">
+            <v-card width=1000px >
               <v-card-title primary-title>
                 <v-flex offset-sm4>
                 <div class="headline">Podaci o roditelju - staratelju </div>
@@ -453,6 +754,8 @@
             <v-flex offset-sm1 xs12>
               <v-flex xs8 md5 class="ml-1" >
                 <v-text-field
+                  color="navbarcolor"
+                  clearable
                     v-model="editedItem.roditelji[1].ime"                
                    label="Ime majke"   
                       required
@@ -464,10 +767,12 @@
              <v-flex offset-sm1 xs12>
               <v-flex xs8 md5 class="ml-1" >
                 <v-text-field
+                  color="navbarcolor"
                     v-model="editedItem.roditelji[1].prezime"  
                     required
                     :rules="[rules.required]"              
                    label="Prezime majke" 
+                   clearable
                   ></v-text-field>
               </v-flex>
               </v-flex>
@@ -479,6 +784,7 @@
                     </v-flex>
                            <v-flex xs12 sm6>
                                <v-select
+                                 color="navbarcolor"
                                 :loading="loading"
                                 :items="StepeniStrucneSpreme"
                                 v-model="editedItem.roditelji[1].stepenObrazovanjaId"
@@ -496,6 +802,8 @@
        <v-flex offset-sm1 xs12>
               <v-flex xs8 md5 class="ml-1" >
                 <v-text-field
+                  color="navbarcolor"
+                  clearable
                   v-model="editedItem.roditelji[1].brojTelefona" 
                     required
                     :rules="[rules.required]"               
@@ -507,8 +815,10 @@
             <v-flex offset-sm1 xs12>
               <v-flex xs8 md5 class="ml-1" >
                 <v-text-field
+                  color="navbarcolor"
                v-model="editedItem.roditelji[0].ime" 
                     required
+                    clearable
                     :rules="[rules.required]"               
                    label="Ime oca" 
                   ></v-text-field>
@@ -518,6 +828,8 @@
      <v-flex offset-sm1 xs12>
               <v-flex xs8 md5 class="ml-1" >
                 <v-text-field
+                  color="navbarcolor"
+                  clearable
                        v-model="editedItem.roditelji[0].prezime"                
                    label="Prezime oca"  
                       required
@@ -533,6 +845,7 @@
                     </v-flex>
                            <v-flex xs12 sm6>
                                <v-select
+                                 color="navbarcolor"
                                 :loading="loading"
                                 :items="StepeniStrucneSpreme"
                                 v-model="editedItem.roditelji[0].stepenObrazovanjaId"
@@ -551,6 +864,8 @@
    <v-flex offset-sm1 xs12>
               <v-flex xs8 md5 class="ml-1" >
                 <v-text-field
+                  color="navbarcolor"
+                  clearable
                    v-model="editedItem.roditelji[0].brojTelefona" 
                     required
                     :rules="[rules.required]"               
@@ -559,12 +874,75 @@
               </v-flex>
               </v-flex>
 
-                    <v-flex offset-sm1 xs12>
-              <v-flex xs8 md5  >
+   
+
+ <v-container fluid>
+                    <v-layout row wrap>
+                    <v-flex offset-sm1 xs12 sm3 class="mt-4">
+                     <p>Tip porodice</p>
+                    </v-flex>
+                           <v-flex xs12 sm6>
+                               <v-select
+                                 color="navbarcolor"
+                                :loading="loading"
+                                :items="TipoviPorodice"
+                                v-model="editedItem.tipPorodice.id"
+                                label="Izaberite tip porodice"
+                                item-text="nazivTipaPorodice"
+                                item-value="id"
+                                autocomplete
+                                @change="changedTip"
+                              ></v-select>
+                            </v-flex>
+                          </v-layout>
+                        </v-container>
+
+   <v-flex     offset-sm1 xs12>
+      <transition name="fade" appear  mode="in-out">
+              <v-flex v-if="editedItem.tipPorodice.id ===4 || editedItem.tipPorodice.id ===5 " xs8 md5 class="ml-1" >
                 <v-text-field
+                  color="navbarcolor"
+                   v-model="editedItem.staratelji.ime" 
+                              clearable
+                   label="Ime staratelja"   
+                  ></v-text-field>
+              </v-flex>
+      </transition>
+              </v-flex>
+                 <v-flex offset-sm1 xs12>
+                     <transition name="fade" appear  mode="in-out">
+              <v-flex v-if="editedItem.tipPorodice.id ===4 || editedItem.tipPorodice.id ===5 " xs8 md5 class="ml-1" >
+                
+                <v-text-field
+                  color="navbarcolor"
+                   v-model="editedItem.staratelji.prezime" 
+                       clearable
+                   label="Prezime staratelja"   
+                  ></v-text-field>
+                 
+              </v-flex>
+               </transition>
+              </v-flex>
+     </v-card>
+             </v-flex>  
+             <div><br></div>
+                 <v-flex xs12 >
+                   <v-container>
+            <v-card width=1000px >
+              <v-card-title primary-title>
+                <v-flex offset-sm4>
+                <div class="headline">Vrednovanje ucenika za upis u dom </div>
+              </v-flex>
+              </v-card-title>
+                 <v-flex offset-sm1 xs12>
+              <v-flex xs2 md2  >
+                <v-text-field
+                  color="navbarcolor"
+                  clearable
                   v-model="editedItem.materijalniPrihodi"
                   label="Materijalni prihodi"
-
+                  required
+                   :rules="[rules.required,rules.materijalniPrihodiX]"
                   input type="number"  onkeydown="javascript: if(event.keyCode == 69) {return false} else 
                   {
                    if(event.keyCode == 107) {return false}
@@ -584,54 +962,109 @@
                         </v-text-field>
               </v-flex>
           </v-flex>
-
- <v-container fluid>
-                    <v-layout row wrap>
-                    <v-flex offset-sm1 xs12 sm3 class="mt-4">
-                     <p>Tip porodice</p>
-                    </v-flex>
-                           <v-flex xs12 sm6>
-                               <v-select
-                                :loading="loading"
-                                :items="TipoviPorodice"
-                                v-model="editedItem.tipPorodice.id"
-                                label="Izaberite tip porodice"
-                                item-text="nazivTipaPorodice"
-                                item-value="id"
-                                autocomplete
-                                @change="changedTip"
-                              ></v-select>
-                            </v-flex>
-                          </v-layout>
-                        </v-container>
-
-   <v-flex     offset-sm1 xs12>
-      <transition name="fade" appear  mode="in-out">
-              <v-flex v-if="editedItem.tipPorodice.id ===4 || editedItem.tipPorodice.id ===5 " xs8 md5 class="ml-1" >
-                <v-text-field
-                   v-model="editedItem.staratelji.ime" 
-                              
-                   label="Ime staratelja"   
-                  ></v-text-field>
-              </v-flex>
-      </transition>
-              </v-flex>
                  <v-flex offset-sm1 xs12>
                      <transition name="fade" appear  mode="in-out">
-              <v-flex v-if="editedItem.tipPorodice.id ===4 || editedItem.tipPorodice.id ===5 " xs8 md5 class="ml-1" >
+              <v-flex xs12 md8 class="ml-1" >
                 
-                <v-text-field
-                   v-model="editedItem.staratelji.prezime" 
-                       
-                   label="Prezime staratelja"   
-                  ></v-text-field>
-                 
+
+                    <v-data-table
+      :headers="headers"
+      :items="Pohvale"
+       v-if="!loading"
+        hide-actions
+      class="elevation-1"    
+     >
+      <template  slot="items" slot-scope="props" >
+       
+        <tr v-if="props.item.ucenikId=== editedItem.id" >
+        <td class="text-xs-center" >{{ props.item.bodoviPohvale}}</td>
+        <td class="text-xs-center">{{ props.item.opis }}</td>
+ 
+        <td class="justify-center layout px-0">
+  
+          <v-btn center icon class="mx-0"
+           @click="deletePohvala(props.item)">
+            <v-icon
+              color="navbarcolor">delete
+              </v-icon>
+          </v-btn>
+             <v-btn center icon class="mx-0"
+         @click="editPohvala(props.item)">    
+          
+            <v-icon
+              color="navbarcolor">edit
+              </v-icon>
+          </v-btn>
+        </td>
+         </tr>
+        
+      </template>
+
+    </v-data-table>
+             <v-flex>
+ <v-btn  dark class="navbarcolor" @click="dialogNewPohvala = true">Nova pohvala</v-btn>
+             </v-flex>
+ 
+
               </v-flex>
                </transition>
               </v-flex>
+                 
+                                 <v-flex offset-sm1 xs12>
+                     <transition name="fade" appear  mode="in-out">
+              <v-flex xs12  md8  class="ml-1" >
+                
 
-               </v-card>
-             </v-flex>  
+                    <v-data-table
+      :headers="headers"
+      :items="Kazne"
+       v-if="!loading"
+        hide-actions
+      class="elevation-1"    
+     >
+      <template  slot="items" slot-scope="props" >
+       
+        <tr v-if="props.item.ucenikId=== editedItem.id" >
+        <td class="text-xs-center" >{{ props.item.bodoviKazne}}</td>
+        <td class="text-xs-center">{{ props.item.opis }}</td>
+ 
+        <td class="justify-center layout px-0">
+          
+          <v-btn center icon class="mx-0"
+           @click="deleteKazna(props.item)">
+            <v-icon
+              color="navbarcolor">delete
+              </v-icon>
+          </v-btn>
+             <v-btn center icon class="mx-0"
+         @click="editKazna(props.item)">    
+          
+            <v-icon
+              color="navbarcolor">edit
+              </v-icon>
+          </v-btn>
+        </td>
+         </tr>
+        
+      </template>
+
+    </v-data-table>
+                  <v-btn  dark class="navbarcolor" @click="dialogNewKazna = true">Nova kazna</v-btn>
+              </v-flex>
+               </transition>
+              </v-flex>
+              <v-card-actions>
+                
+  <v-btn @click="IzmeniUcenika"     :disabled="!formIsValid">
+    Izmeni
+    
+  </v-btn>
+</v-card-actions>
+            </v-card>
+            </v-container>
+                 </v-flex>
+
+          
             </form>
         </v-flex>
     </v-layout>
@@ -646,7 +1079,14 @@
 import moment from 'moment'
   export default {
     data: () => ({  
-       
+      // hederi korisceni za tebele prikaza podataka o kaznama
+            headers: [
+        {
+          text: 'Broj bodova',  align: 'center', sortable: true,  value: 'id', width:'20%' },
+        { text: 'Opis',value: 'opis' ,align: 'center',sortable:true, width:'15%'},
+         { text: 'Opcije' ,align: 'center',sortable:false, width:'15%'},
+   
+      ],
       // rules su pravila popunjavanja polja za unos
            rules: {
       // requiered pravilo je pravilo za neophodnost postojanja informacije koja se trazi na odgovarajucem polju sa opcijom requiered
@@ -659,20 +1099,62 @@ import moment from 'moment'
            uspehX: (value) => {
             const pattern = /^([1-4](\.\d+){1}|5(\.0+)?)$/
             return pattern.test(value) || 'Uspeh mora biti u formatu B.BB (B - broj).'
-          }
+          },
+          materijalniPrihodiX: (value) => {
+            const pattern = /^[1-5]$/
+            return pattern.test(value) || 'Materijalni prihodi moraju biti brojevi od 1-5'
+          },
+            bodoviPohvaleX: (value) => {
+            const pattern = /^[1-5]$/
+            return pattern.test(value) || 'Bodovi pohvale moraju biti brojevi od 1-5'
+          },
+            bodoviKazneX: (value) => {
+            const pattern = /^[1-5]$/
+            return pattern.test(value) || 'Bodovi kazne moraju biti brojevi od 1-5'
+          },
         },
       // pomocna promenljiva za generisanje podatka o datumu rodjenja
       datum: null,
           file: '',
         showPreview: false,
         imagePreview: '',
-      // atribut za jmbg progress bar
+      
       custom: true,
       editedIndex: -1,
+      dialogEditPohvala: false,
+      dialogEditKazna: false,
+      dialogNewPohvala: false,
+      dialogNewKazna: false,
+
       // brojevi su pomocna prom za rad sa postanskim brojevima
       brojevi: '',
-     
-      default: ''
+          pohvaleID: '',
+      kazneID: '',
+      default: '',
+      editedPohvale: {
+        id: '',
+        opis: '',
+        ucenikId: '',
+        bodoviPohvale: ''
+      },
+      defaultEditedPohvale: {
+              id: '',
+        opis: '',
+        ucenikId: '',
+        bodoviPohvale: ''
+      },
+      editedKazne: {
+        id: '',
+        opis: '',
+        ucenikId: '',
+        bodoviKazne: ''
+      },
+      defaultEditedKazne: {
+            id: '',
+        opis: '',
+        ucenikId: '',
+        bodoviKazne: ''
+      }
       // objekat koji sluzi kao maska za prijavu editedItema, koristi se pri prijavi i izmeni podataka o editedItemu
       
     }),
@@ -684,7 +1166,8 @@ import moment from 'moment'
          
            
             const y= parseInt(this.$route.params.id,10)
- console.log(y)
+            console.log(y)
+             console.log(this.$store.getters.loadedUceniciID(y))
             return this.$store.getters.loadedUceniciID(y)  
 
         },
@@ -701,7 +1184,8 @@ import moment from 'moment'
         return ['error', 'warning', 'success','error'][Math.floor(this.progress / 34)]
       },
       // metoda koja vodi racuna o tome da se ne moze prijaviti editedItem koji nije ispunio sve neophodne podatke prilikom prijave ili izmene podataka
-      formIsValid () {      
+      formIsValid () {
+       
         if( this.editedItem.ime !== '' &&
           this.editedItem.prezime!== '' &&         
           this.editedItem.jmbg !== '' &&
@@ -718,6 +1202,7 @@ import moment from 'moment'
           this.editedItem.prethodnaSkola.id !== '' &&
           this.editedItem.upisanaSkola.id !== '' &&
           this.editedItem.razred.id !== '' &&
+          this.editedItem.prethodniUspeh !== '' &&
           this.editedItem.roditelji[0].ime !== '' &&
           this.editedItem.roditelji[0].prezime !== '' &&
           this.editedItem.roditelji[0].stepenObrazovanjaId !== '' &&
@@ -726,7 +1211,10 @@ import moment from 'moment'
           this.editedItem.roditelji[1].prezime !== '' &&
           this.editedItem.roditelji[1].stepenObrazovanjaId !== '' &&
           this.editedItem.roditelji[1].brojTelefona !== '' &&
-          this.datum !== null
+          this.editedItem.prethodniUspeh !== '' &&
+            this.editedItem.materijalniPrihodi !== '' &&
+         (this.editedItem.dan !== '' ||  this.datum !== null)
+          
           )
           {
             return true
@@ -735,9 +1223,23 @@ import moment from 'moment'
             return false
           }
          
-      }, 
+      },
+       VaspitneGrupe () {
+        return this.$store.getters.loadedVaspitneGrupe
+      },
       TipoviPorodice () {
         return this.$store.getters.loadedTipoviPorodice
+      },
+      statusiPrijave()
+      {
+        return this.$store.getters.LoadedStatusiPrijave
+      },
+      Pohvale () {
+        return this.$store.getters.loadedPohvale
+      },
+ 
+      Kazne () {
+        return this.$store.getters.loadedKazne
       },
       StepeniStrucneSpreme () {
         return this.$store.getters.loadedSSS
@@ -777,7 +1279,109 @@ import moment from 'moment'
      
     },
    
+
     methods: {
+         editPohvala (item)
+      {
+                this.editedIndex = this.Pohvale.indexOf(item)
+        this.editedPohvale = Object.assign({}, item)
+         console.log(this.editedPohvale)
+        this.dialogEditPohvala = true
+      },
+      editKazna (item)
+      {
+
+                this.editedIndex = this.Kazne.indexOf(item)
+        this.editedKazne = Object.assign({}, item)
+       console.log(this.editedKazne)
+        this.dialogEditKazna = true
+      },
+          izmeniPohvalu()
+      {
+        console.log('helloP')
+      console.log(this.editedPohvale)                            
+         this.$store.dispatch('editPohvale',this.editedPohvale)     
+
+        
+        this.closeEditPohvala()
+      },
+      izmeniKaznu()
+      {
+  console.log('helloK')
+      console.log(this.editedKazne)                            
+          this.$store.dispatch('editKazne',this.editedKazne)     
+
+          
+        this.closeEditKazna()
+      },
+      napraviKaznu()
+      {
+                     console.log(this.editedKazne) 
+                    this.editedKazne.ucenikId=this.editedItem.id    
+                   
+          this.$store.dispatch('createKazna',this.editedKazne)   
+                      this.editedKazne.opis=''     
+                    this.editedKazne.bodoviKazne=''  
+                    this.editedKazne.ucenikId=''
+          this.closeCreateKazna()
+      },
+      napraviPohvalu()
+      {
+                     console.log(this.editedPohvale)   
+                     this.editedPohvale.ucenikId=this.editedItem.id   
+          this.$store.dispatch('createPohvala',this.editedPohvale)   
+                    this.editedPohvale.opis=''     
+                    this.editedPohvale.bodoviPohvale=''  
+                    this.editedPohvale.ucenikId=''
+          this.closeCreatePohvala()
+      },
+         closeCreateKazna () {
+        
+        this.dialogNewKazna = false
+        
+        setTimeout(() => {
+          this.editedIndex = -1
+        }, 300)
+      }, 
+         closeCreatePohvala () {
+        
+        this.dialogNewPohvala = false
+         
+        setTimeout(() => {
+          this.editedIndex = -1
+        }, 300)
+      }, 
+         closeEditKazna () {
+        
+        this.dialogEditKazna = false
+           this.editedKazne = Object.assign({}, this.defaultEditedKazne)
+        setTimeout(() => {
+          this.editedIndex = -1
+        }, 300)
+      }, 
+         closeEditPohvala () {
+          this.editedPohvale = Object.assign({}, this.defaultEditedPohvale)
+        this.dialogEditPohvala = false
+         
+        setTimeout(() => {
+          this.editedIndex = -1
+        }, 300)
+      }, 
+            deletePohvala (item) {
+        const index = this.Pohvale.indexOf(item)
+    // pitanje za potrvrdu o brisanju gde ako se odabere potvrdan odgovor vrsi se poziv HTTP delete-a i brisanje ucenika iz vue-x store-a sa splice
+    // na mestu index i broj 1 predstavlja broj ucenika koji se brisu
+        confirm('Da li ste sigurni da zelite da izbrisete ovu pokvalu?') && this.$store.dispatch('deletePohvala',item.id)
+         && this.Pohvale.splice(index,1)
+      },
+            deleteKazna (item) {
+        const index = this.Kazne.indexOf(item)
+    // pitanje za potrvrdu o brisanju gde ako se odabere potvrdan odgovor vrsi se poziv HTTP delete-a i brisanje ucenika iz vue-x store-a sa splice
+    // na mestu index i broj 1 predstavlja broj ucenika koji se brisu
+        confirm('Da li ste sigurni da zelite da izbrisete ovu kaznu?') && this.$store.dispatch('deleteKazna',item.id)
+         && this.Kazne.splice(index,1)
+      },
+
        ClearPicture(){
        this.file=''
       this.imagePreview=''
@@ -788,41 +1392,19 @@ import moment from 'moment'
       },
 
            handleFileUpload(){
-        /*
-          Set the local file variable to what the user has selected.
-        */
         this.file = this.$refs.file.files[0];
 
-        /*
-          Initialize a File Reader object
-        */
-        let reader  = new FileReader();
-
-        /*
-          Add an event listener to the reader that when the file
-          has been loaded, we flag the show preview as true and set the
-          image to be what was read from the reader.
-        */
-    
+        let reader  = new FileReader(); 
         reader.addEventListener("load", function () {
           this.showPreview = true;
           this.imagePreview = reader.result;
           this.editedItem.slika= reader.result
         }.bind(this), false);
 
-        /*
-          Check to see if the file is not empty.
-        */
         if( this.file ){
-          /*
-            Ensure the file is an image file.
-          */
+
           if ( /\.(jpe?g|png|gif)$/i.test( this.file.name ) ) {
-            /*
-              Fire the readAsDataURL method which will read the file in and
-              upon completion fire a 'load' event which we will listen to and
-              display the image in the preview.
-            */
+
             reader.readAsDataURL( this.file );
           }
         }
@@ -852,22 +1434,14 @@ import moment from 'moment'
           } 
       },
       // metoda koja se poziva nakon potrvrde o prijavi, shalje POST zahtev
-      Prijavaucenika () {
+      IzmeniUcenika () {
       
         this.formatiranjeDatuma() 
-       
+   
       
-
-            /*
-                Add the form data we need to submit
-            */
-      
-         // this.editedItem.slika=prepslika;
-         //  console.log(this.editedItem)    
- 
-
-    console.log(this.editedItem)
-        this.$store.dispatch('createeditedItem',this.editedItem)
+          this.editedItem.roditelji.ucenikID= this.editedItem.id
+           console.log(this.editedItem)
+          this.$store.dispatch('editUcenik',this.editedItem)
          this.file=''
           this.imagePreview=''
         this.$router.push('/ucenici')

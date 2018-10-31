@@ -44,7 +44,9 @@ namespace DomUcenikaSvilajnac.Controllers
         [HttpGet]
         public async Task<IEnumerable<UcenikResource>> GetUcenika()
         {
-            return  await UnitOfWork.Ucenici.podaciUcenika();
+            var pom = await UnitOfWork.Ucenici.podaciUcenika();
+            await UnitOfWork.SaveChangesAsync();
+            return pom;
         }
 
         /// <summary>
@@ -203,13 +205,11 @@ namespace DomUcenikaSvilajnac.Controllers
             jer ne moze vaspitna grupa da bude null zbog foreign key-a */
              
             var noviUcenik = _mapper.Map<PostUcenikaResource, Ucenik>(ucenik);
-            noviUcenik.VaspitnaGrupaId = 1;
             noviUcenik.VremeUpisa = DateTime.Now;
+            noviUcenik.VaspitnaGrupaId = 1;
+            noviUcenik.StatusPrijaveId = 1;
             ucenik.Staratelji.UcenikId = noviUcenik.Id;
-
-
-            //kada se cuvaju prvo kolone ne ide null
-            // noviUcenik.Telefon = null;
+            
 
             //cuvanje u bazi
             UnitOfWork.Ucenici.Add(noviUcenik);

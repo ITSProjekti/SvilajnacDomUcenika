@@ -9,6 +9,7 @@ using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -18,14 +19,14 @@ namespace DomUcenikaSvilajnac.DAL.RepoPattern
     /// Nasledjuje genericku klasu Repository sa tipom Ucenik i IUcenikRepository interfejs
     /// Videti Repository i Ucenik klasu i IUcenikRepository interfejs radi dodatnog pojasnjena.
     /// </summary>
-    public class UcenikRepository: Repository<Ucenik>,IUcenikRepository
+    public class UcenikRepository : Repository<Ucenik>, IUcenikRepository
     {
         protected readonly UcenikContext _context;
         public IMapper Mapper { get; }
         /// <summary>
         /// Inicijalizacije instance klase UcenikRepository.
         /// </summary>
-        public UcenikRepository(UcenikContext context, IMapper mapper):base(context)
+        public UcenikRepository(UcenikContext context, IMapper mapper) : base(context)
         {
             _context = context;
             Mapper = mapper;
@@ -60,7 +61,9 @@ namespace DomUcenikaSvilajnac.DAL.RepoPattern
                 .Include(tipP => tipP.TipPorodice)
                 .Include(st => st.Staratelji)
                 .Include(vg => vg.VaspitnaGrupa)
+                .Include(sp => sp.StatusPrijave)
                 .ToListAsync();
+
 
             foreach (var item in podaciUcenika)
             {
@@ -75,6 +78,19 @@ namespace DomUcenikaSvilajnac.DAL.RepoPattern
                         }
                     };
             }
+
+
+
+            foreach (var ucenik in podaciUcenika)
+                if (ucenik.StatusPrijaveId == 1)
+                    ucenik.BodoviZaUpis = formulaZaRangiranje(ucenik.Id);
+                else
+                    ucenik.BodoviZaUpis = 0;
+
+
+            _context.UpdateRange(podaciUcenika);
+
+
             return Mapper.Map<List<Ucenik>, List<UcenikResource>>(podaciUcenika);
         }
 
@@ -95,9 +111,10 @@ namespace DomUcenikaSvilajnac.DAL.RepoPattern
                 .Include(s => s.Smer)
                 .Include(r => r.Razred)
                 .Include(rod => rod.Roditelji)
-                 .Include(tipP => tipP.TipPorodice)
-                 .Include(st => st.Staratelji)
-                 .Include(vg => vg.VaspitnaGrupa)
+                .Include(tipP => tipP.TipPorodice)
+                .Include(st => st.Staratelji)
+                .Include(vg => vg.VaspitnaGrupa)
+                .Include(sp => sp.StatusPrijave)
                 .SingleOrDefaultAsync(x => x.Id == id);
             return Mapper.Map<Ucenik, UcenikResource>(podaciUcenikaById);
         }
@@ -120,6 +137,7 @@ namespace DomUcenikaSvilajnac.DAL.RepoPattern
                 .Include(r => r.Razred)
                 .Include(tipP => tipP.TipPorodice)
                 .Include(vg => vg.VaspitnaGrupa)
+                .Include(sp => sp.StatusPrijave)
                 .SingleOrDefaultAsync(x => x.Id == ucenik.Id);
 
             return Mapper.Map<Ucenik, PostUcenikaResource>(podaciUcenika);
@@ -144,6 +162,7 @@ namespace DomUcenikaSvilajnac.DAL.RepoPattern
                 .Include(rod => rod.Roditelji)
                 .Include(tipP => tipP.TipPorodice)
                 .Include(vg => vg.VaspitnaGrupa)
+                .Include(sp => sp.StatusPrijave)
                 .SingleOrDefaultAsync(x => x.Id == id);
             return Mapper.Map<Ucenik, PutUcenikaResource>(podaciUcenika);
         }
@@ -168,9 +187,23 @@ namespace DomUcenikaSvilajnac.DAL.RepoPattern
                 .Include(tipP => tipP.TipPorodice)
                 .Include(st => st.Staratelji)
                 .Include(vg => vg.VaspitnaGrupa)
+                .Include(sp => sp.StatusPrijave)
                 .SingleOrDefaultAsync(x => x.Id == ucenik.Id);
 
             return Mapper.Map<Ucenik, UcenikResource>(podaciUcenika);
         }
-    }
+
+        public float formulaZaRangiranje(int idUcenika)
+        {
+
+            var ucenik = _context.Uceniks.SingleOrDefault(n => n.Id == idUcenika);
+            float rezultat = 0;
+            float sumaBodovaPohvala = _context.Pohvale.Where(o => o.UcenikId == idUcenika).Sum(n => n.BodoviPohvale);
+            float sumaBodovaKazni = _context.Kazne.Where(o => o.UcenikId == idUcenika).Sum(n => n.BodoviKazne);
+
+            rezultat =((ucenik.PrethodniUspeh * 7) + (sumaBodovaPohvala - sumaBodovaKazni))+(3*ucenik.BrojPutaUDomu);
+
+            return Convert.ToSingle(Math.Round(rezultat,2));
+        }
+    } 
 }

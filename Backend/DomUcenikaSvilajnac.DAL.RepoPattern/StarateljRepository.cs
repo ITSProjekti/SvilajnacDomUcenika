@@ -35,9 +35,9 @@ namespace DomUcenikaSvilajnac.DAL.RepoPattern
 
         public async Task<Staratelj> selektIdStarateljaUcenika(int UcenikId)
         {
-            var nesto = await _context.Staratelji.SingleOrDefaultAsync(n => n.UcenikId == UcenikId);
+            var staratelj = await _context.Staratelji.SingleOrDefaultAsync(n => n.UcenikId == UcenikId);
 
-            return nesto;
+            return staratelj;
         }
     }
 }

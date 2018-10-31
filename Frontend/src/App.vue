@@ -1,8 +1,5 @@
 <template>
   <v-app id="inspire">
-
-
-
     <v-navigation-drawer
       v-model="drawer"
       fixed
@@ -28,8 +25,8 @@
             <v-flex xs6>
               
               <v-subheader class="white--text"  v-if="item.heading">
-                <v-icon class="mr-3" > {{ item.mainicon }}</v-icon>
-                
+              
+                <img class="mr-3" :src=item.srcmain >
                 {{ item.heading }}
               </v-subheader>
             </v-flex>
@@ -49,7 +46,7 @@
            active-class="redactive"
           >
             <v-list-tile-action>
-              <v-icon class="ml-4">{{ item.icon }}</v-icon>
+    
             </v-list-tile-action>
             <v-list-tile-content>
               <v-list-tile-title  class="text-xs-ml3">
@@ -60,30 +57,9 @@
         </template>
       </v-list>
     </v-navigation-drawer>
-     <v-toolbar  class="white"  app  clipped-left height=30px>
-      <v-toolbar-side-icon @click.native="drawer = !drawer"></v-toolbar-side-icon>
-      <!--
-          <v-breadcrumbs icons divider="chevron_right">
-   
-    <breadcrumbs >
-    </breadcrumbs>
-    </v-breadcrumbs> -->
-        <!--  <v-toolbar-title>
-        <router-link to="/" tag="span" style="cursor: pointer">Dom učenika Svilajnac</router-link>
-        </v-toolbar-title>
+     <v-toolbar color="grey" class="white"  app  clipped-left height=30px>
+      <v-toolbar-side-icon dark @click.native="drawer = !drawer"></v-toolbar-side-icon>
 
-       <v-spacer></v-spacer>
-      <v-toolbar-items class="hidden-xs-only">
-        <v-btn flat
-         v-for="item in menuItems"
-          :key="item.title"
-          router
-           :to="item.link">
-          <v-icon left>{{item.icon}}</v-icon>
-         {{item.title}}
-          </v-btn>
-
-      </v-toolbar-items> -->
     </v-toolbar> 
     <v-content>
       <v-container fluid fill-height class="grey lighten-4">
@@ -114,20 +90,20 @@
       // kolekcija opcija za side-navbar
       
       items: [
-        
-        { heading: 'Učenik' ,mainicon: 'person'},        
-        { icon: 'group', text: 'Pregled učenika u domu',link: '/ucenici' },
+        //require koriscen za prikaz slike, srcmain promenljiva za cuvanje putanje slike
+        { heading: 'Učenik' ,mainicon: 'person',srcmain: require('./assets/ucenikikonica.png')},        
+        { icon: 'group', text: 'Pregled učenika u domu'},
         { icon: 'group_add', text: 'Novi učenik - prijava',link: '/prijava' },
         { icon: 'list_alt', text: 'Pregled svih prijavljenih',link: '/ucenici' },
         { icon: 'group_work', text: 'Vaspitne grupe',link: '/vaspitnegrupe' },
         { divider: true },
-        { heading: 'Vaspitni rad' ,mainicon: 'book' },
+        { heading: 'Vaspitni rad' ,mainicon: 'book',srcmain: require('./assets/vaspitnirad.png') },
         { icon: 'timer', text: 'Godišnji program rada' },
         { icon: 'insert_invitation', text: 'Mesečni plan rada' },
         { icon: 'ballot', text: 'Evidencija ostvarivanja programa'},
         
         { divider: true },
-        { heading: 'Izveštaji' ,mainicon: 'bar_chart'}
+        { heading: 'Izveštaji' ,mainicon: 'bar_chart',srcmain: require('./assets/izvestaji.png')}
         
       ], 
       // opcije koje se nalaze na glavnom toolbaru (na vrhu ekrana)

@@ -37,12 +37,15 @@ namespace DomUcenikaSvilajnac.Common.Interfaces
         IKaznaRepository Kazne { get; }
         IVaspitacRepository Vaspitaci { get; }
         ISastanakRepository Sastanci { get; }
+        IStatistikaRepository Statistike { get; }
 
-
+        IStatusPrijaveRepository StatusiPrijave { get; set; }
 
         int SaveChanges();
         Task<int> SaveChangesAsync();
 
         Task<IEnumerable<DeleteRoditeljaResource>> brisanjeRoditelja(int UcenikId);
+
+      
     }
 }

@@ -70,16 +70,16 @@ namespace DomUcenikaSvilajnac.Controllers
             roditelj.Id = nizId[1];
             roditelj.IdMajke = nizId[0];
 
-            var djesi = Mapper.Map<PutRoditeljaResource, MajkaResource>(roditelj);
-            
+            var majkaResurs = Mapper.Map<PutRoditeljaResource, MajkaResource>(roditelj);
 
-            djesi.IdMajke = nizId[0];
-            djesi.Id = nizId[1];
+
+            majkaResurs.IdMajke = nizId[0];
+            majkaResurs.Id = nizId[1];
 
 
             Mapper.Map<PutRoditeljaResource, Roditelj>(roditelj, stariOtac);
             staraMajka.Id = nizId[0];
-            Mapper.Map<MajkaResource, Roditelj>(djesi, staraMajka);
+            Mapper.Map<MajkaResource, Roditelj>(majkaResurs, staraMajka);
             await UnitOfWork.SaveChangesAsync();
 
 
