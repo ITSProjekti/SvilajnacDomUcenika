@@ -46,7 +46,7 @@
            active-class="redactive"
           >
             <v-list-tile-action>
-            <!--  <v-icon class="ml-4">{{ item.icon }}</v-icon> -->
+    
             </v-list-tile-action>
             <v-list-tile-content>
               <v-list-tile-title  class="text-xs-ml3">
@@ -59,28 +59,7 @@
     </v-navigation-drawer>
      <v-toolbar color="grey" class="white"  app  clipped-left height=30px>
       <v-toolbar-side-icon dark @click.native="drawer = !drawer"></v-toolbar-side-icon>
-      <!--
-          <v-breadcrumbs icons divider="chevron_right">
-   
-    <breadcrumbs >
-    </breadcrumbs>
-    </v-breadcrumbs> -->
-        <!--  <v-toolbar-title>
-        <router-link to="/" tag="span" style="cursor: pointer">Dom učenika Svilajnac</router-link>
-        </v-toolbar-title>
 
-       <v-spacer></v-spacer>
-      <v-toolbar-items class="hidden-xs-only">
-        <v-btn flat
-         v-for="item in menuItems"
-          :key="item.title"
-          router
-           :to="item.link">
-          <v-icon left>{{item.icon}}</v-icon>
-         {{item.title}}
-          </v-btn>
-
-      </v-toolbar-items> -->
     </v-toolbar> 
     <v-content>
       <v-container fluid fill-height class="grey lighten-4">
@@ -111,7 +90,7 @@
       // kolekcija opcija za side-navbar
       
       items: [
-        
+        //require koriscen za prikaz slike, srcmain promenljiva za cuvanje putanje slike
         { heading: 'Učenik' ,mainicon: 'person',srcmain: require('./assets/ucenikikonica.png')},        
         { icon: 'group', text: 'Pregled učenika u domu'},
         { icon: 'group_add', text: 'Novi učenik - prijava',link: '/prijava' },

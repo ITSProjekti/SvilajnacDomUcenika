@@ -7,7 +7,7 @@ import VueAxios from 'vue-axios'
 Vue.use(VueAxios, axios)
 // Vuex sluzi za rad sa vue-store-om koji sluzi da stvaranje "baze" podataka za front
 Vue.use(Vuex)
-
+// linija ispod sluzi da iskljuci eslint korekciju pisanja koda
 /* eslint-disable */
 export const store = new Vuex.Store({
     // veliki objekat koji sadrzi atribute neophodne za rad programa state-baza, mutatori-menjanje baze,
@@ -25,6 +25,8 @@ export const store = new Vuex.Store({
         razred: [],
         kazne: [],
         pohvale: [],
+        statusiprijave: [],
+        sastanci: [],
         vaspitnegrupe: [],
         stepeniStrucneSpreme: [],
         postanskiBrojevi: [],
@@ -36,7 +38,19 @@ export const store = new Vuex.Store({
     },
     // mutacije su metode koje imaju direktan kontakt sa bazom, obicno sluze za cuvanje podataka u bazu
     mutations: {
-        // sve setLoaded metode sluze za ubacivanje podataka u State sa backend-a
+         // sve setLoaded metode sluze za ubacivanje podataka u State sa backend-a, kreiranje front baze
+        setLoadedSastanci (state,payload)
+        {
+            state.sastanci=payload
+        },
+        setLoadedStatusiPrijave (state,payload)
+        {
+            state.statusiprijave=payload
+        },
+
+
+
+       
         setLoadedVaspitac (state,payload)
         {
             state.vaspitaci=payload
@@ -111,6 +125,11 @@ export const store = new Vuex.Store({
         clearError(state) {
             state.error=null
         },
+        
+        createSastanci(state,payload)
+        {
+            state.sastanci.push(payload)
+        },
         createUcenik(state,payload)
         {
             // JSON kopiranje objekata gde je payload podatak koji stize sa backend-a
@@ -169,6 +188,10 @@ export const store = new Vuex.Store({
         {
             state.pohvale.splice(payload.id)
         },
+        deleteSastanci(state,payload)
+        {
+            state.sastanci.splice(payload.id)
+        },
         deleteVaspitac(state,payload)
         {
             state.vaspitaci.splice(payload.id)
@@ -189,7 +212,19 @@ export const store = new Vuex.Store({
             pohvalaEdit.bodoviPohvale = payload.bodoviPohvale,
             pohvalaEdit.ucenikId=payload.ucenikId
         },
-
+        editSastanci(state,payload)
+        {
+            const sastanciEdit = state.sastanci.find(sastanciEdit =>{
+                return sastanciEdit.id ===payload.id
+            })
+            sastanciEdit.brojPrisutnihUcenika= payload.brojPrisutnihUcenika,
+            sastanciEdit.vaspitnaGrupa= {
+                    id: payload.vaspitnaGrupa.id
+                        },
+            sastanciEdit.opisDnevnogRada= payload.opisDnevnogRada,
+            sastanciEdit.odlukeDoneseneNaSastanku= payload.odlukeDoneseneNaSastanku,
+            sastanciEdit.zakljucciSastanka= payload.zakljucciSastanka
+        },
         editVaspitneGrupe(state,payload)
         {
             const vaspitnaGrupaEdit = state.vaspitnegrupe.find(vaspitnaGrupaEdit =>{
@@ -225,7 +260,12 @@ export const store = new Vuex.Store({
               ucenikEdit.ime= payload.ime,
               ucenikEdit.prezime= payload.prezime,
               ucenikEdit.jmbg= payload.jmbg,
+              ucenikEdit.brojPutaUDomu= payload.brojPutaUDomu,
               ucenikEdit.adresa = payload.adresa,
+              ucenikEdit.statusPrijave ={
+                id:  payload.statusPrijave.id,
+                status:  payload.statusPrijave.status
+              },
               ucenikEdit.prethodiUspeh = payload.prethodiUspeh,
               ucenikEdit.smer = {
                     id: payload.smer.id,
@@ -334,6 +374,30 @@ export const store = new Vuex.Store({
     },
     // actions su metode koje se pozivaju van store-a da bi se nesto radilo sa store-om primer : this.$store.dispatch('loadedSSS')
     actions: {
+       LoadedStatusiPrijave( {commit } ) {         
+            commit('setLoading', true)
+            axios.get('http://localhost:50146/api/statusiprijave').then((response) => {       
+              commit('setLoadedStatusiPrijave', response.data)        
+              commit('setLoading', false)        
+            }).catch(
+                (error) => {
+                  console.log(error)
+                  commit('setLoading', false)
+                        }
+                    )
+          },
+        loadedSastanci( {commit } ) {        
+            commit('setLoading', true)
+            axios.get('http://localhost:50146/api/sastanci').then((response) => {   
+              commit('setLoadedSastanci', response.data)       
+              commit('setLoading', false)       
+            }).catch(
+                (error) => {
+                  console.log(error)
+                  commit('setLoading', false)
+                        }
+                    )
+          },
         // HTTP GET zahtev za stepene strucne spreme 
         loadedSSS( {commit } ) {
             // commit sluzi za pozivanje mutatacija (mutations) metoda
@@ -572,7 +636,37 @@ export const store = new Vuex.Store({
                 }
       )
       
-          },
+          },   
+          createSastanak ({commit},payload) {
+            const sastanak ={
+             
+                brojPrisutnihUcenika: payload.brojPrisutnihUcenika,
+               
+                vaspitnaGrupa: {
+                id: payload.vaspitnaGrupa.id
+                },
+                opisDnevnogRada: payload.opisDnevnogRada,
+                odlukeDoneseneNaSastanku: payload.odlukeDoneseneNaSastanku,
+                zakljucciSastanka: payload.zakljucciSastanka
+            }
+            commit('setLoading', true)
+            console.log(sastanak)
+            axios.post('http://localhost:50146/api/sastanci',sastanak, {
+                onUploadProgress: uploadEvent =>{
+                    console.log('Post request progress:' + Math.round(uploadEvent.loaded / uploadEvent.total * 100) + '%'  )                    
+                }
+            }).then(function(response){
+
+               
+                commit('createSastanci', response.data)
+                commit('setLoading', false)
+                 }).catch(
+                    (error) => {
+                      console.log(error)
+                      commit('setLoading', false)
+                    }
+          )
+        },
           createKazna ({commit},payload) {
             const kazna ={
                 opis: payload.opis,
@@ -680,6 +774,7 @@ export const store = new Vuex.Store({
                 prezime: payload.prezime,
                 jmbg: payload.jmbg,
                 adresa: payload.adresa,
+                brojPutaUDomu: payload.brojPutaUDomu,
                 prethodniUspeh: payload.prethodniUspeh,
                 pol: {
                     id: payload.pol.id
@@ -898,7 +993,11 @@ export const store = new Vuex.Store({
                 ime: payload.ime,
                 prezime: payload.prezime,
                 jmbg: payload.jmbg,
+                brojPutaUDomu: payload.brojPutaUDomu,
                 adresa: payload.adresa,
+                statusPrijave: {
+                    id: payload.statusPrijave.id
+                },
                 prethodniUspeh: payload.prethodniUspeh,
                 pol: {
                     id: payload.pol.id
@@ -1003,6 +1102,12 @@ export const store = new Vuex.Store({
             const ucenikEdit = state.ucenici.find(ucenikEdit => {               
                  ucenikEdit.id === id
               })            
+        },
+        loadedSastanci (state) {
+            return state.sastanci
+        },
+        LoadedStatusiPrijave (state) {
+            return state.statusiprijave
         },
         loadedVaspitneGrupe (state) {
             return state.vaspitnegrupe

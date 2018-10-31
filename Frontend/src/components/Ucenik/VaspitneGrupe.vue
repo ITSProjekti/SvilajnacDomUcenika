@@ -226,6 +226,7 @@
 export default {
      data: () => ({ 
        ikonice:{
+         
           lupa: require('../../assets/lupa.png'),
            edit: require('../../assets/EDIT.png'),
             delete: require('../../assets/XnaInputu.png')
@@ -277,7 +278,7 @@ export default {
       previousItem: ''
       }),
       computed: {
-          
+          // computed promenljive se stvaraju i azuriraju u vremenu
           vaspitneGrupe() {
                 const x = this.$store.getters.loadedVaspitneGrupe
                 console.log(x)
@@ -319,12 +320,14 @@ export default {
           }
         }
       },
+      // crud metode za rad sa vaspitnim grupama i vaspitacima, koriscenjem vuetify dijaloga, koriscene su skracenice za imenovanje metoda 
       editVaspitnaGrupa (item) {
         this.editedIndex = this.vaspitneGrupe.indexOf(item)
         this.editedItem = Object.assign({}, item)
         this.previousItem = Object.assign({}, item)
         this.dialogEditGrupa = true
       },
+      //create vaspitac
       closeCV () {
         
         this.dialogNewVaspitac = false
@@ -333,6 +336,7 @@ export default {
           this.editedIndex = -1
         }, 300)
       }, 
+      //edit vaspitac
         closeEV () {
         
         this.dialogEditVaspitac = false
@@ -340,6 +344,7 @@ export default {
           this.editedIndex = -1
         }, 300)
       },
+      //close create grupa
             closeC () {
         
         this.dialogNewGrupa = false
@@ -348,6 +353,7 @@ export default {
           this.editedIndex = -1
         }, 300)
       }, 
+      //close edit grupa
         closeE () {
         
         this.dialogEditGrupa = false

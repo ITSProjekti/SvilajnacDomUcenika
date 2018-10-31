@@ -10,8 +10,10 @@ import VueAxios from 'vue-axios'
 import Breabcrumbs from 'vue-2-breadcrumbs'
  /* eslint-disable no-new */
 Vue.use(Breabcrumbs)
+// Vuetify.com koriscen za dizajn
 // Osposobljavanje Axios-a za HTTP zahteve i Vuetify za HTML/CSS programa (nalik na Google dizajn)
 Vue.use(VueAxios, axios)
+// vuetify postavljanje globalnih imena za boje
 Vue.use(Vuetify, {
   theme: {
     navbarcolor: '#03996F',
@@ -33,6 +35,8 @@ new Vue({
   created () {
     // pozovi sve inicijalne metode za popunjavanje store-a sa podacima neophodnim za funkcionisanje programe
     this.$store.dispatch('loadedUcenici')
+    this.$store.dispatch('loadedSastanci')
+    this.$store.dispatch('LoadedStatusiPrijave')
     this.$store.dispatch('loadedTipoviPorodice')
     this.$store.dispatch('loadedSSS')
     this.$store.dispatch('loadedDrzave')

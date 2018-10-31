@@ -297,7 +297,28 @@
               </v-flex>
              </v-flex>
 
-       
+        <template>
+                 <v-container fluid>
+                    <v-layout row wrap>
+                    <v-flex offset-sm1  xs12 sm3 class="mt-4 ">
+                     <p>Država rođenja</p>
+                    </v-flex>
+                           <v-flex xs12 sm6>
+                               <v-select
+                                 color="navbarcolor"
+                                :loading="loading"
+                                :items="statusiPrijave"
+                                v-model="editedItem.statusPrijave.id"
+                                label="Status prijave"
+                                item-text="status"
+                                item-value="id"
+                                autocomplete
+                              
+                              ></v-select>
+                            </v-flex>
+                          </v-layout>
+                        </v-container>
+                      </template>
 
 
        <v-flex offset-sm1 xs12>
@@ -1058,7 +1079,7 @@
 import moment from 'moment'
   export default {
     data: () => ({  
- 
+      // hederi korisceni za tebele prikaza podataka o kaznama
             headers: [
         {
           text: 'Broj bodova',  align: 'center', sortable: true,  value: 'id', width:'20%' },
@@ -1097,7 +1118,7 @@ import moment from 'moment'
           file: '',
         showPreview: false,
         imagePreview: '',
-      // atribut za jmbg progress bar
+      
       custom: true,
       editedIndex: -1,
       dialogEditPohvala: false,
@@ -1208,6 +1229,10 @@ import moment from 'moment'
       },
       TipoviPorodice () {
         return this.$store.getters.loadedTipoviPorodice
+      },
+      statusiPrijave()
+      {
+        return this.$store.getters.LoadedStatusiPrijave
       },
       Pohvale () {
         return this.$store.getters.loadedPohvale

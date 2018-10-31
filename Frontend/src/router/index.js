@@ -15,11 +15,12 @@ import Breabcrumbs from 'vue-2-breadcrumbs'
 Vue.use(Breabcrumbs)
 
 Vue.use(Router)
-
+// podesavanja vue routera, komponente za navigaciju/rutiranje programa
 export default new Router({
   routes: [
     {path:'/', component: Home, name:'',
     meta: {
+      //pokusaj podesavanja breadcrumb-a, TO-DO
       breadcrumb: 'Pocetna'  
     }},
     {path:'/ucenici', component: Ucenici, name:'Ucenici',

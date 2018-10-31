@@ -1,12 +1,8 @@
 
 <template>
   <div id="maindiv">
-  
    <v-card>
-
-      
-  
-
+    
     <v-layout wrap > 
         <v-flex xs12  class="text-xs-center">
         <v-progress-circular
@@ -17,32 +13,30 @@
           v-if="loading"></v-progress-circular>
       </v-flex>
     </v-layout>
-
     <v-card>
           <transition name="slidetoleft" appear>
        <v-card-title wrap >
         <h3>Pregled svih prijavljenih učenika</h3> </v-card-title>
           </transition>
       <v-layout wrap justify-end >
-        
-
-
-
         <v-flex xs3 class="mb-2 mr-3">
-        <v-text-field
-       
+        <v-text-field      
         v-model="search"
         append-icon="search"
         label="Pretraga"
         single-line
         hide-details
-      ></v-text-field>
-       
+      ></v-text-field>     
+      
         </v-flex>
+      
+        <v-btn dark class=" navbarcolor mt-2 mr-4"  @click.native="reloadPage">
+          <img class ="mr-3 " :src=rangiraj.srcmain>   Rangiraj
+        </v-btn>  
       </v-layout>
-
    <transition name="fade" appear  mode="in-out">
         <v-flex xs12>
+          <!-- Glavna tabela prikaza svih prijavljenih ucenika -->
     <v-data-table  
       :headers="headers"
       :items="ucenici"
@@ -56,17 +50,17 @@
       <template slot="items" slot-scope="props" >
         <tr >
         <td class="text-xs-left priority-1" >{{ props.item.id}}</td>
+          <td class="text-xs-left priority-1">{{ props.item.statusPrijave.status }}</td>
+            <td class="text-xs-left priority-1">{{ props.item.bodoviZaUpis }}</td>
         <td class="text-xs-left priority-1">{{ props.item.ime }}</td>
-        <td class="text-xs-left priority-1">{{ props.item.prezime }}</td>
-        <td class="text-xs-left priority-3">{{ props.item.jmbg }}</td>
-        <td class="text-xs-left priority-3">{{ props.item.pol.nazivPola }}</td>
-        <td class="text-xs-left priority-3">{{ props.item.dan }}.{{ props.item.mesec }}.{{ props.item.godina }}.</td>
+        <td class="text-xs-left priority-1">{{ props.item.prezime }}</td> 
         <td class="text-xs-left priority-4">{{ props.item.vaspitnaGrupa.naziv }}</td>
+         <td class="text-xs-left priority-5">{{ props.item.razred.brojRazreda }}</td>
         <td class="text-xs-left priority-5">{{ props.item.upisanaSkola.nazivSrednjeSkole }}</td>
+         <td class="text-xs-left priority-5">{{ props.item.smer.nazivSmera }}</td>
         <td class="justify-center layout px-0">
           <v-btn center icon class="mx-0"
            @click="deleteItem(props.item)">
-      
               <img :src=kanta.srcmain>
           </v-btn>
              <v-btn center icon class="mx-0"
@@ -112,17 +106,19 @@ import moment from 'moment'
       ],
       kanta: { srcmain: require('../../assets/KANTA2.png')},
       izmena: { srcmain: require('../../assets/EDIT.png')} ,
+       rangiraj: { srcmain: require('../../assets/RangirajIkona.png')} ,
       // headeri sluze za generisanje polja koja se prikazuju u tabeli
       headers: [
         {
-          text: 'Redni broj',  align: 'left', sortable: false,  value: 'id', width:'100%' ,class: 'priority-1'},
+        text: 'Redni broj',  align: 'left', sortable: false,  value: 'id', width:'100%' ,class: 'priority-1'},
+        { text: 'Status',value: 'statusPrijave.status' ,align: 'left',sortable:true, width:'100%',class: 'priority-1'},
+        { text: 'Br bodova',value: 'bodoviZaUpis' ,align: 'left',sortable:true, width:'100%',class: 'priority-1'},
         { text: 'Ime',value: 'ime' ,align: 'left',sortable:true, width:'100%',class: 'priority-1'},
         { text: 'Prezime', value:'prezime', align: 'left',sortable:true,width:'100%',class: 'priority-1'},
-        { text: 'JMBG', value:'jmbg',align: 'left',sortable:true ,width:'100%',class: 'priority-3'},
-        { text: 'Pol', value: 'pol.nazivPola',align: 'left',sortable:true,width:'100%',class: 'priority-3' },
-        { text: 'Datum rođenja', value: 'godina',align: 'left',sortable:false,width:'100%',class: 'priority-3' },
         { text: 'Vaspitna grupa', value: 'vaspitnaGrupa.naziv',align: 'left',sortable:true,width:'100%',class: 'priority-4' },
+        { text: 'Razred', value: 'razred.brojRazreda',align: 'left',sortable:true ,width:'100%',class: 'priority-5'},
         { text: 'Škola', value: 'upisanaSkola.nazivSrednjeSkole',align: 'left',sortable:true ,width:'100%',class: 'priority-5'},
+        { text: 'Smer', value: 'smer.nazivSmera',align: 'left',sortable:true ,width:'100%',class: 'priority-5'},
         { text: 'Opcije', value: 'opcije',align: 'center',sortable:false,width:'100%' }
       ],
       // pomocna promenljiva za generisanje podatka o datumu rodjenja
@@ -132,7 +128,7 @@ import moment from 'moment'
         showPreview: false,
         imagePreview: '',
       // atribut za jmbg progress bar
-
+      bodoviZaUpis: '',
       custom: true,
       editedIndex: -1,
       // brojevi su pomocna prom za rad sa postanskim brojevima
@@ -143,6 +139,10 @@ import moment from 'moment'
         prezime: '',
         jmbg: '',
         adresa: '',
+        statusPrijave: {
+          id: '',
+          status:''
+          },
         prethodniUspeh: '',
        pol: {
           id: '',
@@ -241,7 +241,12 @@ import moment from 'moment'
       defaultItem: {
         ime: '',
         prezime: '',
+         bodoviZaUpis: '',
         jmbg: '',
+          statusPrijave: {
+          id: '',
+          status:''
+          },
         adresa: '',
         prethodniUspeh: '',
        pol: {
@@ -340,7 +345,6 @@ import moment from 'moment'
     }),
     // computed metode su metode koje se desavaju onda kada dodje do nekakvim promena stanja komponente, neki vid watcher-a
     computed: {
-    
       // logika za racunanje progress bar-a kod jmbg, 105 je prva granica a drugi parametar u math.min funkciji sluzi za formiranje 13 podeoka 
       // na progress baru za 13 jmbg cifara, dalje se ovi rezultati koriste za prikaz promene boja na progress baru
           progress () {
@@ -408,6 +412,10 @@ import moment from 'moment'
       }
     },
     methods: {
+        reloadPage(){
+   console.log('yo')
+   this.$store.dispatch('loadedUcenici')
+  },
          ClearPicture(){
    this.file=''
    this.imagePreview=''
@@ -456,33 +464,28 @@ import moment from 'moment'
       customFilter(items, search, filter) {
       search = search.toString().toLowerCase()
        // ovo su podaci koji su odmah vidljivi u tabeli 
-      var  filtered= items.filter(i => (
-      Object.keys(i).some(j => filter(i[j], search)) 
-    ))
-    
+     /// var  filtered= items.filter(i => (
+    //  Object.keys(i).some(j => filter(i[j], search)) 
+   // ))
+    var filtered =''
     if (filtered.length !== 0)
     return filtered
     // podaci koji nisu vidljivi u kolonama/redovima tabela vec samo kada se klikne na ucenika radi prikaza svih preostalih podataka
     else
     {
-         return items.filter((item) => {
-           item.datum=item.dan+"."+item.mesec+"."+item.godina
+              return items.filter((item) => {
+          
            // postoji prioritet pretrage koji je ovde prikazan u poretku uslova, najveci prioritet za drzave pa nazive opstina itd...
-        return 
-      
-        item.pol.nazivPola.toLowerCase().match(this.search.toLowerCase()) ||
-      
+        return item.statusPrijave.status.toLowerCase().match(this.search.toLowerCase()) ||
+        item.ime.toLowerCase().match(this.search.toLowerCase()) ||
+        item.prezime.toLowerCase().match(this.search.toLowerCase()) ||
+        item.razred.brojRazreda.toLowerCase().match(this.search.toLowerCase()) || 
+       // item.mestoRodjenja.nazivMesta.toLowerCase().match(this.search.toLowerCase()) ||
         item.smer.nazivSmera.toLowerCase().match(this.search.toLowerCase()) ||
-     
-        item.upisanaSkola.nazivSrednjeSkole.toLowerCase().match(this.search.toLowerCase()) ||
-        item.vaspitnaGrupa.naziv.toLowerCase().match(this.search.toLowerCase()) ||
-        item.datum.toLowerCase().match(this.search.toLowerCase()) ||
-        item.roditelji[0].ime.toLowerCase().match(this.search.toLowerCase()) ||
-        item.roditelji[0].prezime.toLowerCase().match(this.search.toLowerCase()) ||
-        item.roditelji[0].brojTelefona.toLowerCase().match(this.search.toLowerCase()) ||
-        item.roditelji[1].ime.toLowerCase().match(this.search.toLowerCase()) ||
-        item.roditelji[1].prezime.toLowerCase().match(this.search.toLowerCase()) ||
-        item.roditelji[1].brojTelefona.toLowerCase().match(this.search.toLowerCase()) 
+      //  item.prethodnaSkola.nazivPrethodneSkole.toLowerCase().match(this.search.toLowerCase()) ||
+        item.upisanaSkola.nazivSrednjeSkole.toLowerCase().match(this.search.toLowerCase()) 
+      //  item.postanskiBroj.broj.toLowerCase().match(this.search.toLowerCase()) ||
+
 
         })
     }
@@ -623,8 +626,9 @@ td:nth-child(odd) {
  
 
 }
-
+/* responsive tabele, uklanjanje kolona */
       @media screen and (max-width: 1225px) and (min-width: 1045px) {
+        /* prioriteti prikaza polja u tabelama i kod za proveru istih na osnovu prikaza ekrana u pikselima*/
 		.priority-5{
 			display:none;
 		}
@@ -668,13 +672,6 @@ td:nth-child(odd) {
 	
 	}
 
-  @media screen and (max-width: 300px) {
-   table tr:nth-child(1)
-    {
-      display:none;
-    }
-	
-	}
 
   .responsive {
     width: 100%;

@@ -971,7 +971,9 @@ import moment from 'moment'
     }
 
    ,
+   
     methods: {
+      // metoda za brisanje slike (osvezavanje)
        ClearPicture(){
        this.file=''
       this.imagePreview=''
@@ -980,6 +982,7 @@ import moment from 'moment'
         input.type = 'text';
         input.type = 'file';
       },
+      //metoda za formiranje slike u odredjenom formatu
 
            handleFileUpload(){
         this.file = this.$refs.file.files[0];
@@ -1050,7 +1053,7 @@ input[type="number"] {
     -moz-appearance: textfield;
 }
 
-
+/* css animacije za slide in-out i fade in-out*/
 .fade-enter-active, .fade-leave-active {
   transition: opacity 2s ease-out;
 }
