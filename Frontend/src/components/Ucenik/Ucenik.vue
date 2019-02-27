@@ -83,7 +83,8 @@
                   color="navbarcolor"
                  v-model="editedKazne.opis"
                  clearable
-                  label="Opis kazne"               
+                  label="Opis kazne"  
+                  :rules="[rules.name]"             
                   ></v-text-field>
               </v-flex>
               </v-flex>
@@ -1055,8 +1056,8 @@
               </v-flex>
               <v-card-actions>
                 
-  <v-btn @click="IzmeniUcenika"     :disabled="!formIsValid">
-    Izmeni
+  <v-btn id="dugme1" @click="IzmeniUcenika"     :disabled="!formIsValid">
+    Sačuvaj izmene
     
   </v-btn>
 </v-card-actions>
@@ -1091,7 +1092,15 @@ import moment from 'moment'
            rules: {
       // requiered pravilo je pravilo za neophodnost postojanja informacije koja se trazi na odgovarajucem polju sa opcijom requiered
           required: (value) => !!value || 'Ovo polje je obavezno.',
-       jmbg: (value) => {
+          name: (value) => {
+            const pattern = /[a-zA-Z][^#&<>\"~;$^%{}?]{1,20}$/
+            return pattern.test(value) || 'Ime ne sme sadržati brojeve, specijalne karaktere.'
+          },
+          telefon: (value) => {
+            const pattern = /^[+]*[(]{0,1}[0-9]{1,4}[)]{0,1}[-\s\./0-9]*$/
+            return pattern.test(value) || 'Telefon mora sadržati samo brojeve.'
+          },
+          jmbg: (value) => {
             const pattern = /^(\w{13,13})$/ 
             return pattern.test(value) || 'Jmbg mora biti dugacak 13 cifara.'
           },
@@ -1517,5 +1526,14 @@ input[type="number"] {
   .responsive {
     width: 100%;
     height: auto;
+}
+
+#dugme1{
+
+ 
+  position: fixed;
+  top: 10%;
+  left: 79%;
+  
 }
 </style>
