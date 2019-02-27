@@ -50,8 +50,7 @@
                         label="Ime" 
                         required                 
                         clearable
-                       
-                        :rules="[rules.required]"
+                        :rules="[rules.required,rules.name]"
                         ></v-text-field>
                           </v-flex>
                            <v-flex xs12 sm3 offset-sm1 class="mt-4">
@@ -76,7 +75,7 @@
                   label="Prezime"
                    required
                    clearable
-                   :rules="[rules.required]"
+                   :rules="[rules.required,rules.name]"
                    ></v-text-field>
               </v-flex>
              </v-flex>
@@ -130,7 +129,7 @@
                   label="Adresa prebivališta" 
                   required
                   clearable
-                   :rules="[rules.required]"
+                   :rules="[rules.required,rules.name]"
                   ></v-text-field>
               </v-flex>
           </v-flex>
@@ -300,7 +299,7 @@
                           </v-layout>
                         </v-container>
 
-                        <v-container fluid>
+                       <v-container fluid>
                     <v-layout row wrap>
                        <v-flex offset-sm1  xs12 sm3 >
                       <p >Datum Rođenja</p>   
@@ -468,6 +467,7 @@
                v-model="editedItem.telefon.mobilni"                 
                    label="Mobilni telefon"
                 clearable
+                :rules="[rules.telefon]"
                   ></v-text-field>
               </v-flex>
               </v-flex>
@@ -479,20 +479,10 @@
                v-model="editedItem.telefon.kucni"                
                    label="Kućni telefon" 
             clearable
+            :rules="[rules.telefon]"
                   ></v-text-field>
               </v-flex>
               </v-flex>
-
-
-
-
-
-
-
-
-
-
-
    </v-card>
           </v-flex>
           </transition >
@@ -521,7 +511,7 @@
                    label="Ime majke"   
                       required
                       clearable
-                      :rules="[rules.required]" 
+                      :rules="[rules.required, rules.name]" 
                   ></v-text-field>
               </v-flex>
               </v-flex>
@@ -533,7 +523,7 @@
                     v-model="editedItem.roditelji[1].prezime"  
                     required
                     clearable
-                    :rules="[rules.required]"              
+                    :rules="[rules.required, rules.name]"              
                    label="Prezime majke" 
                   ></v-text-field>
               </v-flex>
@@ -567,7 +557,7 @@
                  color="navbarcolor"
                   v-model="editedItem.roditelji[1].brojTelefona" 
                     required
-                    :rules="[rules.required]"     
+                    :rules="[rules.required, rules.telefon]"     
                     clearable          
                    label="Broj telefona majke"  
                   ></v-text-field>
@@ -581,7 +571,7 @@
                v-model="editedItem.roditelji[0].ime" 
                     required
                     clearable
-                    :rules="[rules.required]"               
+                    :rules="[rules.required, rules.name]"               
                    label="Ime oca" 
                   ></v-text-field>
               </v-flex>
@@ -595,7 +585,7 @@
                    label="Prezime oca"  
                       required
                       clearable
-                      :rules="[rules.required]"   
+                      :rules="[rules.required, rules.name]"   
                   ></v-text-field>
               </v-flex>
               </v-flex>
@@ -629,7 +619,7 @@
                  color="navbarcolor"
                    v-model="editedItem.roditelji[0].brojTelefona" 
                     required
-                    :rules="[rules.required]"      
+                    :rules="[rules.required, rules.telefon]"      
                     clearable         
                    label="Broj telefona oca"   
                   ></v-text-field>
@@ -751,12 +741,19 @@ import moment from 'moment'
            rules: {
       // requiered pravilo je pravilo za neophodnost postojanja informacije koja se trazi na odgovarajucem polju sa opcijom requiered
           required: (value) => !!value || 'Ovo polje je obavezno.',
-       jmbg: (value) => {
+          name: (value) => {
+            const pattern = /[a-zA-Z][^#&<>\"~;$^%{}?]{1,20}$/
+            return pattern.test(value) || 'Ime ne sme sadržati brojeve, specijalne karaktere.'
+          },
+          telefon: (value) => {
+            const pattern = /^[+]*[(]{0,1}[0-9]{1,4}[)]{0,1}[-\s\./0-9]*$/
+            return pattern.test(value) || 'Telefon mora sadržati samo brojeve.'
+          },
+          jmbg: (value) => {
             const pattern = /^(\w{13,13})$/ 
             return pattern.test(value) || 'Jmbg mora biti dugacak 13 cifara.'
           },
-     
-           uspehX: (value) => {
+          uspehX: (value) => {
             const pattern = /^([1-4](\.\d+){1}|5(\.0+)?)$/
             return pattern.test(value) || 'Uspeh mora biti u formatu B.BB (B - broj).'
           },
@@ -764,6 +761,7 @@ import moment from 'moment'
             const pattern = /^[1-5]$/
             return pattern.test(value) || 'Materijalni prihodi moraju biti brojevi od 1-5'
           }
+          
         },
       // pomocna promenljiva za generisanje podatka o datumu rodjenja
       datum: null,
