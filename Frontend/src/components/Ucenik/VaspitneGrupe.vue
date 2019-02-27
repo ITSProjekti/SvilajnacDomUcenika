@@ -20,7 +20,8 @@
                 <v-text-field
                   color="navbarcolor"
                  v-model="editedVaspitac.ime"
-                  label="Ime vaspitača"               
+                  label="Ime vaspitača"   
+                  :rules="[rules.name]"            
                   ></v-text-field>
               </v-flex>
               </v-flex>
@@ -29,7 +30,8 @@
                 <v-text-field
                   color="navbarcolor"
                  v-model="editedVaspitac.prezime"
-                  label="Prezime vaspitača"               
+                  label="Prezime vaspitača"  
+                  :rules="[rules.name]"               
                   ></v-text-field>
               </v-flex>
               </v-flex>
@@ -38,7 +40,8 @@
                 <v-text-field
                   color="navbarcolor"
                  v-model="editedVaspitac.brojTelefona"
-                  label="Broj telefona vaspitača"               
+                  label="Broj telefona vaspitača"    
+                  :rules="[rules.telefon]"             
                   ></v-text-field>
               </v-flex>
               </v-flex>
@@ -225,6 +228,17 @@
 /* eslint-disable */
 export default {
      data: () => ({ 
+       rules:{
+         required: (value) => !!value || 'Ovo polje je obavezno.',
+          name: (value) => {
+            const pattern = /[a-zA-Z][^#&<>\"~;$^%{}?]{1,20}$/
+            return pattern.test(value) || 'Ime ne sme sadržati brojeve, specijalne karaktere.'
+          },
+          telefon: (value) => {
+            const pattern = /^[+]*[(]{0,1}[0-9]{1,4}[)]{0,1}[-\s\./0-9]*$/
+            return pattern.test(value) || 'Telefon mora sadržati samo brojeve.'
+          },
+       },
        ikonice:{
          
           lupa: require('../../assets/lupa.png'),
