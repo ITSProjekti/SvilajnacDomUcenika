@@ -30,7 +30,7 @@
       
         </v-flex>
       
-        <v-btn dark class=" navbarcolor mt-2 mr-4"  @click.native="reloadPage">
+        <v-btn dark class="navbarcolor mt-2 mr-4"  @click.native="reloadPage">
           <img class ="mr-3 " :src=rangiraj.srcmain>   Rangiraj
         </v-btn>  
       </v-layout>
@@ -45,19 +45,16 @@
       :rows-per-page-items="[10,15,20,ucenici.length]"
       :search="search"
       :custom-filter="customFilter"
-      class="elevation-1"    
+      class="elevation-1"   
      >
       <template slot="items" slot-scope="props" >
-        <tr >
-        <td class="text-xs-left priority-1" >{{ props.item.id}}</td>
+        <tr>
+        <td class="text-xs-left priority-1"  >{{ props.item.id}}</td>
           <td class="text-xs-left priority-1">{{ props.item.statusPrijave.status }}</td>
             <td class="text-xs-left priority-1">{{ props.item.bodoviZaUpis }}</td>
         <td class="text-xs-left priority-1">{{ props.item.ime }}</td>
         <td class="text-xs-left priority-1">{{ props.item.prezime }}</td> 
-        <td class="text-xs-left priority-4">{{ props.item.vaspitnaGrupa.naziv }}</td>
          <td class="text-xs-left priority-5">{{ props.item.razred.brojRazreda }}</td>
-        <td class="text-xs-left priority-5">{{ props.item.upisanaSkola.nazivSrednjeSkole }}</td>
-         <td class="text-xs-left priority-5">{{ props.item.smer.nazivSmera }}</td>
         <td class="justify-center layout px-0">
           <v-btn center icon class="mx-0"
            @click="deleteItem(props.item)">
@@ -72,7 +69,7 @@
       </template>
        <template slot="no-data">
       <v-alert :value="true" color="error" icon="warning">
-        Nema ni jednog ucenika. :(
+        Nema nijednog ucenika. :(
       </v-alert> 
     </template>
     <template slot="pageText" slot-scope="{ pageStart, pageStop }">
@@ -115,10 +112,7 @@ import moment from 'moment'
         { text: 'Br bodova',value: 'bodoviZaUpis' ,align: 'left',sortable:true, width:'100%',class: 'priority-1'},
         { text: 'Ime',value: 'ime' ,align: 'left',sortable:true, width:'100%',class: 'priority-1'},
         { text: 'Prezime', value:'prezime', align: 'left',sortable:true,width:'100%',class: 'priority-1'},
-        { text: 'Vaspitna grupa', value: 'vaspitnaGrupa.naziv',align: 'left',sortable:true,width:'100%',class: 'priority-4' },
         { text: 'Razred', value: 'razred.brojRazreda',align: 'left',sortable:true ,width:'100%',class: 'priority-5'},
-        { text: 'Škola', value: 'upisanaSkola.nazivSrednjeSkole',align: 'left',sortable:true ,width:'100%',class: 'priority-5'},
-        { text: 'Smer', value: 'smer.nazivSmera',align: 'left',sortable:true ,width:'100%',class: 'priority-5'},
         { text: 'Opcije', value: 'opcije',align: 'center',sortable:false,width:'100%' }
       ],
       // pomocna promenljiva za generisanje podatka o datumu rodjenja
