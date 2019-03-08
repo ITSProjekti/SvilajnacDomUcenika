@@ -1,4 +1,5 @@
 <template>
+
 <v-container>
     <v-layout row>
         <v-flex xs12  >
@@ -28,8 +29,10 @@
                   label="Opis pohvale"     
                   clearable          
                   ></v-text-field>
+                  
               </v-flex>
               </v-flex>
+              
 
                          <v-flex offset-sm1 xs12>
               <v-flex xs8 md5 class="ml-1" >
@@ -141,7 +144,10 @@
                   color="navbarcolor"
                   clearable
                  v-model="editedKazne.opis"
-                  label="Opis kazne"               
+                 textarea
+                 counter="2000"
+                  label="Opis kazne" 
+                  :rules="[rules.required]"              
                   ></v-text-field>
               </v-flex>
               </v-flex>
@@ -189,7 +195,7 @@
                       <v-dialog v-model="dialogNewPohvala" max-width="500">
         <v-card>
                     <v-card-title>
-          <span class="headline">Nova pohvala</span>
+          <span name="a" class="headline">Nova pohvala</span>
         </v-card-title>
         <v-card-text>
             <v-container>  
@@ -198,12 +204,16 @@
                 <v-text-field
                   color="navbarcolor"
                   clearable
+                  textarea
+                  counter=2000
                  v-model="editedPohvale.opis"
-                  label="Opis pohvale"               
+                  label="Opis pohvale" 
+                  :rules="[rules.required]"              
                   ></v-text-field>
               </v-flex>
               </v-flex>
-
+              
+              
                          <v-flex offset-sm1 xs12>
               <v-flex xs8 md5 class="ml-1" >
                 <v-text-field
@@ -262,14 +272,13 @@
                         label="Ime" 
                         required
                         clearable
-                        :rules="[rules.required]"
+                        :rules="[rules.required, rules.name]"
                         ></v-text-field>
                           </v-flex>
                            <v-flex xs12 sm3 offset-sm1 class="mt-4">
                              <v-card>
            <v-card-text>
                           <input type="file" id="file" ref="file" accept="image/*" v-on:change="handleFileUpload()"/>
-
                         <img v-bind:src="editedItem.slika" height="100px" contain class="responsive" v-show="showPreview"/>
                          <img v-bind:src="editedItem.slika" height="100px" contain class="responsive" v-show="!showPreview"/>
                        <!-- <button v-show="this.file!==''" v-on:click="ClearPicture()">Reset</button> -->
@@ -293,18 +302,19 @@
                  v-model="editedItem.prezime"
                   label="Prezime"
                    required
-                   :rules="[rules.required]"
+                   :rules="[rules.required, rules.name]"
                    ></v-text-field>
               </v-flex>
              </v-flex>
 
-        <template>
-                 <v-container fluid>
+    
+                 
                     <v-layout row wrap>
                     <v-flex offset-sm1  xs12 sm3 class="mt-4 ">
-                     <p>Država rođenja</p>
+                    
                     </v-flex>
-                           <v-flex xs12 sm6>
+                           <v-flex offset-sm1 xs12>
+                             <v-flex xs8 md5 class="ml-1" >
                                <v-select
                                  color="navbarcolor"
                                 :loading="loading"
@@ -316,10 +326,11 @@
                                 autocomplete
                               
                               ></v-select>
+                             </v-flex>
                             </v-flex>
                           </v-layout>
-                        </v-container>
-                      </template>
+                        
+                     
 
 
        <v-flex offset-sm1 xs12>
@@ -744,6 +755,107 @@
             </v-layout>
           </v-container>
      <div><br></div>
+      <v-flex xs12 class="ml-2">
+            <v-card width=1000px >
+              <v-card-title primary-title>
+                <v-flex offset-sm4>
+                <div class="headline">Vrednovanje ucenika za upis u dom </div>
+              </v-flex>
+              </v-card-title>
+      <v-flex offset-sm1 xs12>
+                     <transition name="fade" appear  mode="in-out">
+              <v-flex xs12 md8 class="ml-1" >
+                    <v-data-table
+      :headers="headers"
+      :items="Pohvale"
+       v-if="!loading"
+        hide-actions
+      class="elevation-1"    
+     >
+      <template  slot="items" slot-scope="props" >
+       
+        <tr v-if="props.item.ucenikId=== editedItem.id" >
+        <td class="text-xs-center" >{{ props.item.bodoviPohvale}}</td>
+        <td class="text-xs-center">{{ props.item.opis }}</td>
+ 
+        <td class="justify-center layout px-0">
+  
+          <v-btn center icon class="mx-0"
+           @click="deletePohvala(props.item)">
+            <v-icon
+              color="navbarcolor">delete
+              </v-icon>
+          </v-btn>
+             <v-btn center icon class="mx-0"
+         @click="editPohvala(props.item)">    
+          
+            <v-icon
+              color="navbarcolor">edit
+              </v-icon>
+          </v-btn>
+        </td>
+         </tr>
+        
+      </template>
+
+    </v-data-table>
+             <v-flex>
+ <v-btn  dark class="navbarcolor" @click="dialogNewPohvala = true">Nova pohvala</v-btn>
+             </v-flex>
+ 
+
+              </v-flex>
+               </transition>
+              </v-flex>
+                 
+                                 <v-flex offset-sm1 xs12>
+                     <transition name="fade" appear  mode="in-out">
+              <v-flex xs12  md8  class="ml-1" >
+                
+
+                    <v-data-table
+      :headers="headers"
+      :items="Kazne"
+       v-if="!loading"
+        hide-actions
+      class="elevation-1"    
+     >
+      <template  slot="items" slot-scope="props" >
+       
+        <tr v-if="props.item.ucenikId=== editedItem.id" >
+        <td class="text-xs-center" >{{ props.item.bodoviKazne}}</td>
+        <td class="text-xs-center">{{ props.item.opis }}</td>
+ 
+        <td class="justify-center layout px-0">
+          
+          <v-btn center icon class="mx-0"
+           @click="deleteKazna(props.item)">
+            <v-icon
+              color="navbarcolor">delete
+              </v-icon>
+          </v-btn>
+             <v-btn center icon class="mx-0"
+         @click="editKazna(props.item)">    
+          
+            <v-icon
+              color="navbarcolor">edit
+              </v-icon>
+          </v-btn>
+        </td>
+         </tr>
+        
+      </template>
+
+    </v-data-table>
+                  <v-btn  dark class="navbarcolor" @click="dialogNewKazna = true">Nova kazna</v-btn>
+              </v-flex>
+               </transition>
+              </v-flex>
+            </v-card>
+      </v-flex>
+      <div class="razmak">
+
+      </div>
        <v-flex xs12 class="ml-2">
             <v-card width=1000px >
               <v-card-title primary-title>
@@ -924,17 +1036,9 @@
               </v-flex>
                </transition>
               </v-flex>
-     </v-card>
-             </v-flex>  
-             <div><br></div>
+              <div><br></div>
                  <v-flex xs12 >
                    <v-container>
-            <v-card width=1000px >
-              <v-card-title primary-title>
-                <v-flex offset-sm4>
-                <div class="headline">Vrednovanje ucenika za upis u dom </div>
-              </v-flex>
-              </v-card-title>
                  <v-flex offset-sm1 xs12>
               <v-flex xs2 md2  >
                 <v-text-field
@@ -963,107 +1067,25 @@
                         </v-text-field>
               </v-flex>
           </v-flex>
-                 <v-flex offset-sm1 xs12>
-                     <transition name="fade" appear  mode="in-out">
-              <v-flex xs12 md8 class="ml-1" >
+         
                 
-
-                    <v-data-table
-      :headers="headers"
-      :items="Pohvale"
-       v-if="!loading"
-        hide-actions
-      class="elevation-1"    
-     >
-      <template  slot="items" slot-scope="props" >
-       
-        <tr v-if="props.item.ucenikId=== editedItem.id" >
-        <td class="text-xs-center" >{{ props.item.bodoviPohvale}}</td>
-        <td class="text-xs-center">{{ props.item.opis }}</td>
- 
-        <td class="justify-center layout px-0">
-  
-          <v-btn center icon class="mx-0"
-           @click="deletePohvala(props.item)">
-            <v-icon
-              color="navbarcolor">delete
-              </v-icon>
-          </v-btn>
-             <v-btn center icon class="mx-0"
-         @click="editPohvala(props.item)">    
-          
-            <v-icon
-              color="navbarcolor">edit
-              </v-icon>
-          </v-btn>
-        </td>
-         </tr>
-        
-      </template>
-
-    </v-data-table>
-             <v-flex>
- <v-btn  dark class="navbarcolor" @click="dialogNewPohvala = true">Nova pohvala</v-btn>
-             </v-flex>
- 
-
-              </v-flex>
-               </transition>
-              </v-flex>
-                 
-                                 <v-flex offset-sm1 xs12>
-                     <transition name="fade" appear  mode="in-out">
-              <v-flex xs12  md8  class="ml-1" >
-                
-
-                    <v-data-table
-      :headers="headers"
-      :items="Kazne"
-       v-if="!loading"
-        hide-actions
-      class="elevation-1"    
-     >
-      <template  slot="items" slot-scope="props" >
-       
-        <tr v-if="props.item.ucenikId=== editedItem.id" >
-        <td class="text-xs-center" >{{ props.item.bodoviKazne}}</td>
-        <td class="text-xs-center">{{ props.item.opis }}</td>
- 
-        <td class="justify-center layout px-0">
-          
-          <v-btn center icon class="mx-0"
-           @click="deleteKazna(props.item)">
-            <v-icon
-              color="navbarcolor">delete
-              </v-icon>
-          </v-btn>
-             <v-btn center icon class="mx-0"
-         @click="editKazna(props.item)">    
-          
-            <v-icon
-              color="navbarcolor">edit
-              </v-icon>
-          </v-btn>
-        </td>
-         </tr>
-        
-      </template>
-
-    </v-data-table>
-                  <v-btn  dark class="navbarcolor" @click="dialogNewKazna = true">Nova kazna</v-btn>
-              </v-flex>
-               </transition>
-              </v-flex>
               <v-card-actions>
                 
-  <v-btn id="dugme1" @click="IzmeniUcenika"     :disabled="!formIsValid">
+  <v-btn id="dugme1" class="navbarcolor" @click="IzmeniUcenika"     :disabled="!formIsValid">
     Sačuvaj izmene
     
   </v-btn>
+   <v-btn dark id="dugme3" class="navbarcolor" @click="dialogNewPohvala = true" :disabled="!formIsValid">Nova pohvala</v-btn>
+ 
+
+
+
 </v-card-actions>
-            </v-card>
             </v-container>
                  </v-flex>
+     </v-card>
+             </v-flex>  
+             
 
           
             </form>
@@ -1080,6 +1102,11 @@
 import moment from 'moment'
   export default {
     data: () => ({  
+      return: {
+        selected: ['Trevor Handsen'],
+        items: ['Trevor Handsen', 'Alex Nelson'],
+        title: 'Hi,\nI just wanted to check in and see if you had any plans the upcoming weekend. We are thinking of heading up to Napa'
+      },
       // hederi korisceni za tebele prikaza podataka o kaznama
             headers: [
         {
@@ -1529,11 +1556,33 @@ input[type="number"] {
 }
 
 #dugme1{
-
- 
   position: fixed;
   top: 10%;
   left: 79%;
-  
+  color: white;
 }
+#dugme2{
+width: 150px;
+height: 30px;
+background:#efefef;
+position: fixed;
+border: 1px solid #c5c6c9;
+top: 15%;
+left: 79%;
+border-radius: 2px;   
+opacity: none; 
+padding: 2px;
+  box-shadow: 0.3px 0.3px 0.3px 0.3px #c5c6c9;
+}
+
+#dugme3{
+  position: fixed;
+  top: 15%;
+  left: 79%;
+}
+.razmak{
+  padding-top:3%;
+}
+
+
 </style>
