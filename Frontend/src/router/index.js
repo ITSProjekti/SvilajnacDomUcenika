@@ -11,6 +11,8 @@ import Profile from '@/components/User/Profile'
 import Register from '@/components/User/Register'
 import SignIn from '@/components/User/SignIn'
 import Breabcrumbs from 'vue-2-breadcrumbs'
+import NovaSoba from '@/components/Sobe/NovaSoba'
+import SpisakSoba from '@/components/Sobe/SpisakSoba'
  /* eslint-disable */
 Vue.use(Breabcrumbs)
 
@@ -38,7 +40,10 @@ export default new Router({
     {path:'/vaspitnegrupe/', component: VaspitneGrupe},
     {path:'/profil/', component: Profile},
     {path:'/registracija/', component: Register},
-    {path:'/logovanje/', component: SignIn}
+    {path:'/logovanje/', component: SignIn},
+
+    {path:'/novasoba/', component: NovaSoba, name:'NovaSoba'},
+    {path:'/spisaksoba/', component: SpisakSoba, name:'SpisakSoba'}
    ],
     mode:'history'
 })
